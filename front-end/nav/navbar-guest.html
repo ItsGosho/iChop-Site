@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' rel='stylesheet'/>
-    <link rel="stylesheet" href="components/bootstrap-social.css">
+    <link rel="stylesheet" href="../components/bootstrap-social.css">
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -21,6 +20,7 @@
             crossorigin="anonymous"></script>
 </head>
 <body>
+
 
 <div class="container" style="margin-bottom: 200px;position: relative;z-index: 1">
     <nav class="navbar navbar-expand-lg navbar-light bg-light rounded" style="max-height: 40px">
@@ -43,8 +43,12 @@
                                 aria-haspopup="true" aria-expanded="false">
                             Sign in
                         </button>
-                        <div class="dropdown-menu dropdown-menu-right" style="width: 350px;">
-
+                        <div class="dropdown-menu dropdown-menu-right mobile-margin visible-xs" style="width: 350px;">
+                            <style>
+                                .mobile-margin {
+                                    margin-left: -33px;
+                                }
+                            </style>
                             <!--LOGINNN!!!-->
                             <div id="loginPage">
                                 <a class="dropdown-item" href="#">
@@ -92,6 +96,8 @@
                                     <button class="btn btn-warning btn-sm">Forgotten Password</button>
                                 </a>
                             </div>
+
+
                             <!--REGISTERR!!!-->
                             <div id="registerPage" style="display:none">
                                 <form class="px-4 py-3" method="post">
@@ -111,6 +117,10 @@
                                                 <div class="input-group-text">🔒</div>
                                             </div>
                                             <input type="password" class="form-control" id="passwordRegisterForm"
+                                                   data-placement="top"
+                                                   data-toggle="popover" title="Popover title" data-html="true"
+                                                   data-trigger="focus"
+                                                   data-content="-At least one uppercase character</br>-At least one lowercase character</br>-At least one 6 characters"
                                                    name="password" placeholder="Password...">
                                             <div class="input-group-append">
                                                 <button class="btn btn-outline-success" id="showPasswordRegisterForm"
@@ -173,6 +183,83 @@
                                 </form>
                             </div>
 
+                            <script>
+                                runRegisterFormValidation();
+
+                                function runRegisterFormValidation() {
+
+                                    const EMAIL_PATTERN = "(?:[a-z0-9!#$%&'*+\\=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+\\=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])";
+
+
+                                    //Validate Email:
+                                    let registerField = $(`#emailRegisterForm`);
+
+                                    registerField.on(`keyup`, emailValidator);
+
+                                    function emailValidator() {
+                                        let val = registerField.val();
+                                        let matcher = new RegExp(EMAIL_PATTERN);
+
+                                        if (matcher.test(val)) {
+                                            console.log(123);
+                                        } else {
+
+                                        }
+
+                                    }
+
+
+                                    //Validate Passwords:
+                                    let showPasswordButton = $(`#showPasswordRegisterForm`);
+                                    let passwordField = $(`#passwordRegisterForm`);
+                                    let confirmPasswordField = $(`#confirmPasswordRegisterForm`);
+
+                                    passwordField.on(`keyup`,validatePasswordEquals);
+                                    confirmPasswordField.on(`keyup`,validatePasswordEquals);
+
+                                    //TODO: FINISH THE OTER VALIDATIONS
+
+                                    function validatePasswordEquals(){
+                                        let passwordValue = passwordField.val();
+                                        let confirmPasswordValue = confirmPasswordField.val();
+
+                                        if(passwordValue===confirmPasswordValue){
+
+                                            passwordField.removeClass("border border-danger");
+                                            passwordField.addClass("border border-success");
+
+                                            confirmPasswordField.removeClass("border border-danger");
+                                            confirmPasswordField.addClass("border border-success");
+                                        }else{
+                                            passwordField.addClass("border border-danger");
+                                            confirmPasswordField.addClass("border border-danger");
+                                        }
+                                    }
+
+                                    //Show/Hide Password:
+                                    showPasswordButton.on(`click`, showOrHidePassword);
+
+                                    function showOrHidePassword() {
+                                        if (passwordField.attr(`type`) === 'password') {
+                                            passwordField.attr(`type`, `text`);
+                                            confirmPasswordField.attr(`type`, `text`);
+
+                                            showPasswordButton.text(`Hide`);
+                                        } else {
+                                            passwordField.attr(`type`, `password`);
+                                            confirmPasswordField.attr(`type`, `password`);
+                                            showPasswordButton.text(`Show`);
+                                        }
+                                    }
+
+                                    //Password popover
+
+                                    $(document).ready(function () {
+                                        $('[data-toggle="popover"]').popover();
+                                    });
+
+                                }
+                            </script>
 
                             <!--SCRIPT!!!-->
 
@@ -196,26 +283,26 @@
 
                                 });
 
-                                $(`#showPasswordRegisterForm`).on(`click`, showOrHidePassword);
-
                                 function back() {
                                     $(`#registerPage`).css('display', 'none');
                                     $(`#forgottenPasswordPage`).css('display', 'none');
                                     $(`#loginPage`).css('display', 'inline');
                                 }
 
-                                function showOrHidePassword() {
-                                    if ($(`#passwordRegisterForm`).attr(`type`) === 'password') {
-                                        $(`#passwordRegisterForm`).attr(`type`, `text`);
-                                        $(`#confirmPasswordRegisterForm`).attr(`type`, `text`);
-
-                                        $(`#showPasswordRegisterForm`).text(`Hide`);
-                                    } else {
-                                        $(`#passwordRegisterForm`).attr(`type`, `password`);
-                                        $(`#confirmPasswordRegisterForm`).attr(`type`, `password`);
-                                        $(`#showPasswordRegisterForm`).text(`Show`);
-                                    }
-                                }
+                                // $(`#showPasswordRegisterForm`).on(`click`, showOrHidePassword);
+                                //
+                                // function showOrHidePassword() {
+                                //     if ($(`#passwordRegisterForm`).attr(`type`) === 'password') {
+                                //         $(`#passwordRegisterForm`).attr(`type`, `text`);
+                                //         $(`#confirmPasswordRegisterForm`).attr(`type`, `text`);
+                                //
+                                //         $(`#showPasswordRegisterForm`).text(`Hide`);
+                                //     } else {
+                                //         $(`#passwordRegisterForm`).attr(`type`, `password`);
+                                //         $(`#confirmPasswordRegisterForm`).attr(`type`, `password`);
+                                //         $(`#showPasswordRegisterForm`).text(`Show`);
+                                //     }
+                                // }
 
                             </script>
 
@@ -227,250 +314,5 @@
         </div>
     </nav>
 </div>
-
-<div id="commentsPage" class="container d-flex justify-content-center align-items-center">
-
-    <div class="row">
-
-        <div id="news" class="col-xs-6">
-            <div class="card">
-                <div class="card-header">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div align="center">
-                                <small>👤<a href="">ItsGosho</a></small>
-                            </div>
-                            <div align="center">
-                                <img style="width: 50px;height: 50px;max-width: 100%;" class="card-img-top " src="avatar-test.png" alt="Card image cap">
-                            </div>
-                            <div align="center">
-                                   <small>
-                                       <small>💬</small>
-                                       <span class="totalComments">129</span> total comments
-                                   </small>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div align="center" class="border border-warning rounded">
-                                <img style="width: 15px;height: 15px;max-width: 100%;" class="card-img-top "
-                                     src="avatar-test.png" alt="Card image cap"><a href="">ItsGosho1111111111111</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="1" class="card-body">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <h3 class="title">Bug Fixes - January 2019</h3>
-                        </div>
-                        <div class="col-md-4">
-                            <small style="display: inline-block;padding-top: 18px;float:right;">
-                                <small class="dateIcon">📅</small>
-                                <small class="date">9 Jan,2018</small>
-                            </small>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-8">
-                            <small>by <a href="/SMENI">👤<span class="user">ItsGosho</span></a> at <span
-                                    class="postTime">16:32</span> (<a href="/SAMO AKO IMA PRAVA"><span
-                                    class="totalViews">3,502</span></a>👀 / <a href="/SAMO AKO IMA PRAVA"><span
-                                    class="totalLikes">3,502</span></a>👍)
-                            </small>
-                        </div>
-                        <div class="col-md-4">
-                            <small style="display: inline-block;padding-top: 18px;float:right;">
-                                <small>💬</small>
-                                <a href="/SMENI"><span class="totalComments">129</span></a> Comments
-                            </small>
-                        </div>
-                    </div>
-                    <div class="dropdown-divider"></div>
-                    <img style="display: block;max-width: 100%;height:auto;" src="news-page-comment-first-image.png">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">It's a broader card with text below as a natural lead-in to extra content. This
-                        content is a little longer.</p>
-
-                    <div class="row">
-                        <div class="col-md-8" style="margin-bottom: 8px">
-                        </div>
-                        <div class="col-md-4">
-                            <button type="button" style="display: inline-block;float:right;"
-                                    class="btn btn-primary btn-sm btn-brand btn-reddit">
-                                <small>📖</small>
-                                Continue reading...
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="btn-group">
-                                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <small>⚙</small>
-                                    Options
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="/DELETE NEWS">
-                                        <small>❌</small>
-                                        Delete</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="dropdown-divider"></div>
-
-
-                <div class="dropdown-divider"></div>
-            </div>
-        </div>
-
-        <div class="col-xs-6" style="margin-left: 7px;">
-            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                <span id="newsTab"><a class="nav-link active" id="v-pills-home-tab" data-toggle="pill"
-                                      href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">📰News</a></span>
-                <span id="videosTab"><a class="nav-link" id="v-pills-profile-tab" data-toggle="pill"
-                                        href="#v-pills-profile" role="tab" aria-controls="v-pills-profile"
-                                        aria-selected="false">📹Videos</a></span>
-                <span><a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages"
-                         role="tab" aria-controls="v-pills-messages" aria-selected="false"></a></span>
-                <span><a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings"
-                         role="tab" aria-controls="v-pills-settings" aria-selected="false"></a></span>
-            </div>
-
-            <div class="dropdown-divider"></div>
-
-            <div>
-                <h6>Social Media</h6>
-                <button type="button" class="btn btn-brand btn-facebook">
-                    <i class="fa fa-facebook"></i>
-                </button>
-                <button type="button" class="btn btn-brand btn-instagram">
-                    <i class="fa fa-instagram"></i>
-                </button>
-                <button type="button" class="btn btn-brand btn-youtube">
-                    <i class="fa fa-youtube"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-
-</div>
-
-
-<footer class="page-footer font-small stylish-color-dark pt-4" style="margin-top: 125px">
-
-    <!-- Footer Links -->
-    <div class="container text-center text-md-left">
-
-        <!-- Grid row -->
-        <div class="row">
-
-            <!-- Grid column -->
-            <div class="col-md-4 mx-auto">
-
-                <!-- Content -->
-                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Footer Content</h5>
-                <p>Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit amet,
-                    consectetur
-                    adipisicing elit.</p>
-
-            </div>
-            <!-- Grid column -->
-
-            <hr class="clearfix w-100 d-md-none">
-
-            <!-- Grid column -->
-            <div class="col-md-2 mx-auto">
-
-                <!-- Links -->
-                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
-
-                <ul class="list-unstyled">
-                    <li>
-                        <a href="#!">Link 1</a>
-                    </li>
-                    <li>
-                        <a href="#!">Link 2</a>
-                    </li>
-                    <li>
-                        <a href="#!">Link 3</a>
-                    </li>
-                    <li>
-                        <a href="#!">Link 4</a>
-                    </li>
-                </ul>
-
-            </div>
-            <!-- Grid column -->
-
-            <hr class="clearfix w-100 d-md-none">
-
-            <!-- Grid column -->
-            <div class="col-md-2 mx-auto">
-
-                <!-- Links -->
-                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
-
-                <ul class="list-unstyled">
-                    <li>
-                        <a href="#!">Link 1</a>
-                    </li>
-                    <li>
-                        <a href="#!">Link 2</a>
-                    </li>
-                    <li>
-                        <a href="#!">Link 3</a>
-                    </li>
-                    <li>
-                        <a href="#!">Link 4</a>
-                    </li>
-                </ul>
-
-            </div>
-            <!-- Grid column -->
-
-            <hr class="clearfix w-100 d-md-none">
-
-            <!-- Grid column -->
-            <div class="col-md-2 mx-auto">
-
-                <!-- Links -->
-                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
-
-                <ul class="list-unstyled">
-                    <li>
-                        <a href="#!">Link 1</a>
-                    </li>
-                    <li>
-                        <a href="#!">Link 2</a>
-                    </li>
-                    <li>
-                        <a href="#!">Link 3</a>
-                    </li>
-                    <li>
-                        <a href="#!">Link 4</a>
-                    </li>
-                </ul>
-
-            </div>
-            <!-- Grid column -->
-
-        </div>
-        <!-- Grid row -->
-
-    </div>
-    <!-- Footer Links -->
-
-    <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2018 Copyright:
-        <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>
-    </div>
-    <!-- Copyright -->
-
-</footer>
 </body>
 </html>
