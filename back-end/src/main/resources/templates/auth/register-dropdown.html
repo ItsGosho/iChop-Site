@@ -1,12 +1,19 @@
-<div id="registerPage" style="display:none">
-    <form class="px-4 py-3" method="post" action="/register">
+<div id="div-registerForm" style="display:none">
+    <form class="px-4 py-3" method="post">
 
         <div class="form-group">
             <div class="input-group mb-2">
                 <div class="input-group-prepend">
                     <div class="input-group-text">👤</div>
                 </div>
-                <input type="text" class="form-control" id="usernameRegisterForm" name="username" placeholder="Username...">
+                <input type="text" class="form-control" id="input-username-registerForm"
+                       name="username" placeholder="Username..." autocomplete="off">
+                <small id="error-usernameIsShort-registerForm" style="display:none">⚡Username must be at
+                    least 3 characters long!
+                </small>
+                <small id="error-usernameAlreadyExists-registerForm" style="display:none">⚡Username already
+                    exists!
+                </small>
             </div>
         </div>
         <div class="form-group">
@@ -14,9 +21,18 @@
                 <div class="input-group-prepend">
                     <div class="input-group-text">🔒</div>
                 </div>
-                <input type="password" class="form-control" id="passwordRegisterForm" name="password" placeholder="Password...">
+                <input type="password" class="form-control" id="input-password-registerForm"
+                       autocomplete="off"
+                       data-placement="top"
+                       data-toggle="popover" title="Password Requirements:" data-html="true"
+                       data-trigger="focus"
+                       data-content="-At least one uppercase character</br>-At least one lowercase character</br>-At least 6 characters"
+                       name="password" placeholder="Password...">
                 <div class="input-group-append">
-                    <button class="btn btn-outline-success" id="showPasswordRegisterForm" type="button">Show</button>
+                    <button class="btn btn-outline-success"
+                            id="button-showPassword-registerForm"
+                            type="button">Show
+                    </button>
                 </div>
             </div>
         </div>
@@ -25,7 +41,9 @@
                 <div class="input-group-prepend">
                     <div class="input-group-text">🔒</div>
                 </div>
-                <input type="password" class="form-control" id="confirmPasswordRegisterForm" name="confirmPassword" placeholder="Confirm Password...">
+                <input type="password" class="form-control" id="input-confirmPassword-registerForm"
+                       autocomplete="off"
+                       name="confirmPassword" placeholder="Confirm Password...">
             </div>
         </div>
         <div class="form-group">
@@ -33,15 +51,17 @@
                 <div class="input-group-prepend">
                     <div class="input-group-text">📧</div>
                 </div>
-                <input type="email" class="form-control" id="emailRegisterForm" name="email" placeholder="Email...">
+                <input type="email" class="form-control" id="input-email-registerForm" name="email"
+                       autocomplete="off"
+                       placeholder="Email...">
             </div>
         </div>
-        <a class="dropdown-item">
-            <button type="submit" data-style="zoom-in" class="btn btn-success btn-sm">Register</button>
-        </a>
-        <a id="buttonGoToLogin" class="dropdown-item">
-            <button type="button" class="btn btn-primary btn-sm">Back</button>
-        </a>
+        <button id="button-goToLogin-registerForm" type="button" class="btn btn-primary btn-sm">Back
+        </button>
+        <button id="buttom-proceedRegister-registerForm" type="submit" data-style="zoom-in"
+                class="btn btn-success btn-sm">
+            Register
+        </button>
         <div class="dropdown-divider"></div>
     </form>
 </div>
