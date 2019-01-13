@@ -1,7 +1,7 @@
 package itsgosho.config;
 
+import itsgosho.handlers.UserAuthenticationSuccessfulHandler;
 import itsgosho.service.user.UserServices;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -14,10 +14,11 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private final UserServices userServices;
+    private final UserAuthenticationSuccessfulHandler userAuthenticationSuccessfulHandler;
 
-    @Autowired
-    public SecurityConfiguration(UserServices userServices) {
+    public SecurityConfiguration(UserServices userServices, UserAuthenticationSuccessfulHandler userAuthenticationSuccessfulHandler) {
         this.userServices = userServices;
+        this.userAuthenticationSuccessfulHandler = userAuthenticationSuccessfulHandler;
     }
 
 
@@ -28,12 +29,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/login", "/register").anonymous()
-                .antMatchers("/css/**", "/js/**").permitAll()
-                //.antMatchers("/users/isvalid", "/users/exists").permitAll()
-                .antMatchers("/").permitAll()
+                .antMatchers("/**").permitAll()
+//                .antMatchers("/css/**", "/js/**","/img/**").permitAll()
+//                .antMatchers("/api/users/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin().loginPage("/login")
+                .formLogin()
+                .failureUrl("/?login=error")
+                .loginPage("/login").successHandler(this.userAuthenticationSuccessfulHandler)
                 .usernameParameter("usernameOrEmail")
                 .passwordParameter("password")
                 .and()
@@ -47,4 +50,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .exceptionHandling().accessDeniedPage("/unauthorized");
     }
+
+
+//        private CsrfTokenRepository csrfTokenRepository() {
+//        HttpSessionCsrfTokenRepository repository = new HttpSessionCsrfTokenRepository();
+//
+//        repository.setSessionAttributeName("_csrf");
+//
+//        return repository;
+//    }
 }
