@@ -1,29 +1,32 @@
 package itsgosho.web.controllers;
 
-import itsgosho.domain.entities.users.User;
+import itsgosho.domain.models.binding.UserForgottenPasswordBindingModel;
 import itsgosho.domain.models.binding.UserRegisterBindingModel;
 import itsgosho.domain.models.binding.UserResetPasswordBindingModel;
+import itsgosho.service.token.PasswordResetTokenServices;
 import itsgosho.service.user.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.naming.Binding;
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.security.Principal;
 
 @Controller
+@PreAuthorize("isAnonymous()")
 public class UserAuthenticationController extends BaseController {
 
     private final UserServices userServices;
+    private final PasswordResetTokenServices passwordResetTokenServices;
 
     @Autowired
-    public UserAuthenticationController(UserServices userServices) {
+    public UserAuthenticationController(UserServices userServices, PasswordResetTokenServices passwordResetTokenServices) {
         this.userServices = userServices;
+        this.passwordResetTokenServices = passwordResetTokenServices;
     }
 
     @PostMapping("/register")
@@ -35,27 +38,44 @@ public class UserAuthenticationController extends BaseController {
         return this.redirectToLoginDropdown();
     }
 
-    @PreAuthorize("isAnonymous()")
     @GetMapping("/login")
     public ModelAndView redirectToLoginDropdown(){
         return super.redirect("/?login=require");
     }
 
-    @PreAuthorize("isAnonymous()")
     @GetMapping("/register")
     public ModelAndView redirectToRegisterDropdown(){
         return super.redirect("/?register=require");
     }
 
-    @PreAuthorize("isAnonymous()")
-    @PostMapping("/resetPassword")
-    public ModelAndView proceedReset(@Valid UserResetPasswordBindingModel userResetPasswordBindingModel, BindingResult bindingResult){
+    @PostMapping("/forgotten/password")
+    public ModelAndView sendEmailForReset(@Valid UserForgottenPasswordBindingModel userForgottenPasswordBindingModel, BindingResult bindingResult){
 
-        if(bindingResult.hasErrors() ||  !this.userServices.sendPasswordResetEmail(userResetPasswordBindingModel)){
-            return super.redirect("/ERROR_EMAIL");
+        if(bindingResult.hasErrors() ||  !this.userServices.sendPasswordResetEmail(userForgottenPasswordBindingModel)){
+            return super.viewWithMessage("base-page","notification/error","A error has occurred");
         }
 
-        return super.redirect("/SUCCESS_EMAIL");
+        return super.viewWithMessage("base-page","notification/info","A reset link has been sent to your email!");
+    }
+
+    @GetMapping("/reset/password")
+    public ModelAndView getReset(@RequestParam(required = true) String token){
+
+        if(!this.passwordResetTokenServices.isValid(token)){
+            return super.viewWithMessage("base-page","notification/error","The provided token is invalid!");
+        }
+
+        return super.page("base-page","auth/reset_password-form","Reset Password");
+    }
+
+    @PostMapping("/reset/password")
+    public ModelAndView proceedPasswordReset(@RequestParam(required = true) String token,@Valid UserResetPasswordBindingModel userResetPasswordBindingModel,BindingResult bindingResult){
+
+        if(bindingResult.hasErrors() || !this.userServices.resetPassword(userResetPasswordBindingModel,token)){
+            return super.viewWithMessage("base-page","notification/error","A error has occurred");
+        }
+
+        return super.viewWithMessage("base-page","notification/info","Password has been reset successfully!");
     }
 
 }

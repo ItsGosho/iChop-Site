@@ -31,4 +31,12 @@ public abstract class BaseController {
     public ModelAndView page(String basePage,String bodyPage,String title) {
         return this.page(basePage,bodyPage,title,new ModelAndView());
     }
+
+    public ModelAndView viewWithMessage(String basePage,String bodyPage,String message){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName(basePage);
+        modelAndView.addObject("body",bodyPage);
+        modelAndView.addObject("message",message);
+        return modelAndView;
+    }
 }

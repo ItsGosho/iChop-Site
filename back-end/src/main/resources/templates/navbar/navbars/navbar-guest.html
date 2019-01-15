@@ -2,7 +2,7 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
-
+<script src="/js/auth/authUtils.js"></script>
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
 
@@ -10,7 +10,8 @@
     <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown active">
             <div id="div-signIn-signInForms">
-                <button id="button-signIn-navBar" type="button" class="btn btn-success dropdown-toggle btn-sm" data-toggle="dropdown"
+                <button id="button-signIn-navBar" type="button" class="btn btn-success dropdown-toggle btn-sm"
+                        data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
                     Sign in
                 </button>
@@ -39,19 +40,14 @@
                         }
                     </style>
 
-
                     <!--SCRIPT!!!-->
-
-                    <script src="/js/auth/authFormsOptions.js"></script>
-                    <script src="/js/auth/registerFormValidation.js"></script>
+                    <script src="/js/auth/authFormsConfig.js"></script>
+                    <script src="/js/auth/url/authUrlHandlers.js"></script>
                     <script>
 
-                        runAuthFormsOptions();
-                        runRegisterFormValidation();
-
+                        runAuthFormsConfig();
+                        runAuthUrlHandlers();
                     </script>
-
-
                 </div>
             </div>
         </li>

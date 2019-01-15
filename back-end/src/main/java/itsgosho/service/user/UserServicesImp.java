@@ -1,13 +1,16 @@
 package itsgosho.service.user;
 
-import itsgosho.domain.entities.users.PasswordResetToken;
+import itsgosho.components.email.EmailServices;
+import itsgosho.domain.entities.tokens.PasswordResetToken;
 import itsgosho.domain.entities.users.User;
 import itsgosho.domain.entities.users.UserRole;
 import itsgosho.domain.models.binding.UserRegisterBindingModel;
+import itsgosho.domain.models.binding.UserForgottenPasswordBindingModel;
 import itsgosho.domain.models.binding.UserResetPasswordBindingModel;
 import itsgosho.repository.user.UserRepository;
 import itsgosho.service.role.UserRoleServices;
 import itsgosho.service.role.UserRoles;
+import itsgosho.service.token.PasswordResetTokenServices;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -19,7 +22,6 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -30,16 +32,20 @@ public class UserServicesImp implements UserServices {
     private final UserRepository userRepository;
 
     private final UserRoleServices userRoleServices;
+    private final PasswordResetTokenServices passwordResetTokenServices;
 
     private final ModelMapper modelMapper;
     private final BCryptPasswordEncoder passwordEncoder;
+    private final EmailServices emailServices;
 
     @Autowired
-    public UserServicesImp(UserRepository userRepository, UserRoleServices userRoleServices, ModelMapper modelMapper, BCryptPasswordEncoder passwordEncoder) {
+    public UserServicesImp(UserRepository userRepository, UserRoleServices userRoleServices, PasswordResetTokenServices passwordResetTokenServices, ModelMapper modelMapper, BCryptPasswordEncoder passwordEncoder, EmailServices emailServices) {
         this.userRepository = userRepository;
         this.userRoleServices = userRoleServices;
+        this.passwordResetTokenServices = passwordResetTokenServices;
         this.modelMapper = modelMapper;
         this.passwordEncoder = passwordEncoder;
+        this.emailServices = emailServices;
     }
 
     @Override
@@ -114,6 +120,9 @@ public class UserServicesImp implements UserServices {
 
     @Override
     public UserRole getRole(User user){
+        if(user==null){
+            return null;
+        }
        return (UserRole) user
                .getAuthorities()
                .stream()
@@ -122,21 +131,39 @@ public class UserServicesImp implements UserServices {
     }
 
     @Override
-    public boolean sendPasswordResetEmail(UserResetPasswordBindingModel userResetPasswordBindingModel) {
+    public boolean sendPasswordResetEmail(UserForgottenPasswordBindingModel userForgottenPasswordBindingModel) {
 
-        User user = (User) this.loadUserByUsername(userResetPasswordBindingModel.getUsernameOrEmail());
+        User user = (User) this.loadUserByUsername(userForgottenPasswordBindingModel.getUsernameOrEmail());
 
         if(user==null){
+           return false;
+        }
+
+        PasswordResetToken passwordResetToken = this.passwordResetTokenServices.createToken(user);
+
+        if(passwordResetToken==null){
             return false;
         }
 
-        String token = UUID.randomUUID().toString();
-        PasswordResetToken passwordResetToken = new PasswordResetToken();
-        passwordResetToken.setUser(user);
-        passwordResetToken.setExpiryDate(LocalDateTime.now().plusSeconds(PasswordResetToken.getTokenExpiration()));
-        passwordResetToken.setToken(token);
-       
+        String message = "You have 24h to reset your password: "+"localhost:8000/reset/password?token="+passwordResetToken.getToken();
+        this.emailServices.sendSimpleMessage(user.getEmail(),"Reset password",message);
 
-        return false;
+        return true;
+    }
+
+    @Override
+    public boolean resetPassword(UserResetPasswordBindingModel userResetPasswordBindingModel, String resetToken) {
+
+        if(!this.passwordResetTokenServices.isValid(resetToken)){
+            return false;
+        }
+
+        User user = this.passwordResetTokenServices.getTokenByToken(resetToken).getUser();
+
+        user.setPassword(this.passwordEncoder.encode(userResetPasswordBindingModel.getPassword()));
+
+        this.userRepository.save(user);
+        this.passwordResetTokenServices.deleteToken(user);
+        return true;
     }
 }

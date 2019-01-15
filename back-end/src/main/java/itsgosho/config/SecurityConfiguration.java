@@ -48,7 +48,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .rememberMeCookieName("_nf")
                 .tokenValiditySeconds(20000)
                 .and()
-                .exceptionHandling().accessDeniedPage("/unauthorized");
+                .exceptionHandling()
+                .accessDeniedPage("/unauthorized");
     }
 
 

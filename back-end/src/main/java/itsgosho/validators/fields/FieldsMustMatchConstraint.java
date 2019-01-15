@@ -35,8 +35,8 @@ public class FieldsMustMatchConstraint implements ConstraintValidator<FieldsMust
                 return true;
             }
 
-        } catch (NoSuchFieldException | IllegalAccessException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            return false;
         }
 
         return false;

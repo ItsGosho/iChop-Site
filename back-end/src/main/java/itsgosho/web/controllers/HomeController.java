@@ -2,7 +2,6 @@ package itsgosho.web.controllers;
 
 import itsgosho.components.email.EmailServices;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +26,6 @@ public class HomeController extends BaseController {
    // @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/test")
     public ModelAndView testHome(ModelAndView modelAndView) {
-        this.emailServices.sendSimpleMessage("itsgosho2@gmail.com","Proba","Bravo!");
-        return super.page("base-page","shit","iChop",modelAndView);
+        return super.page("base-page","auth/reset_password-form","Reset Password");
     }
 }
