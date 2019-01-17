@@ -1,7 +1,6 @@
 package itsgosho.service.token;
 
 import itsgosho.domain.entities.tokens.PasswordResetToken;
-import itsgosho.domain.entities.tokens.Token;
 import itsgosho.domain.entities.users.User;
 import itsgosho.repository.token.PasswordResetTokenRepository;
 import org.springframework.beans.factory.annotation.Autowired;

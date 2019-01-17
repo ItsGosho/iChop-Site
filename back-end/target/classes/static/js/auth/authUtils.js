@@ -102,7 +102,7 @@ function getAuthUtil() {
     function onSuccessPass(field, errorField) {
         field.removeClass("border border-danger");
         field.addClass("border border-success");
-        errorField.css(`display`, `none`);
+        errorField.hide();
     }
 
     function onSuccessWithoutErrorField(field) {
@@ -111,14 +111,13 @@ function getAuthUtil() {
     }
 
     function onFailurePass(field, errorField) {
-        errorField.css(`display`, `inline-block`);
+        errorField.show();
         field.addClass("border border-danger");
     }
 
     function onFailurePassWithoutErrorField(field) {
         field.addClass("border border-danger");
     }
-
 
     //Configs:
 

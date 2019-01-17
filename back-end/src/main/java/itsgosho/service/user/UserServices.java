@@ -9,14 +9,17 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 public interface UserServices extends UserDetailsService {
 
+    boolean isEmail(String value);
+
     boolean register(UserRegisterBindingModel userRegisterBindingModel);
     boolean existsByUsername(String username);
     boolean existsByEmail(String email);
 
     UserRole getRole(User user);
+    User getUserByUsername(String username);
+    User getUserByEmail(String email);
 
 
     boolean sendPasswordResetEmail(UserForgottenPasswordBindingModel userForgottenPasswordBindingModel);
-
     boolean resetPassword(UserResetPasswordBindingModel userResetPasswordBindingModel, String resetToken);
 }

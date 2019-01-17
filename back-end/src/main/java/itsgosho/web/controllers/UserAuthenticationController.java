@@ -1,5 +1,6 @@
 package itsgosho.web.controllers;
 
+import com.google.gson.Gson;
 import itsgosho.domain.models.binding.UserForgottenPasswordBindingModel;
 import itsgosho.domain.models.binding.UserRegisterBindingModel;
 import itsgosho.domain.models.binding.UserResetPasswordBindingModel;
@@ -12,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
@@ -48,16 +50,6 @@ public class UserAuthenticationController extends BaseController {
         return super.redirect("/?register=require");
     }
 
-    @PostMapping("/forgotten/password")
-    public ModelAndView sendEmailForReset(@Valid UserForgottenPasswordBindingModel userForgottenPasswordBindingModel, BindingResult bindingResult){
-
-        if(bindingResult.hasErrors() ||  !this.userServices.sendPasswordResetEmail(userForgottenPasswordBindingModel)){
-            return super.viewWithMessage("base-page","notification/error","A error has occurred");
-        }
-
-        return super.viewWithMessage("base-page","notification/info","A reset link has been sent to your email!");
-    }
-
     @GetMapping("/reset/password")
     public ModelAndView getReset(@RequestParam(required = true) String token){
 
@@ -75,7 +67,7 @@ public class UserAuthenticationController extends BaseController {
             return super.viewWithMessage("base-page","notification/error","A error has occurred");
         }
 
-        return super.viewWithMessage("base-page","notification/info","Password has been reset successfully!");
+        return super.viewWithMessage("base-page","notification/info","Your password been reset successfully!");
     }
 
 }

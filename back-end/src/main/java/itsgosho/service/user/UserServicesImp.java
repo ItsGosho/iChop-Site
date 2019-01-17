@@ -50,19 +50,17 @@ public class UserServicesImp implements UserServices {
 
     @Override
     public UserDetails loadUserByUsername(String usernameOrEmail) throws UsernameNotFoundException {
-        if(this.isLoginByEmail(usernameOrEmail)){
+        if(this.isEmail(usernameOrEmail)){
             return this.userRepository.findUserByEmail(usernameOrEmail.toLowerCase());
         }
         return this.userRepository.findUserByUsername(usernameOrEmail.toLowerCase());
     }
 
-    private boolean isLoginByEmail(String usernameOrEmail){
+    @Override
+    public boolean isEmail(String value){
         Matcher matcher = Pattern.compile(EMAIL_PATTERN)
-                .matcher(usernameOrEmail);
-        if(matcher.find()){
-            return true;
-        }
-        return false;
+                .matcher(value);
+        return matcher.find();
     }
 
     @Override
@@ -128,6 +126,16 @@ public class UserServicesImp implements UserServices {
                .stream()
                .min((x1, x2) -> Integer.compare(UserRoles.valueOf(((GrantedAuthority) x2).getAuthority()).ordinal(), UserRoles.valueOf(((GrantedAuthority) x1).getAuthority()).ordinal()))
                .orElse(null);
+    }
+
+    @Override
+    public User getUserByUsername(String username) {
+        return this.userRepository.findUserByUsername(username);
+    }
+
+    @Override
+    public User getUserByEmail(String email) {
+        return this.userRepository.findUserByEmail(email);
     }
 
     @Override
