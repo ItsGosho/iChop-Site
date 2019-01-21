@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' rel='stylesheet'/>
+    <link rel="stylesheet" href="components/bootstrap-social.css">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div class="container" style="margin-bottom: 200px;position: relative;z-index: 1">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light rounded" style="max-height: 40px">
+        <img src="navbar-icon.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        <a class="navbar-brand" href="#">iChop</a>
+        <button class="navbar-toggler" style="height: 20px" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon" style="display:block;margin:auto;height: 10px"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown active">
+                    <div id="loginDiv">
+                        <button type="button" class="btn btn-success dropdown-toggle btn-sm" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                            Sign in
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right" style="width: 350px;">
+
+                            <!--LOGINNN!!!-->
+                            <div id="loginPage">
+                                <a class="dropdown-item" href="#">
+                                    <button type="button" class="btn btn-block btn-social btn-facebook"><i
+                                            class="fa fa-facebook"></i>Login with Facebook
+                                    </button>
+                                </a>
+                                <form class="px-4 py-3" method="post">
+                                    <div class="form-group">
+                                        <div class="input-group mb-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">👤/📧</div>
+                                            </div>
+                                            <input type="password" class="form-control" id="usernameOrEmailLoginForm"
+                                                   name="usernameOrEmail" placeholder="Username or Email...">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group mb-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">🔒</div>
+                                            </div>
+                                            <input type="text" class="form-control" id="passwordLoginForm"
+                                                   name="password" placeholder="Password...">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="g-recaptcha" id="rcaptcha" data-sitekey="site key"></div>
+                                        <span id="captcha" style="color:red"></span>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" name="rememberMe" class="custom-control-input"
+                                               id="rememberMeLoginForm">
+                                        <label class="custom-control-label" for="rememberMeLoginForm">
+                                            Remember me
+                                        </label>
+                                    </div>
+                                    <button type="submit" data-style="zoom-in" class="btn btn-primary">Login</button>
+                                    <div class="dropdown-divider"></div>
+                                </form>
+                                <a id="buttonGoToRegister" class="dropdown-item">
+                                    <button type="button" class="btn btn-success btn-sm">Register</button>
+                                </a>
+                                <a id="buttonGoToForgottenPassword" class="dropdown-item">
+                                    <button class="btn btn-warning btn-sm">Forgotten Password</button>
+                                </a>
+                            </div>
+                            <!--REGISTERR!!!-->
+                            <div id="registerPage" style="display:none">
+                                <form class="px-4 py-3" method="post">
+
+                                    <div class="form-group">
+                                        <div class="input-group mb-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">👤</div>
+                                            </div>
+                                            <input type="text" class="form-control" id="usernameRegisterForm"
+                                                   name="username" placeholder="Username...">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group mb-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">🔒</div>
+                                            </div>
+                                            <input type="password" class="form-control" id="passwordRegisterForm"
+                                                   name="password" placeholder="Password...">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-success" id="showPasswordRegisterForm"
+                                                        type="button">Show
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group mb-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">🔒</div>
+                                            </div>
+                                            <input type="password" class="form-control" id="confirmPasswordRegisterForm"
+                                                   name="confirmPassword" placeholder="Confirm Password...">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group mb-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">📧</div>
+                                            </div>
+                                            <input type="email" class="form-control" id="emailRegisterForm" name="email"
+                                                   placeholder="Email...">
+                                        </div>
+                                    </div>
+                                    <a class="dropdown-item">
+                                        <button type="submit" data-style="zoom-in" class="btn btn-success btn-sm">
+                                            Register
+                                        </button>
+                                    </a>
+                                    <a id="buttonGoToLogin" class="dropdown-item">
+                                        <button type="button" class="btn btn-primary btn-sm">Back</button>
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                </form>
+                            </div>
+                            <!--FORGOTTEN PASSWORD!!!-->
+                            <div id="forgottenPasswordPage" style="display:none">
+                                <form class="px-4 py-3" method="post">
+
+                                    <div class="form-group">
+                                        <div class="input-group mb-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">👤/📧</div>
+                                            </div>
+                                            <input type="text" class="form-control"
+                                                   id="usernameOrEmailForgottenPasswordForm"
+                                                   name="usernameOrEmail" placeholder="Username or Email...">
+                                        </div>
+                                    </div>
+                                    <a class="dropdown-item">
+                                        <button type="submit" data-style="zoom-in" class="btn btn-success btn-sm">Send
+                                        </button>
+                                    </a>
+                                    <a id="buttonGoToLogin2" class="dropdown-item">
+                                        <button type="button" class="btn btn-primary btn-sm">Back</button>
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                </form>
+                            </div>
+
+
+                            <!--SCRIPT!!!-->
+
+                            <script>
+                                $('body').on("click", ".dropdown-menu", function (e) {
+                                    $(this).parent().is(".show") && e.stopPropagation();
+                                });
+
+                                $(`#buttonGoToRegister`).on(`click`, function () {
+                                    $(`#loginPage`).css('display', 'none');
+                                    $(`#registerPage`).css('display', 'inline');
+
+                                });
+
+                                $(`#buttonGoToLogin`).on(`click`, back);
+                                $(`#buttonGoToLogin2`).on(`click`, back);
+
+                                $(`#buttonGoToForgottenPassword`).on(`click`, function () {
+                                    $(`#loginPage`).css('display', 'none');
+                                    $(`#forgottenPasswordPage`).css('display', 'inline');
+
+                                });
+
+                                $(`#showPasswordRegisterForm`).on(`click`, showOrHidePassword);
+
+                                function back() {
+                                    $(`#registerPage`).css('display', 'none');
+                                    $(`#forgottenPasswordPage`).css('display', 'none');
+                                    $(`#loginPage`).css('display', 'inline');
+                                }
+
+                                function showOrHidePassword() {
+                                    if ($(`#passwordRegisterForm`).attr(`type`) === 'password') {
+                                        $(`#passwordRegisterForm`).attr(`type`, `text`);
+                                        $(`#confirmPasswordRegisterForm`).attr(`type`, `text`);
+
+                                        $(`#showPasswordRegisterForm`).text(`Hide`);
+                                    } else {
+                                        $(`#passwordRegisterForm`).attr(`type`, `password`);
+                                        $(`#confirmPasswordRegisterForm`).attr(`type`, `password`);
+                                        $(`#showPasswordRegisterForm`).text(`Show`);
+                                    }
+                                }
+
+                            </script>
+
+
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div id="commentsPage" class="container d-flex justify-content-center align-items-center">
+
+    <div class="row">
+
+        <div id="news" class="col-xs-6">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div align="center">
+                                <small>👤<a href="">ItsGosho</a></small>
+                            </div>
+                            <div align="center">
+                                <img style="width: 50px;height: 50px;max-width: 100%;" class="card-img-top " src="avatar-test.png" alt="Card image cap">
+                            </div>
+                            <div align="center">
+                                   <small>
+                                       <small>💬</small>
+                                       <span class="totalComments">129</span> total comments
+                                   </small>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div align="center" class="border border-warning rounded">
+                                <img style="width: 15px;height: 15px;max-width: 100%;" class="card-img-top "
+                                     src="avatar-test.png" alt="Card image cap"><a href="">ItsGosho1111111111111</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="1" class="card-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h3 class="title">Bug Fixes - January 2019</h3>
+                        </div>
+                        <div class="col-md-4">
+                            <small style="display: inline-block;padding-top: 18px;float:right;">
+                                <small class="dateIcon">📅</small>
+                                <small class="date">9 Jan,2018</small>
+                            </small>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <small>by <a href="/SMENI">👤<span class="user">ItsGosho</span></a> at <span
+                                    class="postTime">16:32</span> (<a href="/SAMO AKO IMA PRAVA"><span
+                                    class="totalViews">3,502</span></a>👀 / <a href="/SAMO AKO IMA PRAVA"><span
+                                    class="totalLikes">3,502</span></a>👍)
+                            </small>
+                        </div>
+                        <div class="col-md-4">
+                            <small style="display: inline-block;padding-top: 18px;float:right;">
+                                <small>💬</small>
+                                <a href="/SMENI"><span class="totalComments">129</span></a> Comments
+                            </small>
+                        </div>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <img style="display: block;max-width: 100%;height:auto;" src="news-page-comment-first-image.png">
+                    <h5 class="card-title">Special title treatment</h5>
+                    <p class="card-text">It's a broader card with text below as a natural lead-in to extra content. This
+                        content is a little longer.</p>
+
+                    <div class="row">
+                        <div class="col-md-8" style="margin-bottom: 8px">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="btn-group">
+                                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <small>⚙</small>
+                                    Options
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="/DELETE NEWS">
+                                        <small>❌</small>
+                                        Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dropdown-divider"></div>
+
+
+                <div class="dropdown-divider"></div>
+            </div>
+        </div>
+
+        <div class="col-xs-6" style="margin-left: 7px;">
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <span id="newsTab"><a class="nav-link active" id="v-pills-home-tab" data-toggle="pill"
+                                      href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">📰News</a></span>
+                <span id="videosTab"><a class="nav-link" id="v-pills-profile-tab" data-toggle="pill"
+                                        href="#v-pills-profile" role="tab" aria-controls="v-pills-profile"
+                                        aria-selected="false">📹Videos</a></span>
+                <span><a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages"
+                         role="tab" aria-controls="v-pills-messages" aria-selected="false"></a></span>
+                <span><a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings"
+                         role="tab" aria-controls="v-pills-settings" aria-selected="false"></a></span>
+            </div>
+
+            <div class="dropdown-divider"></div>
+
+            <div>
+                <h6>Social Media</h6>
+                <button type="button" class="btn btn-brand btn-facebook">
+                    <i class="fa fa-facebook"></i>
+                </button>
+                <button type="button" class="btn btn-brand btn-instagram">
+                    <i class="fa fa-instagram"></i>
+                </button>
+                <button type="button" class="btn btn-brand btn-youtube">
+                    <i class="fa fa-youtube"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<footer class="page-footer font-small stylish-color-dark pt-4" style="margin-top: 125px">
+
+    <!-- Footer Links -->
+    <div class="container text-center text-md-left">
+
+        <!-- Grid row -->
+        <div class="row">
+
+            <!-- Grid column -->
+            <div class="col-md-4 mx-auto">
+
+                <!-- Content -->
+                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Footer Content</h5>
+                <p>Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit amet,
+                    consectetur
+                    adipisicing elit.</p>
+
+            </div>
+            <!-- Grid column -->
+
+            <hr class="clearfix w-100 d-md-none">
+
+            <!-- Grid column -->
+            <div class="col-md-2 mx-auto">
+
+                <!-- Links -->
+                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="#!">Link 1</a>
+                    </li>
+                    <li>
+                        <a href="#!">Link 2</a>
+                    </li>
+                    <li>
+                        <a href="#!">Link 3</a>
+                    </li>
+                    <li>
+                        <a href="#!">Link 4</a>
+                    </li>
+                </ul>
+
+            </div>
+            <!-- Grid column -->
+
+            <hr class="clearfix w-100 d-md-none">
+
+            <!-- Grid column -->
+            <div class="col-md-2 mx-auto">
+
+                <!-- Links -->
+                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="#!">Link 1</a>
+                    </li>
+                    <li>
+                        <a href="#!">Link 2</a>
+                    </li>
+                    <li>
+                        <a href="#!">Link 3</a>
+                    </li>
+                    <li>
+                        <a href="#!">Link 4</a>
+                    </li>
+                </ul>
+
+            </div>
+            <!-- Grid column -->
+
+            <hr class="clearfix w-100 d-md-none">
+
+            <!-- Grid column -->
+            <div class="col-md-2 mx-auto">
+
+                <!-- Links -->
+                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="#!">Link 1</a>
+                    </li>
+                    <li>
+                        <a href="#!">Link 2</a>
+                    </li>
+                    <li>
+                        <a href="#!">Link 3</a>
+                    </li>
+                    <li>
+                        <a href="#!">Link 4</a>
+                    </li>
+                </ul>
+
+            </div>
+            <!-- Grid column -->
+
+        </div>
+        <!-- Grid row -->
+
+    </div>
+    <!-- Footer Links -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2018 Copyright:
+        <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>
+    </div>
+    <!-- Copyright -->
+
+</footer>
+</body>
+</html>

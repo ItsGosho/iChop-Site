@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' rel='stylesheet'/>
+    <link rel="stylesheet" href="components/bootstrap-social.css">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+    <script src="../../../AppData/Local/Temp/Rar$DRa12612.45156/jQuery-TE_v.1.4.0/uncompressed/jquery-te-1.4.0.js"></script>
+    <script src="../../../AppData/Local/Temp/Rar$DRa12612.45437/jQuery-TE_v.1.4.0/uncompressed/jquery-te-1.4.0.js"></script>
+</head>
+<body>
+
+<div id="newsPage" class="container d-flex justify-content-center align-items-center">
+    <div class="row">
+
+        <div id="news" class="col-xs-6">
+            <div class="card">
+                <div class="card-header">
+                    <small>🆕</small>
+                    Create a new thread:
+                </div>
+                <div id="1" class="card-body">
+                    <form method="post">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" aria-label="Title"
+                                           aria-describedby="basic-addon1" name="title" placeholder="Thread title">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dropdown-divider"></div>
+
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <a href="#" id="button-formatBold-createThread" title="Bold" onclick="event.preventDefault()"><i class="material-icons">format_bold</i></a>
+                                <a href="#" id="button-formatItalic-createThread" title="Italic" onclick="event.preventDefault()"><i class="material-icons">format_italic</i></a>
+                                <a href="#" id="button-formatUnderline-createThread" title="Underline" onclick="event.preventDefault()"><i class="material-icons">format_underlined</i></a>
+                                    <a href="#" id="button-color-createThread" id="dropdownMenuLink" data-toggle="dropdown"
+                                       aria-haspopup="true" aria-expanded="false"  title="Color" onclick="event.preventDefault()"><i class="material-icons">invert_colors</i></a>
+
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <a href="#" id="button-color-createThread" title="Color" onclick="event.preventDefault()"><i class="material-icons">invert_colors</i></a>
+                                        <a href="#" id="button-color-createThread" title="Color" onclick="event.preventDefault()"><i class="material-icons">invert_colors</i></a>
+                                        <a href="#" id="button-color-createThread" title="Color" onclick="event.preventDefault()"><i class="material-icons">invert_colors</i></a>
+                                        <a href="#" id="button-color-createThread" title="Color" onclick="event.preventDefault()"><i class="material-icons">invert_colors</i></a>
+                                        <br>
+                                        <a href="#" id="button-color-createThread" title="Color" onclick="event.preventDefault()"><i class="material-icons">invert_colors</i></a>
+                                        <a href="#" id="button-color-createThread" title="Color" onclick="event.preventDefault()"><i class="material-icons">invert_colors</i></a>
+                                        <a href="#" id="button-color-createThread" title="Color" onclick="event.preventDefault()"><i class="material-icons">invert_colors</i></a>
+                                        <br>
+                                        <a href="#" id="button-color-createThread" title="Color" onclick="event.preventDefault()"><i class="material-icons">invert_colors</i></a>
+                                        <a href="#" id="button-color-createThread" title="Color" onclick="event.preventDefault()"><i class="material-icons">invert_colors</i></a>
+                                        <a href="#" id="button-color-createThread" title="Color" onclick="event.preventDefault()"><i class="material-icons">invert_colors</i></a>
+                                    </div>
+                            </div>
+                        </div>
+
+                        <div class="dropdown-divider"></div>
+                        <div class="col-md-13">
+                            <div id="textarea-content-createThread"  contenteditable="true" style="border:1px solid #ccc;border-radius: 3px;width: 25vw;min-width: 230px">
+                                Joreto<b>TEST</b>dobre <br>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-top: 5%;">
+                            <!--Da go smenq na SUBMIT!-->
+                            <button id="button-createThread-createThread" style="margin-left: 35%;margin-right: 35%" type="button" class="btn btn-success btn-lg btn-block">Create</button>
+                        </div>
+
+                        <script>
+                            let button_formatBold = $(`#button-formatBold-createThread`);
+                            let button_formatItalic = $(`#button-formatItalic-createThread`);
+                            let button_formatUnderline = $(`#button-formatUnderline-createThread`);
+
+                            let contentField = $(`#textarea-content-createThread`);
+
+                            button_formatBold.on(`click`, formatTextBold);
+                            button_formatItalic.on(`click`, formatTextItalic);
+                            button_formatUnderline.on(`click`, formatTextUnderline);
+
+                            function formatTextBold() {
+                                document.execCommand('bold');
+                            }
+
+                            function formatTextItalic() {
+                                document.execCommand('italic');
+                            }
+
+                            function formatTextUnderline() {
+                                document.execCommand('underline');
+                            }
+
+
+                        </script>
+
+                    </form>
+
+                </div>
+
+                <div class="dropdown-divider"></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
