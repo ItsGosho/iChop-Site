@@ -1,0 +1,55 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<script src="/res/js/auth/authUtils.js"></script>
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+
+    </ul>
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown active">
+            <div id="div-signIn-signInForms">
+                <button id="button-signIn-navBar" type="button" class="btn btn-success dropdown-toggle btn-sm"
+                        data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                    Sign in
+                </button>
+                <div id="div-authForms-signInForm" class="dropdown-menu dropdown-menu-right">
+
+                    <!--LOGINNN!!!-->
+
+                    <th:block th:insert="auth/login-dropdown.html"></th:block>
+
+                    <!--REGISTERR!!!-->
+
+                    <th:block th:insert="auth/register-dropdown.html"></th:block>
+
+                    <!--FORGOTTEN PASSWORD!!!-->
+
+                    <th:block th:insert="auth/forgotten_password-dropdown.html"></th:block>
+
+
+                    <!--Will move all style settings in css ,cuz now is too late for this!-->
+
+                    <style>
+                        @media screen and (min-width: 600px) {
+                            #div-authForms-signInForm {
+                                width: 350px;
+                            }
+                        }
+                    </style>
+
+                    <!--SCRIPT!!!-->
+                    <script src="/res/js/auth/authFormsConfig.js"></script>
+                    <script src="/res/js/auth/url/authUrlHandlers.js"></script>
+                    <script>
+
+                        runAuthFormsConfig();
+                        runAuthUrlHandlers();
+                    </script>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

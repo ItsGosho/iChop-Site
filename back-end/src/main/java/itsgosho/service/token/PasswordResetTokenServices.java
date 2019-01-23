@@ -13,5 +13,5 @@ public interface PasswordResetTokenServices {
 
     PasswordResetToken getTokenByToken(String token);
 
-    boolean deleteToken(User user);
+    void deleteOldestToken(User user);
 }

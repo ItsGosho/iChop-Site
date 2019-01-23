@@ -2,6 +2,8 @@ package itsgosho.service.token;
 
 import itsgosho.domain.entities.tokens.PasswordResetToken;
 import itsgosho.domain.entities.users.User;
+import itsgosho.exceptions.token.TokenNotFoundException;
+import itsgosho.exceptions.user.UserCannotBeNullException;
 import itsgosho.repository.token.PasswordResetTokenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,7 +37,12 @@ public class PasswordResetTokenServicesImp implements PasswordResetTokenServices
 
     @Override
     public PasswordResetToken createToken(User user){
-        this.deleteToken(user);
+
+        if(user==null){
+            throw new UserCannotBeNullException();
+        }
+
+        this.deleteOldestToken(user);
 
         String token = UUID.randomUUID().toString();
         PasswordResetToken passwordResetToken = new PasswordResetToken();
@@ -58,12 +65,10 @@ public class PasswordResetTokenServicesImp implements PasswordResetTokenServices
     }
 
     @Override
-    public boolean deleteToken(User user){
+    public void deleteOldestToken(User user){
         PasswordResetToken passwordResetToken = this.getTokenByUser(user);
-        if(passwordResetToken==null){
-            return false;
+        if(passwordResetToken!=null){
+            this.passwordResetTokenRepository.delete(passwordResetToken);
         }
-        this.passwordResetTokenRepository.delete(passwordResetToken);
-        return true;
     }
 }

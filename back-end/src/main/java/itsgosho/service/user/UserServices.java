@@ -2,16 +2,16 @@ package itsgosho.service.user;
 
 import itsgosho.domain.entities.users.User;
 import itsgosho.domain.entities.users.UserRole;
-import itsgosho.domain.models.binding.UserRegisterBindingModel;
-import itsgosho.domain.models.binding.UserForgottenPasswordBindingModel;
-import itsgosho.domain.models.binding.UserResetPasswordBindingModel;
+import itsgosho.domain.models.binding.user.UserRegisterBindingModel;
+import itsgosho.domain.models.binding.user.UserForgottenPasswordBindingModel;
+import itsgosho.domain.models.binding.user.UserResetPasswordBindingModel;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 public interface UserServices extends UserDetailsService {
 
     boolean isEmail(String value);
 
-    boolean register(UserRegisterBindingModel userRegisterBindingModel);
+    User register(UserRegisterBindingModel userRegisterBindingModel);
     boolean existsByUsername(String username);
     boolean existsByEmail(String email);
 
@@ -20,6 +20,6 @@ public interface UserServices extends UserDetailsService {
     User getUserByEmail(String email);
 
 
-    boolean sendPasswordResetEmail(UserForgottenPasswordBindingModel userForgottenPasswordBindingModel);
-    boolean resetPassword(UserResetPasswordBindingModel userResetPasswordBindingModel, String resetToken);
+    void sendPasswordResetEmail(UserForgottenPasswordBindingModel userForgottenPasswordBindingModel);
+    void resetPassword(UserResetPasswordBindingModel userResetPasswordBindingModel, String resetToken);
 }

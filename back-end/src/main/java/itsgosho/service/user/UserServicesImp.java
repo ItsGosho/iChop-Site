@@ -4,9 +4,13 @@ import itsgosho.components.email.EmailServices;
 import itsgosho.domain.entities.tokens.PasswordResetToken;
 import itsgosho.domain.entities.users.User;
 import itsgosho.domain.entities.users.UserRole;
-import itsgosho.domain.models.binding.UserRegisterBindingModel;
-import itsgosho.domain.models.binding.UserForgottenPasswordBindingModel;
-import itsgosho.domain.models.binding.UserResetPasswordBindingModel;
+import itsgosho.domain.models.binding.user.UserRegisterBindingModel;
+import itsgosho.domain.models.binding.user.UserForgottenPasswordBindingModel;
+import itsgosho.domain.models.binding.user.UserResetPasswordBindingModel;
+import itsgosho.exceptions.token.TokenCannotBeNullException;
+import itsgosho.exceptions.token.TokenNotValidException;
+import itsgosho.exceptions.user.UserCannotBeNullException;
+import itsgosho.exceptions.user.UserNotFoundException;
 import itsgosho.repository.user.UserRepository;
 import itsgosho.service.role.UserRoleServices;
 import itsgosho.service.role.UserRoles;
@@ -50,33 +54,33 @@ public class UserServicesImp implements UserServices {
 
     @Override
     public UserDetails loadUserByUsername(String usernameOrEmail) throws UsernameNotFoundException {
-        if(this.isEmail(usernameOrEmail)){
-            return this.userRepository.findUserByEmail(usernameOrEmail.toLowerCase());
+        if (this.isEmail(usernameOrEmail)) {
+            return this.userRepository.findUserByEmail(usernameOrEmail);
         }
-        return this.userRepository.findUserByUsername(usernameOrEmail.toLowerCase());
+        return this.userRepository.findUserByUsername(usernameOrEmail);
     }
 
     @Override
-    public boolean isEmail(String value){
+    public boolean isEmail(String value) {
         Matcher matcher = Pattern.compile(EMAIL_PATTERN)
                 .matcher(value);
         return matcher.find();
     }
 
     @Override
-    public boolean register(UserRegisterBindingModel userRegisterBindingModel) {
+    public User register(UserRegisterBindingModel userRegisterBindingModel) {
 
-        if(this.existsByUsername(userRegisterBindingModel.getUsername().toLowerCase())){
-            return false;
+        if (this.existsByUsername(userRegisterBindingModel.getUsername())) {
+            throw new UserNotFoundException();
         }
 
-        if(this.existsByEmail(userRegisterBindingModel.getEmail().toLowerCase())){
-            return false;
+        if (this.existsByEmail(userRegisterBindingModel.getEmail())) {
+            throw new UserNotFoundException();
         }
 
-        User user = this.modelMapper.map(userRegisterBindingModel,User.class);
-        user.setUsername(user.getUsername().toLowerCase());
-        user.setEmail(user.getEmail().toLowerCase());
+        User user = this.modelMapper.map(userRegisterBindingModel, User.class);
+        user.setUsername(user.getUsername());
+        user.setEmail(user.getEmail());
         user.setPassword(this.passwordEncoder.encode(user.getPassword()));
 
         user.setRegistrationDate(LocalDateTime.now());
@@ -85,47 +89,49 @@ public class UserServicesImp implements UserServices {
 
         this.userRepository.save(user);
 
-        return true;
+        return user;
     }
 
     @Override
     public boolean existsByUsername(String username) {
-        return this.userRepository.findUserByUsername(username)!=null;
+        return this.userRepository.findUserByUsername(username) != null;
     }
 
     @Override
     public boolean existsByEmail(String email) {
-        return this.userRepository.findUserByEmail(email)!=null;
+        return this.userRepository.findUserByEmail(email) != null;
     }
 
-    private Integer getTotalUsers(){
+    private Integer getTotalUsers() {
         return this.userRepository.findAll().size();
     }
 
-    private Set<UserRole> getInitialAuthorities(){
+    private Set<UserRole> getInitialAuthorities() {
         Set<UserRole> userRoles = new HashSet<>();
 
-        if(this.getTotalUsers()==0){
+        if (this.getTotalUsers() == 0) {
             userRoles.add(this.userRoleServices.create(UserRoles.OWNER));
             userRoles.add(this.userRoleServices.create(UserRoles.ADMIN));
             userRoles.add(this.userRoleServices.create(UserRoles.MODERATOR));
             userRoles.add(this.userRoleServices.create(UserRoles.USER));
-        }else{
+        } else {
             userRoles.add(this.userRoleServices.create(UserRoles.USER));
         }
         return userRoles;
     }
 
     @Override
-    public UserRole getRole(User user){
-        if(user==null){
-            return null;
+    public UserRole getRole(User user) {
+
+        if (user == null) {
+            throw new UserCannotBeNullException();
         }
-       return (UserRole) user
-               .getAuthorities()
-               .stream()
-               .min((x1, x2) -> Integer.compare(UserRoles.valueOf(((GrantedAuthority) x2).getAuthority()).ordinal(), UserRoles.valueOf(((GrantedAuthority) x1).getAuthority()).ordinal()))
-               .orElse(null);
+
+        return (UserRole) user
+                .getAuthorities()
+                .stream()
+                .min((x1, x2) -> Integer.compare(UserRoles.valueOf(((GrantedAuthority) x2).getAuthority()).ordinal(), UserRoles.valueOf(((GrantedAuthority) x1).getAuthority()).ordinal()))
+                .orElse(null);
     }
 
     @Override
@@ -139,31 +145,29 @@ public class UserServicesImp implements UserServices {
     }
 
     @Override
-    public boolean sendPasswordResetEmail(UserForgottenPasswordBindingModel userForgottenPasswordBindingModel) {
+    public void sendPasswordResetEmail(UserForgottenPasswordBindingModel userForgottenPasswordBindingModel) {
 
         User user = (User) this.loadUserByUsername(userForgottenPasswordBindingModel.getUsernameOrEmail());
 
-        if(user==null){
-           return false;
+        if (user == null) {
+            throw new UserCannotBeNullException();
         }
 
         PasswordResetToken passwordResetToken = this.passwordResetTokenServices.createToken(user);
 
-        if(passwordResetToken==null){
-            return false;
+        if (passwordResetToken == null) {
+            throw new TokenCannotBeNullException();
         }
 
-        String message = "You have 24h to reset your password: "+"localhost:8000/reset/password?token="+passwordResetToken.getToken();
-        this.emailServices.sendSimpleMessage(user.getEmail(),"Reset password",message);
-
-        return true;
+        String message = "<small>You have 24h to reset your password: " + "localhost:8000/reset/password?token=" + passwordResetToken.getToken() + "</small>";
+        this.emailServices.sendSimpleMessage(user.getEmail(), "Reset password", message);
     }
 
     @Override
-    public boolean resetPassword(UserResetPasswordBindingModel userResetPasswordBindingModel, String resetToken) {
+    public void resetPassword(UserResetPasswordBindingModel userResetPasswordBindingModel, String resetToken) {
 
-        if(!this.passwordResetTokenServices.isValid(resetToken)){
-            return false;
+        if (!this.passwordResetTokenServices.isValid(resetToken)) {
+            throw new TokenNotValidException();
         }
 
         User user = this.passwordResetTokenServices.getTokenByToken(resetToken).getUser();
@@ -171,7 +175,6 @@ public class UserServicesImp implements UserServices {
         user.setPassword(this.passwordEncoder.encode(userResetPasswordBindingModel.getPassword()));
 
         this.userRepository.save(user);
-        this.passwordResetTokenServices.deleteToken(user);
-        return true;
+        this.passwordResetTokenServices.deleteOldestToken(user);
     }
 }
