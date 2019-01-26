@@ -1,10 +1,14 @@
 package itsgosho.web.controllers.thread;
 
+import com.google.gson.Gson;
 import itsgosho.domain.models.binding.thread.ThreadCreateBindingModel;
 import itsgosho.service.thread.ThreadServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.security.Principal;
 
 @RestController
@@ -18,11 +22,18 @@ public class ThreadRestController {
         this.threadServices = threadServices;
     }
 
-    //@PreAuthorize("hasAuthority('MODERATOR')")
-    @PostMapping("/create")
+    @PreAuthorize("hasAuthority('MODERATOR')")
+    @PostMapping(value ="/create",produces = "application/json")
     @ResponseBody
-    public String threadCreate(ThreadCreateBindingModel threadCreateBindingModel, Principal principal) {
+    public String threadCreate(@Valid ThreadCreateBindingModel threadCreateBindingModel
+            , BindingResult bindingResult
+            , Principal principal) {
+
+        if(bindingResult.hasErrors()){
+             return new Gson().toJson(false);
+        }
+
         this.threadServices.createThread(threadCreateBindingModel,principal.getName());
-        return "";
+        return new Gson().toJson(true);
     }
 }

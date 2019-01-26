@@ -164,14 +164,13 @@
                         <script>
                             let buttonCreateThread = $(`#button-proceedCreateThread-createThread`);
                             let contentDiv= $(`#textarea-content-createThread`);
-                            let titleField = $(`#input`);
+                            let titleField = $(`#input-title-threadCreate`);
 
                             buttonCreateThread.on(`click`,function () {
-                                console.log(123);
                                 $.ajax({
                                     method: "POST",
                                     url: "/thread/create",
-                                    data: {title:titleField.value,content:contentDiv.html()},
+                                    data: {title:titleField.val(),content:contentDiv.html()},
                                     success: function (isSuccessful) {
 
                                     }

@@ -62,7 +62,7 @@ public class UserAuthenticationController extends BaseController {
     public ModelAndView proceedPasswordReset(@RequestParam(required = true) String token,@Valid UserResetPasswordBindingModel userResetPasswordBindingModel,BindingResult bindingResult){
 
         if(bindingResult.hasErrors()){
-            return super.viewWithMessage("base-page","notification/error","A error has occurred");
+            return super.viewWithMessage("base-page","notification/error","Something with your input data went wrong :/");
         }
 
         this.userServices.resetPassword(userResetPasswordBindingModel,token);

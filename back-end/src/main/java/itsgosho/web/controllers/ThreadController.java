@@ -11,7 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class ThreadController extends BaseController {
 
 
-    //@PreAuthorize("hasAuthority('MODERATOR')")
+    @PreAuthorize("hasAuthority('MODERATOR')")
     @GetMapping("/create")
     public ModelAndView testHome(ModelAndView modelAndView) {
         return super.page("base-page","thread/thread-create","Create thread");
