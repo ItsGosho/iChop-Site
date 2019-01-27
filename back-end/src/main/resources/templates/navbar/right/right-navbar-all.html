@@ -1,14 +1,11 @@
 <div class="col-xs-6" style="margin-left: 7px;">
     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <span id="newsTab"><a class="nav-link active" id="v-pills-home-tab" data-toggle="pill"
-                                      href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">📰News</a></span>
+                                      href="/" role="tab" aria-controls="v-pills-home"
+                                      aria-selected="true">📰News</a></span>
         <span id="videosTab"><a class="nav-link" id="v-pills-profile-tab" data-toggle="pill"
-                                href="#v-pills-profile" role="tab" aria-controls="v-pills-profile"
+                                href="/videos" role="tab" aria-controls="v-pills-profile"
                                 aria-selected="false">📹Videos</a></span>
-        <span><a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages"
-                 role="tab" aria-controls="v-pills-messages" aria-selected="false"></a></span>
-        <span><a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings"
-                 role="tab" aria-controls="v-pills-settings" aria-selected="false"></a></span>
     </div>
 
     <div class="dropdown-divider"></div>
@@ -25,4 +22,18 @@
             <i class="fa fa-youtube"></i>
         </button>
     </div>
+
+
+    <script>
+        const NEWS_PAGE_LOCATION_URL = "/";
+        const VIDEOS_PAGE_LOCATION_URL = "/videos";
+
+
+        $(`#newsTab`).on(`click`, function () {
+            window.location.href = NEWS_PAGE_LOCATION_URL;
+        });
+        $(`#videosTab`).on(`click`, function () {
+            window.location.href = VIDEOS_PAGE_LOCATION_URL;
+        });
+    </script>
 </div>

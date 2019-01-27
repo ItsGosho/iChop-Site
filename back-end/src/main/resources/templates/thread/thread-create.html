@@ -172,7 +172,9 @@
                                     url: "/thread/create",
                                     data: {title:titleField.val(),content:contentDiv.html()},
                                     success: function (isSuccessful) {
-
+                                        if(isSuccessful){
+                                            window.location.href="/";
+                                        }
                                     }
                                 });
                             });

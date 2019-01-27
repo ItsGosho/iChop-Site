@@ -33,7 +33,7 @@ public class ThreadRestController {
              return new Gson().toJson(false);
         }
 
-        this.threadServices.createThread(threadCreateBindingModel,principal.getName());
+        this.threadServices.create(threadCreateBindingModel,principal.getName());
         return new Gson().toJson(true);
     }
 }

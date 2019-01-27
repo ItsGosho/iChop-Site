@@ -14,6 +14,7 @@ public class Thread extends BaseEntity {
 
     private String title;
 
+    @Lob
     private String content;
 
     @ManyToOne
