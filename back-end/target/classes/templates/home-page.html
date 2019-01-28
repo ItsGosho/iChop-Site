@@ -52,14 +52,33 @@
                             <div class="col-md-4">
                                 <small style="display: inline-block;padding-top: 18px;float:right;">
                                     <small>💬</small>
-                                    <a href="/SMENI"><span class="totalComments" th:text="${thread.getTotalComments()}">129</span></a> Comments
+                                    <a href="/SMENI"><span class="totalComments" th:text="${thread.getTotalComments()}"></span></a> Comments
                                 </small>
                             </div>
                         </div>
                         <div class="dropdown-divider"></div>
-                        <p class="card-text" style="width: 60vw;min-width: 230px" th:utext="${thread.getContent()}">
 
-                        </p>
+                        <div class="content" th:id="'content' + ${thread.getId()}">
+                            <p class="card-text" style="width: 60vw;min-width: 230px" th:utext="${thread.getContent()}">
+
+                            </p>
+                        </div>
+
+                        <script th:inline="javascript">
+                            $(`#content`+[[${thread.getId()}]]).empty();
+                            if([[${thread.getRowsForNewsPage()}]]!==0){
+                                for (let i = 0; i < [[${thread.getRowsForNewsPage()}]]; i++) {
+                                    $(`#`+[[${thread.getId()}]]).append($($.parseHTML([[${thread.getContent()}]]))[i]);
+                                }
+                            }else{
+                                for (let i = 0; i < $($.parseHTML([[${thread.getContent()}]])).length; i++) {
+                                    $(`#`+[[${thread.getId()}]]).append($($.parseHTML([[${thread.getContent()}]]))[i]);
+                                }
+                            }
+                        </script>
+
+                        <div class="dropdown-divider"></div>
+
                         <div class="row">
                             <div class="col-md-8" style="margin-bottom: 8px">
                             </div>
@@ -84,7 +103,7 @@
                                             </button>
                                             <div class="dropdown-menu">
                                                 <th:block sec:authorize="hasAuthority('ADMIN')">
-                                                    <a class="dropdown-item" th:href="@{/thread/delete/{id}(id=${thread.getId()})}">
+                                                    <a class="dropdown-item" th:href="@{/thread/{id}/delete(id=${thread.getId()})}">
                                                         <small>❌</small>
                                                         Delete</a>
                                                 </th:block>
@@ -95,25 +114,32 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="dropdown-divider"></div>
                 </th:block>
 
                 <nav aria-label="Page navigation example" class="d-flex justify-content-center align-items-center">
                     <ul class="pagination">
 
-                        <th:block th:if="${(#conversions.convert(#request.getParameter('page'), 'Integer')) - 1} >= 0">
-                            <li class="page-item"><a class="page-link" th:href="@{/(page=${(#conversions.convert(#request.getParameter('page'), 'Integer')) - 1})}">Previous</a></li>
+                        <th:block th:if="${#request.getParameter('page')} != null">
+
+                            <th:block th:if="${(#conversions.convert(#request.getParameter('page'), 'Integer')) - 1} >= 0">
+                                <li class="page-item"><a class="page-link" th:href="@{/(page=${(#conversions.convert(#request.getParameter('page'), 'Integer')) - 1})}">Previous</a></li>
+                            </th:block>
+
                         </th:block>
 
-
-                       <th:block th:each="i: ${#numbers.sequence(1,totalPages)}">
+                        <th:block th:each="i: ${#numbers.sequence(1,totalPages)}">
                             <li class="page-item"><a class="page-link" th:text="${i}" th:href="@{/?page={pId}(pId=${i-1})}"></a></li>
                         </th:block>
 
-                        <th:block th:if="${(#conversions.convert(#request.getParameter('page'), 'Integer')) + 1 <= totalPages-1}">
-                            <li class="page-item"><a class="page-link" th:href="@{/(page=${(#conversions.convert(#request.getParameter('page'), 'Integer')) + 1})}">Next</a></li>
+
+                        <th:block th:if="${#request.getParameter('page')} != null">
+
+                            <th:block th:if="${(#conversions.convert(#request.getParameter('page'), 'Integer')) + 1 <= totalPages-1}">
+                                <li class="page-item"><a class="page-link" th:href="@{/(page=${(#conversions.convert(#request.getParameter('page'), 'Integer')) + 1})}">Next</a></li>
+                            </th:block>
+
                         </th:block>
+
 
                     </ul>
                 </nav>

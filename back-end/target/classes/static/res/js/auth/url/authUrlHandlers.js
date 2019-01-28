@@ -4,16 +4,16 @@ function runAuthUrlHandlers() {
     let buttonSignIn = $(`#button-signIn-navBar`);
     let buttonGoToRegister = $(`#button-goToRegister-loginForm`);
 
-    if (url.endsWith('?login=require')) {
+    if (url.endsWith(PARAMETER_LOGIN_REQUIRE)) {
         buttonMinimized.click();
         buttonSignIn.click();
-    } else if (url.endsWith('?login=error')) {
+    } else if (url.endsWith(PARAMETER_LOGIN_ERROR)) {
         $(`#error-invalidCredentials-loginForm`).css(`display`, `inline-block`);
         $(`#input-usernameOrEmail-loginForm`).addClass("border border-danger");
         $(`#input-password-loginForm`).addClass("border border-danger");
         buttonMinimized.click();
         buttonSignIn.click();
-    } else if (url.endsWith('?register=require')) {
+    } else if (url.endsWith(PARAMETER_REGISTER_REQUIRE)) {
         buttonMinimized.click();
         buttonSignIn.click();
         buttonGoToRegister.click();

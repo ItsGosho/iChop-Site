@@ -48,7 +48,7 @@ public class UserAuthenticationController extends BaseController {
         return super.redirect("/?register=require");
     }
 
-    @GetMapping("/reset/password")
+    @GetMapping("/users/reset/password")
     public ModelAndView getReset(@RequestParam(required = true) String token){
 
         if(!this.passwordResetTokenServices.isValid(token)){
@@ -58,7 +58,7 @@ public class UserAuthenticationController extends BaseController {
         return super.page("base-page","auth/reset_password-form","Reset Password");
     }
 
-    @PostMapping("/reset/password")
+    @PostMapping("/users/reset/password")
     public ModelAndView proceedPasswordReset(@RequestParam(required = true) String token,@Valid UserResetPasswordBindingModel userResetPasswordBindingModel,BindingResult bindingResult){
 
         if(bindingResult.hasErrors()){

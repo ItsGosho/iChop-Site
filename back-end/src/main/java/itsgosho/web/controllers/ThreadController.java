@@ -25,7 +25,7 @@ public class ThreadController extends BaseController {
     }
 
     @PreAuthorize("hasAuthority('ADMIN')")
-    @GetMapping("/delete/{id}")
+    @GetMapping("/{id}/delete")
     public ModelAndView deleteThread(@PathVariable String id) {
         this.threadServices.delete(id);
         return super.redirect("/");

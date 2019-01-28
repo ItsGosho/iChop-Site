@@ -16,6 +16,8 @@ public class ThreadCreateBindingModel {
     @NotEmpty
     private String content;
 
+    private Integer rowsForNewsPage;
+
     public String getTitle() {
         return title;
     }
@@ -30,5 +32,13 @@ public class ThreadCreateBindingModel {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public Integer getRowsForNewsPage() {
+        return rowsForNewsPage;
+    }
+
+    public void setRowsForNewsPage(Integer rowsForNewsPage) {
+        this.rowsForNewsPage = rowsForNewsPage;
     }
 }

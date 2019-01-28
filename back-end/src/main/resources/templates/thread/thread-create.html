@@ -157,6 +157,13 @@
                             </div>
                         </div>
 
+                        <div class="dropdown-divider"></div>
+                        <div class="col-md-13">
+                            <label for="input-rowsForNewsPage-threadCreate">Rows to be show on the news page:</label>
+                            <input id="input-rowsForNewsPage-threadCreate" type="number" class="form-control" aria-label="Rows"
+                                   aria-describedby="basic-addon1" name="rowsForNewsPage" placeholder="Rows for news">
+                        </div>
+
                         <div class="row" style="margin-top: 1%;">
                             <button id="button-proceedCreateThread-createThread" style="margin-left: 35%;margin-right: 35%" type="button" class="btn btn-success btn-lg btn-block">Create</button>
                         </div>
@@ -165,12 +172,13 @@
                             let buttonCreateThread = $(`#button-proceedCreateThread-createThread`);
                             let contentDiv= $(`#textarea-content-createThread`);
                             let titleField = $(`#input-title-threadCreate`);
+                            let rows = $(`#input-rowsForNewsPage-threadCreate`);
 
                             buttonCreateThread.on(`click`,function () {
                                 $.ajax({
                                     method: "POST",
-                                    url: "/thread/create",
-                                    data: {title:titleField.val(),content:contentDiv.html()},
+                                    url: URL_API_CREATE_THREAD,
+                                    data: {title:titleField.val(),content:contentDiv.html(),rowsForNewsPage:rows.val()},
                                     success: function (isSuccessful) {
                                         if(isSuccessful){
                                             window.location.href="/";

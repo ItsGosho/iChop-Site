@@ -28,6 +28,9 @@ public class Thread extends BaseEntity {
 
     private Integer views;
 
+    @Column(columnDefinition = "int default 0")
+    private Integer rowsForNewsPage;
+
     @OneToMany
     private List<React> reacts;
 
@@ -91,5 +94,13 @@ public class Thread extends BaseEntity {
 
     public void setReacts(List<React> reacts) {
         this.reacts = reacts;
+    }
+
+    public Integer getRowsForNewsPage() {
+        return rowsForNewsPage;
+    }
+
+    public void setRowsForNewsPage(Integer rowsForNewsPage) {
+        this.rowsForNewsPage = rowsForNewsPage;
     }
 }

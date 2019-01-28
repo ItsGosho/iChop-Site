@@ -14,6 +14,7 @@ public class ThreadHomepageViewModel {
     private Integer totalReactions;
     private Integer totalComments;
     private String content;
+    private Integer rowsForNewsPage;
 
     public String getId() {
         return id;
@@ -77,5 +78,13 @@ public class ThreadHomepageViewModel {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public Integer getRowsForNewsPage() {
+        return rowsForNewsPage;
+    }
+
+    public void setRowsForNewsPage(Integer rowsForNewsPage) {
+        this.rowsForNewsPage = rowsForNewsPage;
     }
 }

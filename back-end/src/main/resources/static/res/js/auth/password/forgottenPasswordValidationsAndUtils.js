@@ -20,7 +20,7 @@ function runForgottenPasswordValidationsAndUtils() {
 
             $.ajax({
                 method: "POST",
-                url: "mail/reset/password",
+                url: URL_API_USER_SEND_EMAIL_RESET_PASSWORD,
                 data: $(`#form-forgottenPassword`).serialize(),
                 success: function (isSuccessful) {
                     if(isSuccessful){

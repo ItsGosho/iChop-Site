@@ -5,6 +5,7 @@ import itsgosho.domain.entities.users.User;
 import itsgosho.domain.models.binding.thread.ThreadCreateBindingModel;
 import itsgosho.domain.models.view.thread.ThreadHomepageViewModel;
 import itsgosho.exceptions.thread.ThreadCannotBeNullException;
+import itsgosho.exceptions.thread.ThreadNotFoundException;
 import itsgosho.exceptions.user.UserCannotBeNullException;
 import itsgosho.exceptions.user.UserNotFoundException;
 import itsgosho.repository.thread.ThreadRepository;
@@ -18,6 +19,8 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 @Service
@@ -57,6 +60,7 @@ public class ThreadServicesImp implements ThreadServices {
                 .findAll(pageable)
                 .map(x->{
                     ThreadHomepageViewModel threadHomepageViewModel = this.modelMapper.map(x,ThreadHomepageViewModel.class);
+
                     threadHomepageViewModel.setTotalViews(x.getViews());
                     threadHomepageViewModel.setTotalComments(x.getComments().size());
                     threadHomepageViewModel.setTotalReactions(x.getReacts().size());
@@ -68,7 +72,7 @@ public class ThreadServicesImp implements ThreadServices {
     @Override
     public void delete(String id) {
         if(!this.exists(id)){
-            throw new ThreadCannotBeNullException();
+            throw new ThreadNotFoundException();
         }
         Thread thread = this.threadRepository.findById(id).orElse(null);
         this.threadRepository.delete(thread);
