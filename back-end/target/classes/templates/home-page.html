@@ -80,18 +80,6 @@
                         <div class="dropdown-divider"></div>
 
                         <div class="row">
-                            <div class="col-md-8" style="margin-bottom: 8px">
-                            </div>
-                            <div class="col-md-4">
-                                <button type="button" style="display: inline-block;float:right;"
-                                        class="btn btn-primary btn-sm btn-brand btn-reddit">
-                                    <small>📖</small>
-                                    Continue reading...
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="row">
                             <div class="col-md-8">
                                 <div class="btn-group">
                                     <th:block sec:authorize="isAuthenticated()">
@@ -111,6 +99,13 @@
                                         </th:block>
                                     </th:block>
                                 </div>
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" style="display: inline-block;float:right;"
+                                        class="btn btn-primary btn-sm btn-brand btn-reddit">
+                                    <small>📖</small>
+                                    Continue reading...
+                                </button>
                             </div>
                         </div>
                     </div>

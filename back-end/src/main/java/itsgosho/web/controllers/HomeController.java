@@ -15,13 +15,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping(value = "/")
 public class HomeController extends BaseController {
 
+    //For testing purpose
     private final EmailServices emailServices;
     private final ThreadServices threadServices;
 
@@ -32,19 +35,18 @@ public class HomeController extends BaseController {
     }
 
     @GetMapping("")
-    public ModelAndView home(ModelAndView modelAndView,@PageableDefault(size = 3,sort = "createdOn",direction = Sort.Direction.DESC) Pageable pageable) {
+    public ModelAndView home(ModelAndView modelAndView, @PageableDefault(size = 3, sort = "createdOn", direction = Sort.Direction.DESC) Pageable pageable) {
         Page<ThreadHomepageViewModel> pages = this.threadServices.listAllByPage(pageable);
 
-        modelAndView.addObject("threads",pages);
-        modelAndView.addObject("totalPages",pages.getTotalPages());
-        return super.page("base-page","home-page","iChop",modelAndView);
+        modelAndView.addObject("threads", pages);
+        modelAndView.addObject("totalPages", pages.getTotalPages());
+        return super.page("base-page", "home-page", "iChop", modelAndView);
     }
 
 
-
-   // @PreAuthorize("hasAuthority('ADMIN')")
+    // @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/test")
-    public ModelAndView testHome(ModelAndView modelAndView) {
-        return super.page("base-page","auth/reset_password-form","Reset Password");
+    public void testHome(ModelAndView modelAndView) {
+
     }
 }

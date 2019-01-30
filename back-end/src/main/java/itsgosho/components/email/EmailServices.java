@@ -1,5 +1,9 @@
 package itsgosho.components.email;
 
+import javax.mail.MessagingException;
+import java.util.Map;
+
 public interface EmailServices {
-    void sendSimpleMessage(String to, String subject, String text);
+
+    void sendResetPasswordEmail(String userEmail, String token);
 }
