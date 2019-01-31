@@ -1,5 +1,6 @@
 package itsgosho.web.controllers.user;
 
+import itsgosho.constants.URLConstants;
 import itsgosho.domain.models.binding.user.UserRegisterBindingModel;
 import itsgosho.domain.models.binding.user.UserResetPasswordBindingModel;
 import itsgosho.service.token.PasswordResetTokenServices;
@@ -29,7 +30,7 @@ public class UserAuthenticationController extends BaseController {
         this.passwordResetTokenServices = passwordResetTokenServices;
     }
 
-    @PostMapping("/register")
+    @PostMapping(URLConstants.USER_REGISTER)
     public ModelAndView proceedRegistration(@Valid UserRegisterBindingModel userRegisterBindingModel, BindingResult bindingResult) {
         if(bindingResult.hasErrors()){
             return this.redirectToRegisterDropdown();
@@ -38,17 +39,17 @@ public class UserAuthenticationController extends BaseController {
         return this.redirectToLoginDropdown();
     }
 
-    @GetMapping("/login")
+    @GetMapping(URLConstants.USER_LOGIN)
     public ModelAndView redirectToLoginDropdown(){
         return super.redirect("/?login=require");
     }
 
-    @GetMapping("/register")
+    @GetMapping(URLConstants.USER_REGISTER)
     public ModelAndView redirectToRegisterDropdown(){
         return super.redirect("/?register=require");
     }
 
-    @GetMapping("/users/reset/password")
+    @GetMapping(URLConstants.USER_RESET_PASSWORD)
     public ModelAndView getReset(@RequestParam(required = true) String token){
 
         if(!this.passwordResetTokenServices.isValid(token)){
@@ -58,7 +59,7 @@ public class UserAuthenticationController extends BaseController {
         return super.page("base-page","auth/reset_password-form","Reset Password");
     }
 
-    @PostMapping("/users/reset/password")
+    @PostMapping(URLConstants.USER_RESET_PASSWORD)
     public ModelAndView proceedPasswordReset(@RequestParam(required = true) String token,@Valid UserResetPasswordBindingModel userResetPasswordBindingModel,BindingResult bindingResult){
 
         if(bindingResult.hasErrors()){

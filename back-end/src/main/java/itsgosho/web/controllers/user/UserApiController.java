@@ -1,12 +1,13 @@
 package itsgosho.web.controllers.user;
 
 import com.google.gson.Gson;
+import itsgosho.constants.URLConstants;
 import itsgosho.service.user.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping(value = URLConstants.USER_API_PREFIX)
 public class UserApiController {
 
     private final UserServices userServices;
@@ -16,7 +17,7 @@ public class UserApiController {
         this.userServices = userServices;
     }
 
-    @GetMapping(value = "/exists", produces = "application/json")
+    @GetMapping(value = URLConstants.USER_EXISTS, produces = "application/json")
     @ResponseBody
     public String isUserExists(@RequestParam(required = false) String username,
                                                @RequestParam(required = false) String email) {

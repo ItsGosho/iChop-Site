@@ -1,6 +1,7 @@
 package itsgosho.web.controllers.thread;
 
 import com.google.gson.Gson;
+import itsgosho.constants.URLConstants;
 import itsgosho.domain.models.binding.thread.ThreadCreateBindingModel;
 import itsgosho.service.thread.ThreadServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,7 @@ import javax.validation.Valid;
 import java.security.Principal;
 
 @RestController
-@RequestMapping("/thread")
+@RequestMapping(URLConstants.THREAD_PREFIX)
 public class ThreadRestController {
 
     private final ThreadServices threadServices;
@@ -23,7 +24,7 @@ public class ThreadRestController {
     }
 
     @PreAuthorize("hasAuthority('MODERATOR')")
-    @PostMapping(value ="/create",produces = "application/json")
+    @PostMapping(value = URLConstants.THREAD_CREATE,produces = "application/json")
     @ResponseBody
     public String threadCreate(@Valid ThreadCreateBindingModel threadCreateBindingModel
             , BindingResult bindingResult

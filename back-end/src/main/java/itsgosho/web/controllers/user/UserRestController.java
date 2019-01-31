@@ -1,6 +1,7 @@
 package itsgosho.web.controllers.user;
 
 import com.google.gson.Gson;
+import itsgosho.constants.URLConstants;
 import itsgosho.domain.models.binding.user.UserForgottenPasswordBindingModel;
 import itsgosho.service.user.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class UserRestController {
     }
 
     @PreAuthorize("isAnonymous()")
-    @PostMapping(value = "/users/send-email/reset/password",produces = "application/json")
+    @PostMapping(value = URLConstants.USER_SEND_EMAIL_RESET_PASSWORD,produces = "application/json")
     @ResponseBody
     public String sendEmailForReset(@Valid UserForgottenPasswordBindingModel userForgottenPasswordBindingModel, BindingResult bindingResult){
         if(bindingResult.hasErrors()){

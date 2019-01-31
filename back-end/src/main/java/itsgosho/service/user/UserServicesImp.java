@@ -160,7 +160,7 @@ public class UserServicesImp implements UserServices {
             throw new TokenCannotBeNullException();
         }
 
-        this.emailServices.sendResetPasswordEmail(user.getEmail(),passwordResetToken.getToken());
+        this.emailServices.sendResetPasswordEmail(user.getEmail(),passwordResetToken.getToken(),passwordResetToken.getExpiryDate());
     }
 
     @Override

@@ -1,5 +1,6 @@
 package itsgosho.components.email;
 
+import itsgosho.constants.ServerConstants;
 import itsgosho.utils.GoshoTemplatingEngine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
@@ -9,13 +10,13 @@ import org.springframework.stereotype.Component;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
-import java.util.HashMap;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 @Component
 public class EmailServicesImp implements EmailServices {
-
 
     private final JavaMailSender emailSender;
 
@@ -56,10 +57,11 @@ public class EmailServicesImp implements EmailServices {
     }
 
     @Override
-    public void sendResetPasswordEmail(String userEmail, String token) {
-        //TODO: make constants for the validaity seconds,url !!!!!!!!!!!!!
+    public void sendResetPasswordEmail(String userEmail, String token, LocalDateTime tokenExpireDate) {
+        //TODO: WORK WITH CONSTANTSSSSSSSSSS
         Map<String, String> properties = new LinkedHashMap<>();
-        properties.put("tokenValidityInHours", "24");
+        System.out.println(ServerConstants.SEVER_DOMAIN);
+        properties.put("expireDate",tokenExpireDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")));
         properties.put("passwordResetUrl", "http://localhost:8000/users/reset/password?token=" + token);
 
         this.sendEmailFromTemplate(userEmail, "Reset password", properties, "email/reset-password.html");

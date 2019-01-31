@@ -1,24 +1,19 @@
 package itsgosho.web.controllers;
 
 import itsgosho.components.email.EmailServices;
+import itsgosho.constants.ServerConstants;
+import itsgosho.constants.URLConstants;
 import itsgosho.domain.models.view.thread.ThreadHomepageViewModel;
 import itsgosho.service.thread.ThreadServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.data.web.SortDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping(value = "/")
@@ -34,7 +29,7 @@ public class HomeController extends BaseController {
         this.threadServices = threadServices;
     }
 
-    @GetMapping("")
+    @GetMapping(value = URLConstants.HOME)
     public ModelAndView home(ModelAndView modelAndView, @PageableDefault(size = 3, sort = "createdOn", direction = Sort.Direction.DESC) Pageable pageable) {
         Page<ThreadHomepageViewModel> pages = this.threadServices.listAllByPage(pageable);
 
@@ -45,7 +40,7 @@ public class HomeController extends BaseController {
 
 
     // @PreAuthorize("hasAuthority('ADMIN')")
-    @GetMapping("/test")
+    @GetMapping(value = URLConstants.TEST)
     public void testHome(ModelAndView modelAndView) {
 
     }
