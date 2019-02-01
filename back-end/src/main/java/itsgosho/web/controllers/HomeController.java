@@ -1,7 +1,6 @@
 package itsgosho.web.controllers;
 
 import itsgosho.components.email.EmailServices;
-import itsgosho.constants.ServerConstants;
 import itsgosho.constants.URLConstants;
 import itsgosho.domain.models.view.thread.ThreadHomepageViewModel;
 import itsgosho.service.thread.ThreadServices;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping(value = "/")
 public class HomeController extends BaseController {
 
     //For testing purpose
@@ -29,7 +27,7 @@ public class HomeController extends BaseController {
         this.threadServices = threadServices;
     }
 
-    @GetMapping(value = URLConstants.HOME)
+    @GetMapping(value = URLConstants.HOME_GET)
     public ModelAndView home(ModelAndView modelAndView, @PageableDefault(size = 3, sort = "createdOn", direction = Sort.Direction.DESC) Pageable pageable) {
         Page<ThreadHomepageViewModel> pages = this.threadServices.listAllByPage(pageable);
 

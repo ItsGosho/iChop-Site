@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = URLConstants.USER_API_PREFIX)
 public class UserApiController {
 
     private final UserServices userServices;
@@ -17,7 +16,7 @@ public class UserApiController {
         this.userServices = userServices;
     }
 
-    @GetMapping(value = URLConstants.USER_EXISTS, produces = "application/json")
+    @GetMapping(value = URLConstants.USER_EXISTS_GET, produces = "application/json")
     @ResponseBody
     public String isUserExists(@RequestParam(required = false) String username,
                                                @RequestParam(required = false) String email) {

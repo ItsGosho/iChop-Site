@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping(URLConstants.THREAD_PREFIX)
 public class ThreadController extends BaseController {
 
     private final ThreadServices threadServices;
@@ -21,13 +20,13 @@ public class ThreadController extends BaseController {
     }
 
     @PreAuthorize("hasAuthority('MODERATOR')")
-    @GetMapping(URLConstants.THREAD_CREATE)
+    @GetMapping(URLConstants.THREAD_CREATE_GET)
     public ModelAndView createThread() {
         return super.page("base-page","thread/thread-create","Create thread");
     }
 
     @PreAuthorize("hasAuthority('ADMIN')")
-    @GetMapping(URLConstants.THREAD_DELETE)
+    @GetMapping(URLConstants.THREAD_DELETE_GET)
     public ModelAndView deleteThread(@PathVariable String id) {
         this.threadServices.delete(id);
         return super.redirect("/");

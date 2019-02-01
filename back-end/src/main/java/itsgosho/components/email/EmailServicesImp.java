@@ -1,6 +1,7 @@
 package itsgosho.components.email;
 
 import itsgosho.constants.ServerConstants;
+import itsgosho.constants.URLConstants;
 import itsgosho.utils.GoshoTemplatingEngine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
@@ -25,7 +26,7 @@ public class EmailServicesImp implements EmailServices {
         this.emailSender = emailSender;
     }
 
-    public void sendSimpleMessage(String to, String subject, String text) {
+    private void sendSimpleMessage(String to, String subject, String text) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(to);
         message.setSubject(subject);
@@ -34,7 +35,7 @@ public class EmailServicesImp implements EmailServices {
         emailSender.send(message);
     }
 
-    public void sendEmailFromTemplate(String to, String subject, Map<String, String> properties, String resourceLocation) {
+    private void sendEmailFromTemplate(String to, String subject, Map<String, String> properties, String resourceLocation) {
         MimeMessage message = this.emailSender.createMimeMessage();
         MimeMessageHelper helper = null;
         try {
@@ -58,12 +59,17 @@ public class EmailServicesImp implements EmailServices {
 
     @Override
     public void sendResetPasswordEmail(String userEmail, String token, LocalDateTime tokenExpireDate) {
-        //TODO: WORK WITH CONSTANTSSSSSSSSSS
-        Map<String, String> properties = new LinkedHashMap<>();
-        System.out.println(ServerConstants.SEVER_DOMAIN);
-        properties.put("expireDate",tokenExpireDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")));
-        properties.put("passwordResetUrl", "http://localhost:8000/users/reset/password?token=" + token);
+        String passwordResetUrl = String.format("%s://%s:%s%s?token=%s",
+                ServerConstants.SERVER_PROTOCOL,
+                ServerConstants.SEVER_DOMAIN,
+                ServerConstants.SERVER_PORT,
+                URLConstants.USER_RESET_PASSWORD_GET,
+                token);
 
-        this.sendEmailFromTemplate(userEmail, "Reset password", properties, "email/reset-password.html");
+        Map<String, String> properties = new LinkedHashMap<>();
+        properties.put("expireDate",tokenExpireDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")));
+        properties.put("passwordResetUrl", passwordResetUrl);
+
+        this.sendEmailFromTemplate(userEmail, "iChop - Reset Password", properties, "email/reset-password.html");
     }
 }

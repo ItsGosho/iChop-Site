@@ -22,7 +22,7 @@ public class UserRestController {
     }
 
     @PreAuthorize("isAnonymous()")
-    @PostMapping(value = URLConstants.USER_SEND_EMAIL_RESET_PASSWORD,produces = "application/json")
+    @PostMapping(value = URLConstants.USER_SEND_EMAIL_RESET_PASSWORD_POST,produces = "application/json")
     @ResponseBody
     public String sendEmailForReset(@Valid UserForgottenPasswordBindingModel userForgottenPasswordBindingModel, BindingResult bindingResult){
         if(bindingResult.hasErrors()){

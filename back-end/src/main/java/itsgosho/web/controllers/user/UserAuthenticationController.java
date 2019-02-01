@@ -30,7 +30,7 @@ public class UserAuthenticationController extends BaseController {
         this.passwordResetTokenServices = passwordResetTokenServices;
     }
 
-    @PostMapping(URLConstants.USER_REGISTER)
+    @PostMapping(URLConstants.USER_REGISTER_GET)
     public ModelAndView proceedRegistration(@Valid UserRegisterBindingModel userRegisterBindingModel, BindingResult bindingResult) {
         if(bindingResult.hasErrors()){
             return this.redirectToRegisterDropdown();
@@ -39,17 +39,17 @@ public class UserAuthenticationController extends BaseController {
         return this.redirectToLoginDropdown();
     }
 
-    @GetMapping(URLConstants.USER_LOGIN)
+    @GetMapping(URLConstants.USER_LOGIN_GET)
     public ModelAndView redirectToLoginDropdown(){
         return super.redirect("/?login=require");
     }
 
-    @GetMapping(URLConstants.USER_REGISTER)
+    @GetMapping(URLConstants.USER_REGISTER_GET)
     public ModelAndView redirectToRegisterDropdown(){
         return super.redirect("/?register=require");
     }
 
-    @GetMapping(URLConstants.USER_RESET_PASSWORD)
+    @GetMapping(URLConstants.USER_RESET_PASSWORD_GET)
     public ModelAndView getReset(@RequestParam(required = true) String token){
 
         if(!this.passwordResetTokenServices.isValid(token)){
@@ -59,7 +59,7 @@ public class UserAuthenticationController extends BaseController {
         return super.page("base-page","auth/reset_password-form","Reset Password");
     }
 
-    @PostMapping(URLConstants.USER_RESET_PASSWORD)
+    @PostMapping(URLConstants.USER_RESET_PASSWORD_POST)
     public ModelAndView proceedPasswordReset(@RequestParam(required = true) String token,@Valid UserResetPasswordBindingModel userResetPasswordBindingModel,BindingResult bindingResult){
 
         if(bindingResult.hasErrors()){

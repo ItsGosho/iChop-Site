@@ -13,7 +13,6 @@ import javax.validation.Valid;
 import java.security.Principal;
 
 @RestController
-@RequestMapping(URLConstants.THREAD_PREFIX)
 public class ThreadRestController {
 
     private final ThreadServices threadServices;
@@ -24,7 +23,7 @@ public class ThreadRestController {
     }
 
     @PreAuthorize("hasAuthority('MODERATOR')")
-    @PostMapping(value = URLConstants.THREAD_CREATE,produces = "application/json")
+    @PostMapping(value = URLConstants.THREAD_CREATE_POST,produces = "application/json")
     @ResponseBody
     public String threadCreate(@Valid ThreadCreateBindingModel threadCreateBindingModel
             , BindingResult bindingResult
