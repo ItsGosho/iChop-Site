@@ -3,20 +3,14 @@ package ichop.domain.entities.tokens;
 import ichop.domain.entities.BaseEntity;
 import ichop.domain.entities.users.User;
 
-import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.OneToOne;
 import java.time.LocalDateTime;
 
 @MappedSuperclass
 public abstract class Token extends BaseEntity {
 
-    @Column(unique = true)
     private String token;
-
-    @OneToOne(optional = false)
     private User user;
-
     private LocalDateTime expiryDate;
 
     public String getToken() {

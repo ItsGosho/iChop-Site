@@ -59,7 +59,7 @@ public class EmailServicesImp implements EmailServices {
 
     @Override
     public void sendResetPasswordEmail(String userEmail, String token, LocalDateTime tokenExpireDate) {
-        String passwordResetUrl = String.format("%s://%s:%s%s?token=%s",
+        String passwordResetUrl = String.format("%s://%s:%s%s?tokens=%s",
                 ServerConstants.SERVER_PROTOCOL,
                 ServerConstants.SEVER_DOMAIN,
                 ServerConstants.SERVER_PORT,

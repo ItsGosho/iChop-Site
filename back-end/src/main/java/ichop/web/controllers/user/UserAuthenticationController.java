@@ -3,6 +3,10 @@ package ichop.web.controllers.user;
 import ichop.constants.URLConstants;
 import ichop.domain.models.binding.user.UserRegisterBindingModel;
 import ichop.domain.models.binding.user.UserResetPasswordBindingModel;
+import ichop.exceptions.token.TokenException;
+import ichop.exceptions.token.TokenExceptionMessages;
+import ichop.exceptions.user.UserException;
+import ichop.exceptions.user.UserExceptionMessages;
 import ichop.service.token.PasswordResetTokenServices;
 import ichop.service.user.UserServices;
 import ichop.web.controllers.BaseController;
@@ -55,7 +59,7 @@ public class UserAuthenticationController extends BaseController {
     public ModelAndView getReset(@RequestParam(required = true) String token){
 
         if(!this.passwordResetTokenServices.isValid(token)){
-            return super.viewWithMessage("base-page","notification/error","The provided token is invalid!");
+            throw new TokenException(TokenExceptionMessages.TOKEN_IS_NOT_VALID);
         }
 
         return super.page("base-page","auth/reset_password-form","Reset Password");
@@ -65,7 +69,7 @@ public class UserAuthenticationController extends BaseController {
     public ModelAndView proceedPasswordReset(@RequestParam(required = true) String token,@Valid UserResetPasswordBindingModel userResetPasswordBindingModel,BindingResult bindingResult){
 
         if(bindingResult.hasErrors()){
-            return super.viewWithMessage("base-page","notification/error","Something with your input data went wrong :/");
+            throw new UserException(UserExceptionMessages.DATA_INVALID);
         }
 
         this.userServices.resetPassword(userResetPasswordBindingModel,token);

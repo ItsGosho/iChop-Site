@@ -2,7 +2,8 @@ package ichop.service.token;
 
 import ichop.domain.entities.tokens.PasswordResetToken;
 import ichop.domain.entities.users.User;
-import ichop.exceptions.user.UserCannotBeNullException;
+import ichop.exceptions.user.UserException;
+import ichop.exceptions.user.UserExceptionMessages;
 import ichop.repository.token.PasswordResetTokenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,11 +24,12 @@ public class PasswordResetTokenServicesImp implements PasswordResetTokenServices
     @Override
     public boolean isValid(String token) {
         PasswordResetToken passwordResetToken = this.getTokenByToken(token);
-        if(passwordResetToken==null){
+
+        if (passwordResetToken == null) {
             return false;
         }
 
-        if(passwordResetToken.getExpiryDate().compareTo(LocalDateTime.now())<0){
+        if (passwordResetToken.getExpiryDate().compareTo(LocalDateTime.now()) < 0) {
             return false;
         }
 
@@ -35,10 +37,10 @@ public class PasswordResetTokenServicesImp implements PasswordResetTokenServices
     }
 
     @Override
-    public PasswordResetToken createToken(User user){
+    public PasswordResetToken createToken(User user) {
 
-        if(user==null){
-            throw new UserCannotBeNullException();
+        if (user == null) {
+            throw new UserException(UserExceptionMessages.NULL);
         }
 
         this.deleteOldestToken(user);
@@ -66,9 +68,9 @@ public class PasswordResetTokenServicesImp implements PasswordResetTokenServices
     }
 
     @Override
-    public void deleteOldestToken(User user){
+    public void deleteOldestToken(User user) {
         PasswordResetToken passwordResetToken = this.getTokenByUser(user);
-        if(passwordResetToken!=null){
+        if (passwordResetToken != null) {
             this.passwordResetTokenRepository.delete(passwordResetToken);
         }
     }

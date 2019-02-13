@@ -14,4 +14,6 @@ public class React extends BaseEntity {
 
     @Enumerated(value = EnumType.STRING)
     private ReactionType reactionType;
+
+
 }

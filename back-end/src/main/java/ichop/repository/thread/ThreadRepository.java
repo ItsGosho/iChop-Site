@@ -10,4 +10,5 @@ import java.util.List;
 public interface ThreadRepository extends JpaRepository<Thread,String> {
 
     List<Thread> findAllByOrderByCreatedOnAsc();
+    Thread findThreadById(String id);
 }
