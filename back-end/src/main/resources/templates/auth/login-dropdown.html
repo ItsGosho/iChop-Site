@@ -1,4 +1,6 @@
-<div id="div-loginForm">
+<link rel="stylesheet" href="/res/css/auth/login-dropdown.css">
+
+<div id="div-login-dropdown">
     <a class="dropdown-item" href="#">
         <form method="post" action="/signin/facebook">
             <input type="hidden" name="scope" value="public_profile" />
@@ -28,7 +30,7 @@
                        name="password" placeholder="Password...">
             </div>
         </div>
-        <small id="error-invalidCredentials-loginForm" style="display:none">⚡Invalid credentials :/
+        <small id="error-invalidCredentials-loginForm">⚡Invalid credentials :/
         </small>
         <div class="custom-control custom-checkbox">
             <input type="checkbox" name="rememberMe" class="custom-control-input"

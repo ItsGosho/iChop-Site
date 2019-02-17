@@ -1,0 +1,19 @@
+#div-containter-top_nav_bar {
+    margin-bottom: 200px;
+    position: relative;
+    z-index: 1;
+}
+
+#div-containter-top_nav_bar nav {
+    max-height: 40px;
+}
+
+#button-minimized-navbar {
+    height: 20px;
+}
+
+#div-containter-top_nav_bar span.navbar-toggler-icon {
+    display: block;
+    margin: auto;
+    height: 10px;
+}

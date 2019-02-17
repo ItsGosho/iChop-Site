@@ -4,8 +4,8 @@ function runAuthFormsConfig() {
     });
 
     $(`#button-goToRegister-loginForm`).on(`click`, function () {
-        $(`#div-loginForm`).css('display', 'none');
-        $(`#div-registerForm`).css('display', 'inline');
+        $(`#div-login-dropdown`).css('display', 'none');
+        $(`#div-register-dropdown`).css('display', 'inline');
 
     });
 
@@ -13,14 +13,14 @@ function runAuthFormsConfig() {
     $(`#button-goToLogin-forgottenPasswordForm`).on(`click`, backToLoginForm);
 
     $(`#button-goToForgottenPassword-loginForm`).on(`click`, function () {
-        $(`#div-loginForm`).css('display', 'none');
-        $(`#div-forgottenPasswordForm`).css('display', 'inline');
+        $(`#div-login-dropdown`).css('display', 'none');
+        $(`#div-forgotten_password-dropdown`).css('display', 'inline');
 
     });
 
     function backToLoginForm() {
-        $(`#div-registerForm`).css('display', 'none');
-        $(`#div-forgottenPasswordForm`).css('display', 'none');
-        $(`#div-loginForm`).css('display', 'inline');
+        $(`#div-register-dropdown`).css('display', 'none');
+        $(`#div-forgotten_password-dropdown`).css('display', 'none');
+        $(`#div-login-dropdown`).css('display', 'inline');
     }
 }

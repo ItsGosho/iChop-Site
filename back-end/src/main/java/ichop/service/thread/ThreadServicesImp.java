@@ -4,8 +4,10 @@ import ichop.domain.entities.threads.Thread;
 import ichop.domain.entities.users.User;
 import ichop.domain.models.binding.thread.ThreadCreateBindingModel;
 import ichop.domain.models.view.thread.ThreadHomepageViewModel;
+import ichop.domain.models.view.thread.ThreadReadViewModel;
 import ichop.exceptions.user.UserException;
 import ichop.exceptions.user.UserExceptionMessages;
+import ichop.repository.thread.CommentRepository;
 import ichop.repository.thread.ThreadRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,23 +21,25 @@ import java.time.LocalDateTime;
 public class ThreadServicesImp implements ThreadServices {
 
     private final ThreadRepository threadRepository;
+    private final CommentRepository commentRepository;
     private final ModelMapper modelMapper;
 
     @Autowired
-    public ThreadServicesImp(ThreadRepository threadRepository, ModelMapper modelMapper) {
+    public ThreadServicesImp(ThreadRepository threadRepository, CommentRepository commentRepository, ModelMapper modelMapper) {
         this.threadRepository = threadRepository;
+        this.commentRepository = commentRepository;
         this.modelMapper = modelMapper;
     }
 
 
     @Override
-    public Thread create(ThreadCreateBindingModel threadCreateBindingModel,User user){
+    public Thread create(ThreadCreateBindingModel threadCreateBindingModel, User user) {
 
-        if(user==null) {
+        if (user == null) {
             throw new UserException(UserExceptionMessages.NULL);
         }
 
-        Thread thread = this.modelMapper.map(threadCreateBindingModel,Thread.class);
+        Thread thread = this.modelMapper.map(threadCreateBindingModel, Thread.class);
         thread.setCreatedOn(LocalDateTime.now());
         thread.setCreator(user);
 
@@ -48,15 +52,26 @@ public class ThreadServicesImp implements ThreadServices {
     public Page<ThreadHomepageViewModel> listAllByPage(Pageable pageable) {
         Page<Thread> page = this.threadRepository.findAll(pageable);
 
-        Page<ThreadHomepageViewModel> threads = page.map(x->{
-                    ThreadHomepageViewModel threadHomepageViewModel = this.modelMapper.map(x,ThreadHomepageViewModel.class);
-                    threadHomepageViewModel.setTotalViews(x.getViews());
-                    threadHomepageViewModel.setTotalComments(x.getComments().size());
-                    threadHomepageViewModel.setTotalReactions(x.getReacts().size());
+        Page<ThreadHomepageViewModel> threads = page.map(x -> {
+            ThreadHomepageViewModel threadHomepageViewModel = this.modelMapper.map(x, ThreadHomepageViewModel.class);
+            threadHomepageViewModel.setTotalViews(x.getViews());
+            threadHomepageViewModel.setTotalComments(x.getComments().size());
+            threadHomepageViewModel.setTotalReactions(x.getReacts().size());
 
-                    return threadHomepageViewModel;
-                });
+            return threadHomepageViewModel;
+        });
         return threads;
+    }
+
+    @Override
+    public ThreadReadViewModel getThread(String id) {
+        Thread thread = this.threadRepository.findThreadById(id);
+        ThreadReadViewModel threadReadViewModel = this.modelMapper.map(thread, ThreadReadViewModel.class);
+        threadReadViewModel.setTotalViews(thread.getViews());
+        threadReadViewModel.setTotalComments(thread.getComments().size());
+        threadReadViewModel.setTotalReactions(thread.getReacts().size());
+        threadReadViewModel.setCreatorTotalComments(this.commentRepository.getTotalCommentsOfUser(thread.getCreator()));
+        return threadReadViewModel;
     }
 
     @Override
@@ -68,7 +83,7 @@ public class ThreadServicesImp implements ThreadServices {
     @Override
     public boolean exists(String id) {
         Thread thread = this.threadRepository.findThreadById(id);
-        if(thread!=null){
+        if (thread != null) {
             return true;
         }
         return false;

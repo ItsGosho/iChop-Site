@@ -1,6 +1,7 @@
 package ichop.web.controllers.thread;
 
 import ichop.constants.URLConstants;
+import ichop.domain.models.view.thread.ThreadReadViewModel;
 import ichop.service.thread.ThreadServices;
 import ichop.web.controllers.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,5 +31,12 @@ public class ThreadController extends BaseController {
     public ModelAndView deleteThread(@PathVariable String id) {
         this.threadServices.delete(id);
         return super.redirect("/");
+    }
+
+    @GetMapping(URLConstants.THREAD_READ_GET)
+    public ModelAndView readThread(@PathVariable String id,ModelAndView modelAndView) {
+        ThreadReadViewModel threadReadViewModel = this.threadServices.getThread(id);
+        modelAndView.addObject("thread",threadReadViewModel);
+        return super.page("base-page","thread/thread-read",threadReadViewModel.getTitle(),modelAndView);
     }
 }

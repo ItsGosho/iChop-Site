@@ -38,6 +38,7 @@ public class Thread extends BaseEntity {
         this.setComments(new LinkedList<>());
         this.setReacts(new LinkedList<>());
         this.setViews(0);
+        this.rowsForNewsPage = 0;
     }
 
     public String getTitle() {

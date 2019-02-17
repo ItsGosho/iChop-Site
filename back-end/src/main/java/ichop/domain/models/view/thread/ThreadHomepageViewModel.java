@@ -9,7 +9,7 @@ public class ThreadHomepageViewModel {
     private String id;
     private String title;
     private LocalDateTime createdOn;
-    private User creator;
+    private String creatorUsername;
     private Integer totalViews;
     private Integer totalReactions;
     private Integer totalComments;
@@ -40,14 +40,6 @@ public class ThreadHomepageViewModel {
         this.createdOn = createdOn;
     }
 
-    public User getCreator() {
-        return creator;
-    }
-
-    public void setCreator(User creator) {
-        this.creator = creator;
-    }
-
     public Integer getTotalViews() {
         return totalViews;
     }
@@ -62,6 +54,14 @@ public class ThreadHomepageViewModel {
 
     public void setTotalReactions(Integer totalReactions) {
         this.totalReactions = totalReactions;
+    }
+
+    public String getCreatorUsername() {
+        return creatorUsername;
+    }
+
+    public void setCreatorUsername(String creatorUsername) {
+        this.creatorUsername = creatorUsername;
     }
 
     public Integer getTotalComments() {

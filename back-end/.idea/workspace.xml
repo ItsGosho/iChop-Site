@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cba728f7-ebfd-4176-a7c9-018b3051f6b0" name="Default Changelist" comment="" />
+    <list default="true" id="1984862c-2f8c-4410-af36-a1dcaaa3ddaf" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -9,60 +9,61 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="CompilerWorkspaceConfiguration">
-    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
-  </component>
-  <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/itsgosho$UserServicesTests.ic" NAME="UserServicesTests Coverage Results" MODIFIED="1549303354318" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>ichop.services.user.*</FILTER>
-    </SUITE>
-  </component>
-  <component name="CoverageViewManager">
-    <option name="myElementSize" value="190" />
-  </component>
-  <component name="DatabaseView">
-    <option name="SHOW_INTERMEDIATE" value="true" />
-    <option name="GROUP_DATA_SOURCES" value="true" />
-    <option name="GROUP_SCHEMA" value="true" />
-    <option name="GROUP_CONTENTS" value="false" />
-    <option name="SORT_POSITIONED" value="false" />
-    <option name="SHOW_EMPTY_GROUPS" value="false" />
-    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <option name="HIDDEN_KINDS">
-      <set />
-    </option>
-    <expand />
-    <select />
+  <component name="FUSProjectUsageTrigger">
+    <session id="547871390">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.30" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="css" value="10" />
+          <entry key="html" value="35" />
+          <entry key="java" value="7" />
+          <entry key="js" value="6" />
+          <entry key="top-base-navbar" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="CSS" value="10" />
+          <entry key="HTML" value="35" />
+          <entry key="JAVA" value="7" />
+          <entry key="JavaScript" value="6" />
+          <entry key="PLAIN_TEXT" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="css" value="381" />
+          <entry key="html" value="1066" />
+          <entry key="java" value="90" />
+          <entry key="js" value="47" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="CSS" value="381" />
+          <entry key="HTML" value="1066" />
+          <entry key="JAVA" value="90" />
+          <entry key="JavaScript" value="47" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/ichop/services/user/UserServicesTests.java">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/thread/threads-all-home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="299" lean-forward="true" selection-start-line="299" selection-end-line="299" />
+            <state relative-caret-position="304">
+              <caret line="19" column="35" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
               <folding>
-                <element signature="e#1336#1370#0" />
-                <element signature="method#setUp#0;class#UserServicesTests#0" />
-                <element signature="method#loadByUsername_withValidUsername_shouldReturnValidUser#0;class#UserServicesTests#0" />
-                <element signature="method#loadByUsername_withValidEmail_shouldReturnValidUser#0;class#UserServicesTests#0" />
-                <element signature="method#loadByUsername_withNotExistingUsername_shouldThrowException#0;class#UserServicesTests#0" />
-                <element signature="method#loadByUsername_withNotExistingEmail_shouldThrowException#0;class#UserServicesTests#0" />
-                <element signature="method#isEmail_withValidEmail_shouldReturnTrue#0;class#UserServicesTests#0" />
-                <element signature="method#isEmail_withInvalidEmail_shouldReturnFalse#0;class#UserServicesTests#0" />
-                <element signature="method#register_withAlreadyExistingUsername_shouldThrowException#0;class#UserServicesTests#0" />
-                <element signature="method#register_withAlreadyExistingEmail_shouldThrowException#0;class#UserServicesTests#0" />
-                <element signature="method#register_withDifferentPasswordAndConfirmPassword_shouldThrowException#0;class#UserServicesTests#0" />
-                <element signature="method#register_withValidParameters_shouldEncodeThePassword#0;class#UserServicesTests#0" />
-                <element signature="method#register_withFirstRegisteredUser_shouldHaveOwnerRank#0;class#UserServicesTests#0" />
-                <element signature="method#register_withFirstRegisteredUser_shouldHaveOwnerRank#1;class#UserServicesTests#0" />
-                <element signature="method#getRole_withOneRole_shouldReturnUser#0;class#UserServicesTests#0" />
-                <element signature="method#getRole_withOneRole_shouldReturnOneRole#0;class#UserServicesTests#0" />
-                <element signature="method#getRole_withOneRole_shouldReturnUser#1;class#UserServicesTests#0" />
-                <element signature="method#getUserByUsername_withExistingUsername_shouldReturnValidResult#0;class#UserServicesTests#0" />
-                <element signature="method#getUserByUsername_withNotExistingUsername_shouldReturnInvalidResult#0;class#UserServicesTests#0" />
-                <element signature="method#getUserByUsername_withExistingUsername_shouldReturnValidResult#1;class#UserServicesTests#0" />
-                <element signature="method#getUserByUsername_withNotExistingUsername_shouldReturnInvalidResult#1;class#UserServicesTests#0" />
+                <element signature="n#style#0;n#small#0;n#div#1;n#div#0;n#div#0;n#th:block#0;n#th:block#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#div#3;n#div#0;n#th:block#0;n#th:block#0;n#div#0;n#div#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -73,108 +74,94 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
-        <option value="JavaScript File" />
-        <option value="HTML File" />
-        <option value="Enum" />
         <option value="Interface" />
+        <option value="JavaScript File" />
         <option value="Class" />
+        <option value="CSS File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>navbar coll</find>
-      <find>findByUser</find>
-      <find>findByTo</find>
-      <find>message</find>
-      <find>validateUsernameL</find>
-      <find>input-password-</find>
-      <find>let result</find>
-      <find>script</find>
-      <find>error-</find>
-      <find>Token</find>
-      <find>.toLowerCase</find>
-      <find>throw</find>
-      <find>date</find>
-      <find>getCre</find>
-      <find>delete</find>
-      <find>id</find>
-      <find>text</find>
-      <find>veloci</find>
-      <find>sendEmai</find>
-      <find>boos</find>
-      <find>bootstrap</find>
-      <find>button</find>
-      <find>${{</find>
-      <find>send</find>
-      <find>tokenValid</find>
-      <find>passwordrese</find>
+      <find>nothing</find>
+      <find>nothin</find>
+      <find>noth</find>
+      <find>reset</find>
+      <find>throw new</find>
+      <find>totalComment</find>
+      <find>messages</find>
+      <find>createdOn</find>
+      <find>createThread</find>
+      <find>thread</find>
+      <find>textare</find>
+      <find>creator</find>
+      <find>$</find>
+      <find>style</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/itsgosho/domain/models/binding/thread/ThreadCreateBindingModel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/itsgosho/domain/models/view/thread/ThreadHomepageViewModel.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/thread/thread-create.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/home-page.html" />
-        <option value="$PROJECT_DIR$/src/main/java/itsgosho/service/thread/ThreadServicesImp.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/email_templates/reset-password.html" />
-        <option value="$PROJECT_DIR$/src/main/java/itsgosho/utils/HtmlViewsLoader.java" />
-        <option value="$PROJECT_DIR$/src/main/java/itsgosho/utils/ResourceLoader.java" />
-        <option value="$PROJECT_DIR$/src/main/java/itsgosho/utils/SimpleTemplatingEngine.java" />
-        <option value="$PROJECT_DIR$/src/main/java/itsgosho/utils/SimpleTemplatingEngineImp.java" />
-        <option value="$PROJECT_DIR$/src/main/java/itsgosho/config/BeansConfiguration.java" />
-        <option value="$PROJECT_DIR$/src/main/java/itsgosho/utils/GoshoTemplatingEngine.java" />
-        <option value="$PROJECT_DIR$/src/main/java/itsgosho/service/user/UserServicesImp.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/email/reset-password.html" />
-        <option value="$PROJECT_DIR$/src/main/java/itsgosho/components/email/EmailServices.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/itsgosho/constants/ServerMappings.java" />
-        <option value="$PROJECT_DIR$/src/main/java/itsgosho/constants/Mappings.java" />
-        <option value="$PROJECT_DIR$/src/main/java/itsgosho/web/controllers/user/UserAuthorizatonController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/itsgosho/web/controllers/HomeController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/itsgosho/web/controllers/user/UserApiController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/itsgosho/web/controllers/user/UserAuthenticationController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/itsgosho/web/controllers/user/UserRestController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/itsgosho/web/controllers/thread/ThreadRestController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/itsgosho/web/controllers/thread/ThreadController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/itsgosho/constants/URLConstants.java" />
-        <option value="$PROJECT_DIR$/src/main/java/itsgosho/constants/ServerConstants.java" />
-        <option value="$PROJECT_DIR$/src/main/java/itsgosho/components/email/EmailServicesImp.java" />
-        <option value="$PROJECT_DIR$/src/main/java/itsgosho/CLR.java" />
-        <option value="$PROJECT_DIR$/src/main/java/itsgosho/utils/CustomTemplateEngine.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/application-test.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/ichop/domain/entities/users/User.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ichop/domain/models/service/user/UserServiceModel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ichop/domain/models/service/thread/ThreadServiceModel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ichop/service/user/UserServices.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ichop/constants/URLConstants.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ichop/validators/fields/FieldsMustMatch.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ichop/constants/UserConstants.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/res/js/constants-validation.js" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/auth/register-dropdown.html" />
-        <option value="$PROJECT_DIR$/src/main/java/ichop/web/controllers/user/UserAuthenticationController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ichop/domain/models/binding/user/UserRegisterBindingModel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ichop/exceptions/user/UserAlreadyExistsException.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ichop/web/controllers/GlobalExceptionController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ichop/exceptions/user/PasswordsDoesntMathException.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ichop/exceptions/user/PasswordsDoesntMatchException.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ichop/domain/models/binding/user/UserResetPasswordBindingModel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ichop/service/token/PasswordResetTokenServicesImp.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ichop/exceptions/token/TokenExceptionMessages.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ichop/exceptions/user/UserException.java" />
         <option value="$PROJECT_DIR$/src/main/java/ichop/service/user/UserServicesImp.java" />
-        <option value="$PROJECT_DIR$/src/test/ichop/services/user/UserServicesTests.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ichop/service/token/PasswordResetTokenServicesImp.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ichop/service/role/UserRoleServicesImp.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ichop/web/controllers/user/UserAuthorizatonController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ichop/exceptions/user/UserExceptionMessages.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ichop/web/controllers/user/UserAuthenticationController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ichop/exceptions/thread/ThreadExceptionMessages.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/res/js/thread/create-thread-editor.js" />
+        <option value="$PROJECT_DIR$/src/main/java/ichop/components/email/EmailServicesImp.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/thread/thread-view.html" />
+        <option value="$PROJECT_DIR$/src/main/java/ichop/constants/URLConstants.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ichop/service/thread/ThreadServices.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ichop/web/controllers/thread/ThreadController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ichop/domain/entities/threads/Comment.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ichop/domain/models/view/thread/ThreadReadViewModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ichop/repository/thread/CommentRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ichop/service/thread/ThreadServicesImp.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/thread/thread-read.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/res/js/editor/create-thread-editor.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/res/js/editor/text-editor.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/auth/forgotten_password-dropdown.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/auth/login-dropdown.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/auth/register-dropdown.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/res/css/auth/register-dropdown.css" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/res/css/auth/login-dropdown.css" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/res/css/auth/forgotten_password-dropdown.css" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/res/js/auth/authFormsConfig.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/res/css/auth/reset_password-form.css" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/auth/reset_password-form.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/res/css/editor/text-editor.css" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/editor/text-editor.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/res/css/navbar/right/right-navbar-all.css" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/res/css/navbar/top/top-navbar-guest.css" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/res/css/navbar/top/top-navbar-user.css" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/navbar/top/top-navbar-guest.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/navbar/top/top-navbar-user.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/navbar/right/right-navbar-all.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/res/css/navbar/top-base-navbar.css" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/navbar/top-base-navbar.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/res/css/notification/error.css" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/notification/error.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/notification/info.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/thread/thread-create.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/res/js/thread/create-thread-send.js" />
+        <option value="$PROJECT_DIR$/src/main/java/ichop/domain/entities/threads/Thread.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/res/css/thread/thread-create.css" />
+        <option value="$PROJECT_DIR$/src/main/java/ichop/domain/models/view/thread/ThreadHomepageViewModel.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/thread/threads-all-home.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/home-page.html" />
       </list>
     </option>
   </component>
-  <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="importAutomatically" value="true" />
-      </MavenImportingSettings>
-    </option>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-10" />
@@ -182,12 +169,71 @@
     <option name="width" value="1940" />
     <option name="height" value="1050" />
   </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State />
+          <State>
+            <id>Class structureJava</id>
+          </State>
+          <State>
+            <id>Code maturityJava</id>
+          </State>
+          <State>
+            <id>Google Web Toolkit</id>
+          </State>
+          <State>
+            <id>JUnitJava</id>
+          </State>
+          <State>
+            <id>Java</id>
+          </State>
+          <State>
+            <id>Java 5Java language level migration aidsJava</id>
+          </State>
+          <State>
+            <id>Java 7Java language level migration aidsJava</id>
+          </State>
+          <State>
+            <id>Java 8Java language level migration aidsJava</id>
+          </State>
+          <State>
+            <id>Java language level migration aidsJava</id>
+          </State>
+          <State>
+            <id>JavadocJava</id>
+          </State>
+          <State>
+            <id>Numeric issuesJava</id>
+          </State>
+          <State>
+            <id>PerformanceJava</id>
+          </State>
+          <State>
+            <id>Spring</id>
+          </State>
+          <State>
+            <id>Spring AOPSpring</id>
+          </State>
+          <State>
+            <id>TestNGJava</id>
+          </State>
+          <State>
+            <id>Threading issuesJava</id>
+          </State>
+        </expanded-state>
+      </profile-state>
+    </entry>
+  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -228,6 +274,85 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="ichop" type="462c0819:PsiDirectoryNode" />
+              <item name="constants" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="itsgosho" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Spring Project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ichop" type="462c0819:PsiDirectoryNode" />
+              <item name="domain" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="itsgosho" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Spring Project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ichop" type="462c0819:PsiDirectoryNode" />
+              <item name="domain" type="462c0819:PsiDirectoryNode" />
+              <item name="entities" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="itsgosho" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Spring Project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ichop" type="462c0819:PsiDirectoryNode" />
+              <item name="domain" type="462c0819:PsiDirectoryNode" />
+              <item name="entities" type="462c0819:PsiDirectoryNode" />
+              <item name="threads" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="itsgosho" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Spring Project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ichop" type="462c0819:PsiDirectoryNode" />
+              <item name="domain" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="itsgosho" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Spring Project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ichop" type="462c0819:PsiDirectoryNode" />
+              <item name="domain" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="binding" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="itsgosho" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Spring Project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ichop" type="462c0819:PsiDirectoryNode" />
+              <item name="repository" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="itsgosho" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Spring Project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ichop" type="462c0819:PsiDirectoryNode" />
+              <item name="repository" type="462c0819:PsiDirectoryNode" />
+              <item name="thread" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="itsgosho" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Spring Project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ichop" type="462c0819:PsiDirectoryNode" />
               <item name="service" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -238,7 +363,26 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="ichop" type="462c0819:PsiDirectoryNode" />
               <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
+              <item name="thread" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="itsgosho" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Spring Project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ichop" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="itsgosho" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Spring Project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ichop" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="itsgosho" type="b2602c69:ProjectViewProjectNode" />
@@ -246,14 +390,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="itsgosho" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Spring Project" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="email" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="itsgosho" type="b2602c69:ProjectViewProjectNode" />
@@ -262,6 +398,79 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="itsgosho" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Spring Project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="itsgosho" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Spring Project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="itsgosho" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Spring Project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+              <item name="navbar" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="itsgosho" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Spring Project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+              <item name="thread" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="itsgosho" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Spring Project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="itsgosho" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Spring Project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="editor" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="itsgosho" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Spring Project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="thread" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="itsgosho" type="b2602c69:ProjectViewProjectNode" />
@@ -284,81 +493,63 @@
               <item name="itsgosho" type="b2602c69:ProjectViewProjectNode" />
               <item name="Spring Project" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="editor" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="itsgosho" type="b2602c69:ProjectViewProjectNode" />
               <item name="Spring Project" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="ichop" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="notification" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="itsgosho" type="b2602c69:ProjectViewProjectNode" />
               <item name="Spring Project" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="ichop" type="462c0819:PsiDirectoryNode" />
-              <item name="services" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="itsgosho" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Spring Project" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="ichop" type="462c0819:PsiDirectoryNode" />
-              <item name="services" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="thread" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="DatabaseDriversLRU" value="hsqldb" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
-    <property name="SearchEverywhereHistoryKey" value="Role&#9;PSI&#9;JAVA://itsgosho.service.role.UserRoles&#10;binding&#9;FILE&#9;file://C:/Users/Gosho/Desktop/Spring Project/src/main/java/itsgosho/domain/models/binding" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549307400075" />
-    <property name="jsx.switch.disabled" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550428770555" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.0" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Gosho\Desktop\Spring Project\src\main\resources\static\res" />
-      <recent name="C:\Users\Gosho\Desktop\Spring Project\src\main\resources\static\js" />
-      <recent name="C:\Users\Gosho\Desktop\Spring Project\src\main\resources\static\js\auth\reset" />
-      <recent name="C:\Users\Gosho\Desktop\Spring Project\src\main\resources\static\js\auth\reset\password" />
-      <recent name="C:\Users\Gosho\Desktop\Spring Project\src\main\resources\static\js\auth\url" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Gosho\Desktop\Spring Project\src\main\resources\static\res\img" />
+      <recent name="C:\Users\Gosho\Desktop\Spring Project\src\main\resources\templates\thread" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="itsgosho.exceptions.thread" />
-      <recent name="itsgosho.repository.thread" />
-      <recent name="itsgosho.service.thread" />
-      <recent name="itsgosho.web.controllers.user" />
-      <recent name="itsgosho.exceptions" />
+      <recent name="ichop.exceptions.user" />
+      <recent name="ichop.exceptions.token" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Gosho\Desktop\Spring Project\src\main\java\itsgosho\utils" />
-      <recent name="C:\Users\Gosho\Desktop\Spring Project\src\main\resources" />
-      <recent name="C:\Users\Gosho\Desktop\Spring Project\src\main\resources\templates\info" />
-      <recent name="C:\Users\Gosho\Desktop\Spring Project\src\main\java\itsgosho\web\controllers" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Gosho\Desktop\Spring Project\src\main\resources\static\res\js\editor" />
+      <recent name="C:\Users\Gosho\Desktop\Spring Project\src\main\resources\templates" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -373,82 +564,73 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.UserServicesTests.sendPasswordResetEmail_withNotExistingUser_shouldThrowException">
+  <component name="RunManager" selected="Spring Boot.Application">
+    <configuration name="PasswordResetTokenServicesTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="itsgosho" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ichop.services.tokens.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="java.ichop.services.tokens" />
+      <option name="MAIN_CLASS_NAME" value="ichop.services.tokens.PasswordResetTokenServicesTests" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ThreadServicesTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="itsgosho" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ichop.services.threads.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ichop.services.threads" />
+      <option name="MAIN_CLASS_NAME" value="ichop.services.threads.ThreadServicesTests" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserBaseServicesTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="itsgosho" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ichop.services.users.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="java.ichop.services.users" />
+      <option name="MAIN_CLASS_NAME" value="ichop.services.users.UserBaseServicesTests" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="UserServicesTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="itsgosho" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ichop.services.user.*" />
+          <option name="PATTERN" value="ichop.services.users.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="ichop.services.user" />
-      <option name="MAIN_CLASS_NAME" value="ichop.services.user.UserServicesTests" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="java.ichop.services.users" />
+      <option name="MAIN_CLASS_NAME" value="ichop.services.users.UserServicesTests" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserServicesTests.getUserByEmail_withNotExistingEmail_shouldReturnNull" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="java.ichop.services in itsgosho" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="itsgosho" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ichop.services.user.*" />
+          <option name="PATTERN" value="java.ichop.services.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="ichop.services.user" />
-      <option name="MAIN_CLASS_NAME" value="ichop.services.user.UserServicesTests" />
-      <option name="METHOD_NAME" value="getUserByEmail_withNotExistingEmail_shouldReturnNull" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserServicesTests.sendPasswordResetEmail_CHANGEME" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="itsgosho" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ichop.services.user.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ichop.services.user" />
-      <option name="MAIN_CLASS_NAME" value="ichop.services.user.UserServicesTests" />
-      <option name="METHOD_NAME" value="sendPasswordResetEmail_CHANGEME" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserServicesTests.sendPasswordResetEmail_withNotExistingUser_shouldThrowException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="itsgosho" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ichop.services.user.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ichop.services.user" />
-      <option name="MAIN_CLASS_NAME" value="ichop.services.user.UserServicesTests" />
-      <option name="METHOD_NAME" value="sendPasswordResetEmail_withNotExistingUser_shouldThrowException" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserServicesTests.sendPasswordResetEmail_withValidParameters_shouldPassTheConditions" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="itsgosho" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ichop.services.user.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ichop.services.user" />
-      <option name="MAIN_CLASS_NAME" value="ichop.services.user.UserServicesTests" />
-      <option name="METHOD_NAME" value="sendPasswordResetEmail_withValidParameters_shouldPassTheConditions" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="java.ichop.services" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -462,19 +644,19 @@
     </configuration>
     <list>
       <item itemvalue="Spring Boot.Application" />
-      <item itemvalue="JUnit.UserServicesTests.getUserByEmail_withNotExistingEmail_shouldReturnNull" />
+      <item itemvalue="JUnit.ThreadServicesTests" />
+      <item itemvalue="JUnit.java.ichop.services in itsgosho" />
+      <item itemvalue="JUnit.PasswordResetTokenServicesTests" />
+      <item itemvalue="JUnit.UserBaseServicesTests" />
       <item itemvalue="JUnit.UserServicesTests" />
-      <item itemvalue="JUnit.UserServicesTests.sendPasswordResetEmail_CHANGEME" />
-      <item itemvalue="JUnit.UserServicesTests.sendPasswordResetEmail_withValidParameters_shouldPassTheConditions" />
-      <item itemvalue="JUnit.UserServicesTests.sendPasswordResetEmail_withNotExistingUser_shouldThrowException" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.UserServicesTests.sendPasswordResetEmail_withNotExistingUser_shouldThrowException" />
-        <item itemvalue="JUnit.UserServicesTests.sendPasswordResetEmail_withValidParameters_shouldPassTheConditions" />
-        <item itemvalue="JUnit.UserServicesTests.sendPasswordResetEmail_CHANGEME" />
         <item itemvalue="JUnit.UserServicesTests" />
-        <item itemvalue="JUnit.UserServicesTests.getUserByEmail_withNotExistingEmail_shouldReturnNull" />
+        <item itemvalue="JUnit.UserBaseServicesTests" />
+        <item itemvalue="JUnit.PasswordResetTokenServicesTests" />
+        <item itemvalue="JUnit.ThreadServicesTests" />
+        <item itemvalue="JUnit.java.ichop.services in itsgosho" />
       </list>
     </recent_temporary>
   </component>
@@ -483,509 +665,532 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="cba728f7-ebfd-4176-a7c9-018b3051f6b0" name="Default Changelist" comment="" />
-      <created>1547383757458</created>
+      <changelist id="1984862c-2f8c-4410-af36-a1dcaaa3ddaf" name="Default Changelist" comment="" />
+      <created>1549812042597</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1547383757458</updated>
-      <workItem from="1547383758863" duration="5007000" />
-      <workItem from="1547392046505" duration="8022000" />
-      <workItem from="1547409608303" duration="3026000" />
-      <workItem from="1547472180173" duration="9104000" />
-      <workItem from="1547485305183" duration="4702000" />
-      <workItem from="1547494225980" duration="4786000" />
-      <workItem from="1547557748964" duration="2184000" />
-      <workItem from="1547559965185" duration="7070000" />
-      <workItem from="1547567409375" duration="5565000" />
-      <workItem from="1547576980064" duration="8293000" />
-      <workItem from="1547641284334" duration="13504000" />
-      <workItem from="1547671314780" duration="468000" />
-      <workItem from="1547728706662" duration="13595000" />
-      <workItem from="1547909415109" duration="10479000" />
-      <workItem from="1547980741743" duration="1693000" />
-      <workItem from="1548009207766" duration="2388000" />
-      <workItem from="1548075630247" duration="494000" />
-      <workItem from="1548257015851" duration="7258000" />
-      <workItem from="1548356182285" duration="302000" />
-      <workItem from="1548534295025" duration="2056000" />
-      <workItem from="1548585670045" duration="11294000" />
-      <workItem from="1548607338420" duration="8013000" />
-      <workItem from="1548665959854" duration="2047000" />
-      <workItem from="1548669973413" duration="7000" />
-      <workItem from="1548672954335" duration="616000" />
-      <workItem from="1548683330778" duration="12652000" />
-      <workItem from="1548765362968" duration="166000" />
-      <workItem from="1548870422594" duration="10501000" />
-      <workItem from="1548949867088" duration="736000" />
-      <workItem from="1548955036329" duration="4899000" />
-      <workItem from="1549027418937" duration="19000" />
-      <workItem from="1549043347186" duration="3818000" />
-      <workItem from="1549053084379" duration="198000" />
-      <workItem from="1549053285087" duration="470000" />
-      <workItem from="1549053779942" duration="142000" />
-      <workItem from="1549103975180" duration="10000" />
-      <workItem from="1549139144588" duration="81000" />
-      <workItem from="1549218854983" duration="910000" />
-      <workItem from="1549225274908" duration="608000" />
-      <workItem from="1549282896430" duration="10473000" />
-      <workItem from="1549299768365" duration="6239000" />
+      <updated>1549812042597</updated>
+      <workItem from="1549812050164" duration="428000" />
+      <workItem from="1549812735148" duration="828000" />
+      <workItem from="1549813572068" duration="6641000" />
+      <workItem from="1549827328020" duration="1331000" />
+      <workItem from="1549893510386" duration="7838000" />
+      <workItem from="1550066106611" duration="53000" />
+      <workItem from="1550071160885" duration="5807000" />
+      <workItem from="1550077198297" duration="2208000" />
+      <workItem from="1550338829446" duration="731000" />
+      <workItem from="1550344706817" duration="2167000" />
+      <workItem from="1550403860600" duration="6691000" />
+      <workItem from="1550416611301" duration="7696000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="UserServicesTests_sendPasswordResetEmail_CHANGEME - 2019.02.04 at 20h 42m 53s.xml">
-      <configuration name="UserServicesTests.sendPasswordResetEmail_CHANGEME" configurationId="JUnit" />
+    <history-entry file="ichop_services_in_itsgosho - 2019.02.13 at 17h 50m 44s.xml">
+      <configuration name="ichop.services in itsgosho" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UserServicesTests_sendPasswordResetEmail_withValidParameters_shouldPassTheConditions - 2019.02.04 at 21h 00m 10s.xml">
-      <configuration name="UserServicesTests.sendPasswordResetEmail_withValidParameters_shouldPassTheConditions" configurationId="JUnit" />
+    <history-entry file="ichop_services_in_itsgosho - 2019.02.13 at 18h 24m 26s.xml">
+      <configuration name="ichop.services in itsgosho" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UserServicesTests_sendPasswordResetEmail_withValidParameters_shouldPassTheConditions - 2019.02.04 at 21h 00m 26s.xml">
-      <configuration name="UserServicesTests.sendPasswordResetEmail_withValidParameters_shouldPassTheConditions" configurationId="JUnit" />
+    <history-entry file="ThreadServicesTests - 2019.02.13 at 18h 27m 58s.xml">
+      <configuration name="ThreadServicesTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UserServicesTests_sendPasswordResetEmail_withValidParameters_shouldPassTheConditions - 2019.02.04 at 21h 00m 51s.xml">
-      <configuration name="UserServicesTests.sendPasswordResetEmail_withValidParameters_shouldPassTheConditions" configurationId="JUnit" />
+    <history-entry file="All_in_itsgosho - 2019.02.16 at 21h 28m 13s.xml">
+      <configuration name="All in itsgosho" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UserServicesTests_sendPasswordResetEmail_withValidParameters_shouldPassTheConditions - 2019.02.04 at 21h 01m 42s.xml">
-      <configuration name="UserServicesTests.sendPasswordResetEmail_withValidParameters_shouldPassTheConditions" configurationId="JUnit" />
+    <history-entry file="java_ichop_in_itsgosho - 2019.02.16 at 21h 28m 21s.xml">
+      <configuration name="java.ichop in itsgosho" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UserServicesTests_sendPasswordResetEmail_withValidParameters_shouldPassTheConditions - 2019.02.04 at 21h 04m 44s.xml">
-      <configuration name="UserServicesTests.sendPasswordResetEmail_withValidParameters_shouldPassTheConditions" configurationId="JUnit" />
+    <history-entry file="java_ichop_services_in_itsgosho - 2019.02.16 at 21h 28m 31s.xml">
+      <configuration name="java.ichop.services in itsgosho" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UserServicesTests_sendPasswordResetEmail_withValidParameters_shouldPassTheConditions - 2019.02.04 at 21h 05m 12s.xml">
-      <configuration name="UserServicesTests.sendPasswordResetEmail_withValidParameters_shouldPassTheConditions" configurationId="JUnit" />
+    <history-entry file="ThreadServicesTests - 2019.02.16 at 21h 28m 38s.xml">
+      <configuration name="ThreadServicesTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UserServicesTests_sendPasswordResetEmail_CHANGEME - 2019.02.04 at 21h 05m 12s.xml">
-      <configuration name="UserServicesTests.sendPasswordResetEmail_CHANGEME" configurationId="JUnit" />
+    <history-entry file="PasswordResetTokenServicesTests - 2019.02.16 at 21h 28m 44s.xml">
+      <configuration name="PasswordResetTokenServicesTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UserServicesTests_sendPasswordResetEmail_withNotExistingUser_shouldThrowException - 2019.02.04 at 21h 07m 37s.xml">
-      <configuration name="UserServicesTests.sendPasswordResetEmail_withNotExistingUser_shouldThrowException" configurationId="JUnit" />
+    <history-entry file="UserBaseServicesTests - 2019.02.16 at 21h 28m 48s.xml">
+      <configuration name="UserBaseServicesTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UserServicesTests_sendPasswordResetEmail_withNotExistingUser_shouldThrowException - 2019.02.04 at 21h 08m 34s.xml">
-      <configuration name="UserServicesTests.sendPasswordResetEmail_withNotExistingUser_shouldThrowException" configurationId="JUnit" />
+    <history-entry file="UserServicesTests - 2019.02.16 at 21h 28m 52s.xml">
+      <configuration name="UserServicesTests" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="183895000" />
+    <option name="totallyTimeSpent" value="42419000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49758455" visible="true" weight="0.26399395" />
-      <window_info id="Structure" order="1" sideWeight="0.5024155" side_tool="true" weight="0.27836612" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26066098" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info id="Capture Tool" order="6" />
-      <window_info id="Web" order="7" sideWeight="0.5008" side_tool="true" weight="0.25746268" />
-      <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Problems" order="1" />
-      <window_info anchor="bottom" id="Message" order="2" />
-      <window_info anchor="bottom" id="Find" order="3" weight="0.32850242" />
-      <window_info anchor="bottom" id="Run" order="4" weight="0.32206118" />
-      <window_info anchor="bottom" id="Debug" order="5" weight="0.41384864" />
-      <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="8" />
-      <window_info anchor="bottom" id="Spring" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" />
-      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.32850242" />
-      <window_info anchor="bottom" id="Java Enterprise" order="13" weight="0.32939914" />
-      <window_info anchor="bottom" id="Database Changes" order="14" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="15" show_stripe_button="false" />
-      <window_info anchor="right" id="Coverage" side_tool="true" weight="0.32980332" />
-      <window_info anchor="right" id="Maven" order="0" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="4" />
-      <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info anchor="right" id="Maven Projects" order="6" />
-      <window_info anchor="right" id="Database" order="7" weight="0.32995737" />
-      <window_info anchor="right" id="Palette&#9;" order="8" />
-      <window_info anchor="right" id="Theme Preview" order="9" />
-      <window_info anchor="right" id="Bean Validation" order="10" />
+      <window_info id="Web" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3290461" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.41800642" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3993559" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Spring" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Java Enterprise" order="10" />
+      <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="12" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Messages" order="13" weight="0.3290461" />
+      <window_info anchor="bottom" id="Docker" order="14" show_stripe_button="false" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Maven Projects" order="5" />
+      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info anchor="right" id="Bean Validation" order="9" />
+      <window_info anchor="right" id="Maven" order="10" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/itsgosho/UserServicesTests.java" />
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/constants/URLConstants.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="26">
-          <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
+        <state relative-caret-position="448">
+          <caret line="35" column="42" selection-start-line="35" selection-start-column="42" selection-end-line="35" selection-end-column="42" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application-test.properties">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/5.1.1.RELEASE/spring-security-core-5.1.1.RELEASE-sources.jar!/org/springframework/security/core/userdetails/UsernameNotFoundException.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/service/thread/ThreadServices.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+        <state relative-caret-position="160">
+          <caret line="18" column="43" selection-start-line="18" selection-start-column="43" selection-end-line="18" selection-end-column="43" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/repository/user/UserRepository.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/domain/entities/threads/Comment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+          <folding>
+            <element signature="e#443#444#0" expanded="true" />
+            <element signature="e#472#473#0" expanded="true" />
+            <element signature="e#516#517#0" expanded="true" />
+            <element signature="e#552#553#0" expanded="true" />
+            <element signature="e#586#587#0" expanded="true" />
+            <element signature="e#616#617#0" expanded="true" />
+            <element signature="e#662#663#0" expanded="true" />
+            <element signature="e#700#701#0" expanded="true" />
+            <element signature="e#732#733#0" expanded="true" />
+            <element signature="e#762#763#0" expanded="true" />
+            <element signature="e#806#807#0" expanded="true" />
+            <element signature="e#844#845#0" expanded="true" />
+            <element signature="e#887#888#0" expanded="true" />
+            <element signature="e#919#920#0" expanded="true" />
+            <element signature="e#976#977#0" expanded="true" />
+            <element signature="e#1018#1019#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/res/img/avatar-user.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/domain/entities/users/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons/2.1.2.RELEASE/spring-data-commons-2.1.2.RELEASE-sources.jar!/org/springframework/data/repository/query/Param.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="31" column="18" selection-start-line="31" selection-start-column="18" selection-end-line="31" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/repository/thread/CommentRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
-          <caret line="9" column="9" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
+          <caret line="12" column="24" lean-forward="true" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/exceptions/user/UserNotFoundException.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/domain/models/view/thread/ThreadReadViewModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="3" column="62" lean-forward="true" selection-start-line="3" selection-start-column="62" selection-end-line="3" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.1.2.RELEASE/spring-web-5.1.2.RELEASE-sources.jar!/org/springframework/http/HttpStatus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="215" column="4" selection-start-line="215" selection-start-column="4" selection-end-line="215" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DIa4968.30595/UserServiceImpl.java" />
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DIa7432.13996/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-289" />
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DIa7432.14613/EventController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-896">
-          <caret line="41" column="60" lean-forward="true" selection-start-line="41" selection-start-column="60" selection-end-line="41" selection-end-column="60" />
-          <folding>
-            <element signature="e#1576#1577#0" expanded="true" />
-            <element signature="e#1622#1623#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/domain/models/service/thread/ThreadServiceModel.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/domain/entities/threads/Thread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="33" column="14" lean-forward="true" selection-start-line="33" selection-start-column="14" selection-end-line="33" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/service/user/UserServices.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="11" column="33" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/domain/models/service/user/UserServiceModel.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/web/controllers/user/UserAuthorizatonController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="11" column="41" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
+        <state relative-caret-position="112">
+          <caret line="11" column="8" lean-forward="true" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#617#618#0" expanded="true" />
+            <element signature="e#642#643#0" expanded="true" />
+            <element signature="e#678#679#0" expanded="true" />
+            <element signature="e#706#707#0" expanded="true" />
+            <element signature="e#738#739#0" expanded="true" />
+            <element signature="e#766#767#0" expanded="true" />
+            <element signature="e#808#809#0" expanded="true" />
+            <element signature="e#842#843#0" expanded="true" />
+            <element signature="e#885#886#0" expanded="true" />
+            <element signature="e#917#918#0" expanded="true" />
+            <element signature="e#974#975#0" expanded="true" />
+            <element signature="e#1016#1017#0" expanded="true" />
+            <element signature="e#1058#1059#0" expanded="true" />
+            <element signature="e#1096#1097#0" expanded="true" />
+            <element signature="e#1158#1159#0" expanded="true" />
+            <element signature="e#1212#1213#0" expanded="true" />
+            <element signature="e#1260#1261#0" expanded="true" />
+            <element signature="e#1303#1304#0" expanded="true" />
+            <element signature="e#1478#1479#0" expanded="true" />
+            <element signature="e#1511#1512#0" expanded="true" />
+            <element signature="e#1564#1565#0" expanded="true" />
+            <element signature="e#1608#1609#0" expanded="true" />
+            <element signature="e#1650#1651#0" expanded="true" />
+            <element signature="e#1687#1688#0" expanded="true" />
+            <element signature="e#1748#1749#0" expanded="true" />
+            <element signature="e#1800#1801#0" expanded="true" />
+            <element signature="e#1841#1842#0" expanded="true" />
+            <element signature="e#1877#1878#0" expanded="true" />
+            <element signature="e#1936#1937#0" expanded="true" />
+            <element signature="e#1986#1987#0" expanded="true" />
+            <element signature="e#2020#2021#0" expanded="true" />
+            <element signature="e#2050#2051#0" expanded="true" />
+            <element signature="e#2096#2097#0" expanded="true" />
+            <element signature="e#2134#2135#0" expanded="true" />
+            <element signature="e#2177#2178#0" expanded="true" />
+            <element signature="e#2215#2216#0" expanded="true" />
+            <element signature="e#2278#2279#0" expanded="true" />
+            <element signature="e#2332#2333#0" expanded="true" />
+            <element signature="e#2374#2375#0" expanded="true" />
+            <element signature="e#2405#2406#0" expanded="true" />
+            <element signature="e#2460#2461#0" expanded="true" />
+            <element signature="e#2500#2501#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-context/5.1.2.RELEASE/spring-context-5.1.2.RELEASE-sources.jar!/org/springframework/validation/Errors.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/res/js/constants-url.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/res/css/bootstrap-social.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/res/css/auth/register-dropdown.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2779">
-          <caret line="43" column="17" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="17" />
+        <state relative-caret-position="272">
+          <caret line="17" column="17" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/res/css/auth/login-dropdown.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/auth/forgotten_password-dropdown.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/auth/login-dropdown.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-310">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/res/js/auth/register/registerValidationsAndUtils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1008" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/res/js/auth/reset/resetPasswordFormValidation.js">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/res/js/auth/password/forgottenPasswordValidationsAndUtils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="20" column="20" lean-forward="true" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/res/js/auth/authFormsConfig.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/res/js/auth/authUtils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-752">
-          <caret line="7" column="63" selection-start-line="7" selection-start-column="63" selection-end-line="7" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/validators/fields/FieldsMustMatch.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/constants/URLConstants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="15" column="35" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/constants/ServerConstants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/constants/UserConstants.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/res/js/constants-url.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/res/js/constants-validation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="3" column="31" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/auth/register-dropdown.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="72" column="6" lean-forward="true" selection-start-line="72" selection-start-column="6" selection-end-line="72" selection-end-column="6" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/web/controllers/user/UserAuthenticationController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="35" column="8" lean-forward="true" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="8" />
-          <folding>
-            <element signature="method#UserAuthenticationController#0;class#UserAuthenticationController#0" />
-            <element signature="n#!!block;n#redirectToLoginDropdown#0;n#UserAuthenticationController#0" />
-            <element signature="n#!!block;n#redirectToRegisterDropdown#0;n#UserAuthenticationController#0" />
-            <element signature="method#getReset#0;class#UserAuthenticationController#0" />
-            <element signature="method#proceedPasswordReset#0;class#UserAuthenticationController#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/domain/entities/BaseEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/domain/models/binding/user/UserRegisterBindingModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/exceptions/user/UserAlreadyExistsException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="64">
           <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/web/controllers/GlobalExceptionController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/exceptions/user/PasswordsDoesntMatchException.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/res/css/auth/forgotten_password-dropdown.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="48">
-          <caret line="3" column="27" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/domain/models/binding/user/UserResetPasswordBindingModel.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/res/css/auth/reset_password-form.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="16">
+          <caret line="1" column="17" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/service/role/UserRoleServices.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/res/css/editor/text-editor.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        <state relative-caret-position="642">
+          <caret line="53" column="17" selection-start-line="53" selection-start-column="17" selection-end-line="53" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/service/role/UserRoleServicesImp.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/email/reset-password.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="18" column="20" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
+        <state relative-caret-position="772">
+          <caret line="66" column="11" lean-forward="true" selection-start-line="66" selection-start-column="11" selection-end-line="66" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.base/java/util/LinkedList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="109" column="11" selection-start-line="109" selection-start-column="11" selection-end-line="109" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/domain/entities/users/UserRole.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/service/role/UserRoles.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/components/email/EmailServices.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/base-page.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="64">
-          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+          <caret line="4" column="3" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/mockito/mockito-core/2.23.0/mockito-core-2.23.0.jar!/org/mockito/Mockito.class">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/res/css/navbar/top/top-navbar-guest.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="129" column="26" selection-start-line="129" selection-start-column="26" selection-end-line="129" selection-end-column="26" />
+        <state>
+          <caret column="7" selection-start-column="7" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/res/css/navbar/top/top-navbar-user.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="2" column="4" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/navbar/right-base-navbar.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/auth/register-dropdown.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="608">
+          <caret line="38" column="89" selection-start-line="38" selection-start-column="84" selection-end-line="38" selection-end-column="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/auth/reset_password-form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="736">
+          <caret line="46" column="8" lean-forward="true" selection-start-line="46" selection-start-column="8" selection-end-line="46" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/navbar/right/right-navbar-all.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="71" selection-start-column="71" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/navbar/top/top-navbar-user.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="4" column="68" selection-start-line="4" selection-start-column="68" selection-end-line="4" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/navbar/top/top-navbar-guest.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="4" column="69" selection-start-line="4" selection-start-column="69" selection-end-line="4" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/navbar/top-base-navbar.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="16" column="17" lean-forward="true" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/res/css/navbar/top-base-navbar.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/heads/head.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/notification/error.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="4" column="22" lean-forward="true" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/res/css/notification/notification.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="6" column="15" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/notification/info.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="3" column="11" lean-forward="true" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/thread/thread-read.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="768">
+          <caret line="72" column="43" lean-forward="true" selection-start-line="72" selection-start-column="43" selection-end-line="72" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/editor/text-editor.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1246">
+          <caret line="89" column="87" lean-forward="true" selection-start-line="89" selection-start-column="87" selection-end-line="89" selection-end-column="87" />
           <folding>
-            <element signature="e#4360#4361#0" expanded="true" />
-            <element signature="e#4417#4418#0" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#a#1;n#div#0;n#span#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#a#2;n#div#0;n#span#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#a#3;n#div#0;n#span#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#a#4;n#div#0;n#span#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#a#5;n#div#0;n#span#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#a#6;n#div#0;n#span#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#a#7;n#div#0;n#span#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#a#8;n#div#0;n#span#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#a#9;n#div#0;n#span#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#a#10;n#div#0;n#span#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#a#11;n#div#0;n#span#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#a#12;n#div#0;n#span#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#a#13;n#div#0;n#span#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#a#14;n#div#0;n#span#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#a#15;n#div#0;n#span#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#a#16;n#div#0;n#span#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#a#17;n#div#0;n#span#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#a#18;n#div#0;n#span#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#a#19;n#div#0;n#span#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#a#20;n#div#0;n#span#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#a#21;n#div#0;n#span#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#0;n#a#0;n#ul#0;n#span#1;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/mockito/mockito-core/2.23.0/mockito-core-2.23.0.jar!/org/mockito/stubbing/Stubber.class">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/res/js/editor/text-editor.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
+        <state relative-caret-position="-1950">
+          <caret line="11" column="60" selection-start-line="11" selection-start-column="60" selection-end-line="11" selection-end-column="60" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/internal/runners/model/ReflectiveCallable.class">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/domain/models/binding/thread/ThreadCreateBindingModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        <state relative-caret-position="64">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/domain/entities/users/User.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/web/controllers/thread/ThreadController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="38" column="61" lean-forward="true" selection-start-line="38" selection-start-column="61" selection-end-line="38" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/web/controllers/thread/ThreadRestController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/res/js/thread/create-thread-send.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="5" column="43" selection-start-line="5" selection-start-column="43" selection-end-line="5" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/service/thread/ThreadServicesImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="617">
+          <caret line="66" column="53" lean-forward="true" selection-start-line="66" selection-start-column="53" selection-end-line="66" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/domain/entities/threads/Thread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="40" column="33" selection-start-line="40" selection-start-column="33" selection-end-line="40" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/res/css/navbar/right/right-navbar-all.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16">
+          <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/thread/thread-create.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/domain/models/view/thread/ThreadHomepageViewModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="6" column="8" lean-forward="true" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+          <folding>
+            <element signature="e#1315#1316#0" expanded="true" />
+            <element signature="e#1367#1368#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/res/css/thread/thread-create.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="11" column="23" lean-forward="true" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/home-page.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
-          <caret line="90" selection-start-line="90" selection-end-line="90" />
+          <caret line="7" column="52" selection-start-line="7" selection-start-column="52" selection-end-line="7" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/thread/threads-all-home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="19" column="35" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
           <folding>
-            <element signature="e#2049#2050#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/domain/entities/tokens/Token.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="38" selection-start-line="38" selection-end-line="38" />
-          <folding>
-            <element signature="e#512#513#0" expanded="true" />
-            <element signature="e#540#541#0" expanded="true" />
-            <element signature="e#819#820#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/components/email/EmailServicesImp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="60" column="16" selection-start-line="60" selection-start-column="16" selection-end-line="60" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#sendSimpleMessage#0;class#EmailServicesImp#0" />
-            <element signature="method#sendEmailFromTemplate#0;class#EmailServicesImp#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/mockito/mockito-core/2.23.0/mockito-core-2.23.0.jar!/org/mockito/internal/creation/bytebuddy/MockMethodInterceptor.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="64" selection-start-line="64" selection-end-line="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/service/token/PasswordResetTokenServices.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/service/token/PasswordResetTokenServicesImp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="35">
-          <caret line="37" column="30" selection-start-line="37" selection-start-column="30" selection-end-line="37" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/service/user/UserServicesImp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-93">
-          <caret line="171" column="83" lean-forward="true" selection-start-line="171" selection-start-column="83" selection-end-line="171" selection-end-column="83" />
-          <folding>
-            <element signature="method#UserServicesImp#0;class#UserServicesImp#0" />
-            <element signature="method#isEmail#0;class#UserServicesImp#0" />
-            <element signature="method#register#0;class#UserServicesImp#0" />
-            <element signature="method#existsByUsername#0;class#UserServicesImp#0" />
-            <element signature="method#getInitialAuthorities#0;class#UserServicesImp#0" />
-            <element signature="method#getRole#0;class#UserServicesImp#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/ichop/services/user/UserServicesTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="299" lean-forward="true" selection-start-line="299" selection-end-line="299" />
-          <folding>
-            <element signature="e#1336#1370#0" />
-            <element signature="method#setUp#0;class#UserServicesTests#0" />
-            <element signature="method#loadByUsername_withValidUsername_shouldReturnValidUser#0;class#UserServicesTests#0" />
-            <element signature="method#loadByUsername_withValidEmail_shouldReturnValidUser#0;class#UserServicesTests#0" />
-            <element signature="method#loadByUsername_withNotExistingUsername_shouldThrowException#0;class#UserServicesTests#0" />
-            <element signature="method#loadByUsername_withNotExistingEmail_shouldThrowException#0;class#UserServicesTests#0" />
-            <element signature="method#isEmail_withValidEmail_shouldReturnTrue#0;class#UserServicesTests#0" />
-            <element signature="method#isEmail_withInvalidEmail_shouldReturnFalse#0;class#UserServicesTests#0" />
-            <element signature="method#register_withAlreadyExistingUsername_shouldThrowException#0;class#UserServicesTests#0" />
-            <element signature="method#register_withAlreadyExistingEmail_shouldThrowException#0;class#UserServicesTests#0" />
-            <element signature="method#register_withDifferentPasswordAndConfirmPassword_shouldThrowException#0;class#UserServicesTests#0" />
-            <element signature="method#register_withValidParameters_shouldEncodeThePassword#0;class#UserServicesTests#0" />
-            <element signature="method#register_withFirstRegisteredUser_shouldHaveOwnerRank#0;class#UserServicesTests#0" />
-            <element signature="method#register_withFirstRegisteredUser_shouldHaveOwnerRank#1;class#UserServicesTests#0" />
-            <element signature="method#getRole_withOneRole_shouldReturnUser#0;class#UserServicesTests#0" />
-            <element signature="method#getRole_withOneRole_shouldReturnOneRole#0;class#UserServicesTests#0" />
-            <element signature="method#getRole_withOneRole_shouldReturnUser#1;class#UserServicesTests#0" />
-            <element signature="method#getUserByUsername_withExistingUsername_shouldReturnValidResult#0;class#UserServicesTests#0" />
-            <element signature="method#getUserByUsername_withNotExistingUsername_shouldReturnInvalidResult#0;class#UserServicesTests#0" />
-            <element signature="method#getUserByUsername_withExistingUsername_shouldReturnValidResult#1;class#UserServicesTests#0" />
-            <element signature="method#getUserByUsername_withNotExistingUsername_shouldReturnInvalidResult#1;class#UserServicesTests#0" />
+            <element signature="n#style#0;n#small#0;n#div#1;n#div#0;n#div#0;n#th:block#0;n#th:block#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#3;n#div#0;n#th:block#0;n#th:block#0;n#div#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1004,84 +1209,9 @@
           </splitter-proportions>
         </settings>
       </state>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <last-edited>itsgosho:war</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-                <option value="0.5" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <last-edited>Spring</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <last-edited>bootstrap</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>itsgosho</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-                <option value="0.6" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
       <state key="ProjectJDKs.UI">
         <settings>
           <last-edited>11</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <last-edited>Maven: antlr:antlr:2.7.7</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

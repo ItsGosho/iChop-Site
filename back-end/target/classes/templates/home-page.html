@@ -1,6 +1,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
 <div id="home-page" class="container d-flex justify-content-center align-items-center">
     <div class="row">
 
@@ -12,39 +13,39 @@
                 </div>
                 <th:block th:if="${!#lists.isEmpty(threads)}">
 
-                <th:block th:each="thread : ${threads}">
-                    <div th:id="${thread.getId()}" class="card-body">
+                <th:block th:each="thread : ${threads}" th:object="${thread}">
+                    <div th:id="*{id}" class="card-body">
                         <div class="row">
                             <div class="col-md-8">
-                                <h3 class="title" th:text="${thread.getTitle()}">...</h3>
+                                <h3 class="title" th:text="*{title}">...</h3>
                             </div>
                             <div class="col-md-4">
                                 <small style="display: inline-block;padding-top: 18px;float:right;">
                                     <small class="dateIcon">📅</small>
-                                    <small class="date" th:text="${#temporals.format(thread.getCreatedOn(), 'dd MMM,yyyy')}">9 Jan,2018</small>
+                                    <small class="date" th:text="*{#temporals.format(createdOn, 'dd MMM,yyyy')}">9 Jan,2018</small>
                                 </small>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-8">
-                                <small>by <a href="/SMENI">👤<span class="user" th:text="${thread.getCreator().getUsername()}">ItsGosho</span></a> at
+                                <small>by <a href="/SMENI">👤<span class="user" th:text="*{creatorUsername}"></span></a> at
                                     <span
-                                        class="postTime" th:text="${#temporals.format(thread.getCreatedOn(), 'HH:mm')}">16:32</span>
+                                        class="postTime" th:text="*{#temporals.format(createdOn, 'HH:mm')}"></span>
                                     <th:block sec:authorize="isAnonymous()">
                                         (<span
-                                            class="totalViews" th:text="${thread.getTotalViews()}">0</span>👀 / <span
-                                            class="totalLikes" th:text="${thread.getTotalReactions()}">0</span>👍)
+                                            class="totalViews" th:text="*{totalViews}">0</span>👀 / <span
+                                            class="totalLikes" th:text="*{totalReactions}">0</span>👍)
                                     </th:block>
                                     <th:block sec:authorize="isAuthenticated()">
                                         <th:block sec:authorize="hasAuthority('MODERATOR')">
                                             (<a href="/SAMO AKO IMA PRAVA"><span
-                                                class="totalViews" th:text="${thread.getTotalViews()}">0</span></a>👀 / <a href="/SAMO AKO IMA PRAVA"><span
-                                                class="totalLikes" th:text="${thread.getTotalReactions()}">0</span></a>👍)
+                                                class="totalViews" th:text="*{totalViews}">0</span></a>👀 / <a href="/SAMO AKO IMA PRAVA"><span
+                                                class="totalLikes" th:text="*{totalReactions}">0</span></a>👍)
                                         </th:block>
                                         <th:block sec:authorize="!hasAuthority('MODERATOR')">
                                             (<span
-                                                class="totalViews" th:text="${thread.getTotalViews()}">0</span>👀 / <span
-                                                class="totalLikes" th:text="${thread.getTotalReactions()}">0</span>👍)
+                                                class="totalViews" th:text="*{totalViews}">0</span>👀 / <span
+                                                class="totalLikes" th:text="*{totalReactions}">0</span>👍)
                                         </th:block>
                                     </th:block>
                                 </small>
@@ -52,13 +53,13 @@
                             <div class="col-md-4">
                                 <small style="display: inline-block;padding-top: 18px;float:right;">
                                     <small>💬</small>
-                                    <a href="/SMENI"><span class="totalComments" th:text="${thread.getTotalComments()}"></span></a> Comments
+                                    <a href="/SMENI"><span class="totalComments" th:text="*{totalComments}"></span></a> Comments
                                 </small>
                             </div>
                         </div>
                         <div class="dropdown-divider"></div>
 
-                        <div class="content" th:id="'content' + ${thread.getId()}">
+                        <div class="content" th:id="'content' + *{id}">
                             <p class="card-text" style="width: 60vw;min-width: 230px" th:utext="${thread.getContent()}">
 
                             </p>
@@ -91,7 +92,7 @@
                                             </button>
                                             <div class="dropdown-menu">
                                                 <th:block sec:authorize="hasAuthority('ADMIN')">
-                                                    <a class="dropdown-item" th:href="@{/thread/{id}/delete(id=${thread.getId()})}">
+                                                    <a class="dropdown-item" th:href="@{/thread/{id}/delete(id=*{id})}">
                                                         <small>❌</small>
                                                         Delete</a>
                                                 </th:block>
@@ -101,11 +102,13 @@
                                 </div>
                             </div>
                             <div class="col-md-4">
+                                <a class="dropdown-item" th:href="@{/thread/{id}/read(id=*{id})}">
                                 <button type="button" style="display: inline-block;float:right;"
                                         class="btn btn-primary btn-sm btn-brand btn-reddit">
                                     <small>📖</small>
                                     Continue reading...
                                 </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -146,6 +149,7 @@
                 <th:block th:if="${#lists.isEmpty(threads)}">
                     There are no news!
                 </th:block>
+
             </div>
         </div>
 

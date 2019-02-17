@@ -26,12 +26,14 @@ public final class URLConstants {
     //-UserRestController
     public static final String USER_SEND_EMAIL_RESET_PASSWORD_POST = "/users/send-email/reset/password";
 
+
     //Thread -------------------------------------------------------------------------------------------------
 
     //-ThreadController
     private static final String THREAD_PREFIX = "/thread";
     public static final String THREAD_CREATE_POST = THREAD_PREFIX + "/create";
     public static final String THREAD_DELETE_GET = THREAD_PREFIX + "/{id}/delete";
+    public static final String THREAD_READ_GET = THREAD_PREFIX + "/{id}/read";
 
     //-ThreadRestController
     public static final String THREAD_CREATE_GET = THREAD_PREFIX + "/create";

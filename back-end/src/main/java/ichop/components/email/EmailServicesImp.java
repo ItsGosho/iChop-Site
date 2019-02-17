@@ -70,6 +70,6 @@ public class EmailServicesImp implements EmailServices {
         properties.put("expireDate",tokenExpireDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")));
         properties.put("passwordResetUrl", passwordResetUrl);
 
-        this.sendEmailFromTemplate(userEmail, "iChop - Reset Password", properties, "email/reset-password.html");
+        this.sendEmailFromTemplate(userEmail, "iChop - Reset Password", properties, "templates/email/reset-password.html");
     }
 }

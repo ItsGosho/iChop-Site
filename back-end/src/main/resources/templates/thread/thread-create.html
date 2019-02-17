@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="/res/css/thread/thread-create.css">
+
+
 <div id="createThread-page" class="container d-flex justify-content-center align-items-center">
     <div class="row">
 
@@ -7,7 +10,7 @@
                     <small>🆕</small>
                     Create a new thread:
                 </div>
-                <div id="1" class="card-body">
+                <div class="card-body">
                     <form method="post">
                         <div class="row">
                             <div class="col-md-12">
@@ -20,139 +23,11 @@
                         <div class="dropdown-divider"></div>
 
 
-                        <div class="row">
-                            <div class="col-md-8">
-                                <a href="#" id="button-formatBold-createThread" title="Bold" onclick="event.preventDefault()"><i class="material-icons">format_bold</i></a>
-                                <a href="#" id="button-formatItalic-createThread" title="Italic" onclick="event.preventDefault()"><i class="material-icons">format_italic</i></a>
-                                <a href="#" id="button-formatUnderline-createThread" title="Underline" onclick="event.preventDefault()"><i class="material-icons">format_underlined</i></a>
-
-                                <span>
-                                    <a href="#" id="button-color-createThread" data-toggle="dropdown"
-                                       aria-haspopup="true" aria-expanded="false"  title="Color" onclick="event.preventDefault()"><i class="material-icons">invert_colors</i></a>
-
-                                    <div class="col-md-12 dropdown-menu" aria-labelledby="button-color-createThread" style="background-color: darkgrey">
-                                        <a href="#" id="button-color_white-createThread" title="White" onclick="event.preventDefault()"><i class="material-icons" style="color: white">format_paint</i></a>
-                                        <a href="#" id="button-color_black-createThread" title="Black" onclick="event.preventDefault()"><i class="material-icons" style="color: black">format_paint</i></a>
-                                        <a href="#" id="button-color_grey-createThread" title="Grey" onclick="event.preventDefault()"><i class="material-icons" style="color: gray">format_paint</i></a>
-                                        <a href="#" id="button-color_red-createThread" title="Red" onclick="event.preventDefault()"><i class="material-icons" style="color: red">format_paint</i></a>
-                                        <a href="#" id="button-color_redDark-createThread" title="Dark Red" onclick="event.preventDefault()"><i class="material-icons" style="color: darkred">format_paint</i></a>
-                                        <a href="#" id="button-color_redIndian-createThread" title="Indian Red" onclick="event.preventDefault()"><i class="material-icons" style="color: indianred">format_paint</i></a>
-                                        <a href="#" id="button-color_green-createThread" title="Green" onclick="event.preventDefault()"><i class="material-icons" style="color: green">format_paint</i></a>
-                                        <a href="#" id="button-color_greenDark-createThread" title="Dark Green" onclick="event.preventDefault()"><i class="material-icons" style="color: darkgreen">format_paint</i></a>
-                                        <a href="#" id="button-color_greenYellow-createThread" title="Yellow Green" onclick="event.preventDefault()"><i class="material-icons" style="color: greenyellow">format_paint</i></a>
-                                        <a href="#" id="button-color_blue-createThread" title="Blue" onclick="event.preventDefault()"><i class="material-icons" style="color: blue">format_paint</i></a>
-                                        <a href="#" id="button-color_blueDark-createThread" title="Dark Blue" onclick="event.preventDefault()"><i class="material-icons" style="color: darkblue">format_paint</i></a>
-                                        <a href="#" id="button-color_blueDeepSky-createThread" title="Deep Sky Blue" onclick="event.preventDefault()"><i class="material-icons" style="color: deepskyblue">format_paint</i></a>
-                                        <a href="#" id="button-color_brown-createThread" title="Brown" onclick="event.preventDefault()"><i class="material-icons" style="color: brown">format_paint</i></a>
-                                        <a href="#" id="button-color_brownSaddle-createThread" title="Saddle Brown" onclick="event.preventDefault()"><i class="material-icons" style="color: saddlebrown">format_paint</i></a>
-                                        <a href="#" id="button-color_brownSandy-createThread" title="Sandy Brown" onclick="event.preventDefault()"><i class="material-icons" style="color: sandybrown">format_paint</i></a>
-                                        <a href="#" id="button-color_pink-createThread" title="Pink" onclick="event.preventDefault()"><i class="material-icons" style="color: pink">format_paint</i></a>
-                                        <a href="#" id="button-color_pinkDeep-createThread" title="Deep Pink" onclick="event.preventDefault()"><i class="material-icons" style="color: deeppink">format_paint</i></a>
-                                        <a href="#" id="button-color_pinkHot-createThread" title="Hot Pink" onclick="event.preventDefault()"><i class="material-icons" style="color: hotpink">format_paint</i></a>
-                                        <a href="#" id="button-color_yellow-createThread" title="Yellow" onclick="event.preventDefault()"><i class="material-icons" style="color: yellow">format_paint</i></a>
-                                        <a href="#" id="button-color_purple-createThread" title="Purple" onclick="event.preventDefault()"><i class="material-icons" style="color: purple">format_paint</i></a>
-                                        <a href="#" id="button-color_purpleMedium-createThread" title="Medium Purple" onclick="event.preventDefault()"><i class="material-icons" style="color: mediumpurple">format_paint</i></a>
-                                        <a href="#" id="button-color_purpleRebeca-createThread" title="Rebeca Purple" onclick="event.preventDefault()"><i class="material-icons" style="color: rebeccapurple">format_paint</i></a>
-                                    </div>
-                                </span>
-
-                                <span>
-                                        <a href="#" id="button-fontSize-createThread" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Font Size" onclick="event.preventDefault()"><i class="material-icons">format_size</i></a>
-                                        <ul class="dropdown-menu scrollable-menu" role="menu" style="min-height: 100px;max-height: 100px;overflow: auto">
-                                        <a id="button-fontSize_1-createThread" data-content="1" href="#" onclick="event.preventDefault()"><li style="font-size: 9px;">1</li></a>
-                                        <a id="button-fontSize_2-createThread" data-content="2" href="#" onclick="event.preventDefault()"><li style="font-size: 10px;">2</li></a>
-                                        <a id="button-fontSize_3-createThread" data-content="3" href="#" onclick="event.preventDefault()"><li style="font-size: 12px;">3</li></a>
-                                        <a id="button-fontSize_4-createThread" data-content="4" href="#" onclick="event.preventDefault()"><li style="font-size: 15px;">4</li></a>
-                                        <a id="button-fontSize_5-createThread" data-content="5" href="#" onclick="event.preventDefault()"><li style="font-size: 18px;">5</li></a>
-                                        <a id="button-fontSize_6-createThread" data-content="6" href="#" onclick="event.preventDefault()"><li style="font-size: 22px;">6</li></a>
-                                        <a id="button-fontSize_7-createThread" data-content="7" href="#" onclick="event.preventDefault()"><li style="font-size: 26px;">7</li></a>
-                                    </ul>
-                                </span>
-
-                                <span>
-                                        <a href="#" id="button-fontFamily-createThread" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Font Family" onclick="event.preventDefault()"><i class="material-icons">font_download</i></a>
-                                        <ul class="dropdown-menu scrollable-menu" role="menu" style="min-height: 100px;max-height: 100px;overflow: auto">
-                                        <a id="button-fontFamily_arial-createThread" data-content="Arial" href="#" onclick="event.preventDefault()"><li style="font-family: 'Arial'">Arial</li></a>
-                                        <a id="button-fontFamily_bookAntiqua-createThread" data-content="Book Antiqua" href="#" onclick="event.preventDefault()"><li style="font-family: 'Book Antiqua'">Book Antiqua</li></a>
-                                        <a id="button-fontFamily_courierNew-createThread" data-content="Courier New" href="#" onclick="event.preventDefault()"><li style="font-family: 'Courier New'">Courier New</li></a>
-                                        <a id="button-fontFamily_georgia-createThread" data-content="Georgia" href="#" onclick="event.preventDefault()"><li style="font-family: 'Georgia'">Georgia</li></a>
-                                        <a id="button-fontFamily_tahoma-createThread" data-content="Tahoma" href="#" onclick="event.preventDefault()"><li style="font-family: 'Tahoma'">Tahoma</li></a>
-                                        <a id="button-fontFamily_timesNewRoman-createThread" data-content="Times New Roman" href="#" onclick="event.preventDefault()"><li style="font-family: 'Times New Roman'">Times New Roman</li></a>
-                                        <a id="button-fontFamily_trebuchetMS-createThread" data-content="Trebuchet MS" href="#" onclick="event.preventDefault()"><li style="font-family: 'Trebuchet MS'">Trebuchet MS</li></a>
-                                        <a id="button-fontFamily_verdana-createThread" data-content="Verdana" href="#" onclick="event.preventDefault()"><li style="font-family: 'Verdana'">Verdana</li></a>
-                                    </ul>
-                                </span>
-
-                                <a href="#" id="button-insertLink-createThread" data-toggle="modal" data-target="#modal-insertLink-createThread" title="Insert Link" onclick="event.preventDefault()"><i class="material-icons">insert_link</i></a>
-                                <div class="modal fade" id="modal-insertLink-createThread" tabindex="-1" role="dialog" aria-labelledby="modalLabelInsertLink" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="modalLabelInsertLink">Insert Link</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="input-group mb-3">
-                                                    <input id="input-insertLink-createThread" type="text" class="form-control"
-                                                           aria-describedby="basic-addon1" placeholder="Example: https://youtube.com...">
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                <button id="button-proceedInsertLink-createThread" type="button" class="btn btn-primary">Insert</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <a href="#" id="button-insertImage-createThread" data-toggle="modal" data-target="#modal-insertImage-createThread" title="Insert Image" onclick="event.preventDefault()"><i class="material-icons">photo</i></a>
-                                <div class="modal fade" id="modal-insertImage-createThread" tabindex="-1" role="dialog" aria-labelledby="modalLabelInsertImage" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="modalLabelInsertImage">Image URL</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="input-group mb-3">
-                                                    <input id="input-insertImage-createThread" type="text" class="form-control"
-                                                           aria-describedby="basic-addon1" placeholder="">
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                <button id="button-proceedInsertImage-createThread" type="button" class="btn btn-primary">Insert</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <a href="#" id="button-undo-createThread" title="Undo" onclick="event.preventDefault()"><i class="material-icons">undo</i></a>
-                                <a href="#" id="button-redo-createThread" title="Redo" onclick="event.preventDefault()"><i class="material-icons">redo</i></a>
-                                <a href="#" id="button-removeFormatting-createThread" title="Remove Formatting" onclick="event.preventDefault()"><i class="material-icons">format_clear</i></a>
-
-                                <span>
-                                        <a href="#" id="button-textAlign-createThread" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Text Align" onclick="event.preventDefault()"><i class="material-icons">format_align_justify</i></a>
-                                    <ul class="dropdown-menu scrollable-menu" role="menu">
-                                        <a id="button-alignLeft-createThread" href="#" onclick="event.preventDefault()"><li><i class="material-icons">format_align_left</i>Align Left</li></a>
-                                        <a id="button-alignCenter-createThread" href="#" onclick="event.preventDefault()"><li><i class="material-icons">format_align_center</i>Align Center</li></a>
-                                        <a id="button-alignRight-createThread" href="#" onclick="event.preventDefault()"><li><i class="material-icons">format_align_right</i>Align Right</li></a>
-                                    </ul>
-                                </span>
-
-
-
-                            </div>
-                        </div>
+                        <th:block th:insert="editor/text-editor"></th:block>
 
                         <div class="dropdown-divider"></div>
                         <div class="col-md-13">
-                            <div id="textarea-content-createThread" contenteditable="true" style="border:1px solid #ccc;border-radius: 3px;width: 60vw;min-width: 230px;min-height: 25vw;max-height: 25vw;overflow: auto;">
+                            <div id="textarea-content-createThread" contenteditable="true">
 
                             </div>
                         </div>
@@ -164,234 +39,13 @@
                                    aria-describedby="basic-addon1" name="rowsForNewsPage" placeholder="Rows for news">
                         </div>
 
-                        <div class="row" style="margin-top: 1%;">
-                            <button id="button-proceedCreateThread-createThread" style="margin-left: 35%;margin-right: 35%" type="button" class="btn btn-success btn-lg btn-block">Create</button>
+                        <div class="row">
+                            <button id="button-proceedCreateThread-createThread" type="button" class="btn btn-success btn-lg btn-block">Create</button>
                         </div>
 
-                        <script>
-                            let buttonCreateThread = $(`#button-proceedCreateThread-createThread`);
-                            let contentDiv= $(`#textarea-content-createThread`);
-                            let titleField = $(`#input-title-threadCreate`);
-                            let rows = $(`#input-rowsForNewsPage-threadCreate`);
+                        <script src="/res/js/thread/create-thread-send.js"></script>
 
-                            buttonCreateThread.on(`click`,function () {
-                                $.ajax({
-                                    method: "POST",
-                                    url: URL_API_CREATE_THREAD,
-                                    data: {title:titleField.val(),content:contentDiv.html(),rowsForNewsPage:rows.val()},
-                                    success: function (isSuccessful) {
-                                        if(isSuccessful){
-                                            window.location.href="/";
-                                        }
-                                    }
-                                });
-                            });
-                        </script>
-
-                        <script>
-                            let button_formatBold = $(`#button-formatBold-createThread`);
-                            let button_formatItalic = $(`#button-formatItalic-createThread`);
-                            let button_formatUnderline = $(`#button-formatUnderline-createThread`);
-
-                            let button_color_white = $(`#button-color_white-createThread`);
-                            let button_color_black = $(`#button-color_black-createThread`);
-                            let button_color_gray = $(`#button-color_grey-createThread`);
-                            let button_color_red = $(`#button-color_red-createThread`);
-                            let button_color_redDark = $(`#button-color_redDark-createThread`);
-                            let button_color_redIndian = $(`#button-color_redIndian-createThread`);
-                            let button_color_green = $(`#button-color_green-createThread`);
-                            let button_color_greenDark = $(`#button-color_greenDark-createThread`);
-                            let button_color_greenYellow = $(`#button-color_greenYellow-createThread`);
-                            let button_color_blue = $(`#button-color_blue-createThread`);
-                            let button_color_blueDark = $(`#button-color_blueDark-createThread`);
-                            let button_color_blueDeepSky = $(`#button-color_blueDeepSky-createThread`);
-                            let button_color_brown = $(`#button-color_brown-createThread`);
-                            let button_color_brownSaddle = $(`#button-color_brownSaddle-createThread`);
-                            let button_color_brownSandy = $(`#button-color_brownSandy-createThread`);
-                            let button_color_pink = $(`#button-color_pink-createThread`);
-                            let button_color_pinkDeep = $(`#button-color_pinkDeep-createThread`);
-                            let button_color_pinkHot = $(`#button-color_pinkHot-createThread`);
-                            let button_color_yellow = $(`#button-color_yellow-createThread`);
-                            let button_color_purple = $(`#button-color_purple-createThread`);
-                            let button_color_purpleMedium = $(`#button-color_purpleMedium-createThread`);
-                            let button_color_purpleRebeca = $(`#button-color_purpleRebeca-createThread`);
-
-                            let button_fontSize_1= $(`#button-fontSize_1-createThread`);
-                            let button_fontSize_2= $(`#button-fontSize_2-createThread`);
-                            let button_fontSize_3= $(`#button-fontSize_3-createThread`);
-                            let button_fontSize_4= $(`#button-fontSize_4-createThread`);
-                            let button_fontSize_5= $(`#button-fontSize_5-createThread`);
-                            let button_fontSize_6= $(`#button-fontSize_6-createThread`);
-                            let button_fontSize_7= $(`#button-fontSize_7-createThread`);
-
-                            let button_fontFamily_arial = $(`#button-fontFamily_arial-createThread`);
-                            let button_fontFamily_bookAntiqua = $(`#button-fontFamily_bookAntiqua-createThread`);
-                            let button_fontFamily_courierNew = $(`#button-fontFamily_courierNew-createThread`);
-                            let button_fontFamily_georgia = $(`#button-fontFamily_georgia-createThread`);
-                            let button_fontFamily_tahoma = $(`#button-fontFamily_tahoma-createThread`);
-                            let button_fontFamily_timesNewRoman = $(`#button-fontFamily_timesNewRoman-createThread`);
-                            let button_fontFamily_trebuchetMS = $(`#button-fontFamily_trebuchetMS-createThread`);
-                            let button_fontFamily_verdana = $(`#button-fontFamily_verdana-createThread`);
-
-                            let modal_insertLink = $(`#modal-insertLink-createThread`);
-                            let button_proceedInsertLink = $(`#button-proceedInsertLink-createThread`);
-                            let input_insertLinkThread = $(`#input-insertLink-createThread`);
-
-                            let modal_insertImage = $(`#modal-insertImage-createThread`);
-                            let button_proceedInsertImage = $(`#button-proceedInsertImage-createThread`);
-                            let input_insertImageThread = $(`#input-insertImage-createThread`);
-
-                            let button_undo = $(`#button-undo-createThread`);
-                            let button_redo = $(`#button-redo-createThread`);
-                            let button_removeFormatting = $(`#button-removeFormatting-createThread`);
-
-                            let button_alignLeft = $(`#button-alignLeft-createThread`);
-                            let button_alignCenter = $(`#button-alignCenter-createThread`);
-                            let button_alignRight = $(`#button-alignRight-createThread`);
-
-
-                            button_alignLeft.on(`click`,function () {
-                                document.execCommand(`justifyLeft`)
-                            });
-
-                            button_alignCenter.on(`click`,function () {
-                                document.execCommand(`justifyCenter`)
-                            });
-
-                            button_alignRight.on(`click`,function () {
-                                document.execCommand(`justifyRight`)
-                            });
-
-
-                            button_proceedInsertLink.on(`click`,function () {
-                                let link = input_insertLinkThread.val();
-                                document.execCommand(`createLink`,false,link);
-                                modal_insertLink.modal(`hide`);
-                            });
-
-                            button_proceedInsertImage.on(`click`,function () {
-                                let url = input_insertImageThread.val();
-                                document.execCommand(`insertImage`,false,url);
-
-                                let image = $(`img[src="`+url+`"`);
-                                image.css(`height`,`100%`);
-                                image.css(`width`,`100%`);
-                                image.css(`object-fit`,`contain`);
-
-                                modal_insertImage.modal(`hide`);
-                            });
-
-                            button_undo.on(`click`,function () {
-                                document.execCommand(`undo`);
-                            });
-
-                            button_redo.on(`click`,function () {
-                                document.execCommand(`redo`);
-                            });
-
-                            button_removeFormatting.on(`click`,function () {
-                                document.execCommand(`removeFormat`);
-                            });
-
-
-                            //Proceed styles -----------------------------------------------
-
-                            button_formatBold.on(`click`, formatTextBold);
-                            button_formatItalic.on(`click`, formatTextItalic);
-                            button_formatUnderline.on(`click`, formatTextUnderline);
-
-                            function formatTextBold() {
-                                document.execCommand(`bold`);
-                            }
-
-                            function formatTextItalic() {
-                                document.execCommand(`italic`);
-                            }
-
-                            function formatTextUnderline() {
-                                document.execCommand(`underline`);
-                            }
-
-                            //Proceed colors ------------------------------------------------
-
-                            bindColorListener(button_color_white);
-                            bindColorListener(button_color_black);
-                            bindColorListener(button_color_black);
-                            bindColorListener(button_color_gray);
-                            bindColorListener(button_color_red);
-                            bindColorListener(button_color_redDark);
-                            bindColorListener(button_color_redIndian);
-                            bindColorListener(button_color_green);
-                            bindColorListener(button_color_greenDark);
-                            bindColorListener(button_color_greenYellow);
-                            bindColorListener(button_color_blue);
-                            bindColorListener(button_color_blueDark);
-                            bindColorListener(button_color_blueDeepSky);
-                            bindColorListener(button_color_brown);
-                            bindColorListener(button_color_brownSaddle);
-                            bindColorListener(button_color_brownSandy);
-                            bindColorListener(button_color_pink);
-                            bindColorListener(button_color_pinkDeep);
-                            bindColorListener(button_color_pinkHot);
-                            bindColorListener(button_color_yellow);
-                            bindColorListener(button_color_purple);
-                            bindColorListener(button_color_purpleMedium);
-                            bindColorListener(button_color_purpleRebeca);
-
-                            function bindColorListener(element) {
-                                element.on(`click`,{colorHex:getHexColor(element)},formatColor);
-
-                                function getHexColor(element) {
-                                    return rgb2hex($(element.children()[0]).css(`color`));
-
-                                    function rgb2hex(rgb){
-                                        rgb = rgb.match(/^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i);
-                                        return (rgb && rgb.length === 4) ? "#" +
-                                            ("0" + parseInt(rgb[1],10).toString(16)).slice(-2) +
-                                            ("0" + parseInt(rgb[2],10).toString(16)).slice(-2) +
-                                            ("0" + parseInt(rgb[3],10).toString(16)).slice(-2) : '';
-                                    }
-                                }
-
-                                function formatColor(event) {
-                                    document.execCommand(`foreColor`,false,event.data.colorHex);
-                                }
-                            }
-
-                            //Proceed fontSize -----------------------------------------------
-
-                            bindFontSizeListener(button_fontSize_1);
-                            bindFontSizeListener(button_fontSize_2);
-                            bindFontSizeListener(button_fontSize_3);
-                            bindFontSizeListener(button_fontSize_4);
-                            bindFontSizeListener(button_fontSize_5);
-                            bindFontSizeListener(button_fontSize_6);
-                            bindFontSizeListener(button_fontSize_7);
-
-                            function bindFontSizeListener(element) {
-                                element.on(`click`,function () {
-                                    document.execCommand(`fontSize`,false,Number(element.attr(`data-content`)));
-                                });
-                            }
-
-                            //Proceed fontFamily ----------------------------------------------
-
-                            bindFontFamilyListener(button_fontFamily_arial);
-                            bindFontFamilyListener(button_fontFamily_bookAntiqua);
-                            bindFontFamilyListener(button_fontFamily_courierNew);
-                            bindFontFamilyListener(button_fontFamily_georgia);
-                            bindFontFamilyListener(button_fontFamily_tahoma);
-                            bindFontFamilyListener(button_fontFamily_timesNewRoman);
-                            bindFontFamilyListener(button_fontFamily_trebuchetMS);
-                            bindFontFamilyListener(button_fontFamily_verdana);
-
-                            function bindFontFamilyListener(element) {
-                                element.on(`click`,function () {
-                                    document.execCommand(`fontName`,false, element.attr(`data-content`));
-                                })
-                            }
-
-                        </script>
+                        <script src="/res/js/editor/text-editor.js"></script>
 
                     </form>
                 </div>

@@ -1,11 +1,13 @@
-<div id="div-registerForm" style="display:none">
+<link rel="stylesheet" href="/res/css/auth/register-dropdown.css">
+
+<div id="div-register-dropdown">
     <form class="px-4 py-3" method="post" action="/register">
 
         <div class="form-group">
-            <small id="error-usernameAlreadyExists-registerForm" style="display:none">⚡Username already
+            <small id="error-usernameAlreadyExists-registerForm">⚡Username already
                 exists!
             </small>
-            <small id="error-usernameIsShort-registerForm" style="display:none">⚡Username must be at
+            <small id="error-usernameIsShort-registerForm">⚡Username must be at
                 least 3 characters long!
             </small>
             <div class="input-group mb-2">
@@ -39,7 +41,7 @@
             </div>
         </div>
         <div class="form-group">
-            <small id="error-passwordsDoesntMatch-registerForm" style="display:none">⚡Passwords doesn't match!
+            <small id="error-passwordsDoesntMatch-registerForm">⚡Passwords doesn't match!
             </small>
             <div class="input-group mb-2">
                 <div class="input-group-prepend">
@@ -51,7 +53,7 @@
             </div>
         </div>
         <div class="form-group">
-            <small id="error-emailAlreadyExists-registerForm" style="display:none">⚡Email already
+            <small id="error-emailAlreadyExists-registerForm">⚡Email already
                 exists!
             </small>
             <div class="input-group mb-2">

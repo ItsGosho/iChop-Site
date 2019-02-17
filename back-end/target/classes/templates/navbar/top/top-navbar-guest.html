@@ -2,7 +2,9 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
+<link rel="stylesheet" href="/res/css/navbar/top/top-navbar-guest.css">
 <script src="/res/js/auth/authUtils.js"></script>
+
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
 
@@ -29,16 +31,6 @@
 
                     <th:block th:insert="auth/forgotten_password-dropdown.html"></th:block>
 
-
-                    <!--Will move all style settings in css ,cuz now is too late for this!-->
-
-                    <style>
-                        @media screen and (min-width: 600px) {
-                            #div-authForms-signInForm {
-                                width: 350px;
-                            }
-                        }
-                    </style>
 
                     <!--SCRIPT!!!-->
                     <script src="/res/js/auth/authFormsConfig.js"></script>
