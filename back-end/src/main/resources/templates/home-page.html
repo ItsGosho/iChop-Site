@@ -5,8 +5,12 @@
 <div id="home-page" class="container d-flex justify-content-center align-items-center">
     <div class="row">
 
-        <th:block th:insert="thread/threads-all-home"></th:block>
+        <div class="col-md-10">
+            <th:block th:insert="thread/threads-all-home"></th:block>
+        </div>
+        <div class="col-md-2">
+            <th:block th:insert="navbar/right-base-navbar"></th:block>
+        </div>
 
-        <th:block th:insert="navbar/right-base-navbar"></th:block>
     </div>
 </div>

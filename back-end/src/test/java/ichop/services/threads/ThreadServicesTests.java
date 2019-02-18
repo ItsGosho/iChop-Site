@@ -48,7 +48,7 @@ public class ThreadServicesTests {
         ThreadCreateBindingModel threadCreateBindingModel = new ThreadCreateBindingModel();
         threadCreateBindingModel.setTitle("Cats have gone crazy");
         threadCreateBindingModel.setContent("Yep they have gone");
-        threadCreateBindingModel.setRowsForNewsPage(0);
+        //threadCreateBindingModel.setRowsForNewsPage(0);
 
         User creator = new User();
 

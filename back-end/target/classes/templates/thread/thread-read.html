@@ -81,9 +81,35 @@
                         </div>
                     </div>
                     <div class="dropdown-divider"></div>
+                    <div class="content" th:id="'content' + ${thread.getId()}">
                     <p class="card-text" style="width: 60vw;min-width: 230px" th:utext="*{content}">
 
                     </p>
+                    </div>
+
+                    <!--
+
+                    Clears the keyword SHOW_TO_NOW:
+
+                    -->
+                    <script th:inline="javascript">
+                        proceed();
+                        function proceed() {
+
+                            let content = $(`#content`+ [[${thread.getId()}]])[0].innerHTML;
+                            let substringedContent = content.substring(0,content.indexOf('SHOW_TO_NOW'));
+                            let isFound = substringedContent !== '';
+
+                            if(isFound){
+                                $(`#content`+[[${thread.getId()}]]).empty();
+
+                                let result = content.replace('SHOW_TO_NOW','');
+
+                                $(`#content`+[[${thread.getId()}]]).append(result);
+                            }
+                        }
+                    </script>
+
 
                     <div class="row">
                         <div class="col-md-8" style="margin-bottom: 8px">
