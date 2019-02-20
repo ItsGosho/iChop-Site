@@ -2,15 +2,18 @@ package ichop.service.token;
 
 import ichop.domain.entities.tokens.PasswordResetToken;
 import ichop.domain.entities.users.User;
+import ichop.domain.models.service.PasswordResetTokenServiceModel;
+import ichop.domain.models.service.UserServiceModel;
 
 public interface PasswordResetTokenServices {
+
     boolean isValid(String token);
 
-    PasswordResetToken createToken(User user);
+    PasswordResetTokenServiceModel createToken(UserServiceModel userServiceModel);
 
-    PasswordResetToken getTokenByUser(User user);
+    PasswordResetTokenServiceModel getTokenByUser(UserServiceModel userServiceModel);
 
-    PasswordResetToken getTokenByToken(String token);
+    PasswordResetTokenServiceModel getTokenByToken(String token);
 
-    void deleteOldestToken(User user);
+    void deleteOldestToken(UserServiceModel userServiceModel);
 }

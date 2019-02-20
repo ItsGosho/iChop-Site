@@ -9,11 +9,26 @@ import javax.persistence.*;
 @Table(name = "likes")
 public class React extends BaseEntity {
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     private User user;
 
+    @Column(nullable = false)
     @Enumerated(value = EnumType.STRING)
     private ReactionType reactionType;
 
+    public User getUser() {
+        return user;
+    }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public ReactionType getReactionType() {
+        return reactionType;
+    }
+
+    public void setReactionType(ReactionType reactionType) {
+        this.reactionType = reactionType;
+    }
 }

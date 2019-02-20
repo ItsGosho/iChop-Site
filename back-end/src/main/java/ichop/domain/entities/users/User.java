@@ -14,12 +14,13 @@ import java.util.Set;
 @Table(name = "users")
 public class User extends BaseEntity implements UserDetails {
 
-    @Column(unique = true)
+    @Column(unique = true,nullable = false,updatable = false)
     private String username;
 
+    @Column(nullable = false)
     private String password;
 
-    @Column(unique = true)
+    @Column(unique = true,nullable = false)
     private String email;
 
     @Column(name = "is_account_non_expired")

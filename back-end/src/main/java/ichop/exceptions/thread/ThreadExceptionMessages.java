@@ -1,8 +1,8 @@
 package ichop.exceptions.thread;
 
-public final class ThreadExceptionMessages {
+public enum  ThreadExceptionMessages {
 
-    // ....
+    THREAD_NOT_FOUND("Thread not found.");
 
     private String description;
 

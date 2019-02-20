@@ -1,45 +1,23 @@
-package ichop.domain.entities.threads;
+package ichop.domain.models.service;
 
-import ichop.domain.entities.BaseEntity;
+import ichop.domain.entities.threads.Comment;
+import ichop.domain.entities.threads.React;
 import ichop.domain.entities.users.User;
 
-import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.LinkedList;
 import java.util.List;
 
-@Entity
-@Table(name = "threads")
-public class Thread extends BaseEntity {
+public class ThreadServiceModel {
 
-    @Column(nullable = false)
+    private String id;
     private String title;
-
-    @Lob
-    @Column(nullable = false)
     private String content;
-
-    @ManyToOne(optional = false)
-    private User creator;
-
-    @Column(name = "created_on",nullable = false)
+    private UserServiceModel creator;
     private LocalDateTime createdOn;
-
-    @OneToMany
-    private List<Comment> comments;
-
-    @Column(nullable = false)
+    private List<CommentServiceModel> comments;
     private Integer views;
+    private List<ReactServiceModel> reacts;
 
-
-    @OneToMany
-    private List<React> reacts;
-
-    public Thread(){
-        this.setComments(new LinkedList<>());
-        this.setReacts(new LinkedList<>());
-        this.setViews(0);
-    }
 
     public String getTitle() {
         return title;
@@ -57,11 +35,11 @@ public class Thread extends BaseEntity {
         this.content = content;
     }
 
-    public User getCreator() {
+    public UserServiceModel getCreator() {
         return creator;
     }
 
-    public void setCreator(User creator) {
+    public void setCreator(UserServiceModel creator) {
         this.creator = creator;
     }
 
@@ -73,11 +51,11 @@ public class Thread extends BaseEntity {
         this.createdOn = createdOn;
     }
 
-    public List<Comment> getComments() {
+    public List<CommentServiceModel> getComments() {
         return comments;
     }
 
-    public void setComments(List<Comment> comments) {
+    public void setComments(List<CommentServiceModel> comments) {
         this.comments = comments;
     }
 
@@ -89,11 +67,20 @@ public class Thread extends BaseEntity {
         this.views = views;
     }
 
-    public List<React> getReacts() {
+    public List<ReactServiceModel> getReacts() {
         return reacts;
     }
 
-    public void setReacts(List<React> reacts) {
+    public void setReacts(List<ReactServiceModel> reacts) {
         this.reacts = reacts;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
 }

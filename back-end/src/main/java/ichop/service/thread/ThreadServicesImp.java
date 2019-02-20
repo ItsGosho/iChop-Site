@@ -3,6 +3,8 @@ package ichop.service.thread;
 import ichop.domain.entities.threads.Thread;
 import ichop.domain.entities.users.User;
 import ichop.domain.models.binding.thread.ThreadCreateBindingModel;
+import ichop.domain.models.service.ThreadServiceModel;
+import ichop.domain.models.service.UserServiceModel;
 import ichop.domain.models.view.thread.ThreadHomepageViewModel;
 import ichop.domain.models.view.thread.ThreadReadViewModel;
 import ichop.exceptions.user.UserException;
@@ -21,23 +23,23 @@ import java.time.LocalDateTime;
 public class ThreadServicesImp implements ThreadServices {
 
     private final ThreadRepository threadRepository;
-    private final CommentRepository commentRepository;
     private final ModelMapper modelMapper;
 
     @Autowired
-    public ThreadServicesImp(ThreadRepository threadRepository, CommentRepository commentRepository, ModelMapper modelMapper) {
+    public ThreadServicesImp(ThreadRepository threadRepository, ModelMapper modelMapper) {
         this.threadRepository = threadRepository;
-        this.commentRepository = commentRepository;
         this.modelMapper = modelMapper;
     }
 
 
     @Override
-    public Thread create(ThreadCreateBindingModel threadCreateBindingModel, User user) {
+    public ThreadServiceModel create(ThreadCreateBindingModel threadCreateBindingModel, UserServiceModel userServiceModel) {
 
-        if (user == null) {
+        if (userServiceModel == null) {
             throw new UserException(UserExceptionMessages.NULL);
         }
+
+        User user = this.modelMapper.map(userServiceModel,User.class);
 
         Thread thread = this.modelMapper.map(threadCreateBindingModel, Thread.class);
         thread.setCreatedOn(LocalDateTime.now());
@@ -45,7 +47,7 @@ public class ThreadServicesImp implements ThreadServices {
 
         this.threadRepository.save(thread);
 
-        return thread;
+        return this.modelMapper.map(thread,ThreadServiceModel.class);
     }
 
     @Override
@@ -64,14 +66,14 @@ public class ThreadServicesImp implements ThreadServices {
     }
 
     @Override
-    public ThreadReadViewModel getThread(String id) {
+    public ThreadServiceModel getThread(String id) {
         Thread thread = this.threadRepository.findThreadById(id);
-        ThreadReadViewModel threadReadViewModel = this.modelMapper.map(thread, ThreadReadViewModel.class);
-        threadReadViewModel.setTotalViews(thread.getViews());
-        threadReadViewModel.setTotalComments(thread.getComments().size());
-        threadReadViewModel.setTotalReactions(thread.getReacts().size());
-        threadReadViewModel.setCreatorTotalComments(this.commentRepository.getTotalCommentsOfUser(thread.getCreator()));
-        return threadReadViewModel;
+
+        if(thread != null){
+            return this.modelMapper.map(thread,ThreadServiceModel.class);
+        }
+
+        return null;
     }
 
     @Override

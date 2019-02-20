@@ -1,6 +1,7 @@
 package ichop.service.user;
 
 import ichop.domain.entities.users.User;
+import ichop.domain.models.service.UserServiceModel;
 
 public interface UserBaseServices {
 
@@ -10,8 +11,8 @@ public interface UserBaseServices {
 
     long getTotalUsers();
 
-    User getUserByUsername(String username);
-    User getUserByEmail(String email);
+    UserServiceModel getUserByUsername(String username);
+    UserServiceModel getUserByEmail(String email);
 
-    void save(User user);
+    void save(UserServiceModel userServiceModelq);
 }

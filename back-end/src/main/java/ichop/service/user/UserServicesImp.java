@@ -7,6 +7,8 @@ import ichop.domain.entities.users.UserRole;
 import ichop.domain.models.binding.user.UserRegisterBindingModel;
 import ichop.domain.models.binding.user.UserForgottenPasswordBindingModel;
 import ichop.domain.models.binding.user.UserResetPasswordBindingModel;
+import ichop.domain.models.service.PasswordResetTokenServiceModel;
+import ichop.domain.models.service.UserServiceModel;
 import ichop.exceptions.token.TokenException;
 import ichop.exceptions.token.TokenExceptionMessages;
 import ichop.exceptions.user.UserException;
@@ -48,28 +50,31 @@ public class UserServicesImp implements UserServices {
 
     @Override
     public UserDetails loadUserByUsername(String usernameOrEmail) throws UsernameNotFoundException {
+
         if (this.userBaseServices.isEmail(usernameOrEmail)) {
 
-            UserDetails userDetails = this.userBaseServices.getUserByEmail(usernameOrEmail);
+            UserServiceModel userServiceModel = this.userBaseServices.getUserByEmail(usernameOrEmail);
 
-            if(userDetails != null){
-                return userDetails;
+            if (userServiceModel != null) {
+                User user = this.modelMapper.map(userServiceModel, User.class);
+                return user;
             }
 
-            throw new UsernameNotFoundException(UserExceptionMessages.USER_WITH_THAT_USERNAME_NOT_FOUND.getDescription());
+            throw new UsernameNotFoundException(UserExceptionMessages.USER_WITH_THAT_EMAIL_NOT_FOUND.getDescription());
         }
 
-        UserDetails userDetails = this.userBaseServices.getUserByUsername(usernameOrEmail);
+        UserServiceModel userServiceModel = this.userBaseServices.getUserByUsername(usernameOrEmail);
 
-        if(userDetails != null){
-            return userDetails;
+        if (userServiceModel != null) {
+            User user = this.modelMapper.map(userServiceModel, User.class);
+            return user;
         }
 
-        throw new UsernameNotFoundException(UserExceptionMessages.USER_WITH_THAT_EMAIL_NOT_FOUND.getDescription());
+        throw new UsernameNotFoundException(UserExceptionMessages.USER_WITH_THAT_USERNAME_NOT_FOUND.getDescription());
     }
 
     @Override
-    public User register(UserRegisterBindingModel userRegisterBindingModel) {
+    public UserServiceModel register(UserRegisterBindingModel userRegisterBindingModel) {
 
         if (this.userBaseServices.existsByUsername(userRegisterBindingModel.getUsername())) {
             throw new UserException(UserExceptionMessages.USERNAME_ALREADY_EXISTS);
@@ -79,7 +84,7 @@ public class UserServicesImp implements UserServices {
             throw new UserException(UserExceptionMessages.EMAIL_ALREADY_EXISTS);
         }
 
-        if(!userRegisterBindingModel.getPassword().equals(userRegisterBindingModel.getConfirmPassword())){
+        if (!userRegisterBindingModel.getPassword().equals(userRegisterBindingModel.getConfirmPassword())) {
             throw new UserException(UserExceptionMessages.PASSWORDS_DOESNT_MATCH);
         }
 
@@ -92,9 +97,10 @@ public class UserServicesImp implements UserServices {
 
         user.setAuthorities(this.getInitialAuthorities());
 
-        this.userBaseServices.save(user);
+        UserServiceModel userServiceModel = this.modelMapper.map(user,UserServiceModel.class);
+        this.userBaseServices.save(userServiceModel);
 
-        return user;
+        return userServiceModel;
     }
 
     private Set<UserRole> getInitialAuthorities() {
@@ -116,13 +122,14 @@ public class UserServicesImp implements UserServices {
 
         User user = (User) this.loadUserByUsername(userForgottenPasswordBindingModel.getUsernameOrEmail());
 
-        PasswordResetToken passwordResetToken = this.passwordResetTokenServices.createToken(user);
+        PasswordResetTokenServiceModel passwordResetTokenServiceModel = this.passwordResetTokenServices.createToken(this.modelMapper.map(user,UserServiceModel.class));
+        PasswordResetToken passwordResetToken = this.modelMapper.map(passwordResetTokenServiceModel,PasswordResetToken.class);
 
         if (passwordResetToken == null) {
             throw new TokenException(TokenExceptionMessages.TOKEN_IS_NULL);
         }
 
-        this.emailServices.sendResetPasswordEmail(user.getEmail(),passwordResetToken.getToken(),passwordResetToken.getExpiryDate());
+        this.emailServices.sendResetPasswordEmail(user.getEmail(), passwordResetToken.getToken(), passwordResetToken.getExpiryDate());
     }
 
     @Override
@@ -132,15 +139,18 @@ public class UserServicesImp implements UserServices {
             throw new TokenException(TokenExceptionMessages.TOKEN_IS_NOT_VALID);
         }
 
-        if(!userResetPasswordBindingModel.getPassword().equals(userResetPasswordBindingModel.getConfirmPassword())){
+        if (!userResetPasswordBindingModel.getPassword().equals(userResetPasswordBindingModel.getConfirmPassword())) {
             throw new UserException(UserExceptionMessages.PASSWORDS_DOESNT_MATCH);
         }
 
-        User user = this.passwordResetTokenServices.getTokenByToken(resetToken).getUser();
+        UserServiceModel userServiceModel = this.passwordResetTokenServices.getTokenByToken(resetToken).getUser();
 
+        User user = this.modelMapper.map(userServiceModel,User.class);
         user.setPassword(this.passwordEncoder.encode(userResetPasswordBindingModel.getPassword()));
 
-        this.userBaseServices.save(user);
-        this.passwordResetTokenServices.deleteOldestToken(user);
+        userServiceModel = this.modelMapper.map(user,UserServiceModel.class);
+
+        this.userBaseServices.save(userServiceModel);
+        this.passwordResetTokenServices.deleteOldestToken(userServiceModel);
     }
 }
