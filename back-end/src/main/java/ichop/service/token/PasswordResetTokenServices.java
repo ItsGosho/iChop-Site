@@ -11,9 +11,5 @@ public interface PasswordResetTokenServices {
 
     PasswordResetTokenServiceModel createToken(UserServiceModel userServiceModel);
 
-    PasswordResetTokenServiceModel getTokenByUser(UserServiceModel userServiceModel);
-
-    PasswordResetTokenServiceModel getTokenByToken(String token);
-
     void deleteOldestToken(UserServiceModel userServiceModel);
 }

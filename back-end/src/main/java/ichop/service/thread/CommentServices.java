@@ -5,5 +5,4 @@ import ichop.domain.models.service.UserServiceModel;
 
 public interface CommentServices {
 
-    int getTotalCommentsOfUser(UserServiceModel userServiceModel);
 }

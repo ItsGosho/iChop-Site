@@ -14,7 +14,7 @@ import ichop.factories.role.UserRoleFactoryImp;
 import ichop.service.role.UserRoleServices;
 import ichop.service.role.UserRoles;
 import ichop.service.token.PasswordResetTokenServices;
-import ichop.service.user.UserBaseServicesImp;
+import ichop.service.user.UserCrudServicesImp;
 import ichop.service.user.UserServicesImp;
 import org.junit.Assert;
 import org.junit.Before;
@@ -36,7 +36,7 @@ import org.springframework.test.context.ActiveProfiles;
 public class UserServicesTests {
 
     @Mock
-    private UserBaseServicesImp baseServicesImp;
+    private UserCrudServicesImp baseServicesImp;
 
     @Mock
     private BCryptPasswordEncoder passwordEncoder;

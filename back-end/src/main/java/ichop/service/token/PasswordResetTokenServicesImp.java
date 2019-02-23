@@ -7,6 +7,7 @@ import ichop.domain.models.service.UserServiceModel;
 import ichop.exceptions.user.UserException;
 import ichop.exceptions.user.UserExceptionMessages;
 import ichop.repository.token.PasswordResetTokenRepository;
+import ichop.service.token.crud.PasswordResetTokenCrudServices;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,18 +18,18 @@ import java.util.UUID;
 @Service
 public class PasswordResetTokenServicesImp implements PasswordResetTokenServices {
 
-    private final PasswordResetTokenRepository passwordResetTokenRepository;
+    private final PasswordResetTokenCrudServices passwordResetTokenCrudServices;
     private final ModelMapper modelMapper;
 
     @Autowired
-    public PasswordResetTokenServicesImp(PasswordResetTokenRepository passwordResetTokenRepository, ModelMapper modelMapper) {
-        this.passwordResetTokenRepository = passwordResetTokenRepository;
+    public PasswordResetTokenServicesImp(PasswordResetTokenCrudServices passwordResetTokenCrudServices, ModelMapper modelMapper) {
+        this.passwordResetTokenCrudServices = passwordResetTokenCrudServices;
         this.modelMapper = modelMapper;
     }
 
     @Override
     public boolean isValid(String token) {
-        PasswordResetTokenServiceModel passwordResetTokenServiceModel = this.getTokenByToken(token);
+        PasswordResetTokenServiceModel passwordResetTokenServiceModel = this.passwordResetTokenCrudServices.getTokenByToken(token);
 
         if (passwordResetTokenServiceModel == null) {
             return false;
@@ -62,40 +63,16 @@ public class PasswordResetTokenServicesImp implements PasswordResetTokenServices
         passwordResetToken.setExpiryDate(LocalDateTime.now().plusSeconds(PasswordResetToken.getTokenExpiration()));
         passwordResetToken.setToken(token);
 
-        this.passwordResetTokenRepository.save(passwordResetToken);
+        this.passwordResetTokenCrudServices.save(this.modelMapper.map(passwordResetToken,PasswordResetTokenServiceModel.class));
 
         return this.modelMapper.map(passwordResetToken, PasswordResetTokenServiceModel.class);
     }
 
     @Override
-    public PasswordResetTokenServiceModel getTokenByUser(UserServiceModel userServiceModel) {
-        User user = this.modelMapper.map(userServiceModel,User.class);
-        PasswordResetToken passwordResetToken = this.passwordResetTokenRepository.findByUser(user);
-
-        if (passwordResetToken != null) {
-            return this.modelMapper.map(passwordResetToken, PasswordResetTokenServiceModel.class);
-        }
-
-        return null;
-    }
-
-    @Override
-    public PasswordResetTokenServiceModel getTokenByToken(String token) {
-        PasswordResetToken passwordResetToken = this.passwordResetTokenRepository.findByToken(token);
-
-        if (passwordResetToken != null) {
-            return this.modelMapper.map(passwordResetToken, PasswordResetTokenServiceModel.class);
-        }
-
-        return null;
-    }
-
-    @Override
     public void deleteOldestToken(UserServiceModel userServiceModel) {
-        PasswordResetTokenServiceModel passwordResetTokenServiceModel = this.getTokenByUser(userServiceModel);
+        PasswordResetTokenServiceModel passwordResetTokenServiceModel = this.passwordResetTokenCrudServices.getTokenByUser(userServiceModel);
         if (passwordResetTokenServiceModel != null) {
-            PasswordResetToken passwordResetToken = this.modelMapper.map(this.getTokenByUser(userServiceModel),PasswordResetToken.class);
-            this.passwordResetTokenRepository.delete(passwordResetToken);
+            this.passwordResetTokenCrudServices.delete(passwordResetTokenServiceModel);
         }
     }
 }

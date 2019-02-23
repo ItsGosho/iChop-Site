@@ -16,11 +16,4 @@ public interface ThreadServices {
 
     ThreadServiceModel create(ThreadCreateBindingModel threadCreateBindingModel, UserServiceModel userServiceModel);
 
-    Page<ThreadHomepageViewModel> listAllByPage(Pageable pageable);
-
-    ThreadServiceModel getThread(String id);
-
-    void delete(String id);
-
-    boolean exists(String id);
 }

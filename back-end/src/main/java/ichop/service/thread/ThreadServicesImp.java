@@ -11,6 +11,7 @@ import ichop.exceptions.user.UserException;
 import ichop.exceptions.user.UserExceptionMessages;
 import ichop.repository.thread.CommentRepository;
 import ichop.repository.thread.ThreadRepository;
+import ichop.service.thread.crud.ThreadCrudServices;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -22,12 +23,12 @@ import java.time.LocalDateTime;
 @Service
 public class ThreadServicesImp implements ThreadServices {
 
-    private final ThreadRepository threadRepository;
+    private final ThreadCrudServices threadCrudServices;
     private final ModelMapper modelMapper;
 
     @Autowired
-    public ThreadServicesImp(ThreadRepository threadRepository, ModelMapper modelMapper) {
-        this.threadRepository = threadRepository;
+    public ThreadServicesImp(ThreadCrudServices threadCrudServices, ModelMapper modelMapper) {
+        this.threadCrudServices = threadCrudServices;
         this.modelMapper = modelMapper;
     }
 
@@ -45,50 +46,9 @@ public class ThreadServicesImp implements ThreadServices {
         thread.setCreatedOn(LocalDateTime.now());
         thread.setCreator(user);
 
-        this.threadRepository.save(thread);
+        this.threadCrudServices.save(this.modelMapper.map(thread,ThreadServiceModel.class));
 
         return this.modelMapper.map(thread,ThreadServiceModel.class);
-    }
-
-    @Override
-    public Page<ThreadHomepageViewModel> listAllByPage(Pageable pageable) {
-        Page<Thread> page = this.threadRepository.findAll(pageable);
-
-        Page<ThreadHomepageViewModel> threads = page.map(x -> {
-            ThreadHomepageViewModel threadHomepageViewModel = this.modelMapper.map(x, ThreadHomepageViewModel.class);
-            threadHomepageViewModel.setTotalViews(x.getViews());
-            threadHomepageViewModel.setTotalComments(x.getComments().size());
-            threadHomepageViewModel.setTotalReactions(x.getReacts().size());
-
-            return threadHomepageViewModel;
-        });
-        return threads;
-    }
-
-    @Override
-    public ThreadServiceModel getThread(String id) {
-        Thread thread = this.threadRepository.findThreadById(id);
-
-        if(thread != null){
-            return this.modelMapper.map(thread,ThreadServiceModel.class);
-        }
-
-        return null;
-    }
-
-    @Override
-    public void delete(String id) {
-        Thread thread = this.threadRepository.findThreadById(id);
-        this.threadRepository.delete(thread);
-    }
-
-    @Override
-    public boolean exists(String id) {
-        Thread thread = this.threadRepository.findThreadById(id);
-        if (thread != null) {
-            return true;
-        }
-        return false;
     }
 
 

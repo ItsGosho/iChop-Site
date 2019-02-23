@@ -16,8 +16,9 @@ import ichop.exceptions.user.UserExceptionMessages;
 import ichop.service.role.UserRoleServices;
 import ichop.service.role.UserRoles;
 import ichop.service.token.PasswordResetTokenServices;
+import ichop.service.token.crud.PasswordResetTokenCrudServices;
+import ichop.service.user.crud.UserCrudServices;
 import org.modelmapper.ModelMapper;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -31,18 +32,22 @@ import java.util.Set;
 public class UserServicesImp implements UserServices {
 
     private final UserRoleServices userRoleServices;
-    private final UserBaseServices userBaseServices;
+    private final UserCrudServices userCrudServices;
+
     private final EmailServices emailServices;
+
     private final PasswordResetTokenServices passwordResetTokenServices;
+    private final PasswordResetTokenCrudServices passwordResetTokenCrudServices;
 
     private final ModelMapper modelMapper;
     private final BCryptPasswordEncoder passwordEncoder;
 
-    public UserServicesImp(UserRoleServices userRoleServices, UserBaseServices userBaseServices, EmailServices emailServices, PasswordResetTokenServices passwordResetTokenServices, ModelMapper modelMapper, BCryptPasswordEncoder passwordEncoder) {
+    public UserServicesImp(UserRoleServices userRoleServices, UserCrudServices userCrudServices, EmailServices emailServices, PasswordResetTokenServices passwordResetTokenServices, PasswordResetTokenCrudServices passwordResetTokenCrudServices, ModelMapper modelMapper, BCryptPasswordEncoder passwordEncoder) {
         this.userRoleServices = userRoleServices;
-        this.userBaseServices = userBaseServices;
+        this.userCrudServices = userCrudServices;
         this.emailServices = emailServices;
         this.passwordResetTokenServices = passwordResetTokenServices;
+        this.passwordResetTokenCrudServices = passwordResetTokenCrudServices;
         this.modelMapper = modelMapper;
         this.passwordEncoder = passwordEncoder;
     }
@@ -51,9 +56,9 @@ public class UserServicesImp implements UserServices {
     @Override
     public UserDetails loadUserByUsername(String usernameOrEmail) throws UsernameNotFoundException {
 
-        if (this.userBaseServices.isEmail(usernameOrEmail)) {
+        if (this.userCrudServices.isEmail(usernameOrEmail)) {
 
-            UserServiceModel userServiceModel = this.userBaseServices.getUserByEmail(usernameOrEmail);
+            UserServiceModel userServiceModel = this.userCrudServices.getUserByEmail(usernameOrEmail);
 
             if (userServiceModel != null) {
                 User user = this.modelMapper.map(userServiceModel, User.class);
@@ -63,7 +68,7 @@ public class UserServicesImp implements UserServices {
             throw new UsernameNotFoundException(UserExceptionMessages.USER_WITH_THAT_EMAIL_NOT_FOUND.getDescription());
         }
 
-        UserServiceModel userServiceModel = this.userBaseServices.getUserByUsername(usernameOrEmail);
+        UserServiceModel userServiceModel = this.userCrudServices.getUserByUsername(usernameOrEmail);
 
         if (userServiceModel != null) {
             User user = this.modelMapper.map(userServiceModel, User.class);
@@ -76,11 +81,11 @@ public class UserServicesImp implements UserServices {
     @Override
     public UserServiceModel register(UserRegisterBindingModel userRegisterBindingModel) {
 
-        if (this.userBaseServices.existsByUsername(userRegisterBindingModel.getUsername())) {
+        if (this.userCrudServices.existsByUsername(userRegisterBindingModel.getUsername())) {
             throw new UserException(UserExceptionMessages.USERNAME_ALREADY_EXISTS);
         }
 
-        if (this.userBaseServices.existsByEmail(userRegisterBindingModel.getEmail())) {
+        if (this.userCrudServices.existsByEmail(userRegisterBindingModel.getEmail())) {
             throw new UserException(UserExceptionMessages.EMAIL_ALREADY_EXISTS);
         }
 
@@ -98,7 +103,7 @@ public class UserServicesImp implements UserServices {
         user.setAuthorities(this.getInitialAuthorities());
 
         UserServiceModel userServiceModel = this.modelMapper.map(user,UserServiceModel.class);
-        this.userBaseServices.save(userServiceModel);
+        this.userCrudServices.save(userServiceModel);
 
         return userServiceModel;
     }
@@ -106,7 +111,7 @@ public class UserServicesImp implements UserServices {
     private Set<UserRole> getInitialAuthorities() {
         Set<UserRole> userRoles = new HashSet<>();
 
-        if (this.userBaseServices.getTotalUsers() == 0) {
+        if (this.userCrudServices.getTotalUsers() == 0) {
             userRoles.add(this.userRoleServices.create(UserRoles.OWNER));
             userRoles.add(this.userRoleServices.create(UserRoles.ADMIN));
             userRoles.add(this.userRoleServices.create(UserRoles.MODERATOR));
@@ -143,14 +148,14 @@ public class UserServicesImp implements UserServices {
             throw new UserException(UserExceptionMessages.PASSWORDS_DOESNT_MATCH);
         }
 
-        UserServiceModel userServiceModel = this.passwordResetTokenServices.getTokenByToken(resetToken).getUser();
+        UserServiceModel userServiceModel = this.passwordResetTokenCrudServices.getTokenByToken(resetToken).getUser();
 
         User user = this.modelMapper.map(userServiceModel,User.class);
         user.setPassword(this.passwordEncoder.encode(userResetPasswordBindingModel.getPassword()));
 
         userServiceModel = this.modelMapper.map(user,UserServiceModel.class);
 
-        this.userBaseServices.save(userServiceModel);
+        this.userCrudServices.save(userServiceModel);
         this.passwordResetTokenServices.deleteOldestToken(userServiceModel);
     }
 }
