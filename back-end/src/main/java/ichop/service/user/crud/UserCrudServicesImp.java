@@ -32,17 +32,23 @@ public class UserCrudServicesImp implements UserCrudServices {
 
     @Override
     public boolean existsByUsername(String username) {
-        return this.userRepository.findUserByUsername(username) != null;
+        User user = this.userRepository.findUserByUsername(username);
+
+        return user != null;
     }
 
     @Override
     public boolean existsByEmail(String email) {
-        return this.userRepository.findUserByEmail(email) != null;
+        User user = this.userRepository.findUserByEmail(email);
+
+        return user != null;
     }
 
     @Override
     public long getTotalUsers() {
-        return this.userRepository.findAll().size();
+        long totalUsers = this.userRepository.findAll().size();
+
+        return totalUsers;
     }
 
     @Override

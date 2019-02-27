@@ -7,6 +7,7 @@ import ichop.domain.models.view.thread.ThreadHomepageViewModel;
 import ichop.domain.models.view.thread.ThreadReadViewModel;
 import ichop.service.thread.crud.CommentCrudServices;
 import ichop.service.thread.crud.ThreadCrudServices;
+import ichop.service.user.crud.UserCrudServices;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,12 +18,14 @@ import org.springframework.stereotype.Service;
 public class ThreadViewServicesImp implements ThreadViewServices {
 
     private final ThreadCrudServices threadCrudServices;
+    private final UserCrudServices userCrudServices;
     private final CommentCrudServices commentCrudServices;
     private final ModelMapper modelMapper;
 
     @Autowired
-    public ThreadViewServicesImp(ThreadCrudServices threadCrudServices, CommentCrudServices commentCrudServices, ModelMapper modelMapper) {
+    public ThreadViewServicesImp(ThreadCrudServices threadCrudServices, UserCrudServices userCrudServices, CommentCrudServices commentCrudServices, ModelMapper modelMapper) {
         this.threadCrudServices = threadCrudServices;
+        this.userCrudServices = userCrudServices;
         this.commentCrudServices = commentCrudServices;
         this.modelMapper = modelMapper;
     }
@@ -53,6 +56,10 @@ public class ThreadViewServicesImp implements ThreadViewServices {
         threadReadViewModel.setTotalComments(threadServiceModel.getComments().size());
         threadReadViewModel.setTotalReactions(threadServiceModel.getReacts().size());
         threadReadViewModel.setCreatorTotalComments(this.commentCrudServices.getTotalCommentsOfUser(this.modelMapper.map(threadServiceModel.getCreator(), UserServiceModel.class)));
+
+        threadReadViewModel.getComments().forEach(x->{
+            x.setCreatorTotalComments(this.commentCrudServices.getTotalCommentsOfUser(this.userCrudServices.getUserByUsername(x.getCreatorUsername())));
+        });
 
         return threadReadViewModel;
     }

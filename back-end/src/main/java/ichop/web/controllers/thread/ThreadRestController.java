@@ -3,9 +3,15 @@ package ichop.web.controllers.thread;
 import com.google.gson.Gson;
 import ichop.constants.URLConstants;
 import ichop.domain.entities.users.User;
+import ichop.domain.models.binding.thread.CommentCreateBindingModel;
 import ichop.domain.models.binding.thread.ThreadCreateBindingModel;
+import ichop.domain.models.service.CommentServiceModel;
+import ichop.domain.models.service.ThreadServiceModel;
 import ichop.domain.models.service.UserServiceModel;
+import ichop.exceptions.thread.ThreadNotFoundException;
+import ichop.service.thread.CommentServices;
 import ichop.service.thread.ThreadServices;
+import ichop.service.thread.crud.ThreadCrudServices;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -20,11 +26,15 @@ import java.security.Principal;
 public class ThreadRestController {
 
     private final ThreadServices threadServices;
+    private final CommentServices commentServices;
+    private final ThreadCrudServices threadCrudServices;
     private final ModelMapper modelMapper;
 
     @Autowired
-    public ThreadRestController(ThreadServices threadServices, ModelMapper modelMapper) {
+    public ThreadRestController(ThreadServices threadServices, CommentServices commentServices, ThreadCrudServices threadCrudServices, ModelMapper modelMapper) {
         this.threadServices = threadServices;
+        this.commentServices = commentServices;
+        this.threadCrudServices = threadCrudServices;
         this.modelMapper = modelMapper;
     }
 
@@ -43,4 +53,24 @@ public class ThreadRestController {
         this.threadServices.create(threadCreateBindingModel, this.modelMapper.map(user, UserServiceModel.class));
         return new Gson().toJson(true);
     }
+
+
+    @PreAuthorize("isAuthenticated()")
+    @PostMapping(value= URLConstants.COMMENT_THREAD_POST, produces = "application/json")
+    @ResponseBody
+    public String createComment(@PathVariable String id, CommentCreateBindingModel commentCreateBindingModel, Principal principal) {
+
+        ThreadServiceModel threadServiceModel = this.threadCrudServices.getThread(id);
+        UserServiceModel userServiceModel = this.modelMapper.map((User) ((Authentication) principal).getPrincipal(), UserServiceModel.class);
+
+        if (threadServiceModel != null) {
+            CommentServiceModel commentServiceModel = this.commentServices.addComment(commentCreateBindingModel, userServiceModel, threadServiceModel);
+
+            return new Gson().toJson(true);
+
+        }
+
+        throw new ThreadNotFoundException();
+    }
+
 }

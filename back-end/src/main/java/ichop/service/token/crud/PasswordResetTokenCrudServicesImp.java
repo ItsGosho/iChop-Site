@@ -48,7 +48,9 @@ public class PasswordResetTokenCrudServicesImp implements PasswordResetTokenCrud
     @Override
     public PasswordResetTokenServiceModel save(PasswordResetTokenServiceModel passwordResetTokenServiceModel) {
         PasswordResetToken passwordResetToken = this.modelMapper.map(passwordResetTokenServiceModel,PasswordResetToken.class);
-        return this.modelMapper.map(this.passwordResetTokenRepository.save(passwordResetToken),PasswordResetTokenServiceModel.class);
+        this.passwordResetTokenRepository.save(passwordResetToken);
+
+        return this.modelMapper.map(passwordResetToken,PasswordResetTokenServiceModel.class);
     }
 
     @Override

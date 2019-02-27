@@ -12,6 +12,15 @@ public class UserRole extends BaseEntity implements GrantedAuthority {
     @Column(unique = true)
     private String authority;
 
+    public UserRole(){
+
+    }
+
+    public UserRole(String authority) {
+        this();
+        this.authority = authority;
+    }
+
     @Override
     public String getAuthority() {
         return this.authority;

@@ -26,6 +26,7 @@ public class Thread extends BaseEntity {
     private LocalDateTime createdOn;
 
     @OneToMany
+    @JoinTable(name = "comments",joinColumns = @JoinColumn(name = "thread_id"),inverseJoinColumns = @JoinColumn(name = "id"))
     private List<Comment> comments;
 
     @Column(nullable = false)

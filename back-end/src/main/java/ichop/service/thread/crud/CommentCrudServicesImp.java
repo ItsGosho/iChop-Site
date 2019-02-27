@@ -1,6 +1,9 @@
 package ichop.service.thread.crud;
 
+import ichop.domain.entities.threads.Comment;
 import ichop.domain.entities.users.User;
+import ichop.domain.models.binding.thread.CommentCreateBindingModel;
+import ichop.domain.models.service.CommentServiceModel;
 import ichop.domain.models.service.UserServiceModel;
 import ichop.repository.thread.CommentRepository;
 import org.modelmapper.ModelMapper;
@@ -25,6 +28,31 @@ public class CommentCrudServicesImp implements CommentCrudServices {
         User user = this.modelMapper.map(userServiceModel,User.class);
 
         return this.commentRepository.getTotalCommentsOfUser(user);
+    }
+
+    @Override
+    public CommentServiceModel save(CommentServiceModel commentServiceModel) {
+        Comment comment = this.modelMapper.map(commentServiceModel,Comment.class);
+        this.commentRepository.save(comment);
+
+        return this.modelMapper.map(comment,CommentServiceModel.class);
+    }
+
+    @Override
+    public CommentServiceModel getById(String id) {
+        Comment comment = this.commentRepository.findById(id).orElse(null);
+
+        if(comment != null){
+            return this.modelMapper.map(comment,CommentServiceModel.class);
+        }
+
+        return null;
+    }
+
+    @Override
+    public void delete(CommentServiceModel commentServiceModel) {
+        Comment comment = this.modelMapper.map(commentServiceModel,Comment.class);
+        this.commentRepository.delete(comment);
     }
 
 }

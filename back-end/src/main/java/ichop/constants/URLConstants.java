@@ -10,21 +10,21 @@ public final class URLConstants {
     //User ---------------------------------------------------------------------------------------------------
 
     //-UserApiController
-    private static final String USER_API_PREFIX = "/api/users";
+    private static final String USER_API_PREFIX = "/api/user";
     public static final String USER_EXISTS_GET = USER_API_PREFIX + "/exists";
 
     //-UserAuthenticationController
     public static final String USER_LOGIN_GET = "/login";
     public static final String USER_REGISTER_GET = "/register";
     public static final String USER_REGISTER_POST = "/register";
-    public static final String USER_RESET_PASSWORD_GET = "/users/reset/password";
-    public static final String USER_RESET_PASSWORD_POST = "/users/reset/password";
+    public static final String USER_RESET_PASSWORD_GET = "/user/reset/password";
+    public static final String USER_RESET_PASSWORD_POST = "/user/reset/password";
 
     //-UserAuthorizationController
     public static final String UNAUTHORIZED = "/unauthorized";
 
     //-UserRestController
-    public static final String USER_SEND_EMAIL_RESET_PASSWORD_POST = "/users/send-email/reset/password";
+    public static final String USER_SEND_EMAIL_RESET_PASSWORD_POST = "/user/send-email/reset/password";
 
 
     //Thread -------------------------------------------------------------------------------------------------
@@ -34,6 +34,10 @@ public final class URLConstants {
     public static final String THREAD_CREATE_POST = THREAD_PREFIX + "/create";
     public static final String THREAD_DELETE_GET = THREAD_PREFIX + "/{id}/delete";
     public static final String THREAD_READ_GET = THREAD_PREFIX + "/{id}/read";
+    public static final String COMMENT_THREAD_POST = THREAD_PREFIX + "/{id}/comment/create";
+
+    //-CommentController
+    public static final String COMMENT_DELETE = "/comment/{id}/delete";
 
     //-ThreadRestController
     public static final String THREAD_CREATE_GET = THREAD_PREFIX + "/create";

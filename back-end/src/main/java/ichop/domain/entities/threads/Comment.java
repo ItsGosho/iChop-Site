@@ -3,17 +3,16 @@ package ichop.domain.entities.threads;
 import ichop.domain.entities.BaseEntity;
 import ichop.domain.entities.users.User;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
+
 
 @Entity
 @Table(name = "comments")
 public class Comment extends BaseEntity {
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false,fetch = FetchType.EAGER)
     public Thread thread;
 
     @Column(nullable = false)
@@ -24,6 +23,7 @@ public class Comment extends BaseEntity {
 
     @Column(nullable = false)
     public LocalDateTime createdOn;
+
 
     public Thread getThread() {
         return thread;
@@ -56,4 +56,5 @@ public class Comment extends BaseEntity {
     public void setCreatedOn(LocalDateTime createdOn) {
         this.createdOn = createdOn;
     }
+
 }

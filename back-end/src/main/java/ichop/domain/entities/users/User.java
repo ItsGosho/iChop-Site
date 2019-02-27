@@ -11,7 +11,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 public class User extends BaseEntity implements UserDetails {
 
     @Column(unique = true,nullable = false,updatable = false)
@@ -35,7 +35,7 @@ public class User extends BaseEntity implements UserDetails {
     @Column(name = "is_enable")
     private boolean isEnabled;
 
-    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<UserRole> authorities;
 
     @Column(name = "registration_date",nullable = false)
@@ -43,6 +43,15 @@ public class User extends BaseEntity implements UserDetails {
 
     public User(){
         this.setAuthorities(new HashSet<>());
+    }
+
+    public User(String username, String password, String email, Set<UserRole> authorities, LocalDateTime registrationDate) {
+        this();
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.authorities = authorities;
+        this.registrationDate = registrationDate;
     }
 
     @Override

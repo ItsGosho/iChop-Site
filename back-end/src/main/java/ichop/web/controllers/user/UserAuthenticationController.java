@@ -3,10 +3,8 @@ package ichop.web.controllers.user;
 import ichop.constants.URLConstants;
 import ichop.domain.models.binding.user.UserRegisterBindingModel;
 import ichop.domain.models.binding.user.UserResetPasswordBindingModel;
-import ichop.exceptions.token.TokenException;
-import ichop.exceptions.token.TokenExceptionMessages;
-import ichop.exceptions.user.UserException;
-import ichop.exceptions.user.UserExceptionMessages;
+import ichop.exceptions.token.TokenNotValidException;
+import ichop.exceptions.user.UserPasswordNotValidException;
 import ichop.service.token.PasswordResetTokenServices;
 import ichop.service.user.UserServices;
 import ichop.web.controllers.BaseController;
@@ -14,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -59,7 +56,7 @@ public class UserAuthenticationController extends BaseController {
     public ModelAndView getReset(@RequestParam(required = true) String token){
 
         if(!this.passwordResetTokenServices.isValid(token)){
-            throw new TokenException(TokenExceptionMessages.TOKEN_IS_NOT_VALID);
+            throw new TokenNotValidException();
         }
 
         return super.page("base-page","auth/reset_password-form","Reset Password");
@@ -69,10 +66,9 @@ public class UserAuthenticationController extends BaseController {
     public ModelAndView proceedPasswordReset(@RequestParam(required = true) String token,@Valid UserResetPasswordBindingModel userResetPasswordBindingModel,BindingResult bindingResult){
 
         if(bindingResult.hasErrors()){
-            throw new UserException(UserExceptionMessages.DATA_INVALID);
+            throw new UserPasswordNotValidException();
         }
 
-        this.userServices.resetPassword(userResetPasswordBindingModel,token);
 
         return super.viewWithMessage("base-page","notification/info","Your password been reset successfully!");
     }

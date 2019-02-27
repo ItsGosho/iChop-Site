@@ -4,9 +4,6 @@ import ichop.domain.entities.tokens.PasswordResetToken;
 import ichop.domain.entities.users.User;
 import ichop.domain.models.service.PasswordResetTokenServiceModel;
 import ichop.domain.models.service.UserServiceModel;
-import ichop.exceptions.user.UserException;
-import ichop.exceptions.user.UserExceptionMessages;
-import ichop.repository.token.PasswordResetTokenRepository;
 import ichop.service.token.crud.PasswordResetTokenCrudServices;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +34,8 @@ public class PasswordResetTokenServicesImp implements PasswordResetTokenServices
 
         PasswordResetToken passwordResetToken = this.modelMapper.map(passwordResetTokenServiceModel,PasswordResetToken.class);
 
-
-        if (passwordResetToken.getExpiryDate().compareTo(LocalDateTime.now()) < 0) {
+        boolean isDateExpired = passwordResetToken.getExpiryDate().compareTo(LocalDateTime.now()) < 0;
+        if (isDateExpired) {
             return false;
         }
 
@@ -48,16 +45,11 @@ public class PasswordResetTokenServicesImp implements PasswordResetTokenServices
     @Override
     public PasswordResetTokenServiceModel createToken(UserServiceModel userServiceModel) {
 
-        if (userServiceModel == null) {
-            throw new UserException(UserExceptionMessages.NULL);
-        }
+        this.deleteOldestToken(userServiceModel);
 
         User user = this.modelMapper.map(userServiceModel,User.class);
 
-        this.deleteOldestToken(userServiceModel);
-
         String token = UUID.randomUUID().toString();
-
         PasswordResetToken passwordResetToken = new PasswordResetToken();
         passwordResetToken.setUser(user);
         passwordResetToken.setExpiryDate(LocalDateTime.now().plusSeconds(PasswordResetToken.getTokenExpiration()));
@@ -75,4 +67,5 @@ public class PasswordResetTokenServicesImp implements PasswordResetTokenServices
             this.passwordResetTokenCrudServices.delete(passwordResetTokenServiceModel);
         }
     }
+
 }

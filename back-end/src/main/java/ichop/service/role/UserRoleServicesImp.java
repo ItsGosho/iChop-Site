@@ -2,8 +2,7 @@ package ichop.service.role;
 
 import ichop.domain.entities.users.User;
 import ichop.domain.entities.users.UserRole;
-import ichop.exceptions.user.UserException;
-import ichop.exceptions.user.UserExceptionMessages;
+import ichop.exceptions.user.UserCannotBeNullException;
 import ichop.repository.user.UserRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -40,7 +39,7 @@ public class UserRoleServicesImp implements UserRoleServices {
     public UserRole getRole(User user) {
 
         if (user == null) {
-            throw new UserException(UserExceptionMessages.NULL);
+            throw new UserCannotBeNullException();
         }
 
         return (UserRole) user

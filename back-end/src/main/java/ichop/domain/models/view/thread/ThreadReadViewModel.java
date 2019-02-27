@@ -1,7 +1,6 @@
 package ichop.domain.models.view.thread;
 
-import ichop.domain.entities.threads.Comment;
-import ichop.domain.entities.users.User;
+import ichop.domain.models.view.comment.CommentReadThreadViewModel;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -18,7 +17,7 @@ public class ThreadReadViewModel {
     private Integer totalComments;
     private String content;
     private Integer rowsForNewsPage;
-    private List<Comment> comments;
+    private List<CommentReadThreadViewModel> comments;
 
     public String getId() {
         return id;
@@ -100,11 +99,11 @@ public class ThreadReadViewModel {
         this.rowsForNewsPage = rowsForNewsPage;
     }
 
-    public List<Comment> getComments() {
+    public List<CommentReadThreadViewModel> getComments() {
         return comments;
     }
 
-    public void setComments(List<Comment> comments) {
+    public void setComments(List<CommentReadThreadViewModel> comments) {
         this.comments = comments;
     }
 }

@@ -9,10 +9,9 @@ import ichop.domain.models.binding.user.UserForgottenPasswordBindingModel;
 import ichop.domain.models.binding.user.UserResetPasswordBindingModel;
 import ichop.domain.models.service.PasswordResetTokenServiceModel;
 import ichop.domain.models.service.UserServiceModel;
-import ichop.exceptions.token.TokenException;
-import ichop.exceptions.token.TokenExceptionMessages;
-import ichop.exceptions.user.UserException;
-import ichop.exceptions.user.UserExceptionMessages;
+import ichop.exceptions.token.TokenNotValidException;
+import ichop.exceptions.user.UserAlreadyExistsException;
+import ichop.exceptions.user.UserPasswordNotValidException;
 import ichop.service.role.UserRoleServices;
 import ichop.service.role.UserRoles;
 import ichop.service.token.PasswordResetTokenServices;
@@ -65,7 +64,7 @@ public class UserServicesImp implements UserServices {
                 return user;
             }
 
-            throw new UsernameNotFoundException(UserExceptionMessages.USER_WITH_THAT_EMAIL_NOT_FOUND.getDescription());
+            throw new UsernameNotFoundException("");
         }
 
         UserServiceModel userServiceModel = this.userCrudServices.getUserByUsername(usernameOrEmail);
@@ -75,27 +74,25 @@ public class UserServicesImp implements UserServices {
             return user;
         }
 
-        throw new UsernameNotFoundException(UserExceptionMessages.USER_WITH_THAT_USERNAME_NOT_FOUND.getDescription());
+        throw new UsernameNotFoundException("");
     }
 
     @Override
     public UserServiceModel register(UserRegisterBindingModel userRegisterBindingModel) {
 
         if (this.userCrudServices.existsByUsername(userRegisterBindingModel.getUsername())) {
-            throw new UserException(UserExceptionMessages.USERNAME_ALREADY_EXISTS);
+            throw new UserAlreadyExistsException();
         }
 
         if (this.userCrudServices.existsByEmail(userRegisterBindingModel.getEmail())) {
-            throw new UserException(UserExceptionMessages.EMAIL_ALREADY_EXISTS);
+            throw new UserAlreadyExistsException();
         }
 
         if (!userRegisterBindingModel.getPassword().equals(userRegisterBindingModel.getConfirmPassword())) {
-            throw new UserException(UserExceptionMessages.PASSWORDS_DOESNT_MATCH);
+            throw new UserPasswordNotValidException();
         }
 
         User user = this.modelMapper.map(userRegisterBindingModel, User.class);
-        user.setUsername(user.getUsername());
-        user.setEmail(user.getEmail());
         user.setPassword(this.passwordEncoder.encode(user.getPassword()));
 
         user.setRegistrationDate(LocalDateTime.now());
@@ -128,27 +125,24 @@ public class UserServicesImp implements UserServices {
         User user = (User) this.loadUserByUsername(userForgottenPasswordBindingModel.getUsernameOrEmail());
 
         PasswordResetTokenServiceModel passwordResetTokenServiceModel = this.passwordResetTokenServices.createToken(this.modelMapper.map(user,UserServiceModel.class));
-        PasswordResetToken passwordResetToken = this.modelMapper.map(passwordResetTokenServiceModel,PasswordResetToken.class);
+        PasswordResetToken createdToken = this.modelMapper.map(passwordResetTokenServiceModel,PasswordResetToken.class);
 
-        if (passwordResetToken == null) {
-            throw new TokenException(TokenExceptionMessages.TOKEN_IS_NULL);
-        }
-
-        this.emailServices.sendResetPasswordEmail(user.getEmail(), passwordResetToken.getToken(), passwordResetToken.getExpiryDate());
+        this.emailServices.sendResetPasswordEmail(user.getEmail(), createdToken.getToken(), createdToken.getExpiryDate());
     }
 
     @Override
     public void resetPassword(UserResetPasswordBindingModel userResetPasswordBindingModel, String resetToken) {
 
         if (!this.passwordResetTokenServices.isValid(resetToken)) {
-            throw new TokenException(TokenExceptionMessages.TOKEN_IS_NOT_VALID);
+            throw new TokenNotValidException();
         }
 
         if (!userResetPasswordBindingModel.getPassword().equals(userResetPasswordBindingModel.getConfirmPassword())) {
-            throw new UserException(UserExceptionMessages.PASSWORDS_DOESNT_MATCH);
+            throw new UserPasswordNotValidException();
         }
 
-        UserServiceModel userServiceModel = this.passwordResetTokenCrudServices.getTokenByToken(resetToken).getUser();
+        PasswordResetTokenServiceModel passwordResetTokenServiceModel = this.passwordResetTokenCrudServices.getTokenByToken(resetToken);
+        UserServiceModel userServiceModel = passwordResetTokenServiceModel.getUser();
 
         User user = this.modelMapper.map(userServiceModel,User.class);
         user.setPassword(this.passwordEncoder.encode(userResetPasswordBindingModel.getPassword()));

@@ -2,7 +2,9 @@ package ichop.service.thread;
 
 import ichop.domain.entities.threads.Thread;
 import ichop.domain.entities.users.User;
+import ichop.domain.models.binding.thread.CommentCreateBindingModel;
 import ichop.domain.models.binding.thread.ThreadCreateBindingModel;
+import ichop.domain.models.service.CommentServiceModel;
 import ichop.domain.models.service.ThreadServiceModel;
 import ichop.domain.models.service.UserServiceModel;
 import ichop.domain.models.view.thread.ThreadHomepageViewModel;

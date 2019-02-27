@@ -2,8 +2,7 @@ package ichop.web.controllers.thread;
 
 import ichop.constants.URLConstants;
 import ichop.domain.models.view.thread.ThreadReadViewModel;
-import ichop.exceptions.thread.ThreadException;
-import ichop.exceptions.thread.ThreadExceptionMessages;
+import ichop.exceptions.thread.ThreadNotFoundException;
 import ichop.service.thread.crud.ThreadCrudServices;
 import ichop.service.thread.view.ThreadViewServices;
 import ichop.web.controllers.BaseController;
@@ -45,7 +44,7 @@ public class ThreadController extends BaseController {
     @GetMapping(URLConstants.THREAD_READ_GET)
     public ModelAndView readThread(@PathVariable String id,ModelAndView modelAndView) {
 
-       if(id != null && !this.threadCrudServices.exists(id)){
+       if(id != null && this.threadCrudServices.exists(id)){
 
            ThreadReadViewModel threadReadViewModel = this.threadViewServices.getThread(id);
 
@@ -53,6 +52,6 @@ public class ThreadController extends BaseController {
            return super.page("base-page","thread/thread-read",threadReadViewModel.getTitle(),modelAndView);
        }
 
-       throw new ThreadException(ThreadExceptionMessages.THREAD_NOT_FOUND);
+       throw new ThreadNotFoundException();
     }
 }
