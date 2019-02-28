@@ -1,9 +1,6 @@
 package ichop.web.controllers.exception;
 
-import ichop.exceptions.user.UserAlreadyExistsException;
-import ichop.exceptions.user.UserCannotBeNullException;
-import ichop.exceptions.user.UserNotFoundException;
-import ichop.exceptions.user.UserPasswordNotValidException;
+import ichop.exceptions.user.*;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
@@ -29,6 +26,11 @@ public class UserExceptionsController extends ExceptionBaseController {
     @ExceptionHandler(UserPasswordNotValidException.class)
     public ModelAndView userPasswordsDoesntMatch(){
         return super.errorPage("The provided passwords doesnt match!");
+    }
+
+    @ExceptionHandler(UserAlreadyLikedThis.class)
+    public ModelAndView userAlreadyLikedThis(){
+        return super.errorPage("The provided user has already like this.");
     }
 
 }

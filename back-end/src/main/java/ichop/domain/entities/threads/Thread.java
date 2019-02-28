@@ -1,6 +1,8 @@
 package ichop.domain.entities.threads;
 
 import ichop.domain.entities.BaseEntity;
+import ichop.domain.entities.threads.reaction.ReactionBase;
+import ichop.domain.entities.threads.reaction.ThreadReaction;
 import ichop.domain.entities.users.User;
 
 import javax.persistence.*;
@@ -32,13 +34,13 @@ public class Thread extends BaseEntity {
     @Column(nullable = false)
     private Integer views;
 
-
-    @OneToMany
-    private List<React> reacts;
+    @OneToMany(mappedBy = "thread")
+    //@JoinTable(name = "thread_reactions",joinColumns = @JoinColumn(name = "thread_id"),inverseJoinColumns = @JoinColumn(name = "id"))
+    private List<ThreadReaction> reactions;
 
     public Thread(){
         this.setComments(new LinkedList<>());
-        this.setReacts(new LinkedList<>());
+        this.setReactions(new LinkedList<>());
         this.setViews(0);
     }
 
@@ -90,11 +92,11 @@ public class Thread extends BaseEntity {
         this.views = views;
     }
 
-    public List<React> getReacts() {
-        return reacts;
+    public List<ThreadReaction> getReactions() {
+        return reactions;
     }
 
-    public void setReacts(List<React> reacts) {
-        this.reacts = reacts;
+    public void setReactions(List<ThreadReaction> reactions) {
+        this.reactions = reactions;
     }
 }

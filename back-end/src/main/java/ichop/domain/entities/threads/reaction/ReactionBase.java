@@ -1,13 +1,12 @@
-package ichop.domain.entities.threads;
+package ichop.domain.entities.threads.reaction;
 
 import ichop.domain.entities.BaseEntity;
 import ichop.domain.entities.users.User;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "likes")
-public class React extends BaseEntity {
+@MappedSuperclass
+public abstract class ReactionBase extends BaseEntity {
 
     @ManyToOne(optional = false)
     private User user;

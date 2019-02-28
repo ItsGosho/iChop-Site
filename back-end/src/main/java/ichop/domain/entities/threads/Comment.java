@@ -1,6 +1,8 @@
 package ichop.domain.entities.threads;
 
 import ichop.domain.entities.BaseEntity;
+import ichop.domain.entities.threads.reaction.CommentReaction;
+import ichop.domain.entities.threads.reaction.ReactionBase;
 import ichop.domain.entities.users.User;
 
 import javax.persistence.*;
@@ -23,6 +25,10 @@ public class Comment extends BaseEntity {
 
     @Column(nullable = false)
     public LocalDateTime createdOn;
+
+    @OneToMany
+    @JoinTable(name = "comment_reactions",joinColumns = @JoinColumn(name = "comment_id"),inverseJoinColumns = @JoinColumn(name = "id"))
+    private List<CommentReaction> reactions;
 
 
     public Thread getThread() {
@@ -57,4 +63,11 @@ public class Comment extends BaseEntity {
         this.createdOn = createdOn;
     }
 
+    public List<CommentReaction> getReactions() {
+        return reactions;
+    }
+
+    public void setReactions(List<CommentReaction> reactions) {
+        this.reactions = reactions;
+    }
 }

@@ -1,12 +1,13 @@
 package ichop.domain.models.service;
 
-import ichop.domain.entities.threads.ReactionType;
+import ichop.domain.entities.threads.reaction.ReactionType;
 
-public class ReactServiceModel {
+public class ThreadReactionServiceModel {
 
     private String id;
     private UserServiceModel user;
     private ReactionType reactionType;
+    private ThreadServiceModel thread;
 
     public UserServiceModel getUser() {
         return user;
@@ -30,5 +31,13 @@ public class ReactServiceModel {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public ThreadServiceModel getThread() {
+        return thread;
+    }
+
+    public void setThread(ThreadServiceModel thread) {
+        this.thread = thread;
     }
 }

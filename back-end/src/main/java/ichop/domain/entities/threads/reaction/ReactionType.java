@@ -1,4 +1,4 @@
-package ichop.domain.entities.threads;
+package ichop.domain.entities.threads.reaction;
 
 public enum ReactionType {
 

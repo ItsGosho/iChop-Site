@@ -10,8 +10,7 @@ public final class URLConstants {
     //User ---------------------------------------------------------------------------------------------------
 
     //-UserApiController
-    private static final String USER_API_PREFIX = "/api/user";
-    public static final String USER_EXISTS_GET = USER_API_PREFIX + "/exists";
+    public static final String USER_EXISTS_GET = "/api/user/exists";
 
     //-UserAuthenticationController
     public static final String USER_LOGIN_GET = "/login";
@@ -30,16 +29,21 @@ public final class URLConstants {
     //Thread -------------------------------------------------------------------------------------------------
 
     //-ThreadController
-    private static final String THREAD_PREFIX = "/thread";
-    public static final String THREAD_CREATE_POST = THREAD_PREFIX + "/create";
-    public static final String THREAD_DELETE_GET = THREAD_PREFIX + "/{id}/delete";
-    public static final String THREAD_READ_GET = THREAD_PREFIX + "/{id}/read";
+    public static final String THREAD_CREATE_POST = "/thread/create";
+    public static final String THREAD_DELETE_GET = "/thread/{id}/delete";
+    public static final String THREAD_READ_GET = "/thread/{id}/read";
 
     //-CommentController
     public static final String COMMENT_DELETE = "/comment/{id}/delete";
-    public static final String COMMENT_THREAD_POST = THREAD_PREFIX + "/{id}/comment/create";
+    public static final String COMMENT_THREAD_POST = "/thread/{id}/comment/create";
+
+    //-ReactController
+    public static final String THREAD_REACTION_LIKE = "/thread/{id}/reaction/like";
+    public static final String THREAD_REACTION_DISLIKE = "/thread/{id}/reaction/dislike";
+    public static final String COMMENT_REACTION_LIKE = "/comment/{id}/reaction/like";
+    public static final String COMMENT_REACTION_DISLIKE = "/comment/{id}/reaction/dislike";
 
     //-ThreadRestController
-    public static final String THREAD_CREATE_GET = THREAD_PREFIX + "/create";
+    public static final String THREAD_CREATE_GET =  "/thread/create";
 
 }

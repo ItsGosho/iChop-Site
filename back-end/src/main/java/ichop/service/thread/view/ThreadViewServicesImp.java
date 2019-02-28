@@ -39,7 +39,7 @@ public class ThreadViewServicesImp implements ThreadViewServices {
             ThreadHomepageViewModel threadHomepageViewModel = this.modelMapper.map(x, ThreadHomepageViewModel.class);
             threadHomepageViewModel.setTotalViews(x.getViews());
             threadHomepageViewModel.setTotalComments(x.getComments().size());
-            threadHomepageViewModel.setTotalReactions(x.getReacts().size());
+            threadHomepageViewModel.setTotalReactions(x.getReactions().size());
 
             return threadHomepageViewModel;
         });
@@ -54,7 +54,8 @@ public class ThreadViewServicesImp implements ThreadViewServices {
         ThreadReadViewModel threadReadViewModel = this.modelMapper.map(threadServiceModel, ThreadReadViewModel.class);
         threadReadViewModel.setTotalViews(threadServiceModel.getViews());
         threadReadViewModel.setTotalComments(threadServiceModel.getComments().size());
-        threadReadViewModel.setTotalReactions(threadServiceModel.getReacts().size());
+        //TODO: fix the  exception :@@@@ :(((
+        //threadReadViewModel.setTotalReactions(threadServiceModel.getReacts().size());
         threadReadViewModel.setCreatorTotalComments(this.commentCrudServices.getTotalCommentsOfUser(this.modelMapper.map(threadServiceModel.getCreator(), UserServiceModel.class)));
 
         threadReadViewModel.getComments().forEach(x->{

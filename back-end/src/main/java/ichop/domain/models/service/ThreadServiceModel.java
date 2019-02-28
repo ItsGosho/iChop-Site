@@ -1,9 +1,5 @@
 package ichop.domain.models.service;
 
-import ichop.domain.entities.threads.Comment;
-import ichop.domain.entities.threads.React;
-import ichop.domain.entities.users.User;
-
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -16,7 +12,7 @@ public class ThreadServiceModel {
     private LocalDateTime createdOn;
     private List<CommentServiceModel> comments;
     private Integer views;
-    private List<ReactServiceModel> reacts;
+    private List<ThreadReactionServiceModel> reacts;
 
 
     public String getTitle() {
@@ -67,11 +63,11 @@ public class ThreadServiceModel {
         this.views = views;
     }
 
-    public List<ReactServiceModel> getReacts() {
+    public List<ThreadReactionServiceModel> getReacts() {
         return reacts;
     }
 
-    public void setReacts(List<ReactServiceModel> reacts) {
+    public void setReacts(List<ThreadReactionServiceModel> reacts) {
         this.reacts = reacts;
     }
 

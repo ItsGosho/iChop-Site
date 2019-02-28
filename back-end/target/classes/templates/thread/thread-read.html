@@ -344,13 +344,13 @@
                                         React
                                     </button>
                                     <div class="dropdown-menu">
-                                        <a href="/comment/id/react/like">
+                                        <a th:href="@{/comment/{id}/reaction/like(id=*{id})}">
                                             <button class="btn btn-sm" type="button" style="margin-left: 10px">
                                                 <small>👍🏻</small>
                                                 Like
                                             </button>
                                         </a>
-                                        <a href="/comment/id/react/dislike">
+                                        <a th:href="@{/comment/{id}/reaction/dislike(id=*{id})}">
                                             <button class="btn btn-sm" type="button">
                                                 <small>👎🏻</small>
                                                 Dislike

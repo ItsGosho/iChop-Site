@@ -1,4 +1,4 @@
-package ichop.web.controllers.comment;
+package ichop.web.controllers.thread;
 
 import com.google.gson.Gson;
 import ichop.constants.URLConstants;
