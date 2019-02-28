@@ -54,23 +54,4 @@ public class ThreadRestController {
         return new Gson().toJson(true);
     }
 
-
-    @PreAuthorize("isAuthenticated()")
-    @PostMapping(value= URLConstants.COMMENT_THREAD_POST, produces = "application/json")
-    @ResponseBody
-    public String createComment(@PathVariable String id, CommentCreateBindingModel commentCreateBindingModel, Principal principal) {
-
-        ThreadServiceModel threadServiceModel = this.threadCrudServices.getThread(id);
-        UserServiceModel userServiceModel = this.modelMapper.map((User) ((Authentication) principal).getPrincipal(), UserServiceModel.class);
-
-        if (threadServiceModel != null) {
-            CommentServiceModel commentServiceModel = this.commentServices.addComment(commentCreateBindingModel, userServiceModel, threadServiceModel);
-
-            return new Gson().toJson(true);
-
-        }
-
-        throw new ThreadNotFoundException();
-    }
-
 }

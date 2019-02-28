@@ -6,7 +6,6 @@ import ichop.exceptions.thread.ThreadNotFoundException;
 import ichop.service.thread.crud.ThreadCrudServices;
 import ichop.service.thread.view.ThreadViewServices;
 import ichop.web.controllers.BaseController;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -18,13 +17,11 @@ public class ThreadController extends BaseController {
 
     private final ThreadCrudServices threadCrudServices;
     private final ThreadViewServices threadViewServices;
-    private final ModelMapper modelMapper;
 
     @Autowired
-    public ThreadController(ThreadCrudServices threadCrudServices, ThreadViewServices threadViewServices, ModelMapper modelMapper) {
+    public ThreadController(ThreadCrudServices threadCrudServices, ThreadViewServices threadViewServices) {
         this.threadCrudServices = threadCrudServices;
         this.threadViewServices = threadViewServices;
-        this.modelMapper = modelMapper;
     }
 
 

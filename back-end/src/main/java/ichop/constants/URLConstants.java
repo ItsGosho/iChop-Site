@@ -34,10 +34,10 @@ public final class URLConstants {
     public static final String THREAD_CREATE_POST = THREAD_PREFIX + "/create";
     public static final String THREAD_DELETE_GET = THREAD_PREFIX + "/{id}/delete";
     public static final String THREAD_READ_GET = THREAD_PREFIX + "/{id}/read";
-    public static final String COMMENT_THREAD_POST = THREAD_PREFIX + "/{id}/comment/create";
 
     //-CommentController
     public static final String COMMENT_DELETE = "/comment/{id}/delete";
+    public static final String COMMENT_THREAD_POST = THREAD_PREFIX + "/{id}/comment/create";
 
     //-ThreadRestController
     public static final String THREAD_CREATE_GET = THREAD_PREFIX + "/create";
