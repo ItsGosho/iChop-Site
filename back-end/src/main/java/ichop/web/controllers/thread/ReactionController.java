@@ -39,17 +39,20 @@ public class ReactionController extends BaseController {
 
 
     @PreAuthorize("isAuthenticated()")
-    @GetMapping(URLConstants.THREAD_REACTION_LIKE)
+    @GetMapping(URLConstants.THREAD_REACTION)
     public ModelAndView reactLike(@PathVariable String id, @PathVariable String reactionType, Principal principal) {
 
         ThreadServiceModel threadServiceModel = this.threadCrudServices.getThread(id);
         UserServiceModel userServiceModel = this.modelMapper.map((User) ((Authentication) principal).getPrincipal(), UserServiceModel.class);
+
+        //FIX THIS CODE`s STRUCTURE
 
         if (threadServiceModel != null) {
 
             boolean isReactionTypeValid = EnumUtils.isValidEnum(ReactionType.class, reactionType.toUpperCase());
 
             if (isReactionTypeValid) {
+
                 ReactionType reactType = ReactionType.valueOf(reactionType.toUpperCase());
                 this.reactServices.addReaction(threadServiceModel, userServiceModel, reactType);
 
