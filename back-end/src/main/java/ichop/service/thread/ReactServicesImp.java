@@ -29,19 +29,19 @@ public class ReactServicesImp implements ReactServices {
     @Override
     public ThreadReactionServiceModel addReaction(ThreadServiceModel threadServiceModel, UserServiceModel userServiceModel, ReactionType reactionType) {
 
-        if(this.reactionCrudServices.isUserLikedThatThread(userServiceModel,threadServiceModel)){
-             throw new UserAlreadyLikedThis();
+        if (this.reactionCrudServices.isUserLikedThatThread(userServiceModel, threadServiceModel)) {
+            throw new UserAlreadyLikedThis();
         }
 
-        Thread thread = this.modelMapper.map(threadServiceModel,Thread.class);
-        User user = this.modelMapper.map(userServiceModel,User.class);
+        Thread thread = this.modelMapper.map(threadServiceModel, Thread.class);
+        User user = this.modelMapper.map(userServiceModel, User.class);
 
         ThreadReaction threadReaction = new ThreadReaction();
         threadReaction.setReactionType(reactionType);
         threadReaction.setUser(user);
         threadReaction.setThread(thread);
 
-        ThreadReactionServiceModel resultedReaction = this.reactionCrudServices.save(this.modelMapper.map(threadReaction,ThreadReactionServiceModel.class));
+        ThreadReactionServiceModel resultedReaction = this.reactionCrudServices.save(this.modelMapper.map(threadReaction, ThreadReactionServiceModel.class));
 
         return resultedReaction;
     }
