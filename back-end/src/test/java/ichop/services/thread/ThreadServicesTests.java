@@ -57,7 +57,7 @@ public class ThreadServicesTests {
         assertEquals(threadContent,resultedThread.getContent());
         assertEquals(userUsername,resultedThread.getCreator().getUsername());
         assertEquals(0,resultedThread.getComments().size());
-        assertEquals(0,resultedThread.getReacts().size());
+        assertEquals(0,resultedThread.getReactions().size());
     }
 
 }

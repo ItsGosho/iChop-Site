@@ -12,7 +12,7 @@ public class ThreadServiceModel {
     private LocalDateTime createdOn;
     private List<CommentServiceModel> comments;
     private Integer views;
-    private List<ThreadReactionServiceModel> reacts;
+    private List<ThreadReactionServiceModel> reactions;
 
 
     public String getTitle() {
@@ -63,12 +63,12 @@ public class ThreadServiceModel {
         this.views = views;
     }
 
-    public List<ThreadReactionServiceModel> getReacts() {
-        return reacts;
+    public List<ThreadReactionServiceModel> getReactions() {
+        return reactions;
     }
 
-    public void setReacts(List<ThreadReactionServiceModel> reacts) {
-        this.reacts = reacts;
+    public void setReactions(List<ThreadReactionServiceModel> reactions) {
+        this.reactions = reactions;
     }
 
     public String getId() {

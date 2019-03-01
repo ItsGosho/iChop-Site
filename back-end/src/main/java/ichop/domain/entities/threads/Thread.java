@@ -20,7 +20,7 @@ public class Thread extends BaseEntity {
     @Column(nullable = false)
     private String content;
 
-    @ManyToOne(optional = false,cascade = {CascadeType.DETACH,CascadeType.MERGE})
+    @ManyToOne(optional = false)
     private User creator;
 
     @Column(name = "created_on",nullable = false)
@@ -34,7 +34,6 @@ public class Thread extends BaseEntity {
     private Integer views;
 
     @OneToMany(mappedBy = "thread")
-    //@JoinTable(name = "thread_reactions",joinColumns = @JoinColumn(name = "thread_id"),inverseJoinColumns = @JoinColumn(name = "id"))
     private List<ThreadReaction> reactions;
 
     public Thread(){

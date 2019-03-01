@@ -54,8 +54,7 @@ public class ThreadViewServicesImp implements ThreadViewServices {
         ThreadReadViewModel threadReadViewModel = this.modelMapper.map(threadServiceModel, ThreadReadViewModel.class);
         threadReadViewModel.setTotalViews(threadServiceModel.getViews());
         threadReadViewModel.setTotalComments(threadServiceModel.getComments().size());
-        //TODO: fix the  exception :@@@@ :(((
-        //threadReadViewModel.setTotalReactions(threadServiceModel.getReacts().size());
+        threadReadViewModel.setTotalReactions(threadServiceModel.getReactions().size());
         threadReadViewModel.setCreatorTotalComments(this.commentCrudServices.getTotalCommentsOfUser(this.modelMapper.map(threadServiceModel.getCreator(), UserServiceModel.class)));
 
         threadReadViewModel.getComments().forEach(x->{

@@ -2,6 +2,7 @@ package ichop.web.controllers.thread;
 
 import ichop.constants.URLConstants;
 import ichop.domain.entities.threads.reaction.ReactionType;
+import ichop.domain.entities.users.User;
 import ichop.domain.models.service.CommentServiceModel;
 import ichop.domain.models.service.ThreadServiceModel;
 import ichop.domain.models.service.UserServiceModel;
@@ -78,7 +79,7 @@ public class ReactionController extends BaseController {
 
     private ModelAndView proceedCommentReaction(String threadId,Principal principal,ReactionType reactionType){
         CommentServiceModel commentServiceModel = this.commentCrudServices.getById(threadId);
-        UserServiceModel userServiceModel = this.modelMapper.map(((Authentication) principal).getPrincipal(), UserServiceModel.class);
+        UserServiceModel userServiceModel = this.modelMapper.map((User)((Authentication) principal).getPrincipal(), UserServiceModel.class);
 
         this.reactServices.addReaction(commentServiceModel,userServiceModel,reactionType);
 

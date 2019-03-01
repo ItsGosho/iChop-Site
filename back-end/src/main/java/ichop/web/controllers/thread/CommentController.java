@@ -62,7 +62,7 @@ public class CommentController extends BaseController {
     }
 
     @PreAuthorize("hasAuthority('MODERATOR')")
-    @PostMapping(value= URLConstants.COMMENT_THREAD_POST, produces = "application/json")
+    @PostMapping(value= URLConstants.COMMENT_CREATE_THREAD_POST, produces = "application/json")
     @ResponseBody
     public String createComment(@PathVariable String id, CommentCreateBindingModel commentCreateBindingModel, Principal principal) {
 

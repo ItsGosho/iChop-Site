@@ -6,6 +6,7 @@ import ichop.domain.entities.users.User;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.LinkedList;
 import java.util.List;
 
 
@@ -19,7 +20,7 @@ public class Comment extends BaseEntity {
     @Column(nullable = false)
     public String content;
 
-    @ManyToOne(optional = false,cascade = {CascadeType.DETACH,CascadeType.MERGE})
+    @ManyToOne(optional = false)
     public User creator;
 
     @Column(nullable = false)
@@ -29,6 +30,9 @@ public class Comment extends BaseEntity {
     @JoinTable(name = "comment_reactions",joinColumns = @JoinColumn(name = "comment_id"),inverseJoinColumns = @JoinColumn(name = "id"))
     private List<CommentReaction> reactions;
 
+    public Comment(){
+        this.setReactions(new LinkedList<>());
+    }
 
     public Thread getThread() {
         return thread;

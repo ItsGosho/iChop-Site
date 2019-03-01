@@ -35,7 +35,7 @@ public final class URLConstants {
 
     //-CommentController
     public static final String COMMENT_DELETE = "/comment/{id}/delete";
-    public static final String COMMENT_THREAD_POST = "/thread/{id}/comment/create";
+    public static final String COMMENT_CREATE_THREAD_POST = "/thread/{id}/comment/create";
 
     //-ReactController
     public static final String THREAD_REACTION_LIKE = "/thread/{id}/reaction/like";
