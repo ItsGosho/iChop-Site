@@ -1,7 +1,6 @@
 package ichop.domain.entities.threads;
 
 import ichop.domain.entities.BaseEntity;
-import ichop.domain.entities.threads.reaction.ReactionBase;
 import ichop.domain.entities.threads.reaction.ThreadReaction;
 import ichop.domain.entities.users.User;
 
@@ -21,7 +20,7 @@ public class Thread extends BaseEntity {
     @Column(nullable = false)
     private String content;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false,cascade = {CascadeType.DETACH,CascadeType.MERGE})
     private User creator;
 
     @Column(name = "created_on",nullable = false)

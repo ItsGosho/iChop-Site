@@ -28,9 +28,9 @@ public class UserExceptionsController extends ExceptionBaseController {
         return super.errorPage("The provided passwords doesnt match!");
     }
 
-    @ExceptionHandler(UserAlreadyLikedThis.class)
+    @ExceptionHandler(UserAlreadyReacted.class)
     public ModelAndView userAlreadyLikedThis(){
-        return super.errorPage("The provided user has already like this.");
+        return super.errorPage("You have already casted your vote on this.");
     }
 
 }

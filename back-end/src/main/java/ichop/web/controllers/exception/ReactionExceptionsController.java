@@ -11,7 +11,7 @@ public class ReactionExceptionsController extends ExceptionBaseController {
 
     @ExceptionHandler(ReactionNotFoundException.class)
     public ModelAndView reactionNotFound(){
-        return super.errorPage("The provided reaction type wasnt found!");
+        return super.errorPage("The provided reaction cannot be found.");
     }
 
 }

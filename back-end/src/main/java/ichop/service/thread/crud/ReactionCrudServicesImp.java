@@ -1,11 +1,11 @@
 package ichop.service.thread.crud;
 
+import ichop.domain.entities.threads.Comment;
 import ichop.domain.entities.threads.Thread;
+import ichop.domain.entities.threads.reaction.CommentReaction;
 import ichop.domain.entities.threads.reaction.ThreadReaction;
 import ichop.domain.entities.users.User;
-import ichop.domain.models.service.ThreadReactionServiceModel;
-import ichop.domain.models.service.ThreadServiceModel;
-import ichop.domain.models.service.UserServiceModel;
+import ichop.domain.models.service.*;
 import ichop.repository.thread.reaction.CommentReactionRepository;
 import ichop.repository.thread.reaction.ThreadReactionRepository;
 import org.modelmapper.ModelMapper;
@@ -37,11 +37,30 @@ public class ReactionCrudServicesImp implements ReactionCrudServices {
     }
 
     @Override
+    public CommentReactionServiceModel save(CommentReactionServiceModel commentReactionServiceModel) {
+        CommentReaction commentReaction = this.modelMapper.map(commentReactionServiceModel,CommentReaction.class);
+
+        this.commentReactionRepository.save(commentReaction);
+
+        return this.modelMapper.map(commentReaction,CommentReactionServiceModel.class);
+    }
+
+    @Override
     public boolean isUserLikedThatThread(UserServiceModel userServiceModel, ThreadServiceModel threadServiceModel) {
         User user = this.modelMapper.map(userServiceModel,User.class);
         Thread thread = this.modelMapper.map(threadServiceModel, Thread.class);
 
         boolean result = this.threadReactionRepository.isUserLikedThatThread(user,thread);
+
+        return result;
+    }
+
+    @Override
+    public boolean isUserLikedThatComment(UserServiceModel userServiceModel, CommentServiceModel commentServiceModel) {
+        User user = this.modelMapper.map(userServiceModel,User.class);
+        Comment comment = this.modelMapper.map(commentServiceModel, Comment.class);
+
+        boolean result = this.commentReactionRepository.isUserLikedThatComment(user,comment);
 
         return result;
     }

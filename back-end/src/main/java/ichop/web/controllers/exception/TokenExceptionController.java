@@ -10,7 +10,7 @@ public class TokenExceptionController extends ExceptionBaseController {
 
     @ExceptionHandler(TokenNotValidException.class)
     public ModelAndView userAlreadyExists(){
-        return super.errorPage("The provided token is not valid.");
+        return super.errorPage("That token is no longer valid.");
     }
 
 }

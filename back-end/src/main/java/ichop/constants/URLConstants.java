@@ -38,8 +38,10 @@ public final class URLConstants {
     public static final String COMMENT_THREAD_POST = "/thread/{id}/comment/create";
 
     //-ReactController
-    public static final String THREAD_REACTION = "/thread/{id}/reaction/{reactionType}";
-    public static final String COMMENT_REACTION = "/comment/{id}/reaction/{reactionType}";
+    public static final String THREAD_REACTION_LIKE = "/thread/{id}/reaction/like";
+    public static final String THREAD_REACTION_DISLIKE = "/thread/{id}/reaction/dislike";
+    public static final String COMMENT_REACTION_LIKE = "/comment/{id}/reaction/like";
+    public static final String COMMENT_REACTION_DISLIKE = "/comment/{id}/reaction/dislike";
 
     //-ThreadRestController
     public static final String THREAD_CREATE_GET =  "/thread/create";

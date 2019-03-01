@@ -2,15 +2,13 @@ package ichop.web.controllers.thread;
 
 import ichop.constants.URLConstants;
 import ichop.domain.entities.threads.reaction.ReactionType;
-import ichop.domain.entities.users.User;
+import ichop.domain.models.service.CommentServiceModel;
 import ichop.domain.models.service.ThreadServiceModel;
 import ichop.domain.models.service.UserServiceModel;
-import ichop.exceptions.thread.ReactionNotFoundException;
-import ichop.exceptions.thread.ThreadNotFoundException;
 import ichop.service.thread.ReactServices;
+import ichop.service.thread.crud.CommentCrudServices;
 import ichop.service.thread.crud.ThreadCrudServices;
 import ichop.web.controllers.BaseController;
-import org.apache.commons.lang3.EnumUtils;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -27,43 +25,65 @@ public class ReactionController extends BaseController {
 
 
     private final ThreadCrudServices threadCrudServices;
+    private final CommentCrudServices commentCrudServices;
     private final ReactServices reactServices;
     private final ModelMapper modelMapper;
 
     @Autowired
-    public ReactionController(ThreadCrudServices threadCrudServices, ReactServices reactServices, ModelMapper modelMapper) {
+    public ReactionController(ThreadCrudServices threadCrudServices, CommentCrudServices commentCrudServices, ReactServices reactServices, ModelMapper modelMapper) {
         this.threadCrudServices = threadCrudServices;
+        this.commentCrudServices = commentCrudServices;
         this.reactServices = reactServices;
         this.modelMapper = modelMapper;
     }
 
 
     @PreAuthorize("isAuthenticated()")
-    @GetMapping(URLConstants.THREAD_REACTION)
-    public ModelAndView reactLike(@PathVariable String id, @PathVariable String reactionType, Principal principal) {
+    @GetMapping(URLConstants.THREAD_REACTION_LIKE)
+    public ModelAndView threadReactionLike(@PathVariable String id, Principal principal) {
 
-        ThreadServiceModel threadServiceModel = this.threadCrudServices.getThread(id);
-        UserServiceModel userServiceModel = this.modelMapper.map((User) ((Authentication) principal).getPrincipal(), UserServiceModel.class);
+        return proceedThreadReaction(id,principal,ReactionType.LIKE);
+    }
 
-        //FIX THIS CODE`s STRUCTURE
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping(URLConstants.THREAD_REACTION_DISLIKE)
+    public ModelAndView threadReactionDislike(@PathVariable String id, Principal principal) {
 
-        if (threadServiceModel != null) {
+        return proceedThreadReaction(id,principal,ReactionType.DISLIKE);
+    }
 
-            boolean isReactionTypeValid = EnumUtils.isValidEnum(ReactionType.class, reactionType.toUpperCase());
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping(URLConstants.COMMENT_REACTION_LIKE)
+    public ModelAndView commentReactionLike(@PathVariable String id, Principal principal) {
 
-            if (isReactionTypeValid) {
+        return proceedCommentReaction(id,principal,ReactionType.LIKE);
+    }
 
-                ReactionType reactType = ReactionType.valueOf(reactionType.toUpperCase());
-                this.reactServices.addReaction(threadServiceModel, userServiceModel, reactType);
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping(URLConstants.COMMENT_REACTION_DISLIKE)
+    public ModelAndView commentReactionDislike(@PathVariable String id, Principal principal) {
 
-                String redirectUrl = URLConstants.THREAD_READ_GET.replace("{id}", threadServiceModel.getId());
-                return super.redirect(redirectUrl);
-            }
+        return proceedCommentReaction(id,principal,ReactionType.DISLIKE);
+    }
 
-            throw new ReactionNotFoundException();
-        }
+    private ModelAndView proceedThreadReaction(String threadId,Principal principal,ReactionType reactionType){
+        ThreadServiceModel threadServiceModel = this.threadCrudServices.getThread(threadId);
+        UserServiceModel userServiceModel = this.modelMapper.map(((Authentication) principal).getPrincipal(), UserServiceModel.class);
 
-        throw new ThreadNotFoundException();
+        this.reactServices.addReaction(threadServiceModel,userServiceModel,reactionType);
+
+        String redirectUrl = URLConstants.THREAD_READ_GET.replace("{id}", threadServiceModel.getId());
+        return super.redirect(redirectUrl);
+    }
+
+    private ModelAndView proceedCommentReaction(String threadId,Principal principal,ReactionType reactionType){
+        CommentServiceModel commentServiceModel = this.commentCrudServices.getById(threadId);
+        UserServiceModel userServiceModel = this.modelMapper.map(((Authentication) principal).getPrincipal(), UserServiceModel.class);
+
+        this.reactServices.addReaction(commentServiceModel,userServiceModel,reactionType);
+
+        String redirectUrl = URLConstants.THREAD_READ_GET.replace("{id}", commentServiceModel.getThread().getId());
+        return super.redirect(redirectUrl);
     }
 
 }

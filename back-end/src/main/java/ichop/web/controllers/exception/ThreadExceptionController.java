@@ -10,7 +10,7 @@ public class ThreadExceptionController extends ExceptionBaseController {
 
     @ExceptionHandler(ThreadNotFoundException.class)
     public ModelAndView userAlreadyExists(){
-        return super.errorPage("The provided thread wasnt found.");
+        return super.errorPage("The thread you are searching for cannot be found.");
     }
 
 }

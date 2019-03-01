@@ -6,7 +6,7 @@ import ichop.domain.entities.users.User;
 import javax.persistence.*;
 
 @MappedSuperclass
-public abstract class ReactionBase extends BaseEntity {
+public abstract class BaseReaction extends BaseEntity {
 
     @ManyToOne(optional = false)
     private User user;
