@@ -2,21 +2,18 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
-<div id="thread-view" class="container d-flex justify-content-center align-items-center">
+<link rel="stylesheet" href="/res/css/thread/thread-read.css">
 
+<div id="thread-view" class="container d-flex justify-content-center align-items-center">
     <div class="row">
 
         <th:block th:object="${thread}">
-            <div id="news" class="col-xs-6">
+            <div class="col-xs-6">
 
 
-                <!--
+                <!--Thread section-->
 
-                THREAD
-
-                -->
-
-                <div class="card">
+                <div class="card thread">
                     <div class="card-header">
                         <div class="row">
                             <div class="col-md-4">
@@ -24,7 +21,7 @@
                                     <small>👤<a href="" th:text="*{creatorUsername}"></a></small>
                                 </div>
                                 <div align="center">
-                                    <img style="width: 50px;height: 50px;max-width: 100%;" class="card-img-top "
+                                    <img class="card-img-top thread-creator-avatar"
                                          src="/res/img/navbar-icon.png" alt="Card image cap">
                                 </div>
                                 <div align="center">
@@ -40,8 +37,7 @@
                                     <div class="row">
 
                                         <small>
-                                            <a href=""><img style="width: 15px;height: 15px;max-width: 100%;"
-                                                            class="card-img-top "
+                                            <a href=""><img class="card-img-top thread-creator-minecraft_username"
                                                             src="/res/img/navbar-icon.png" alt="Card image cap"><span>Minecraft Username</span></a>
                                         </small>
                                     </div>
@@ -55,7 +51,7 @@
                                 <h3 class="title" th:text="*{title}"></h3>
                             </div>
                             <div class="col-md-4">
-                                <small style="display: inline-block;padding-top: 18px;float:right;">
+                                <small class="thread-createdOn">
                                     <small class="dateIcon">📅</small>
                                     <small class="date"
                                            th:text="*{#temporals.format(createdOn, 'dd MMM,yyyy')}"></small>
@@ -89,7 +85,7 @@
                                 </small>
                             </div>
                             <div class="col-md-4">
-                                <small style="display: inline-block;padding-top: 18px;float:right;">
+                                <small class="thread-total_comments">
                                     <small>💬</small>
                                     <a href="/SMENI"><span class="totalComments" th:text="*{totalComments}"></span></a>
                                     Comments
@@ -98,7 +94,7 @@
                         </div>
                         <div class="dropdown-divider"></div>
                         <div class="content" th:id="'content' + ${thread.getId()}">
-                            <p class="card-text" style="width: 60vw;min-width: 230px" th:utext="*{content}">
+                            <p class="card-text thread-content" th:utext="*{content}">
 
                             </p>
                         </div>
@@ -129,7 +125,7 @@
 
 
                         <div class="row">
-                            <div class="col-md-8" style="margin-bottom: 8px">
+                            <div class="col-md-8 thread-random_separation">
                             </div>
                         </div>
 
@@ -153,10 +149,11 @@
                                         </th:block>
                                     </th:block>
 
-                                    <button class="btn btn-sm" type="button" id="button-reportThread-readThread" style="margin-left: 5px">
+                                    <button class="btn btn-sm thread-report_button" type="button" id="button-reportThread-readThread">
                                         <small>⚠</small>
                                         Report
                                     </button>
+
                                     <div class="modal" id="modal-reportThread-readThread" role="dialog">
                                         <div class="modal-dialog">
 
@@ -166,12 +163,13 @@
                                                 </div>
                                                 <form method="post" th:action="@{/thread/{id}/report(id=*{id})}">
                                                     <div class="modal-body">
-                                        <textarea style="width: 100%;overflow-y: scroll;height: 200px;resize: none"
+                                        <textarea class="thread-modal_report-textarea"
                                                   name="reason" placeholder="Reason..."></textarea>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="submit" class="btn btn-default">Report</button>
-                                                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                        <button type="button" class="btn btn-default"
+                                                                data-dismiss="modal">
                                                             Cancel
                                                         </button>
                                                     </div>
@@ -190,7 +188,7 @@
                                     </script>
 
                                 </div>
-                                <div class="btn-group" style="display: inline-block;float:right">
+                                <div class="btn-group thread-right_side_buttons">
                                     <button id="button-commentThread-readThreadPage" class="btn btn-sm" type="button"
                                             aria-haspopup="true" aria-expanded="false">
                                         <small>💬</small>
@@ -203,7 +201,7 @@
                                     </button>
                                     <div class="dropdown-menu">
                                         <a th:href="@{/thread/{id}/reaction/like(id=*{id})}">
-                                            <button class="btn btn-sm" type="button" style="margin-left: 10px">
+                                            <button class="btn btn-sm thread-right_side_button-like" type="button">
                                                 <small>👍🏻</small>
                                                 Like
                                             </button>
@@ -221,19 +219,200 @@
                     </div>
                 </div>
 
-                <!--
+                <!--Add comment section-->
 
-                COMMENTS
+                <div class="commentBox thread-comment_box">
 
-                -->
+                    <th:block th:insert="editor/text-editor"></th:block>
 
-                <th:block th:insert="thread/partials/thread-add-comment"></th:block>
+                    <div id="textarea-content-createComment"
+                         class="thread-comment_box-textarea"
+                         contenteditable="true">
+
+                    </div>
+                    <div class="row d-flex justify-content-center align-items-center thread-comment_box-buttons">
+                        <button id="button-createCommentThread-readThreadPage" class="btn btn-sm" type="button">
+                            Comment
+                        </button>
+                        <button id="button-cancelCommentThread-readThreadPage" class="btn btn-sm thread-comment_box-button_cancel" type="button">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+
+                <script>
+                    $(`#button-commentThread-readThreadPage`).on(`click`, function () {
+                        $(`.commentBox`).show();
+                    });
+
+                    $(`#button-cancelCommentThread-readThreadPage`).on(`click`, function () {
+                        $(`.commentBox`).hide();
+                    });
+                </script>
+
+                <script th:inline="javascript">
+                    let threadId = /*[[*{id}]]*/ null;
+                    let buttonCreateComment = $(`#button-createCommentThread-readThreadPage`);
+                    let contentDiv = $(`#textarea-content-createComment`);
+                    let url = URL_API_COMMENT_THREAD.replace('{id}', threadId);
+                    let successfulRedirectUrl = URL_READ_THREAD.replace('{id}', threadId);
+
+
+                    buttonCreateComment.on(`click`, function () {
+                        $.ajax({
+                            method: "POST",
+                            url: url,
+                            data: {content: contentDiv.html()},
+                            success: function (isSuccessful) {
+                                if (isSuccessful) {
+                                    window.location.href = successfulRedirectUrl;
+                                }
+                            }
+                        });
+                    });
+                </script>
 
                 <script src="/res/js/editor/text-editor.js"></script>
 
+                <!--List all comments related to this thread section -->
+
                 <th:block th:each="comment : *{comments}" th:object="${comment}">
 
-                    <th:block th:insert="thread/partials/thread-comments"></th:block>
+                    <div class="card thread-comments">
+
+                        <div>
+                            <small class="thread-comments-date_likes_dislikes">
+                                <small class="dateIcon">📅</small>
+                                <small class="date"
+                                       th:text="*{#temporals.format(createdOn, 'dd MMM,yyyy')}"></small>
+                            </small>
+                            <small class="thread-comments-date_likes_dislikes">
+                                <small>👍</small>
+                                <span class="totalComments" th:text="*{totalLikes}">0</span>
+                            </small>
+                            <small class="thread-comments-date_likes_dislikes">
+                                <small>👎</small>
+                                <span class="totalComments" th:text="*{totalDislikes}">0</span>
+                            </small>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-3 thread-comment-creator_info_section">
+                                <div>
+                                    <img class="card-img-top thread-comment-creator_avatar"
+                                         src="/res/img/avatar-user.png" alt="Card image cap">
+                                </div>
+                                <div>
+                                    <small>👤<a href="" th:text="*{creatorUsername}"></a></small>
+                                </div>
+                                <div>
+                                    <small>
+                                        <small>💬</small>
+                                        <span class="totalComments" th:text="*{creatorTotalComments}"></span> total
+                                        comments
+                                    </small>
+                                </div>
+
+                                <div>
+                                    <small>
+                                        <a href=""><img
+                                                        class="card-img-top thread-comment-creator-minecraft_username"
+                                                        src="/res/img/avatar-test.png" alt="Card image cap"><span>Minecraft Username</span></a>
+                                    </small>
+                                </div>
+                            </div>
+
+                            <div class="content thread-comment-content">
+                                <p class="card-text" th:utext="*{content}">
+
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div>
+                            <div class="btn-group thread-comments-buttons">
+                                <div class="thread-comments-button_options">
+                                    <button class="btn btn-sm dropdown-toggle" type="button"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <small>⚙</small>
+                                        Options
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" th:href="@{/comment/{id}/delete(id=*{id})}">
+                                            <small>❌</small>
+                                            Delete</a>
+                                    </div>
+                                </div>
+                                <div  class="thread-comments-button_report">
+
+                                    <button class="btn btn-sm" type="button" th:id="*{'reportButtonByThreadId-'+id}">
+                                        <small>⚠</small>
+                                        Report
+                                    </button>
+
+                                    <div class="modal" th:id="*{'modelReportCommentByThreadId-'+id}" role="dialog">
+                                        <div class="modal-dialog">
+
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title">Report to the kings:</h4>
+                                                </div>
+                                                <form method="post" th:action="@{/comment/{id}/report(id=*{id})}">
+                                                    <div class="modal-body">
+                                        <textarea class="thread-comments-modal"
+                                                  name="reason" placeholder="Reason..."></textarea>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-default">Report</button>
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                            Cancel
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <script th:inline="javascript">
+                                        f();
+                                        function f() {
+                                            let commentId = /*[[*{id}]]*/ null;
+                                            $(document).ready(function () {
+                                                $("#reportButtonByThreadId-"+commentId).click(function () {
+                                                    $("#modelReportCommentByThreadId-"+commentId).modal();
+                                                });
+                                            });
+                                        }
+                                    </script>
+
+                                </div>
+                                <div class="thread-comments-button_options">
+                                    <button class="btn btn-sm dropdown-toggle" type="button"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <small>💡</small>
+                                        React
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a th:href="@{/comment/{id}/reaction/like(id=*{id})}">
+                                            <button class="btn btn-sm thread-right_side_button-like" type="button">
+                                                <small>👍🏻</small>
+                                                Like
+                                            </button>
+                                        </a>
+                                        <a th:href="@{/comment/{id}/reaction/dislike(id=*{id})}">
+                                            <button class="btn btn-sm" type="button">
+                                                <small>👎🏻</small>
+                                                Dislike
+                                            </button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
 
                 </th:block>
 
@@ -243,10 +422,10 @@
     </div>
 </div>
 
-
+<!--Inserting the image fitter which will resize images to fit them into their container-->
 <script>
     $(document).ready(function () {
-        $(`<script/>`,{type:'text/javascript',src: '/res/js/utils/imageFitter.js'}).appendTo('head');
+        $(`<script/>`, {type: 'text/javascript', src: '/res/js/utils/imageFitter.js'}).appendTo('head');
     });
 </script>
 
