@@ -61,7 +61,7 @@ public class CommentController extends BaseController {
         throw new CommentNotFoundException();
     }
 
-    @PreAuthorize("hasAuthority('MODERATOR')")
+    @PreAuthorize("isAuthenticated()")
     @PostMapping(value= URLConstants.COMMENT_CREATE_THREAD_POST, produces = "application/json")
     @ResponseBody
     public String createComment(@PathVariable String id, CommentCreateBindingModel commentCreateBindingModel, Principal principal) {

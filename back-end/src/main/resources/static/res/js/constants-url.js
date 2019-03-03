@@ -8,6 +8,6 @@ const URL_API_EMAIL_AVAILABILITY = "/api/user/exists?email=";
 
 const URL_API_USER_SEND_EMAIL_RESET_PASSWORD = "user/send-email/reset/password";
 
-const URL_API_CREATE_THREAD = "/threads/create";
-const URL_API_COMMENT_THREAD = "/threads/{id}/comment/create";
-const URL_READ_THREAD = "/threads/{id}/read";
+const URL_API_CREATE_THREAD = "/thread/create";
+const URL_API_COMMENT_THREAD = "/thread/{id}/comment/create";
+const URL_READ_THREAD = "/thread/{id}/read";
