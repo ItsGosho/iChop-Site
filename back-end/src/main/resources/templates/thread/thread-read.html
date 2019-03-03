@@ -425,10 +425,13 @@
             </div>
         </th:block>
 
-        <script src="/res/js/utils/imageFitter.js"/>
-
-        <th:block th:insert="navbar/right-base-navbar"></th:block>
-
     </div>
 </div>
+
+
+<script>
+    $(document).ready(function () {
+        $(`<script/>`,{type:'text/javascript',src: '/res/js/utils/imageFitter.js'}).appendTo('head');
+    });
+</script>
 
