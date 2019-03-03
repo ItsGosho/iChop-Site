@@ -1,0 +1,51 @@
+<div class="commentBox" style="margin-top: 25px;margin-bottom: 25px;display: none">
+
+    <th:block th:insert="editor/text-editor"></th:block>
+
+    <div id="textarea-content-createComment"
+         style=" border: 1px solid #ccc;border-radius: 3px;width: 100%;min-width: 230px;min-height: 25vw;max-height: 25vw;overflow: auto;"
+         contenteditable="true">
+
+    </div>
+    <div class="row d-flex justify-content-center align-items-center" style="margin-top: 10px">
+        <button id="button-createCommentThread-readThreadPage" class="btn btn-sm" type="button">
+            Comment
+        </button>
+        <button id="button-cancelCommentThread-readThreadPage" class="btn btn-sm" type="button"
+                style="margin-left: 10px">
+            Cancel
+        </button>
+    </div>
+</div>
+
+<script>
+    $(`#button-commentThread-readThreadPage`).on(`click`, function () {
+        $(`.commentBox`).show();
+    });
+
+    $(`#button-cancelCommentThread-readThreadPage`).on(`click`, function () {
+        $(`.commentBox`).hide();
+    });
+</script>
+
+<script th:inline="javascript">
+    let threadId = /*[[*{id}]]*/ null;
+    let buttonCreateComment = $(`#button-createCommentThread-readThreadPage`);
+    let contentDiv = $(`#textarea-content-createComment`);
+    let url = URL_API_COMMENT_THREAD.replace('{id}', threadId);
+    let successfulRedirectUrl = URL_READ_THREAD.replace('{id}', threadId);
+
+
+    buttonCreateComment.on(`click`, function () {
+        $.ajax({
+            method: "POST",
+            url: url,
+            data: {content: contentDiv.html()},
+            success: function (isSuccessful) {
+                if (isSuccessful) {
+                    window.location.href = successfulRedirectUrl;
+                }
+            }
+        });
+    });
+</script>
