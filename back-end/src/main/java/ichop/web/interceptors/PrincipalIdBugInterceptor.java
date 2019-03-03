@@ -31,6 +31,10 @@ public class PrincipalIdBugInterceptor extends HandlerInterceptorAdapter {
 
         Object u = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
+        if(u == null){
+            return true;
+        }
+
         if(u instanceof String){
             return true;
         }
