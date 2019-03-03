@@ -3,12 +3,12 @@ package ichop.web.controllers.thread;
 import ichop.constants.URLConstants;
 import ichop.domain.entities.threads.reaction.ReactionType;
 import ichop.domain.entities.users.User;
-import ichop.domain.models.service.CommentServiceModel;
-import ichop.domain.models.service.ThreadServiceModel;
-import ichop.domain.models.service.UserServiceModel;
-import ichop.service.thread.ReactServices;
-import ichop.service.thread.crud.CommentCrudServices;
-import ichop.service.thread.crud.ThreadCrudServices;
+import ichop.domain.models.service.threads.comment.CommentServiceModel;
+import ichop.domain.models.service.threads.thread.ThreadServiceModel;
+import ichop.domain.models.service.user.UserServiceModel;
+import ichop.service.threads.reaction.ReactionServices;
+import ichop.service.threads.comment.crud.CommentCrudServices;
+import ichop.service.threads.thread.crud.ThreadCrudServices;
 import ichop.web.controllers.BaseController;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,14 +27,14 @@ public class ReactionController extends BaseController {
 
     private final ThreadCrudServices threadCrudServices;
     private final CommentCrudServices commentCrudServices;
-    private final ReactServices reactServices;
+    private final ReactionServices reactionServices;
     private final ModelMapper modelMapper;
 
     @Autowired
-    public ReactionController(ThreadCrudServices threadCrudServices, CommentCrudServices commentCrudServices, ReactServices reactServices, ModelMapper modelMapper) {
+    public ReactionController(ThreadCrudServices threadCrudServices, CommentCrudServices commentCrudServices, ReactionServices reactionServices, ModelMapper modelMapper) {
         this.threadCrudServices = threadCrudServices;
         this.commentCrudServices = commentCrudServices;
-        this.reactServices = reactServices;
+        this.reactionServices = reactionServices;
         this.modelMapper = modelMapper;
     }
 
@@ -71,7 +71,7 @@ public class ReactionController extends BaseController {
         ThreadServiceModel threadServiceModel = this.threadCrudServices.getThread(threadId);
         UserServiceModel userServiceModel = this.modelMapper.map(((Authentication) principal).getPrincipal(), UserServiceModel.class);
 
-        this.reactServices.addReaction(threadServiceModel,userServiceModel,reactionType);
+        this.reactionServices.addReaction(threadServiceModel,userServiceModel,reactionType);
 
         String redirectUrl = URLConstants.THREAD_READ_GET.replace("{id}", threadServiceModel.getId());
         return super.redirect(redirectUrl);
@@ -81,7 +81,7 @@ public class ReactionController extends BaseController {
         CommentServiceModel commentServiceModel = this.commentCrudServices.getById(threadId);
         UserServiceModel userServiceModel = this.modelMapper.map((User)((Authentication) principal).getPrincipal(), UserServiceModel.class);
 
-        this.reactServices.addReaction(commentServiceModel,userServiceModel,reactionType);
+        this.reactionServices.addReaction(commentServiceModel,userServiceModel,reactionType);
 
         String redirectUrl = URLConstants.THREAD_READ_GET.replace("{id}", commentServiceModel.getThread().getId());
         return super.redirect(redirectUrl);

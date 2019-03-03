@@ -1,8 +1,7 @@
 package ichop.services.token;
 
-import ichop.domain.entities.tokens.PasswordResetToken;
-import ichop.domain.models.service.PasswordResetTokenServiceModel;
-import ichop.domain.models.service.UserServiceModel;
+import ichop.domain.models.service.token.PasswordResetTokenServiceModel;
+import ichop.domain.models.service.user.UserServiceModel;
 import ichop.service.token.PasswordResetTokenServicesImp;
 import ichop.service.token.crud.PasswordResetTokenCrudServices;
 import org.junit.Assert;

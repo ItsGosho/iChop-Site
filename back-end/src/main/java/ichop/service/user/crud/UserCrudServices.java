@@ -1,7 +1,6 @@
 package ichop.service.user.crud;
 
-import ichop.domain.entities.users.User;
-import ichop.domain.models.service.UserServiceModel;
+import ichop.domain.models.service.user.UserServiceModel;
 
 public interface UserCrudServices {
 

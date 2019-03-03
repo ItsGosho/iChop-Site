@@ -2,7 +2,7 @@ package ichop.web.controllers;
 
 import ichop.constants.URLConstants;
 import ichop.domain.models.view.thread.ThreadHomepageViewModel;
-import ichop.service.thread.view.ThreadViewServices;
+import ichop.service.threads.thread.view.ThreadViewServices;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;

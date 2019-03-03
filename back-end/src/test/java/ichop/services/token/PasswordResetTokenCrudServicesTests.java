@@ -1,17 +1,15 @@
 package ichop.services.token;
 
 import ichop.domain.entities.tokens.PasswordResetToken;
-import ichop.domain.models.service.PasswordResetTokenServiceModel;
-import ichop.domain.models.service.UserServiceModel;
+import ichop.domain.models.service.token.PasswordResetTokenServiceModel;
+import ichop.domain.models.service.user.UserServiceModel;
 import ichop.repository.token.PasswordResetTokenRepository;
 import ichop.service.token.crud.PasswordResetTokenCrudServicesImp;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.modelmapper.ModelMapper;

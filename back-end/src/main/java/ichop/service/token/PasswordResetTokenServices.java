@@ -1,9 +1,7 @@
 package ichop.service.token;
 
-import ichop.domain.entities.tokens.PasswordResetToken;
-import ichop.domain.entities.users.User;
-import ichop.domain.models.service.PasswordResetTokenServiceModel;
-import ichop.domain.models.service.UserServiceModel;
+import ichop.domain.models.service.token.PasswordResetTokenServiceModel;
+import ichop.domain.models.service.user.UserServiceModel;
 
 public interface PasswordResetTokenServices {
 

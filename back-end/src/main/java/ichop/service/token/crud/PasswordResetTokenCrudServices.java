@@ -1,7 +1,7 @@
 package ichop.service.token.crud;
 
-import ichop.domain.models.service.PasswordResetTokenServiceModel;
-import ichop.domain.models.service.UserServiceModel;
+import ichop.domain.models.service.token.PasswordResetTokenServiceModel;
+import ichop.domain.models.service.user.UserServiceModel;
 
 public interface PasswordResetTokenCrudServices {
 

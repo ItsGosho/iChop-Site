@@ -1,7 +1,7 @@
 package ichop.services.user;
 
 import ichop.domain.entities.users.User;
-import ichop.domain.models.service.UserServiceModel;
+import ichop.domain.models.service.user.UserServiceModel;
 import ichop.repository.user.UserRepository;
 import ichop.service.user.crud.UserCrudServicesImp;
 import org.junit.Before;

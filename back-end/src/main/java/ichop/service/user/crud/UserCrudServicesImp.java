@@ -1,7 +1,7 @@
 package ichop.service.user.crud;
 
 import ichop.domain.entities.users.User;
-import ichop.domain.models.service.UserServiceModel;
+import ichop.domain.models.service.user.UserServiceModel;
 import ichop.repository.user.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

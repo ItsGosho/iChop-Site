@@ -2,8 +2,8 @@ package ichop.service.token.crud;
 
 import ichop.domain.entities.tokens.PasswordResetToken;
 import ichop.domain.entities.users.User;
-import ichop.domain.models.service.PasswordResetTokenServiceModel;
-import ichop.domain.models.service.UserServiceModel;
+import ichop.domain.models.service.token.PasswordResetTokenServiceModel;
+import ichop.domain.models.service.user.UserServiceModel;
 import ichop.repository.token.PasswordResetTokenRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

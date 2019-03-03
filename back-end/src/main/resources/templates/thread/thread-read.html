@@ -301,19 +301,19 @@
                                 </div>
                                 <div style="display: inline-block">
 
-                                    <button class="btn btn-sm" type="button" id="reportButtonByThreadId">
+                                    <button class="btn btn-sm" type="button" th:id="*{'reportButtonByThreadId-'+id}">
                                         <small>⚠</small>
                                         Report
                                     </button>
 
-                                    <div class="modal fade" id="modelReportCommentByThreadId" role="dialog">
+                                    <div class="modal" th:id="*{'modelReportCommentByThreadId-'+id}" role="dialog">
                                         <div class="modal-dialog">
 
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h4 class="modal-title">Report to the kings:</h4>
                                                 </div>
-                                                <form method="post" action="/comment/id/report">
+                                                <form method="post" th:action="@{/comment/{id}/report(id=*{id})}">
                                                     <div class="modal-body">
                                         <textarea style="width: 100%;overflow-y: scroll;height: 200px;resize: none"
                                                   name="reason" placeholder="Reason..."></textarea>
@@ -329,13 +329,18 @@
 
                                         </div>
                                     </div>
-                                    <script>
-                                        $(document).ready(function () {
-                                            $("#reportButtonByThreadId").click(function () {
-                                                $("#modelReportCommentByThreadId").modal();
+                                    <script th:inline="javascript">
+                                        f();
+                                        function f() {
+                                            let commentId = /*[[*{id}]]*/ null;
+                                            $(document).ready(function () {
+                                                $("#reportButtonByThreadId-"+commentId).click(function () {
+                                                    $("#modelReportCommentByThreadId-"+commentId).modal();
+                                                });
                                             });
-                                        });
+                                        }
                                     </script>
+
                                 </div>
                                 <div style="display: inline-block">
                                     <button class="btn btn-sm dropdown-toggle" type="button"

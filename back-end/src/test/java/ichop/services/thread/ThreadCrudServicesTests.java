@@ -1,10 +1,9 @@
 package ichop.services.thread;
 
 import ichop.domain.entities.threads.Thread;
-import ichop.domain.entities.users.User;
-import ichop.domain.models.service.ThreadServiceModel;
-import ichop.repository.thread.ThreadRepository;
-import ichop.service.thread.crud.ThreadCrudServicesImp;
+import ichop.domain.models.service.threads.thread.ThreadServiceModel;
+import ichop.repository.threads.thread.ThreadRepository;
+import ichop.service.threads.thread.crud.ThreadCrudServicesImp;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,8 +13,6 @@ import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.ActiveProfiles;
 
 import java.util.Arrays;

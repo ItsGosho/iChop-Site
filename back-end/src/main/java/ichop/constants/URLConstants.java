@@ -43,6 +43,10 @@ public final class URLConstants {
     public static final String COMMENT_REACTION_LIKE = "/comment/{id}/reaction/like";
     public static final String COMMENT_REACTION_DISLIKE = "/comment/{id}/reaction/dislike";
 
+    //-ReportController
+    public static final String THREAD_REPORT = "/thread/{id}/report";
+    public static final String COMMENT_REPORT = "/comment/{id}/report";
+
     //-ThreadRestController
     public static final String THREAD_CREATE_GET =  "/thread/create";
 

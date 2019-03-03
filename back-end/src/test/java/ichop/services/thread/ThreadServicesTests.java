@@ -1,11 +1,10 @@
 package ichop.services.thread;
 
 import ichop.domain.models.binding.thread.ThreadCreateBindingModel;
-import ichop.domain.models.service.ThreadServiceModel;
-import ichop.domain.models.service.UserServiceModel;
-import ichop.service.thread.ThreadServicesImp;
-import ichop.service.thread.crud.ThreadCrudServices;
-import org.junit.Assert;
+import ichop.domain.models.service.threads.thread.ThreadServiceModel;
+import ichop.domain.models.service.user.UserServiceModel;
+import ichop.service.threads.thread.ThreadServicesImp;
+import ichop.service.threads.thread.crud.ThreadCrudServices;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
