@@ -152,12 +152,43 @@
                                             </div>
                                         </th:block>
                                     </th:block>
-                                    <a th:href="@{/thread/{id}/report(id=*{id})}">
-                                        <button class="btn btn-sm" type="button" style="margin-left: 5px">
-                                            <small>⚠</small>
-                                            Report
-                                        </button>
-                                    </a>
+
+                                    <button class="btn btn-sm" type="button" id="button-reportThread-readThread" style="margin-left: 5px">
+                                        <small>⚠</small>
+                                        Report
+                                    </button>
+                                    <div class="modal" id="modal-reportThread-readThread" role="dialog">
+                                        <div class="modal-dialog">
+
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title">Report to the kings:</h4>
+                                                </div>
+                                                <form method="post" th:action="@{/thread/{id}/report(id=*{id})}">
+                                                    <div class="modal-body">
+                                        <textarea style="width: 100%;overflow-y: scroll;height: 200px;resize: none"
+                                                  name="reason" placeholder="Reason..."></textarea>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-default">Report</button>
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                            Cancel
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <script>
+                                        $(document).ready(function () {
+                                            $("#button-reportThread-readThread").click(function () {
+                                                $("#modal-reportThread-readThread").modal();
+                                            });
+                                        });
+                                    </script>
+
                                 </div>
                                 <div class="btn-group" style="display: inline-block;float:right">
                                     <button id="button-commentThread-readThreadPage" class="btn btn-sm" type="button"
