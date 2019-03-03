@@ -7,5 +7,4 @@ import ichop.domain.models.service.user.UserServiceModel;
 public interface ThreadServices {
 
     ThreadServiceModel create(ThreadCreateBindingModel threadCreateBindingModel, UserServiceModel userServiceModel);
-
 }

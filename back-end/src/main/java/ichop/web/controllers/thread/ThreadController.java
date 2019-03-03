@@ -1,8 +1,10 @@
 package ichop.web.controllers.thread;
 
 import ichop.constants.URLConstants;
+import ichop.domain.models.service.threads.thread.ThreadServiceModel;
 import ichop.domain.models.view.thread.ThreadReadViewModel;
 import ichop.exceptions.thread.ThreadNotFoundException;
+import ichop.service.threads.thread.ThreadServices;
 import ichop.service.threads.thread.crud.ThreadCrudServices;
 import ichop.service.threads.thread.view.ThreadViewServices;
 import ichop.web.controllers.BaseController;
@@ -15,11 +17,13 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class ThreadController extends BaseController {
 
+    private final ThreadServices threadServices;
     private final ThreadCrudServices threadCrudServices;
     private final ThreadViewServices threadViewServices;
 
     @Autowired
-    public ThreadController(ThreadCrudServices threadCrudServices, ThreadViewServices threadViewServices) {
+    public ThreadController(ThreadServices threadServices, ThreadCrudServices threadCrudServices, ThreadViewServices threadViewServices) {
+        this.threadServices = threadServices;
         this.threadCrudServices = threadCrudServices;
         this.threadViewServices = threadViewServices;
     }
@@ -43,6 +47,7 @@ public class ThreadController extends BaseController {
 
        if(id != null && this.threadCrudServices.exists(id)){
 
+           this.threadCrudServices.increaseViews(id);
            ThreadReadViewModel threadReadViewModel = this.threadViewServices.getThread(id);
 
            modelAndView.addObject("thread",threadReadViewModel);

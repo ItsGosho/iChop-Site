@@ -20,4 +20,6 @@ public interface ThreadCrudServices {
     List<ThreadServiceModel> findAll();
 
     Page<Thread> findAll(Pageable pageable);
+
+    void increaseViews(String id);
 }

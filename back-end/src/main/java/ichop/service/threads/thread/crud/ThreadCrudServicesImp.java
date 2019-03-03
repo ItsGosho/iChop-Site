@@ -77,4 +77,9 @@ public class ThreadCrudServicesImp implements ThreadCrudServices {
         return result;
     }
 
+    @Override
+    public void increaseViews(String id) {
+        this.threadRepository.increaseViews(id);
+    }
+
 }
