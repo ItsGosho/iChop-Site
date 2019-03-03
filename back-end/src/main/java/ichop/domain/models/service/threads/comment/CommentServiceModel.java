@@ -4,6 +4,7 @@ import ichop.domain.models.service.threads.thread.ThreadServiceModel;
 import ichop.domain.models.service.user.UserServiceModel;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class CommentServiceModel {
 
@@ -12,6 +13,7 @@ public class CommentServiceModel {
     public String content;
     public UserServiceModel creator;
     public LocalDateTime createdOn;
+    private List<CommentReactionServiceModel> reactions;
 
 
     public ThreadServiceModel getThread() {
@@ -52,5 +54,13 @@ public class CommentServiceModel {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public List<CommentReactionServiceModel> getReactions() {
+        return reactions;
+    }
+
+    public void setReactions(List<CommentReactionServiceModel> reactions) {
+        this.reactions = reactions;
     }
 }

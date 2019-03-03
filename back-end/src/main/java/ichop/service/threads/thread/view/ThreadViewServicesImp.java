@@ -1,6 +1,8 @@
 package ichop.service.threads.thread.view;
 
 import ichop.domain.entities.threads.Thread;
+import ichop.domain.entities.threads.reaction.ReactionType;
+import ichop.domain.models.service.threads.comment.CommentServiceModel;
 import ichop.domain.models.service.threads.thread.ThreadServiceModel;
 import ichop.domain.models.service.user.UserServiceModel;
 import ichop.domain.models.view.thread.ThreadHomepageViewModel;
@@ -13,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.stream.Collectors;
 
 @Service
 public class ThreadViewServicesImp implements ThreadViewServices {
@@ -58,8 +62,22 @@ public class ThreadViewServicesImp implements ThreadViewServices {
         threadReadViewModel.setCreatorTotalComments(this.commentCrudServices.getTotalCommentsOfUser(this.modelMapper.map(threadServiceModel.getCreator(), UserServiceModel.class)));
 
         threadReadViewModel.getComments().forEach(x->{
-            x.setCreatorTotalComments(this.commentCrudServices.getTotalCommentsOfUser(this.userCrudServices.getUserByUsername(x.getCreatorUsername())));
+
+            UserServiceModel commentCreator = this.userCrudServices.getUserByUsername(x.getCreatorUsername());
+            CommentServiceModel actualComment = threadServiceModel.getComments().stream()
+                    .filter(com -> com.getId().equals(x.getId())).findFirst().orElse(null);
+
+            x.setCreatorTotalComments(this.commentCrudServices.getTotalCommentsOfUser(commentCreator));
+            x.setTotalLikes((int) actualComment.getReactions().
+                    stream().
+                    filter(react->react.getReactionType().equals(ReactionType.LIKE)).count());
+            x.setTotalDislikes((int) actualComment.getReactions().
+                    stream().
+                    filter(react->react.getReactionType().equals(ReactionType.DISLIKE)).count());
         });
+
+        threadReadViewModel.setComments(threadReadViewModel.getComments().stream()
+        .sorted((x1,x2)->x2.getCreatedOn().compareTo(x1.getCreatedOn())).collect(Collectors.toList()));
 
         return threadReadViewModel;
     }
