@@ -38,7 +38,8 @@
                                 <th:block sec:authorize="isAuthenticated()">
                                     <th:block sec:authorize="hasAuthority('MODERATOR')">
                                         (<a href="/SAMO AKO IMA PRAVA"><span
-                                            class="totalViews" th:text="*{totalViews}">0</span></a>👀 / <a href="/SAMO AKO IMA PRAVA"><span
+                                            class="totalViews" th:text="*{totalViews}">0</span></a>👀 / <a
+                                            href="/SAMO AKO IMA PRAVA"><span
                                             class="totalLikes" th:text="*{totalReactions}">0</span></a>👍)
                                     </th:block>
                                     <th:block sec:authorize="!hasAuthority('MODERATOR')">
@@ -58,33 +59,12 @@
                     </div>
                     <div class="dropdown-divider"></div>
 
-                    <div class="content" th:id="'content' + ${thread.getId()}">
+                    <div class="content thread-content" th:id="'content' + ${thread.getId()}">
                         <p class="card-text" th:utext="${thread.getContent()}">
 
                         </p>
                     </div>
 
-                    <!--
-
-                    Substrings the content of the threads only to SHOW_TO_NOW!
-
-                    -->
-
-                    <script th:inline="javascript">
-                        proceed();
-                        function proceed() {
-
-                            let content = $(`#content`+ [[${thread.getId()}]])[0].innerHTML;
-                            let substringedContent = content.substring(0,content.indexOf('SHOW_TO_NOW'));
-                            let isFound = substringedContent !== '';
-
-                            if(isFound){
-                                $(`#content`+[[${thread.getId()}]]).empty();
-
-                                $(`#content`+[[${thread.getId()}]]).append(substringedContent);
-                            }
-                        }
-                    </script>
 
                     <div class="dropdown-divider"></div>
 
@@ -111,7 +91,7 @@
                         </div>
                         <div class="col-md-4">
                             <a class="dropdown-item" th:href="@{/thread/{id}/read(id=*{id})}">
-                                <button  type="button"
+                                <button type="button"
                                         class="btn btn-primary btn-sm btn-brand btn-reddit continueReading">
                                     <small>📖</small>
                                     Continue reading...
@@ -130,20 +110,26 @@
                     <th:block th:if="${#request.getParameter('page')} != null">
 
                         <th:block th:if="${(#conversions.convert(#request.getParameter('page'), 'Integer')) - 1} >= 0">
-                            <li class="page-item"><a class="page-link" th:href="@{/(page=${(#conversions.convert(#request.getParameter('page'), 'Integer')) - 1})}">Previous</a></li>
+                            <li class="page-item"><a class="page-link"
+                                                     th:href="@{/(page=${(#conversions.convert(#request.getParameter('page'), 'Integer')) - 1})}">Previous</a>
+                            </li>
                         </th:block>
 
                     </th:block>
 
                     <th:block th:each="i: ${#numbers.sequence(1,totalPages)}">
-                        <li class="page-item"><a class="page-link" th:text="${i}" th:href="@{/?page={pId}(pId=${i-1})}"></a></li>
+                        <li class="page-item"><a class="page-link" th:text="${i}"
+                                                 th:href="@{/?page={pId}(pId=${i-1})}"></a></li>
                     </th:block>
 
 
                     <th:block th:if="${#request.getParameter('page')} != null">
 
-                        <th:block th:if="${(#conversions.convert(#request.getParameter('page'), 'Integer')) + 1 <= totalPages-1}">
-                            <li class="page-item"><a class="page-link" th:href="@{/(page=${(#conversions.convert(#request.getParameter('page'), 'Integer')) + 1})}">Next</a></li>
+                        <th:block
+                                th:if="${(#conversions.convert(#request.getParameter('page'), 'Integer')) + 1 <= totalPages-1}">
+                            <li class="page-item"><a class="page-link"
+                                                     th:href="@{/(page=${(#conversions.convert(#request.getParameter('page'), 'Integer')) + 1})}">Next</a>
+                            </li>
                         </th:block>
 
                     </th:block>
@@ -164,8 +150,23 @@
     </div>
 </div>
 
+
+<!--
+ Substrings the content of the threads only to SHOW_TO_NOW!
+-->
+
+<script>
+        $(`<script/>`, {type: 'text/javascript', src: '/res/js/thread/thread-substringer.js'}).appendTo('head');
+
+        substringHtmlClassContentToKeyWord('.thread-content','SHOW_TO_NOW');
+</script>
+
+<!--
+Fits the image into their container!
+-->
+
 <script>
     $(document).ready(function () {
-        $(`<script/>`,{type:'text/javascript',src: '/res/js/utils/imageFitter.js'}).appendTo('head');
+        $(`<script/>`, {type: 'text/javascript', src: '/res/js/utils/imageFitter.js'}).appendTo('head');
     });
 </script>
