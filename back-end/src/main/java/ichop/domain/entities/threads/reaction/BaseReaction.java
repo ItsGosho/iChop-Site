@@ -2,9 +2,13 @@ package ichop.domain.entities.threads.reaction;
 
 import ichop.domain.entities.BaseEntity;
 import ichop.domain.entities.users.User;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
+@Getter
+@Setter
 @MappedSuperclass
 public abstract class BaseReaction extends BaseEntity {
 
@@ -15,19 +19,4 @@ public abstract class BaseReaction extends BaseEntity {
     @Enumerated(value = EnumType.STRING)
     private ReactionType reactionType;
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public ReactionType getReactionType() {
-        return reactionType;
-    }
-
-    public void setReactionType(ReactionType reactionType) {
-        this.reactionType = reactionType;
-    }
 }
