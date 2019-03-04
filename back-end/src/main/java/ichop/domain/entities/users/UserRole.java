@@ -1,10 +1,12 @@
 package ichop.domain.entities.users;
 
 import ichop.domain.entities.BaseEntity;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
 
+@Setter
 @Entity
 @Table(name = "user_roles")
 public class UserRole extends BaseEntity implements GrantedAuthority {
@@ -26,7 +28,4 @@ public class UserRole extends BaseEntity implements GrantedAuthority {
         return this.authority;
     }
 
-    public void setAuthority(String authority) {
-        this.authority = authority;
-    }
 }

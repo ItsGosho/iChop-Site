@@ -1,11 +1,15 @@
 package ichop.domain.models.binding.user;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+@Getter
+@Setter
 public class UserResetPasswordBindingModel {
 
     @NotNull
@@ -18,19 +22,4 @@ public class UserResetPasswordBindingModel {
     @NotEmpty
     private String confirmPassword;
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getConfirmPassword() {
-        return confirmPassword;
-    }
-
-    public void setConfirmPassword(String confirmPassword) {
-        this.confirmPassword = confirmPassword;
-    }
 }

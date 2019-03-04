@@ -3,12 +3,16 @@ package ichop.domain.entities.threads;
 import ichop.domain.entities.BaseEntity;
 import ichop.domain.entities.threads.reaction.ThreadReaction;
 import ichop.domain.entities.users.User;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "threads")
 public class Thread extends BaseEntity {
@@ -42,59 +46,4 @@ public class Thread extends BaseEntity {
         this.setViews(0);
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public User getCreator() {
-        return creator;
-    }
-
-    public void setCreator(User creator) {
-        this.creator = creator;
-    }
-
-    public LocalDateTime getCreatedOn() {
-        return createdOn;
-    }
-
-    public void setCreatedOn(LocalDateTime createdOn) {
-        this.createdOn = createdOn;
-    }
-
-    public List<Comment> getComments() {
-        return comments;
-    }
-
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
-    }
-
-    public Integer getViews() {
-        return views;
-    }
-
-    public void setViews(Integer views) {
-        this.views = views;
-    }
-
-    public List<ThreadReaction> getReactions() {
-        return reactions;
-    }
-
-    public void setReactions(List<ThreadReaction> reactions) {
-        this.reactions = reactions;
-    }
 }
