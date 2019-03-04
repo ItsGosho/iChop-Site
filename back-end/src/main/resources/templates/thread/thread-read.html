@@ -99,30 +99,6 @@
                             </p>
                         </div>
 
-                        <!--
-
-                        Clears the keyword SHOW_TO_NOW:
-
-                        -->
-                        <script th:inline="javascript">
-                            proceed();
-
-                            function proceed() {
-
-                                let content = $(`#content` + [[${thread.getId()}]])[0].innerHTML;
-                                let substringedContent = content.substring(0, content.indexOf('SHOW_TO_NOW'));
-                                let isFound = substringedContent !== '';
-
-                                if (isFound) {
-                                    $(`#content` + [[${thread.getId()}]]).empty();
-
-                                    let result = content.replace('SHOW_TO_NOW', '');
-
-                                    $(`#content` + [[${thread.getId()}]]).append(result);
-                                }
-                            }
-                        </script>
-
 
                         <div class="row">
                             <div class="col-md-8 thread-random_separation">
@@ -422,7 +398,17 @@
     </div>
 </div>
 
+<!--Clear the keyword SHOW_TO_NOW-->
+
+<script>
+    $(`<script/>`, {type: 'text/javascript', src: '/res/js/thread/thread-substringer.js'}).appendTo('head');
+
+    removeHtmlClassContentKyWord('.thread-content','SHOW_TO_NOW');
+</script>
+
+
 <!--Inserting the image fitter which will resize images to fit them into their container-->
+
 <script>
     $(document).ready(function () {
         $(`<script/>`, {type: 'text/javascript', src: '/res/js/utils/imageFitter.js'}).appendTo('head');
