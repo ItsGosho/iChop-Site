@@ -45,7 +45,7 @@ public class CommentController extends BaseController {
 
     @PreAuthorize("hasAuthority('MODERATOR')")
     @PostMapping(URLConstants.COMMENT_DELETE_POST)
-    public ModelAndView deleteComment(@PathVariable String id) {
+    public String deleteComment(@PathVariable String id) {
 
         CommentServiceModel commentServiceModel = this.commentCrudServices.getById(id);
 

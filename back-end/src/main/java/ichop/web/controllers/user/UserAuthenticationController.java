@@ -33,7 +33,7 @@ public class UserAuthenticationController extends BaseController {
     }
 
     @PostMapping(URLConstants.USER_REGISTER_POST)
-    public ModelAndView proceedRegistration(@Valid UserRegisterBindingModel userRegisterBindingModel, BindingResult bindingResult) {
+    public String proceedRegistration(@Valid UserRegisterBindingModel userRegisterBindingModel, BindingResult bindingResult) {
 
         if(bindingResult.hasErrors()){
             return this.redirectToRegisterDropdown();
@@ -43,12 +43,12 @@ public class UserAuthenticationController extends BaseController {
     }
 
     @GetMapping(URLConstants.USER_LOGIN_GET)
-    public ModelAndView redirectToLoginDropdown(){
+    public String redirectToLoginDropdown(){
         return super.redirect("/?login=require");
     }
 
     @GetMapping(URLConstants.USER_REGISTER_GET)
-    public ModelAndView redirectToRegisterDropdown(){
+    public String redirectToRegisterDropdown(){
         return super.redirect("/?register=require");
     }
 

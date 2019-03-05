@@ -14,12 +14,8 @@ public abstract class BaseController {
         return this.view(viewName, new ModelAndView());
     }
 
-    public ModelAndView redirect(String redirectUrl) {
-        ModelAndView modelAndView = new ModelAndView();
-
-        modelAndView.setViewName("redirect:" + redirectUrl);
-
-        return modelAndView;
+    public String redirect(String redirectUrl) {
+        return "redirect:"+redirectUrl;
     }
 
     public ModelAndView page(String basePage,String bodyPage,String title, ModelAndView modelAndView) {

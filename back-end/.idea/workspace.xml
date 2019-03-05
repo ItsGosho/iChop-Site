@@ -44,7 +44,7 @@
         <counts>
           <entry key="css" value="1" />
           <entry key="html" value="4" />
-          <entry key="java" value="10" />
+          <entry key="java" value="30" />
           <entry key="js" value="1" />
         </counts>
       </usages-collector>
@@ -52,74 +52,30 @@
         <counts>
           <entry key="CSS" value="1" />
           <entry key="HTML" value="4" />
-          <entry key="JAVA" value="10" />
+          <entry key="JAVA" value="30" />
           <entry key="JavaScript" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="css" value="89" />
-          <entry key="html" value="372" />
-          <entry key="java" value="165" />
+          <entry key="dummy" value="19" />
+          <entry key="html" value="375" />
+          <entry key="java" value="320" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="89" />
-          <entry key="HTML" value="372" />
-          <entry key="JAVA" value="165" />
+          <entry key="HTML" value="375" />
+          <entry key="JAVA" value="320" />
+          <entry key="PLAIN_TEXT" value="19" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ichop/constants/URLConstants.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="466">
-              <caret line="34" column="43" lean-forward="true" selection-start-line="34" selection-start-column="43" selection-end-line="34" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/thread/thread-read.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="491">
-              <caret line="231" column="47" selection-start-line="231" selection-start-column="47" selection-end-line="231" selection-end-column="90" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/static/res/js/thread/create-comment-send.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ichop/web/controllers/thread/ThreadController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="38" column="47" selection-start-line="38" selection-start-column="47" selection-end-line="38" selection-end-column="47" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ichop/web/controllers/thread/ReactionController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="640">
-              <caret line="59" column="63" selection-start-line="59" selection-start-column="63" selection-end-line="59" selection-end-column="63" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -173,11 +129,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/ichop/web/interceptors/PrincipalIdBugInterceptor.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/thread/partials/thread-comments.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/thread/partials/thread-add-comment.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/thread/read/thread-comments.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/thread/read/thread-add-comment.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/thread/read/thread-read.html" />
         <option value="$PROJECT_DIR$/src/main/resources/static/res/js/thread/thread-substring.js" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/thread/threads-all-home.html" />
@@ -218,12 +169,17 @@
         <option value="$PROJECT_DIR$/src/main/java/ichop/domain/models/service/user/UserRoleServiceModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/ichop/domain/models/service/threads/thread/ThreadReactionServiceModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/ichop/domain/models/service/threads/thread/ThreadServiceModel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ichop/web/controllers/thread/CommentController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/res/css/thread/thread-read.css" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/thread/thread-read.html" />
-        <option value="$PROJECT_DIR$/src/main/java/ichop/web/controllers/thread/ReactionController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ichop/web/controllers/thread/ThreadController.java" />
         <option value="$PROJECT_DIR$/src/main/java/ichop/constants/URLConstants.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/thread/thread-read.html" />
+        <option value="$PROJECT_DIR$/src/main/java/ichop/web/controllers/user/UserAuthenticationController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ichop/web/controllers/thread/ThreadController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ichop/web/controllers/thread/CommentController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ichop/web/controllers/thread/ReactionController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ichop/web/controllers/BaseController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ichop/web/controllers/user/UserApiController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ichop/web/controllers/user/UserRestController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ichop/web/controllers/thread/ThreadRestController.java" />
       </list>
     </option>
   </component>
@@ -369,17 +325,6 @@
               <item name="back-end" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ichop" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
-              <item name="thread" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="itsgosho" type="b2602c69:ProjectViewProjectNode" />
-              <item name="back-end" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -462,7 +407,7 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/Gosho/Desktop/Spring Project/src/main/resources/templates/thread/threads-all-home.html" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551788197295" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551790253636" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -659,7 +604,7 @@
       <workItem from="1551697289762" duration="4323000" />
       <workItem from="1551705424918" duration="602000" />
       <workItem from="1551727391234" duration="212000" />
-      <workItem from="1551786126338" duration="1863000" />
+      <workItem from="1551786126338" duration="3300000" />
     </task>
     <servers />
   </component>
@@ -696,11 +641,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="173866000" />
+    <option name="totallyTimeSpent" value="175303000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28624734" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -711,7 +655,7 @@
       <window_info id="Capture Tool" order="6" />
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32850242" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3279743" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32850242" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3954984" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -723,7 +667,7 @@
       <window_info anchor="bottom" id="Java Enterprise" order="10" />
       <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="12" weight="0.3290461" />
-      <window_info anchor="bottom" id="Messages" order="13" weight="0.3268921" />
+      <window_info anchor="bottom" id="Messages" order="13" weight="0.32583067" />
       <window_info anchor="bottom" id="Docker" order="14" show_stripe_button="false" />
       <window_info anchor="bottom" id="Problems" order="15" />
       <window_info anchor="right" id="Coverage" order="0" side_tool="true" weight="0.29104477" />
@@ -747,34 +691,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/res/js/thread/create-thread-send.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="9" column="5" lean-forward="true" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/res/js/utils/imageFitter.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="7" column="23" lean-forward="true" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/res/js/thread/thread-modal.js" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/res/js/thread/thread-substringer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="15" column="54" selection-start-line="15" selection-start-column="54" selection-end-line="15" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/notification/error.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/notification/info.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ichop/Test.java" />
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
@@ -979,6 +895,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="17" column="34" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1010,27 +929,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/web/controllers/thread/CommentController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="498">
-          <caret line="64" column="37" selection-start-line="64" selection-start-column="37" selection-end-line="64" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/web/controllers/thread/ReportController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="512">
-          <caret line="51" column="30" selection-start-line="51" selection-start-column="30" selection-end-line="51" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/web/controllers/HomeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="24" column="42" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/thread/thread-create.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="617">
@@ -1052,38 +950,115 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/web/controllers/thread/ReactionController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/res/js/thread/create-comment-send.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="640">
-          <caret line="59" column="63" selection-start-line="59" selection-start-column="63" selection-end-line="59" selection-end-column="63" />
+        <state relative-caret-position="64">
+          <caret line="4" column="20" lean-forward="true" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/web/controllers/thread/ThreadController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/thread/thread-read.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="38" column="47" selection-start-line="38" selection-start-column="47" selection-end-line="38" selection-end-column="47" />
+        <state relative-caret-position="556">
+          <caret line="255" column="38" lean-forward="true" selection-start-line="255" selection-start-column="38" selection-end-line="255" selection-end-column="38" />
+          <folding>
+            <element signature="n#script#1;n#div#0;n#th:block#0;n#div#0;n#div#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/web/controllers/BaseController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="17" column="25" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
+          <folding>
+            <element signature="e#440#441#0" expanded="true" />
+            <element signature="e#464#465#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/web/controllers/HomeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="29" column="68" lean-forward="true" selection-start-line="29" selection-start-column="68" selection-end-line="29" selection-end-column="68" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ichop/constants/URLConstants.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="466">
-          <caret line="34" column="43" lean-forward="true" selection-start-line="34" selection-start-column="43" selection-end-line="34" selection-end-column="43" />
+          <caret line="34" column="31" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="31" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/res/js/thread/create-comment-send.js">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/web/controllers/user/UserApiController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        <state relative-caret-position="160">
+          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/thread/thread-read.html">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/web/controllers/user/UserAuthenticationController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="491">
-          <caret line="231" column="47" selection-start-line="231" selection-start-column="47" selection-end-line="231" selection-end-column="90" />
+        <state relative-caret-position="320">
+          <caret line="37" column="38" lean-forward="true" selection-start-line="37" selection-start-column="38" selection-end-line="37" selection-end-column="38" />
+          <folding>
+            <element signature="method#getReset#0;class#UserAuthenticationController#0" />
+            <element signature="method#proceedPasswordReset#0;class#UserAuthenticationController#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/web/controllers/user/UserRestController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="20" column="14" lean-forward="true" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/web/controllers/user/UserAuthorizatonController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/web/controllers/thread/ThreadRestController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="11" selection-start-column="11" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/web/controllers/thread/ThreadController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="39" column="17" selection-start-line="39" selection-start-column="17" selection-end-line="39" selection-end-column="17" />
+          <folding>
+            <element signature="method#readThread#0;class#ThreadController#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/web/controllers/thread/ReportController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="512">
+          <caret line="51" column="30" selection-start-line="51" selection-start-column="30" selection-end-line="51" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/web/controllers/thread/ReactionController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1072">
+          <caret line="87" column="26" selection-start-line="87" selection-start-column="26" selection-end-line="87" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/web/controllers/thread/CommentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="498">
+          <caret line="64" column="30" lean-forward="true" selection-start-line="64" selection-start-column="30" selection-end-line="64" selection-end-column="30" />
         </state>
       </provider>
     </entry>

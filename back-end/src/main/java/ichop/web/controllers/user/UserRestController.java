@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import ichop.constants.URLConstants;
 import ichop.domain.models.binding.user.UserForgottenPasswordBindingModel;
 import ichop.service.user.UserServices;
+import ichop.service.user.crud.UserCrudServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
@@ -15,10 +16,25 @@ import javax.validation.Valid;
 public class UserRestController {
 
     private final UserServices userServices;
+    private final UserCrudServices userCrudServices;
 
     @Autowired
-    public UserRestController(UserServices userServices) {
+    public UserRestController(UserServices userServices, UserCrudServices userCrudServices) {
         this.userServices = userServices;
+        this.userCrudServices = userCrudServices;
+    }
+
+
+    @GetMapping(value = URLConstants.USER_EXISTS_GET, produces = "application/json")
+    @ResponseBody
+    public String isUserExists(@RequestParam(required = false) String username,
+                               @RequestParam(required = false) String email) {
+        if (username != null) {
+            return new Gson().toJson(this.userCrudServices.existsByUsername(username));
+        } else if (email != null) {
+            return new Gson().toJson(this.userCrudServices.existsByEmail(email));
+        }
+        throw new IllegalArgumentException();
     }
 
     @PreAuthorize("isAnonymous()")

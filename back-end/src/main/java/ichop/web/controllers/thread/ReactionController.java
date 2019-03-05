@@ -42,33 +42,33 @@ public class ReactionController extends BaseController {
 
     @PreAuthorize("isAuthenticated()")
     @PostMapping(URLConstants.THREAD_REACTION_LIKE_POST)
-    public ModelAndView threadReactionLike(@PathVariable String id, Principal principal) {
+    public String threadReactionLike(@PathVariable String id, Principal principal) {
 
         return proceedThreadReaction(id,principal,ReactionType.LIKE);
     }
 
     @PreAuthorize("isAuthenticated()")
     @PostMapping(URLConstants.THREAD_REACTION_DISLIKE_POST)
-    public ModelAndView threadReactionDislike(@PathVariable String id, Principal principal) {
+    public String threadReactionDislike(@PathVariable String id, Principal principal) {
 
         return proceedThreadReaction(id,principal,ReactionType.DISLIKE);
     }
 
     @PreAuthorize("isAuthenticated()")
     @PostMapping(URLConstants.COMMENT_REACTION_LIKE_POST)
-    public ModelAndView commentReactionLike(@PathVariable String id, Principal principal) {
+    public String commentReactionLike(@PathVariable String id, Principal principal) {
 
         return proceedCommentReaction(id,principal,ReactionType.LIKE);
     }
 
     @PreAuthorize("isAuthenticated()")
     @PostMapping(URLConstants.COMMENT_REACTION_DISLIKE_POST)
-    public ModelAndView commentReactionDislike(@PathVariable String id, Principal principal) {
+    public String commentReactionDislike(@PathVariable String id, Principal principal) {
 
         return proceedCommentReaction(id,principal,ReactionType.DISLIKE);
     }
 
-    private ModelAndView proceedThreadReaction(String threadId,Principal principal,ReactionType reactionType){
+    private String proceedThreadReaction(String threadId,Principal principal,ReactionType reactionType){
         ThreadServiceModel threadServiceModel = this.threadCrudServices.getThread(threadId);
         UserServiceModel userServiceModel = this.modelMapper.map(((Authentication) principal).getPrincipal(), UserServiceModel.class);
 
@@ -78,7 +78,7 @@ public class ReactionController extends BaseController {
         return super.redirect(redirectUrl);
     }
 
-    private ModelAndView proceedCommentReaction(String threadId,Principal principal,ReactionType reactionType){
+    private String proceedCommentReaction(String threadId,Principal principal,ReactionType reactionType){
         CommentServiceModel commentServiceModel = this.commentCrudServices.getById(threadId);
         UserServiceModel userServiceModel = this.modelMapper.map((User)((Authentication) principal).getPrincipal(), UserServiceModel.class);
 
