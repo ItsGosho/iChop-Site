@@ -17,6 +17,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.security.Principal;
@@ -40,28 +41,28 @@ public class ReactionController extends BaseController {
 
 
     @PreAuthorize("isAuthenticated()")
-    @GetMapping(URLConstants.THREAD_REACTION_LIKE)
+    @PostMapping(URLConstants.THREAD_REACTION_LIKE_POST)
     public ModelAndView threadReactionLike(@PathVariable String id, Principal principal) {
 
         return proceedThreadReaction(id,principal,ReactionType.LIKE);
     }
 
     @PreAuthorize("isAuthenticated()")
-    @GetMapping(URLConstants.THREAD_REACTION_DISLIKE)
+    @PostMapping(URLConstants.THREAD_REACTION_DISLIKE_POST)
     public ModelAndView threadReactionDislike(@PathVariable String id, Principal principal) {
 
         return proceedThreadReaction(id,principal,ReactionType.DISLIKE);
     }
 
     @PreAuthorize("isAuthenticated()")
-    @GetMapping(URLConstants.COMMENT_REACTION_LIKE)
+    @PostMapping(URLConstants.COMMENT_REACTION_LIKE_POST)
     public ModelAndView commentReactionLike(@PathVariable String id, Principal principal) {
 
         return proceedCommentReaction(id,principal,ReactionType.LIKE);
     }
 
     @PreAuthorize("isAuthenticated()")
-    @GetMapping(URLConstants.COMMENT_REACTION_DISLIKE)
+    @PostMapping(URLConstants.COMMENT_REACTION_DISLIKE_POST)
     public ModelAndView commentReactionDislike(@PathVariable String id, Principal principal) {
 
         return proceedCommentReaction(id,principal,ReactionType.DISLIKE);

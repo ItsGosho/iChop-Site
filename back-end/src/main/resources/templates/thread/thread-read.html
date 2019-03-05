@@ -117,9 +117,12 @@
                                             </button>
                                             <div class="dropdown-menu">
                                                 <th:block sec:authorize="hasAuthority('ADMIN')">
-                                                    <a class="dropdown-item" th:href="@{/thread/{id}/delete(id=*{id})}">
-                                                        <small>❌</small>
-                                                        Delete</a>
+                                                    <form class="dropdown-item" th:action="@{/thread/{id}/delete(id=*{id})}" method="post">
+                                                        <button type="submit" class="btn btn-light btn-sm thread-delete_button">
+                                                            <small>❌</small>
+                                                            Delete
+                                                        </button>
+                                                    </form>
                                                 </th:block>
                                             </div>
                                         </th:block>
@@ -176,18 +179,18 @@
                                         React
                                     </button>
                                     <div class="dropdown-menu">
-                                        <a th:href="@{/thread/{id}/reaction/like(id=*{id})}">
-                                            <button class="btn btn-sm thread-right_side_button-like" type="button">
+                                        <form th:action="@{/thread/{id}/reaction/like(id=*{id})}" method="post">
+                                            <button class="btn btn-sm thread-right_side_button-react" type="submit">
                                                 <small>👍🏻</small>
                                                 Like
                                             </button>
-                                        </a>
-                                        <a th:href="@{/thread/{id}/reaction/dislike(id=*{id})}">
-                                            <button class="btn btn-sm" type="button">
+                                        </form>
+                                        <form th:action="@{/thread/{id}/reaction/dislike(id=*{id})}" method="post">
+                                            <button class="btn btn-sm thread-right_side_button-react" type="submit">
                                                 <small>👎🏻</small>
                                                 Dislike
                                             </button>
-                                        </a>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -226,7 +229,27 @@
                     });
                 </script>
 
-                <script th:inline="javascript" src="/res/js/thread/create-comment-send.js"/>
+                <script th:inline="javascript">
+                    let threadId = /*[[*{id}]]*/ null;
+                    let buttonCreateComment = $(`#button-createCommentThread-readThreadPage`);
+                    let contentDiv = $(`#textarea-content-createComment`);
+                    let url = URL_API_COMMENT_THREAD.replace('{id}', threadId);
+                    let successfulRedirectUrl = URL_READ_THREAD.replace('{id}', threadId);
+
+
+                    buttonCreateComment.on(`click`, function () {
+                        $.ajax({
+                            method: "POST",
+                            url: url,
+                            data: {content: contentDiv.html()},
+                            success: function (isSuccessful) {
+                                if (isSuccessful) {
+                                    window.location.href = successfulRedirectUrl;
+                                }
+                            }
+                        });
+                    });
+                </script>
 
                 <script src="/res/js/editor/text-editor.js"></script>
 
@@ -296,9 +319,12 @@
                                         Options
                                     </button>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" th:href="@{/comment/{id}/delete(id=*{id})}">
-                                            <small>❌</small>
-                                            Delete</a>
+                                        <form class="dropdown-item" th:action="@{/comment/{id}/delete(id=*{id})}" method="post">
+                                            <button type="submit" class="btn btn-light btn-sm thread-delete_button">
+                                                <small>❌</small>
+                                                Delete
+                                            </button>
+                                        </form>
                                     </div>
                                 </div>
                                 <div  class="thread-comments-button_report">
@@ -351,18 +377,18 @@
                                         React
                                     </button>
                                     <div class="dropdown-menu">
-                                        <a th:href="@{/comment/{id}/reaction/like(id=*{id})}">
-                                            <button class="btn btn-sm thread-right_side_button-like" type="button">
+                                        <form th:action="@{/comment/{id}/reaction/like(id=*{id})}" method="post">
+                                            <button class="btn btn-sm thread-right_side_button-react" type="submit">
                                                 <small>👍🏻</small>
                                                 Like
                                             </button>
-                                        </a>
-                                        <a th:href="@{/comment/{id}/reaction/dislike(id=*{id})}">
-                                            <button class="btn btn-sm" type="button">
+                                        </form>
+                                        <form th:action="@{/comment/{id}/reaction/dislike(id=*{id})}" method="post">
+                                            <button class="btn btn-sm thread-right_side_button-react" type="submit">
                                                 <small>👎🏻</small>
                                                 Dislike
                                             </button>
-                                        </a>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

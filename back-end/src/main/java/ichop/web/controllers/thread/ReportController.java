@@ -38,7 +38,7 @@ public class ReportController extends BaseController {
     }
 
     @PreAuthorize("isAuthenticated()")
-    @PostMapping(URLConstants.COMMENT_REPORT)
+    @PostMapping(URLConstants.COMMENT_REPORT_POST)
     public ModelAndView reportComment(@PathVariable String id, Principal principal, @RequestParam String reason){
         CommentServiceModel commentServiceModel = this.commentCrudServices.getById(id);
         UserServiceModel userServiceModel = this.modelMapper.map((User)((Authentication) principal).getPrincipal(), UserServiceModel.class);
@@ -49,7 +49,7 @@ public class ReportController extends BaseController {
     }
 
     @PreAuthorize("isAuthenticated()")
-    @PostMapping(URLConstants.THREAD_REPORT)
+    @PostMapping(URLConstants.THREAD_REPORT_POST)
     public ModelAndView reportThread(@PathVariable String id, Principal principal, @RequestParam String reason){
         ThreadServiceModel threadServiceModel = this.threadCrudServices.getThread(id);
         UserServiceModel userServiceModel = this.modelMapper.map((User)((Authentication) principal).getPrincipal(), UserServiceModel.class);

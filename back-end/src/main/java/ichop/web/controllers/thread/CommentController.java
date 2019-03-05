@@ -44,7 +44,7 @@ public class CommentController extends BaseController {
 
 
     @PreAuthorize("hasAuthority('MODERATOR')")
-    @GetMapping(URLConstants.COMMENT_DELETE)
+    @PostMapping(URLConstants.COMMENT_DELETE_POST)
     public ModelAndView deleteComment(@PathVariable String id) {
 
         CommentServiceModel commentServiceModel = this.commentCrudServices.getById(id);
@@ -62,7 +62,7 @@ public class CommentController extends BaseController {
     }
 
     @PreAuthorize("isAuthenticated()")
-    @PostMapping(value= URLConstants.COMMENT_CREATE_THREAD_POST, produces = "application/json")
+    @PostMapping(value= URLConstants.THREAD_CREATE_COMMENT_POST, produces = "application/json")
     @ResponseBody
     public String createComment(@PathVariable String id, CommentCreateBindingModel commentCreateBindingModel, Principal principal) {
 

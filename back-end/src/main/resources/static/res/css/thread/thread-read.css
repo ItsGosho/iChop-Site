@@ -47,8 +47,17 @@
     float: right;
 }
 
-.thread-right_side_button-like {
+.thread-right_side_button-react {
     margin-left: 10px;
+}
+
+.thread-remove_button_default_style {
+    background: none;
+    border: none;
+}
+
+.thread-delete_button {
+    width: 100%;
 }
 
 /*Comment box*/

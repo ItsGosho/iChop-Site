@@ -1,5 +1,6 @@
 package ichop.constants;
 
+
 public final class URLConstants {
 
     //HomeController
@@ -30,24 +31,24 @@ public final class URLConstants {
 
     //-ThreadController
     public static final String THREAD_CREATE_POST = "/thread/create";
-    public static final String THREAD_DELETE_GET = "/thread/{id}/delete";
+    public static final String THREAD_DELETE_POST = "/thread/{id}/delete";
     public static final String THREAD_READ_GET = "/thread/{id}/read";
-
-    //-CommentController
-    public static final String COMMENT_DELETE = "/comment/{id}/delete";
-    public static final String COMMENT_CREATE_THREAD_POST = "/thread/{id}/comment/create";
-
-    //-ReactController
-    public static final String THREAD_REACTION_LIKE = "/thread/{id}/reaction/like";
-    public static final String THREAD_REACTION_DISLIKE = "/thread/{id}/reaction/dislike";
-    public static final String COMMENT_REACTION_LIKE = "/comment/{id}/reaction/like";
-    public static final String COMMENT_REACTION_DISLIKE = "/comment/{id}/reaction/dislike";
-
-    //-ReportController
-    public static final String THREAD_REPORT = "/thread/{id}/report";
-    public static final String COMMENT_REPORT = "/comment/{id}/report";
 
     //-ThreadRestController
     public static final String THREAD_CREATE_GET =  "/thread/create";
+
+    //-CommentController
+    public static final String COMMENT_DELETE_POST = "/comment/{id}/delete";
+    public static final String THREAD_CREATE_COMMENT_POST = "/thread/{id}/comment/create";
+
+    //-ReactController
+    public static final String THREAD_REACTION_LIKE_POST = "/thread/{id}/reaction/like";
+    public static final String THREAD_REACTION_DISLIKE_POST = "/thread/{id}/reaction/dislike";
+    public static final String COMMENT_REACTION_LIKE_POST = "/comment/{id}/reaction/like";
+    public static final String COMMENT_REACTION_DISLIKE_POST = "/comment/{id}/reaction/dislike";
+
+    //-ReportController
+    public static final String THREAD_REPORT_POST = "/thread/{id}/report";
+    public static final String COMMENT_REPORT_POST = "/comment/{id}/report";
 
 }
