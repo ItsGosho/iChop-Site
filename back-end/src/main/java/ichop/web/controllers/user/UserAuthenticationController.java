@@ -35,7 +35,7 @@ public class UserAuthenticationController extends BaseController {
     @PostMapping(URLConstants.USER_REGISTER_POST)
     public String proceedRegistration(@Valid UserRegisterBindingModel userRegisterBindingModel, BindingResult bindingResult) {
 
-        if(bindingResult.hasErrors()){
+        if(bindingResult.hasErrors()) {
             return this.redirectToRegisterDropdown();
         }
         this.userServices.register(userRegisterBindingModel);

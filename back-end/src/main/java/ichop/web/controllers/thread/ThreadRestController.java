@@ -5,9 +5,7 @@ import ichop.constants.URLConstants;
 import ichop.domain.entities.users.User;
 import ichop.domain.models.binding.thread.ThreadCreateBindingModel;
 import ichop.domain.models.service.user.UserServiceModel;
-import ichop.service.threads.comment.CommentServices;
 import ichop.service.threads.thread.ThreadServices;
-import ichop.service.threads.thread.crud.ThreadCrudServices;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -22,17 +20,14 @@ import java.security.Principal;
 public class ThreadRestController {
 
     private final ThreadServices threadServices;
-    private final CommentServices commentServices;
-    private final ThreadCrudServices threadCrudServices;
     private final ModelMapper modelMapper;
 
     @Autowired
-    public ThreadRestController(ThreadServices threadServices, CommentServices commentServices, ThreadCrudServices threadCrudServices, ModelMapper modelMapper) {
+    public ThreadRestController(ThreadServices threadServices, ModelMapper modelMapper) {
         this.threadServices = threadServices;
-        this.commentServices = commentServices;
-        this.threadCrudServices = threadCrudServices;
         this.modelMapper = modelMapper;
     }
+
 
     @PreAuthorize("hasAuthority('MODERATOR')")
     @PostMapping(value = URLConstants.THREAD_CREATE_POST,produces = "application/json")

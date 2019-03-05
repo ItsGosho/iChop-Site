@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' rel='stylesheet'/>
+    <link rel="stylesheet" href="../components/bootstrap-social.css">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+
+
+<div class="container" style="margin-bottom: 200px;position: relative;z-index: 1">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light rounded" style="max-height: 40px">
+        <img src="navbar-icon.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        <a class="navbar-brand" href="#">iChop</a>
+        <button class="navbar-toggler" style="height: 20px" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon" style="display:block;margin:auto;height: 10px"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown active">
+                    <div id="loginDiv">
+                        <button type="button" class="btn btn-success dropdown-toggle btn-sm" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                            Sign in
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right mobile-margin visible-xs" style="width: 350px;">
+                            <style>
+                                .mobile-margin {
+                                    margin-left: -33px;
+                                }
+                            </style>
+                            <!--LOGINNN!!!-->
+                            <div id="loginPage">
+                                <a class="dropdown-item" href="#">
+                                    <button type="button" class="btn btn-block btn-social btn-facebook"><i
+                                            class="fa fa-facebook"></i>Login with Facebook
+                                    </button>
+                                </a>
+                                <form class="px-4 py-3" method="post">
+                                    <div class="form-group">
+                                        <div class="input-group mb-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">👤/📧</div>
+                                            </div>
+                                            <input type="password" class="form-control" id="usernameOrEmailLoginForm"
+                                                   name="usernameOrEmail" placeholder="Username or Email...">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group mb-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">🔒</div>
+                                            </div>
+                                            <input type="text" class="form-control" id="passwordLoginForm"
+                                                   name="password" placeholder="Password...">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="g-recaptcha" id="rcaptcha" data-sitekey="site key"></div>
+                                        <span id="captcha" style="color:red"></span>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" name="rememberMe" class="custom-control-input"
+                                               id="rememberMeLoginForm">
+                                        <label class="custom-control-label" for="rememberMeLoginForm">
+                                            Remember me
+                                        </label>
+                                    </div>
+                                    <button type="submit" data-style="zoom-in" class="btn btn-primary btn-ladda">Login</button>
+                                    <div class="dropdown-divider"></div>
+                                </form>
+                                <a id="buttonGoToRegister" class="dropdown-item">
+                                    <button type="button" class="btn btn-success btn-sm">Register</button>
+                                </a>
+                                <a id="buttonGoToForgottenPassword" class="dropdown-item">
+                                    <button class="btn btn-warning btn-sm">Forgotten Password</button>
+                                </a>
+                            </div>
+
+
+                            <!--REGISTERR!!!-->
+                            <div id="registerPage" style="display:none">
+                                <form class="px-4 py-3" method="post">
+
+                                    <div class="form-group">
+                                        <div class="input-group mb-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">👤</div>
+                                            </div>
+                                            <input type="text" class="form-control" id="usernameRegisterForm"
+                                                   name="username" placeholder="Username...">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group mb-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">🔒</div>
+                                            </div>
+                                            <input type="password" class="form-control" id="passwordRegisterForm"
+                                                   data-placement="top"
+                                                   data-toggle="popover" title="Popover title" data-html="true"
+                                                   data-trigger="focus"
+                                                   data-content="-At least one uppercase character</br>-At least one lowercase character</br>-At least one 6 characters"
+                                                   name="password" placeholder="Password...">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-success" id="showPasswordRegisterForm"
+                                                        type="button">Show
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group mb-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">🔒</div>
+                                            </div>
+                                            <input type="password" class="form-control" id="confirmPasswordRegisterForm"
+                                                   name="confirmPassword" placeholder="Confirm Password...">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group mb-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">📧</div>
+                                            </div>
+                                            <input type="email" class="form-control" id="emailRegisterForm" name="email"
+                                                   placeholder="Email...">
+                                        </div>
+                                    </div>
+                                    <a class="dropdown-item">
+                                        <button type="submit" data-style="zoom-in" class="btn btn-success btn-sm">
+                                            Register
+                                        </button>
+                                    </a>
+                                    <a id="buttonGoToLogin" class="dropdown-item">
+                                        <button type="button" class="btn btn-primary btn-sm">Back</button>
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                </form>
+                            </div>
+                            <!--FORGOTTEN PASSWORD!!!-->
+                            <div id="forgottenPasswordPage" style="display:none">
+                                <form class="px-4 py-3" method="post">
+
+                                    <div class="form-group">
+                                        <div class="input-group mb-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">👤/📧</div>
+                                            </div>
+                                            <input type="text" class="form-control"
+                                                   id="usernameOrEmailForgottenPasswordForm"
+                                                   name="usernameOrEmail" placeholder="Username or Email...">
+                                        </div>
+                                    </div>
+                                    <a class="dropdown-item">
+                                        <button type="submit" data-style="zoom-in" class="btn btn-success btn-sm">Send
+                                        </button>
+                                    </a>
+                                    <a id="buttonGoToLogin2" class="dropdown-item">
+                                        <button type="button" class="btn btn-primary btn-sm">Back</button>
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                </form>
+                            </div>
+
+                            <script>
+                                runRegisterFormValidation();
+
+                                function runRegisterFormValidation() {
+
+                                    const EMAIL_PATTERN = "(?:[a-z0-9!#$%&'*+\\=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+\\=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])";
+
+
+                                    //Validate Email:
+                                    let registerField = $(`#emailRegisterForm`);
+
+                                    registerField.on(`keyup`, emailValidator);
+
+                                    function emailValidator() {
+                                        let val = registerField.val();
+                                        let matcher = new RegExp(EMAIL_PATTERN);
+
+                                        if (matcher.test(val)) {
+                                            console.log(123);
+                                        } else {
+
+                                        }
+
+                                    }
+
+
+                                    //Validate Passwords:
+                                    let showPasswordButton = $(`#showPasswordRegisterForm`);
+                                    let passwordField = $(`#passwordRegisterForm`);
+                                    let confirmPasswordField = $(`#confirmPasswordRegisterForm`);
+
+                                    passwordField.on(`keyup`,validatePasswordEquals);
+                                    confirmPasswordField.on(`keyup`,validatePasswordEquals);
+
+                                    //TODO: FINISH THE OTER VALIDATIONS
+
+                                    function validatePasswordEquals(){
+                                        let passwordValue = passwordField.val();
+                                        let confirmPasswordValue = confirmPasswordField.val();
+
+                                        if(passwordValue===confirmPasswordValue){
+
+                                            passwordField.removeClass("border border-danger");
+                                            passwordField.addClass("border border-success");
+
+                                            confirmPasswordField.removeClass("border border-danger");
+                                            confirmPasswordField.addClass("border border-success");
+                                        }else{
+                                            passwordField.addClass("border border-danger");
+                                            confirmPasswordField.addClass("border border-danger");
+                                        }
+                                    }
+
+                                    //Show/Hide Password:
+                                    showPasswordButton.on(`click`, showOrHidePassword);
+
+                                    function showOrHidePassword() {
+                                        if (passwordField.attr(`type`) === 'password') {
+                                            passwordField.attr(`type`, `text`);
+                                            confirmPasswordField.attr(`type`, `text`);
+
+                                            showPasswordButton.text(`Hide`);
+                                        } else {
+                                            passwordField.attr(`type`, `password`);
+                                            confirmPasswordField.attr(`type`, `password`);
+                                            showPasswordButton.text(`Show`);
+                                        }
+                                    }
+
+                                    //Password popover
+
+                                    $(document).ready(function () {
+                                        $('[data-toggle="popover"]').popover();
+                                    });
+
+                                }
+                            </script>
+
+                            <!--SCRIPT!!!-->
+
+                            <script>
+                                $('body').on("click", ".dropdown-menu", function (e) {
+                                    $(this).parent().is(".show") && e.stopPropagation();
+                                });
+
+                                $(`#buttonGoToRegister`).on(`click`, function () {
+                                    $(`#loginPage`).css('display', 'none');
+                                    $(`#registerPage`).css('display', 'inline');
+
+                                });
+
+                                $(`#buttonGoToLogin`).on(`click`, back);
+                                $(`#buttonGoToLogin2`).on(`click`, back);
+
+                                $(`#buttonGoToForgottenPassword`).on(`click`, function () {
+                                    $(`#loginPage`).css('display', 'none');
+                                    $(`#forgottenPasswordPage`).css('display', 'inline');
+
+                                });
+
+                                function back() {
+                                    $(`#registerPage`).css('display', 'none');
+                                    $(`#forgottenPasswordPage`).css('display', 'none');
+                                    $(`#loginPage`).css('display', 'inline');
+                                }
+
+                                // $(`#showPasswordRegisterForm`).on(`click`, showOrHidePassword);
+                                //
+                                // function showOrHidePassword() {
+                                //     if ($(`#passwordRegisterForm`).attr(`type`) === 'password') {
+                                //         $(`#passwordRegisterForm`).attr(`type`, `text`);
+                                //         $(`#confirmPasswordRegisterForm`).attr(`type`, `text`);
+                                //
+                                //         $(`#showPasswordRegisterForm`).text(`Hide`);
+                                //     } else {
+                                //         $(`#passwordRegisterForm`).attr(`type`, `password`);
+                                //         $(`#confirmPasswordRegisterForm`).attr(`type`, `password`);
+                                //         $(`#showPasswordRegisterForm`).text(`Show`);
+                                //     }
+                                // }
+
+                            </script>
+
+
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+</body>
+</html>

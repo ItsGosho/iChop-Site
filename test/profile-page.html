@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' rel='stylesheet'/>
+    <link rel="stylesheet" href="components/bootstrap-social.css">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+
+
+<div class="container" style="margin-top: 100px">
+
+    <div class="row" style="">
+
+
+        <div class="col-md-auto">
+            <div class="col-md-sm user-info">
+
+                <div align="center">
+                    <img src="nav/avatar-user.png" style="width: 70px;height: 70px"/>
+                </div>
+
+
+                <div class="card user-base-info" style="margin-top: 10px;font-size: 13px">
+                    <div class="card-body" style="line-height: 13px;font-family: Consolas;margin-left: -20px">
+
+                        <div class="col-md-auto">
+                            <div class="row" style="font-size: 11px">
+                                <div class="col-md-auto" style="column-width: 75px">
+                                    Last online:
+                                </div>
+                                <div class="col-md-auto" style="column-width: 100px">
+                               <span style="display: inline-block;float: right;">
+                                    March 03,2019
+                               </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-auto">
+                            <div class="row" style="font-size: 11px">
+                                <div class="col-md-auto" style="column-width: 75px">
+                                    Joined on:
+                                </div>
+                                <div class="col-md-auto" style="column-width: 100px">
+                               <span style="display: inline-block;float: right;">
+                                    Feb 16,2015
+                               </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-auto">
+                            <div class="row" style="font-size: 11px">
+                                <div class="col-md-auto" style="column-width: 75px">
+                                    Messages:
+                                </div>
+                                <div class="col-md-auto" style="column-width: 100px">
+                               <span style="display: inline-block;float: right;">
+                                    503
+                               </span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="card minecraft-user-link" style="margin-top: 10px">
+                    <div>
+                        <img src="avatar-test.png"
+                             style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px"/>
+                        <a href="">ItsGosho</a>
+                    </div>
+                </div>
+
+                <div class="card reactions-given" style="margin-top: 10px">
+                    <div class="card-body" style="line-height: 13px;font-family: Consolas;margin-left: -20px">
+
+                        <div class="col-md-auto">
+                            <div class="row" style="font-size: 15px">
+                                <div class="col-md-auto" style="font-size: 20px;">
+                                    👍
+                                </div>
+                                <div class="col-md-auto" style="column-width: 150px">
+                               <span style="display: inline-block;float: right;color:darkgreen">
+                                    5034
+                               </span>
+                                </div>
+                            </div>
+                            <div class="dropdown-divider" style="width: 100%"></div>
+                        </div>
+
+                        <div class="col-md-auto">
+                            <div class="row" style="font-size: 15px">
+                                <div class="col-md-auto" style="font-size: 20px">
+                                    👎
+                                </div>
+                                <div class="col-md-auto" style="column-width: 150px">
+                               <span style="display: inline-block;float: right;color: indianred;">
+                                    30
+                               </span>
+                                </div>
+                            </div>
+                            <div class="dropdown-divider" style="width: 100%"></div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="card following" style="margin-top: 10px">
+                    <div align="center">
+                        <span>Following: 29</span>
+                    </div>
+                    <div>
+                        <div class="row d-flex justify-content-center align-items-center">
+                            <a href=""><img src="nav/avatar-user.png" title="TinaBG"
+                                            style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px"/></a>
+                            <a href=""><img src="nav/avatar-user.png" title="TinaBG"
+                                            style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px"/></a>
+                            <a href=""><img src="nav/avatar-user.png" title="TinaBG"
+                                            style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px"/></a>
+                            <a href=""><img src="nav/avatar-user.png" title="TinaBG"
+                                            style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px"/></a>
+                        </div>
+                        <div class="row d-flex justify-content-center align-items-center">
+                            <a href=""><img src="nav/avatar-user.png" title="TinaBG"
+                                            style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px"/></a>
+                            <a href=""><img src="nav/avatar-user.png" title="TinaBG"
+                                            style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px"/></a>
+                            <a href=""><img src="nav/avatar-user.png" title="TinaBG"
+                                            style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px"/></a>
+                            <a href=""><img src="nav/avatar-user.png" title="TinaBG"
+                                            style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px"/></a>
+                        </div>
+                    </div>
+                    <a href="" class="d-flex justify-content-center align-items-center">See all</a>
+                </div>
+
+                <div class="card followers" style="margin-top: 10px">
+                    <div align="center">
+                        Followers: 15
+                    </div>
+                    <div>
+                        <div class="row d-flex justify-content-center align-items-center">
+                            <a href=""><img src="nav/avatar-user.png" title="TinaBG"
+                                            style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px"/></a>
+                            <a href=""><img src="nav/avatar-user.png" title="TinaBG"
+                                            style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px"/></a>
+                            <a href=""><img src="nav/avatar-user.png" title="TinaBG"
+                                            style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px"/></a>
+                            <a href=""><img src="nav/avatar-user.png" title="TinaBG"
+                                            style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px"/></a>
+                        </div>
+                        <div class="row d-flex justify-content-center align-items-center">
+                            <a href=""><img src="nav/avatar-user.png" title="TinaBG"
+                                            style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px"/></a>
+                            <a href=""><img src="nav/avatar-user.png" title="TinaBG"
+                                            style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px"/></a>
+                            <a href=""><img src="nav/avatar-user.png" title="TinaBG"
+                                            style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px"/></a>
+                            <a href=""><img src="nav/avatar-user.png" title="TinaBG"
+                                            style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px"/></a>
+                        </div>
+                    </div>
+                    <a href="" class="d-flex justify-content-center align-items-center">See all</a>
+                </div>
+
+                <div class="card user-location" style="margin-top: 10px">
+                    <div class="card-body"
+                         style="line-height: 13px;font-family: Consolas;margin-left: -20px;margin-bottom: -15px;margin-top: -15px">
+
+                        <div class="col-md-auto">
+                            <div class="row" style="font-size: 11px">
+                                <div class="col-md-auto" style="column-width: 75px">
+                                    Location:
+                                </div>
+                                <div class="col-md-auto" style="column-width: 100px">
+                               <span style="display: inline-block;float: right;">
+                                    Bulgaria
+                               </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-md-auto" style="margin-left: 5px">
+            <div style="line-height: 20px">
+                <div class="row">
+                    <div>
+                        <div class="col-md-auto head">
+                            <span style="font-size: 25px">ItsGosho</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div>
+                        <div class="col-md-auto head">
+                            <span style="font-size: 20px">Owner</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown-divider"></div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

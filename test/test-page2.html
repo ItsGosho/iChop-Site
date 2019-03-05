@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' rel='stylesheet'/>
+    <link rel="stylesheet" href="bootstrap-social.css">
+
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+</head>
+<body>
+
+<div class="container" style="margin-bottom: 200px;position: relative;z-index: 1">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light rounded" style="max-height: 40px">
+        <img src="navbar-icon.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        <a class="navbar-brand" href="#">iChop</a>
+        <button class="navbar-toggler" style="height: 20px" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon" style="display:block;margin:auto;height: 10px"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown active">
+                    <div id="loginDiv">
+                        <button type="button" class="btn btn-success dropdown-toggle btn-sm" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                            Sign in
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right" style="width: 350px;">
+
+                            <!--LOGINNN!!!-->
+                            <div id="loginPage">
+                                <a class="dropdown-item" href="#">
+                                    <button type="button" class="btn btn-block btn-social btn-facebook"><i
+                                            class="fa fa-facebook"></i>Login with Facebook
+                                    </button>
+                                </a>
+                                <form class="px-4 py-3" method="post">
+                                    <div class="form-group">
+                                        <div class="input-group mb-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">👤/📧</div>
+                                            </div>
+                                            <input type="password" class="form-control" id="usernameOrEmailLoginForm"
+                                                   name="usernameOrEmail" placeholder="Username or Email...">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group mb-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">🔒</div>
+                                            </div>
+                                            <input type="text" class="form-control" id="passwordLoginForm"
+                                                   name="password" placeholder="Password...">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="g-recaptcha" id="rcaptcha" data-sitekey="site key"></div>
+                                        <span id="captcha" style="color:red"></span>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" name="rememberMe" class="custom-control-input"
+                                               id="rememberMeLoginForm">
+                                        <label class="custom-control-label" for="rememberMeLoginForm">
+                                            Remember me
+                                        </label>
+                                    </div>
+                                    <button type="submit" data-style="zoom-in" class="btn btn-primary">Login</button>
+                                    <div class="dropdown-divider"></div>
+                                </form>
+                                <a id="buttonGoToRegister" class="dropdown-item">
+                                    <button type="button" class="btn btn-success btn-sm">Register</button>
+                                </a>
+                                <a id="buttonGoToForgottenPassword" class="dropdown-item">
+                                    <button class="btn btn-warning btn-sm">Forgotten Password</button>
+                                </a>
+                            </div>
+                            <!--REGISTERR!!!-->
+                            <div id="registerPage" style="display:none">
+                                <form class="px-4 py-3" method="post">
+
+                                    <div class="form-group">
+                                        <div class="input-group mb-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">👤</div>
+                                            </div>
+                                            <input type="text" class="form-control" id="usernameRegisterForm"
+                                                   name="username" placeholder="Username...">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group mb-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">🔒</div>
+                                            </div>
+                                            <input type="password" class="form-control" id="passwordRegisterForm"
+                                                   name="password" placeholder="Password...">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-success" id="showPasswordRegisterForm"
+                                                        type="button">Show
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group mb-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">🔒</div>
+                                            </div>
+                                            <input type="password" class="form-control" id="confirmPasswordRegisterForm"
+                                                   name="confirmPassword" placeholder="Confirm Password...">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group mb-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">📧</div>
+                                            </div>
+                                            <input type="email" class="form-control" id="emailRegisterForm" name="email"
+                                                   placeholder="Email...">
+                                        </div>
+                                    </div>
+                                    <a class="dropdown-item">
+                                        <button type="submit" data-style="zoom-in" class="btn btn-success btn-sm">
+                                            Register
+                                        </button>
+                                    </a>
+                                    <a id="buttonGoToLogin" class="dropdown-item">
+                                        <button type="button" class="btn btn-primary btn-sm">Back</button>
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                </form>
+                            </div>
+                            <!--FORGOTTEN PASSWORD!!!-->
+                            <div id="forgottenPasswordPage" style="display:none">
+                                <form class="px-4 py-3" method="post">
+
+                                    <div class="form-group">
+                                        <div class="input-group mb-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">👤/📧</div>
+                                            </div>
+                                            <input type="text" class="form-control"
+                                                   id="usernameOrEmailForgottenPasswordForm"
+                                                   name="usernameOrEmail" placeholder="Username or Email...">
+                                        </div>
+                                    </div>
+                                    <a class="dropdown-item">
+                                        <button type="submit" data-style="zoom-in" class="btn btn-success btn-sm">Send
+                                        </button>
+                                    </a>
+                                    <a id="buttonGoToLogin2" class="dropdown-item">
+                                        <button type="button" class="btn btn-primary btn-sm">Back</button>
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                </form>
+                            </div>
+
+
+                            <!--SCRIPT!!!-->
+
+                            <script>
+                                $('body').on("click", ".dropdown-menu", function (e) {
+                                    $(this).parent().is(".show") && e.stopPropagation();
+                                });
+
+                                $(`#buttonGoToRegister`).on(`click`, function () {
+                                    $(`#loginPage`).css('display', 'none');
+                                    $(`#registerPage`).css('display', 'inline');
+
+                                });
+
+                                $(`#buttonGoToLogin`).on(`click`, back);
+                                $(`#buttonGoToLogin2`).on(`click`, back);
+
+                                $(`#buttonGoToForgottenPassword`).on(`click`, function () {
+                                    $(`#loginPage`).css('display', 'none');
+                                    $(`#forgottenPasswordPage`).css('display', 'inline');
+
+                                });
+
+                                $(`#showPasswordRegisterForm`).on(`click`, showOrHidePassword);
+
+                                function back() {
+                                    $(`#registerPage`).css('display', 'none');
+                                    $(`#forgottenPasswordPage`).css('display', 'none');
+                                    $(`#loginPage`).css('display', 'inline');
+                                }
+
+                                function showOrHidePassword() {
+                                    if ($(`#passwordRegisterForm`).attr(`type`) === 'password') {
+                                        $(`#passwordRegisterForm`).attr(`type`, `text`);
+                                        $(`#confirmPasswordRegisterForm`).attr(`type`, `text`);
+
+                                        $(`#showPasswordRegisterForm`).text(`Hide`);
+                                    } else {
+                                        $(`#passwordRegisterForm`).attr(`type`, `password`);
+                                        $(`#confirmPasswordRegisterForm`).attr(`type`, `password`);
+                                        $(`#showPasswordRegisterForm`).text(`Show`);
+                                    }
+                                }
+
+                            </script>
+
+
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div id="testt" class="container d-flex justify-content-center align-items-center">
+
+    <div class="row">
+
+        <div id="news" class="col-xs-6">
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div>
+                                <img style="width: 75px;height: 75px;max-width: 100%;" class="card-img-top "
+                                     src="nav/avatar-user.png" alt="Card image cap">
+                            </div>
+                            <span>👤<span style="font-family: Consolas;">ItsGosho</span></span>
+                            <small title="Total messages">💬  <span style="font-family: Consolas;">5034</span></small>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="row" style="float:right">
+                                <span>🔑<span style="font-family: Consolas;">Owner</span></span>
+                            </div>
+                            <div class="row">
+                                <small title="Joined on">🏃 <span style="font-family: Consolas;">04-Feb-2015</span></small>
+                            </div>
+                            <div class="row">
+                                <small title="Last seen on">👀 <span style="font-family: Consolas;">05-March-2019</span></small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                      <div class="card-body">
+                          <div class="col-md-2" style="font-size: 12px;">
+                              Joined on:
+                          </div>
+                          <div class="col-md-1" style="font-size: 12px;">
+                              Today
+                          </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <small>by <a href="/SMENI">👤<span class="user">Creator Username</span></a> at <span
+                                    class="postTime">16:32</span> (<a href="/SAMO AKO IMA PRAVA"><span
+                                    class="totalViews">3,502</span></a>👀 / <a href="/SAMO AKO IMA PRAVA"><span
+                                    class="totalLikes">3,502</span></a>👍)
+                            </small>
+                        </div>
+                        <div class="col-md-4">
+                            <small style="display: inline-block;padding-top: 18px;float:right;">
+                                <small>💬</small>
+                                <a href="/SMENI"><span class="totalComments">129</span></a> Comments
+                            </small>
+                        </div>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <p class="card-text" style="width: 60vw;min-width: 230px">
+                        Welcome to our new website!
+                    </p>
+
+                    <div class="row">
+                        <div class="col-md-8" style="margin-bottom: 8px">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="btn-group">
+                                <button class="btn btn-sm dropdown-toggle" type="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <small>⚙</small>
+                                    Options
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="/DELETE NEWS">
+                                        <small>❌</small>
+                                        Delete</a>
+                                </div>
+                                <a href="">
+                                    <button class="btn btn-sm" type="button" style="margin-left: 5px">
+                                        <small>⚠</small>
+                                        Report
+                                    </button>
+                                </a>
+                            </div>
+                            <div class="btn-group" style="display: inline-block;float:right">
+                                <button id="button-commentThread-readThreadPage" class="btn btn-sm" type="button"
+                                        aria-haspopup="true" aria-expanded="false">
+                                    <small>💬</small>
+                                    Comment
+                                </button>
+                                <button class="btn btn-sm dropdown-toggle" type="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <small>💡</small>
+                                    React
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a href="/like">
+                                        <button class="btn btn-sm" type="button" style="margin-left: 10px">
+                                            <small>👍🏻</small>
+                                            Like
+                                        </button>
+                                    </a>
+                                    <a href="/dislike">
+                                        <button class="btn btn-sm" type="button">
+                                            <small>👎🏻</small>
+                                            Dislike
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="commentBox" style="margin-top: 25px;margin-bottom: 25px;display: none">
+                <div class="col-md-8">
+                    <a href="#" id="button-formatBold-textEditor" title="Bold" onclick="event.preventDefault()"><i
+                            class="material-icons">format_bold</i></a>
+                    <a href="#" id="button-formatItalic-textEditor" title="Italic" onclick="event.preventDefault()"><i
+                            class="material-icons">format_italic</i></a>
+                    <a href="#" id="button-formatUnderline-textEditor" title="Underline"
+                       onclick="event.preventDefault()"><i
+                            class="material-icons">format_underlined</i></a>
+
+                    <span>
+                                    <a href="#" id="button-color-textEditor" data-toggle="dropdown"
+                                       aria-haspopup="true" aria-expanded="false" title="Color"
+                                       onclick="event.preventDefault()"><i class="material-icons">invert_colors</i></a>
+
+                                    <div id="div-textColorChoose-textEditor" class="col-md-12 dropdown-menu"
+                                         aria-labelledby="button-color-textEditor">
+                                        <a href="#" id="button-color_white-textEditor" title="White"
+                                           onclick="event.preventDefault()"><i
+                                                class="material-icons">format_paint</i></a>
+                                        <a href="#" id="button-color_black-textEditor" title="Black"
+                                           onclick="event.preventDefault()"><i class="material-icons"
+                                                                               style="color: black">format_paint</i></a>
+                                        <a href="#" id="button-color_grey-textEditor" title="Grey"
+                                           onclick="event.preventDefault()"><i class="material-icons"
+                                                                               style="color: gray">format_paint</i></a>
+                                        <a href="#" id="button-color_red-textEditor" title="Red"
+                                           onclick="event.preventDefault()"><i class="material-icons"
+                                                                               style="color: red">format_paint</i></a>
+                                        <a href="#" id="button-color_redDark-textEditor" title="Dark Red"
+                                           onclick="event.preventDefault()"><i class="material-icons"
+                                                                               style="color: darkred">format_paint</i></a>
+                                        <a href="#" id="button-color_redIndian-textEditor" title="Indian Red"
+                                           onclick="event.preventDefault()"><i class="material-icons"
+                                                                               style="color: indianred">format_paint</i></a>
+                                        <a href="#" id="button-color_green-textEditor" title="Green"
+                                           onclick="event.preventDefault()"><i class="material-icons"
+                                                                               style="color: green">format_paint</i></a>
+                                        <a href="#" id="button-color_greenDark-textEditor" title="Dark Green"
+                                           onclick="event.preventDefault()"><i class="material-icons"
+                                                                               style="color: darkgreen">format_paint</i></a>
+                                        <a href="#" id="button-color_greenYellow-textEditor" title="Yellow Green"
+                                           onclick="event.preventDefault()"><i class="material-icons"
+                                                                               style="color: greenyellow">format_paint</i></a>
+                                        <a href="#" id="button-color_blue-textEditor" title="Blue"
+                                           onclick="event.preventDefault()"><i class="material-icons"
+                                                                               style="color: blue">format_paint</i></a>
+                                        <a href="#" id="button-color_blueDark-textEditor" title="Dark Blue"
+                                           onclick="event.preventDefault()"><i class="material-icons"
+                                                                               style="color: darkblue">format_paint</i></a>
+                                        <a href="#" id="button-color_blueDeepSky-textEditor" title="Deep Sky Blue"
+                                           onclick="event.preventDefault()"><i class="material-icons"
+                                                                               style="color: deepskyblue">format_paint</i></a>
+                                        <a href="#" id="button-color_brown-textEditor" title="Brown"
+                                           onclick="event.preventDefault()"><i class="material-icons"
+                                                                               style="color: brown">format_paint</i></a>
+                                        <a href="#" id="button-color_brownSaddle-textEditor" title="Saddle Brown"
+                                           onclick="event.preventDefault()"><i class="material-icons"
+                                                                               style="color: saddlebrown">format_paint</i></a>
+                                        <a href="#" id="button-color_brownSandy-textEditor" title="Sandy Brown"
+                                           onclick="event.preventDefault()"><i class="material-icons"
+                                                                               style="color: sandybrown">format_paint</i></a>
+                                        <a href="#" id="button-color_pink-textEditor" title="Pink"
+                                           onclick="event.preventDefault()"><i class="material-icons"
+                                                                               style="color: pink">format_paint</i></a>
+                                        <a href="#" id="button-color_pinkDeep-textEditor" title="Deep Pink"
+                                           onclick="event.preventDefault()"><i class="material-icons"
+                                                                               style="color: deeppink">format_paint</i></a>
+                                        <a href="#" id="button-color_pinkHot-textEditor" title="Hot Pink"
+                                           onclick="event.preventDefault()"><i class="material-icons"
+                                                                               style="color: hotpink">format_paint</i></a>
+                                        <a href="#" id="button-color_yellow-textEditor" title="Yellow"
+                                           onclick="event.preventDefault()"><i class="material-icons"
+                                                                               style="color: yellow">format_paint</i></a>
+                                        <a href="#" id="button-color_purple-textEditor" title="Purple"
+                                           onclick="event.preventDefault()"><i class="material-icons"
+                                                                               style="color: purple">format_paint</i></a>
+                                        <a href="#" id="button-color_purpleMedium-textEditor" title="Medium Purple"
+                                           onclick="event.preventDefault()"><i class="material-icons"
+                                                                               style="color: mediumpurple">format_paint</i></a>
+                                        <a href="#" id="button-color_purpleRebeca-textEditor" title="Rebeca Purple"
+                                           onclick="event.preventDefault()"><i class="material-icons"
+                                                                               style="color: rebeccapurple">format_paint</i></a>
+                                    </div>
+                                </span>
+
+                    <span>
+                                        <a href="#" id="button-fontSize-textEditor" class="dropdown-toggle"
+                                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                           title="Font Size" onclick="event.preventDefault()"><i class="material-icons">format_size</i></a>
+                                        <ul class="dropdown-menu scrollable-menu" role="menu"
+                                            style="min-height: 100px;max-height: 100px;overflow: auto">
+                                        <a id="button-fontSize_1-textEditor" data-content="1" href="#"
+                                           onclick="event.preventDefault()"><li style="font-size: 9px;">1</li></a>
+                                        <a id="button-fontSize_2-textEditor" data-content="2" href="#"
+                                           onclick="event.preventDefault()"><li style="font-size: 10px;">2</li></a>
+                                        <a id="button-fontSize_3-textEditor" data-content="3" href="#"
+                                           onclick="event.preventDefault()"><li style="font-size: 12px;">3</li></a>
+                                        <a id="button-fontSize_4-textEditor" data-content="4" href="#"
+                                           onclick="event.preventDefault()"><li style="font-size: 15px;">4</li></a>
+                                        <a id="button-fontSize_5-textEditor" data-content="5" href="#"
+                                           onclick="event.preventDefault()"><li style="font-size: 18px;">5</li></a>
+                                        <a id="button-fontSize_6-textEditor" data-content="6" href="#"
+                                           onclick="event.preventDefault()"><li style="font-size: 22px;">6</li></a>
+                                        <a id="button-fontSize_7-textEditor" data-content="7" href="#"
+                                           onclick="event.preventDefault()"><li style="font-size: 26px;">7</li></a>
+                                    </ul>
+                                </span>
+
+                    <span>
+                                        <a href="#" id="button-fontFamily-textEditor" class="dropdown-toggle"
+                                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                           title="Font Family" onclick="event.preventDefault()"><i
+                                                class="material-icons">font_download</i></a>
+                                        <ul class="dropdown-menu scrollable-menu" role="menu"
+                                            style="min-height: 100px;max-height: 100px;overflow: auto">
+                                        <a id="button-fontFamily_arial-textEditor" data-content="Arial" href="#"
+                                           onclick="event.preventDefault()"><li style="font-family: 'Arial'">Arial</li></a>
+                                        <a id="button-fontFamily_bookAntiqua-textEditor" data-content="Book Antiqua"
+                                           href="#" onclick="event.preventDefault()"><li
+                                                style="font-family: 'Book Antiqua'">Book Antiqua</li></a>
+                                        <a id="button-fontFamily_courierNew-textEditor" data-content="Courier New"
+                                           href="#" onclick="event.preventDefault()"><li
+                                                style="font-family: 'Courier New'">Courier New</li></a>
+                                        <a id="button-fontFamily_georgia-textEditor" data-content="Georgia" href="#"
+                                           onclick="event.preventDefault()"><li
+                                                style="font-family: 'Georgia'">Georgia</li></a>
+                                        <a id="button-fontFamily_tahoma-textEditor" data-content="Tahoma" href="#"
+                                           onclick="event.preventDefault()"><li
+                                                style="font-family: 'Tahoma'">Tahoma</li></a>
+                                        <a id="button-fontFamily_timesNewRoman-textEditor"
+                                           data-content="Times New Roman" href="#" onclick="event.preventDefault()"><li
+                                                style="font-family: 'Times New Roman'">Times New Roman</li></a>
+                                        <a id="button-fontFamily_trebuchetMS-textEditor" data-content="Trebuchet MS"
+                                           href="#" onclick="event.preventDefault()"><li
+                                                style="font-family: 'Trebuchet MS'">Trebuchet MS</li></a>
+                                        <a id="button-fontFamily_verdana-textEditor" data-content="Verdana" href="#"
+                                           onclick="event.preventDefault()"><li
+                                                style="font-family: 'Verdana'">Verdana</li></a>
+                                    </ul>
+                                </span>
+
+                    <a href="#" id="button-insertLink-textEditor" data-toggle="modal"
+                       data-target="#modal-insertLink-textEditor"
+                       title="Insert Link" onclick="event.preventDefault()"><i
+                            class="material-icons">insert_link</i></a>
+                    <div class="modal fade" id="modal-insertLink-textEditor" tabindex="-1" role="dialog"
+                         aria-labelledby="modalLabelInsertLink" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="modalLabelInsertLink">Insert Link</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="input-group mb-3">
+                                        <input id="input-insertLink-textEditor" type="text" class="form-control"
+                                               aria-describedby="basic-addon1"
+                                               placeholder="Example: https://youtube.com...">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                    <button id="button-proceedInsertLink-textEditor" type="button"
+                                            class="btn btn-primary">Insert
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#" id="button-insertImage-textEditor" data-toggle="modal"
+                       data-target="#modal-insertImage-textEditor"
+                       title="Insert Image" onclick="event.preventDefault()"><i class="material-icons">photo</i></a>
+                    <div class="modal fade" id="modal-insertImage-textEditor" tabindex="-1" role="dialog"
+                         aria-labelledby="modalLabelInsertImage" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="modalLabelInsertImage">Image URL</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="input-group mb-3">
+                                        <input id="input-insertImage-textEditor" type="text" class="form-control"
+                                               aria-describedby="basic-addon1" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                    <button id="button-proceedInsertImage-textEditor" type="button"
+                                            class="btn btn-primary">Insert
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <a href="#" id="button-undo-textEditor" title="Undo" onclick="event.preventDefault()"><i
+                            class="material-icons">undo</i></a>
+                    <a href="#" id="button-redo-textEditor" title="Redo" onclick="event.preventDefault()"><i
+                            class="material-icons">redo</i></a>
+                    <a href="#" id="button-removeFormatting-textEditor" title="Remove Formatting"
+                       onclick="event.preventDefault()"><i
+                            class="material-icons">format_clear</i></a>
+
+                    <span>
+                                        <a href="#" id="button-textAlign-textEditor" class="dropdown-toggle"
+                                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                           title="Text Align" onclick="event.preventDefault()"><i
+                                                class="material-icons">format_align_justify</i></a>
+                                    <ul class="dropdown-menu scrollable-menu" role="menu">
+                                        <a id="button-alignLeft-textEditor" href="#" onclick="event.preventDefault()"><li><i
+                                                class="material-icons">format_align_left</i>Align Left</li></a>
+                                        <a id="button-alignCenter-textEditor" href="#" onclick="event.preventDefault()"><li><i
+                                                class="material-icons">format_align_center</i>Align Center</li></a>
+                                        <a id="button-alignRight-textEditor" href="#" onclick="event.preventDefault()"><li><i
+                                                class="material-icons">format_align_right</i>Align Right</li></a>
+                                    </ul>
+                                </span>
+
+
+                </div>
+                <div id="textarea-content-createThread"
+                     style=" border: 1px solid #ccc;border-radius: 3px;width: 100%;min-width: 230px;min-height: 25vw;max-height: 25vw;overflow: auto;"
+                     contenteditable="true">
+
+                </div>
+                <div class="row d-flex justify-content-center align-items-center" style="margin-top: 10px">
+                    <button class="btn btn-sm" type="button">
+                        Comment
+                    </button>
+                    <button id="button-cancelCommentThread-readThreadPage" class="btn btn-sm" type="button"
+                            style="margin-left: 10px">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+
+            <script>
+                $(`#button-commentThread-readThreadPage`).on(`click`, function () {
+                    $(`.commentBox`).show();
+                });
+
+                $(`#button-cancelCommentThread-readThreadPage`).on(`click`, function () {
+                    $(`.commentBox`).hide();
+                });
+            </script>
+
+            <script src="text-editor.js"></script>
+
+            <div class="card comment" style="margin-top: 20px; margin-bottom: 20px">
+
+                <div class="row">
+
+                    <div class="col-md-3" style="margin-left: 30px;margin-top: 30px">
+                        <div>
+                            <img style="width: 50px;height: 50px;max-width: 100%;" class="card-img-top "
+                                 src="avatar-test.png" alt="Card image cap">
+                        </div>
+                        <div>
+                            <small>👤<a href="">Creator Username</a></small>
+                        </div>
+                        <div>
+                            <small>
+                                <small>💬</small>
+                                <span class="totalComments">129</span> total comments
+                            </small>
+                        </div>
+                        <div>
+                            <small>
+                                <a href=""><img style="width: 15px;height: 15px;max-width: 100%;" class="card-img-top "
+                                                src="avatar-test.png"
+                                                alt="Card image cap"><span>Minecraft Username</span></a>
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="col" style="margin-left: 15px;margin-right: 15px;">
+
+                    </div>
+
+                </div>
+
+                <div style="margin-right: 15px">
+                    <div class="btn-group" style="display: inline-block;float:right;margin-bottom: 10px">
+                        <div style="display: inline-block">
+                            <button class="btn btn-sm dropdown-toggle" type="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <small>⚙</small>
+                                Options
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="/comment/id/delete">
+                                    <small>❌</small>
+                                    Delete</a>
+                            </div>
+                        </div>
+                        <div style="display: inline-block">
+
+                            <button class="btn btn-sm" type="button" id="reportButtonByThreadId">
+                                <small>⚠</small>
+                                Report
+                            </button>
+
+                            <div class="modal fade" id="modelReportCommentByThreadId" role="dialog">
+                                <div class="modal-dialog">
+
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Report to the kings:</h4>
+                                        </div>
+                                        <form method="post" action="/comment/id/report">
+                                            <div class="modal-body">
+                                        <textarea style="width: 100%;overflow-y: scroll;height: 200px;resize: none"
+                                                  name="reason" placeholder="Reason..."></textarea>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-default">Report</button>
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                    Cancel
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <script>
+                                $(document).ready(function () {
+                                    $("#reportButtonByThreadId").click(function () {
+                                        $("#modelReportCommentByThreadId").modal();
+                                    });
+                                });
+                            </script>
+                        </div>
+                        <div style="display: inline-block">
+                            <button class="btn btn-sm dropdown-toggle" type="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <small>💡</small>
+                                React
+                            </button>
+                            <div class="dropdown-menu">
+                                <a href="/comment/id/react/like">
+                                    <button class="btn btn-sm" type="button" style="margin-left: 10px">
+                                        <small>👍🏻</small>
+                                        Like
+                                    </button>
+                                </a>
+                                <a href="/comment/id/react/dislike">
+                                    <button class="btn btn-sm" type="button">
+                                        <small>👎🏻</small>
+                                        Dislike
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-xs-6" style="margin-left: 7px;">
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <span id="newsTab"><a class="nav-link active" id="v-pills-home-tab" data-toggle="pill"
+                                      href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">📰News</a></span>
+                <span id="videosTab"><a class="nav-link" id="v-pills-profile-tab" data-toggle="pill"
+                                        href="#v-pills-profile" role="tab" aria-controls="v-pills-profile"
+                                        aria-selected="false">📹Videos</a></span>
+                <span><a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages"
+                         role="tab" aria-controls="v-pills-messages" aria-selected="false"></a></span>
+                <span><a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings"
+                         role="tab" aria-controls="v-pills-settings" aria-selected="false"></a></span>
+            </div>
+
+            <div class="dropdown-divider"></div>
+
+            <div>
+                <h6>Social Media</h6>
+                <button type="button" class="btn btn-brand btn-facebook">
+                    <i class="fa fa-facebook"></i>
+                </button>
+                <button type="button" class="btn btn-brand btn-instagram">
+                    <i class="fa fa-instagram"></i>
+                </button>
+                <button type="button" class="btn btn-brand btn-youtube">
+                    <i class="fa fa-youtube"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<footer class="page-footer font-small stylish-color-dark pt-4" style="margin-top: 125px">
+
+    <!-- Footer Links -->
+    <div class="container text-center text-md-left">
+
+        <!-- Grid row -->
+        <div class="row">
+
+            <!-- Grid column -->
+            <div class="col-md-4 mx-auto">
+
+                <!-- Content -->
+                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Footer Content</h5>
+                <p>Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit amet,
+                    consectetur
+                    adipisicing elit.</p>
+
+            </div>
+            <!-- Grid column -->
+
+            <hr class="clearfix w-100 d-md-none">
+
+            <!-- Grid column -->
+            <div class="col-md-2 mx-auto">
+
+                <!-- Links -->
+                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="#!">Link 1</a>
+                    </li>
+                    <li>
+                        <a href="#!">Link 2</a>
+                    </li>
+                    <li>
+                        <a href="#!">Link 3</a>
+                    </li>
+                    <li>
+                        <a href="#!">Link 4</a>
+                    </li>
+                </ul>
+
+            </div>
+            <!-- Grid column -->
+
+            <hr class="clearfix w-100 d-md-none">
+
+            <!-- Grid column -->
+            <div class="col-md-2 mx-auto">
+
+                <!-- Links -->
+                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="#!">Link 1</a>
+                    </li>
+                    <li>
+                        <a href="#!">Link 2</a>
+                    </li>
+                    <li>
+                        <a href="#!">Link 3</a>
+                    </li>
+                    <li>
+                        <a href="#!">Link 4</a>
+                    </li>
+                </ul>
+
+            </div>
+            <!-- Grid column -->
+
+            <hr class="clearfix w-100 d-md-none">
+
+            <!-- Grid column -->
+            <div class="col-md-2 mx-auto">
+
+                <!-- Links -->
+                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="#!">Link 1</a>
+                    </li>
+                    <li>
+                        <a href="#!">Link 2</a>
+                    </li>
+                    <li>
+                        <a href="#!">Link 3</a>
+                    </li>
+                    <li>
+                        <a href="#!">Link 4</a>
+                    </li>
+                </ul>
+
+            </div>
+            <!-- Grid column -->
+
+        </div>
+        <!-- Grid row -->
+
+    </div>
+    <!-- Footer Links -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2018 Copyright:
+        <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>
+    </div>
+    <!-- Copyright -->
+
+</footer>
+</body>
+</html>
