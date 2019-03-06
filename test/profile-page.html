@@ -4,21 +4,14 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' rel='stylesheet'/>
+    <link rel="stylesheet" href="components/bootstrap.min.css">
+    <link href="components/font-awesome.min.css" rel='stylesheet'/>
     <link rel="stylesheet" href="components/bootstrap-social.css">
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
+    <script src="components/jquery.slim.min.js"></script>
+    <script src="components/popper.min.js"></script>
     <script src='https://www.google.com/recaptcha/api.js'></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
+    <script src="components/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -264,26 +257,62 @@
 
                         <div class="dropdown-divider"></div>
 
-                        <form method="post" action="#">
-                        <div class="row">
+                        <div class="create-post">
+                            <form method="post" action="#">
+                                <div class="row">
 
-                            <div class="col-md-1">
-                                <img src="nav/avatar-user.png" style="width: 30px;height: 30px"/>
+                                    <div class="col-md-1">
+                                        <img src="nav/avatar-user.png" style="width: 30px;height: 30px"/>
+                                    </div>
+
+                                    <div class="col-lg">
+                                        <textarea name="content" style="border:1px solid #ccc;border-radius: 3px;height: 60px;overflow: auto;width: 100%;resize: none"></textarea>
+                                    </div>
+
+                                </div>
+
+                                <div class="row" style="margin-top: 3px">
+                                    <div class="col-lg">
+                                        <button type="submit" class="btn btn-info btn-sm" style="float: right;display: inline-block">Post</button>
+                                        <small style="float: right;display: inline-block;margin-right: 3px;color: darkgreen;font-size: 13px">150</small>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="dropdown-divider"></div>
+
+                        <div class="all-posts" style="margin-top: 10px">
+
+                            <div class="card post" style="margin-top: 10px">
+                                   <div class="card-body">
+                                       <div class="row"  style="margin-bottom: -15px">
+                                           <div class="col-md-1" style="margin-top: 9px">
+                                               <img src="nav/avatar-user.png" style="width: 30px;height: 30px"/>
+                                           </div>
+                                           <div class="col-lg" style="width: 150px">
+                                               <small>Yeah this was really nice site.Hope we see you with new updates in the near futures.I will continue to playing in your server and watch my status here.Thank you for the good website and good luck!</small>
+                                           </div>
+                                       </div>
+                                   </div>
+
                             </div>
 
-                            <div class="col-lg">
-                                <textarea name="content" style="border:1px solid #ccc;border-radius: 3px;height: 60px;overflow: auto;width: 100%;resize: none"></textarea>
+                            <div class="card post" style="margin-top: 10px">
+                                <div class="card-body">
+                                    <div class="row"  style="margin-bottom: -15px">
+                                        <div class="col-md-1" style="margin-top: 9px">
+                                            <img src="nav/avatar-user.png" style="width: 30px;height: 30px"/>
+                                        </div>
+                                        <div class="col-lg" style="width: 150px">
+                                            <small>Wohooo nice.</small>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
 
                         </div>
-
-                          <div class="row" style="margin-top: 3px">
-                              <div class="col-lg">
-                                  <button type="submit" class="btn btn-info btn-sm" style="float: right;display: inline-block">Post</button>
-                                  <small style="float: right;display: inline-block;margin-right: 3px;color: darkgreen;font-size: 13px">150</small>
-                              </div>
-                          </div>
-                        </form>
 
                     </div>
 
