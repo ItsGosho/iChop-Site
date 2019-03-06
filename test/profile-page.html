@@ -230,7 +230,8 @@
                     <div class="row">
                         <div>
                             <div class="col-md-auto head">
-                                <span style="font-size: 13px;font-family: Georgia;font-style: italic">Knock knock</span><span style="font-size: 10px;color: #7f7f7f;"> Jul 25,2017</span>
+                                <span style="font-size: 13px;font-family: Georgia;font-style: italic">Knock knock</span><span
+                                    style="font-size: 10px;color: #7f7f7f;"> Jul 25,2017</span>
                             </div>
                         </div>
                     </div>
@@ -239,28 +240,56 @@
 
             <div class="col-md-auto user-information-navigation" style="margin-top: 50px">
 
-                <!--TODO MAKE THE NAV TABS LOOK LIKE HYPXEL-->
-
-                <ul class="nav nav-tabs">
-                    <li class="nav-item">
-                        <a class="nav-link active" data-toggle="tab" href="#home">Profile posts</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#menu1">Latest Reactions</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#menu2">Latest Comments</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#menu2">Information</a>
-                    </li>
-                </ul>
+                <div class="navigation">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#posts">Profile posts</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#latest-reactions">Latest Reactions</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#latest-comments">Latest Comments</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#information">Information</a>
+                        </li>
+                    </ul>
+                </div>
 
                 <!-- Tab panes -->
                 <div class="tab-content">
-                    <div class="tab-pane container active" id="home">...</div>
-                    <div class="tab-pane container fade" id="menu1">...</div>
-                    <div class="tab-pane container fade" id="menu2">...</div>
+
+                    <div class="tab-pane container active" id="posts">
+
+                        <div class="dropdown-divider"></div>
+
+                        <form method="post" action="#">
+                        <div class="row">
+
+                            <div class="col-md-1">
+                                <img src="nav/avatar-user.png" style="width: 30px;height: 30px"/>
+                            </div>
+
+                            <div class="col-lg">
+                                <textarea name="content" style="border:1px solid #ccc;border-radius: 3px;height: 60px;overflow: auto;width: 100%;resize: none"></textarea>
+                            </div>
+
+                        </div>
+
+                          <div class="row" style="margin-top: 3px">
+                              <div class="col-lg">
+                                  <button type="submit" class="btn btn-info btn-sm" style="float: right;display: inline-block">Post</button>
+                                  <small style="float: right;display: inline-block;margin-right: 3px;color: darkgreen;font-size: 13px">150</small>
+                              </div>
+                          </div>
+                        </form>
+
+                    </div>
+
+                    <div class="tab-pane container fade" id="latest-reactions">Latest reactions</div>
+                    <div class="tab-pane container fade" id="latest-comments">Latest Comments</div>
+                    <div class="tab-pane container fade" id="information">Information</div>
                 </div>
 
             </div>
