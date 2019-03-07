@@ -19,6 +19,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
 public class ReactionServicesImp implements ReactionServices {
 
@@ -50,6 +52,7 @@ public class ReactionServicesImp implements ReactionServices {
         threadReaction.setReactionType(reactionType);
         threadReaction.setUser(user);
         threadReaction.setThread(thread);
+        threadReaction.setReactionDate(LocalDateTime.now());
 
         ThreadReactionServiceModel resultedReaction = this.reactionCrudServices.save(this.modelMapper.map(threadReaction, ThreadReactionServiceModel.class));
 
@@ -74,6 +77,7 @@ public class ReactionServicesImp implements ReactionServices {
         commentReaction.setReactionType(reactionType);
         commentReaction.setUser(user);
         commentReaction.setComment(comment);
+        commentReaction.setReactionDate(LocalDateTime.now());
 
         CommentReactionServiceModel resultedReaction = this.reactionCrudServices.save(this.modelMapper.map(commentReaction, CommentReactionServiceModel.class));
 

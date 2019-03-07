@@ -5,6 +5,8 @@ import ichop.domain.models.service.user.UserServiceModel;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 public class CommentReactionServiceModel {
@@ -13,4 +15,5 @@ public class CommentReactionServiceModel {
     private UserServiceModel user;
     private ReactionType reactionType;
     private CommentServiceModel comment;
+    private LocalDateTime reactionDate;
 }
