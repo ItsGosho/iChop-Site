@@ -15,7 +15,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User extends BaseEntity implements UserDetails {
 
     @Column(unique = true,nullable = false,updatable = false)
@@ -45,7 +45,7 @@ public class User extends BaseEntity implements UserDetails {
     @Column(name = "registration_date",nullable = false)
     private LocalDateTime registrationDate;
 
-    @Column(name = "last_online",nullable = false)
+    @Column(name = "last_online")
     private LocalDateTime lastOnline;
 
     public User(){

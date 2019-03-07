@@ -12,7 +12,7 @@ import javax.persistence.Table;
 @Getter
 @Setter
 @Entity
-@Table(name = "thread_reports")
+@Table(name = "threads_reports")
 public class ThreadReport extends BaseReport {
 
     @ManyToOne(optional = false)

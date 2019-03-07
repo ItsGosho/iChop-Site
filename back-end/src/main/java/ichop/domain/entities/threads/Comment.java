@@ -30,7 +30,7 @@ public class Comment extends BaseEntity {
     public LocalDateTime createdOn;
 
     @OneToMany
-    @JoinTable(name = "comment_reactions",joinColumns = @JoinColumn(name = "comment_id"),inverseJoinColumns = @JoinColumn(name = "id"))
+    @JoinTable(name = "comments_reactions",joinColumns = @JoinColumn(name = "comment_id"),inverseJoinColumns = @JoinColumn(name = "id"))
     private List<CommentReaction> reactions;
 
     public Comment(){

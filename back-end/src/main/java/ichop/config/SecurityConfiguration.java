@@ -1,7 +1,9 @@
 package ichop.config;
 
 import ichop.handlers.UserAuthenticationSuccessfulHandler;
+import ichop.handlers.UserLogoutHandler;
 import ichop.service.user.UserServices;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -15,10 +17,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private final UserServices userServices;
     private final UserAuthenticationSuccessfulHandler userAuthenticationSuccessfulHandler;
+    private final UserLogoutHandler userLogoutHandler;
 
-    public SecurityConfiguration(UserServices userServices, UserAuthenticationSuccessfulHandler userAuthenticationSuccessfulHandler) {
+    @Autowired
+    public SecurityConfiguration(UserServices userServices, UserAuthenticationSuccessfulHandler userAuthenticationSuccessfulHandler, UserLogoutHandler userLogoutHandler) {
         this.userServices = userServices;
         this.userAuthenticationSuccessfulHandler = userAuthenticationSuccessfulHandler;
+        this.userLogoutHandler = userLogoutHandler;
     }
 
 
@@ -40,7 +45,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .usernameParameter("usernameOrEmail")
                 .passwordParameter("password")
                 .and()
-                .logout().logoutSuccessUrl("/")
+                .logout()
+                .addLogoutHandler(this.userLogoutHandler)
+                .logoutSuccessUrl("/")
                 .and()
                 .rememberMe()
                 .userDetailsService(this.userServices)

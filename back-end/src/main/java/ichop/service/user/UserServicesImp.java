@@ -61,7 +61,6 @@ public class UserServicesImp implements UserServices {
 
             if (userServiceModel != null) {
                 User user = this.modelMapper.map(userServiceModel, User.class);
-                this.userCrudServices.updateLastOnline(userServiceModel,LocalDateTime.now());
                 return user;
             }
 
@@ -72,7 +71,6 @@ public class UserServicesImp implements UserServices {
 
         if (userServiceModel != null) {
             User user = this.modelMapper.map(userServiceModel, User.class);
-            this.userCrudServices.updateLastOnline(userServiceModel,LocalDateTime.now());
             return user;
         }
 

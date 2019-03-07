@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @Setter
 @Entity
-@Table(name = "user_roles")
+@Table(name = "users_roles")
 public class UserRole extends BaseEntity implements GrantedAuthority {
 
     @Column(unique = true)

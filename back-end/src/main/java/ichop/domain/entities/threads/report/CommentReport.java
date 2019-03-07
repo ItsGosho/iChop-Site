@@ -11,7 +11,7 @@ import javax.persistence.Table;
 @Getter
 @Setter
 @Entity
-@Table(name = "comment_reports")
+@Table(name = "comments_reports")
 public class CommentReport extends BaseReport {
 
     @ManyToOne(optional = false)
