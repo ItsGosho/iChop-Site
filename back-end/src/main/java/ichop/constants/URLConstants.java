@@ -10,6 +10,9 @@ public final class URLConstants {
 
     //User ---------------------------------------------------------------------------------------------------
 
+    //-UserController
+    public static final String USER_PROFILE_GET = "/user/{id}/profile";
+
     //-UserApiController
     public static final String USER_EXISTS_GET = "/api/user/exists";
 

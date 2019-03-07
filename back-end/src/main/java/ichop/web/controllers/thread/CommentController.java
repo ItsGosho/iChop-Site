@@ -49,34 +49,24 @@ public class CommentController extends BaseController {
 
         CommentServiceModel commentServiceModel = this.commentCrudServices.getById(id);
 
-        if (commentServiceModel != null) {
-            String threadId = commentServiceModel.getThread().getId();
+        this.commentCrudServices.delete(id);
+        String threadId = commentServiceModel.getThread().getId();
 
-            this.commentCrudServices.delete(commentServiceModel);
-
-            String redirectUrl = URLConstants.THREAD_READ_GET.replace("{id}",threadId);
-            return super.redirect(redirectUrl);
-        }
-
-        throw new CommentNotFoundException();
+        String redirectUrl = URLConstants.THREAD_READ_GET.replace("{id}", threadId);
+        return super.redirect(redirectUrl);
     }
 
     @PreAuthorize("isAuthenticated()")
-    @PostMapping(value= URLConstants.THREAD_CREATE_COMMENT_POST, produces = "application/json")
+    @PostMapping(value = URLConstants.THREAD_CREATE_COMMENT_POST, produces = "application/json")
     @ResponseBody
     public String createComment(@PathVariable String id, CommentCreateBindingModel commentCreateBindingModel, Principal principal) {
 
         ThreadServiceModel threadServiceModel = this.threadCrudServices.getThread(id);
         UserServiceModel userServiceModel = this.modelMapper.map((User) ((Authentication) principal).getPrincipal(), UserServiceModel.class);
 
-        if (threadServiceModel != null) {
-            CommentServiceModel commentServiceModel = this.commentServices.addComment(commentCreateBindingModel, userServiceModel, threadServiceModel);
+        CommentServiceModel commentServiceModel = this.commentServices.addComment(commentCreateBindingModel, userServiceModel, threadServiceModel);
 
-            return new Gson().toJson(true);
-
-        }
-
-        throw new ThreadNotFoundException();
+        return new Gson().toJson(true);
     }
 
 }

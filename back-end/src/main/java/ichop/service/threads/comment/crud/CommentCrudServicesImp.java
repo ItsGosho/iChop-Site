@@ -4,6 +4,7 @@ import ichop.domain.entities.threads.Comment;
 import ichop.domain.entities.users.User;
 import ichop.domain.models.service.threads.comment.CommentServiceModel;
 import ichop.domain.models.service.user.UserServiceModel;
+import ichop.exceptions.thread.CommentNotFoundException;
 import ichop.repository.threads.comment.CommentRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,25 +25,25 @@ public class CommentCrudServicesImp implements CommentCrudServices {
 
     @Override
     public int getTotalCommentsOfUser(UserServiceModel userServiceModel) {
-        User user = this.modelMapper.map(userServiceModel,User.class);
+        User user = this.modelMapper.map(userServiceModel, User.class);
 
         return this.commentRepository.getTotalCommentsOfUser(user);
     }
 
     @Override
     public CommentServiceModel save(CommentServiceModel commentServiceModel) {
-        Comment comment = this.modelMapper.map(commentServiceModel,Comment.class);
+        Comment comment = this.modelMapper.map(commentServiceModel, Comment.class);
         this.commentRepository.save(comment);
 
-        return this.modelMapper.map(comment,CommentServiceModel.class);
+        return this.modelMapper.map(comment, CommentServiceModel.class);
     }
 
     @Override
     public CommentServiceModel getById(String id) {
         Comment comment = this.commentRepository.findById(id).orElse(null);
 
-        if(comment != null){
-            return this.modelMapper.map(comment,CommentServiceModel.class);
+        if (comment != null) {
+            return this.modelMapper.map(comment, CommentServiceModel.class);
         }
 
         return null;
@@ -50,8 +51,19 @@ public class CommentCrudServicesImp implements CommentCrudServices {
 
     @Override
     public void delete(CommentServiceModel commentServiceModel) {
-        Comment comment = this.modelMapper.map(commentServiceModel,Comment.class);
+        Comment comment = this.modelMapper.map(commentServiceModel, Comment.class);
         this.commentRepository.delete(comment);
+    }
+
+    @Override
+    public void delete(String id) {
+        CommentServiceModel comment = this.getById(id);
+
+        if (comment == null) {
+              throw new CommentNotFoundException();
+        }
+
+        this.commentRepository.delete(this.modelMapper.map(comment,Comment.class));
     }
 
 }

@@ -7,6 +7,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -78,5 +79,11 @@ public class UserCrudServicesImp implements UserCrudServices {
         User user = this.modelMapper.map(userServiceModel,User.class);
 
         this.userRepository.save(user);
+    }
+
+    @Override
+    public void updateLastOnline(UserServiceModel userServiceModel, LocalDateTime dateTime) {
+        User user = this.modelMapper.map(userServiceModel,User.class);
+        this.userRepository.updateLastOnline(user,dateTime);
     }
 }

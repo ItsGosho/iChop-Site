@@ -28,6 +28,7 @@ public class HomeController extends BaseController {
 
         modelAndView.addObject("threads", pages);
         modelAndView.addObject("totalPages", pages.getTotalPages());
+
         return super.page("base-page", "home-page", "iChop", modelAndView);
     }
 

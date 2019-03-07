@@ -7,6 +7,9 @@ import ichop.domain.models.binding.thread.CommentCreateBindingModel;
 import ichop.domain.models.service.threads.comment.CommentServiceModel;
 import ichop.domain.models.service.threads.thread.ThreadServiceModel;
 import ichop.domain.models.service.user.UserServiceModel;
+import ichop.exceptions.thread.CommentNotFoundException;
+import ichop.exceptions.thread.ThreadNotFoundException;
+import ichop.exceptions.user.UserNotFoundException;
 import ichop.service.threads.comment.crud.CommentCrudServices;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -27,6 +30,14 @@ public class CommentServicesImp implements CommentServices {
 
     @Override
     public CommentServiceModel addComment(CommentCreateBindingModel commentCreateBindingModel, UserServiceModel userServiceModel, ThreadServiceModel threadServiceModel) {
+
+        if(userServiceModel == null){
+            throw new UserNotFoundException();
+        }
+
+        if(threadServiceModel == null){
+            throw new ThreadNotFoundException();
+        }
 
         Thread thread = this.modelMapper.map(threadServiceModel,Thread.class);
         User user = this.modelMapper.map(userServiceModel,User.class);

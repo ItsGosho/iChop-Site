@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -18,5 +19,8 @@ public abstract class BaseReaction extends BaseEntity {
     @Column(nullable = false)
     @Enumerated(value = EnumType.STRING)
     private ReactionType reactionType;
+
+    @Column(name = "reaction_date",nullable = false)
+    private LocalDateTime reactionDate;
 
 }

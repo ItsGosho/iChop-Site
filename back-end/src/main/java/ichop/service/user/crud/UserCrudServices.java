@@ -2,6 +2,8 @@ package ichop.service.user.crud;
 
 import ichop.domain.models.service.user.UserServiceModel;
 
+import java.time.LocalDateTime;
+
 public interface UserCrudServices {
 
     boolean isEmail(String value);
@@ -14,4 +16,6 @@ public interface UserCrudServices {
     UserServiceModel getUserByEmail(String email);
 
     void save(UserServiceModel userServiceModel);
+
+    void updateLastOnline(UserServiceModel userServiceModel,LocalDateTime dateTime);
 }

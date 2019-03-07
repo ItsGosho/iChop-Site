@@ -20,4 +20,5 @@ public class UserServiceModel {
     private boolean isEnabled;
     private Set<UserRoleServiceModel> authorities;
     private LocalDateTime registrationDate;
+    private LocalDateTime lastOnline;
 }

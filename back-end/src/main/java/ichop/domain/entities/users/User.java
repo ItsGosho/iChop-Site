@@ -45,6 +45,9 @@ public class User extends BaseEntity implements UserDetails {
     @Column(name = "registration_date",nullable = false)
     private LocalDateTime registrationDate;
 
+    @Column(name = "last_online",nullable = false)
+    private LocalDateTime lastOnline;
+
     public User(){
         this.setAuthorities(new HashSet<>());
     }

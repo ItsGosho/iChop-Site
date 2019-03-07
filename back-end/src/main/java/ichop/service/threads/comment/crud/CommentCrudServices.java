@@ -10,4 +10,5 @@ public interface CommentCrudServices {
 
     CommentServiceModel getById(String id);
     void delete(CommentServiceModel commentServiceModel);
+    void delete(String id);
 }
