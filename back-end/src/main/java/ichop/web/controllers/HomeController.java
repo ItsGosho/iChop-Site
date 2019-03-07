@@ -9,7 +9,12 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.util.Locale;
 
 @Controller
 public class HomeController extends BaseController {
@@ -35,7 +40,9 @@ public class HomeController extends BaseController {
 
     // @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping(value = URLConstants.TEST)
-    public void testHome(ModelAndView modelAndView) {
+    @ResponseBody
+    public String testHome(ModelAndView modelAndView, HttpServletRequest httpServletRequest) throws IOException {
 
+        return "<h1>" + "" + "</h1>";
     }
 }

@@ -23,4 +23,12 @@ public interface UserRepository extends JpaRepository<User,String> {
             "SET u.lastOnline = :dateTime\n" +
             "WHERE u = :user")
     void updateLastOnline(@Param(value = "user") User user,@Param(value = "dateTime") LocalDateTime localDateTime);
+
+
+    @Transactional
+    @Modifying
+    @Query("UPDATE User AS u\n" +
+            "SET u.location = :location\n" +
+            "WHERE u = :user")
+    void updateUserLocation(@Param(value = "user") User user,@Param(value = "location") String location);
 }

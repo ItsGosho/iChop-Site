@@ -11,6 +11,7 @@ public class UserProfileViewModel {
 
     private String username;
     private String role;
+    private String location;
     private LocalDateTime lastOnline;
     private LocalDateTime registrationDate;
     private Integer totalMessages;

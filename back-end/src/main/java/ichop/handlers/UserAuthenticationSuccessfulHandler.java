@@ -1,5 +1,6 @@
 package ichop.handlers;
 
+import ichop.constants.URLConstants;
 import ichop.domain.entities.users.User;
 import ichop.domain.models.service.user.UserServiceModel;
 import ichop.service.user.crud.UserCrudServices;
@@ -31,11 +32,12 @@ public class UserAuthenticationSuccessfulHandler implements AuthenticationSucces
     }
 
     @Override
-    public void onAuthenticationSuccess(HttpServletRequest arg0, HttpServletResponse arg1, Authentication authentication) throws IOException, ServletException {
+    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
 
         UserServiceModel userServiceModel = this.modelMapper.map(authentication.getPrincipal(), UserServiceModel.class);
         this.userCrudServices.updateLastOnline(userServiceModel, LocalDateTime.now());
+        this.userCrudServices.updateUserLocation(userServiceModel,request.getParameter("userLocation"));
 
-        redirectStrategy.sendRedirect(arg0, arg1, "/");
+        redirectStrategy.sendRedirect(request, response, URLConstants.HOME_GET);
     }
 }

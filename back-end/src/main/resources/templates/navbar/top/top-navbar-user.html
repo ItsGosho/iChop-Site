@@ -17,6 +17,7 @@
                     <span>⚙</span>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" th:href="@{'/user/'+${#authentication.name}+'/profile'}"><small>👤</small><span>Profile</span></a>
                     <a class="dropdown-item" href="/thread/create">Create Thread</a>
                     <a class="dropdown-item" href="#">Another action</a>
                     <div class="dropdown-divider"></div>

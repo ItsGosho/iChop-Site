@@ -19,4 +19,6 @@ public interface UserCrudServices {
     void save(UserServiceModel userServiceModel);
 
     void updateLastOnline(UserServiceModel userServiceModel,LocalDateTime dateTime);
+
+    void updateUserLocation(UserServiceModel userServiceModel,String userLocation);
 }

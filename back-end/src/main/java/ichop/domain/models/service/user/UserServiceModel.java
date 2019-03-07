@@ -21,4 +21,5 @@ public class UserServiceModel {
     private Set<UserRoleServiceModel> authorities;
     private LocalDateTime registrationDate;
     private LocalDateTime lastOnline;
+    private String location;
 }

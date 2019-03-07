@@ -4,7 +4,7 @@
 
 <th:block th:object="${user}">
 
-<div class="container" style="margin-top: 100px">
+<div class="container" style="margin-top: -75px">
 
     <div class="row" style="">
 
@@ -75,7 +75,7 @@
 
                         <div class="col-md-auto">
                             <div class="row" style="font-size: 15px">
-                                <div class="col-md-auto" style="font-size: 20px;">
+                                <div class="col-md-auto" style="font-size: 16px;">
                                     👍
                                 </div>
                                 <div class="col-md-auto" style="column-width: 150px">
@@ -89,7 +89,7 @@
 
                         <div class="col-md-auto">
                             <div class="row" style="font-size: 15px">
-                                <div class="col-md-auto" style="font-size: 20px">
+                                <div class="col-md-auto" style="font-size: 16px">
                                     👎
                                 </div>
                                 <div class="col-md-auto" style="column-width: 150px">
@@ -173,21 +173,8 @@
                                 </div>
                                 <div class="col-md-auto" style="column-width: 100px">
                                     <span style="display: inline-block;float: right;">
-                                         <span id="span-user_country-userProfilePage"></span>
+                                         <span th:text="*{location}"></span>
                                     </span>
-
-                                    <script>
-
-                                        $.ajax({
-                                            method: "GET",
-                                            type: "application/json",
-                                            url: "http://ip-api.com/json",
-                                            success: function (result) {
-                                                $(`#span-user_country-userProfilePage`).text(result.country);
-                                            }
-                                        })
-
-                                    </script>
 
                                 </div>
                             </div>

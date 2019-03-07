@@ -39,6 +39,9 @@
                 Remember me
             </label>
         </div>
+
+        <input type="hidden" id="input-user_location-loginDropdown" name="userLocation">
+
         <button type="submit" data-style="zoom-in" class="btn btn-primary">Login</button>
         <div class="dropdown-divider"></div>
     </form>
@@ -49,3 +52,18 @@
         <button class="btn btn-warning btn-sm">Forgotten Password</button>
     </a>
 </div>
+
+<script>
+
+    $(document).ready(function () {
+        $.ajax({
+            method: "GET",
+            type: "application/json",
+            url: "http://ip-api.com/json",
+            success: function (result) {
+                $(`#input-user_location-loginDropdown`).val(result.country);
+            }
+        })
+    });
+
+</script>

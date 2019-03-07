@@ -48,17 +48,10 @@ public class User extends BaseEntity implements UserDetails {
     @Column(name = "last_online")
     private LocalDateTime lastOnline;
 
+    private String location;
+
     public User(){
         this.setAuthorities(new HashSet<>());
-    }
-
-    public User(String username, String password, String email, Set<UserRole> authorities, LocalDateTime registrationDate) {
-        this();
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.authorities = authorities;
-        this.registrationDate = registrationDate;
     }
 
     @Override

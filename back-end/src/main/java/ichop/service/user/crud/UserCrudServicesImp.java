@@ -97,4 +97,10 @@ public class UserCrudServicesImp implements UserCrudServices {
         User user = this.modelMapper.map(userServiceModel,User.class);
         this.userRepository.updateLastOnline(user,dateTime);
     }
+
+    @Override
+    public void updateUserLocation(UserServiceModel userServiceModel, String userLocation) {
+        User user = this.modelMapper.map(userServiceModel,User.class);
+        this.userRepository.updateUserLocation(user,userLocation);
+    }
 }
