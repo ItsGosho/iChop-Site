@@ -1,7 +1,12 @@
 package ichop.domain.models.view.user.profile;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.time.LocalDateTime;
 
+@Getter
+@Setter
 public class UserProfileViewModel {
 
     private String username;

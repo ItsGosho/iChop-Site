@@ -12,6 +12,7 @@ public interface UserCrudServices {
 
     long getTotalUsers();
 
+    UserServiceModel getUserById(String id);
     UserServiceModel getUserByUsername(String username);
     UserServiceModel getUserByEmail(String email);
 

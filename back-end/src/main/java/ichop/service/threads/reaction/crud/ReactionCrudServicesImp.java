@@ -3,6 +3,7 @@ package ichop.service.threads.reaction.crud;
 import ichop.domain.entities.threads.Comment;
 import ichop.domain.entities.threads.Thread;
 import ichop.domain.entities.threads.reaction.CommentReaction;
+import ichop.domain.entities.threads.reaction.ReactionType;
 import ichop.domain.entities.threads.reaction.ThreadReaction;
 import ichop.domain.entities.users.User;
 import ichop.domain.models.service.threads.comment.CommentReactionServiceModel;
@@ -67,5 +68,28 @@ public class ReactionCrudServicesImp implements ReactionCrudServices {
         boolean result = this.commentReactionRepository.isUserLikedThatComment(user,comment);
 
         return result;
+    }
+
+    @Override
+    public int getUserTotalThreadReactions(UserServiceModel userServiceModel, ReactionType reactionType) {
+        User user = this.modelMapper.map(userServiceModel,User.class);
+        return this.threadReactionRepository.getUserTotalReactions(user,reactionType);
+    }
+
+    @Override
+    public int getUserTotalCommentReactions(UserServiceModel userServiceModel, ReactionType reactionType) {
+        User user = this.modelMapper.map(userServiceModel,User.class);
+        return this.commentReactionRepository.getUserTotalReactions(user,reactionType);
+    }
+
+    @Override
+    public int getUserTotalReactions(UserServiceModel userServiceModel, ReactionType reactionType) {
+        return this.getUserTotalThreadReactions(userServiceModel,reactionType) + this.getUserTotalCommentReactions(userServiceModel,reactionType);
+    }
+
+    @Override
+    public int getUserTotalReactions(UserServiceModel userServiceModel) {
+        User user = this.modelMapper.map(userServiceModel,User.class);
+        return this.commentReactionRepository.getUserTotalReactions(user) + this.threadReactionRepository.getUserTotalReactions(user);
     }
 }

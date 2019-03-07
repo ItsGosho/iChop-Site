@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Getter
 @Setter
-@Entity
+@Entity(name = "CommentReaction")
 @Table(name = "comments_reactions")
 public class CommentReaction extends BaseReaction {
 

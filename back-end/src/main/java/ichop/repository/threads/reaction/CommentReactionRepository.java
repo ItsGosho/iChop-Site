@@ -2,6 +2,7 @@ package ichop.repository.threads.reaction;
 
 import ichop.domain.entities.threads.Comment;
 import ichop.domain.entities.threads.reaction.CommentReaction;
+import ichop.domain.entities.threads.reaction.ReactionType;
 import ichop.domain.entities.users.User;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

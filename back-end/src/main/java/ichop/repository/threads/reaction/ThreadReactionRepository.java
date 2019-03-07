@@ -1,6 +1,7 @@
 package ichop.repository.threads.reaction;
 
 import ichop.domain.entities.threads.Thread;
+import ichop.domain.entities.threads.reaction.ReactionType;
 import ichop.domain.entities.threads.reaction.ThreadReaction;
 import ichop.domain.entities.users.User;
 import org.springframework.data.jpa.repository.Query;
@@ -15,5 +16,4 @@ public interface ThreadReactionRepository extends ReactionRepository<ThreadReact
             "WHERE r.user = :user AND \n" +
             "r.thread = :thread")
     boolean isUserLikedThatThread(@Param(value = "user") User user, @Param(value = "thread") Thread thread);
-
 }

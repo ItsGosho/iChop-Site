@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Getter
 @Setter
-@Entity
+@Entity(name = "ThreadReaction")
 @Table(name = "threads_reactions")
 public class ThreadReaction extends BaseReaction {
 

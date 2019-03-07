@@ -53,6 +53,17 @@ public class UserCrudServicesImp implements UserCrudServices {
     }
 
     @Override
+    public UserServiceModel getUserById(String id) {
+        User user = this.userRepository.findById(id).orElse(null);
+
+        if(user != null){
+            return this.modelMapper.map(user,UserServiceModel.class);
+        }
+
+        return null;
+    }
+
+    @Override
     public UserServiceModel getUserByUsername(String username) {
         User user = this.userRepository.findUserByUsername(username);
 
