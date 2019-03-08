@@ -34,6 +34,7 @@ public class UserRestController {
         } else if (email != null) {
             return new Gson().toJson(this.userCrudServices.existsByEmail(email));
         }
+
         throw new IllegalArgumentException();
     }
 
@@ -41,6 +42,7 @@ public class UserRestController {
     @PostMapping(value = URLConstants.USER_SEND_EMAIL_RESET_PASSWORD_POST,produces = "application/json")
     @ResponseBody
     public String sendEmailForReset(@Valid UserForgottenPasswordBindingModel userForgottenPasswordBindingModel, BindingResult bindingResult){
+
         if(bindingResult.hasErrors()){
             return new Gson().toJson(false);
         }
