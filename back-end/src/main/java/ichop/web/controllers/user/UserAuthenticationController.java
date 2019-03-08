@@ -38,6 +38,7 @@ public class UserAuthenticationController extends BaseController {
         if(bindingResult.hasErrors()) {
             return this.redirectToRegisterDropdown();
         }
+
         this.userServices.register(userRegisterBindingModel);
         return this.redirectToLoginDropdown();
     }
@@ -69,6 +70,7 @@ public class UserAuthenticationController extends BaseController {
             throw new UserPasswordNotValidException();
         }
 
+        this.userServices.resetPassword(userResetPasswordBindingModel,token);
 
         return super.viewWithMessage("base-page","notification/info","Your password been reset successfully!");
     }

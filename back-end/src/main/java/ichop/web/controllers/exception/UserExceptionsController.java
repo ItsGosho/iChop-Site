@@ -33,4 +33,9 @@ public class UserExceptionsController extends ExceptionBaseController {
         return super.errorPage("You have already casted your vote on this.");
     }
 
+    @ExceptionHandler(UserNotAuthorizedException.class)
+    public ModelAndView userNoAuthorized(){
+        return super.errorPage("You cant access this page!");
+    }
+
 }
