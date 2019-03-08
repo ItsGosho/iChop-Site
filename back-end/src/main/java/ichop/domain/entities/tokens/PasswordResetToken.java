@@ -1,5 +1,7 @@
 package ichop.domain.entities.tokens;
 
+import ichop.domain.entities.base.Token;
+
 import javax.persistence.*;
 
 @Entity

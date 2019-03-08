@@ -7,12 +7,13 @@ import ichop.domain.models.binding.user.UserForgottenPasswordBindingModel;
 import ichop.domain.models.binding.user.UserRegisterBindingModel;
 import ichop.domain.models.binding.user.UserResetPasswordBindingModel;
 import ichop.domain.models.service.token.PasswordResetTokenServiceModel;
+import ichop.domain.models.service.user.UserRoleServiceModel;
 import ichop.domain.models.service.user.UserServiceModel;
 import ichop.exceptions.token.TokenNotValidException;
 import ichop.exceptions.user.UserAlreadyExistsException;
 import ichop.exceptions.user.UserPasswordNotValidException;
 import ichop.service.role.UserRoleServices;
-import ichop.service.role.UserRoles;
+import ichop.domain.entities.users.UserRoles;
 import ichop.service.token.PasswordResetTokenServices;
 import ichop.service.token.crud.PasswordResetTokenCrudServicesImp;
 import ichop.service.user.UserServicesImp;
@@ -184,10 +185,10 @@ public class UserServicesTests {
         userRegisterBindingModel.setConfirmPassword("123");
 
         Mockito.when(this.userCrudServicesImp.getTotalUsers()).thenReturn(0L);
-        Mockito.when(this.userRoleServices.create(UserRoles.OWNER)).thenReturn(new UserRole());
-        Mockito.when(this.userRoleServices.create(UserRoles.ADMIN)).thenReturn(new UserRole());
-        Mockito.when(this.userRoleServices.create(UserRoles.MODERATOR)).thenReturn(new UserRole());
-        Mockito.when(this.userRoleServices.create(UserRoles.USER)).thenReturn(new UserRole());
+        Mockito.when(this.userRoleServices.create(UserRoles.OWNER)).thenReturn(new UserRoleServiceModel());
+        Mockito.when(this.userRoleServices.create(UserRoles.ADMIN)).thenReturn(new UserRoleServiceModel());
+        Mockito.when(this.userRoleServices.create(UserRoles.MODERATOR)).thenReturn(new UserRoleServiceModel());
+        Mockito.when(this.userRoleServices.create(UserRoles.USER)).thenReturn(new UserRoleServiceModel());
 
         UserServiceModel registeredUser = this.userServicesImp.register(userRegisterBindingModel);
         int resultedRolesSize = registeredUser.getAuthorities().size();
@@ -203,7 +204,7 @@ public class UserServicesTests {
         userRegisterBindingModel.setConfirmPassword("123");
 
         Mockito.when(this.userCrudServicesImp.getTotalUsers()).thenReturn(1L);
-        Mockito.when(this.userRoleServices.create(UserRoles.USER)).thenReturn(new UserRole());
+        Mockito.when(this.userRoleServices.create(UserRoles.USER)).thenReturn(new UserRoleServiceModel());
 
         UserServiceModel registeredUser = this.userServicesImp.register(userRegisterBindingModel);
         int resultedRolesSize = registeredUser.getAuthorities().size();

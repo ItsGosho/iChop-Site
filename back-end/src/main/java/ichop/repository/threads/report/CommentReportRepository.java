@@ -1,7 +1,7 @@
 package ichop.repository.threads.report;
 
 import ichop.domain.entities.threads.report.CommentReport;
-import ichop.domain.entities.threads.report.ThreadReport;
+import ichop.repository.base.ReportRepository;
 
 public interface CommentReportRepository extends ReportRepository<CommentReport> {
 }

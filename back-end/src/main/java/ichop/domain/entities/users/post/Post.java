@@ -1,27 +1,29 @@
-package ichop.domain.entities.threads.report;
+package ichop.domain.entities.users.post;
 
-import ichop.domain.entities.BaseEntity;
+import ichop.domain.entities.base.BaseEntity;
 import ichop.domain.entities.users.User;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.Table;
 import java.time.LocalDateTime;
 
 @Getter
 @Setter
-@MappedSuperclass
-public abstract class BaseReport extends BaseEntity {
+@Entity
+@Table(name = "users_posts")
+public class Post extends BaseEntity {
 
     @ManyToOne(optional = false)
     private User user;
 
     @Column(nullable = false)
-    private String reason;
+    private String content;
 
     @Column(nullable = false)
-    private LocalDateTime reportDate;
+    private LocalDateTime createdOn;
 
 }

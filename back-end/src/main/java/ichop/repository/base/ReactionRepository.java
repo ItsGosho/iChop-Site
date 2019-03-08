@@ -1,7 +1,7 @@
-package ichop.repository.threads.reaction;
+package ichop.repository.base;
 
-import ichop.domain.entities.threads.reaction.BaseReaction;
-import ichop.domain.entities.threads.reaction.ReactionType;
+import ichop.domain.entities.base.BaseReaction;
+import ichop.domain.entities.base.ReactionType;
 import ichop.domain.entities.users.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

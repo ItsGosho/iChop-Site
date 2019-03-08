@@ -2,11 +2,14 @@ package ichop.service.role;
 
 import ichop.domain.entities.users.User;
 import ichop.domain.entities.users.UserRole;
+import ichop.domain.entities.users.UserRoles;
+import ichop.domain.models.service.user.UserRoleServiceModel;
+import ichop.domain.models.service.user.UserServiceModel;
 
 public interface UserRoleServices {
 
-    UserRole create(UserRoles userRoles);
+    UserRoleServiceModel create(UserRoles userRoles);
 
-    UserRole getRole(User user);
+    UserRoleServiceModel getRole(UserServiceModel userServiceModel);
 
 }

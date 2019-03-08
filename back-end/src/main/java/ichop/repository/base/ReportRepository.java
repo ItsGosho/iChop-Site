@@ -1,7 +1,6 @@
-package ichop.repository.threads.report;
+package ichop.repository.base;
 
-import ichop.domain.entities.threads.reaction.BaseReaction;
-import ichop.domain.entities.threads.report.BaseReport;
+import ichop.domain.entities.base.BaseReport;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.NoRepositoryBean;
 

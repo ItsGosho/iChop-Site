@@ -21,9 +21,9 @@
         </th:block>
 
         <th:block sec:authorize="isAuthenticated()">
-            <th:block th:switch="${@userRoleServicesImp.getRole(#authentication.principal).getAuthority()}">
+            <th:block th:switch="${#session.getAttribute('user-role')}">
 
-                <!--Default-->
+                <!--Default User-->
                 <th:block th:case="*">
                     <th:block th:insert="navbar/top/top-navbar-user"></th:block>
                 </th:block>

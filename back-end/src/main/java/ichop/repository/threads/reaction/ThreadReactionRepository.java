@@ -1,9 +1,9 @@
 package ichop.repository.threads.reaction;
 
 import ichop.domain.entities.threads.Thread;
-import ichop.domain.entities.threads.reaction.ReactionType;
 import ichop.domain.entities.threads.reaction.ThreadReaction;
 import ichop.domain.entities.users.User;
+import ichop.repository.base.ReactionRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;

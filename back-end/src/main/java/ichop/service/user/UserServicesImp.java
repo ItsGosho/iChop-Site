@@ -8,12 +8,13 @@ import ichop.domain.models.binding.user.UserRegisterBindingModel;
 import ichop.domain.models.binding.user.UserForgottenPasswordBindingModel;
 import ichop.domain.models.binding.user.UserResetPasswordBindingModel;
 import ichop.domain.models.service.token.PasswordResetTokenServiceModel;
+import ichop.domain.models.service.user.UserRoleServiceModel;
 import ichop.domain.models.service.user.UserServiceModel;
 import ichop.exceptions.token.TokenNotValidException;
 import ichop.exceptions.user.UserAlreadyExistsException;
 import ichop.exceptions.user.UserPasswordNotValidException;
 import ichop.service.role.UserRoleServices;
-import ichop.service.role.UserRoles;
+import ichop.domain.entities.users.UserRoles;
 import ichop.service.token.PasswordResetTokenServices;
 import ichop.service.token.crud.PasswordResetTokenCrudServices;
 import ichop.service.user.crud.UserCrudServices;
@@ -26,6 +27,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServicesImp implements UserServices {
@@ -97,7 +99,12 @@ public class UserServicesImp implements UserServices {
 
         user.setRegistrationDate(LocalDateTime.now());
 
-        user.setAuthorities(this.getInitialAuthorities());
+        Set<UserRole> initialAuthorities = this.getInitialAuthorities().
+                stream().
+                map(x-> this.modelMapper.map(x,UserRole.class))
+                .collect(Collectors.toSet());
+
+        user.setAuthorities(initialAuthorities);
 
         UserServiceModel userServiceModel = this.modelMapper.map(user,UserServiceModel.class);
         this.userCrudServices.save(userServiceModel);
@@ -105,8 +112,8 @@ public class UserServicesImp implements UserServices {
         return userServiceModel;
     }
 
-    private Set<UserRole> getInitialAuthorities() {
-        Set<UserRole> userRoles = new HashSet<>();
+    private Set<UserRoleServiceModel> getInitialAuthorities() {
+        Set<UserRoleServiceModel> userRoles = new HashSet<>();
 
         if (this.userCrudServices.getTotalUsers() == 0) {
             userRoles.add(this.userRoleServices.create(UserRoles.OWNER));

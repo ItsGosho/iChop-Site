@@ -2,7 +2,7 @@ package ichop.service.threads.reaction;
 
 import ichop.domain.entities.threads.Comment;
 import ichop.domain.entities.threads.reaction.CommentReaction;
-import ichop.domain.entities.threads.reaction.ReactionType;
+import ichop.domain.entities.base.ReactionType;
 import ichop.domain.entities.threads.Thread;
 import ichop.domain.entities.threads.reaction.ThreadReaction;
 import ichop.domain.entities.users.User;

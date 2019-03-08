@@ -1,5 +1,6 @@
 package ichop.domain.entities.threads.reaction;
 
+import ichop.domain.entities.base.BaseReaction;
 import ichop.domain.entities.threads.Thread;
 import lombok.Getter;
 import lombok.Setter;

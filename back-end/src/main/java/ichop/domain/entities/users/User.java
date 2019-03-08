@@ -1,6 +1,6 @@
 package ichop.domain.entities.users;
 
-import ichop.domain.entities.BaseEntity;
+import ichop.domain.entities.base.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;

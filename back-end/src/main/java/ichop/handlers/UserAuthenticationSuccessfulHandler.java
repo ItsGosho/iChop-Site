@@ -3,6 +3,7 @@ package ichop.handlers;
 import ichop.constants.URLConstants;
 import ichop.domain.entities.users.User;
 import ichop.domain.models.service.user.UserServiceModel;
+import ichop.service.role.UserRoleServices;
 import ichop.service.user.crud.UserCrudServices;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +24,13 @@ public class UserAuthenticationSuccessfulHandler implements AuthenticationSucces
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
     private final UserCrudServices userCrudServices;
+    private final UserRoleServices userRoleServices;
     private final ModelMapper modelMapper;
 
     @Autowired
-    public UserAuthenticationSuccessfulHandler(UserCrudServices userCrudServices, ModelMapper modelMapper) {
+    public UserAuthenticationSuccessfulHandler(UserCrudServices userCrudServices, UserRoleServices userRoleServices, ModelMapper modelMapper) {
         this.userCrudServices = userCrudServices;
+        this.userRoleServices = userRoleServices;
         this.modelMapper = modelMapper;
     }
 
@@ -37,6 +40,8 @@ public class UserAuthenticationSuccessfulHandler implements AuthenticationSucces
         UserServiceModel userServiceModel = this.modelMapper.map(authentication.getPrincipal(), UserServiceModel.class);
         this.userCrudServices.updateLastOnline(userServiceModel, LocalDateTime.now());
         this.userCrudServices.updateUserLocation(userServiceModel,request.getParameter("userLocation"));
+
+        request.getSession().setAttribute("user-role",this.userRoleServices.getRole(userServiceModel).getAuthority());
 
         redirectStrategy.sendRedirect(request, response, URLConstants.HOME_GET);
     }

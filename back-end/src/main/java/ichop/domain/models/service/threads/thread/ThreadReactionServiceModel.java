@@ -1,6 +1,6 @@
 package ichop.domain.models.service.threads.thread;
 
-import ichop.domain.entities.threads.reaction.ReactionType;
+import ichop.domain.entities.base.ReactionType;
 import ichop.domain.models.service.user.UserServiceModel;
 import lombok.Getter;
 import lombok.Setter;

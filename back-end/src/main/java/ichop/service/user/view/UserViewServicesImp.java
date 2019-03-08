@@ -1,6 +1,6 @@
 package ichop.service.user.view;
 
-import ichop.domain.entities.threads.reaction.ReactionType;
+import ichop.domain.entities.base.ReactionType;
 import ichop.domain.entities.users.User;
 import ichop.domain.models.service.user.UserServiceModel;
 import ichop.domain.models.view.user.profile.UserProfileViewModel;
@@ -41,7 +41,7 @@ public class UserViewServicesImp implements UserViewServices {
         UserServiceModel user = this.userCrudServices.getUserByUsername(username);
 
         UserProfileViewModel result = this.modelMapper.map(user, UserProfileViewModel.class);
-        result.setRole(this.userRoleServices.getRole(this.modelMapper.map(user, User.class)).getAuthority());
+        result.setRole(this.userRoleServices.getRole(user).getAuthority());
         result.setTotalMessages(this.commentCrudServices.getTotalCommentsOfUser(user));
 
         int totalLikes = this.reactionCrudServices.getUserTotalReactions(user, ReactionType.LIKE);

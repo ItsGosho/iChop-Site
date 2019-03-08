@@ -1,6 +1,6 @@
-package ichop.repository.token;
+package ichop.repository.base;
 
-import ichop.domain.entities.tokens.Token;
+import ichop.domain.entities.base.Token;
 import ichop.domain.entities.users.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.NoRepositoryBean;

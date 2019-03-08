@@ -1,6 +1,5 @@
-package ichop.domain.entities.threads.reaction;
+package ichop.domain.entities.base;
 
-import ichop.domain.entities.BaseEntity;
 import ichop.domain.entities.users.User;
 import lombok.Getter;
 import lombok.Setter;

@@ -1,4 +1,4 @@
-package ichop.domain.entities;
+package ichop.domain.entities.base;
 
 import lombok.Getter;
 import lombok.Setter;

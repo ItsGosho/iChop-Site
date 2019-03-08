@@ -1,6 +1,6 @@
 package ichop.domain.entities.threads.report;
 
-import ichop.domain.entities.threads.Comment;
+import ichop.domain.entities.base.BaseReport;
 import ichop.domain.entities.threads.Thread;
 import lombok.Getter;
 import lombok.Setter;
