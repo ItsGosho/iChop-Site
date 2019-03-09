@@ -12,6 +12,7 @@ import ichop.domain.models.service.user.UserRoleServiceModel;
 import ichop.domain.models.service.user.UserServiceModel;
 import ichop.exceptions.token.TokenNotValidException;
 import ichop.exceptions.user.UserAlreadyExistsException;
+import ichop.exceptions.user.UserAlreadyFollowingHim;
 import ichop.exceptions.user.UserNotFoundException;
 import ichop.exceptions.user.UserPasswordNotValidException;
 import ichop.service.role.UserRoleServices;
@@ -166,6 +167,12 @@ public class UserServicesImp implements UserServices {
 
         if (user == null || follower == null) {
             throw new UserNotFoundException();
+        }
+
+        boolean isUserAlreadyFollowingHim = this.userCrudServices.isUserAlreadyFollowedUser(user,follower);
+
+        if(isUserAlreadyFollowingHim){
+            throw new UserAlreadyFollowingHim();
         }
 
 

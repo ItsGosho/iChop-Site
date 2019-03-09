@@ -1,7 +1,9 @@
 package ichop.web.controllers;
 
 import ichop.constants.URLConstants;
+import ichop.domain.entities.users.User;
 import ichop.domain.models.view.thread.ThreadHomepageViewModel;
+import ichop.repository.user.UserRepository;
 import ichop.service.threads.thread.view.ThreadViewServices;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,16 +16,17 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-import java.util.Locale;
 
 @Controller
 public class HomeController extends BaseController {
 
 
     private final ThreadViewServices threadViewServices;
+    private final UserRepository userRepository;
 
-    public HomeController(ThreadViewServices threadViewServices) {
+    public HomeController(ThreadViewServices threadViewServices, UserRepository userRepository) {
         this.threadViewServices = threadViewServices;
+        this.userRepository = userRepository;
     }
 
 
@@ -43,6 +46,10 @@ public class HomeController extends BaseController {
     @ResponseBody
     public String testHome(ModelAndView modelAndView, HttpServletRequest httpServletRequest) throws IOException {
 
-        return "<h1>" + "" + "</h1>";
+        User user = this.userRepository.findUserByUsername("1234");
+        User user2 = this.userRepository.findUserByUsername("123");
+
+        boolean result = this.userRepository.isUserAlreadyFollowedUser(user.getId(),user2.getId());
+        return "<h1>" + result + "</h1>";
     }
 }

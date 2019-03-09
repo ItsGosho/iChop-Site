@@ -12,9 +12,10 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Repository
-public interface UserRepository extends JpaRepository<User,String> {
+public interface UserRepository extends JpaRepository<User, String> {
 
     User findUserByUsername(String username);
+
     User findUserByEmail(String email);
 
     @Transactional
@@ -22,7 +23,7 @@ public interface UserRepository extends JpaRepository<User,String> {
     @Query("UPDATE User AS u\n" +
             "SET u.lastOnline = :dateTime\n" +
             "WHERE u = :user")
-    void updateLastOnline(@Param(value = "user") User user,@Param(value = "dateTime") LocalDateTime localDateTime);
+    void updateLastOnline(@Param(value = "user") User user, @Param(value = "dateTime") LocalDateTime localDateTime);
 
 
     @Transactional
@@ -30,7 +31,12 @@ public interface UserRepository extends JpaRepository<User,String> {
     @Query("UPDATE User AS u\n" +
             "SET u.location = :location\n" +
             "WHERE u = :user")
-    void updateUserLocation(@Param(value = "user") User user,@Param(value = "location") String location);
+    void updateUserLocation(@Param(value = "user") User user, @Param(value = "location") String location);
 
-    
+
+    @Query(nativeQuery = true, value = "SELECT case when COUNT(uf.user_id) = 1 then 'true' ELSE 'false' END\n" +
+            "FROM users_followers AS uf\n" +
+            "WHERE uf.user_id = :userId AND uf.followers_id = :followingUserId")
+    boolean isUserAlreadyFollowedUser(@Param(value = "userId") String userId, @Param(value = "followingUserId") String followingUserId);
+
 }

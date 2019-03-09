@@ -106,6 +106,6 @@ public class UserCrudServicesImp implements UserCrudServices {
 
     @Override
     public boolean isUserAlreadyFollowedUser(UserServiceModel user, UserServiceModel followingUser) {
-        return false;
+        return this.userRepository.isUserAlreadyFollowedUser(user.getId(),followingUser.getId());
     }
 }
