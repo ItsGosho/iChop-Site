@@ -12,6 +12,7 @@ public final class URLConstants {
 
     //-UserController
     public static final String USER_PROFILE_GET = "/user/{username}/profile";
+    public static final String USER_FOLLOW_POST = "/user/{username}/follow";
 
     //-UserPostsController
     public static final String USER_CREATE_POST_POST = "/post/{userUsername}/create";

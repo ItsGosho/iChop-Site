@@ -103,4 +103,9 @@ public class UserCrudServicesImp implements UserCrudServices {
         User user = this.modelMapper.map(userServiceModel,User.class);
         this.userRepository.updateUserLocation(user,userLocation);
     }
+
+    @Override
+    public boolean isUserAlreadyFollowedUser(UserServiceModel user, UserServiceModel followingUser) {
+        return false;
+    }
 }

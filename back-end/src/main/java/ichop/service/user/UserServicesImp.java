@@ -12,6 +12,7 @@ import ichop.domain.models.service.user.UserRoleServiceModel;
 import ichop.domain.models.service.user.UserServiceModel;
 import ichop.exceptions.token.TokenNotValidException;
 import ichop.exceptions.user.UserAlreadyExistsException;
+import ichop.exceptions.user.UserNotFoundException;
 import ichop.exceptions.user.UserPasswordNotValidException;
 import ichop.service.role.UserRoleServices;
 import ichop.domain.entities.users.UserRoles;
@@ -101,12 +102,12 @@ public class UserServicesImp implements UserServices {
 
         Set<UserRole> initialAuthorities = this.getInitialAuthorities().
                 stream().
-                map(x-> this.modelMapper.map(x,UserRole.class))
+                map(x -> this.modelMapper.map(x, UserRole.class))
                 .collect(Collectors.toSet());
 
         user.setAuthorities(initialAuthorities);
 
-        UserServiceModel userServiceModel = this.modelMapper.map(user,UserServiceModel.class);
+        UserServiceModel userServiceModel = this.modelMapper.map(user, UserServiceModel.class);
         this.userCrudServices.save(userServiceModel);
 
         return userServiceModel;
@@ -131,8 +132,8 @@ public class UserServicesImp implements UserServices {
 
         User user = (User) this.loadUserByUsername(userForgottenPasswordBindingModel.getUsernameOrEmail());
 
-        PasswordResetTokenServiceModel passwordResetTokenServiceModel = this.passwordResetTokenServices.createToken(this.modelMapper.map(user,UserServiceModel.class));
-        PasswordResetToken createdToken = this.modelMapper.map(passwordResetTokenServiceModel,PasswordResetToken.class);
+        PasswordResetTokenServiceModel passwordResetTokenServiceModel = this.passwordResetTokenServices.createToken(this.modelMapper.map(user, UserServiceModel.class));
+        PasswordResetToken createdToken = this.modelMapper.map(passwordResetTokenServiceModel, PasswordResetToken.class);
 
         this.emailServices.sendResetPasswordEmail(user.getEmail(), createdToken.getToken(), createdToken.getExpiryDate());
     }
@@ -151,12 +152,23 @@ public class UserServicesImp implements UserServices {
         PasswordResetTokenServiceModel passwordResetTokenServiceModel = this.passwordResetTokenCrudServices.getTokenByToken(resetToken);
         UserServiceModel userServiceModel = passwordResetTokenServiceModel.getUser();
 
-        User user = this.modelMapper.map(userServiceModel,User.class);
+        User user = this.modelMapper.map(userServiceModel, User.class);
         user.setPassword(this.passwordEncoder.encode(userResetPasswordBindingModel.getPassword()));
 
-        userServiceModel = this.modelMapper.map(user,UserServiceModel.class);
+        userServiceModel = this.modelMapper.map(user, UserServiceModel.class);
 
         this.userCrudServices.save(userServiceModel);
         this.passwordResetTokenServices.deleteOldestToken(userServiceModel);
+    }
+
+    @Override
+    public void follow(UserServiceModel user, UserServiceModel follower) {
+
+        if (user == null || follower == null) {
+            throw new UserNotFoundException();
+        }
+
+
+
     }
 }

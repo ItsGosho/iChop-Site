@@ -310,46 +310,29 @@
 
                         <div class="all-posts" style="margin-top: 10px">
 
-                            <div class="card post" style="margin-top: 10px">
-                                <div class="card-body"  style="margin-bottom: -15px">
-                                    <div class="row"  style="margin-top: -15px">
-                                        <div class="col-md-1" style="margin-top: 9px">
-                                            <img src="nav/avatar-user.png" style="width: 30px;height: 30px"/>
+                            <th:block th:each="post : *{posts}" th:object="${post}">
+
+                                <div class="card post" style="margin-top: 10px">
+                                    <div class="card-body"  style="margin-bottom: -15px">
+                                        <div class="row"  style="margin-top: -15px">
+                                            <div class="col-md-1" style="margin-top: 9px">
+                                                <img src="nav/avatar-user.png" style="width: 30px;height: 30px"/>
+                                            </div>
+                                            <div class="col-lg" style="width: 150px">
+                                                <a href="" style="color: #775322;font-size: 13px"><b th:text="*{creatorUsername}">Creator Username...</b> </a><small th:text="*{content}">Content...</small>
+                                            </div>
                                         </div>
-                                        <div class="col-lg" style="width: 150px">
-                                            <a href="" style="color: #775322;font-size: 13px"><b>ItsGosho</b> </a><small>Yeah this was really nice site.Hope we see you with new updates in the near futures.I will continue to playing in your server and watch my status here.Thank you for the good website and good luck!</small>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <span style="color: #7f7f7f;font-size: 10px">Jul 25,2017</span>
-                                            <a href="#"><span style="font-size: 10px">❌Delete</span></a>
-                                            <a href="#"><span style="font-size: 10px">⚠Report</span></a>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <span style="color: #7f7f7f;font-size: 10px" th:text="*{#temporals.format(createdOn, 'MMM dd,yyyy')}">Jan 00,0000</span>
+                                                <a href="#"><span style="font-size: 10px">❌Delete</span></a>
+                                                <a href="#"><span style="font-size: 10px">⚠Report</span></a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
 
-                            </div>
-
-                            <div class="card post" style="margin-top: 10px">
-                                <div class="card-body" style="margin-bottom: -15px">
-                                    <div class="row"  style="margin-top: -15px">
-                                        <div class="col-md-1" style="margin-top: 9px">
-                                            <img src="nav/avatar-user.png" style="width: 30px;height: 30px"/>
-                                        </div>
-                                        <div class="col-lg" style="width: 150px">
-                                            <a href="" style="color: #775322;font-size: 13px"><b>ItsGosho</b> </a><small>Wohooo nice.</small>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <span style="color: #7f7f7f;font-size: 10px">Jul 25,2017</span>
-                                            <a href="#"><span style="font-size: 10px">❌Delete</span></a>
-                                            <a href="#"><span style="font-size: 10px">⚠Report</span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            </th:block>
 
                         </div>
 

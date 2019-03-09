@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-public class PostProfileViewModel {
+public class PostsProfileViewModel {
 
     private String id;
     private String content;

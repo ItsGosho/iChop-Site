@@ -31,4 +31,6 @@ public interface UserRepository extends JpaRepository<User,String> {
             "SET u.location = :location\n" +
             "WHERE u = :user")
     void updateUserLocation(@Param(value = "user") User user,@Param(value = "location") String location);
+
+    
 }

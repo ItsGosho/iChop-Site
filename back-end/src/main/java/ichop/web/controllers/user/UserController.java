@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.security.Principal;
+
 @Controller
 public class UserController extends BaseController {
 
@@ -22,13 +24,20 @@ public class UserController extends BaseController {
 
 
     @GetMapping(URLConstants.USER_PROFILE_GET)
-    public ModelAndView getUserProfile(@PathVariable String username,ModelAndView modelAndView){
+    public ModelAndView getUserProfile(@PathVariable String username, ModelAndView modelAndView) {
 
         UserProfileViewModel user = this.userViewServices.getByUsername(username);
 
-        modelAndView.addObject("user",user);
+        modelAndView.addObject("user", user);
 
-        return super.page("base-page","information/user-profile",String.format("%s - Profile",user.getUsername()),modelAndView);
+        return super.page("base-page", "information/user-profile", String.format("%s - Profile", user.getUsername()), modelAndView);
+    }
+
+    @GetMapping(URLConstants.USER_FOLLOW_POST)
+    public String followUser(@PathVariable String username, Principal principal) {
+
+       return "";
+
     }
 
 }

@@ -1,5 +1,6 @@
 package ichop.service.user.crud;
 
+import ichop.domain.models.service.user.PostServiceModel;
 import ichop.domain.models.service.user.UserServiceModel;
 
 import java.time.LocalDateTime;
@@ -21,4 +22,6 @@ public interface UserCrudServices {
     void updateLastOnline(UserServiceModel userServiceModel,LocalDateTime dateTime);
 
     void updateUserLocation(UserServiceModel userServiceModel,String userLocation);
+
+    boolean isUserAlreadyFollowedUser(UserServiceModel user,UserServiceModel followingUser);
 }

@@ -10,6 +10,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -50,42 +51,10 @@ public class User extends BaseEntity implements UserDetails {
 
     private String location;
 
+    @ManyToMany
+    private List<User> followers;
+
     public User(){
         this.setAuthorities(new HashSet<>());
-    }
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return this.authorities;
-    }
-
-    @Override
-    public String getPassword() {
-        return this.password;
-    }
-
-    @Override
-    public String getUsername() {
-        return this.username;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
     }
 }

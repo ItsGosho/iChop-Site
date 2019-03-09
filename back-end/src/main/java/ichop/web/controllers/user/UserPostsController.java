@@ -1,12 +1,10 @@
 package ichop.web.controllers.user;
 
-import com.google.gson.Gson;
 import ichop.constants.URLConstants;
 import ichop.domain.entities.users.User;
 import ichop.domain.models.binding.user.PostCreateBindingModel;
 import ichop.domain.models.service.user.PostServiceModel;
 import ichop.domain.models.service.user.UserServiceModel;
-import ichop.domain.models.view.user.PostProfileViewModel;
 import ichop.service.user.PostServices;
 import ichop.service.user.crud.UserCrudServices;
 import ichop.web.controllers.BaseController;
@@ -18,9 +16,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.security.Principal;
