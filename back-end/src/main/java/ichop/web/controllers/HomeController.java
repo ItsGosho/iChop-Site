@@ -45,11 +45,6 @@ public class HomeController extends BaseController {
     @GetMapping(value = URLConstants.TEST)
     @ResponseBody
     public String testHome(ModelAndView modelAndView, HttpServletRequest httpServletRequest) throws IOException {
-
-        User user = this.userRepository.findUserByUsername("1234");
-        User user2 = this.userRepository.findUserByUsername("123");
-
-        boolean result = this.userRepository.isUserAlreadyFollowedUser(user.getId(),user2.getId());
-        return "<h1>" + result + "</h1>";
+        return "<h1>"+ "" + "</h1>";
     }
 }
