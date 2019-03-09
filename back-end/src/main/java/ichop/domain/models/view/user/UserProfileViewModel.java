@@ -1,4 +1,4 @@
-package ichop.domain.models.view.user.profile;
+package ichop.domain.models.view.user;
 
 import lombok.Getter;
 import lombok.Setter;

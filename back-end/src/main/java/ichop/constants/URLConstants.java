@@ -14,7 +14,7 @@ public final class URLConstants {
     public static final String USER_PROFILE_GET = "/user/{username}/profile";
 
     //-UserPostsController
-    public static final String USER_CREATE_POST_POST = "/post/{userId}/create";
+    public static final String USER_CREATE_POST_POST = "/post/{userUsername}/create";
 
     //-UserApiController
     public static final String USER_EXISTS_GET = "/api/user/exists";

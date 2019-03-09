@@ -252,7 +252,7 @@
                         <div class="dropdown-divider"></div>
 
                         <div class="create-post">
-                            <form method="post" action="#">
+                            <form method="post" th:action="@{/post/{userUsername}/create(userUsername=*{username})}">
                                 <div class="row">
 
                                     <div class="col-md-1">
@@ -260,18 +260,50 @@
                                     </div>
 
                                     <div class="col-lg">
-                                        <textarea name="content" style="border:1px solid #ccc;border-radius: 3px;height: 60px;overflow: auto;width: 100%;resize: none"></textarea>
+                                        <textarea name="content" id="textarea-createPost-userProfile" style="border:1px solid #ccc;border-radius: 3px;height: 60px;overflow: auto;width: 100%;resize: none"></textarea>
                                     </div>
 
                                 </div>
 
                                 <div class="row" style="margin-top: 3px">
                                     <div class="col-lg">
-                                        <button type="submit" class="btn btn-info btn-sm" style="float: right;display: inline-block">Post</button>
-                                        <small style="float: right;display: inline-block;margin-right: 3px;color: darkgreen;font-size: 13px">150</small>
+                                        <button type="button" id="button-createPost-userProfile" class="btn btn-info btn-sm" style="float: right;display: inline-block">Post</button>
+                                        <small id="small-leftPostCreationCharacters-userProfile" style="float: right;display: inline-block;margin-right: 3px;color: darkgreen;font-size: 13px">150</small>
                                     </div>
                                 </div>
                             </form>
+
+                            <script>
+                                let minCharacters = POST_MIN_LENGTH;
+                                let maxCharacters = POST_MAX_LENGTH;
+
+                                let textArea = $(`#textarea-createPost-userProfile`);
+                                let leftCharactersField = $(`#small-leftPostCreationCharacters-userProfile`);
+
+                                textArea.on(`keypress keydown keyup`,function () {
+                                    let content = textArea.val();
+                                    let remainingCharacters = maxCharacters-content.length;
+                                    leftCharactersField.text(remainingCharacters);
+
+                                    if(content.length >= minCharacters && content.length <= maxCharacters){
+                                        textArea.css('border-color','')
+                                        $('#button-createPost-userProfile').attr('type','submit')
+
+                                    }else{
+                                        textArea.css('border-color','red')
+                                        $('#button-createPost-userProfile').attr('type','button')
+                                    }
+
+                                    if(remainingCharacters <= 0){
+                                        leftCharactersField.css('color','red')
+                                    }else{
+                                        leftCharactersField.css('color','darkgreen')
+                                    }
+
+                                });
+
+                            </script>
+
                         </div>
 
                         <div class="dropdown-divider"></div>

@@ -14,11 +14,14 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Entity
-@Table(name = "users_posts")
+@Table(name = "posts")
 public class Post extends BaseEntity {
 
     @ManyToOne(optional = false)
     private User user;
+
+    @ManyToOne(optional = false)
+    private User creator;
 
     @Column(nullable = false)
     private String content;

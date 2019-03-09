@@ -1,9 +1,8 @@
 package ichop.service.user.view;
 
 import ichop.domain.entities.base.ReactionType;
-import ichop.domain.entities.users.User;
 import ichop.domain.models.service.user.UserServiceModel;
-import ichop.domain.models.view.user.profile.UserProfileViewModel;
+import ichop.domain.models.view.user.UserProfileViewModel;
 import ichop.exceptions.user.UserNotFoundException;
 import ichop.service.role.UserRoleServices;
 import ichop.service.threads.comment.crud.CommentCrudServices;

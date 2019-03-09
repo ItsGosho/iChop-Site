@@ -2,3 +2,6 @@ const EMAIL_PATTERN = "(?:[a-z0-9!#$%&'*+\\=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+\\=?
 const PASSWORD_PATTERN = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{6,}$";
 const USERNAME_MIN_LENGTH = 3;
 const USERNAME_MAX_LENGTH = 25;
+
+const POST_MIN_LENGTH = 3;
+const POST_MAX_LENGTH = 150;

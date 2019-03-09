@@ -1,6 +1,6 @@
 package ichop.service.user.view;
 
-import ichop.domain.models.view.user.profile.UserProfileViewModel;
+import ichop.domain.models.view.user.UserProfileViewModel;
 
 public interface UserViewServices {
 
