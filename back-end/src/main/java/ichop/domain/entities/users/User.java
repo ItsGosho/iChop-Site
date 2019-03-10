@@ -51,10 +51,14 @@ public class User extends BaseEntity implements UserDetails {
 
     private String location;
 
-    @ManyToMany
-    private List<User> followers;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "users_followers",
+    joinColumns = @JoinColumn(name = "user_id",referencedColumnName = "id"),
+    inverseJoinColumns = @JoinColumn(name = "follower_id",referencedColumnName = "id"))
+    private Set<User> followers;
 
     public User(){
         this.setAuthorities(new HashSet<>());
+        this.setFollowers(new HashSet<>());
     }
 }

@@ -11,10 +11,7 @@ import ichop.domain.models.service.token.PasswordResetTokenServiceModel;
 import ichop.domain.models.service.user.UserRoleServiceModel;
 import ichop.domain.models.service.user.UserServiceModel;
 import ichop.exceptions.token.TokenNotValidException;
-import ichop.exceptions.user.UserAlreadyExistsException;
-import ichop.exceptions.user.UserAlreadyFollowingHim;
-import ichop.exceptions.user.UserNotFoundException;
-import ichop.exceptions.user.UserPasswordNotValidException;
+import ichop.exceptions.user.*;
 import ichop.service.role.UserRoleServices;
 import ichop.domain.entities.users.UserRoles;
 import ichop.service.token.PasswordResetTokenServices;
@@ -163,19 +160,40 @@ public class UserServicesImp implements UserServices {
     }
 
     @Override
-    public void follow(UserServiceModel user, UserServiceModel follower) {
+    public void follow(UserServiceModel user, UserServiceModel userToFollow) {
 
-        if (user == null || follower == null) {
+        if (user == null || userToFollow == null) {
             throw new UserNotFoundException();
         }
 
-        boolean isUserAlreadyFollowingHim = this.userCrudServices.isUserAlreadyFollowedUser(user,follower);
+        boolean isUserAlreadyFollowingHim = this.userCrudServices.isUserAlreadyFollowedUser(user, userToFollow);
 
         if(isUserAlreadyFollowingHim){
-            throw new UserAlreadyFollowingHim();
+            throw new UserAlreadyFollowingHimException();
         }
 
-        //TODO:
+        user.getFollowers().add(userToFollow);
+
+        this.userCrudServices.save(user);
+
+    }
+
+    @Override
+    public void unfollow(UserServiceModel user, UserServiceModel userToUnfollow) {
+
+        if (user == null || userToUnfollow == null) {
+            throw new UserNotFoundException();
+        }
+
+        boolean isEvenUserFollowingHim = this.userCrudServices.isUserAlreadyFollowedUser(user,userToUnfollow);
+
+        if(!isEvenUserFollowingHim){
+            throw new UserNotFollowingHimException();
+        }
+
+        user.getFollowers().removeIf(x->x.getId().equals(userToUnfollow.getId()));
+
+        this.userCrudServices.save(user);
 
     }
 }

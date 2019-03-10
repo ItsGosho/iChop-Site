@@ -1,10 +1,11 @@
 package ichop.web.controllers;
 
 import ichop.constants.URLConstants;
-import ichop.domain.entities.users.User;
 import ichop.domain.models.view.thread.ThreadHomepageViewModel;
-import ichop.repository.user.UserRepository;
 import ichop.service.threads.thread.view.ThreadViewServices;
+import ichop.service.user.UserServices;
+import ichop.service.user.crud.UserCrudServices;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -22,11 +23,14 @@ public class HomeController extends BaseController {
 
 
     private final ThreadViewServices threadViewServices;
-    private final UserRepository userRepository;
+    private final UserCrudServices userCrudServices;
+    private final UserServices userServices;
 
-    public HomeController(ThreadViewServices threadViewServices, UserRepository userRepository) {
+    @Autowired
+    public HomeController(ThreadViewServices threadViewServices, UserCrudServices userCrudServices, UserServices userServices) {
         this.threadViewServices = threadViewServices;
-        this.userRepository = userRepository;
+        this.userCrudServices = userCrudServices;
+        this.userServices = userServices;
     }
 
 
@@ -45,6 +49,10 @@ public class HomeController extends BaseController {
     @GetMapping(value = URLConstants.TEST)
     @ResponseBody
     public String testHome(ModelAndView modelAndView, HttpServletRequest httpServletRequest) throws IOException {
-        return "<h1>"+ "" + "</h1>";
+
+        //this.userServices.follow(this.userCrudServices.getUserByUsername("123"),this.userCrudServices.getUserByUsername("1234"));
+        this.userServices.unfollow(this.userCrudServices.getUserByUsername("123"),this.userCrudServices.getUserByUsername("1234"));
+
+        return "<h1>"+ "brrr" + "</h1>";
     }
 }

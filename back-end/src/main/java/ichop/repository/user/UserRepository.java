@@ -36,7 +36,7 @@ public interface UserRepository extends JpaRepository<User, String> {
 
     @Query(nativeQuery = true, value = "SELECT case when COUNT(uf.user_id) = 1 then 'true' ELSE 'false' END\n" +
             "FROM users_followers AS uf\n" +
-            "WHERE uf.user_id = :userId AND uf.followers_id = :followingUserId")
+            "WHERE uf.user_id = :userId AND uf.follower_id = :followingUserId")
     boolean isUserAlreadyFollowedUser(@Param(value = "userId") String userId, @Param(value = "followingUserId") String followingUserId);
 
 }

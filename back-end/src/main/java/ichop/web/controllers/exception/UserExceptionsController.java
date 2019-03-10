@@ -38,9 +38,14 @@ public class UserExceptionsController extends ExceptionBaseController {
         return super.errorPage("You cant access this page!");
     }
 
-    @ExceptionHandler(UserAlreadyFollowingHim.class)
+    @ExceptionHandler(UserAlreadyFollowingHimException.class)
     public ModelAndView userAlreadyFollowed(){
         return super.errorPage("You already followed this user.");
+    }
+
+    @ExceptionHandler(UserNotFollowingHimException.class)
+    public ModelAndView userNotFollowingHim(){
+        return super.errorPage("You are not following this user.");
     }
 
 }

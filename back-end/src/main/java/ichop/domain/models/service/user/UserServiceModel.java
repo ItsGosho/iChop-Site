@@ -1,9 +1,11 @@
 package ichop.domain.models.service.user;
 
+import ichop.domain.entities.users.User;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 
 @Getter
@@ -22,4 +24,6 @@ public class UserServiceModel {
     private LocalDateTime registrationDate;
     private LocalDateTime lastOnline;
     private String location;
+    private Set<UserServiceModel> followers;
+
 }

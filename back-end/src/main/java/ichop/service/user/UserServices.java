@@ -13,5 +13,6 @@ public interface UserServices extends UserDetailsService {
     void sendPasswordResetEmail(UserForgottenPasswordBindingModel userForgottenPasswordBindingModel);
     void resetPassword(UserResetPasswordBindingModel userResetPasswordBindingModel, String resetToken);
 
-    void follow(UserServiceModel user,UserServiceModel follower);
+    void follow(UserServiceModel user,UserServiceModel userToFollow);
+    void unfollow(UserServiceModel user,UserServiceModel userToUnfollow);
 }
