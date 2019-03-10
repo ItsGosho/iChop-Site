@@ -23,12 +23,12 @@ public class PasswordResetTokenCrudServicesImp implements PasswordResetTokenCrud
 
 
     @Override
-    public PasswordResetTokenServiceModel getTokenByUser(UserServiceModel userServiceModel) {
-        User user = this.modelMapper.map(userServiceModel,User.class);
-        PasswordResetToken passwordResetToken = this.passwordResetTokenRepository.findByUser(user);
+    public PasswordResetTokenServiceModel getTokenByUser(UserServiceModel user) {
+        User entityUser = this.modelMapper.map(user,User.class);
+        PasswordResetToken entitiyPasswordResetToken = this.passwordResetTokenRepository.findByUser(entityUser);
 
-        if (passwordResetToken != null) {
-            return this.modelMapper.map(passwordResetToken, PasswordResetTokenServiceModel.class);
+        if (entitiyPasswordResetToken != null) {
+            return this.modelMapper.map(entitiyPasswordResetToken, PasswordResetTokenServiceModel.class);
         }
 
         return null;
@@ -36,26 +36,26 @@ public class PasswordResetTokenCrudServicesImp implements PasswordResetTokenCrud
 
     @Override
     public PasswordResetTokenServiceModel getTokenByToken(String token) {
-        PasswordResetToken passwordResetToken = this.passwordResetTokenRepository.findByToken(token);
+        PasswordResetToken entitiyPasswordResetToken = this.passwordResetTokenRepository.findByToken(token);
 
-        if (passwordResetToken != null) {
-            return this.modelMapper.map(passwordResetToken, PasswordResetTokenServiceModel.class);
+        if (entitiyPasswordResetToken != null) {
+            return this.modelMapper.map(entitiyPasswordResetToken, PasswordResetTokenServiceModel.class);
         }
 
         return null;
     }
 
     @Override
-    public PasswordResetTokenServiceModel save(PasswordResetTokenServiceModel passwordResetTokenServiceModel) {
-        PasswordResetToken passwordResetToken = this.modelMapper.map(passwordResetTokenServiceModel,PasswordResetToken.class);
-        this.passwordResetTokenRepository.save(passwordResetToken);
+    public PasswordResetTokenServiceModel save(PasswordResetTokenServiceModel passwordResetToken) {
+        PasswordResetToken entityPasswordResetToken = this.modelMapper.map(passwordResetToken,PasswordResetToken.class);
+        this.passwordResetTokenRepository.save(entityPasswordResetToken);
 
-        return this.modelMapper.map(passwordResetToken,PasswordResetTokenServiceModel.class);
+        return this.modelMapper.map(entityPasswordResetToken,PasswordResetTokenServiceModel.class);
     }
 
     @Override
-    public void delete(PasswordResetTokenServiceModel passwordResetTokenServiceModel) {
-        PasswordResetToken passwordResetToken = this.modelMapper.map(passwordResetTokenServiceModel,PasswordResetToken.class);
-        this.passwordResetTokenRepository.delete(passwordResetToken);
+    public void delete(PasswordResetTokenServiceModel passwordResetToken) {
+        PasswordResetToken entitiyPasswordResetToken = this.modelMapper.map(passwordResetToken,PasswordResetToken.class);
+        this.passwordResetTokenRepository.delete(entitiyPasswordResetToken);
     }
 }

@@ -58,21 +58,19 @@ public class UserServicesImp implements UserServices {
 
         if (this.userCrudServices.isEmail(usernameOrEmail)) {
 
-            UserServiceModel userServiceModel = this.userCrudServices.getUserByEmail(usernameOrEmail);
+            UserServiceModel foundedUser = this.userCrudServices.getUserByEmail(usernameOrEmail);
 
-            if (userServiceModel != null) {
-                User user = this.modelMapper.map(userServiceModel, User.class);
-                return user;
+            if (foundedUser != null) {
+                return this.modelMapper.map(foundedUser, User.class);
             }
 
             throw new UsernameNotFoundException("");
         }
 
-        UserServiceModel userServiceModel = this.userCrudServices.getUserByUsername(usernameOrEmail);
+        UserServiceModel foundedUser = this.userCrudServices.getUserByUsername(usernameOrEmail);
 
-        if (userServiceModel != null) {
-            User user = this.modelMapper.map(userServiceModel, User.class);
-            return user;
+        if (foundedUser != null) {
+            return this.modelMapper.map(foundedUser, User.class);
         }
 
         throw new UsernameNotFoundException("");
@@ -93,45 +91,36 @@ public class UserServicesImp implements UserServices {
             throw new UserPasswordNotValidException();
         }
 
-        User user = this.modelMapper.map(userRegisterBindingModel, User.class);
-        user.setPassword(this.passwordEncoder.encode(user.getPassword()));
+        UserServiceModel registeredUser = this.modelMapper.map(userRegisterBindingModel, UserServiceModel.class);
+        registeredUser.setPassword(this.passwordEncoder.encode(registeredUser.getPassword()));
+        registeredUser.setRegistrationDate(LocalDateTime.now());
+        registeredUser.setAuthorities(this.getInitialAuthorities());
 
-        user.setRegistrationDate(LocalDateTime.now());
+        this.userCrudServices.save(registeredUser);
 
-        Set<UserRole> initialAuthorities = this.getInitialAuthorities().
-                stream().
-                map(x -> this.modelMapper.map(x, UserRole.class))
-                .collect(Collectors.toSet());
-
-        user.setAuthorities(initialAuthorities);
-
-        UserServiceModel userServiceModel = this.modelMapper.map(user, UserServiceModel.class);
-        this.userCrudServices.save(userServiceModel);
-
-        return userServiceModel;
+        return registeredUser;
     }
 
     private Set<UserRoleServiceModel> getInitialAuthorities() {
-        Set<UserRoleServiceModel> userRoles = new HashSet<>();
+        Set<UserRoleServiceModel> resuledRoles = new HashSet<>();
 
         if (this.userCrudServices.getTotalUsers() == 0) {
-            userRoles.add(this.userRoleServices.create(UserRoles.OWNER));
-            userRoles.add(this.userRoleServices.create(UserRoles.ADMIN));
-            userRoles.add(this.userRoleServices.create(UserRoles.MODERATOR));
-            userRoles.add(this.userRoleServices.create(UserRoles.USER));
+            resuledRoles.add(this.userRoleServices.create(UserRoles.OWNER));
+            resuledRoles.add(this.userRoleServices.create(UserRoles.ADMIN));
+            resuledRoles.add(this.userRoleServices.create(UserRoles.MODERATOR));
+            resuledRoles.add(this.userRoleServices.create(UserRoles.USER));
         } else {
-            userRoles.add(this.userRoleServices.create(UserRoles.USER));
+            resuledRoles.add(this.userRoleServices.create(UserRoles.USER));
         }
-        return userRoles;
+        return resuledRoles;
     }
 
     @Override
     public void sendPasswordResetEmail(UserForgottenPasswordBindingModel userForgottenPasswordBindingModel) {
 
-        User user = (User) this.loadUserByUsername(userForgottenPasswordBindingModel.getUsernameOrEmail());
+        UserServiceModel user = this.modelMapper.map((User) this.loadUserByUsername(userForgottenPasswordBindingModel.getUsernameOrEmail()),UserServiceModel.class);
 
-        PasswordResetTokenServiceModel passwordResetTokenServiceModel = this.passwordResetTokenServices.createToken(this.modelMapper.map(user, UserServiceModel.class));
-        PasswordResetToken createdToken = this.modelMapper.map(passwordResetTokenServiceModel, PasswordResetToken.class);
+        PasswordResetTokenServiceModel createdToken = this.passwordResetTokenServices.createToken(user);
 
         this.emailServices.sendResetPasswordEmail(user.getEmail(), createdToken.getToken(), createdToken.getExpiryDate());
     }
@@ -147,16 +136,13 @@ public class UserServicesImp implements UserServices {
             throw new UserPasswordNotValidException();
         }
 
-        PasswordResetTokenServiceModel passwordResetTokenServiceModel = this.passwordResetTokenCrudServices.getTokenByToken(resetToken);
-        UserServiceModel userServiceModel = passwordResetTokenServiceModel.getUser();
+        PasswordResetTokenServiceModel passwordResetToken = this.passwordResetTokenCrudServices.getTokenByToken(resetToken);
+        UserServiceModel user = passwordResetToken.getUser();
 
-        User user = this.modelMapper.map(userServiceModel, User.class);
         user.setPassword(this.passwordEncoder.encode(userResetPasswordBindingModel.getPassword()));
 
-        userServiceModel = this.modelMapper.map(user, UserServiceModel.class);
-
-        this.userCrudServices.save(userServiceModel);
-        this.passwordResetTokenServices.deleteOldestToken(userServiceModel);
+        this.userCrudServices.save(user);
+        this.passwordResetTokenServices.deleteOldestToken(user);
     }
 
     @Override

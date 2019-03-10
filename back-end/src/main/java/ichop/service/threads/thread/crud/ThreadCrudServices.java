@@ -15,7 +15,7 @@ public interface ThreadCrudServices {
 
     boolean exists(String id);
 
-    ThreadServiceModel save(ThreadServiceModel threadServiceModel);
+    ThreadServiceModel save(ThreadServiceModel thread);
 
     List<ThreadServiceModel> findAll();
 

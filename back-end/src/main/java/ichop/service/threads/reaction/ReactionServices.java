@@ -8,8 +8,8 @@ import ichop.domain.models.service.threads.thread.ThreadServiceModel;
 import ichop.domain.models.service.user.UserServiceModel;
 
 public interface ReactionServices {
-    ThreadReactionServiceModel addReaction(ThreadServiceModel threadServiceModel, UserServiceModel userServiceModel, ReactionType reactionType);
+    ThreadReactionServiceModel addReaction(ThreadServiceModel thread, UserServiceModel user, ReactionType reactionType);
 
-    CommentReactionServiceModel addReaction(CommentServiceModel commentServiceModel, UserServiceModel userServiceModel, ReactionType reactionType);
+    CommentReactionServiceModel addReaction(CommentServiceModel comment, UserServiceModel user, ReactionType reactionType);
 
 }

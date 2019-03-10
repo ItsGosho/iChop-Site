@@ -5,11 +5,11 @@ import ichop.domain.models.service.user.UserServiceModel;
 
 public interface PasswordResetTokenCrudServices {
 
-    PasswordResetTokenServiceModel getTokenByUser(UserServiceModel userServiceModel);
+    PasswordResetTokenServiceModel getTokenByUser(UserServiceModel user);
 
     PasswordResetTokenServiceModel getTokenByToken(String token);
 
-    PasswordResetTokenServiceModel save(PasswordResetTokenServiceModel passwordResetTokenServiceModel);
+    PasswordResetTokenServiceModel save(PasswordResetTokenServiceModel passwordResetToken);
 
-    void delete(PasswordResetTokenServiceModel passwordResetTokenServiceModel);
+    void delete(PasswordResetTokenServiceModel passwordResetToken);
 }

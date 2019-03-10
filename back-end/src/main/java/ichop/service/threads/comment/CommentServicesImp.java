@@ -29,27 +29,25 @@ public class CommentServicesImp implements CommentServices {
 
 
     @Override
-    public CommentServiceModel addComment(CommentCreateBindingModel commentCreateBindingModel, UserServiceModel userServiceModel, ThreadServiceModel threadServiceModel) {
+    public CommentServiceModel addComment(CommentCreateBindingModel commentCreateBindingModel, UserServiceModel user, ThreadServiceModel thread) {
 
-        if(userServiceModel == null){
+        if(user == null){
             throw new UserNotFoundException();
         }
 
-        if(threadServiceModel == null){
+        if(thread == null){
             throw new ThreadNotFoundException();
         }
 
-        Thread thread = this.modelMapper.map(threadServiceModel,Thread.class);
-        User user = this.modelMapper.map(userServiceModel,User.class);
-        Comment comment = this.modelMapper.map(commentCreateBindingModel,Comment.class);
+        CommentServiceModel comment = this.modelMapper.map(commentCreateBindingModel,CommentServiceModel.class);
 
         comment.setCreatedOn(LocalDateTime.now());
         comment.setCreator(user);
         comment.setThread(thread);
 
-        CommentServiceModel commentServiceModel = this.commentCrudServices.save(this.modelMapper.map(comment,CommentServiceModel.class));
+        CommentServiceModel result = this.commentCrudServices.save(comment);
 
-        return commentServiceModel;
+        return result;
     }
 
 }

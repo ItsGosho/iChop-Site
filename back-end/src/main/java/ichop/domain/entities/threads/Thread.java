@@ -2,9 +2,12 @@ package ichop.domain.entities.threads;
 
 import ichop.domain.entities.base.BaseEntity;
 import ichop.domain.entities.threads.reaction.ThreadReaction;
+import ichop.domain.entities.threads.report.ThreadReport;
 import ichop.domain.entities.users.User;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -27,22 +30,25 @@ public class Thread extends BaseEntity {
     @ManyToOne(optional = false)
     private User creator;
 
-    @Column(name = "created_on",nullable = false)
+    @Column(name = "created_on", nullable = false)
     private LocalDateTime createdOn;
 
-    @OneToMany
-    @JoinTable(name = "comments",joinColumns = @JoinColumn(name = "thread_id"),inverseJoinColumns = @JoinColumn(name = "id"))
+    @OneToMany(mappedBy = "thread",cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Comment> comments;
 
     @Column(nullable = false)
     private Integer views;
 
-    @OneToMany(mappedBy = "thread")
+    @OneToMany(mappedBy = "thread", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ThreadReaction> reactions;
 
-    public Thread(){
+    @OneToMany(mappedBy = "thread", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ThreadReport> reports;
+
+    public Thread() {
         this.setComments(new LinkedList<>());
         this.setReactions(new LinkedList<>());
+        this.setReports(new LinkedList<>());
         this.setViews(0);
     }
 

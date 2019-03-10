@@ -1,5 +1,6 @@
 package ichop.domain.models.service.threads.comment;
 
+import ichop.domain.models.service.threads.report.CommentReportServiceModel;
 import ichop.domain.models.service.threads.thread.ThreadServiceModel;
 import ichop.domain.models.service.user.UserServiceModel;
 import lombok.Getter;
@@ -18,5 +19,6 @@ public class CommentServiceModel {
     public UserServiceModel creator;
     public LocalDateTime createdOn;
     private List<CommentReactionServiceModel> reactions;
+    private List<CommentReportServiceModel> reports;
 
 }

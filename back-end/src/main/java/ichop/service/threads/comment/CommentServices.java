@@ -7,6 +7,6 @@ import ichop.domain.models.service.user.UserServiceModel;
 
 public interface CommentServices {
 
-    CommentServiceModel addComment(CommentCreateBindingModel commentCreateBindingModel, UserServiceModel userServiceModel, ThreadServiceModel threadServiceModel);
+    CommentServiceModel addComment(CommentCreateBindingModel commentCreateBindingModel, UserServiceModel user, ThreadServiceModel thread);
 
 }

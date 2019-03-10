@@ -10,6 +10,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ReportCrudServicesImp implements ReportCrudServices {
 
@@ -27,20 +29,20 @@ public class ReportCrudServicesImp implements ReportCrudServices {
 
 
     @Override
-    public ThreadReportServiceModel save(ThreadReportServiceModel threadReportServiceModel) {
+    public ThreadReportServiceModel save(ThreadReportServiceModel threadReport) {
 
-        ThreadReport threadReport = this.modelMapper.map(threadReportServiceModel,ThreadReport.class);
-        this.threadReportRepository.save(threadReport);
+        ThreadReport entityThreadReport = this.modelMapper.map(threadReport,ThreadReport.class);
+        this.threadReportRepository.save(entityThreadReport);
 
-        return this.modelMapper.map(threadReport,ThreadReportServiceModel.class);
+        return this.modelMapper.map(entityThreadReport,ThreadReportServiceModel.class);
     }
 
     @Override
-    public CommentReportServiceModel save(CommentReportServiceModel commentReportServiceModel) {
+    public CommentReportServiceModel save(CommentReportServiceModel commentReport) {
 
-        CommentReport commentReport = this.modelMapper.map(commentReportServiceModel,CommentReport.class);
-        this.commentReportRepository.save(commentReport);
+        CommentReport entityCommentReport = this.modelMapper.map(commentReport,CommentReport.class);
+        this.commentReportRepository.save(entityCommentReport);
 
-        return this.modelMapper.map(commentReport,CommentReportServiceModel.class);
+        return this.modelMapper.map(entityCommentReport,CommentReportServiceModel.class);
     }
 }

@@ -35,52 +35,46 @@ public class ReactionServicesImp implements ReactionServices {
 
 
     @Override
-    public ThreadReactionServiceModel addReaction(ThreadServiceModel threadServiceModel, UserServiceModel userServiceModel, ReactionType reactionType) {
+    public ThreadReactionServiceModel addReaction(ThreadServiceModel thread, UserServiceModel user, ReactionType reactionType) {
 
-        if(threadServiceModel == null){
+        if(user == null){
             throw new ThreadNotFoundException();
         }
 
-        if (this.reactionCrudServices.isUserLikedThatThread(userServiceModel, threadServiceModel)) {
+        if (this.reactionCrudServices.isUserLikedThatThread(user, thread)) {
             throw new UserAlreadyReacted();
         }
 
-        Thread thread = this.modelMapper.map(threadServiceModel, Thread.class);
-        User user = this.modelMapper.map(userServiceModel, User.class);
-
-        ThreadReaction threadReaction = new ThreadReaction();
+        ThreadReactionServiceModel threadReaction = new ThreadReactionServiceModel();
         threadReaction.setReactionType(reactionType);
         threadReaction.setUser(user);
         threadReaction.setThread(thread);
         threadReaction.setReactionDate(LocalDateTime.now());
 
-        ThreadReactionServiceModel resultedReaction = this.reactionCrudServices.save(this.modelMapper.map(threadReaction, ThreadReactionServiceModel.class));
+        ThreadReactionServiceModel result = this.reactionCrudServices.save(threadReaction);
 
-        return resultedReaction;
+        return result;
     }
 
     @Override
-    public CommentReactionServiceModel addReaction(CommentServiceModel commentServiceModel, UserServiceModel userServiceModel, ReactionType reactionType) {
+    public CommentReactionServiceModel addReaction(CommentServiceModel comment, UserServiceModel user, ReactionType reactionType) {
 
-        if(commentServiceModel == null){
+        if(comment == null){
             throw new CommentNotFoundException();
         }
 
-        if (this.reactionCrudServices.isUserLikedThatComment(userServiceModel, commentServiceModel)) {
+        if (this.reactionCrudServices.isUserLikedThatComment(user, comment)) {
             throw new UserAlreadyReacted();
         }
 
-        Comment comment = this.modelMapper.map(commentServiceModel, Comment.class);
-        User user = this.modelMapper.map(userServiceModel, User.class);
-
-        CommentReaction commentReaction = new CommentReaction();
+        CommentReactionServiceModel commentReaction = new CommentReactionServiceModel();
         commentReaction.setReactionType(reactionType);
         commentReaction.setUser(user);
         commentReaction.setComment(comment);
         commentReaction.setReactionDate(LocalDateTime.now());
 
-        CommentReactionServiceModel resultedReaction = this.reactionCrudServices.save(this.modelMapper.map(commentReaction, CommentReactionServiceModel.class));
+        CommentReactionServiceModel result = this.reactionCrudServices.save(commentReaction);
 
-        return resultedReaction;
+        return result;
     }
 }

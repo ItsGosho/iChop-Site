@@ -17,11 +17,11 @@ public interface UserCrudServices {
     UserServiceModel getUserByUsername(String username);
     UserServiceModel getUserByEmail(String email);
 
-    void save(UserServiceModel userServiceModel);
+    void save(UserServiceModel user);
 
-    void updateLastOnline(UserServiceModel userServiceModel,LocalDateTime dateTime);
+    void updateLastOnline(UserServiceModel user,LocalDateTime dateTime);
 
-    void updateUserLocation(UserServiceModel userServiceModel,String userLocation);
+    void updateUserLocation(UserServiceModel user,String userLocation);
 
     boolean isUserAlreadyFollowedUser(UserServiceModel user,UserServiceModel followingUser);
 }

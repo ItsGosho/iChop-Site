@@ -33,16 +33,16 @@ public class UserCrudServicesImp implements UserCrudServices {
 
     @Override
     public boolean existsByUsername(String username) {
-        User user = this.userRepository.findUserByUsername(username);
+        User entitiyUser = this.userRepository.findUserByUsername(username);
 
-        return user != null;
+        return entitiyUser != null;
     }
 
     @Override
     public boolean existsByEmail(String email) {
-        User user = this.userRepository.findUserByEmail(email);
+        User entitiyUser = this.userRepository.findUserByEmail(email);
 
-        return user != null;
+        return entitiyUser != null;
     }
 
     @Override
@@ -54,10 +54,10 @@ public class UserCrudServicesImp implements UserCrudServices {
 
     @Override
     public UserServiceModel getUserById(String id) {
-        User user = this.userRepository.findById(id).orElse(null);
+        User entitiyUser = this.userRepository.findById(id).orElse(null);
 
-        if(user != null){
-            return this.modelMapper.map(user,UserServiceModel.class);
+        if(entitiyUser != null){
+            return this.modelMapper.map(entitiyUser,UserServiceModel.class);
         }
 
         return null;
@@ -65,10 +65,10 @@ public class UserCrudServicesImp implements UserCrudServices {
 
     @Override
     public UserServiceModel getUserByUsername(String username) {
-        User user = this.userRepository.findUserByUsername(username);
+        User entitiyUser = this.userRepository.findUserByUsername(username);
 
-        if(user != null){
-            return this.modelMapper.map(user,UserServiceModel.class);
+        if(entitiyUser != null){
+            return this.modelMapper.map(entitiyUser,UserServiceModel.class);
         }
 
         return null;
@@ -76,32 +76,32 @@ public class UserCrudServicesImp implements UserCrudServices {
 
     @Override
     public UserServiceModel getUserByEmail(String email) {
-        User user = this.userRepository.findUserByEmail(email);
+        User entitiyUser = this.userRepository.findUserByEmail(email);
 
-        if(user != null){
-            return this.modelMapper.map(user,UserServiceModel.class);
+        if(entitiyUser != null){
+            return this.modelMapper.map(entitiyUser,UserServiceModel.class);
         }
 
         return null;
     }
 
     @Override
-    public void save(UserServiceModel userServiceModel) {
-        User user = this.modelMapper.map(userServiceModel,User.class);
+    public void save(UserServiceModel user) {
+        User entityUser = this.modelMapper.map(user,User.class);
 
-        this.userRepository.save(user);
+        this.userRepository.save(entityUser);
     }
 
     @Override
-    public void updateLastOnline(UserServiceModel userServiceModel, LocalDateTime dateTime) {
-        User user = this.modelMapper.map(userServiceModel,User.class);
-        this.userRepository.updateLastOnline(user,dateTime);
+    public void updateLastOnline(UserServiceModel user, LocalDateTime dateTime) {
+        User entityUser = this.modelMapper.map(user,User.class);
+        this.userRepository.updateLastOnline(entityUser,dateTime);
     }
 
     @Override
-    public void updateUserLocation(UserServiceModel userServiceModel, String userLocation) {
-        User user = this.modelMapper.map(userServiceModel,User.class);
-        this.userRepository.updateUserLocation(user,userLocation);
+    public void updateUserLocation(UserServiceModel user, String userLocation) {
+        User entityUser = this.modelMapper.map(user,User.class);
+        this.userRepository.updateUserLocation(entityUser,userLocation);
     }
 
     @Override

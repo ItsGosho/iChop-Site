@@ -26,17 +26,16 @@ public class ThreadServicesImp implements ThreadServices {
 
 
     @Override
-    public ThreadServiceModel create(ThreadCreateBindingModel threadCreateBindingModel, UserServiceModel userServiceModel) {
+    public ThreadServiceModel create(ThreadCreateBindingModel threadCreateBindingModel, UserServiceModel user) {
 
-        User user = this.modelMapper.map(userServiceModel,User.class);
-
-        Thread thread = this.modelMapper.map(threadCreateBindingModel, Thread.class);
+        ThreadServiceModel thread = this.modelMapper.map(threadCreateBindingModel, ThreadServiceModel.class);
         thread.setCreatedOn(LocalDateTime.now());
         thread.setCreator(user);
+        thread.setViews(0);
 
-        this.threadCrudServices.save(this.modelMapper.map(thread,ThreadServiceModel.class));
+        ThreadServiceModel result = this.threadCrudServices.save(thread);
 
-        return this.modelMapper.map(thread,ThreadServiceModel.class);
+        return  result;
     }
 
 }

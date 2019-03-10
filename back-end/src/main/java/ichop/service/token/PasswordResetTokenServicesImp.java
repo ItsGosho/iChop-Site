@@ -26,15 +26,14 @@ public class PasswordResetTokenServicesImp implements PasswordResetTokenServices
 
     @Override
     public boolean isValid(String token) {
-        PasswordResetTokenServiceModel passwordResetTokenServiceModel = this.passwordResetTokenCrudServices.getTokenByToken(token);
+        PasswordResetTokenServiceModel passwordResetToken = this.passwordResetTokenCrudServices.getTokenByToken(token);
 
-        if (passwordResetTokenServiceModel == null) {
+        if (passwordResetToken == null) {
             return false;
         }
 
-        PasswordResetToken passwordResetToken = this.modelMapper.map(passwordResetTokenServiceModel,PasswordResetToken.class);
-
         boolean isDateExpired = passwordResetToken.getExpiryDate().compareTo(LocalDateTime.now()) < 0;
+
         if (isDateExpired) {
             return false;
         }
@@ -43,29 +42,29 @@ public class PasswordResetTokenServicesImp implements PasswordResetTokenServices
     }
 
     @Override
-    public PasswordResetTokenServiceModel createToken(UserServiceModel userServiceModel) {
+    public PasswordResetTokenServiceModel createToken(UserServiceModel user) {
 
-        this.deleteOldestToken(userServiceModel);
+        this.deleteOldestToken(user);
 
-        User user = this.modelMapper.map(userServiceModel,User.class);
-
-        String token = UUID.randomUUID().toString();
-        PasswordResetToken passwordResetToken = new PasswordResetToken();
+        PasswordResetTokenServiceModel passwordResetToken = new PasswordResetTokenServiceModel();
         passwordResetToken.setUser(user);
         passwordResetToken.setExpiryDate(LocalDateTime.now().plusSeconds(PasswordResetToken.getTokenExpiration()));
-        passwordResetToken.setToken(token);
+        passwordResetToken.setToken(UUID.randomUUID().toString());
 
-        this.passwordResetTokenCrudServices.save(this.modelMapper.map(passwordResetToken,PasswordResetTokenServiceModel.class));
+        PasswordResetTokenServiceModel result = this.passwordResetTokenCrudServices.save(passwordResetToken);
 
-        return this.modelMapper.map(passwordResetToken, PasswordResetTokenServiceModel.class);
+        return result;
     }
 
     @Override
-    public void deleteOldestToken(UserServiceModel userServiceModel) {
-        PasswordResetTokenServiceModel passwordResetTokenServiceModel = this.passwordResetTokenCrudServices.getTokenByUser(userServiceModel);
+    public void deleteOldestToken(UserServiceModel user) {
+
+        PasswordResetTokenServiceModel passwordResetTokenServiceModel = this.passwordResetTokenCrudServices.getTokenByUser(user);
+
         if (passwordResetTokenServiceModel != null) {
             this.passwordResetTokenCrudServices.delete(passwordResetTokenServiceModel);
         }
+
     }
 
 }

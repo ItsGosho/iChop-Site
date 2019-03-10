@@ -17,6 +17,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ReactionCrudServicesImp implements ReactionCrudServices {
 
@@ -33,63 +35,63 @@ public class ReactionCrudServicesImp implements ReactionCrudServices {
 
 
     @Override
-    public ThreadReactionServiceModel save(ThreadReactionServiceModel threadReactionServiceModel) {
-        ThreadReaction threadReaction = this.modelMapper.map(threadReactionServiceModel,ThreadReaction.class);
+    public ThreadReactionServiceModel save(ThreadReactionServiceModel threadReaction) {
+        ThreadReaction entityThreadReaction = this.modelMapper.map(threadReaction,ThreadReaction.class);
 
-        this.threadReactionRepository.save(threadReaction);
+        this.threadReactionRepository.save(entityThreadReaction);
 
-        return this.modelMapper.map(threadReaction,ThreadReactionServiceModel.class);
+        return this.modelMapper.map(entityThreadReaction,ThreadReactionServiceModel.class);
     }
 
     @Override
-    public CommentReactionServiceModel save(CommentReactionServiceModel commentReactionServiceModel) {
-        CommentReaction commentReaction = this.modelMapper.map(commentReactionServiceModel,CommentReaction.class);
+    public CommentReactionServiceModel save(CommentReactionServiceModel commentReaction) {
+        CommentReaction entityCommentReaction = this.modelMapper.map(commentReaction,CommentReaction.class);
 
-        this.commentReactionRepository.save(commentReaction);
+        this.commentReactionRepository.save(entityCommentReaction);
 
-        return this.modelMapper.map(commentReaction,CommentReactionServiceModel.class);
+        return this.modelMapper.map(entityCommentReaction,CommentReactionServiceModel.class);
     }
 
     @Override
-    public boolean isUserLikedThatThread(UserServiceModel userServiceModel, ThreadServiceModel threadServiceModel) {
-        User user = this.modelMapper.map(userServiceModel,User.class);
-        Thread thread = this.modelMapper.map(threadServiceModel, Thread.class);
+    public boolean isUserLikedThatThread(UserServiceModel user, ThreadServiceModel thread) {
+        User entityUser = this.modelMapper.map(user,User.class);
+        Thread entityThread = this.modelMapper.map(thread, Thread.class);
 
-        boolean result = this.threadReactionRepository.isUserLikedThatThread(user,thread);
+        boolean result = this.threadReactionRepository.isUserLikedThatThread(entityUser,entityThread);
 
         return result;
     }
 
     @Override
-    public boolean isUserLikedThatComment(UserServiceModel userServiceModel, CommentServiceModel commentServiceModel) {
-        User user = this.modelMapper.map(userServiceModel,User.class);
-        Comment comment = this.modelMapper.map(commentServiceModel, Comment.class);
+    public boolean isUserLikedThatComment(UserServiceModel user, CommentServiceModel comment) {
+        User entityUser = this.modelMapper.map(user,User.class);
+        Comment entityComment = this.modelMapper.map(comment, Comment.class);
 
-        boolean result = this.commentReactionRepository.isUserLikedThatComment(user,comment);
+        boolean result = this.commentReactionRepository.isUserLikedThatComment(entityUser,entityComment);
 
         return result;
     }
 
     @Override
-    public int getUserTotalThreadReactions(UserServiceModel userServiceModel, ReactionType reactionType) {
-        User user = this.modelMapper.map(userServiceModel,User.class);
-        return this.threadReactionRepository.getUserTotalReactions(user,reactionType);
+    public int getUserTotalThreadReactions(UserServiceModel user, ReactionType reactionType) {
+        User entityUser = this.modelMapper.map(user,User.class);
+        return this.threadReactionRepository.getUserTotalReactions(entityUser,reactionType);
     }
 
     @Override
-    public int getUserTotalCommentReactions(UserServiceModel userServiceModel, ReactionType reactionType) {
-        User user = this.modelMapper.map(userServiceModel,User.class);
-        return this.commentReactionRepository.getUserTotalReactions(user,reactionType);
+    public int getUserTotalCommentReactions(UserServiceModel user, ReactionType reactionType) {
+        User entityUser = this.modelMapper.map(user,User.class);
+        return this.commentReactionRepository.getUserTotalReactions(entityUser,reactionType);
     }
 
     @Override
-    public int getUserTotalReactions(UserServiceModel userServiceModel, ReactionType reactionType) {
-        return this.getUserTotalThreadReactions(userServiceModel,reactionType) + this.getUserTotalCommentReactions(userServiceModel,reactionType);
+    public int getUserTotalReactions(UserServiceModel user, ReactionType reactionType) {
+        return this.getUserTotalThreadReactions(user,reactionType) + this.getUserTotalCommentReactions(user,reactionType);
     }
 
     @Override
-    public int getUserTotalReactions(UserServiceModel userServiceModel) {
-        User user = this.modelMapper.map(userServiceModel,User.class);
-        return this.commentReactionRepository.getUserTotalReactions(user) + this.threadReactionRepository.getUserTotalReactions(user);
+    public int getUserTotalReactions(UserServiceModel user) {
+        User entityUser = this.modelMapper.map(user,User.class);
+        return this.commentReactionRepository.getUserTotalReactions(entityUser) + this.threadReactionRepository.getUserTotalReactions(entityUser);
     }
 }

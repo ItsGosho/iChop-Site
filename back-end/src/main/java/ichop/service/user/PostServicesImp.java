@@ -26,22 +26,20 @@ public class PostServicesImp implements PostServices {
     }
 
     @Override
-    public PostServiceModel create(UserServiceModel userServiceModel,UserServiceModel creatorServiceModel , PostCreateBindingModel postCreateBindingModel) {
+    public PostServiceModel create(UserServiceModel user,UserServiceModel creator , PostCreateBindingModel postCreateBindingModel) {
 
-        if(userServiceModel == null || creatorServiceModel == null){
+        if(user == null || creator == null){
             throw new UserNotFoundException();
         }
 
-        User user = this.modelMapper.map(userServiceModel,User.class);
-        User creator = this.modelMapper.map(creatorServiceModel,User.class);
-        Post post = this.modelMapper.map(postCreateBindingModel,Post.class);
+        PostServiceModel post = this.modelMapper.map(postCreateBindingModel,PostServiceModel.class);
 
         post.setUser(user);
         post.setCreator(creator);
         post.setCreatedOn(LocalDateTime.now());
 
-        PostServiceModel result = this.postCrudServices.save(this.modelMapper.map(post,PostServiceModel.class));
+        PostServiceModel savedPost = this.postCrudServices.save(post);
 
-        return result;
+        return savedPost;
     }
 }

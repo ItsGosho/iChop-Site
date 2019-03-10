@@ -2,6 +2,7 @@ package ichop.domain.entities.threads;
 
 import ichop.domain.entities.base.BaseEntity;
 import ichop.domain.entities.threads.reaction.CommentReaction;
+import ichop.domain.entities.threads.report.CommentReport;
 import ichop.domain.entities.users.User;
 import lombok.Getter;
 import lombok.Setter;
@@ -29,11 +30,14 @@ public class Comment extends BaseEntity {
     @Column(nullable = false)
     public LocalDateTime createdOn;
 
-    @OneToMany
-    @JoinTable(name = "comments_reactions",joinColumns = @JoinColumn(name = "comment_id"),inverseJoinColumns = @JoinColumn(name = "id"))
+    @OneToMany(mappedBy = "comment",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CommentReaction> reactions;
+
+    @OneToMany(mappedBy = "comment",cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CommentReport> reports;
 
     public Comment(){
         this.setReactions(new LinkedList<>());
+        this.setReports(new LinkedList<>());
     }
 }

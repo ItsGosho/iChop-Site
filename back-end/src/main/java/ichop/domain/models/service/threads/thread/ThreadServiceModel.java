@@ -1,5 +1,6 @@
 package ichop.domain.models.service.threads.thread;
 
+import ichop.domain.entities.threads.report.ThreadReport;
 import ichop.domain.models.service.threads.comment.CommentServiceModel;
 import ichop.domain.models.service.user.UserServiceModel;
 import lombok.Getter;
@@ -20,5 +21,6 @@ public class ThreadServiceModel {
     private List<CommentServiceModel> comments;
     private Integer views;
     private List<ThreadReactionServiceModel> reactions;
+    private List<ThreadReport> reports;
 
 }

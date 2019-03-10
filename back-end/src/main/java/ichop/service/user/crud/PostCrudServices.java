@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface PostCrudServices {
 
-    PostServiceModel save(PostServiceModel postServiceModel);
-    void delete(PostServiceModel postServiceModel);
+    PostServiceModel save(PostServiceModel post);
+    void delete(PostServiceModel post);
 
-    List<PostServiceModel> getUserPosts(UserServiceModel userServiceModel);
+    List<PostServiceModel> getUserPosts(UserServiceModel user);
 
 }

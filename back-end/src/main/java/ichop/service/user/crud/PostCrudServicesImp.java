@@ -25,23 +25,23 @@ public class PostCrudServicesImp implements PostCrudServices {
     }
 
     @Override
-    public PostServiceModel save(PostServiceModel postServiceModel) {
-        Post post = this.modelMapper.map(postServiceModel,Post.class);
-        this.postRepository.save(post);
+    public PostServiceModel save(PostServiceModel post) {
+        Post entityPost = this.modelMapper.map(post,Post.class);
+        this.postRepository.save(entityPost);
 
-        return this.modelMapper.map(post,PostServiceModel.class);
+        return this.modelMapper.map(entityPost,PostServiceModel.class);
     }
 
     @Override
-    public void delete(PostServiceModel postServiceModel) {
-        Post post = this.modelMapper.map(postServiceModel,Post.class);
-        this.postRepository.delete(post);
+    public void delete(PostServiceModel post) {
+        Post entitiyPost = this.modelMapper.map(post,Post.class);
+        this.postRepository.delete(entitiyPost);
     }
 
     @Override
-    public List<PostServiceModel> getUserPosts(UserServiceModel userServiceModel) {
-        User user = this.modelMapper.map(userServiceModel,User.class);
-        return this.postRepository.findAllByUser(user)
+    public List<PostServiceModel> getUserPosts(UserServiceModel user) {
+        User entityUser = this.modelMapper.map(user,User.class);
+        return this.postRepository.findAllByUser(entityUser)
                 .stream()
                 .map(x->this.modelMapper.map(x,PostServiceModel.class))
                 .collect(Collectors.toList());

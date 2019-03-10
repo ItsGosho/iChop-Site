@@ -7,7 +7,7 @@ public interface PasswordResetTokenServices {
 
     boolean isValid(String token);
 
-    PasswordResetTokenServiceModel createToken(UserServiceModel userServiceModel);
+    PasswordResetTokenServiceModel createToken(UserServiceModel user);
 
-    void deleteOldestToken(UserServiceModel userServiceModel);
+    void deleteOldestToken(UserServiceModel user);
 }

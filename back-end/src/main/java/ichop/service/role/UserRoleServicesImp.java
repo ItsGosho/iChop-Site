@@ -1,44 +1,44 @@
 package ichop.service.role;
 
-import ichop.domain.entities.users.User;
 import ichop.domain.entities.users.UserRole;
 import ichop.domain.entities.users.UserRoles;
 import ichop.domain.models.service.user.UserRoleServiceModel;
 import ichop.domain.models.service.user.UserServiceModel;
 import ichop.exceptions.user.UserCannotBeNullException;
-import ichop.repository.user.UserRoleRepository;
+import ichop.service.role.crud.UserRoleCrudServices;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserRoleServicesImp implements UserRoleServices {
 
-    private final UserRoleRepository userRoleRepository;
+    private final UserRoleCrudServices userRoleCrudServices;
     private final ModelMapper modelMapper;
 
     @Autowired
-    public UserRoleServicesImp(UserRoleRepository userRoleRepository, ModelMapper modelMapper) {
-        this.userRoleRepository = userRoleRepository;
+    public UserRoleServicesImp(UserRoleCrudServices userRoleCrudServices, ModelMapper modelMapper) {
+        this.userRoleCrudServices = userRoleCrudServices;
         this.modelMapper = modelMapper;
     }
+
 
     @Override
     public UserRoleServiceModel create(UserRoles userRoles) {
 
         String authority = userRoles.name().toUpperCase();
-        UserRole userRole = this.userRoleRepository.findUserRoleByAuthority(userRoles.name().toUpperCase());
+        UserRoleServiceModel userRole = this.userRoleCrudServices.findUserRoleByAuthority(userRoles.name().toUpperCase());
 
-        if(this.userRoleRepository.findUserRoleByAuthority(authority)!=null){
-            return  this.modelMapper.map(userRole,UserRoleServiceModel.class);
+        if (userRole != null) {
+            return userRole;
         }
 
-        userRole = new UserRole();
+        userRole = new UserRoleServiceModel();
         userRole.setAuthority(authority);
-        this.userRoleRepository.save(userRole);
 
-        return this.modelMapper.map(userRole,UserRoleServiceModel.class);
+        UserRoleServiceModel result = this.userRoleCrudServices.save(userRole);
+
+        return result;
     }
 
     @Override

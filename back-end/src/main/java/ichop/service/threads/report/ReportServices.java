@@ -9,7 +9,7 @@ import ichop.domain.models.service.user.UserServiceModel;
 public interface ReportServices {
 
 
-    ThreadReportServiceModel addReport(ThreadServiceModel threadServiceModel, UserServiceModel userServiceModel,String reason);
-    CommentReportServiceModel addReport(CommentServiceModel commentServiceModel, UserServiceModel userServiceModel, String reason);
+    ThreadReportServiceModel addReport(ThreadServiceModel thread, UserServiceModel user,String reason);
+    CommentReportServiceModel addReport(CommentServiceModel comment, UserServiceModel user, String reason);
 
 }

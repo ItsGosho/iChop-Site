@@ -7,6 +7,6 @@ import ichop.domain.models.service.user.UserServiceModel;
 public interface PostServices {
 
 
-    PostServiceModel create(UserServiceModel userServiceModel,UserServiceModel creatorServiceModel , PostCreateBindingModel postCreateBindingModel);
+    PostServiceModel create(UserServiceModel user,UserServiceModel creator , PostCreateBindingModel postCreateBindingModel);
 
 }

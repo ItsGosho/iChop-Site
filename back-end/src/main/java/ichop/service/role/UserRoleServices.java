@@ -10,6 +10,6 @@ public interface UserRoleServices {
 
     UserRoleServiceModel create(UserRoles userRoles);
 
-    UserRoleServiceModel getRole(UserServiceModel userServiceModel);
+    UserRoleServiceModel getRole(UserServiceModel user);
 
 }

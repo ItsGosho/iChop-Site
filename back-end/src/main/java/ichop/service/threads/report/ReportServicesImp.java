@@ -31,39 +31,33 @@ public class ReportServicesImp implements ReportServices {
     }
 
     @Override
-    public ThreadReportServiceModel addReport(ThreadServiceModel threadServiceModel, UserServiceModel userServiceModel, String reason) {
+    public ThreadReportServiceModel addReport(ThreadServiceModel thread, UserServiceModel user, String reason) {
 
-        Thread thread = this.modelMapper.map(threadServiceModel,Thread.class);
-        User user = this.modelMapper.map(userServiceModel,User.class);
-
-        ThreadReport threadReport = new ThreadReport();
+        ThreadReportServiceModel threadReport = new ThreadReportServiceModel();
         threadReport.setThread(thread);
         threadReport.setUser(user);
         threadReport.setReason(reason);
         threadReport.setReportDate(LocalDateTime.now());
 
-        ThreadReportServiceModel result = this.reportCrudServices.save(this.modelMapper.map(threadReport,ThreadReportServiceModel.class));
+        ThreadReportServiceModel result = this.reportCrudServices.save(threadReport);
 
         return result;
     }
 
     @Override
-    public CommentReportServiceModel addReport(CommentServiceModel commentServiceModel, UserServiceModel userServiceModel, String reason) {
+    public CommentReportServiceModel addReport(CommentServiceModel comment, UserServiceModel user, String reason) {
 
-        if(commentServiceModel == null){
+        if(comment == null){
             throw new CommentNotFoundException();
         }
 
-        Comment comment = this.modelMapper.map(commentServiceModel,Comment.class);
-        User user = this.modelMapper.map(userServiceModel,User.class);
-
-        CommentReport commentReport = new CommentReport();
+        CommentReportServiceModel commentReport = new CommentReportServiceModel();
         commentReport.setComment(comment);
         commentReport.setUser(user);
         commentReport.setReason(reason);
         commentReport.setReportDate(LocalDateTime.now());
 
-        CommentReportServiceModel result = this.reportCrudServices.save(this.modelMapper.map(commentReport,CommentReportServiceModel.class));
+        CommentReportServiceModel result = this.reportCrudServices.save(commentReport);
 
         return result;
     }

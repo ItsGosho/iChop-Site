@@ -1,8 +1,11 @@
 package ichop.service.threads.thread.crud;
 
 import ichop.domain.entities.threads.Thread;
+import ichop.domain.models.service.threads.comment.CommentServiceModel;
 import ichop.domain.models.service.threads.thread.ThreadServiceModel;
 import ichop.repository.threads.thread.ThreadRepository;
+import ichop.service.threads.comment.crud.CommentCrudServices;
+import ichop.service.threads.reaction.crud.ReactionCrudServices;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,21 +20,25 @@ public class ThreadCrudServicesImp implements ThreadCrudServices {
 
 
     private final ThreadRepository threadRepository;
+    private final CommentCrudServices commentCrudServices;
+    private final ReactionCrudServices reactionCrudServices;
     private final ModelMapper modelMapper;
 
     @Autowired
-    public ThreadCrudServicesImp(ThreadRepository threadRepository, ModelMapper modelMapper) {
+    public ThreadCrudServicesImp(ThreadRepository threadRepository, CommentCrudServices commentCrudServices, ReactionCrudServices reactionCrudServices, ModelMapper modelMapper) {
         this.threadRepository = threadRepository;
+        this.commentCrudServices = commentCrudServices;
+        this.reactionCrudServices = reactionCrudServices;
         this.modelMapper = modelMapper;
     }
 
 
     @Override
     public ThreadServiceModel getThread(String id) {
-        Thread thread = this.threadRepository.findThreadById(id);
+        Thread entityThread = this.threadRepository.findThreadById(id);
 
-        if(thread != null){
-            return this.modelMapper.map(thread,ThreadServiceModel.class);
+        if(entityThread != null){
+            return this.modelMapper.map(entityThread,ThreadServiceModel.class);
         }
 
         return null;
@@ -39,24 +46,27 @@ public class ThreadCrudServicesImp implements ThreadCrudServices {
 
     @Override
     public void delete(String id) {
-        Thread thread = this.threadRepository.findThreadById(id);
-        this.threadRepository.delete(thread);
+        Thread entityThread = this.threadRepository.findThreadById(id);
+
+        this.threadRepository.delete(entityThread);
     }
 
     @Override
     public boolean exists(String id) {
-        Thread thread = this.threadRepository.findThreadById(id);
-        if (thread != null) {
+        Thread entityThread = this.threadRepository.findThreadById(id);
+
+        if (entityThread != null) {
             return true;
         }
+
         return false;
     }
 
     @Override
-    public ThreadServiceModel save(ThreadServiceModel threadServiceModel) {
-        Thread thread = this.modelMapper.map(threadServiceModel,Thread.class);
-        this.threadRepository.save(thread);
-        return this.modelMapper.map(thread,ThreadServiceModel.class);
+    public ThreadServiceModel save(ThreadServiceModel thread) {
+        Thread entityThread = this.modelMapper.map(thread,Thread.class);
+        this.threadRepository.save(entityThread);
+        return this.modelMapper.map(entityThread,ThreadServiceModel.class);
     }
 
     @Override
