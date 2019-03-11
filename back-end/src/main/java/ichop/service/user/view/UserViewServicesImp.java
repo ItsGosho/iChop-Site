@@ -1,14 +1,14 @@
 package ichop.service.user.view;
 
-import ichop.domain.entities.base.ReactionType;
+import ichop.domain.entities.reaction.ReactionType;
 import ichop.domain.models.service.user.UserServiceModel;
-import ichop.domain.models.view.user.PostsProfileViewModel;
+import ichop.domain.models.view.post.PostsProfileViewModel;
 import ichop.domain.models.view.user.UserProfileViewModel;
 import ichop.exceptions.user.UserNotFoundException;
 import ichop.service.role.UserRoleServices;
-import ichop.service.threads.comment.crud.CommentCrudServices;
-import ichop.service.threads.reaction.crud.ReactionCrudServices;
-import ichop.service.user.crud.PostCrudServices;
+import ichop.service.comment.crud.CommentCrudServices;
+import ichop.service.reaction.crud.ReactionCrudServices;
+import ichop.service.post.crud.PostCrudServices;
 import ichop.service.user.crud.UserCrudServices;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

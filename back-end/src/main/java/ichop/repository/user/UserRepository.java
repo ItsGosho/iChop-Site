@@ -39,4 +39,14 @@ public interface UserRepository extends JpaRepository<User, String> {
             "WHERE uf.user_id = :userId AND uf.follower_id = :followingUserId")
     boolean isUserAlreadyFollowedUser(@Param(value = "userId") String userId, @Param(value = "followingUserId") String followingUserId);
 
+    @Query(nativeQuery = true, value = "SELECT COUNT(uf.user_id)\n" +
+            "FROM users_followers AS uf\n" +
+            "WHERE uf.user_id = :userId")
+    int getUserTotalFollowings(@Param(value = "userId") String userId);
+
+    @Query(nativeQuery = true, value = "SELECT COUNT(uf.user_id)\n" +
+            "FROM users_followers AS uf\n" +
+            "WHERE uf.follower_id = :userId")
+    int getUserTotalFollowers(@Param(value = "userId") String userId);
+
 }

@@ -1,8 +1,8 @@
 package ichop.service.role.crud;
 
 import ichop.domain.entities.users.UserRole;
-import ichop.domain.models.service.user.UserRoleServiceModel;
-import ichop.repository.user.UserRoleRepository;
+import ichop.domain.models.service.role.UserRoleServiceModel;
+import ichop.repository.role.UserRoleRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

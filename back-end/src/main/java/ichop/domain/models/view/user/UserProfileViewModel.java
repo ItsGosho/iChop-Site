@@ -1,5 +1,6 @@
 package ichop.domain.models.view.user;
 
+import ichop.domain.models.view.post.PostsProfileViewModel;
 import lombok.Getter;
 import lombok.Setter;
 

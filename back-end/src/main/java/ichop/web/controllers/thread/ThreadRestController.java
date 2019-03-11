@@ -5,7 +5,7 @@ import ichop.constants.URLConstants;
 import ichop.domain.entities.users.User;
 import ichop.domain.models.binding.thread.ThreadCreateBindingModel;
 import ichop.domain.models.service.user.UserServiceModel;
-import ichop.service.threads.thread.ThreadServices;
+import ichop.service.thread.ThreadServices;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;

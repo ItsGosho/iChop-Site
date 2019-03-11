@@ -1,7 +1,6 @@
 package ichop.web.controllers.exception;
 
-import ichop.exceptions.thread.ReactionNotFoundException;
-import ichop.exceptions.thread.ThreadNotFoundException;
+import ichop.exceptions.reaction.ReactionNotFoundException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;

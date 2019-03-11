@@ -1,13 +1,12 @@
 package ichop.domain.entities.threads;
 
-import ichop.domain.entities.base.BaseEntity;
-import ichop.domain.entities.threads.reaction.ThreadReaction;
-import ichop.domain.entities.threads.report.ThreadReport;
+import ichop.domain.entities.BaseEntity;
+import ichop.domain.entities.comment.Comment;
+import ichop.domain.entities.reaction.ThreadReaction;
+import ichop.domain.entities.report.ThreadReport;
 import ichop.domain.entities.users.User;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

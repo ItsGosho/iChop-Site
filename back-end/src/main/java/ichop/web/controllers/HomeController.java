@@ -2,7 +2,7 @@ package ichop.web.controllers;
 
 import ichop.constants.URLConstants;
 import ichop.domain.models.view.thread.ThreadHomepageViewModel;
-import ichop.service.threads.thread.view.ThreadViewServices;
+import ichop.service.thread.view.ThreadViewServices;
 import ichop.service.user.UserServices;
 import ichop.service.user.crud.UserCrudServices;
 import org.springframework.beans.factory.annotation.Autowired;

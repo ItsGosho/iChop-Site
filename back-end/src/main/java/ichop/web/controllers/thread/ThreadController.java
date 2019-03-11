@@ -1,12 +1,11 @@
 package ichop.web.controllers.thread;
 
 import ichop.constants.URLConstants;
-import ichop.domain.models.service.threads.thread.ThreadServiceModel;
 import ichop.domain.models.view.thread.ThreadReadViewModel;
 import ichop.exceptions.thread.ThreadNotFoundException;
-import ichop.service.threads.thread.ThreadServices;
-import ichop.service.threads.thread.crud.ThreadCrudServices;
-import ichop.service.threads.thread.view.ThreadViewServices;
+import ichop.service.thread.ThreadServices;
+import ichop.service.thread.crud.ThreadCrudServices;
+import ichop.service.thread.view.ThreadViewServices;
 import ichop.web.controllers.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;

@@ -1,11 +1,10 @@
 package ichop.domain.models.service.user;
 
-import ichop.domain.entities.users.User;
+import ichop.domain.models.service.role.UserRoleServiceModel;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
 import java.util.Set;
 
 @Getter

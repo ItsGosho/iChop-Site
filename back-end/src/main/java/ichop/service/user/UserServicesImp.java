@@ -1,14 +1,12 @@
 package ichop.service.user;
 
 import ichop.components.email.EmailServices;
-import ichop.domain.entities.tokens.PasswordResetToken;
 import ichop.domain.entities.users.User;
-import ichop.domain.entities.users.UserRole;
 import ichop.domain.models.binding.user.UserRegisterBindingModel;
 import ichop.domain.models.binding.user.UserForgottenPasswordBindingModel;
 import ichop.domain.models.binding.user.UserResetPasswordBindingModel;
 import ichop.domain.models.service.token.PasswordResetTokenServiceModel;
-import ichop.domain.models.service.user.UserRoleServiceModel;
+import ichop.domain.models.service.role.UserRoleServiceModel;
 import ichop.domain.models.service.user.UserServiceModel;
 import ichop.exceptions.token.TokenNotValidException;
 import ichop.exceptions.user.*;
@@ -26,7 +24,6 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
 public class UserServicesImp implements UserServices {
