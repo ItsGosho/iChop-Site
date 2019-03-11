@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -117,5 +119,23 @@ public class UserCrudServicesImp implements UserCrudServices {
     @Override
     public int getUserTotalFollowers(UserServiceModel user) {
         return this.userRepository.getUserTotalFollowers(user.getId());
+    }
+
+    @Override
+    public List<UserServiceModel> getFollowers(UserServiceModel user) {
+
+        List<UserServiceModel> result = new LinkedList<>();
+
+        this.userRepository.findAll().stream().forEach(x->{
+
+            User foundedUser = x.getFollowings().stream().filter(z-> z.getId().equals(user.getId())).findFirst().orElse(null);
+
+            if(foundedUser != null){
+                result.add(this.modelMapper.map(x,UserServiceModel.class));
+            }
+
+        });
+
+        return result;
     }
 }

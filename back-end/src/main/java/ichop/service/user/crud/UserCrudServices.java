@@ -3,6 +3,7 @@ package ichop.service.user.crud;
 import ichop.domain.models.service.user.UserServiceModel;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public interface UserCrudServices {
 
@@ -26,4 +27,6 @@ public interface UserCrudServices {
 
     int getUserTotalFollowings(UserServiceModel user);
     int getUserTotalFollowers(UserServiceModel user);
+
+    List<UserServiceModel> getFollowers(UserServiceModel user);
 }

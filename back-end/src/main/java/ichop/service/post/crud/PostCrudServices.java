@@ -8,6 +8,7 @@ import java.util.List;
 public interface PostCrudServices {
 
     PostServiceModel save(PostServiceModel post);
+    PostServiceModel getById(String id);
     void delete(PostServiceModel post);
 
     List<PostServiceModel> getUserPosts(UserServiceModel user);

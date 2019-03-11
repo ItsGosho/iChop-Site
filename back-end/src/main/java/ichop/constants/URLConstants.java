@@ -3,21 +3,22 @@ package ichop.constants;
 
 public final class URLConstants {
 
-    //HomeController
+    //HomeController ------------------------------------------------------------------------------------------
     public static final String HOME_GET = "/";
     public static final String TEST = "/test";
 
-
-    //User ----------------------------------------------------------------------------------------------------
-
     //UserController ------------------------------------------------------------------------------------------
+
     public static final String USER_PROFILE_GET = "/user/{username}/profile";
     public static final String USER_FOLLOW_POST = "/user/{username}/follow";
+    public static final String USER_UNFOLLOW_POST = "/user/{username}/unfollow";
 
     //UserApiController ---------------------------------------------------------------------------------------
+
     public static final String USER_EXISTS_GET = "/api/user/exists";
 
     //UserAuthenticationController ----------------------------------------------------------------------------
+
     public static final String USER_LOGIN_GET = "/login";
     public static final String USER_REGISTER_GET = "/register";
     public static final String USER_REGISTER_POST = "/register";
@@ -25,16 +26,17 @@ public final class URLConstants {
     public static final String USER_RESET_PASSWORD_POST = "/user/reset/password";
 
     //UserAuthorizationController ----------------------------------------------------------------------------
+
     public static final String UNAUTHORIZED = "/unauthorized";
 
     //UserRestController -------------------------------------------------------------------------------------
+
     public static final String USER_SEND_EMAIL_RESET_PASSWORD_POST = "/user/send-email/reset/password";
 
-
     //PostController -----------------------------------------------------------------------------------------
+
     public static final String CREATE_POST_POST = "/post/{userUsername}/create";
     public static final String DELETE_POST_POST = "/post/{postId}/delete";
-
 
     //Thread -------------------------------------------------------------------------------------------------
 
@@ -43,8 +45,8 @@ public final class URLConstants {
     public static final String THREAD_READ_GET = "/thread/{threadId}/read";
 
     //ThreadRestController  ----------------------------------------------------------------------------------
-    public static final String THREAD_CREATE_GET =  "/thread/create";
 
+    public static final String THREAD_CREATE_GET =  "/thread/create";
 
     //ReactionController -------------------------------------------------------------------------------------
 
@@ -61,5 +63,6 @@ public final class URLConstants {
     //ReportController ---------------------------------------------------------------------------------------
     public static final String THREAD_REPORT_POST = "/thread/{threadId}/report";
     public static final String COMMENT_REPORT_POST = "/comment/{commentId}/report";
+    public static final String POST_REPORT_POST = "/post/{postId}/report";
 
 }

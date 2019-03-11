@@ -149,13 +149,17 @@ public class UserServicesImp implements UserServices {
             throw new UserNotFoundException();
         }
 
+        if(user.getId().equals(userToFollow.getId())){
+            throw new IllegalArgumentException();
+        }
+
         boolean isUserAlreadyFollowingHim = this.userCrudServices.isUserAlreadyFollowedUser(user, userToFollow);
 
         if(isUserAlreadyFollowingHim){
             throw new UserAlreadyFollowingHimException();
         }
 
-        user.getFollowers().add(userToFollow);
+        user.getFollowings().add(userToFollow);
 
         this.userCrudServices.save(user);
 
@@ -174,7 +178,7 @@ public class UserServicesImp implements UserServices {
             throw new UserNotFollowingHimException();
         }
 
-        user.getFollowers().removeIf(x->x.getId().equals(userToUnfollow.getId()));
+        user.getFollowings().removeIf(x->x.getId().equals(userToUnfollow.getId()));
 
         this.userCrudServices.save(user);
 

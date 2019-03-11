@@ -106,58 +106,39 @@
 
                 <div class="card following" style="margin-top: 10px">
                     <div align="center">
-                        <span>Following: <span>29</span></span>
+                        <span>Following: <span th:text="*{totalFollowing}">000</span></span>
                     </div>
                     <div>
-                        <div class="row d-flex justify-content-center align-items-center">
-                            <a href=""><img src="nav/avatar-user.png" title="TinaBG"
-                                            style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px"/></a>
-                            <a href=""><img src="nav/avatar-user.png" title="TinaBG"
-                                            style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px"/></a>
-                            <a href=""><img src="nav/avatar-user.png" title="TinaBG"
-                                            style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px"/></a>
-                            <a href=""><img src="nav/avatar-user.png" title="TinaBG"
-                                            style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px"/></a>
+
+                        <div class="row d-flex justify-content-center align-items-center" style="width: 100%;margin-left: 0px">
+                        <th:block th:each="following : *{followings}" th:object="${following}">
+                            <th:block th:if="${followingStat.index < 4}">
+                                <a th:href="@{/user/{username}/profile(username=*{username})}"><img src="nav/avatar-user.png" th:title="*{username}"
+                                                                                                    style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px"/></a>
+                            </th:block>
+                        </th:block>
                         </div>
-                        <div class="row d-flex justify-content-center align-items-center">
-                            <a href=""><img src="nav/avatar-user.png" title="TinaBG"
-                                            style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px"/></a>
-                            <a href=""><img src="nav/avatar-user.png" title="TinaBG"
-                                            style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px"/></a>
-                            <a href=""><img src="nav/avatar-user.png" title="TinaBG"
-                                            style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px"/></a>
-                            <a href=""><img src="nav/avatar-user.png" title="TinaBG"
-                                            style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px"/></a>
-                        </div>
+
                     </div>
                     <a href="" class="d-flex justify-content-center align-items-center">See all</a>
                 </div>
 
                 <div class="card followers" style="margin-top: 10px">
                     <div align="center">
-                        Followers: 15
+                        Followers: <span th:text="*{totalFollowers}">000</span>
                     </div>
                     <div>
-                        <div class="row d-flex justify-content-center align-items-center">
-                            <a href=""><img src="nav/avatar-user.png" title="TinaBG"
-                                            style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px"/></a>
-                            <a href=""><img src="nav/avatar-user.png" title="TinaBG"
-                                            style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px"/></a>
-                            <a href=""><img src="nav/avatar-user.png" title="TinaBG"
-                                            style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px"/></a>
-                            <a href=""><img src="nav/avatar-user.png" title="TinaBG"
-                                            style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px"/></a>
+
+                        <div class="row d-flex justify-content-center align-items-center" style="width: 100%;margin-left: 0px">
+                            <th:block th:each="follower : *{followers}" th:object="${follower}">
+                                <th:block th:if="${followerStat.index < 4}">
+                                    <a th:href="@{/user/{username}/profile(username=*{username})}"><img src="nav/avatar-user.png" th:title="*{username}"
+                                                                                                        style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px"/></a>
+                                </th:block>
+                            </th:block>
                         </div>
-                        <div class="row d-flex justify-content-center align-items-center">
-                            <a href=""><img src="nav/avatar-user.png" title="TinaBG"
-                                            style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px"/></a>
-                            <a href=""><img src="nav/avatar-user.png" title="TinaBG"
-                                            style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px"/></a>
-                            <a href=""><img src="nav/avatar-user.png" title="TinaBG"
-                                            style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px"/></a>
-                            <a href=""><img src="nav/avatar-user.png" title="TinaBG"
-                                            style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px"/></a>
-                        </div>
+
+
                     </div>
                     <a href="" class="d-flex justify-content-center align-items-center">See all</a>
                 </div>

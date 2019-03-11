@@ -65,10 +65,6 @@ public class CommentCrudServicesImp implements CommentCrudServices {
     public void delete(String id) {
         CommentServiceModel comment = this.getById(id);
 
-        if (comment == null) {
-              throw new CommentNotFoundException();
-        }
-
         this.commentRepository.delete(this.modelMapper.map(comment,Comment.class));
     }
 

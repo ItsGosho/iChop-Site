@@ -65,6 +65,12 @@ public class UserViewServicesImp implements UserViewServices {
 
         result.setPosts(postsProfileViewModels);
 
+        result.setTotalFollowers(this.userCrudServices.getUserTotalFollowers(user));
+        result.setTotalFollowing(this.userCrudServices.getUserTotalFollowings(user));
+
+        result.setFollowers(this.userCrudServices.getFollowers(user));
+
+
         //TODO:
 
         return result;

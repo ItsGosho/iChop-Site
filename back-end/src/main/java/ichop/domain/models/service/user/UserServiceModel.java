@@ -23,6 +23,6 @@ public class UserServiceModel {
     private LocalDateTime registrationDate;
     private LocalDateTime lastOnline;
     private String location;
-    private Set<UserServiceModel> followers;
+    private Set<UserServiceModel> followings;
 
 }

@@ -3,9 +3,11 @@ package ichop.web.controllers.report;
 import ichop.constants.URLConstants;
 import ichop.domain.entities.users.User;
 import ichop.domain.models.service.comment.CommentServiceModel;
+import ichop.domain.models.service.post.PostServiceModel;
 import ichop.domain.models.service.thread.ThreadServiceModel;
 import ichop.domain.models.service.user.UserServiceModel;
 import ichop.service.comment.crud.CommentCrudServices;
+import ichop.service.post.crud.PostCrudServices;
 import ichop.service.report.ReportServices;
 import ichop.service.thread.crud.ThreadCrudServices;
 import ichop.web.controllers.BaseController;
@@ -26,36 +28,50 @@ public class ReportController extends BaseController {
 
     private final CommentCrudServices commentCrudServices;
     private final ThreadCrudServices threadCrudServices;
+    private final PostCrudServices postCrudServices;
     private final ReportServices reportServices;
     private final ModelMapper modelMapper;
 
     @Autowired
-    public ReportController(CommentCrudServices commentCrudServices, ThreadCrudServices threadCrudServices, ReportServices reportServices, ModelMapper modelMapper) {
+    public ReportController(CommentCrudServices commentCrudServices, ThreadCrudServices threadCrudServices, PostCrudServices postCrudServices, ReportServices reportServices, ModelMapper modelMapper) {
         this.commentCrudServices = commentCrudServices;
         this.threadCrudServices = threadCrudServices;
+        this.postCrudServices = postCrudServices;
         this.reportServices = reportServices;
         this.modelMapper = modelMapper;
     }
 
     @PreAuthorize("isAuthenticated()")
     @PostMapping(URLConstants.COMMENT_REPORT_POST)
-    public ModelAndView reportComment(@PathVariable String commentId, Principal principal, @RequestParam String reason){
+    public ModelAndView reportComment(@PathVariable String commentId, Principal principal, @RequestParam String reason) {
         CommentServiceModel commentServiceModel = this.commentCrudServices.getById(commentId);
-        UserServiceModel userServiceModel = this.modelMapper.map((User)((Authentication) principal).getPrincipal(), UserServiceModel.class);
+        UserServiceModel userServiceModel = this.modelMapper.map((User) ((Authentication) principal).getPrincipal(), UserServiceModel.class);
 
-        this.reportServices.addReport(commentServiceModel,userServiceModel,reason);
+        this.reportServices.addReport(commentServiceModel, userServiceModel, reason);
 
-        return super.viewWithMessage("base-page","notification/info","This comment was succesful reported!");
+        return super.viewWithMessage("base-page", "notification/info", "This comment was successful reported!");
     }
 
     @PreAuthorize("isAuthenticated()")
     @PostMapping(URLConstants.THREAD_REPORT_POST)
-    public ModelAndView reportThread(@PathVariable String threadId, Principal principal, @RequestParam String reason){
+    public ModelAndView reportThread(@PathVariable String threadId, Principal principal, @RequestParam String reason) {
         ThreadServiceModel threadServiceModel = this.threadCrudServices.getThread(threadId);
-        UserServiceModel userServiceModel = this.modelMapper.map((User)((Authentication) principal).getPrincipal(), UserServiceModel.class);
+        UserServiceModel userServiceModel = this.modelMapper.map((User) ((Authentication) principal).getPrincipal(), UserServiceModel.class);
 
-        this.reportServices.addReport(threadServiceModel,userServiceModel,reason);
+        this.reportServices.addReport(threadServiceModel, userServiceModel, reason);
 
-        return super.viewWithMessage("base-page","notification/info","This thread was succesful reported!");
+        return super.viewWithMessage("base-page", "notification/info", "This thread was successful reported!");
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @PostMapping(URLConstants.POST_REPORT_POST)
+    public ModelAndView reportPost(@PathVariable String postId, Principal principal, @RequestParam String reason) {
+
+        PostServiceModel postServiceModel = this.postCrudServices.getById(postId);
+        UserServiceModel userServiceModel = this.modelMapper.map((User) ((Authentication) principal).getPrincipal(), UserServiceModel.class);
+
+        this.reportServices.addReport(postServiceModel, userServiceModel, reason);
+
+        return super.viewWithMessage("base-page", "notification/info", "This post was successful reported!");
     }
 }

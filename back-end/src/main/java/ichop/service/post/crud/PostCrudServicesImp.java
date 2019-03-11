@@ -33,6 +33,17 @@ public class PostCrudServicesImp implements PostCrudServices {
     }
 
     @Override
+    public PostServiceModel getById(String id) {
+        Post entityPost = this.postRepository.findById(id).orElse(null);
+
+        if(entityPost != null){
+            return this.modelMapper.map(entityPost,PostServiceModel.class);
+        }
+
+        return null;
+    }
+
+    @Override
     public void delete(PostServiceModel post) {
         Post entitiyPost = this.modelMapper.map(post,Post.class);
         this.postRepository.delete(entitiyPost);

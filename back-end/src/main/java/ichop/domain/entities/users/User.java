@@ -52,10 +52,10 @@ public class User extends BaseEntity implements UserDetails {
     @JoinTable(name = "users_followers",
     joinColumns = @JoinColumn(name = "user_id",referencedColumnName = "id"),
     inverseJoinColumns = @JoinColumn(name = "follower_id",referencedColumnName = "id"))
-    private Set<User> followers;
+    private Set<User> followings;
 
     public User(){
         this.setAuthorities(new HashSet<>());
-        this.setFollowers(new HashSet<>());
+        this.setFollowings(new HashSet<>());
     }
 }
