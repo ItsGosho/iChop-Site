@@ -36,25 +36,27 @@ public final class URLConstants {
 
     //Thread -------------------------------------------------------------------------------------------------
 
-    //-ThreadController
     public static final String THREAD_CREATE_POST = "/thread/create";
     public static final String THREAD_DELETE_POST = "/thread/{id}/delete";
     public static final String THREAD_READ_GET = "/thread/{id}/read";
 
-    //-ThreadRestController
+    //ThreadRestController  ----------------------------------------------------------------------------------
     public static final String THREAD_CREATE_GET =  "/thread/create";
 
-    //-CommentController
-    public static final String COMMENT_DELETE_POST = "/comment/{id}/delete";
-    public static final String THREAD_CREATE_COMMENT_POST = "/thread/{id}/comment/create";
 
-    //-ReactController
+    //ReactionController -------------------------------------------------------------------------------------
+
     public static final String THREAD_REACTION_LIKE_POST = "/thread/{id}/reaction/like";
     public static final String THREAD_REACTION_DISLIKE_POST = "/thread/{id}/reaction/dislike";
     public static final String COMMENT_REACTION_LIKE_POST = "/comment/{id}/reaction/like";
     public static final String COMMENT_REACTION_DISLIKE_POST = "/comment/{id}/reaction/dislike";
 
-    //-ReportController
+    //Comment ------------------------------------------------------------------------------------------------
+
+    public static final String COMMENT_DELETE_POST = "/comment/{id}/delete";
+    public static final String THREAD_CREATE_COMMENT_POST = "/thread/{id}/comment/create";
+
+    //ReportController ----------------------------------------------------------------------------------------
     public static final String THREAD_REPORT_POST = "/thread/{id}/report";
     public static final String COMMENT_REPORT_POST = "/comment/{id}/report";
 
