@@ -41,11 +41,11 @@ public class CommentController extends BaseController {
 
     @PreAuthorize("hasAuthority('MODERATOR')")
     @PostMapping(URLConstants.COMMENT_DELETE_POST)
-    public String deleteComment(@PathVariable String id) {
+    public String deleteComment(@PathVariable String commentId) {
 
-        CommentServiceModel commentServiceModel = this.commentCrudServices.getById(id);
+        CommentServiceModel commentServiceModel = this.commentCrudServices.getById(commentId);
 
-        this.commentCrudServices.delete(id);
+        this.commentCrudServices.delete(commentId);
         String threadId = commentServiceModel.getThread().getId();
 
         String redirectUrl = URLConstants.THREAD_READ_GET.replace("{id}", threadId);
@@ -55,9 +55,9 @@ public class CommentController extends BaseController {
     @PreAuthorize("isAuthenticated()")
     @PostMapping(value = URLConstants.THREAD_CREATE_COMMENT_POST, produces = "application/json")
     @ResponseBody
-    public String createComment(@PathVariable String id, CommentCreateBindingModel commentCreateBindingModel, Principal principal) {
+    public String createComment(@PathVariable String threadId, CommentCreateBindingModel commentCreateBindingModel, Principal principal) {
 
-        ThreadServiceModel threadServiceModel = this.threadCrudServices.getThread(id);
+        ThreadServiceModel threadServiceModel = this.threadCrudServices.getThread(threadId);
         UserServiceModel userServiceModel = this.modelMapper.map((User) ((Authentication) principal).getPrincipal(), UserServiceModel.class);
 
         CommentServiceModel commentServiceModel = this.commentServices.addComment(commentCreateBindingModel, userServiceModel, threadServiceModel);

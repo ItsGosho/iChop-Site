@@ -40,30 +40,30 @@ public class ReactionController extends BaseController {
 
     @PreAuthorize("isAuthenticated()")
     @PostMapping(URLConstants.THREAD_REACTION_LIKE_POST)
-    public String threadReactionLike(@PathVariable String id, Principal principal) {
+    public String threadReactionLike(@PathVariable String threadId, Principal principal) {
 
-        return proceedThreadReaction(id,principal,ReactionType.LIKE);
+        return proceedThreadReaction(threadId,principal,ReactionType.LIKE);
     }
 
     @PreAuthorize("isAuthenticated()")
     @PostMapping(URLConstants.THREAD_REACTION_DISLIKE_POST)
-    public String threadReactionDislike(@PathVariable String id, Principal principal) {
+    public String threadReactionDislike(@PathVariable String threadId, Principal principal) {
 
-        return proceedThreadReaction(id,principal,ReactionType.DISLIKE);
+        return proceedThreadReaction(threadId,principal,ReactionType.DISLIKE);
     }
 
     @PreAuthorize("isAuthenticated()")
     @PostMapping(URLConstants.COMMENT_REACTION_LIKE_POST)
-    public String commentReactionLike(@PathVariable String id, Principal principal) {
+    public String commentReactionLike(@PathVariable String commentId, Principal principal) {
 
-        return proceedCommentReaction(id,principal,ReactionType.LIKE);
+        return proceedCommentReaction(commentId,principal,ReactionType.LIKE);
     }
 
     @PreAuthorize("isAuthenticated()")
     @PostMapping(URLConstants.COMMENT_REACTION_DISLIKE_POST)
-    public String commentReactionDislike(@PathVariable String id, Principal principal) {
+    public String commentReactionDislike(@PathVariable String commentId, Principal principal) {
 
-        return proceedCommentReaction(id,principal,ReactionType.DISLIKE);
+        return proceedCommentReaction(commentId,principal,ReactionType.DISLIKE);
     }
 
     private String proceedThreadReaction(String threadId,Principal principal,ReactionType reactionType){

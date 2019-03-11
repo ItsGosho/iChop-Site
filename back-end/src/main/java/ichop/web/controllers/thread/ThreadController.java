@@ -36,18 +36,18 @@ public class ThreadController extends BaseController {
 
     @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping(URLConstants.THREAD_DELETE_POST)
-    public String deleteThread(@PathVariable String id) {
-        this.threadCrudServices.delete(id);
+    public String deleteThread(@PathVariable String threadId) {
+        this.threadCrudServices.delete(threadId);
         return super.redirect("/");
     }
 
     @GetMapping(URLConstants.THREAD_READ_GET)
-    public ModelAndView readThread(@PathVariable String id,ModelAndView modelAndView) {
+    public ModelAndView readThread(@PathVariable String threadId,ModelAndView modelAndView) {
 
-       if(id != null && this.threadCrudServices.exists(id)){
+       if(threadId != null && this.threadCrudServices.exists(threadId)){
 
-           this.threadCrudServices.increaseViews(id);
-           ThreadReadViewModel threadReadViewModel = this.threadViewServices.getThread(id);
+           this.threadCrudServices.increaseViews(threadId);
+           ThreadReadViewModel threadReadViewModel = this.threadViewServices.getThread(threadId);
 
            modelAndView.addObject("thread",threadReadViewModel);
            return super.page("base-page","thread/thread-read",threadReadViewModel.getTitle(),modelAndView);

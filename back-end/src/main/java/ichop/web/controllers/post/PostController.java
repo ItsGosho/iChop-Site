@@ -35,7 +35,7 @@ public class PostController extends BaseController {
     }
 
     @PreAuthorize("isAuthenticated()")
-    @PostMapping(URLConstants.USER_CREATE_POST_POST)
+    @PostMapping(URLConstants.CREATE_POST_POST)
     public String createPost(@PathVariable String userUsername, Principal principal, @Valid PostCreateBindingModel postCreateBindingModel, BindingResult bindingResult) {
 
         String redirectUrl = URLConstants.USER_PROFILE_GET.replace("{username}",userUsername);
