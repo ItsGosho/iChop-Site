@@ -37,17 +37,17 @@ public final class URLConstants {
     //PostController -----------------------------------------------------------------------------------------
 
     public static final String CREATE_POST_POST = "/post/{userUsername}/create"; /*USER++*/
-    public static final String DELETE_POST_POST = "/post/{postId}/delete"; /*MODERATOR++ || CREATOR */
+    public static final String DELETE_POST_POST = "/post/{postId}/delete"; /*MODERATOR++ || CREATOR || ON_YOUR_PROFILE*/
 
     //Thread -------------------------------------------------------------------------------------------------
 
-    public static final String THREAD_CREATE_POST = "/thread/create"; /*ADMIN++*/
-    public static final String THREAD_DELETE_POST = "/thread/{threadId}/delete"; /*ADMIN++*/
+    public static final String THREAD_CREATE_GET =  "/thread/create"; /*MODERATOR++*/
+    public static final String THREAD_DELETE_POST = "/thread/{threadId}/delete"; /*MODERATOR++*/
     public static final String THREAD_READ_GET = "/thread/{threadId}/read"; /*EVERYONE*/
 
     //ThreadRestController  ----------------------------------------------------------------------------------
 
-    public static final String THREAD_CREATE_GET =  "/thread/create"; /*ADMIN++*/
+    public static final String THREAD_CREATE_POST = "/thread/create"; /*MODERATOR++*/
 
     //ReactionController -------------------------------------------------------------------------------------
 

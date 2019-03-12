@@ -34,7 +34,7 @@ public class ThreadController extends BaseController {
         return super.page("base-page","thread/thread-create","Create thread");
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('MODERATOR')")
     @PostMapping(URLConstants.THREAD_DELETE_POST)
     public String deleteThread(@PathVariable String threadId) {
         this.threadCrudServices.delete(threadId);
