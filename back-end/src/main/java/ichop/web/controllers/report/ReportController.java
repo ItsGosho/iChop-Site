@@ -51,7 +51,7 @@ public class ReportController extends BaseController {
 
         String redirectUrl = URLConstants.THREAD_READ_GET.replace("{threadId}",commentServiceModel.getThread().getId());
 
-        return redirectUrl;
+        return super.redirect(redirectUrl);
     }
 
     @PreAuthorize("isAuthenticated()")
@@ -64,7 +64,7 @@ public class ReportController extends BaseController {
 
         String redirectUrl = URLConstants.THREAD_READ_GET.replace("{threadId}",threadServiceModel.getId());
 
-        return redirectUrl;
+        return super.redirect(redirectUrl);
     }
 
     @PreAuthorize("isAuthenticated()")
@@ -78,6 +78,6 @@ public class ReportController extends BaseController {
 
         String redirectUrl = URLConstants.USER_PROFILE_GET.replace("{username}",postServiceModel.getCreator().getUsername());
 
-        return redirectUrl;
+        return super.redirect(redirectUrl);
     }
 }
