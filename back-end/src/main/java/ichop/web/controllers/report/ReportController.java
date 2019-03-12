@@ -43,35 +43,41 @@ public class ReportController extends BaseController {
 
     @PreAuthorize("isAuthenticated()")
     @PostMapping(URLConstants.COMMENT_REPORT_POST)
-    public ModelAndView reportComment(@PathVariable String commentId, Principal principal, @RequestParam String reason) {
+    public String reportComment(@PathVariable String commentId, Principal principal, @RequestParam String reason) {
         CommentServiceModel commentServiceModel = this.commentCrudServices.getById(commentId);
         UserServiceModel userServiceModel = this.modelMapper.map((User) ((Authentication) principal).getPrincipal(), UserServiceModel.class);
 
         this.reportServices.addReport(commentServiceModel, userServiceModel, reason);
 
-        return super.viewWithMessage("base-page", "notification/info", "This comment was successful reported!");
+        String redirectUrl = URLConstants.THREAD_READ_GET.replace("{threadId}",commentServiceModel.getThread().getId());
+
+        return redirectUrl;
     }
 
     @PreAuthorize("isAuthenticated()")
     @PostMapping(URLConstants.THREAD_REPORT_POST)
-    public ModelAndView reportThread(@PathVariable String threadId, Principal principal, @RequestParam String reason) {
+    public String reportThread(@PathVariable String threadId, Principal principal, @RequestParam String reason) {
         ThreadServiceModel threadServiceModel = this.threadCrudServices.getThread(threadId);
         UserServiceModel userServiceModel = this.modelMapper.map((User) ((Authentication) principal).getPrincipal(), UserServiceModel.class);
 
         this.reportServices.addReport(threadServiceModel, userServiceModel, reason);
 
-        return super.viewWithMessage("base-page", "notification/info", "This thread was successful reported!");
+        String redirectUrl = URLConstants.THREAD_READ_GET.replace("{threadId}",threadServiceModel.getId());
+
+        return redirectUrl;
     }
 
     @PreAuthorize("isAuthenticated()")
     @PostMapping(URLConstants.POST_REPORT_POST)
-    public ModelAndView reportPost(@PathVariable String postId, Principal principal, @RequestParam String reason) {
+    public String reportPost(@PathVariable String postId, Principal principal, @RequestParam String reason) {
 
         PostServiceModel postServiceModel = this.postCrudServices.getById(postId);
         UserServiceModel userServiceModel = this.modelMapper.map((User) ((Authentication) principal).getPrincipal(), UserServiceModel.class);
 
         this.reportServices.addReport(postServiceModel, userServiceModel, reason);
 
-        return super.viewWithMessage("base-page", "notification/info", "This post was successful reported!");
+        String redirectUrl = URLConstants.USER_PROFILE_GET.replace("{username}",postServiceModel.getCreator().getUsername());
+
+        return redirectUrl;
     }
 }

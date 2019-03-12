@@ -306,8 +306,46 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <span style="color: #7f7f7f;font-size: 10px" th:text="*{#temporals.format(createdOn, 'MMM dd,yyyy')}">Jan 00,0000</span>
-                                                <a href="#"><span style="font-size: 10px">❌Delete</span></a>
-                                                <a href="#"><span style="font-size: 10px">⚠Report</span></a>
+
+                                                <form method="post" th:action="@{/post/{postId}/delete(postId=*{id})}" style="all: initial">
+                                                    <button type="submit" style="all:initial;cursor: pointer;"><span style="font-size: 10px;color: #007bff">❌Delete</span></button>
+                                                </form>
+
+                                                <button type="button" id="button-reportPost-userProfile" style="all:initial;cursor: pointer;"><span style="font-size: 10px;color: #007bff">🎌Report</span></button>
+
+                                                <div class="modal" id="modal-reportPost-userProfile" role="dialog">
+                                                    <div class="modal-dialog">
+
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h4 class="modal-title">Report to the kings:</h4>
+                                                            </div>
+                                                            <form method="post" th:action="@{/post/{postId}/report(postId=*{id})}">
+                                                                <div class="modal-body">
+                                        <textarea class="post-modal_report-textarea"
+                                                  name="reason" placeholder="Reason..." style="width: 100%;overflow-y: scroll;height: 200px;resize: none;"></textarea>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="submit" class="btn btn-default">Report</button>
+                                                                    <button type="button" class="btn btn-default"
+                                                                            data-dismiss="modal">
+                                                                        Cancel
+                                                                    </button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                                <script>
+                                                    $(document).ready(function () {
+                                                        $("#button-reportPost-userProfile").click(function () {
+                                                            $("#modal-reportPost-userProfile").modal();
+                                                        });
+                                                    });
+                                                </script>
+
                                             </div>
                                         </div>
                                     </div>

@@ -42,7 +42,7 @@ public class UserController extends BaseController {
 
         modelAndView.addObject("user", user);
 
-        return super.page("base-page", "information/user-profile", String.format("%s - Profile", user.getUsername()), modelAndView);
+        return super.page("base-page", "user/user-profile", String.format("%s - Profile", user.getUsername()), modelAndView);
     }
 
     @GetMapping(URLConstants.USER_FOLLOW_POST)

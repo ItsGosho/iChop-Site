@@ -5,11 +5,9 @@ import ichop.domain.entities.users.User;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -28,5 +26,8 @@ public class Post extends BaseEntity {
 
     @Column(nullable = false)
     private LocalDateTime createdOn;
+
+    @OneToMany(mappedBy = "post",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<PostReport> reports;
 
 }
