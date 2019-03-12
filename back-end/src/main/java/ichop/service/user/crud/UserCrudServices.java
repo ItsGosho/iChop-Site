@@ -1,6 +1,9 @@
 package ichop.service.user.crud;
 
+import ichop.domain.entities.users.User;
 import ichop.domain.models.service.user.UserServiceModel;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -29,4 +32,6 @@ public interface UserCrudServices {
     int getUserTotalFollowers(UserServiceModel user);
 
     List<UserServiceModel> getFollowers(UserServiceModel user);
+
+    Page<UserServiceModel> findAll(Pageable pageable);
 }

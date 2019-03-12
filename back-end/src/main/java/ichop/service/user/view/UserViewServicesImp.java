@@ -4,6 +4,7 @@ import ichop.domain.entities.reaction.ReactionType;
 import ichop.domain.models.service.user.UserServiceModel;
 import ichop.domain.models.view.post.PostsProfileViewModel;
 import ichop.domain.models.view.user.UserProfileViewModel;
+import ichop.domain.models.view.user.UsersAllViewModel;
 import ichop.exceptions.user.UserNotFoundException;
 import ichop.service.role.UserRoleServices;
 import ichop.service.comment.crud.CommentCrudServices;
@@ -12,6 +13,8 @@ import ichop.service.post.crud.PostCrudServices;
 import ichop.service.user.crud.UserCrudServices;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -59,8 +62,8 @@ public class UserViewServicesImp implements UserViewServices {
         List<PostsProfileViewModel> postsProfileViewModels = this.postCrudServices
                 .getUserPosts(user)
                 .stream()
-                .map(x->this.modelMapper.map(x,PostsProfileViewModel.class))
-                .sorted((x1,x2)->x2.getCreatedOn().compareTo(x1.getCreatedOn()))
+                .map(x -> this.modelMapper.map(x, PostsProfileViewModel.class))
+                .sorted((x1, x2) -> x2.getCreatedOn().compareTo(x1.getCreatedOn()))
                 .collect(Collectors.toList());
 
         result.setPosts(postsProfileViewModels);
@@ -74,5 +77,10 @@ public class UserViewServicesImp implements UserViewServices {
         //TODO:
 
         return result;
+    }
+
+    @Override
+    public Page<UsersAllViewModel> listAllByPage(Pageable pageable) {
+        return this.userCrudServices.findAll(pageable).map(x -> this.modelMapper.map(x, UsersAllViewModel.class));
     }
 }

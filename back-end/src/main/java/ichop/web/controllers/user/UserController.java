@@ -10,6 +10,9 @@ import ichop.service.user.view.UserViewServices;
 import ichop.web.controllers.BaseController;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -48,27 +51,34 @@ public class UserController extends BaseController {
     @GetMapping(URLConstants.USER_FOLLOW_POST)
     public String followUser(@PathVariable String username, Principal principal) {
 
-        UserServiceModel user = this.modelMapper.map((User) ((Authentication) principal).getPrincipal(),UserServiceModel.class);
+        UserServiceModel user = this.modelMapper.map((User) ((Authentication) principal).getPrincipal(), UserServiceModel.class);
         UserServiceModel userToFollow = this.userCrudServices.getUserByUsername(username);
 
-        this.userServices.follow(user,userToFollow);
+        this.userServices.follow(user, userToFollow);
 
-        String redirectUrl = URLConstants.USER_PROFILE_GET.replace("{username}",userToFollow.getUsername());
+        String redirectUrl = URLConstants.USER_PROFILE_GET.replace("{username}", userToFollow.getUsername());
         return super.redirect(redirectUrl);
 
     }
 
     @GetMapping(URLConstants.USER_UNFOLLOW_POST)
     public String unfollowUser(@PathVariable String username, Principal principal) {
-        UserServiceModel user = this.modelMapper.map((User) ((Authentication) principal).getPrincipal(),UserServiceModel.class);
+        UserServiceModel user = this.modelMapper.map((User) ((Authentication) principal).getPrincipal(), UserServiceModel.class);
         UserServiceModel userToUnfollow = this.userCrudServices.getUserByUsername(username);
 
-        this.userServices.unfollow(user,userToUnfollow);
+        this.userServices.unfollow(user, userToUnfollow);
 
-        String redirectUrl = URLConstants.USER_PROFILE_GET.replace("{username}",userToUnfollow.getUsername());
+        String redirectUrl = URLConstants.USER_PROFILE_GET.replace("{username}", userToUnfollow.getUsername());
         return super.redirect(redirectUrl);
 
     }
 
+    @GetMapping(URLConstants.USER_ALL_GET)
+    public ModelAndView allUsers(ModelAndView modelAndView,@PageableDefault(size = 10, sort = "registrationDate", direction = Sort.Direction.DESC) Pageable pageable) {
+
+        modelAndView.addObject("users",this.userViewServices.listAllByPage(pageable));
+
+        return super.page("base-page", "user/users-all", "Users", modelAndView);
+    }
 
 }

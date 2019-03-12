@@ -79,10 +79,13 @@
                                             Options
                                         </button>
                                         <div class="dropdown-menu">
-                                            <th:block sec:authorize="hasAuthority('ADMIN')">
-                                                <a class="dropdown-item" th:href="@{/thread/{id}/delete(id=*{id})}">
-                                                    <small>❌</small>
-                                                    Delete</a>
+                                            <th:block sec:authorize="hasAuthority('MODERATOR')">
+                                                <form class="dropdown-item" th:action="@{/thread/{id}/delete(id=*{id})}" method="post">
+                                                    <button type="submit" class="btn btn-light btn-sm thread-delete_button">
+                                                        <small>❌</small>
+                                                        Delete
+                                                    </button>
+                                                </form>
                                             </th:block>
                                         </div>
                                     </th:block>

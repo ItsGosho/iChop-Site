@@ -1,0 +1,184 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-left: 40px;margin-right: 40px">
+    <a class="navbar-brand" href="#">👤Users</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarOptions"
+            aria-controls="navbarOptions" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarOptionsContent">
+        <ul class="navbar-nav mr-auto">
+            <!--<li class="nav-item active">-->
+            <!--<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>-->
+            <!--</li>-->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    Filters
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="nav-link">Sort by:<span class="sr-only"></span></a>
+                    <a class="dropdown-item" id="a-sortByUsername-usersAll" href="">Username</a>
+                    <a class="dropdown-item" id="a-sortByEmail-usersAll" href="">Email</a>
+                    <a class="dropdown-item" id="a-sortByRegistrationDate-usersAll" href="">Registration Date</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="nav-link">Show only:<span class="sr-only"></span></a>
+                    <a class="dropdown-item" href="">Administrators</a>
+                    <a class="dropdown-item" href="">Moderators</a>
+                    <a class="dropdown-item" href="">Users</a>
+                </div>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" id="input-searchByUsername-usersAll" type="search"
+                   placeholder="Search by username" aria-label="Search">
+        </form>
+    </div>
+</nav>
+<script>
+
+    let sortParam = "&sort=";
+    let usernameSortParam = "username,asc";
+    let emailSortParam = "email,asc";
+    let registrationDateSortParam = "registrationDate,asc";
+
+    $(`#a-sortByUsername-usersAll`).on(`click`,function (event) {
+        event.preventDefault();
+         let currentUrl = window.location.href;
+
+         if(currentUrl.includes(sortParam)){
+             currentUrl = currentUrl.substring(0,currentUrl.lastIndexOf(sortParam));
+         }
+
+        currentUrl += sortParam + usernameSortParam;
+
+        window.location.href = currentUrl;
+    });
+
+    $(`#a-sortByEmail-usersAll`).on(`click`,function (event) {
+        event.preventDefault();
+        let currentUrl = window.location.href;
+
+        if(currentUrl.includes(sortParam)){
+            currentUrl = currentUrl.substring(0,currentUrl.lastIndexOf(sortParam));
+        }
+
+        currentUrl += sortParam + emailSortParam;
+
+        window.location.href = currentUrl;
+    });
+
+    $(`#a-sortByRegistrationDate-usersAll`).on(`click`,function (event) {
+        event.preventDefault();
+        let currentUrl = window.location.href;
+
+        if(currentUrl.includes(sortParam)){
+            currentUrl = currentUrl.substring(0,currentUrl.lastIndexOf(sortParam));
+        }
+
+        currentUrl += sortParam + registrationDateSortParam;
+
+        window.location.href = currentUrl;
+    });
+
+
+    $(document).ready(function () {
+        let usernameSearchBox = $(`#input-searchByUsername-usersAll`);
+        let usersTr = $(`.user-tr`);
+
+        usernameSearchBox.on(`keyup keydown keypress`, search);
+
+        function search() {
+            let searchValue = usernameSearchBox.val().toLowerCase();
+
+            usersTr.toArray().forEach(x => {
+                $(x).hide();
+            });
+
+            usersTr.toArray().forEach(x => {
+
+                let username = $(x).find(`.user-tr-username`).text().trim().toLowerCase();
+
+                if (username.includes(searchValue)) {
+                    $(x).show();
+                }
+            });
+
+        }
+    });
+
+</script>
+
+<th:block th:object="${users}">
+
+<div class="table-responsive" align="center">
+    <table class="table" style="text-align: center;width: 85%">
+        <thead>
+        <tr>
+            <th scope="col">Username</th>
+            <th scope="col">Email</th>
+            <th scope="col">Registration Date</th>
+            <th scope="col">Last Online</th>
+            <th scope="col">Location</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <th:block th:each="user : ${users}" th:object="${user}">
+
+            <tr class="user-tr">
+                <th class="user-tr-username" th:text="*{username}" scope="row">Username</th>
+                <td th:text="*{email}">Email</td>
+                <td th:text="*{#temporals.format(registrationDate, 'dd MMM,yyyy HH:mm')}">Registration Date</td>
+                <td th:text="*{#temporals.format(lastOnline, 'dd MMM,yyyy HH:mm')}">Last Online Date</td>
+                <td th:text="*{location}">Country</td>
+                <td>
+                    <a th:href="@{/user/{username}/control(username=*{username})}" class="btn btn-warning btn-sm">Show More</a>
+                </td>
+            </tr>
+
+        </th:block>
+
+        </tbody>
+    </table>
+</div>
+
+<nav aria-label="Page navigation example" class="d-flex justify-content-center align-items-center">
+    <ul class="pagination">
+
+        <th:block th:if="${#request.getParameter('page')} != null">
+
+            <th:block th:if="${(#conversions.convert(#request.getParameter('page'), 'Integer')) - 1} >= 0">
+                <li class="page-item"><a class="page-link"
+                                         th:href="@{/user/all(page=${(#conversions.convert(#request.getParameter('page'), 'Integer')) - 1})}">Previous</a>
+                </li>
+            </th:block>
+
+        </th:block>
+
+        <th:block th:each="i: *{#numbers.sequence(1,totalPages)}">
+            <li class="page-item"><a class="page-link" th:text="${i}"
+                                     th:href="@{/user/all?page={pId}(pId=${i-1})}"></a></li>
+        </th:block>
+
+
+        <th:block th:if="${#request.getParameter('page')} != null">
+
+            <th:block
+                    th:if="*{(#conversions.convert(#request.getParameter('page'), 'Integer')) + 1 <= totalPages-1}">
+                <li class="page-item"><a class="page-link"
+                                         th:href="@{/user/all(page=${(#conversions.convert(#request.getParameter('page'), 'Integer')) + 1})}">Next</a>
+                </li>
+            </th:block>
+
+        </th:block>
+
+
+    </ul>
+</nav>
+
+</th:block>

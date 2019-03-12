@@ -116,7 +116,7 @@
                                                 Options
                                             </button>
                                             <div class="dropdown-menu">
-                                                <th:block sec:authorize="hasAuthority('ADMIN')">
+                                                <th:block sec:authorize="hasAuthority('MODERATOR')">
                                                     <form class="dropdown-item" th:action="@{/thread/{id}/delete(id=*{id})}" method="post">
                                                         <button type="submit" class="btn btn-light btn-sm thread-delete_button">
                                                             <small>❌</small>
