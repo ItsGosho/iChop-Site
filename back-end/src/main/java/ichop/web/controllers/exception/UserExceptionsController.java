@@ -48,4 +48,9 @@ public class UserExceptionsController extends ExceptionBaseController {
         return super.errorPage("You are not following this user.");
     }
 
+    @ExceptionHandler(UserCannotFollowException.class)
+    public ModelAndView userCannotFollow(){
+        return super.errorPage("You cannot follow this user.");
+    }
+
 }

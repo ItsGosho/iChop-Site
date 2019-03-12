@@ -55,12 +55,12 @@ public class PostController extends BaseController {
         return super.redirect(redirectUrl);
     }
 
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("hasAuthority('MODERATOR') or @postCrudServicesImp.getById(#postId).creator.username.equals(principal.username)")
     @PostMapping(URLConstants.DELETE_POST_POST)
     public String createPost(@PathVariable String postId) {
 
         PostServiceModel postServiceModel = this.postCrudServices.getById(postId);
-        String redirectUrl = URLConstants.USER_PROFILE_GET.replace("{username}",postServiceModel.getCreator().getUsername());
+        String redirectUrl = URLConstants.USER_PROFILE_GET.replace("{username}",postServiceModel.getUser().getUsername());
         this.postCrudServices.delete(postServiceModel);
 
         return super.redirect(redirectUrl);

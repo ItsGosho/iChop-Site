@@ -89,9 +89,13 @@ public class UserServicesImp implements UserServices {
         }
 
         UserServiceModel registeredUser = this.modelMapper.map(userRegisterBindingModel, UserServiceModel.class);
-        registeredUser.setPassword(this.passwordEncoder.encode(registeredUser.getPassword()));
+        registeredUser.setPassword(this.passwordEncoder.encode(userRegisterBindingModel.getPassword()));
         registeredUser.setRegistrationDate(LocalDateTime.now());
         registeredUser.setAuthorities(this.getInitialAuthorities());
+        registeredUser.setAccountNonExpired(true);
+        registeredUser.setAccountNonLocked(true);
+        registeredUser.setCredentialsNonExpired(true);
+        registeredUser.setEnabled(true);
 
         this.userCrudServices.save(registeredUser);
 
@@ -150,7 +154,7 @@ public class UserServicesImp implements UserServices {
         }
 
         if(user.getId().equals(userToFollow.getId())){
-            throw new IllegalArgumentException();
+            throw new UserCannotFollowException();
         }
 
         boolean isUserAlreadyFollowingHim = this.userCrudServices.isUserAlreadyFollowedUser(user, userToFollow);
