@@ -55,7 +55,7 @@ public class PostController extends BaseController {
         return super.redirect(redirectUrl);
     }
 
-    @PreAuthorize("hasAuthority('MODERATOR') or @postCrudServicesImp.getById(#postId).creator.username.equals(principal.username)")
+    @PreAuthorize("hasAuthority('MODERATOR') or @postCrudServicesImp.getById(#postId).creator.username.equals(principal.username) or @postCrudServicesImp.getById(#postId).user.username.equals(principal.username)")
     @PostMapping(URLConstants.DELETE_POST_POST)
     public String createPost(@PathVariable String postId) {
 
