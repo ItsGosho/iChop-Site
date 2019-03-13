@@ -22,9 +22,9 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <div class="dropdown-divider"></div>
                     <a class="nav-link">Show only:<span class="sr-only"></span></a>
-                    <a class="dropdown-item" href="">Administrators</a>
-                    <a class="dropdown-item" href="">Moderators</a>
-                    <a class="dropdown-item" href="">Users</a>
+                    <a id="a-showOnlyAdministrators-usersAll" class="dropdown-item" href="">Administrators</a>
+                    <a id="a-showOnlyModerators-usersAll" class="dropdown-item" href="">Moderators</a>
+                    <a id="a-showOnlyUsers-usersAll" class="dropdown-item" href="">Users</a>
                     <div class="dropdown-divider"></div>
                 </div>
             </li>
@@ -36,6 +36,7 @@
         </form>
     </div>
 </nav>
+
 <script>
     $(document).ready(function () {
 
@@ -49,10 +50,14 @@
         let sortParam = "sort";
         let pageParam = "page";
         let usernameParam = "isUsernameLike";
+        let hasRoleParam = "hasRole";
 
-        let usernameSortParam = "username,asc";
-        let emailSortParam = "email,asc";
-        let registrationDateSortParam = "registrationDate,asc";
+        let usernameSortValue = "username,asc";
+        let emailSortValue = "email,asc";
+        let registrationDateSortValue = "registrationDate,asc";
+        let adminRoleValue = 'ADMIN';
+        let moderatorRoleValue = 'MODERATOR';
+        let userRoleValue = 'USER';
 
         let url = new URL(window.location.href);
 
@@ -73,22 +78,37 @@
             window.location.href = url.href;
         });
 
+        $(`#a-showOnlyAdministrators-usersAll`).on(`click`, function (event) {
+            event.preventDefault();
+            window.location.href = prepareUrl(hasRoleParam,adminRoleValue);
+        });
+
+        $(`#a-showOnlyModerators-usersAll`).on(`click`, function (event) {
+            event.preventDefault();
+            window.location.href = prepareUrl(hasRoleParam,moderatorRoleValue);
+        });
+
+        $(`#a-showOnlyUsers-usersAll`).on(`click`, function (event) {
+            event.preventDefault();
+            window.location.href = prepareUrl(hasRoleParam,userRoleValue);
+        });
+
         $(`#a-sortByUsername-usersAll`).on(`click`, function (event) {
-            window.location.href = prepareUrl(usernameSortParam);
+            window.location.href = prepareUrl(sortParam,usernameSortValue);
         });
 
         $(`#a-sortByEmail-usersAll`).on(`click`, function (event) {
-            window.location.href = prepareUrl(emailSortParam);
+            window.location.href = prepareUrl(sortParam,emailSortValue);
         });
 
         $(`#a-sortByRegistrationDate-usersAll`).on(`click`, function (event) {
-            window.location.href = prepareUrl(registrationDateSortParam);
+            window.location.href = prepareUrl(sortParam,registrationDateSortValue);
         });
 
-        function prepareUrl(param) {
+        function prepareUrl(param,value) {
             let url = new URL(window.location.href);
 
-            url.searchParams.set(sortParam,param);
+            url.searchParams.set(param,value);
 
             return url.href;
         }
@@ -97,13 +117,13 @@
             let url = new URL(window.location.href);
 
             switch (url.searchParams.get(sortParam)) {
-                case usernameSortParam:
+                case usernameSortValue:
                     iconSortUsername.css('color','green');
                     break;
-                case emailSortParam:
+                case emailSortValue:
                     iconSortEmail.css('color','green');
                     break;
-                case registrationDateSortParam:
+                case registrationDateSortValue:
                     iconSortRegistrationDate.css('color','green');
                     break;
             }
@@ -155,7 +175,7 @@
 
                 <th:block th:if="${(#conversions.convert(#request.getParameter('page'), 'Integer')) - 1} >= 0">
                     <li class="page-item"><a class="page-link"
-                                             th:href="@{/user/all(page=${(#conversions.convert(#request.getParameter('page'), 'Integer')) - 1},sort=${#httpServletRequest.getParameter('sort')},isUsernameLike=${#httpServletRequest.getParameter('isUsernameLike')})}">Previous</a>
+                                             th:href="@{/user/all(page=${(#conversions.convert(#request.getParameter('page'), 'Integer')) - 1},sort=${#httpServletRequest.getParameter('sort')},isUsernameLike=${#httpServletRequest.getParameter('isUsernameLike')},hasRole=${#httpServletRequest.getParameter('hasRole')})}">Previous</a>
                     </li>
                 </th:block>
 
@@ -163,7 +183,7 @@
 
             <th:block th:each="i: *{#numbers.sequence(1,totalPages)}">
                 <li class="page-item"><a class="page-link" th:text="${i}"
-                                         th:href="@{/user/all(page=${i-1},sort=${#httpServletRequest.getParameter('sort')},isUsernameLike=${#httpServletRequest.getParameter('isUsernameLike')})}"></a></li>
+                                         th:href="@{/user/all(page=${i-1},sort=${#httpServletRequest.getParameter('sort')},isUsernameLike=${#httpServletRequest.getParameter('isUsernameLike')},hasRole=${#httpServletRequest.getParameter('hasRole')})}"></a></li>
             </th:block>
 
 
@@ -172,7 +192,7 @@
                 <th:block
                         th:if="*{(#conversions.convert(#request.getParameter('page'), 'Integer')) + 1 <= totalPages-1}">
                     <li class="page-item"><a class="page-link"
-                                             th:href="@{/user/all(page=${(#conversions.convert(#request.getParameter('page'), 'Integer')) + 1},sort=${#httpServletRequest.getParameter('sort')},isUsernameLike=${#httpServletRequest.getParameter('isUsernameLike')})}">Next</a>
+                                             th:href="@{/user/all(page=${(#conversions.convert(#request.getParameter('page'), 'Integer')) + 1},sort=${#httpServletRequest.getParameter('sort')},isUsernameLike=${#httpServletRequest.getParameter('isUsernameLike')},hasRole=${#httpServletRequest.getParameter('hasRole')})}">Next</a>
                     </li>
                 </th:block>
 

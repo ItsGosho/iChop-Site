@@ -80,12 +80,17 @@ public class UserController extends BaseController {
     @GetMapping(URLConstants.USER_ALL_GET)
     public ModelAndView allUsers(ModelAndView modelAndView,
                                  @PageableDefault(size = 10, sort = "registrationDate", direction = Sort.Direction.DESC) Pageable pageable,
-                                 @RequestParam(value = "isUsernameLike",required = false) String isUsernameLike) {
+                                 @RequestParam(value = "isUsernameLike",required = false) String isUsernameLike,
+                                 @RequestParam(value = "hasRole",required = false) String hasRole) {
 
         Page<UsersAllViewModel> users;
 
-        if(isUsernameLike != null){
-            users = this.userViewServices.findUsersByUsernameContains(isUsernameLike,pageable);
+        if(isUsernameLike != null) {
+            users = this.userViewServices.findUsersByUsernameContains(isUsernameLike, pageable);
+
+        }else if(hasRole != null){
+            
+            users = this.userViewServices.findUsersByRole(hasRole, pageable);
         }else{
             users = this.userViewServices.listAllByPage(pageable);
         }

@@ -57,4 +57,17 @@ public interface UserRepository extends JpaRepository<User, String> {
             "WHERE u.username LIKE CONCAT('%',:containingWord,'%')")
     Page<User> findUsersByUsernameContains(@Param(value = "containingWord") String containingWord, Pageable pageable);
 
+//    @Query(nativeQuery = true, value = "SELECT *\n" +
+//            "FROM users AS u\n" +
+//            "JOIN users_authorities AS ua ON ua.user_id = u.id\n" +
+//            "JOIN users_roles AS ur ON ur.id = ua.authorities_id\n" +
+//            "WHERE ur.authority = :role")
+//    Page<User> findUsersWhomHasRole(@Param(value = "role") String role, Pageable pageable);
+
+    @Query("SELECT u\n" +
+            "FROM User AS u\n" +
+            "JOIN u.authorities as au\n" +
+            "WHERE au.authority = :role")
+    Page<User> findUsersWhomHasRole(@Param(value = "role") String role, Pageable pageable);
+
 }

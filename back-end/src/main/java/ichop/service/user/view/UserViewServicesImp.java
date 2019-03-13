@@ -1,6 +1,8 @@
 package ichop.service.user.view;
 
 import ichop.domain.entities.reaction.ReactionType;
+import ichop.domain.entities.users.User;
+import ichop.domain.entities.users.UserRoles;
 import ichop.domain.models.service.user.UserServiceModel;
 import ichop.domain.models.view.post.PostsProfileViewModel;
 import ichop.domain.models.view.user.UserProfileViewModel;
@@ -14,6 +16,7 @@ import ichop.service.user.crud.UserCrudServices;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -85,7 +88,23 @@ public class UserViewServicesImp implements UserViewServices {
     }
 
     @Override
-    public Page<UsersAllViewModel> findUsersByUsernameContains(String containingWord,Pageable pageable) {
-        return this.userCrudServices.findUsersByUsernameContains(containingWord,pageable).map(x-> this.modelMapper.map(x,UsersAllViewModel.class));
+    public Page<UsersAllViewModel> findUsersByUsernameContains(String containingWord, Pageable pageable) {
+        return this.userCrudServices.findUsersByUsernameContains(containingWord, pageable).map(x -> this.modelMapper.map(x, UsersAllViewModel.class));
+    }
+
+    @Override
+    public Page<UsersAllViewModel> findUsersByRole(String role, Pageable pageable) {
+
+        Page<UserServiceModel> users = this.userCrudServices.findUsersWhomHasRole(role,pageable);
+
+        //To filter only these ,whom highest role is the provided
+        List<UsersAllViewModel> usersAllViewModels = users.stream()
+                .filter(x-> this.userRoleServices.getRole(x).getAuthority().toUpperCase().equals(UserRoles.valueOf(role).name().toUpperCase()))
+                .map(x-> this.modelMapper.map(x,UsersAllViewModel.class))
+                .collect(Collectors.toList());
+
+        Page<UsersAllViewModel> result = new PageImpl<>(usersAllViewModels);
+
+        return result;
     }
 }

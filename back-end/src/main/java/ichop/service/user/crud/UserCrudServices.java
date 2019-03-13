@@ -2,6 +2,7 @@ package ichop.service.user.crud;
 
 import ichop.domain.entities.users.User;
 import ichop.domain.models.service.user.UserServiceModel;
+import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.query.Param;
@@ -34,9 +35,11 @@ public interface UserCrudServices {
 
     List<UserServiceModel> getFollowers(UserServiceModel user);
 
+    List<UserServiceModel> findAll();
+
     Page<UserServiceModel> findAll(Pageable pageable);
 
     Page<UserServiceModel> findUsersByUsernameContains(String containingWord,Pageable pageable);
 
-
+    Page<UserServiceModel> findUsersWhomHasRole(String role, Pageable pageable);
 }

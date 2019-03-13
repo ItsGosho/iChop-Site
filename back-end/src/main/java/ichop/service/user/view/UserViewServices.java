@@ -16,4 +16,5 @@ public interface UserViewServices {
 
     Page<UsersAllViewModel> findUsersByUsernameContains(String containingWord,Pageable pageable);
 
+    Page<UsersAllViewModel> findUsersByRole(String role, Pageable pageable);
 }
