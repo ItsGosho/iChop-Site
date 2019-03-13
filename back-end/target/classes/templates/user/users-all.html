@@ -45,44 +45,36 @@
     let emailSortParam = "email,asc";
     let registrationDateSortParam = "registrationDate,asc";
 
-    $(`#a-sortByUsername-usersAll`).on(`click`,function (event) {
+    $(`#a-sortByUsername-usersAll`).on(`click`, function (event) {
         event.preventDefault();
-         let currentUrl = window.location.href;
-
-         if(currentUrl.includes(sortParam)){
-             currentUrl = currentUrl.substring(0,currentUrl.lastIndexOf(sortParam));
-         }
-
-        currentUrl += sortParam + usernameSortParam;
-
-        window.location.href = currentUrl;
+        window.location.href = prepareUrl(usernameSortParam);
     });
 
-    $(`#a-sortByEmail-usersAll`).on(`click`,function (event) {
+    $(`#a-sortByEmail-usersAll`).on(`click`, function (event) {
         event.preventDefault();
+        window.location.href = prepareUrl(emailSortParam);
+    });
+
+    $(`#a-sortByRegistrationDate-usersAll`).on(`click`, function (event) {
+        event.preventDefault();
+        window.location.href = prepareUrl(registrationDateSortParam);
+    });
+
+    function prepareUrl(param) {
         let currentUrl = window.location.href;
 
-        if(currentUrl.includes(sortParam)){
-            currentUrl = currentUrl.substring(0,currentUrl.lastIndexOf(sortParam));
+        if(!currentUrl.includes("?page=")){
+            currentUrl+= '?page=0';
         }
 
-        currentUrl += sortParam + emailSortParam;
-
-        window.location.href = currentUrl;
-    });
-
-    $(`#a-sortByRegistrationDate-usersAll`).on(`click`,function (event) {
-        event.preventDefault();
-        let currentUrl = window.location.href;
-
-        if(currentUrl.includes(sortParam)){
-            currentUrl = currentUrl.substring(0,currentUrl.lastIndexOf(sortParam));
+        if (currentUrl.includes(sortParam)) {
+            currentUrl = currentUrl.substring(0, currentUrl.lastIndexOf(sortParam));
         }
 
-        currentUrl += sortParam + registrationDateSortParam;
+        currentUrl += sortParam + param;
 
-        window.location.href = currentUrl;
-    });
+        return currentUrl;
+    }
 
 
     $(document).ready(function () {
@@ -114,71 +106,72 @@
 
 <th:block th:object="${users}">
 
-<div class="table-responsive" align="center">
-    <table class="table" style="text-align: center;width: 85%">
-        <thead>
-        <tr>
-            <th scope="col">Username</th>
-            <th scope="col">Email</th>
-            <th scope="col">Registration Date</th>
-            <th scope="col">Last Online</th>
-            <th scope="col">Location</th>
-            <th scope="col"></th>
-        </tr>
-        </thead>
-        <tbody>
-
-        <th:block th:each="user : ${users}" th:object="${user}">
-
-            <tr class="user-tr">
-                <th class="user-tr-username" th:text="*{username}" scope="row">Username</th>
-                <td th:text="*{email}">Email</td>
-                <td th:text="*{#temporals.format(registrationDate, 'dd MMM,yyyy HH:mm')}">Registration Date</td>
-                <td th:text="*{#temporals.format(lastOnline, 'dd MMM,yyyy HH:mm')}">Last Online Date</td>
-                <td th:text="*{location}">Country</td>
-                <td>
-                    <a th:href="@{/user/{username}/control(username=*{username})}" class="btn btn-warning btn-sm">Show More</a>
-                </td>
+    <div class="table-responsive" align="center">
+        <table class="table" style="text-align: center;width: 85%">
+            <thead>
+            <tr>
+                <th scope="col">Username</th>
+                <th scope="col">Email</th>
+                <th scope="col">Registration Date</th>
+                <th scope="col">Last Online</th>
+                <th scope="col">Location</th>
+                <th scope="col"></th>
             </tr>
+            </thead>
+            <tbody>
 
-        </th:block>
+            <th:block th:each="user : ${users}" th:object="${user}">
 
-        </tbody>
-    </table>
-</div>
+                <tr class="user-tr">
+                    <th class="user-tr-username" th:text="*{username}" scope="row">Username</th>
+                    <td th:text="*{email}">Email</td>
+                    <td th:text="*{#temporals.format(registrationDate, 'dd MMM,yyyy HH:mm')}">Registration Date</td>
+                    <td th:text="*{#temporals.format(lastOnline, 'dd MMM,yyyy HH:mm')}">Last Online Date</td>
+                    <td th:text="*{location}">Country</td>
+                    <td>
+                        <a th:href="@{/user/{username}/control(username=*{username})}" class="btn btn-warning btn-sm">Show
+                            More</a>
+                    </td>
+                </tr>
 
-<nav aria-label="Page navigation example" class="d-flex justify-content-center align-items-center">
-    <ul class="pagination">
-
-        <th:block th:if="${#request.getParameter('page')} != null">
-
-            <th:block th:if="${(#conversions.convert(#request.getParameter('page'), 'Integer')) - 1} >= 0">
-                <li class="page-item"><a class="page-link"
-                                         th:href="@{/user/all(page=${(#conversions.convert(#request.getParameter('page'), 'Integer')) - 1})}">Previous</a>
-                </li>
             </th:block>
 
-        </th:block>
+            </tbody>
+        </table>
+    </div>
 
-        <th:block th:each="i: *{#numbers.sequence(1,totalPages)}">
-            <li class="page-item"><a class="page-link" th:text="${i}"
-                                     th:href="@{/user/all?page={pId}(pId=${i-1})}"></a></li>
-        </th:block>
+    <nav aria-label="Page navigation example" class="d-flex justify-content-center align-items-center">
+        <ul class="pagination">
 
+            <th:block th:if="${#request.getParameter('page')} != null">
 
-        <th:block th:if="${#request.getParameter('page')} != null">
+                <th:block th:if="${(#conversions.convert(#request.getParameter('page'), 'Integer')) - 1} >= 0">
+                    <li class="page-item"><a class="page-link"
+                                             th:href="@{/user/all(page=${(#conversions.convert(#request.getParameter('page'), 'Integer')) - 1},sort=${#httpServletRequest.getParameter('sort')})}">Previous</a>
+                    </li>
+                </th:block>
 
-            <th:block
-                    th:if="*{(#conversions.convert(#request.getParameter('page'), 'Integer')) + 1 <= totalPages-1}">
-                <li class="page-item"><a class="page-link"
-                                         th:href="@{/user/all(page=${(#conversions.convert(#request.getParameter('page'), 'Integer')) + 1})}">Next</a>
-                </li>
             </th:block>
 
-        </th:block>
+            <th:block th:each="i: *{#numbers.sequence(1,totalPages)}">
+                <li class="page-item"><a class="page-link" th:text="${i}"
+                                         th:href="@{/user/all(page=${i-1},sort=${#httpServletRequest.getParameter('sort')})}"></a></li>
+            </th:block>
 
 
-    </ul>
-</nav>
+            <th:block th:if="${#request.getParameter('page')} != null">
+
+                <th:block
+                        th:if="*{(#conversions.convert(#request.getParameter('page'), 'Integer')) + 1 <= totalPages-1}">
+                    <li class="page-item"><a class="page-link"
+                                             th:href="@{/user/all(page=${(#conversions.convert(#request.getParameter('page'), 'Integer')) + 1},sort=${#httpServletRequest.getParameter('sort')})}">Next</a>
+                    </li>
+                </th:block>
+
+            </th:block>
+
+
+        </ul>
+    </nav>
 
 </th:block>
