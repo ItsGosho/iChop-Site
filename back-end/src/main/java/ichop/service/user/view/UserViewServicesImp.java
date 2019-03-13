@@ -83,4 +83,9 @@ public class UserViewServicesImp implements UserViewServices {
     public Page<UsersAllViewModel> listAllByPage(Pageable pageable) {
         return this.userCrudServices.findAll(pageable).map(x -> this.modelMapper.map(x, UsersAllViewModel.class));
     }
+
+    @Override
+    public Page<UsersAllViewModel> findUsersByUsernameContains(String containingWord,Pageable pageable) {
+        return this.userCrudServices.findUsersByUsernameContains(containingWord,pageable).map(x-> this.modelMapper.map(x,UsersAllViewModel.class));
+    }
 }

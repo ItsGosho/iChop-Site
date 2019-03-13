@@ -4,12 +4,14 @@ import ichop.constants.URLConstants;
 import ichop.domain.entities.users.User;
 import ichop.domain.models.service.user.UserServiceModel;
 import ichop.domain.models.view.user.UserProfileViewModel;
+import ichop.domain.models.view.user.UsersAllViewModel;
 import ichop.service.user.UserServices;
 import ichop.service.user.crud.UserCrudServices;
 import ichop.service.user.view.UserViewServices;
 import ichop.web.controllers.BaseController;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -17,9 +19,11 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.security.Principal;
+import java.util.List;
 
 @Controller
 public class UserController extends BaseController {
@@ -74,9 +78,18 @@ public class UserController extends BaseController {
     }
 
     @GetMapping(URLConstants.USER_ALL_GET)
-    public ModelAndView allUsers(ModelAndView modelAndView,@PageableDefault(size = 10, sort = "registrationDate", direction = Sort.Direction.DESC) Pageable pageable) {
+    public ModelAndView allUsers(ModelAndView modelAndView,
+                                 @PageableDefault(size = 10, sort = "registrationDate", direction = Sort.Direction.DESC) Pageable pageable,
+                                 @RequestParam(value = "isUsernameLike",required = false) String isUsernameLike) {
 
-        modelAndView.addObject("users",this.userViewServices.listAllByPage(pageable));
+        Page<UsersAllViewModel> users;
+
+        if(isUsernameLike != null){
+            users = this.userViewServices.findUsersByUsernameContains(isUsernameLike,pageable);
+        }else{
+            users = this.userViewServices.listAllByPage(pageable);
+        }
+        modelAndView.addObject("users",users);
 
         return super.page("base-page", "user/users-all", "Users", modelAndView);
     }

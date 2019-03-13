@@ -2,6 +2,7 @@ package ichop.web.controllers.exception;
 
 import ichop.web.controllers.exception.ExceptionBaseController;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
@@ -18,6 +19,11 @@ public class GlobalExceptionController extends ExceptionBaseController {
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
     public ModelAndView noMethodSupported(){
         return super.errorPage("This page requires another method to be accessed!");
+    }
+
+    @ExceptionHandler(MissingServletRequestParameterException.class)
+    public ModelAndView noRequiredParameter(){
+        return super.errorPage("This page requires additional parameter to be accessed!");
     }
 
 }

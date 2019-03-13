@@ -3,25 +3,30 @@ package ichop.web.controllers.user;
 import com.google.gson.Gson;
 import ichop.constants.URLConstants;
 import ichop.domain.models.binding.user.UserForgottenPasswordBindingModel;
+import ichop.domain.models.view.user.UsersAllViewModel;
 import ichop.service.user.UserServices;
 import ichop.service.user.crud.UserCrudServices;
+import ichop.service.user.view.UserViewServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 public class UserRestController {
 
     private final UserServices userServices;
     private final UserCrudServices userCrudServices;
+    private final UserViewServices userViewServices;
 
     @Autowired
-    public UserRestController(UserServices userServices, UserCrudServices userCrudServices) {
+    public UserRestController(UserServices userServices, UserCrudServices userCrudServices, UserViewServices userViewServices) {
         this.userServices = userServices;
         this.userCrudServices = userCrudServices;
+        this.userViewServices = userViewServices;
     }
 
 

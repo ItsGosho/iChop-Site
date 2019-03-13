@@ -1,6 +1,8 @@
 package ichop.repository.user;
 
 import ichop.domain.entities.users.User;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -49,5 +51,10 @@ public interface UserRepository extends JpaRepository<User, String> {
             "FROM users_followers AS uf\n" +
             "WHERE uf.follower_id = :userId")
     int getUserTotalFollowers(@Param(value = "userId") String userId);
+
+    @Query("SELECT u\n" +
+            "FROM User AS u\n" +
+            "WHERE u.username LIKE CONCAT('%',:containingWord,'%')")
+    Page<User> findUsersByUsernameContains(@Param(value = "containingWord") String containingWord, Pageable pageable);
 
 }

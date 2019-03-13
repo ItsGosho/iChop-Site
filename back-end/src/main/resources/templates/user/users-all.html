@@ -3,7 +3,7 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-left: 40px;margin-right: 40px">
-    <a class="navbar-brand" href="#">👤Users</a>
+    <a class="navbar-brand" href="/user/all?page=0">👤Users</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarOptions"
             aria-controls="navbarOptions" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -33,17 +33,37 @@
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" id="input-searchByUsername-usersAll" type="search"
-                   placeholder="Search by username" aria-label="Search">
+                <input class="form-control mr-sm-2" id="input-searchByUsername-usersAll" type="search"
+                       placeholder="Search by username" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="button" id="button-searchByUsernameSend-usersAll">Search</button>
         </form>
     </div>
 </nav>
 <script>
 
-    let sortParam = "&sort=";
+    let inputSearchByUsername = $(`#input-searchByUsername-usersAll`);
+    let buttonSearchByUsername = $(`#button-searchByUsernameSend-usersAll`);
+
+    let sortParam = "sort";
+    let pageParam = "page";
+    let usernameParam = "isUsernameLike";
+
     let usernameSortParam = "username,asc";
     let emailSortParam = "email,asc";
     let registrationDateSortParam = "registrationDate,asc";
+
+    let url = new URL(window.location.href);
+
+    if(url.searchParams.get(pageParam) === null){
+        url.searchParams.set(pageParam,0);
+        window.location.href = url.href;
+    }
+
+    buttonSearchByUsername.on(`click`, function (event) {
+        let url = new URL(window.location.href);
+        url.searchParams.set(usernameParam,inputSearchByUsername.val());
+        window.location.href = url.href;
+    });
 
     $(`#a-sortByUsername-usersAll`).on(`click`, function (event) {
         event.preventDefault();
@@ -61,46 +81,12 @@
     });
 
     function prepareUrl(param) {
-        let currentUrl = window.location.href;
+        let url = new URL(window.location.href);
 
-        if(!currentUrl.includes("?page=")){
-            currentUrl+= '?page=0';
-        }
+        url.searchParams.set(sortParam,param);
 
-        if (currentUrl.includes(sortParam)) {
-            currentUrl = currentUrl.substring(0, currentUrl.lastIndexOf(sortParam));
-        }
-
-        currentUrl += sortParam + param;
-
-        return currentUrl;
+        return url.href;
     }
-
-
-    $(document).ready(function () {
-        let usernameSearchBox = $(`#input-searchByUsername-usersAll`);
-        let usersTr = $(`.user-tr`);
-
-        usernameSearchBox.on(`keyup keydown keypress`, search);
-
-        function search() {
-            let searchValue = usernameSearchBox.val().toLowerCase();
-
-            usersTr.toArray().forEach(x => {
-                $(x).hide();
-            });
-
-            usersTr.toArray().forEach(x => {
-
-                let username = $(x).find(`.user-tr-username`).text().trim().toLowerCase();
-
-                if (username.includes(searchValue)) {
-                    $(x).show();
-                }
-            });
-
-        }
-    });
 
 </script>
 
@@ -147,7 +133,7 @@
 
                 <th:block th:if="${(#conversions.convert(#request.getParameter('page'), 'Integer')) - 1} >= 0">
                     <li class="page-item"><a class="page-link"
-                                             th:href="@{/user/all(page=${(#conversions.convert(#request.getParameter('page'), 'Integer')) - 1},sort=${#httpServletRequest.getParameter('sort')})}">Previous</a>
+                                             th:href="@{/user/all(page=${(#conversions.convert(#request.getParameter('page'), 'Integer')) - 1},sort=${#httpServletRequest.getParameter('sort')},isUsernameLike=${#httpServletRequest.getParameter('isUsernameLike')})}">Previous</a>
                     </li>
                 </th:block>
 
@@ -155,7 +141,7 @@
 
             <th:block th:each="i: *{#numbers.sequence(1,totalPages)}">
                 <li class="page-item"><a class="page-link" th:text="${i}"
-                                         th:href="@{/user/all(page=${i-1},sort=${#httpServletRequest.getParameter('sort')})}"></a></li>
+                                         th:href="@{/user/all(page=${i-1},sort=${#httpServletRequest.getParameter('sort')},isUsernameLike=${#httpServletRequest.getParameter('isUsernameLike')})}"></a></li>
             </th:block>
 
 
@@ -164,7 +150,7 @@
                 <th:block
                         th:if="*{(#conversions.convert(#request.getParameter('page'), 'Integer')) + 1 <= totalPages-1}">
                     <li class="page-item"><a class="page-link"
-                                             th:href="@{/user/all(page=${(#conversions.convert(#request.getParameter('page'), 'Integer')) + 1},sort=${#httpServletRequest.getParameter('sort')})}">Next</a>
+                                             th:href="@{/user/all(page=${(#conversions.convert(#request.getParameter('page'), 'Integer')) + 1},sort=${#httpServletRequest.getParameter('sort')},isUsernameLike=${#httpServletRequest.getParameter('isUsernameLike')})}">Next</a>
                     </li>
                 </th:block>
 

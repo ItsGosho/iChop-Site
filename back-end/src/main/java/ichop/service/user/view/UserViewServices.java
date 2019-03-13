@@ -6,10 +6,14 @@ import ichop.domain.models.view.user.UsersAllViewModel;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
+
 public interface UserViewServices {
 
     UserProfileViewModel getByUsername(String username);
 
     Page<UsersAllViewModel> listAllByPage(Pageable pageable);
+
+    Page<UsersAllViewModel> findUsersByUsernameContains(String containingWord,Pageable pageable);
 
 }

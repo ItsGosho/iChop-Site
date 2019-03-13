@@ -144,6 +144,14 @@ public class UserCrudServicesImp implements UserCrudServices {
 
     @Override
     public Page<UserServiceModel> findAll(Pageable pageable) {
-        return this.userRepository.findAll(pageable).map(x-> this.modelMapper.map(x,UserServiceModel.class));
+        return this.userRepository
+                .findAll(pageable)
+                .map(x-> this.modelMapper.map(x,UserServiceModel.class));
+    }
+
+    @Override
+    public Page<UserServiceModel> findUsersByUsernameContains(String containingWord,Pageable pageable) {
+       return this.userRepository
+               .findUsersByUsernameContains(containingWord,pageable).map(x-> this.modelMapper.map(x,UserServiceModel.class));
     }
 }
