@@ -3,7 +3,7 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-left: 40px;margin-right: 40px">
-    <a class="navbar-brand" href="/user/all?page=0">👤Users</a>
+    <a class="navbar-brand" href="/user/all?page=0" title="Clear Filter">👤Users</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarOptions"
             aria-controls="navbarOptions" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -143,7 +143,7 @@
                 <th id="a-sortByRegistrationDate-usersAll" style="cursor: pointer;" scope="col">Registration Date <i class="fa fa-fw fa-sort" id="icon-sortByRegistrationDate-usersAll"></i></th>
                 <th>Last Online</th>
                 <th>Location</th>
-                <th></th>
+                <th>⚙</th>
             </tr>
             </thead>
             <tbody>
@@ -157,8 +157,7 @@
                     <td th:text="*{#temporals.format(lastOnline, 'dd MMM,yyyy HH:mm')}">Last Online Date</td>
                     <td th:text="*{location}">Country</td>
                     <td>
-                        <a th:href="@{/user/{username}/control(username=*{username})}" class="btn btn-warning btn-sm">Show
-                            More</a>
+                        <a th:href="@{/user/{username}/control(username=*{username})}" class="btn btn-warning btn-sm">Control</a>
                     </td>
                 </tr>
 

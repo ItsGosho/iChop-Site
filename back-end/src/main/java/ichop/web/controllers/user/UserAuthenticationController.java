@@ -60,7 +60,7 @@ public class UserAuthenticationController extends BaseController {
             throw new TokenNotValidException();
         }
 
-        return super.page("base-page","auth/reset_password-form","Reset Password");
+        return super.page("auth/reset_password-form","Reset Password");
     }
 
     @PostMapping(URLConstants.USER_RESET_PASSWORD_POST)

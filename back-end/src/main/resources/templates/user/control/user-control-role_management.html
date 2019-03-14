@@ -1,0 +1,38 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<div>
+    <div class="row">
+        <div class="col-md-auto">
+            <span style="font-family: Consolas">Current Role: <b th:text="*{role}"></b></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-auto">
+            <th:block th:if="*{previousRole != null}">
+                <button class="btn btn-warning btn-sm"><span>👇🏻</span><span th:text="*{previousRole}"></span></button>
+            </th:block>
+            <th:block th:if="*{nextRole != null}">
+                <button class="btn btn-warning btn-sm"><span>👆🏻</span><span th:text="*{nextRole}"></span></button>
+            </th:block>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-auto">
+            <small><b>Logs:</b></small>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-auto">
+            <ul>
+                <li>
+                    <small><b>[10 March,2019 20:36] </b>User <b>123</b> changed the role to <b>MODERATOR</b>.</small>
+                </li>
+                <li>
+                    <small><b>[14 March,2019 12:56] </b>User <b>1234</b> changed the role to <b>ADMIN</b>.</small>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+</html>

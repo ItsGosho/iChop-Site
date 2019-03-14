@@ -1,4 +1,4 @@
-package ichop.domain.models.view.post;
+package ichop.domain.models.view.user_profile;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-public class PostsProfileViewModel {
+public class PostsUserProfileViewModel {
 
     private String id;
     private String content;

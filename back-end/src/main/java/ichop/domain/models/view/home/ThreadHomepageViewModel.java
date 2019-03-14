@@ -1,4 +1,4 @@
-package ichop.domain.models.view.thread;
+package ichop.domain.models.view.home;
 
 import ichop.domain.entities.users.User;
 import lombok.Getter;

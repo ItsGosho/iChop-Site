@@ -3,8 +3,10 @@ package ichop.web.controllers.user;
 import ichop.constants.URLConstants;
 import ichop.domain.entities.users.User;
 import ichop.domain.models.service.user.UserServiceModel;
-import ichop.domain.models.view.user.UserProfileViewModel;
-import ichop.domain.models.view.user.UsersAllViewModel;
+import ichop.domain.models.view.user_control.UserControlHomeViewModel;
+import ichop.domain.models.view.user_control.UserControlRoleManagementViewModel;
+import ichop.domain.models.view.user_profile.UserProfileViewModel;
+import ichop.domain.models.view.user_all.UsersAllViewModel;
 import ichop.service.user.UserServices;
 import ichop.service.user.crud.UserCrudServices;
 import ichop.service.user.view.UserViewServices;
@@ -23,7 +25,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.security.Principal;
-import java.util.List;
 
 @Controller
 public class UserController extends BaseController {
@@ -49,7 +50,7 @@ public class UserController extends BaseController {
 
         modelAndView.addObject("user", user);
 
-        return super.page("base-page", "user/user-profile", String.format("%s - Profile", user.getUsername()), modelAndView);
+        return super.page("user/user-profile", String.format("%s - Profile", user.getUsername()), modelAndView);
     }
 
     @GetMapping(URLConstants.USER_FOLLOW_POST)
@@ -89,14 +90,35 @@ public class UserController extends BaseController {
             users = this.userViewServices.findUsersByUsernameContains(isUsernameLike, pageable);
 
         }else if(hasRole != null){
-            
             users = this.userViewServices.findUsersByRole(hasRole, pageable);
         }else{
             users = this.userViewServices.listAllByPage(pageable);
         }
         modelAndView.addObject("users",users);
 
-        return super.page("base-page", "user/users-all", "Users", modelAndView);
+        return super.page("user/users-all", "Users", modelAndView);
+    }
+
+    @GetMapping(URLConstants.USER_CONTROL_BASE_GET)
+    public ModelAndView userControlBase(ModelAndView modelAndView,@PathVariable(value = "username") String username) {
+
+        UserControlHomeViewModel user = this.userViewServices.getUserControlHomeViewModel(username);
+
+        modelAndView.addObject("controlPage","user/control/user-control-core_information");
+        modelAndView.addObject("user",user);
+
+        return super.page("user/control/user-control-base","Control",modelAndView);
+    }
+
+    @GetMapping(URLConstants.USER_CONTROL_ROLE_MANAGEMENT_GET)
+    public ModelAndView userControlHome(ModelAndView modelAndView,@PathVariable(value = "username") String username) {
+
+        UserControlRoleManagementViewModel user = this.userViewServices.getUserControlRoleManagementViewModel(username);
+
+        modelAndView.addObject("controlPage","user/control/user-control-role_management");
+        modelAndView.addObject("user",user);
+
+        return super.page("user/control/user-control-base","Control - Role Management",modelAndView);
     }
 
 }

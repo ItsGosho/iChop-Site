@@ -1,7 +1,7 @@
 package ichop.web.controllers;
 
 import ichop.constants.URLConstants;
-import ichop.domain.models.view.thread.ThreadHomepageViewModel;
+import ichop.domain.models.view.home.ThreadHomepageViewModel;
 import ichop.service.thread.view.ThreadViewServices;
 import ichop.service.user.UserServices;
 import ichop.service.user.crud.UserCrudServices;
@@ -41,7 +41,7 @@ public class HomeController extends BaseController {
         modelAndView.addObject("threads", pages);
         modelAndView.addObject("totalPages", pages.getTotalPages());
 
-        return super.page("base-page", "home-page", "iChop", modelAndView);
+        return super.page("home-page", "iChop", modelAndView);
     }
 
 

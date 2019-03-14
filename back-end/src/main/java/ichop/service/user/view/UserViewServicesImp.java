@@ -1,12 +1,14 @@
 package ichop.service.user.view;
 
 import ichop.domain.entities.reaction.ReactionType;
-import ichop.domain.entities.users.User;
 import ichop.domain.entities.users.UserRoles;
+import ichop.domain.models.service.role.UserRoleServiceModel;
 import ichop.domain.models.service.user.UserServiceModel;
-import ichop.domain.models.view.post.PostsProfileViewModel;
-import ichop.domain.models.view.user.UserProfileViewModel;
-import ichop.domain.models.view.user.UsersAllViewModel;
+import ichop.domain.models.view.user_control.UserControlHomeViewModel;
+import ichop.domain.models.view.user_control.UserControlRoleManagementViewModel;
+import ichop.domain.models.view.user_profile.PostsUserProfileViewModel;
+import ichop.domain.models.view.user_profile.UserProfileViewModel;
+import ichop.domain.models.view.user_all.UsersAllViewModel;
 import ichop.exceptions.user.UserNotFoundException;
 import ichop.service.role.UserRoleServices;
 import ichop.service.comment.crud.CommentCrudServices;
@@ -62,14 +64,14 @@ public class UserViewServicesImp implements UserViewServices {
         result.setTotalLikes(totalLikes);
         result.setTotalDislikes(totalDislikes);
 
-        List<PostsProfileViewModel> postsProfileViewModels = this.postCrudServices
+        List<PostsUserProfileViewModel> postsUserProfileViewModels = this.postCrudServices
                 .getUserPosts(user)
                 .stream()
-                .map(x -> this.modelMapper.map(x, PostsProfileViewModel.class))
+                .map(x -> this.modelMapper.map(x, PostsUserProfileViewModel.class))
                 .sorted((x1, x2) -> x2.getCreatedOn().compareTo(x1.getCreatedOn()))
                 .collect(Collectors.toList());
 
-        result.setPosts(postsProfileViewModels);
+        result.setPosts(postsUserProfileViewModels);
 
         result.setTotalFollowers(this.userCrudServices.getUserTotalFollowers(user));
         result.setTotalFollowing(this.userCrudServices.getUserTotalFollowings(user));
@@ -95,16 +97,50 @@ public class UserViewServicesImp implements UserViewServices {
     @Override
     public Page<UsersAllViewModel> findUsersByRole(String role, Pageable pageable) {
 
-        Page<UserServiceModel> users = this.userCrudServices.findUsersWhomHasRole(role,pageable);
+        Page<UserServiceModel> users = this.userCrudServices.findUsersWhomHasRole(role, pageable);
 
         //To filter only these ,whom highest role is the provided
         List<UsersAllViewModel> usersAllViewModels = users.stream()
-                .filter(x-> this.userRoleServices.getRole(x).getAuthority().toUpperCase().equals(UserRoles.valueOf(role).name().toUpperCase()))
-                .map(x-> this.modelMapper.map(x,UsersAllViewModel.class))
+                .filter(x -> this.userRoleServices.getRole(x).getAuthority().toUpperCase().equals(UserRoles.valueOf(role).name().toUpperCase()))
+                .map(x -> this.modelMapper.map(x, UsersAllViewModel.class))
                 .collect(Collectors.toList());
 
         Page<UsersAllViewModel> result = new PageImpl<>(usersAllViewModels);
 
         return result;
+    }
+
+    @Override
+    public UserControlHomeViewModel getUserControlHomeViewModel(String userUsername) {
+
+        UserServiceModel user = this.userCrudServices.getUserByUsername(userUsername);
+        UserRoleServiceModel currentUserRole = this.userRoleServices.getRole(user);
+
+        UserControlHomeViewModel userControlHomeViewModel = this.modelMapper.map(user, UserControlHomeViewModel.class);
+        userControlHomeViewModel.setRole(currentUserRole.getAuthority());
+
+        return userControlHomeViewModel;
+    }
+
+    @Override
+    public UserControlRoleManagementViewModel getUserControlRoleManagementViewModel(String userUsername) {
+
+        UserServiceModel user = this.userCrudServices.getUserByUsername(userUsername);
+        UserRoleServiceModel currentUserRole = this.userRoleServices.getRole(user);
+        UserRoleServiceModel nextRole = this.userRoleServices.getNextRole(currentUserRole);
+        UserRoleServiceModel previousRole = this.userRoleServices.getPreviousRole(currentUserRole);
+
+        UserControlRoleManagementViewModel userControlRoleManagementViewModel = this.modelMapper.map(user, UserControlRoleManagementViewModel.class);
+        userControlRoleManagementViewModel.setRole(currentUserRole.getAuthority());
+
+        if (nextRole != null) {
+            userControlRoleManagementViewModel.setNextRole(nextRole.getAuthority());
+        }
+
+        if(previousRole != null){
+            userControlRoleManagementViewModel.setPreviousRole(previousRole.getAuthority());
+        }
+
+        return userControlRoleManagementViewModel;
     }
 }

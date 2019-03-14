@@ -1,4 +1,4 @@
-package ichop.domain.models.view.comment;
+package ichop.domain.models.view.thread_read;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-public class CommentReadThreadViewModel {
+public class CommentThreadReadViewModel {
 
     private String id;
     private String content;

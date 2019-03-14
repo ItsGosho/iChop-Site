@@ -15,6 +15,134 @@
 </head>
 <body>
 
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#"><span><img src="nav/avatar-user.png" style="width: 20px;height: 20px"/> </span>ItsGosho</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!--<ul class="navbar-nav mr-auto">-->
+            <!--&lt;!&ndash;<li class="nav-item active">&ndash;&gt;-->
+            <!--&lt;!&ndash;<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>&ndash;&gt;-->
+            <!--&lt;!&ndash;</li>&ndash;&gt;-->
+            <!--<li class="nav-item dropdown">-->
+                <!--<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"-->
+                   <!--aria-haspopup="true" aria-expanded="false">-->
+                    <!--Filters-->
+                <!--</a>-->
+                <!--<div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+                    <!--<a class="nav-link">Sort by:<span class="sr-only"></span></a>-->
+                    <!--<a class="dropdown-item" href="#">Username</a>-->
+                    <!--<a class="dropdown-item" href="#">Registration Date</a>-->
+                    <!--<a class="dropdown-item" href="#">Role</a>-->
+                    <!--<div class="dropdown-divider"></div>-->
+                    <!--<a class="nav-link">Show only:<span class="sr-only"></span></a>-->
+                    <!--<a class="dropdown-item" href="#">Administrators</a>-->
+                    <!--<a class="dropdown-item" href="#">Moderators</a>-->
+                    <!--<a class="dropdown-item" href="#">Users</a>-->
+                <!--</div>-->
+            <!--</li>-->
+        <!--</ul>-->
+        <!--<form class="form-inline my-2 my-lg-0">-->
+            <!--<input class="form-control mr-sm-2" id="input-searchByUsername-usersAll" type="search"-->
+                   <!--placeholder="Search by username" aria-label="Search">-->
+        <!--</form>-->
+    </div>
+</nav>
+
+
+<div class="container" style="margin-left: 0">
+    <div class="row">
+        <div class="col-sm">
+            <div class="card" style="width: 15rem;">
+                <div class="card-header">
+                    Options Menu
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item control-option">Role Management</li>
+                    <li class="list-group-item control-option">Option2</li>
+                    <li class="list-group-item control-option">Option3</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm">
+           <div class="card">
+               <div class="card-body">
+
+                   <!--Role Management-->
+
+                   <!--<div class="row">-->
+                       <!--<div class="col-md-auto">-->
+                           <!--<span style="font-family: Consolas">Current Role: <b>MODERATOR</b></span>-->
+                       <!--</div>-->
+                   <!--</div>-->
+                   <!--<div class="row">-->
+                       <!--<div class="col-md-auto">-->
+                           <!--<button class="btn btn-warning btn-sm"><span>👇🏻</span>USER</button>-->
+                           <!--<button class="btn btn-warning btn-sm"><span>👆🏻</span>ADMIN</button>-->
+                       <!--</div>-->
+                   <!--</div>-->
+                   <!--<div class="row">-->
+                       <!--<div class="col-md-auto">-->
+                           <!--<small><b>Logs:</b></small>-->
+                       <!--</div>-->
+                   <!--</div>-->
+                   <!--<div class="row">-->
+                       <!--<div class="col-md-auto">-->
+                           <!--<ul>-->
+                               <!--<li><small><b>[10 March,2019 20:36] </b>User <b>123</b> changed the role to <b>MODERATOR</b>.</small></li>-->
+                               <!--<li><small><b>[14 March,2019 12:56] </b>User <b>1234</b> changed the role to <b>ADMIN</b>.</small></li>-->
+                           <!--</ul>-->
+                       <!--</div>-->
+                   <!--</div>-->
+
+                   <div class="row">
+                       <div class="col-md-auto" style="font-family: Consolas">
+                           <span>Core Information:</span>
+                       </div>
+                   </div>
+                   <div class="row">
+                       <div class="col-md-auto">
+                           <ul>
+                               <li>ID: 8c62e3b8-fa0b-4100-a8a2-93af714ef3d6</li>
+                               <li>Username: ItsGosho</li>
+                               <li>Rank: OWNER</li>
+                               <li>Email: itsgosho2@gmail.com</li>
+                               <li>Registration Date: 10 Feb,2018</li>
+                               <li>Last Online: 13 March,2019</li>
+                               <li>Last Accessed Location: Bulgaria</li>
+                               <li>Enabled: True</li>
+                               <li>Account Expired: False</li>
+                               <li>Account Locked: False</li>
+                               <li>Credentials Expired: False</li>
+                           </ul>
+                       </div>
+                   </div>
+
+               </div>
+           </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(`.control-option`).toArray().forEach(x=>{
+        let element = $(x);
+
+        console.log(element);
+
+        element.on('mouseover',function () {
+            element.css(`background-color`,`gray`)
+        });
+
+        element.on('mouseout',function () {
+            element.css(`background-color`,``)
+        })
+    })
+</script>
+
 
 
 </body>

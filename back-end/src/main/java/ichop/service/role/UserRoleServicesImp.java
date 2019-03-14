@@ -3,8 +3,10 @@ package ichop.service.role;
 import ichop.domain.entities.users.UserRoles;
 import ichop.domain.models.service.role.UserRoleServiceModel;
 import ichop.domain.models.service.user.UserServiceModel;
+import ichop.exceptions.role.UserRoleNotFoundException;
 import ichop.exceptions.user.UserCannotBeNullException;
 import ichop.service.role.crud.UserRoleCrudServices;
+import org.apache.commons.lang3.EnumUtils;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,16 +43,54 @@ public class UserRoleServicesImp implements UserRoleServices {
     }
 
     @Override
-    public UserRoleServiceModel getRole(UserServiceModel userServiceModel) {
+    public UserRoleServiceModel getRole(UserServiceModel user) {
 
-        if (userServiceModel == null) {
+        if (user == null) {
             throw new UserCannotBeNullException();
         }
 
-        return userServiceModel
+        return user
                 .getAuthorities()
                 .stream()
                 .min((x1, x2) -> Integer.compare(UserRoles.valueOf(x2.getAuthority()).ordinal(), UserRoles.valueOf(x1.getAuthority()).ordinal()))
                 .orElse(null);
+    }
+
+    @Override
+    public UserRoleServiceModel getNextRole(UserRoleServiceModel userRoleServiceModel) {
+
+        UserRoles userRoles = UserRoles.valueOf(userRoleServiceModel.getAuthority().toUpperCase());
+
+        if(!EnumUtils.isValidEnum(UserRoles.class,userRoleServiceModel.getAuthority().toUpperCase())){
+            throw new UserRoleNotFoundException();
+        }
+
+        if (UserRoles.values().length-1 < userRoles.ordinal()+1) {
+            return null;
+        }
+
+        UserRoles nextRole = UserRoles.values()[userRoles.ordinal() + 1];
+        UserRoleServiceModel result = this.userRoleCrudServices.findUserRoleByAuthority(nextRole.name().toUpperCase());
+
+        return this.modelMapper.map(result, UserRoleServiceModel.class);
+    }
+
+    @Override
+    public UserRoleServiceModel getPreviousRole(UserRoleServiceModel userRoleServiceModel) {
+
+        UserRoles userRoles = UserRoles.valueOf(userRoleServiceModel.getAuthority().toUpperCase());
+
+        if(!EnumUtils.isValidEnum(UserRoles.class,userRoleServiceModel.getAuthority().toUpperCase())){
+            throw new UserRoleNotFoundException();
+        }
+
+        if (userRoles.ordinal() -1 < 0) {
+            return null;
+        }
+
+        UserRoles nextRole = UserRoles.values()[userRoles.ordinal() - 1];
+        UserRoleServiceModel result = this.userRoleCrudServices.findUserRoleByAuthority(nextRole.name().toUpperCase());
+
+        return this.modelMapper.map(result, UserRoleServiceModel.class);
     }
 }

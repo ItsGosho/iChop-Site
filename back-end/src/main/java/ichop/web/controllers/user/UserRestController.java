@@ -3,7 +3,6 @@ package ichop.web.controllers.user;
 import com.google.gson.Gson;
 import ichop.constants.URLConstants;
 import ichop.domain.models.binding.user.UserForgottenPasswordBindingModel;
-import ichop.domain.models.view.user.UsersAllViewModel;
 import ichop.service.user.UserServices;
 import ichop.service.user.crud.UserCrudServices;
 import ichop.service.user.view.UserViewServices;
@@ -13,7 +12,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @RestController
 public class UserRestController {

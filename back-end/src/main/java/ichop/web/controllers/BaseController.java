@@ -18,14 +18,14 @@ public abstract class BaseController {
         return "redirect:"+redirectUrl;
     }
 
-    public ModelAndView page(String basePage,String bodyPage,String title, ModelAndView modelAndView) {
-        modelAndView.setViewName(basePage);
+    public ModelAndView page(String bodyPage,String title, ModelAndView modelAndView) {
+        modelAndView.setViewName("base-page");
         modelAndView.addObject("body",bodyPage);
         modelAndView.addObject("title",title);
         return modelAndView;
     }
-    public ModelAndView page(String basePage,String bodyPage,String title) {
-        return this.page(basePage,bodyPage,title,new ModelAndView());
+    public ModelAndView page(String bodyPage,String title) {
+        return this.page(bodyPage,title,new ModelAndView());
     }
 
     public ModelAndView viewWithMessage(String basePage,String bodyPage,String message){

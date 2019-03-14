@@ -1,6 +1,5 @@
-package ichop.domain.models.view.thread;
+package ichop.domain.models.view.thread_read;
 
-import ichop.domain.models.view.comment.CommentReadThreadViewModel;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,6 +20,6 @@ public class ThreadReadViewModel {
     private Integer totalComments;
     private String content;
     private Integer rowsForNewsPage;
-    private List<CommentReadThreadViewModel> comments;
+    private List<CommentThreadReadViewModel> comments;
 
 }

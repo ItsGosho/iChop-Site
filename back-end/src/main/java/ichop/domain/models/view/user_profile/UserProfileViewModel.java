@@ -1,7 +1,6 @@
-package ichop.domain.models.view.user;
+package ichop.domain.models.view.user_profile;
 
 import ichop.domain.models.service.user.UserServiceModel;
-import ichop.domain.models.view.post.PostsProfileViewModel;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,7 +19,7 @@ public class UserProfileViewModel {
     private Integer totalMessages;
     private Integer totalLikes;
     private Integer totalDislikes;
-    private List<PostsProfileViewModel> posts;
+    private List<PostsUserProfileViewModel> posts;
 
     private Integer totalFollowers;
     private Integer totalFollowing;

@@ -90,7 +90,7 @@
             <th scope="col">Registration Date</th>
             <th scope="col">Last Online</th>
             <th scope="col">Location</th>
-            <th scope="col"></th>
+            <th scope="col">Options</th>
         </tr>
         </thead>
         <tbody>
@@ -102,7 +102,19 @@
             <td>05-March-2019</td>
             <td>Bulgaria</td>
             <td>
-                <button class="btn btn-warning btn-sm" type="button">Show More</button>
+               <div class="row">
+                   <div class="dropdown">
+                       <button class="btn btn-warning btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                           ⚙Rank
+                       </button>
+                       <div class="dropdown-menu">
+                           <h6 class="dropdown-header">Current: [MODERATOR]</h6>
+                           <a class="dropdown-item" href="#">⬆ADMIN</a>
+                           <a class="dropdown-item" href="#">⬇USER</a>
+                       </div>
+                   </div>
+                   <button class="btn btn-danger btn-sm" type="button" style="margin-left: 5px">Delete</button>
+               </div>
             </td>
         </tr>
         <tr class="user-tr">

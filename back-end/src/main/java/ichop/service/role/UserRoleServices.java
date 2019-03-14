@@ -10,4 +10,7 @@ public interface UserRoleServices {
 
     UserRoleServiceModel getRole(UserServiceModel user);
 
+    UserRoleServiceModel getNextRole(UserRoleServiceModel userRoleServiceModel);
+
+    UserRoleServiceModel getPreviousRole(UserRoleServiceModel userRoleServiceModel);
 }

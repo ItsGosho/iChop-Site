@@ -1,7 +1,7 @@
 package ichop.web.controllers.thread;
 
 import ichop.constants.URLConstants;
-import ichop.domain.models.view.thread.ThreadReadViewModel;
+import ichop.domain.models.view.thread_read.ThreadReadViewModel;
 import ichop.exceptions.thread.ThreadNotFoundException;
 import ichop.service.thread.ThreadServices;
 import ichop.service.thread.crud.ThreadCrudServices;
@@ -31,7 +31,7 @@ public class ThreadController extends BaseController {
     @PreAuthorize("hasAuthority('MODERATOR')")
     @GetMapping(URLConstants.THREAD_CREATE_GET)
     public ModelAndView createThread() {
-        return super.page("base-page","thread/thread-create","Create thread");
+        return super.page("thread/thread-create","Create thread");
     }
 
     @PreAuthorize("hasAuthority('MODERATOR')")
@@ -50,7 +50,7 @@ public class ThreadController extends BaseController {
            ThreadReadViewModel threadReadViewModel = this.threadViewServices.getThread(threadId);
 
            modelAndView.addObject("thread",threadReadViewModel);
-           return super.page("base-page","thread/thread-read",threadReadViewModel.getTitle(),modelAndView);
+           return super.page("thread/thread-read",threadReadViewModel.getTitle(),modelAndView);
        }
 
        throw new ThreadNotFoundException();
