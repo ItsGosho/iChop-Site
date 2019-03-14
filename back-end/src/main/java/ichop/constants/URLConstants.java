@@ -16,6 +16,8 @@ public final class URLConstants {
     public static final String USER_ALL_GET = "/user/all"; /*ADMIN++*/
     public static final String USER_CONTROL_BASE_GET = "/user/{username}/control"; /*ADMIN++*/
     public static final String USER_CONTROL_ROLE_MANAGEMENT_GET = "/user/{username}/control/role-management"; /*ADMIN++*/
+    public static final String USER_CONTROL_ROLE_MANAGEMENT_PROMOTE_USER_POST = "/user/{username}/control/role-management/promote"; /*ADMIN++*/
+    public static final String USER_CONTROL_ROLE_MANAGEMENT_DEMOTE_USER_POST = "/user/{username}/control/role-management/demote"; /*ADMIN++*/
 
     //UserApiController ---------------------------------------------------------------------------------------
 

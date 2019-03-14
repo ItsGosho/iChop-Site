@@ -8,6 +8,7 @@ import ichop.domain.models.binding.user.UserResetPasswordBindingModel;
 import ichop.domain.models.service.token.PasswordResetTokenServiceModel;
 import ichop.domain.models.service.role.UserRoleServiceModel;
 import ichop.domain.models.service.user.UserServiceModel;
+import ichop.exceptions.role.UserRoleNotFoundException;
 import ichop.exceptions.token.TokenNotValidException;
 import ichop.exceptions.user.*;
 import ichop.service.role.UserRoleServices;
@@ -21,6 +22,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.management.relation.RoleNotFoundException;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
@@ -183,6 +185,40 @@ public class UserServicesImp implements UserServices {
         }
 
         user.getFollowings().removeIf(x->x.getId().equals(userToUnfollow.getId()));
+
+        this.userCrudServices.save(user);
+
+    }
+
+    @Override
+    public void promote(UserServiceModel user) {
+        UserRoleServiceModel currentRole = this.userRoleServices.getRole(user);
+        UserRoleServiceModel nextRole = this.userRoleServices.getNextRole(currentRole);
+
+        if(nextRole == null){
+            throw new UserRoleNotFoundException();
+        }
+
+        if(nextRole.getAuthority().toUpperCase().equals(UserRoles.OWNER.name().toUpperCase())){
+            throw new UserRoleNotFoundException();
+        }
+
+        user.getAuthorities().add(nextRole);
+
+        this.userCrudServices.save(user);
+
+    }
+
+    @Override
+    public void demote(UserServiceModel user) {
+        UserRoleServiceModel currentRole = this.userRoleServices.getRole(user);
+        UserRoleServiceModel previousRole = this.userRoleServices.getNextRole(currentRole);
+
+        if(previousRole == null){
+            throw new UserRoleNotFoundException();
+        }
+
+        user.getAuthorities().removeIf(x->x.getAuthority().toUpperCase().equals(currentRole.getAuthority().toUpperCase()));
 
         this.userCrudServices.save(user);
 

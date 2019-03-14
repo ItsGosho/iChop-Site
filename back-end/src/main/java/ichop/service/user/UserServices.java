@@ -15,4 +15,8 @@ public interface UserServices extends UserDetailsService {
 
     void follow(UserServiceModel user,UserServiceModel userToFollow);
     void unfollow(UserServiceModel user,UserServiceModel userToUnfollow);
+
+    void promote(UserServiceModel user);
+
+    void demote(UserServiceModel user);
 }

@@ -9,12 +9,22 @@
     </div>
     <div class="row">
         <div class="col-md-auto">
-            <th:block th:if="*{previousRole != null}">
-                <button class="btn btn-warning btn-sm"><span>👇🏻</span><span th:text="*{previousRole}"></span></button>
-            </th:block>
-            <th:block th:if="*{nextRole != null}">
-                <button class="btn btn-warning btn-sm"><span>👆🏻</span><span th:text="*{nextRole}"></span></button>
-            </th:block>
+           <th:block th:if="*{role != 'OWNER'}">
+               <th:block th:if="*{previousRole != null}">
+
+                   <form style="all:initial;font-family: Consolas" method="post" th:action="@{/user/{username}/control/role-management/demote(username=*{username})}">
+                       <button type="submit" class="btn btn-warning btn-sm"><span>👇🏻</span><span th:text="*{previousRole}"></span></button>
+                   </form>
+
+               </th:block>
+               <th:block th:if="*{nextRole != null and nextRole != 'OWNER'}">
+
+                   <form style="all:initial;font-family: Consolas" method="post" th:action="@{/user/{username}/control/role-management/promote(username=*{username})}">
+                       <button type="submit" class="btn btn-warning btn-sm"><span>👆🏻</span><span th:text="*{nextRole}"></span></button>
+                   </form>
+
+               </th:block>
+           </th:block>
         </div>
     </div>
     <div class="row">

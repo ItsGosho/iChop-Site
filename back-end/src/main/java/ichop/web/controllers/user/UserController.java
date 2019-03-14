@@ -21,6 +21,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -119,6 +120,28 @@ public class UserController extends BaseController {
         modelAndView.addObject("user",user);
 
         return super.page("user/control/user-control-base","Control - Role Management",modelAndView);
+    }
+
+    @PostMapping(URLConstants.USER_CONTROL_ROLE_MANAGEMENT_PROMOTE_USER_POST)
+    public String userRolePromote(ModelAndView modelAndView,@PathVariable(value = "username") String username) {
+
+        UserServiceModel user = this.userCrudServices.getUserByUsername(username);
+
+        this.userServices.promote(user);
+
+        String redirectUrl = URLConstants.USER_CONTROL_ROLE_MANAGEMENT_GET.replace("{username}",user.getUsername());
+        return super.redirect(redirectUrl);
+    }
+
+    @PostMapping(URLConstants.USER_CONTROL_ROLE_MANAGEMENT_DEMOTE_USER_POST)
+    public String userRoleDemote(ModelAndView modelAndView,@PathVariable(value = "username") String username) {
+
+        UserServiceModel user = this.userCrudServices.getUserByUsername(username);
+
+        this.userServices.demote(user);
+
+        String redirectUrl = URLConstants.USER_CONTROL_ROLE_MANAGEMENT_GET.replace("{username}",user.getUsername());
+        return super.redirect(redirectUrl);
     }
 
 }
