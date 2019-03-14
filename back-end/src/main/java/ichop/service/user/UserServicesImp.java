@@ -2,27 +2,27 @@ package ichop.service.user;
 
 import ichop.components.email.EmailServices;
 import ichop.domain.entities.users.User;
-import ichop.domain.models.binding.user.UserRegisterBindingModel;
+import ichop.domain.entities.users.UserRoles;
 import ichop.domain.models.binding.user.UserForgottenPasswordBindingModel;
+import ichop.domain.models.binding.user.UserRegisterBindingModel;
 import ichop.domain.models.binding.user.UserResetPasswordBindingModel;
-import ichop.domain.models.service.token.PasswordResetTokenServiceModel;
 import ichop.domain.models.service.role.UserRoleServiceModel;
+import ichop.domain.models.service.token.PasswordResetTokenServiceModel;
 import ichop.domain.models.service.user.UserServiceModel;
 import ichop.exceptions.role.UserRoleNotFoundException;
 import ichop.exceptions.token.TokenNotValidException;
 import ichop.exceptions.user.*;
 import ichop.service.role.UserRoleServices;
-import ichop.domain.entities.users.UserRoles;
 import ichop.service.token.PasswordResetTokenServices;
 import ichop.service.token.crud.PasswordResetTokenCrudServices;
 import ichop.service.user.crud.UserCrudServices;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.management.relation.RoleNotFoundException;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
@@ -41,6 +41,7 @@ public class UserServicesImp implements UserServices {
     private final ModelMapper modelMapper;
     private final BCryptPasswordEncoder passwordEncoder;
 
+    @Autowired
     public UserServicesImp(UserRoleServices userRoleServices, UserCrudServices userCrudServices, EmailServices emailServices, PasswordResetTokenServices passwordResetTokenServices, PasswordResetTokenCrudServices passwordResetTokenCrudServices, ModelMapper modelMapper, BCryptPasswordEncoder passwordEncoder) {
         this.userRoleServices = userRoleServices;
         this.userCrudServices = userCrudServices;
@@ -204,6 +205,8 @@ public class UserServicesImp implements UserServices {
         }
 
         user.getAuthorities().add(nextRole);
+
+
 
         this.userCrudServices.save(user);
 
