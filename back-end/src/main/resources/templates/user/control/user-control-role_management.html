@@ -26,21 +26,19 @@
                </th:block>
            </th:block>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-auto">
-            <small><b>Logs:</b></small>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-auto">
-            <ul>
-                <th:block th:each="userLog : *{roleChangeHistory}" th:object="${userLog}">
-                    <li>
-                        <small><b th:text="*{#temporals.format(happenedOn, 'dd MMMM,yyyy HH:mm')}">[10 March,2019 20:36] </b> <span th:text="*{message}"></span>.</small>
-                    </li>
-                </th:block>
-            </ul>
+        <div class="row">
+            <div class="col-md-auto">
+                <small><b>Logs:</b></small>
+            </div>
+            <div class="col-md-auto">
+                <ul>
+                    <th:block th:each="userLog : *{roleChangeHistory}" th:object="${userLog}">
+                        <li>
+                            <small><b th:text="*{#temporals.format(happenedOn, 'dd MMMM,yyyy HH:mm')}">[10 March,2019 20:36] </b> <span th:text="*{message}"></span>.</small>
+                        </li>
+                    </th:block>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
