@@ -1,16 +1,19 @@
 package ichop.service.user.view;
 
+import ichop.domain.entities.log.UserLogType;
 import ichop.domain.entities.reaction.ReactionType;
 import ichop.domain.entities.users.UserRoles;
 import ichop.domain.models.service.role.UserRoleServiceModel;
 import ichop.domain.models.service.user.UserServiceModel;
 import ichop.domain.models.view.user_all.UsersAllViewModel;
 import ichop.domain.models.view.user_control.UserControlHomeViewModel;
+import ichop.domain.models.view.user_control.UserControlRoleManagementRoleHistoryViewModel;
 import ichop.domain.models.view.user_control.UserControlRoleManagementViewModel;
 import ichop.domain.models.view.user_profile.PostsUserProfileViewModel;
 import ichop.domain.models.view.user_profile.UserProfileViewModel;
 import ichop.exceptions.user.UserNotFoundException;
 import ichop.service.comment.CommentServices;
+import ichop.service.log.UserLogServices;
 import ichop.service.post.PostServices;
 import ichop.service.reaction.CommentReactionServices;
 import ichop.service.reaction.ThreadReactionServices;
@@ -34,16 +37,18 @@ public class UserViewServicesImp implements UserViewServices {
     private final CommentServices commentServices;
     private final ThreadReactionServices threadReactionServices;
     private final CommentReactionServices commentReactionServices;
+    private final UserLogServices userLogServices;
     private final PostServices postServices;
     private final ModelMapper modelMapper;
 
     @Autowired
-    public UserViewServicesImp(UserServices userServices, UserRoleServices userRoleServices, CommentServices commentServices, ThreadReactionServices threadReactionServices, CommentReactionServices commentReactionServices, PostServices postServices, ModelMapper modelMapper) {
+    public UserViewServicesImp(UserServices userServices, UserRoleServices userRoleServices, CommentServices commentServices, ThreadReactionServices threadReactionServices, CommentReactionServices commentReactionServices, UserLogServices userLogServices, PostServices postServices, ModelMapper modelMapper) {
         this.userServices = userServices;
         this.userRoleServices = userRoleServices;
         this.commentServices = commentServices;
         this.threadReactionServices = threadReactionServices;
         this.commentReactionServices = commentReactionServices;
+        this.userLogServices = userLogServices;
         this.postServices = postServices;
         this.modelMapper = modelMapper;
     }
@@ -135,6 +140,8 @@ public class UserViewServicesImp implements UserViewServices {
 
         UserControlRoleManagementViewModel userControlRoleManagementViewModel = this.modelMapper.map(user, UserControlRoleManagementViewModel.class);
         userControlRoleManagementViewModel.setRole(currentUserRole.getAuthority());
+
+        userControlRoleManagementViewModel.setRoleChangeHistory(this.userLogServices.findAllByUserAndLogType(user, UserLogType.ROLE_CHANGE).stream().map(x-> this.modelMapper.map(x, UserControlRoleManagementRoleHistoryViewModel.class)).collect(Collectors.toList()));
 
         if (nextRole != null) {
             userControlRoleManagementViewModel.setNextRole(nextRole.getAuthority());

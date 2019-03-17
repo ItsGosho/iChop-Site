@@ -52,6 +52,7 @@ public abstract class BaseService<Entity, Repository extends JpaRepository<Entit
             Class<?>[] dataTypes = new Class[data.length];
 
             dataTypes[0] = Object.class;
+
             for (int i = 1; i < data.length; i++) {
                 dataTypes[i] = data[i].getClass();
             }

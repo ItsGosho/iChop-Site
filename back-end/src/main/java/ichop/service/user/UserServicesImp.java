@@ -221,6 +221,7 @@ public class UserServicesImp extends BaseService<User, UserRepository> implement
 
         user.getAuthorities().removeIf(x -> x.getAuthority().toUpperCase().equals(currentRole.getAuthority().toUpperCase()));
 
+        super.createEvent(UserRoleChangeEvent.class,this,super.modelMapper.map(user,User.class));
         return super.save(user, UserServiceModel.class);
     }
 
