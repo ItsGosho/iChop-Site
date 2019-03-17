@@ -1,6 +1,7 @@
 package ichop.service.user;
 
 import ichop.components.email.EmailServices;
+import ichop.domain.entities.log.UserLogType;
 import ichop.domain.entities.users.User;
 import ichop.domain.entities.users.UserRoles;
 import ichop.domain.models.binding.user.UserForgottenPasswordBindingModel;
@@ -12,12 +13,14 @@ import ichop.domain.models.service.user.UserServiceModel;
 import ichop.exceptions.role.UserRoleNotFoundException;
 import ichop.exceptions.token.TokenNotValidException;
 import ichop.exceptions.user.*;
+import ichop.repository.user.UserRepository;
+import ichop.service.BaseService;
 import ichop.service.role.UserRoleServices;
 import ichop.service.token.PasswordResetTokenServices;
-import ichop.service.token.crud.PasswordResetTokenCrudServices;
-import ichop.service.user.crud.UserCrudServices;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -25,40 +28,36 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Service
-public class UserServicesImp implements UserServices {
+public class UserServicesImp extends BaseService<User, UserRepository> implements UserServices {
 
+    private static final String EMAIL_PATTERN = "(?:[a-z0-9!#$%&'*+\\=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+\\=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])";
+    private final BCryptPasswordEncoder passwordEncoder;
     private final UserRoleServices userRoleServices;
-    private final UserCrudServices userCrudServices;
-
+    private final PasswordResetTokenServices passwordResetTokenServices;
     private final EmailServices emailServices;
 
-    private final PasswordResetTokenServices passwordResetTokenServices;
-    private final PasswordResetTokenCrudServices passwordResetTokenCrudServices;
-
-    private final ModelMapper modelMapper;
-    private final BCryptPasswordEncoder passwordEncoder;
-
     @Autowired
-    public UserServicesImp(UserRoleServices userRoleServices, UserCrudServices userCrudServices, EmailServices emailServices, PasswordResetTokenServices passwordResetTokenServices, PasswordResetTokenCrudServices passwordResetTokenCrudServices, ModelMapper modelMapper, BCryptPasswordEncoder passwordEncoder) {
-        this.userRoleServices = userRoleServices;
-        this.userCrudServices = userCrudServices;
-        this.emailServices = emailServices;
-        this.passwordResetTokenServices = passwordResetTokenServices;
-        this.passwordResetTokenCrudServices = passwordResetTokenCrudServices;
-        this.modelMapper = modelMapper;
+    public UserServicesImp(ModelMapper modelMapper, UserRepository repository, BCryptPasswordEncoder passwordEncoder, UserRoleServices userRoleServices, PasswordResetTokenServices passwordResetTokenServices, EmailServices emailServices) {
+        super(modelMapper, repository);
         this.passwordEncoder = passwordEncoder;
+        this.userRoleServices = userRoleServices;
+        this.passwordResetTokenServices = passwordResetTokenServices;
+        this.emailServices = emailServices;
     }
-
 
     @Override
     public UserDetails loadUserByUsername(String usernameOrEmail) throws UsernameNotFoundException {
 
-        if (this.userCrudServices.isEmail(usernameOrEmail)) {
+        if (this.isEmail(usernameOrEmail)) {
 
-            UserServiceModel foundedUser = this.userCrudServices.getUserByEmail(usernameOrEmail);
+            UserServiceModel foundedUser = this.findUserByEmail(usernameOrEmail);
 
             if (foundedUser != null) {
                 return this.modelMapper.map(foundedUser, User.class);
@@ -67,7 +66,7 @@ public class UserServicesImp implements UserServices {
             throw new UsernameNotFoundException("");
         }
 
-        UserServiceModel foundedUser = this.userCrudServices.getUserByUsername(usernameOrEmail);
+        UserServiceModel foundedUser = this.findUserByUsername(usernameOrEmail);
 
         if (foundedUser != null) {
             return this.modelMapper.map(foundedUser, User.class);
@@ -79,11 +78,11 @@ public class UserServicesImp implements UserServices {
     @Override
     public UserServiceModel register(UserRegisterBindingModel userRegisterBindingModel) {
 
-        if (this.userCrudServices.existsByUsername(userRegisterBindingModel.getUsername())) {
+        if (this.isUserExistsByUsername(userRegisterBindingModel.getUsername())) {
             throw new UserAlreadyExistsException();
         }
 
-        if (this.userCrudServices.existsByEmail(userRegisterBindingModel.getEmail())) {
+        if (this.isUserExistsByEmail(userRegisterBindingModel.getEmail())) {
             throw new UserAlreadyExistsException();
         }
 
@@ -100,21 +99,20 @@ public class UserServicesImp implements UserServices {
         registeredUser.setCredentialsNonExpired(true);
         registeredUser.setEnabled(true);
 
-        this.userCrudServices.save(registeredUser);
-
-        return registeredUser;
+        UserServiceModel savedUser = super.save(registeredUser, UserServiceModel.class);
+        return savedUser;
     }
 
     private Set<UserRoleServiceModel> getInitialAuthorities() {
         Set<UserRoleServiceModel> resuledRoles = new HashSet<>();
 
-        if (this.userCrudServices.getTotalUsers() == 0) {
-            resuledRoles.add(this.userRoleServices.create(UserRoles.OWNER));
-            resuledRoles.add(this.userRoleServices.create(UserRoles.ADMIN));
-            resuledRoles.add(this.userRoleServices.create(UserRoles.MODERATOR));
-            resuledRoles.add(this.userRoleServices.create(UserRoles.USER));
+        if (this.findTotalUsers() == 0) {
+            resuledRoles.add(this.userRoleServices.createRole(UserRoles.OWNER));
+            resuledRoles.add(this.userRoleServices.createRole(UserRoles.ADMIN));
+            resuledRoles.add(this.userRoleServices.createRole(UserRoles.MODERATOR));
+            resuledRoles.add(this.userRoleServices.createRole(UserRoles.USER));
         } else {
-            resuledRoles.add(this.userRoleServices.create(UserRoles.USER));
+            resuledRoles.add(this.userRoleServices.createRole(UserRoles.USER));
         }
         return resuledRoles;
     }
@@ -122,17 +120,18 @@ public class UserServicesImp implements UserServices {
     @Override
     public void sendPasswordResetEmail(UserForgottenPasswordBindingModel userForgottenPasswordBindingModel) {
 
-        UserServiceModel user = this.modelMapper.map((User) this.loadUserByUsername(userForgottenPasswordBindingModel.getUsernameOrEmail()),UserServiceModel.class);
+        UserServiceModel user = this.modelMapper.map((User) this.loadUserByUsername(userForgottenPasswordBindingModel.getUsernameOrEmail()), UserServiceModel.class);
 
         PasswordResetTokenServiceModel createdToken = this.passwordResetTokenServices.createToken(user);
 
         this.emailServices.sendResetPasswordEmail(user.getEmail(), createdToken.getToken(), createdToken.getExpiryDate());
+
     }
 
     @Override
     public void resetPassword(UserResetPasswordBindingModel userResetPasswordBindingModel, String resetToken) {
 
-        if (!this.passwordResetTokenServices.isValid(resetToken)) {
+        if (!this.passwordResetTokenServices.isTokenValid(resetToken)) {
             throw new TokenNotValidException();
         }
 
@@ -140,13 +139,14 @@ public class UserServicesImp implements UserServices {
             throw new UserPasswordNotValidException();
         }
 
-        PasswordResetTokenServiceModel passwordResetToken = this.passwordResetTokenCrudServices.getTokenByToken(resetToken);
+        PasswordResetTokenServiceModel passwordResetToken = this.passwordResetTokenServices.findTokenByToken(resetToken);
         UserServiceModel user = passwordResetToken.getUser();
 
         user.setPassword(this.passwordEncoder.encode(userResetPasswordBindingModel.getPassword()));
 
-        this.userCrudServices.save(user);
-        this.passwordResetTokenServices.deleteOldestToken(user);
+        super.save(user, UserServiceModel.class);
+        this.passwordResetTokenServices.deleteOldestTokenByUser(user);
+
     }
 
     @Override
@@ -156,20 +156,19 @@ public class UserServicesImp implements UserServices {
             throw new UserNotFoundException();
         }
 
-        if(user.getId().equals(userToFollow.getId())){
+        if (user.getId().equals(userToFollow.getId())) {
             throw new UserCannotFollowException();
         }
 
-        boolean isUserAlreadyFollowingHim = this.userCrudServices.isUserAlreadyFollowedUser(user, userToFollow);
+        boolean isUserAlreadyFollowingHim = this.isUserAlreadyFollowedUser(user, userToFollow);
 
-        if(isUserAlreadyFollowingHim){
+        if (isUserAlreadyFollowingHim) {
             throw new UserAlreadyFollowingHimException();
         }
 
         user.getFollowings().add(userToFollow);
 
-        this.userCrudServices.save(user);
-
+        super.save(user, UserServiceModel.class);
     }
 
     @Override
@@ -179,51 +178,154 @@ public class UserServicesImp implements UserServices {
             throw new UserNotFoundException();
         }
 
-        boolean isEvenUserFollowingHim = this.userCrudServices.isUserAlreadyFollowedUser(user,userToUnfollow);
+        boolean isEvenUserFollowingHim = this.isUserAlreadyFollowedUser(user, userToUnfollow);
 
-        if(!isEvenUserFollowingHim){
+        if (!isEvenUserFollowingHim) {
             throw new UserNotFollowingHimException();
         }
 
-        user.getFollowings().removeIf(x->x.getId().equals(userToUnfollow.getId()));
+        user.getFollowings().removeIf(x -> x.getId().equals(userToUnfollow.getId()));
 
-        this.userCrudServices.save(user);
+        super.save(user, UserServiceModel.class);
 
     }
 
     @Override
-    public void promote(UserServiceModel user) {
-        UserRoleServiceModel currentRole = this.userRoleServices.getRole(user);
-        UserRoleServiceModel nextRole = this.userRoleServices.getNextRole(currentRole);
+    public UserServiceModel promote(UserServiceModel user) {
+        UserRoleServiceModel currentRole = this.userRoleServices.findHighestRoleOfUser(user);
+        UserRoleServiceModel nextRole = this.userRoleServices.getUserNextRole(currentRole);
 
-        if(nextRole == null){
+        if (nextRole == null) {
             throw new UserRoleNotFoundException();
         }
 
-        if(nextRole.getAuthority().toUpperCase().equals(UserRoles.OWNER.name().toUpperCase())){
+        if (nextRole.getAuthority().toUpperCase().equals(UserRoles.OWNER.name().toUpperCase())) {
             throw new UserRoleNotFoundException();
         }
 
         user.getAuthorities().add(nextRole);
 
-
-
-        this.userCrudServices.save(user);
-
+        super.createLog("test",user, UserLogType.ROLE_CHANGE);
+        return super.save(user, UserServiceModel.class);
     }
 
     @Override
-    public void demote(UserServiceModel user) {
-        UserRoleServiceModel currentRole = this.userRoleServices.getRole(user);
-        UserRoleServiceModel previousRole = this.userRoleServices.getNextRole(currentRole);
+    public UserServiceModel demote(UserServiceModel user) {
+        UserRoleServiceModel currentRole = this.userRoleServices.findHighestRoleOfUser(user);
+        UserRoleServiceModel previousRole = this.userRoleServices.getUserNextRole(currentRole);
 
-        if(previousRole == null){
+        if (previousRole == null) {
             throw new UserRoleNotFoundException();
         }
 
-        user.getAuthorities().removeIf(x->x.getAuthority().toUpperCase().equals(currentRole.getAuthority().toUpperCase()));
+        user.getAuthorities().removeIf(x -> x.getAuthority().toUpperCase().equals(currentRole.getAuthority().toUpperCase()));
 
-        this.userCrudServices.save(user);
+        return super.save(user, UserServiceModel.class);
+    }
 
+    @Override
+    public UserServiceModel findUserByUsername(String username) {
+        User entityUser = super.repository.findUserByUsername(username);
+        return this.modelMapper.map(entityUser, UserServiceModel.class);
+    }
+
+    @Override
+    public UserServiceModel findUserByEmail(String email) {
+        User entityUser = super.repository.findUserByEmail(email);
+        return this.modelMapper.map(entityUser, UserServiceModel.class);
+    }
+
+    @Override
+    public boolean isEmail(String value) {
+        Matcher matcher = Pattern.compile(EMAIL_PATTERN)
+                .matcher(value);
+        return matcher.find();
+    }
+
+    @Override
+    public boolean isUserExistsByUsername(String username) {
+        return super.repository.findUserByUsername(username) != null;
+    }
+
+    @Override
+    public boolean isUserExistsByEmail(String email) {
+        return super.repository.findUserByEmail(email) != null;
+    }
+
+    @Override
+    public long findTotalUsers() {
+        return super.repository.findAll().size();
+    }
+
+    @Override
+    public UserServiceModel findUserById(String id) {
+        return super.findById(id, UserServiceModel.class);
+    }
+
+    @Override
+    public void updateLastOnline(UserServiceModel user, LocalDateTime dateTime) {
+        User entityUser = this.modelMapper.map(user, User.class);
+        super.repository.updateLastOnline(entityUser, dateTime);
+    }
+
+    @Override
+    public void updateUserLocation(UserServiceModel user, String userLocation) {
+        User entityUser = this.modelMapper.map(user, User.class);
+        super.repository.updateUserLocation(entityUser, userLocation);
+
+        if(!entityUser.getLocation().toLowerCase().equals(userLocation.toLowerCase())){
+        }
+    }
+
+    @Override
+    public boolean isUserAlreadyFollowedUser(UserServiceModel user, UserServiceModel followingUser) {
+        return super.repository.isUserAlreadyFollowedUser(user.getId(), followingUser.getId());
+    }
+
+    @Override
+    public int findUserTotalFollowings(UserServiceModel user) {
+        return super.repository.getUserTotalFollowings(user.getId());
+    }
+
+    @Override
+    public int findUserTotalFollowers(UserServiceModel user) {
+        return super.repository.getUserTotalFollowers(user.getId());
+    }
+
+    @Override
+    public List<UserServiceModel> getFollowers(UserServiceModel user) {
+
+        List<UserServiceModel> result = new LinkedList<>();
+
+        super.repository.findAll().stream().forEach(x -> {
+
+            User foundedUser = x.getFollowings().stream().filter(z -> z.getId().equals(user.getId())).findFirst().orElse(null);
+
+            if (foundedUser != null) {
+                result.add(this.modelMapper.map(x, UserServiceModel.class));
+            }
+
+        });
+
+        return result;
+    }
+
+    @Override
+    public Page<UserServiceModel> findUsersByUsernameContains(String containingWord, Pageable pageable) {
+        return super.repository
+                .findUsersByUsernameContains(containingWord, pageable)
+                .map(x -> this.modelMapper.map(x, UserServiceModel.class));
+    }
+
+    @Override
+    public Page<UserServiceModel> findUsersWhomHasRole(String role, Pageable pageable) {
+        return super.repository
+                .findUsersWhomHasRole(role, pageable)
+                .map(x -> this.modelMapper.map(x, UserServiceModel.class));
+    }
+
+    @Override
+    public Page<UserServiceModel> findAll(Pageable pageable) {
+        return super.findAll(UserServiceModel.class,pageable);
     }
 }

@@ -1,6 +1,7 @@
 package ichop.domain.entities.users;
 
 import ichop.domain.entities.BaseEntity;
+import ichop.domain.entities.log.UserLog;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -8,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -45,6 +47,9 @@ public class User extends BaseEntity implements UserDetails {
 
     @Column(name = "last_online")
     private LocalDateTime lastOnline;
+
+    @OneToMany(mappedBy = "user")
+    private List<UserLog> logs;
 
     private String location;
 

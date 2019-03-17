@@ -41,18 +41,18 @@ public final class URLConstants {
 
     //PostController -----------------------------------------------------------------------------------------
 
-    public static final String CREATE_POST_POST = "/post/{userUsername}/create"; /*USER++*/
-    public static final String DELETE_POST_POST = "/post/{postId}/delete"; /*MODERATOR++ || CREATOR || ON_YOUR_PROFILE*/
+    public static final String CREATE_POST_POST = "/post/{userUsername}/createPost"; /*USER++*/
+    public static final String DELETE_POST_POST = "/post/{postId}/deleteComment"; /*MODERATOR++ || CREATOR || ON_YOUR_PROFILE*/
 
     //Thread -------------------------------------------------------------------------------------------------
 
-    public static final String THREAD_CREATE_GET =  "/thread/create"; /*MODERATOR++*/
-    public static final String THREAD_DELETE_POST = "/thread/{threadId}/delete"; /*MODERATOR++*/
+    public static final String THREAD_CREATE_GET =  "/thread/createPost"; /*MODERATOR++*/
+    public static final String THREAD_DELETE_POST = "/thread/{threadId}/deleteComment"; /*MODERATOR++*/
     public static final String THREAD_READ_GET = "/thread/{threadId}/read"; /*EVERYONE*/
 
     //ThreadRestController  ----------------------------------------------------------------------------------
 
-    public static final String THREAD_CREATE_POST = "/thread/create"; /*MODERATOR++*/
+    public static final String THREAD_CREATE_POST = "/thread/createPost"; /*MODERATOR++*/
 
     //ReactionController -------------------------------------------------------------------------------------
 
@@ -63,8 +63,8 @@ public final class URLConstants {
 
     //Comment ------------------------------------------------------------------------------------------------
 
-    public static final String COMMENT_DELETE_POST = "/comment/{commentId}/delete"; /*MODERATOR++ || CREATOR */
-    public static final String THREAD_CREATE_COMMENT_POST = "/thread/{threadId}/comment/create"; /*USER++*/
+    public static final String COMMENT_DELETE_POST = "/comment/{commentId}/deleteComment"; /*MODERATOR++ || CREATOR */
+    public static final String THREAD_CREATE_COMMENT_POST = "/thread/{threadId}/comment/createPost"; /*USER++*/
 
     //ReportController ---------------------------------------------------------------------------------------
     public static final String THREAD_REPORT_POST = "/thread/{threadId}/report"; /*USER++*/

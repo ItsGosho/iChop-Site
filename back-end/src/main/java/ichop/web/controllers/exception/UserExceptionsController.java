@@ -10,7 +10,7 @@ public class UserExceptionsController extends ExceptionBaseController {
 
     @ExceptionHandler(UserAlreadyExistsException.class)
     public ModelAndView userAlreadyExists(){
-        return super.errorPage("The provided user already exists.");
+        return super.errorPage("The provided user already isThreadExistsById.");
     }
 
     @ExceptionHandler(UserCannotBeNullException.class)

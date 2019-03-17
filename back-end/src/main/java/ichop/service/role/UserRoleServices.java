@@ -6,11 +6,13 @@ import ichop.domain.models.service.user.UserServiceModel;
 
 public interface UserRoleServices {
 
-    UserRoleServiceModel create(UserRoles userRoles);
+    UserRoleServiceModel createRole(UserRoles userRoles);
 
-    UserRoleServiceModel getRole(UserServiceModel user);
+    UserRoleServiceModel findHighestRoleOfUser(UserServiceModel user);
 
-    UserRoleServiceModel getNextRole(UserRoleServiceModel userRoleServiceModel);
+    UserRoleServiceModel getUserNextRole(UserRoleServiceModel userRoleServiceModel);
 
-    UserRoleServiceModel getPreviousRole(UserRoleServiceModel userRoleServiceModel);
+    UserRoleServiceModel getUserPreviousRole(UserRoleServiceModel userRoleServiceModel);
+
+    UserRoleServiceModel findUserRoleByAuthority(String authority);
 }

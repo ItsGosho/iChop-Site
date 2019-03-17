@@ -6,8 +6,7 @@ import ichop.domain.models.binding.post.PostCreateBindingModel;
 import ichop.domain.models.service.post.PostServiceModel;
 import ichop.domain.models.service.user.UserServiceModel;
 import ichop.service.post.PostServices;
-import ichop.service.post.crud.PostCrudServices;
-import ichop.service.user.crud.UserCrudServices;
+import ichop.service.user.UserServices;
 import ichop.web.controllers.BaseController;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,18 +23,17 @@ import java.security.Principal;
 @Controller
 public class PostController extends BaseController {
 
-    private final UserCrudServices userCrudServices;
+    private final UserServices userServices;
     private final PostServices postServices;
-    private final PostCrudServices postCrudServices;
     private final ModelMapper modelMapper;
 
     @Autowired
-    public PostController(UserCrudServices userCrudServices, PostServices postServices, PostCrudServices postCrudServices, ModelMapper modelMapper) {
-        this.userCrudServices = userCrudServices;
+    public PostController(UserServices userServices, PostServices postServices, ModelMapper modelMapper) {
+        this.userServices = userServices;
         this.postServices = postServices;
-        this.postCrudServices = postCrudServices;
         this.modelMapper = modelMapper;
     }
+
 
     @PreAuthorize("isAuthenticated()")
     @PostMapping(URLConstants.CREATE_POST_POST)
@@ -47,10 +45,10 @@ public class PostController extends BaseController {
             return super.redirect(redirectUrl);
         }
 
-        UserServiceModel user = this.userCrudServices.getUserByUsername(userUsername);
+        UserServiceModel user = this.userServices.findUserByUsername(userUsername);
         UserServiceModel creatorServiceModel = this.modelMapper.map((User)((Authentication) principal).getPrincipal(), UserServiceModel.class);
 
-        PostServiceModel postServiceModel = this.postServices.create(user,creatorServiceModel,postCreateBindingModel);
+        PostServiceModel postServiceModel = this.postServices.createPost(user,creatorServiceModel,postCreateBindingModel);
 
         return super.redirect(redirectUrl);
     }
@@ -59,9 +57,9 @@ public class PostController extends BaseController {
     @PostMapping(URLConstants.DELETE_POST_POST)
     public String createPost(@PathVariable String postId) {
 
-        PostServiceModel postServiceModel = this.postCrudServices.getById(postId);
+        PostServiceModel postServiceModel = this.postServices.findPostById(postId);
         String redirectUrl = URLConstants.USER_PROFILE_GET.replace("{username}",postServiceModel.getUser().getUsername());
-        this.postCrudServices.delete(postServiceModel);
+        this.postServices.deletePost(postServiceModel);
 
         return super.redirect(redirectUrl);
     }

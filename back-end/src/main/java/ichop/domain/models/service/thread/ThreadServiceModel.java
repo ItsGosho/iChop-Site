@@ -1,6 +1,7 @@
 package ichop.domain.models.service.thread;
 
 import ichop.domain.entities.report.ThreadReport;
+import ichop.domain.models.service.BaseServiceModel;
 import ichop.domain.models.service.comment.CommentServiceModel;
 import ichop.domain.models.service.reaction.ThreadReactionServiceModel;
 import ichop.domain.models.service.user.UserServiceModel;
@@ -12,9 +13,8 @@ import java.util.List;
 
 @Getter
 @Setter
-public class ThreadServiceModel {
+public class ThreadServiceModel extends BaseServiceModel {
 
-    private String id;
     private String title;
     private String content;
     private UserServiceModel creator;

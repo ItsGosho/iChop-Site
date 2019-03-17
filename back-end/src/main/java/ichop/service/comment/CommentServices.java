@@ -7,6 +7,11 @@ import ichop.domain.models.service.user.UserServiceModel;
 
 public interface CommentServices {
 
-    CommentServiceModel addComment(CommentCreateBindingModel commentCreateBindingModel, UserServiceModel user, ThreadServiceModel thread);
+    CommentServiceModel createComment(CommentCreateBindingModel commentCreateBindingModel, UserServiceModel user, ThreadServiceModel thread);
 
+    int getTotalCommentsOfUser(UserServiceModel user);
+
+    CommentServiceModel findCommentById(String commentId);
+
+    void deleteComment(String commentId);
 }

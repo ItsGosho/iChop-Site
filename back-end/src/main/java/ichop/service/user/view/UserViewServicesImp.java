@@ -4,17 +4,18 @@ import ichop.domain.entities.reaction.ReactionType;
 import ichop.domain.entities.users.UserRoles;
 import ichop.domain.models.service.role.UserRoleServiceModel;
 import ichop.domain.models.service.user.UserServiceModel;
+import ichop.domain.models.view.user_all.UsersAllViewModel;
 import ichop.domain.models.view.user_control.UserControlHomeViewModel;
 import ichop.domain.models.view.user_control.UserControlRoleManagementViewModel;
 import ichop.domain.models.view.user_profile.PostsUserProfileViewModel;
 import ichop.domain.models.view.user_profile.UserProfileViewModel;
-import ichop.domain.models.view.user_all.UsersAllViewModel;
 import ichop.exceptions.user.UserNotFoundException;
+import ichop.service.comment.CommentServices;
+import ichop.service.post.PostServices;
+import ichop.service.reaction.CommentReactionServices;
+import ichop.service.reaction.ThreadReactionServices;
 import ichop.service.role.UserRoleServices;
-import ichop.service.comment.crud.CommentCrudServices;
-import ichop.service.reaction.crud.ReactionCrudServices;
-import ichop.service.post.crud.PostCrudServices;
-import ichop.service.user.crud.UserCrudServices;
+import ichop.service.user.UserServices;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -28,44 +29,46 @@ import java.util.stream.Collectors;
 @Service
 public class UserViewServicesImp implements UserViewServices {
 
-    private final UserCrudServices userCrudServices;
-    private final CommentCrudServices commentCrudServices;
-    private final ReactionCrudServices reactionCrudServices;
-    private final PostCrudServices postCrudServices;
+    private final UserServices userServices;
     private final UserRoleServices userRoleServices;
+    private final CommentServices commentServices;
+    private final ThreadReactionServices threadReactionServices;
+    private final CommentReactionServices commentReactionServices;
+    private final PostServices postServices;
     private final ModelMapper modelMapper;
 
     @Autowired
-    public UserViewServicesImp(UserCrudServices userCrudServices, CommentCrudServices commentCrudServices, ReactionCrudServices reactionCrudServices, PostCrudServices postCrudServices, UserRoleServices userRoleServices, ModelMapper modelMapper) {
-        this.userCrudServices = userCrudServices;
-        this.commentCrudServices = commentCrudServices;
-        this.reactionCrudServices = reactionCrudServices;
-        this.postCrudServices = postCrudServices;
+    public UserViewServicesImp(UserServices userServices, UserRoleServices userRoleServices, CommentServices commentServices, ThreadReactionServices threadReactionServices, CommentReactionServices commentReactionServices, PostServices postServices, ModelMapper modelMapper) {
+        this.userServices = userServices;
         this.userRoleServices = userRoleServices;
+        this.commentServices = commentServices;
+        this.threadReactionServices = threadReactionServices;
+        this.commentReactionServices = commentReactionServices;
+        this.postServices = postServices;
         this.modelMapper = modelMapper;
     }
 
     @Override
     public UserProfileViewModel getByUsername(String username) {
 
-        if (!this.userCrudServices.existsByUsername(username)) {
+        if (!this.userServices.isUserExistsByUsername(username)) {
             throw new UserNotFoundException();
         }
 
-        UserServiceModel user = this.userCrudServices.getUserByUsername(username);
+        UserServiceModel user = this.userServices.findUserByUsername(username);
 
         UserProfileViewModel result = this.modelMapper.map(user, UserProfileViewModel.class);
-        result.setRole(this.userRoleServices.getRole(user).getAuthority());
-        result.setTotalMessages(this.commentCrudServices.getTotalCommentsOfUser(user));
+        result.setRole(this.userRoleServices.findHighestRoleOfUser(user).getAuthority());
+        result.setTotalMessages(this.commentServices.getTotalCommentsOfUser(user));
 
-        int totalLikes = this.reactionCrudServices.getUserTotalReactions(user, ReactionType.LIKE);
-        int totalDislikes = this.reactionCrudServices.getUserTotalReactions(user, ReactionType.DISLIKE);
+        int totalLikes = this.threadReactionServices.findTotalThreadReactionsByUserAndType(user, ReactionType.LIKE) + this.commentReactionServices.findTotalCommentReactionsByUserAndType(user,ReactionType.LIKE);
+        int totalDislikes = this.threadReactionServices.findTotalThreadReactionsByUserAndType(user, ReactionType.DISLIKE) + this.commentReactionServices.findTotalCommentReactionsByUserAndType(user,ReactionType.DISLIKE);
 
         result.setTotalLikes(totalLikes);
         result.setTotalDislikes(totalDislikes);
 
-        List<PostsUserProfileViewModel> postsUserProfileViewModels = this.postCrudServices
-                .getUserPosts(user)
+        List<PostsUserProfileViewModel> postsUserProfileViewModels = this.postServices
+                .findPostsByUser(user)
                 .stream()
                 .map(x -> this.modelMapper.map(x, PostsUserProfileViewModel.class))
                 .sorted((x1, x2) -> x2.getCreatedOn().compareTo(x1.getCreatedOn()))
@@ -73,10 +76,10 @@ public class UserViewServicesImp implements UserViewServices {
 
         result.setPosts(postsUserProfileViewModels);
 
-        result.setTotalFollowers(this.userCrudServices.getUserTotalFollowers(user));
-        result.setTotalFollowing(this.userCrudServices.getUserTotalFollowings(user));
+        result.setTotalFollowers(this.userServices.findUserTotalFollowers(user));
+        result.setTotalFollowing(this.userServices.findUserTotalFollowings(user));
 
-        result.setFollowers(this.userCrudServices.getFollowers(user));
+        result.setFollowers(this.userServices.getFollowers(user));
 
 
         //TODO:
@@ -86,22 +89,22 @@ public class UserViewServicesImp implements UserViewServices {
 
     @Override
     public Page<UsersAllViewModel> listAllByPage(Pageable pageable) {
-        return this.userCrudServices.findAll(pageable).map(x -> this.modelMapper.map(x, UsersAllViewModel.class));
+        return this.userServices.findAll(pageable).map(x -> this.modelMapper.map(x, UsersAllViewModel.class));
     }
 
     @Override
     public Page<UsersAllViewModel> findUsersByUsernameContains(String containingWord, Pageable pageable) {
-        return this.userCrudServices.findUsersByUsernameContains(containingWord, pageable).map(x -> this.modelMapper.map(x, UsersAllViewModel.class));
+        return this.userServices.findUsersByUsernameContains(containingWord, pageable).map(x -> this.modelMapper.map(x, UsersAllViewModel.class));
     }
 
     @Override
     public Page<UsersAllViewModel> findUsersByRole(String role, Pageable pageable) {
 
-        Page<UserServiceModel> users = this.userCrudServices.findUsersWhomHasRole(role, pageable);
+        Page<UserServiceModel> users = this.userServices.findUsersWhomHasRole(role, pageable);
 
         //To filter only these ,whom highest role is the provided
         List<UsersAllViewModel> usersAllViewModels = users.stream()
-                .filter(x -> this.userRoleServices.getRole(x).getAuthority().toUpperCase().equals(UserRoles.valueOf(role).name().toUpperCase()))
+                .filter(x -> this.userRoleServices.findHighestRoleOfUser(x).getAuthority().toUpperCase().equals(UserRoles.valueOf(role).name().toUpperCase()))
                 .map(x -> this.modelMapper.map(x, UsersAllViewModel.class))
                 .collect(Collectors.toList());
 
@@ -113,8 +116,8 @@ public class UserViewServicesImp implements UserViewServices {
     @Override
     public UserControlHomeViewModel getUserControlHomeViewModel(String userUsername) {
 
-        UserServiceModel user = this.userCrudServices.getUserByUsername(userUsername);
-        UserRoleServiceModel currentUserRole = this.userRoleServices.getRole(user);
+        UserServiceModel user = this.userServices.findUserByUsername(userUsername);
+        UserRoleServiceModel currentUserRole = this.userRoleServices.findHighestRoleOfUser(user);
 
         UserControlHomeViewModel userControlHomeViewModel = this.modelMapper.map(user, UserControlHomeViewModel.class);
         userControlHomeViewModel.setRole(currentUserRole.getAuthority());
@@ -125,10 +128,10 @@ public class UserViewServicesImp implements UserViewServices {
     @Override
     public UserControlRoleManagementViewModel getUserControlRoleManagementViewModel(String userUsername) {
 
-        UserServiceModel user = this.userCrudServices.getUserByUsername(userUsername);
-        UserRoleServiceModel currentUserRole = this.userRoleServices.getRole(user);
-        UserRoleServiceModel nextRole = this.userRoleServices.getNextRole(currentUserRole);
-        UserRoleServiceModel previousRole = this.userRoleServices.getPreviousRole(currentUserRole);
+        UserServiceModel user = this.userServices.findUserByUsername(userUsername);
+        UserRoleServiceModel currentUserRole = this.userRoleServices.findHighestRoleOfUser(user);
+        UserRoleServiceModel nextRole = this.userRoleServices.getUserNextRole(currentUserRole);
+        UserRoleServiceModel previousRole = this.userRoleServices.getUserPreviousRole(currentUserRole);
 
         UserControlRoleManagementViewModel userControlRoleManagementViewModel = this.modelMapper.map(user, UserControlRoleManagementViewModel.class);
         userControlRoleManagementViewModel.setRole(currentUserRole.getAuthority());
@@ -137,7 +140,7 @@ public class UserViewServicesImp implements UserViewServices {
             userControlRoleManagementViewModel.setNextRole(nextRole.getAuthority());
         }
 
-        if(previousRole != null){
+        if (previousRole != null) {
             userControlRoleManagementViewModel.setPreviousRole(previousRole.getAuthority());
         }
 

@@ -41,7 +41,7 @@ public class ThreadRestController {
         }
         User user = (User) ((Authentication) principal).getPrincipal();
 
-        this.threadServices.create(threadCreateBindingModel, this.modelMapper.map(user, UserServiceModel.class));
+        this.threadServices.createThread(threadCreateBindingModel, this.modelMapper.map(user, UserServiceModel.class));
         return new Gson().toJson(true);
     }
 

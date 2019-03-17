@@ -1,31 +1,32 @@
 package ichop.service.comment;
 
+import ichop.domain.entities.comment.Comment;
+import ichop.domain.entities.users.User;
 import ichop.domain.models.binding.comment.CommentCreateBindingModel;
 import ichop.domain.models.service.comment.CommentServiceModel;
 import ichop.domain.models.service.thread.ThreadServiceModel;
 import ichop.domain.models.service.user.UserServiceModel;
 import ichop.exceptions.thread.ThreadNotFoundException;
 import ichop.exceptions.user.UserNotFoundException;
-import ichop.service.comment.crud.CommentCrudServices;
+import ichop.repository.comment.CommentRepository;
+import ichop.service.BaseService;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
 @Service
-public class CommentServicesImp implements CommentServices {
+public class CommentServicesImp extends BaseService<Comment, CommentRepository> implements CommentServices {
 
-    private final CommentCrudServices commentCrudServices;
-    private final ModelMapper modelMapper;
 
-    public CommentServicesImp(CommentCrudServices commentCrudServices, ModelMapper modelMapper) {
-        this.commentCrudServices = commentCrudServices;
-        this.modelMapper = modelMapper;
+    @Autowired
+    public CommentServicesImp(ModelMapper modelMapper, CommentRepository repository) {
+        super(modelMapper, repository);
     }
 
-
     @Override
-    public CommentServiceModel addComment(CommentCreateBindingModel commentCreateBindingModel, UserServiceModel user, ThreadServiceModel thread) {
+    public CommentServiceModel createComment(CommentCreateBindingModel commentCreateBindingModel, UserServiceModel user, ThreadServiceModel thread) {
 
         if(user == null){
             throw new UserNotFoundException();
@@ -41,9 +42,26 @@ public class CommentServicesImp implements CommentServices {
         comment.setCreator(user);
         comment.setThread(thread);
 
-        CommentServiceModel result = this.commentCrudServices.save(comment);
+        CommentServiceModel result = super.save(comment,CommentServiceModel.class);
 
         return result;
+    }
+
+    @Override
+    public int getTotalCommentsOfUser(UserServiceModel user) {
+        User entityUser = this.modelMapper.map(user, User.class);
+
+        return super.repository.getTotalCommentsOfUser(entityUser);
+    }
+
+    @Override
+    public CommentServiceModel findCommentById(String commentId) {
+        return super.findById(commentId,CommentServiceModel.class);
+    }
+
+    @Override
+    public void deleteComment(String commentId) {
+        super.deleteById(commentId);
     }
 
 }

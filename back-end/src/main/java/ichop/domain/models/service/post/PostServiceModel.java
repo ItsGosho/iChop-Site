@@ -1,6 +1,7 @@
 package ichop.domain.models.service.post;
 
 import ichop.domain.entities.users.User;
+import ichop.domain.models.service.BaseServiceModel;
 import ichop.domain.models.service.report.PostReportServiceModel;
 import ichop.domain.models.service.user.UserServiceModel;
 import lombok.Getter;
@@ -11,9 +12,8 @@ import java.util.List;
 
 @Getter
 @Setter
-public class PostServiceModel {
+public class PostServiceModel extends BaseServiceModel {
 
-    private String id;
     private UserServiceModel user;
     private UserServiceModel creator;
     private String content;

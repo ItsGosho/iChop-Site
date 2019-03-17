@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import ichop.constants.URLConstants;
 import ichop.domain.models.binding.user.UserForgottenPasswordBindingModel;
 import ichop.service.user.UserServices;
-import ichop.service.user.crud.UserCrudServices;
 import ichop.service.user.view.UserViewServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -17,13 +16,11 @@ import javax.validation.Valid;
 public class UserRestController {
 
     private final UserServices userServices;
-    private final UserCrudServices userCrudServices;
     private final UserViewServices userViewServices;
 
     @Autowired
-    public UserRestController(UserServices userServices, UserCrudServices userCrudServices, UserViewServices userViewServices) {
+    public UserRestController(UserServices userServices, UserViewServices userViewServices) {
         this.userServices = userServices;
-        this.userCrudServices = userCrudServices;
         this.userViewServices = userViewServices;
     }
 
@@ -33,9 +30,9 @@ public class UserRestController {
     public String isUserExists(@RequestParam(required = false) String username,
                                @RequestParam(required = false) String email) {
         if (username != null) {
-            return new Gson().toJson(this.userCrudServices.existsByUsername(username));
+            return new Gson().toJson(this.userServices.isUserExistsByUsername(username));
         } else if (email != null) {
-            return new Gson().toJson(this.userCrudServices.existsByEmail(email));
+            return new Gson().toJson(this.userServices.isUserExistsByEmail(email));
         }
 
         throw new IllegalArgumentException();

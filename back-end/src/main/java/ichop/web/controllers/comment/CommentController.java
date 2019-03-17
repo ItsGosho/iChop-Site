@@ -8,8 +8,7 @@ import ichop.domain.models.service.comment.CommentServiceModel;
 import ichop.domain.models.service.thread.ThreadServiceModel;
 import ichop.domain.models.service.user.UserServiceModel;
 import ichop.service.comment.CommentServices;
-import ichop.service.comment.crud.CommentCrudServices;
-import ichop.service.thread.crud.ThreadCrudServices;
+import ichop.service.thread.ThreadServices;
 import ichop.web.controllers.BaseController;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,17 +24,15 @@ import java.security.Principal;
 @Controller
 public class CommentController extends BaseController {
 
-    private final CommentCrudServices commentCrudServices;
-    private final ModelMapper modelMapper;
-    private final ThreadCrudServices threadCrudServices;
     private final CommentServices commentServices;
+    private final ModelMapper modelMapper;
+    private final ThreadServices threadServices;
 
     @Autowired
-    public CommentController(CommentCrudServices commentCrudServices, ModelMapper modelMapper, ThreadCrudServices threadCrudServices, CommentServices commentServices) {
-        this.commentCrudServices = commentCrudServices;
-        this.modelMapper = modelMapper;
-        this.threadCrudServices = threadCrudServices;
+    public CommentController(CommentServices commentServices, ModelMapper modelMapper, ThreadServices threadServices) {
         this.commentServices = commentServices;
+        this.modelMapper = modelMapper;
+        this.threadServices = threadServices;
     }
 
 
@@ -43,12 +40,12 @@ public class CommentController extends BaseController {
     @PostMapping(URLConstants.COMMENT_DELETE_POST)
     public String deleteComment(@PathVariable String commentId) {
 
-        CommentServiceModel commentServiceModel = this.commentCrudServices.getById(commentId);
+        CommentServiceModel commentServiceModel = this.commentServices.findCommentById(commentId);
 
-        this.commentCrudServices.delete(commentId);
+        this.commentServices.deleteComment(commentId);
         String threadId = commentServiceModel.getThread().getId();
 
-        String redirectUrl = URLConstants.THREAD_READ_GET.replace("{id}", threadId);
+        String redirectUrl = URLConstants.THREAD_READ_GET.replace("{threadId}", threadId);
         return super.redirect(redirectUrl);
     }
 
@@ -57,10 +54,10 @@ public class CommentController extends BaseController {
     @ResponseBody
     public String createComment(@PathVariable String threadId, CommentCreateBindingModel commentCreateBindingModel, Principal principal) {
 
-        ThreadServiceModel threadServiceModel = this.threadCrudServices.getThread(threadId);
+        ThreadServiceModel threadServiceModel = this.threadServices.findThreadById(threadId);
         UserServiceModel userServiceModel = this.modelMapper.map((User) ((Authentication) principal).getPrincipal(), UserServiceModel.class);
 
-        CommentServiceModel commentServiceModel = this.commentServices.addComment(commentCreateBindingModel, userServiceModel, threadServiceModel);
+        CommentServiceModel commentServiceModel = this.commentServices.createComment(commentCreateBindingModel, userServiceModel, threadServiceModel);
 
         return new Gson().toJson(true);
     }

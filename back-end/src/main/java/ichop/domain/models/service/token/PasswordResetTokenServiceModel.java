@@ -1,5 +1,6 @@
 package ichop.domain.models.service.token;
 
+import ichop.domain.models.service.BaseServiceModel;
 import ichop.domain.models.service.user.UserServiceModel;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,9 +9,8 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-public class PasswordResetTokenServiceModel {
+public class PasswordResetTokenServiceModel extends BaseServiceModel {
 
-    private String id;
     private String token;
     private UserServiceModel user;
     private LocalDateTime expiryDate;

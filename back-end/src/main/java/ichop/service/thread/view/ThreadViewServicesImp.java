@@ -1,15 +1,14 @@
 package ichop.service.thread.view;
 
-import ichop.domain.entities.threads.Thread;
 import ichop.domain.entities.reaction.ReactionType;
 import ichop.domain.models.service.comment.CommentServiceModel;
 import ichop.domain.models.service.thread.ThreadServiceModel;
 import ichop.domain.models.service.user.UserServiceModel;
 import ichop.domain.models.view.home.ThreadHomepageViewModel;
 import ichop.domain.models.view.thread_read.ThreadReadViewModel;
-import ichop.service.comment.crud.CommentCrudServices;
-import ichop.service.thread.crud.ThreadCrudServices;
-import ichop.service.user.crud.UserCrudServices;
+import ichop.service.comment.CommentServices;
+import ichop.service.thread.ThreadServices;
+import ichop.service.user.UserServices;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -21,23 +20,22 @@ import java.util.stream.Collectors;
 @Service
 public class ThreadViewServicesImp implements ThreadViewServices {
 
-    private final ThreadCrudServices threadCrudServices;
-    private final UserCrudServices userCrudServices;
-    private final CommentCrudServices commentCrudServices;
+    private final ThreadServices threadServices;
+    private final UserServices userServices;
+    private final CommentServices commentServices;
     private final ModelMapper modelMapper;
 
     @Autowired
-    public ThreadViewServicesImp(ThreadCrudServices threadCrudServices, UserCrudServices userCrudServices, CommentCrudServices commentCrudServices, ModelMapper modelMapper) {
-        this.threadCrudServices = threadCrudServices;
-        this.userCrudServices = userCrudServices;
-        this.commentCrudServices = commentCrudServices;
+    public ThreadViewServicesImp(ThreadServices threadServices, UserServices userServices, CommentServices commentServices, ModelMapper modelMapper) {
+        this.threadServices = threadServices;
+        this.userServices = userServices;
+        this.commentServices = commentServices;
         this.modelMapper = modelMapper;
     }
 
-
     @Override
     public Page<ThreadHomepageViewModel> listAllByPage(Pageable pageable) {
-        Page<Thread> page = this.threadCrudServices.findAll(pageable);
+        Page<ThreadServiceModel> page = this.threadServices.findAllThreads(pageable);
 
         Page<ThreadHomepageViewModel> threads = page.map(x -> {
             ThreadHomepageViewModel threadHomepageViewModel = this.modelMapper.map(x, ThreadHomepageViewModel.class);
@@ -51,23 +49,23 @@ public class ThreadViewServicesImp implements ThreadViewServices {
     }
 
     @Override
-    public ThreadReadViewModel getThread(String id) {
+    public ThreadReadViewModel getThreadById(String id) {
 
-        ThreadServiceModel threadServiceModel = this.threadCrudServices.getThread(id);
+        ThreadServiceModel threadServiceModel = this.threadServices.findThreadById(id);
 
         ThreadReadViewModel threadReadViewModel = this.modelMapper.map(threadServiceModel, ThreadReadViewModel.class);
         threadReadViewModel.setTotalViews(threadServiceModel.getViews());
         threadReadViewModel.setTotalComments(threadServiceModel.getComments().size());
         threadReadViewModel.setTotalReactions(threadServiceModel.getReactions().size());
-        threadReadViewModel.setCreatorTotalComments(this.commentCrudServices.getTotalCommentsOfUser(this.modelMapper.map(threadServiceModel.getCreator(), UserServiceModel.class)));
+        threadReadViewModel.setCreatorTotalComments(this.commentServices.getTotalCommentsOfUser(this.modelMapper.map(threadServiceModel.getCreator(), UserServiceModel.class)));
 
         threadReadViewModel.getComments().forEach(x->{
 
-            UserServiceModel commentCreator = this.userCrudServices.getUserByUsername(x.getCreatorUsername());
+            UserServiceModel commentCreator = this.userServices.findUserByUsername(x.getCreatorUsername());
             CommentServiceModel actualComment = threadServiceModel.getComments().stream()
                     .filter(com -> com.getId().equals(x.getId())).findFirst().orElse(null);
 
-            x.setCreatorTotalComments(this.commentCrudServices.getTotalCommentsOfUser(commentCreator));
+            x.setCreatorTotalComments(this.commentServices.getTotalCommentsOfUser(commentCreator));
             x.setTotalLikes((int) actualComment.getReactions().
                     stream().
                     filter(react->react.getReactionType().equals(ReactionType.LIKE)).count());

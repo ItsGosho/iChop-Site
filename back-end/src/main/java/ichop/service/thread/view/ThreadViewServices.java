@@ -8,6 +8,6 @@ import org.springframework.data.domain.Pageable;
 public interface ThreadViewServices {
 
     Page<ThreadHomepageViewModel> listAllByPage(Pageable pageable);
-    ThreadReadViewModel getThread(String id);
+    ThreadReadViewModel getThreadById(String id);
 
 }

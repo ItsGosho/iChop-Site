@@ -5,9 +5,11 @@ import ichop.domain.models.service.user.UserServiceModel;
 
 public interface PasswordResetTokenServices {
 
-    boolean isValid(String token);
+    boolean isTokenValid(String token);
 
     PasswordResetTokenServiceModel createToken(UserServiceModel user);
 
-    void deleteOldestToken(UserServiceModel user);
+    void deleteOldestTokenByUser(UserServiceModel user);
+
+    PasswordResetTokenServiceModel findTokenByToken(String token);
 }

@@ -4,8 +4,10 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.*;
-import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 
 @Getter
 @Setter
@@ -20,5 +22,6 @@ public abstract class BaseEntity {
     )
     @Column(name = "id", nullable = false, unique = true, updatable = false)
     private String id;
+
 
 }

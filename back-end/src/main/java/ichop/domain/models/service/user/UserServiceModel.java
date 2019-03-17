@@ -1,5 +1,6 @@
 package ichop.domain.models.service.user;
 
+import ichop.domain.models.service.BaseServiceModel;
 import ichop.domain.models.service.role.UserRoleServiceModel;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,9 +10,8 @@ import java.util.Set;
 
 @Getter
 @Setter
-public class UserServiceModel {
+public class UserServiceModel extends BaseServiceModel {
 
-    private String id;
     private String username;
     private String password;
     private String email;

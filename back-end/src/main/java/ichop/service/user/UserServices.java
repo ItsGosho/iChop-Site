@@ -4,7 +4,12 @@ import ichop.domain.models.binding.user.UserForgottenPasswordBindingModel;
 import ichop.domain.models.binding.user.UserRegisterBindingModel;
 import ichop.domain.models.binding.user.UserResetPasswordBindingModel;
 import ichop.domain.models.service.user.UserServiceModel;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetailsService;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 public interface UserServices extends UserDetailsService {
 
@@ -16,7 +21,36 @@ public interface UserServices extends UserDetailsService {
     void follow(UserServiceModel user,UserServiceModel userToFollow);
     void unfollow(UserServiceModel user,UserServiceModel userToUnfollow);
 
-    void promote(UserServiceModel user);
+    UserServiceModel promote(UserServiceModel user);
 
-    void demote(UserServiceModel user);
+    UserServiceModel demote(UserServiceModel user);
+
+    UserServiceModel findUserByUsername(String username);
+
+    UserServiceModel findUserByEmail(String email);
+
+    boolean isEmail(String value);
+    boolean isUserExistsByUsername(String username);
+    boolean isUserExistsByEmail(String email);
+
+    long findTotalUsers();
+
+    UserServiceModel findUserById(String id);
+
+    void updateLastOnline(UserServiceModel user, LocalDateTime dateTime);
+
+    void updateUserLocation(UserServiceModel user,String userLocation);
+
+    boolean isUserAlreadyFollowedUser(UserServiceModel user,UserServiceModel followingUser);
+
+    int findUserTotalFollowings(UserServiceModel user);
+    int findUserTotalFollowers(UserServiceModel user);
+
+    List<UserServiceModel> getFollowers(UserServiceModel user);
+
+    Page<UserServiceModel> findUsersByUsernameContains(String containingWord, Pageable pageable);
+
+    Page<UserServiceModel> findUsersWhomHasRole(String role, Pageable pageable);
+
+    Page<UserServiceModel> findAll(Pageable pageable);
 }

@@ -56,7 +56,7 @@ public class UserAuthenticationController extends BaseController {
     @GetMapping(URLConstants.USER_RESET_PASSWORD_GET)
     public ModelAndView getReset(@RequestParam(required = true) String token){
 
-        if(!this.passwordResetTokenServices.isValid(token)){
+        if(!this.passwordResetTokenServices.isTokenValid(token)){
             throw new TokenNotValidException();
         }
 
