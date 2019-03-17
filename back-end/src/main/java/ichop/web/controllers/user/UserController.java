@@ -17,7 +17,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -123,22 +122,19 @@ public class UserController extends BaseController {
         return super.page("user/control/user-control-base","Control - Role Management",modelAndView);
     }
 
-    @PreAuthorize("isAuthenticated()")
+    //@PreAuthorize("isAuthenticated()")
     @PostMapping(URLConstants.USER_CONTROL_ROLE_MANAGEMENT_PROMOTE_USER_POST)
     public String userRolePromote(ModelAndView modelAndView,@PathVariable(value = "username") String username,Principal principal) {
 
         UserServiceModel user = this.userServices.findUserByUsername(username);
 
         UserServiceModel promotedUser = this.userServices.promote(user);
-/*
-        this.userLogServices.createUserLog(String.format("User %s has changed the role to %s",promotedUser.getAuthorities().),user, UserLogType.ROLE_CHANGE);
-*/
 
         String redirectUrl = URLConstants.USER_CONTROL_ROLE_MANAGEMENT_GET.replace("{username}",user.getUsername());
         return super.redirect(redirectUrl);
     }
 
-    @PreAuthorize("isAuthenticated()")
+    //@PreAuthorize("isAuthenticated()")
     @PostMapping(URLConstants.USER_CONTROL_ROLE_MANAGEMENT_DEMOTE_USER_POST)
     public String userRoleDemote(ModelAndView modelAndView,@PathVariable(value = "username") String username) {
 

@@ -1,7 +1,6 @@
 package ichop.service.user;
 
 import ichop.components.email.EmailServices;
-import ichop.domain.entities.log.UserLogType;
 import ichop.domain.entities.users.User;
 import ichop.domain.entities.users.UserRoles;
 import ichop.domain.models.binding.user.UserForgottenPasswordBindingModel;
@@ -10,6 +9,7 @@ import ichop.domain.models.binding.user.UserResetPasswordBindingModel;
 import ichop.domain.models.service.role.UserRoleServiceModel;
 import ichop.domain.models.service.token.PasswordResetTokenServiceModel;
 import ichop.domain.models.service.user.UserServiceModel;
+import ichop.events.UserRoleChangeEvent;
 import ichop.exceptions.role.UserRoleNotFoundException;
 import ichop.exceptions.token.TokenNotValidException;
 import ichop.exceptions.user.*;
@@ -19,6 +19,7 @@ import ichop.service.role.UserRoleServices;
 import ichop.service.token.PasswordResetTokenServices;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -44,13 +45,14 @@ public class UserServicesImp extends BaseService<User, UserRepository> implement
     private final EmailServices emailServices;
 
     @Autowired
-    public UserServicesImp(ModelMapper modelMapper, UserRepository repository, BCryptPasswordEncoder passwordEncoder, UserRoleServices userRoleServices, PasswordResetTokenServices passwordResetTokenServices, EmailServices emailServices) {
-        super(modelMapper, repository);
+    public UserServicesImp(ApplicationEventPublisher applicationEventPublisher, ModelMapper modelMapper, UserRepository repository, BCryptPasswordEncoder passwordEncoder, UserRoleServices userRoleServices, PasswordResetTokenServices passwordResetTokenServices, EmailServices emailServices) {
+        super(applicationEventPublisher, modelMapper, repository);
         this.passwordEncoder = passwordEncoder;
         this.userRoleServices = userRoleServices;
         this.passwordResetTokenServices = passwordResetTokenServices;
         this.emailServices = emailServices;
     }
+
 
     @Override
     public UserDetails loadUserByUsername(String usernameOrEmail) throws UsernameNotFoundException {
@@ -204,8 +206,7 @@ public class UserServicesImp extends BaseService<User, UserRepository> implement
         }
 
         user.getAuthorities().add(nextRole);
-
-        super.createLog("test",user, UserLogType.ROLE_CHANGE);
+        super.createEvent(UserRoleChangeEvent.class,this,super.modelMapper.map(user,User.class));
         return super.save(user, UserServiceModel.class);
     }
 

@@ -1,14 +1,15 @@
 package ichop.service;
 
 import ichop.domain.models.service.BaseServiceModel;
-import ichop.domain.models.service.log.LogServiceModel;
-import ichop.events.LogEvent;
 import org.modelmapper.ModelMapper;
+import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,21 +22,50 @@ public abstract class BaseService<Entity, Repository extends JpaRepository<Entit
     protected Class<Entity> entity;
     protected Repository repository;
 
-    public BaseService(ApplicationEventPublisher applicationEventPublisher,ModelMapper modelMapper, Repository repository) {
+    public BaseService(ModelMapper modelMapper, Repository repository) {
+        this.modelMapper = modelMapper;
+        this.repository = repository;
+        this.entity = this.setUpEntityClass();
+    }
+
+    public BaseService(ApplicationEventPublisher applicationEventPublisher, ModelMapper modelMapper, Repository repository) {
         this.applicationEventPublisher = applicationEventPublisher;
         this.modelMapper = modelMapper;
         this.repository = repository;
         this.entity = this.setUpEntityClass();
     }
 
-    private void publishEvent(){
+    private void publishEvent(Object event) {
+
+        if (this.applicationEventPublisher == null) {
+            throw new IllegalArgumentException("The provided class must extend BaseService with the ApplicationEventPublisher constructor!");
+        }
+
+        this.applicationEventPublisher.publishEvent(event);
 
     }
 
-    public <LogType extends Enum<LogType>,ServiceModel extends BaseServiceModel> void createLog(String message,ServiceModel serviceModel, LogType logType){
-        LogServiceModel logServiceModel = new LogServiceModel();
-        logServiceModel.set
-        LogEvent logEvent = new LogEvent();
+
+    public <Event extends ApplicationEvent> void createEvent(Class<Event> event, Object... data) {
+        try {
+
+            Class<?>[] dataTypes = new Class[data.length];
+
+            dataTypes[0] = Object.class;
+            for (int i = 1; i < data.length; i++) {
+                dataTypes[i] = data[i].getClass();
+            }
+
+            Constructor constructor = event.getConstructor(dataTypes);
+
+            Object readyEvent = constructor.newInstance(data);
+            this.publishEvent(readyEvent);
+
+        } catch (NoSuchMethodException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     public <ServiceModel extends BaseServiceModel> ServiceModel findById(String id, Class<ServiceModel> serviceModel) {
@@ -70,7 +100,7 @@ public abstract class BaseService<Entity, Repository extends JpaRepository<Entit
         return this.repository.findAll(pageable).map(x -> this.modelMapper.map(x, returnModelClass));
     }
 
-    public boolean existsById(String id){
+    public boolean existsById(String id) {
         return this.repository.existsById(id);
     }
 
