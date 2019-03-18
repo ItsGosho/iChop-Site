@@ -212,6 +212,7 @@ public class UserServicesImp extends BaseService<User, UserRepository> implement
 
     @Override
     public UserServiceModel demote(UserServiceModel user) {
+
         UserRoleServiceModel currentRole = this.userRoleServices.findHighestRoleOfUser(user);
         UserRoleServiceModel previousRole = this.userRoleServices.getUserNextRole(currentRole);
 
@@ -227,14 +228,23 @@ public class UserServicesImp extends BaseService<User, UserRepository> implement
 
     @Override
     public UserServiceModel findUserByUsername(String username) {
-        User entityUser = super.repository.findUserByUsername(username);
-        return super.modelMapper.map(entityUser, UserServiceModel.class);
+
+        if(this.isUserExistsByUsername(username)){
+            User entityUser = super.repository.findUserByUsername(username);
+            return super.modelMapper.map(entityUser, UserServiceModel.class);
+        }
+
+        return null;
     }
 
     @Override
     public UserServiceModel findUserByEmail(String email) {
-        User entityUser = super.repository.findUserByEmail(email);
-        return this.modelMapper.map(entityUser, UserServiceModel.class);
+        if(this.isUserExistsByUsername(email)){
+            User entityUser = super.repository.findUserByEmail(email);
+            return super.modelMapper.map(entityUser, UserServiceModel.class);
+        }
+
+        return null;
     }
 
     @Override

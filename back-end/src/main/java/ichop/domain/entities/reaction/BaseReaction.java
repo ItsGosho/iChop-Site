@@ -1,7 +1,6 @@
 package ichop.domain.entities.reaction;
 
 import ichop.domain.entities.BaseEntity;
-import ichop.domain.entities.reaction.ReactionType;
 import ichop.domain.entities.users.User;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,14 +13,14 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 public abstract class BaseReaction extends BaseEntity {
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false,targetEntity = User.class)
     private User user;
 
-    @Column(nullable = false)
+    @Column(name = "reaction_type",nullable = false,updatable = false)
     @Enumerated(value = EnumType.STRING)
     private ReactionType reactionType;
 
-    @Column(name = "reaction_date",nullable = false)
+    @Column(name = "reaction_date",nullable = false,updatable = false)
     private LocalDateTime reactionDate;
 
 }

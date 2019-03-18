@@ -4,8 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 
-import java.time.LocalDate;
-
 @Getter
 @Setter
 public class UserUpdateProfileInformationBindingModel {
@@ -16,7 +14,7 @@ public class UserUpdateProfileInformationBindingModel {
 
     private String avatarPath;
 
-    private LocalDate birthDate;
+    private String birthDate;
 
     @Length(max = 250)
     private String aboutYou;

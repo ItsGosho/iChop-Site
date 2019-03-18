@@ -10,11 +10,11 @@ import javax.persistence.Table;
 
 @Getter
 @Setter
-@Entity
+@Entity(name = "PostReport")
 @Table(name = "posts_reports")
 public class PostReport extends BaseReport {
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false,targetEntity = Post.class)
     private Post post;
 
 }

@@ -9,8 +9,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -38,17 +40,16 @@ public class HomeController extends BaseController {
         modelAndView.addObject("threads", pages);
         modelAndView.addObject("totalPages", pages.getTotalPages());
 
-        return super.page("home-page", "iChop", modelAndView);
+        return super.page("home-page", "Home", modelAndView);
     }
 
 
     // @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("@userServicesImp.findUserByUsername(#user1Username) != null")
     @GetMapping(value = URLConstants.TEST)
     @ResponseBody
-    public String testHome(ModelAndView modelAndView, HttpServletRequest httpServletRequest) throws IOException {
+    public String testHome(ModelAndView modelAndView, HttpServletRequest httpServletRequest, @RequestParam(required = true) String user1Username) throws IOException {
 
-        //this.userServices.follow(this.userServices.getUserProfileViewModel("123"),this.userServices.getUserProfileViewModel("1234"));
-        this.userServices.unfollow(this.userServices.findUserByUsername("123"),this.userServices.findUserByUsername("1234"));
 
         return "<h1>"+ "brrr" + "</h1>";
     }

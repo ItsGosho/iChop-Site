@@ -8,14 +8,15 @@ import javax.persistence.*;
 
 @Getter
 @Setter
-@Entity
+@Entity(name = "UserLog")
 @Table(name = "users_logs")
 public class UserLog extends BaseLog {
 
-    @ManyToOne
+    @ManyToOne(optional = false,targetEntity = User.class)
     private User user;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "log_type",nullable = false,updatable = false)
     private UserLogType logType;
 
 }

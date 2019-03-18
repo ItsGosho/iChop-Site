@@ -4,7 +4,6 @@ import ichop.constants.ServerConstants;
 import ichop.constants.URLConstants;
 import ichop.utils.CustomTemplateEngine;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
@@ -24,15 +23,6 @@ public class EmailServicesImp implements EmailServices {
     @Autowired
     public EmailServicesImp(JavaMailSender emailSender) {
         this.emailSender = emailSender;
-    }
-
-    private void sendSimpleMessage(String to, String subject, String text) {
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo(to);
-        message.setSubject(subject);
-        message.setText(text);
-
-        emailSender.send(message);
     }
 
     private void sendEmailFromTemplate(String to, String subject, Map<String, String> properties, String resourceLocation) {

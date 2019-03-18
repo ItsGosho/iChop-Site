@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @Table(name = "threads_reactions")
 public class ThreadReaction extends BaseReaction {
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false,targetEntity = Thread.class)
     private Thread thread;
 
 }

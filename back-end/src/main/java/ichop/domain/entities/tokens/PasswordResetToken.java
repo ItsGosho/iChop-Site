@@ -1,8 +1,13 @@
 package ichop.domain.entities.tokens;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
-@Entity
+@Getter
+@Setter
+@Entity(name = "PasswordResetToken")
 @Table(name = "password_reset_tokens")
 public class PasswordResetToken extends BaseToken {
 

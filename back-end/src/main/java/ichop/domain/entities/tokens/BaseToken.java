@@ -15,12 +15,12 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 public abstract class BaseToken extends BaseEntity {
 
-    @Column(nullable = false)
+    @Column(name = "token",nullable = false,updatable = false)
     private String token;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false,targetEntity = User.class)
     private User user;
 
-    @Column(nullable = false)
+    @Column(name = "expiry_date",nullable = false,updatable = false)
     private LocalDateTime expiryDate;
 }

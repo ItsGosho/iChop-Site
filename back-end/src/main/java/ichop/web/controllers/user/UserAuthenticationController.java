@@ -72,7 +72,7 @@ public class UserAuthenticationController extends BaseController {
 
         this.userServices.resetPassword(userResetPasswordBindingModel,token);
 
-        return super.viewWithMessage("base-page","notification/info","Your password been reset successfully!");
+        return super.viewWithMessage("base-page","Successful resetted password!","notification/info","Your password been reset successfully!");
     }
 
 }

@@ -14,52 +14,53 @@ import java.util.Set;
 
 @Getter
 @Setter
-@Entity
+@Entity(name = "User")
 @Table(name = "users")
 public class User extends BaseEntity implements UserDetails {
 
-    @Column(unique = true,nullable = false,updatable = false)
+    @Column(name = "username",unique = true,nullable = false,updatable = false)
     private String username;
 
-    @Column(nullable = false)
+    @Column(name = "password",nullable = false)
     private String password;
 
-    @Column(unique = true,nullable = false)
+    @Column(name = "email",unique = true,nullable = false)
     private String email;
 
-    @Column(name = "is_account_non_expired")
+    @Column(name = "is_account_non_expired",nullable = false)
     private boolean isAccountNonExpired;
 
-    @Column(name = "is_account_non_locked")
+    @Column(name = "is_account_non_locked",nullable = false)
     private boolean isAccountNonLocked;
 
-    @Column(name = "is_credentials_non_expired")
+    @Column(name = "is_credentials_non_expired",nullable = false)
     private boolean isCredentialsNonExpired;
 
-    @Column(name = "is_enable")
+    @Column(name = "is_enable",nullable = false)
     private boolean isEnabled;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER,targetEntity = UserRole.class)
     private Set<UserRole> authorities;
 
-    @Column(name = "registration_date",nullable = false)
+    @Column(name = "registration_date",nullable = false,updatable = false)
     private LocalDateTime registrationDate;
 
     @Column(name = "last_online")
     private LocalDateTime lastOnline;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user",targetEntity = UserLog.class)
     private List<UserLog> logs;
 
+    @Column(name = "location")
     private String location;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER,targetEntity = User.class)
     @JoinTable(name = "users_followers",
     joinColumns = @JoinColumn(name = "user_id",referencedColumnName = "id"),
     inverseJoinColumns = @JoinColumn(name = "follower_id",referencedColumnName = "id"))
     private Set<User> followings;
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user",targetEntity = UserInformation.class,optional = false)
     private UserInformation userInformation;
 
     public User(){

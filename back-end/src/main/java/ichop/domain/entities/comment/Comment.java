@@ -15,26 +15,26 @@ import java.util.List;
 
 @Getter
 @Setter
-@Entity
+@Entity(name = "Comment")
 @Table(name = "comments")
 public class Comment extends BaseEntity {
 
-    @ManyToOne(optional = false,fetch = FetchType.EAGER)
+    @ManyToOne(optional = false,fetch = FetchType.EAGER,targetEntity = Thread.class)
     public Thread thread;
 
-    @Column(nullable = false)
+    @Column(name = "content",nullable = false)
     public String content;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false,targetEntity = User.class)
     public User creator;
 
-    @Column(nullable = false)
+    @Column(name="created_on" ,nullable = false,updatable = false)
     public LocalDateTime createdOn;
 
-    @OneToMany(mappedBy = "comment",cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "comment",cascade = CascadeType.ALL, orphanRemoval = true,targetEntity = CommentReaction.class)
     private List<CommentReaction> reactions;
 
-    @OneToMany(mappedBy = "comment",cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "comment",cascade = CascadeType.ALL, orphanRemoval = true,targetEntity = CommentReport.class)
     private List<CommentReport> reports;
 
     public Comment(){

@@ -15,13 +15,13 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 public abstract class BaseReport extends BaseEntity {
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, targetEntity = User.class)
     private User user;
 
-    @Column(nullable = false)
+    @Column(name = "reason", nullable = false, updatable = false)
     private String reason;
 
-    @Column(nullable = false)
+    @Column(name = "report_date", nullable = false, updatable = false)
     private LocalDateTime reportDate;
 
 }

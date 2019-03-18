@@ -14,11 +14,11 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 public abstract class BaseLog extends BaseEntity {
 
-    @Column(nullable = false)
+    @Column(name = "happened_on",nullable = false,updatable = false)
     private LocalDateTime happenedOn;
 
     @Lob
-    @Column(nullable = false)
+    @Column(name = "message" ,nullable = false,updatable = false)
     private String message;
 
 

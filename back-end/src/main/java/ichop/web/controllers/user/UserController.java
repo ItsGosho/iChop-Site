@@ -45,7 +45,7 @@ public class UserController extends BaseController {
 
         modelAndView.addObject("user", user);
 
-        return super.page("user/user-profile", String.format("%s - Profile", user.getUsername()), modelAndView);
+        return super.page("user/user-profile", String.format("%s`s profile", user.getUsername()), modelAndView);
     }
 
     @GetMapping(URLConstants.USER_FOLLOW_POST)
@@ -89,9 +89,10 @@ public class UserController extends BaseController {
         }else{
             users = this.userViewServices.listAllByPage(pageable);
         }
+
         modelAndView.addObject("users",users);
 
-        return super.page("user/users-all", "Users", modelAndView);
+        return super.page("user/users-all", "All Users", modelAndView);
     }
 
 

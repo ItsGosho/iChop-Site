@@ -12,6 +12,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+
 @Service
 public class UserInformationServicesImp extends BaseService<UserInformation, UserInformationRepository> implements UserInformationServices {
 
@@ -35,12 +37,13 @@ public class UserInformationServicesImp extends BaseService<UserInformation, Use
             UserInformationServiceModel userInformationServiceModel = super.modelMapper.map(super.repository.findByUser(super.modelMapper.map(user, User.class)),UserInformationServiceModel.class);
             userInformationServiceModel.setAboutYou(userUpdateProfileInformationBindingModel.getAboutYou());
             userInformationServiceModel.setAvatarPath(userUpdateProfileInformationBindingModel.getAvatarPath());
-            userInformationServiceModel.setBirthDate(userUpdateProfileInformationBindingModel.getBirthDate());
+            userInformationServiceModel.setBirthDate(LocalDate.parse(userUpdateProfileInformationBindingModel.getBirthDate()));
             userInformationServiceModel.setStatusMessage(userUpdateProfileInformationBindingModel.getStatusMessage());
             return super.save(userInformationServiceModel,UserInformationServiceModel.class);
         }
 
         UserInformationServiceModel userInformationServiceModel = super.modelMapper.map(userUpdateProfileInformationBindingModel,UserInformationServiceModel.class);
+        userInformationServiceModel.setBirthDate(LocalDate.parse(userUpdateProfileInformationBindingModel.getBirthDate()));
         userInformationServiceModel.setUser(user);
 
         return super.save(userInformationServiceModel,UserInformationServiceModel.class);

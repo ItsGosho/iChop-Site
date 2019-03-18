@@ -15,33 +15,33 @@ import java.util.List;
 
 @Getter
 @Setter
-@Entity
+@Entity(name = "Thread")
 @Table(name = "threads")
 public class Thread extends BaseEntity {
 
-    @Column(nullable = false)
+    @Column(name = "title",nullable = false)
     private String title;
 
     @Lob
-    @Column(nullable = false)
+    @Column(name = "content",nullable = false)
     private String content;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false,targetEntity = User.class)
     private User creator;
 
-    @Column(name = "created_on", nullable = false)
+    @Column(name = "created_on", nullable = false,updatable = false)
     private LocalDateTime createdOn;
 
-    @OneToMany(mappedBy = "thread",cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(mappedBy = "thread",cascade = CascadeType.ALL,orphanRemoval = true,targetEntity = Comment.class)
     private List<Comment> comments;
 
-    @Column(nullable = false)
+    @Column(name = "views",nullable = false)
     private Integer views;
 
-    @OneToMany(mappedBy = "thread", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "thread", cascade = CascadeType.ALL, orphanRemoval = true,targetEntity = ThreadReaction.class)
     private List<ThreadReaction> reactions;
 
-    @OneToMany(mappedBy = "thread", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "thread", cascade = CascadeType.ALL, orphanRemoval = true,targetEntity = ThreadReport.class)
     private List<ThreadReport> reports;
 
     public Thread() {

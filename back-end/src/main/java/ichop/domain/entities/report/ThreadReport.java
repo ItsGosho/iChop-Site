@@ -10,11 +10,11 @@ import javax.persistence.Table;
 
 @Getter
 @Setter
-@Entity
+@Entity(name = "ThreadReport")
 @Table(name = "threads_reports")
 public class ThreadReport extends BaseReport {
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false,targetEntity = Thread.class)
     private Thread thread;
 
 }

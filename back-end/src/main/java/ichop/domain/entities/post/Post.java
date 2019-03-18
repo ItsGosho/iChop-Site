@@ -11,23 +11,23 @@ import java.util.List;
 
 @Getter
 @Setter
-@Entity
+@Entity(name = "Post")
 @Table(name = "posts")
 public class Post extends BaseEntity {
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, targetEntity = User.class)
     private User user;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, targetEntity = User.class)
     private User creator;
 
-    @Column(nullable = false)
+    @Column(name = "content", nullable = false)
     private String content;
 
-    @Column(nullable = false)
+    @Column(name = "created_on", nullable = false,updatable = false)
     private LocalDateTime createdOn;
 
-    @OneToMany(mappedBy = "post",cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true,targetEntity = PostReport.class)
     private List<PostReport> reports;
 
 }
