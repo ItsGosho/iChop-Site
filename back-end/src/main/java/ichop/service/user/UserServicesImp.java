@@ -228,7 +228,7 @@ public class UserServicesImp extends BaseService<User, UserRepository> implement
     @Override
     public UserServiceModel findUserByUsername(String username) {
         User entityUser = super.repository.findUserByUsername(username);
-        return this.modelMapper.map(entityUser, UserServiceModel.class);
+        return super.modelMapper.map(entityUser, UserServiceModel.class);
     }
 
     @Override
@@ -274,9 +274,6 @@ public class UserServicesImp extends BaseService<User, UserRepository> implement
     public void updateUserLocation(UserServiceModel user, String userLocation) {
         User entityUser = this.modelMapper.map(user, User.class);
         super.repository.updateUserLocation(entityUser, userLocation);
-
-        if(!entityUser.getLocation().toLowerCase().equals(userLocation.toLowerCase())){
-        }
     }
 
     @Override

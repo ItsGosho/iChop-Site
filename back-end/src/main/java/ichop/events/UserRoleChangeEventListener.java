@@ -33,7 +33,7 @@ public class UserRoleChangeEventListener {
         String creationMaker = "anonymousUser";
 
         if(principal instanceof User){
-            creationMaker = ((UserServiceModel) principal).getUsername();
+            creationMaker = this.modelMapper.map(principal,UserServiceModel.class).getUsername();
         }
 
 

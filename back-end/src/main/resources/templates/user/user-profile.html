@@ -185,11 +185,59 @@
                         </div>
                     </div>
                 </div>
+                <th:block sec:authorize="isAuthenticated()">
                 <div class="row">
                     <div class="col-md-12 head">
-                        <a href="#" style="font-size: 13px;float: right;display: inline-block">Follow</a>
+                            <a th:href="@{/user/{username}/follow(username=*{username})}" id="a-follow_user-userProfile" style="font-size: 13px;float: right;display: none">Follow</a>
+                            <a th:href="@{/user/{username}/unfollow(username=*{username})}" id="a-unfollow_user-userProfile" style="font-size: 13px;float: right;display: none">Unfollow</a>
+
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-12 head">
+                        <small id="a-is_he_followed_you-userProfile" style="font-size: 11px;float: right;display: inline-block"></small>
+                    </div>
+                </div>
+
+                    <script th:inline="javascript">
+                        let currentLoggedInUserUsername = /*[[${#authentication.getName()}]]*/ null;
+                        let lookingUserUsername = /*[[*{username}]]*/ null;
+
+                        if(currentLoggedInUserUsername.toLowerCase() !== lookingUserUsername.toLowerCase()){
+                            let url = URL_API_IS_USER_FOLLOWING_USER.replace("${user1Username}",currentLoggedInUserUsername);
+                            url = url.replace("${user2Username}",lookingUserUsername);
+                            $.ajax({
+                                method: "GET",
+                                url: url,
+                                success: function (isFollowing) {
+                                    if(isFollowing){
+                                        $(`#a-unfollow_user-userProfile`).css(`display`,`inline-block`);
+                                    }else{
+                                        $(`#a-follow_user-userProfile`).css(`display`,`inline-block`);
+                                    }
+                                }
+                            });
+
+                            let urlReverse = URL_API_IS_USER_FOLLOWING_USER.replace("${user1Username}",lookingUserUsername);
+                            urlReverse = urlReverse.replace("${user2Username}",currentLoggedInUserUsername);
+
+                            $.ajax({
+                                method: "GET",
+                                url: urlReverse,
+                                success: function (isFollowing) {
+                                    if(isFollowing){
+                                        $(`#a-is_he_followed_you-userProfile`).text(lookingUserUsername + " is following you.");
+                                    }else{
+                                        $(`#a-is_he_followed_you-userProfile`).text(lookingUserUsername + " is not following you.");
+                                    }
+                                }
+                            })
+                        }
+
+                    </script>
+
+                </th:block>
+
                 <div class="dropdown-divider"></div>
             </div>
 

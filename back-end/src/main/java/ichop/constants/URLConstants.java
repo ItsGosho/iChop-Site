@@ -19,10 +19,6 @@ public final class URLConstants {
     public static final String USER_CONTROL_ROLE_MANAGEMENT_PROMOTE_USER_POST = "/user/{username}/control/role-management/promote"; /*ADMIN++*/
     public static final String USER_CONTROL_ROLE_MANAGEMENT_DEMOTE_USER_POST = "/user/{username}/control/role-management/demote"; /*ADMIN++*/
 
-    //UserApiController ---------------------------------------------------------------------------------------
-
-    public static final String USER_EXISTS_GET = "/api/user/exists"; /*EVERYONE*/
-
     //UserAuthenticationController ----------------------------------------------------------------------------
 
     public static final String USER_LOGIN_GET = "/login"; /*GUEST*/
@@ -38,16 +34,18 @@ public final class URLConstants {
     //UserRestController -------------------------------------------------------------------------------------
 
     public static final String USER_SEND_EMAIL_RESET_PASSWORD_POST = "/user/send-email/reset/password"; /*EVERYONE*/
+    public static final String USER_EXISTS_GET = "/api/user/exists"; /*EVERYONE*/
+    public static final String IS_USER_FOLLOWING_USER = "/api/user/is-following"; /*EVERYONE*/
 
     //PostController -----------------------------------------------------------------------------------------
 
-    public static final String CREATE_POST_POST = "/post/{userUsername}/createPost"; /*USER++*/
-    public static final String DELETE_POST_POST = "/post/{postId}/deleteComment"; /*MODERATOR++ || CREATOR || ON_YOUR_PROFILE*/
+    public static final String CREATE_POST_POST = "/post/{userUsername}/create"; /*USER++*/
+    public static final String DELETE_POST_POST = "/post/{postId}/delete"; /*MODERATOR++ || CREATOR || ON_YOUR_PROFILE*/
 
     //Thread -------------------------------------------------------------------------------------------------
 
-    public static final String THREAD_CREATE_GET =  "/thread/createPost"; /*MODERATOR++*/
-    public static final String THREAD_DELETE_POST = "/thread/{threadId}/deleteComment"; /*MODERATOR++*/
+    public static final String THREAD_CREATE_GET =  "/thread/create"; /*MODERATOR++*/
+    public static final String THREAD_DELETE_POST = "/thread/{threadId}/delete"; /*MODERATOR++*/
     public static final String THREAD_READ_GET = "/thread/{threadId}/read"; /*EVERYONE*/
 
     //ThreadRestController  ----------------------------------------------------------------------------------
@@ -63,8 +61,8 @@ public final class URLConstants {
 
     //Comment ------------------------------------------------------------------------------------------------
 
-    public static final String COMMENT_DELETE_POST = "/comment/{commentId}/deleteComment"; /*MODERATOR++ || CREATOR */
-    public static final String THREAD_CREATE_COMMENT_POST = "/thread/{threadId}/comment/createPost"; /*USER++*/
+    public static final String COMMENT_DELETE_POST = "/comment/{commentId}/delete"; /*MODERATOR++ || CREATOR */
+    public static final String THREAD_CREATE_COMMENT_POST = "/thread/{threadId}/comment/create"; /*USER++*/
 
     //ReportController ---------------------------------------------------------------------------------------
     public static final String THREAD_REPORT_POST = "/thread/{threadId}/report"; /*USER++*/

@@ -44,7 +44,7 @@
 
 
 
-    <div class="container" style="margin-left: 0">
+    <div class="container" style="margin-left: 0;margin-top: 10px">
         <div class="row">
             <div class="col-sm">
                 <div class="card" style="width: 15rem;">
@@ -73,8 +73,6 @@
     <script>
         $(`.control-option`).toArray().forEach(x=>{
             let element = $(x);
-
-            console.log(element);
 
             element.on('mouseover',function () {
                 element.css(`background-color`,`gray`)
