@@ -1,0 +1,40 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<div class="container" style="margin-left: 0">
+    <div class="row">
+        <div class="col-sm">
+            <div class="card" style="width: 15rem;">
+                <div class="card-header">
+                    Options Menu
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item control-option">Information</li>
+                    <li class="list-group-item control-option">Change Password</li>
+                    <li class="list-group-item control-option">Option3</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="card">
+                <div class="card-body">
+                    <th:block th:insert="${optionsPage}"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(`.control-option`).toArray().forEach(x => {
+        let element = $(x);
+
+        element.on('mouseover', function () {
+            element.css(`background-color`, `gray`)
+        });
+
+        element.on('mouseout', function () {
+            element.css(`background-color`, ``)
+        })
+    })
+</script>

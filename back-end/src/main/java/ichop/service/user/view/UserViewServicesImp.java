@@ -9,6 +9,7 @@ import ichop.domain.models.view.user_all.UsersAllViewModel;
 import ichop.domain.models.view.user_control.UserControlHomeViewModel;
 import ichop.domain.models.view.user_control.UserControlRoleManagementRoleHistoryViewModel;
 import ichop.domain.models.view.user_control.UserControlRoleManagementViewModel;
+import ichop.domain.models.view.user_options.UserProfileOptionsInformationViewModel;
 import ichop.domain.models.view.user_profile.PostsUserProfileViewModel;
 import ichop.domain.models.view.user_profile.UserProfileViewModel;
 import ichop.exceptions.user.UserNotFoundException;
@@ -54,7 +55,7 @@ public class UserViewServicesImp implements UserViewServices {
     }
 
     @Override
-    public UserProfileViewModel getByUsername(String username) {
+    public UserProfileViewModel getUserProfileViewModel(String username) {
 
         if (!this.userServices.isUserExistsByUsername(username)) {
             throw new UserNotFoundException();
@@ -88,6 +89,15 @@ public class UserViewServicesImp implements UserViewServices {
 
 
         //TODO:
+
+        return result;
+    }
+
+    @Override
+    public UserProfileOptionsInformationViewModel getUserProfileOptionsInformationViewModel(String username) {
+        UserServiceModel user = this.userServices.findUserByUsername(username);
+
+        UserProfileOptionsInformationViewModel result = this.modelMapper.map(user.getUserInformation(),UserProfileOptionsInformationViewModel.class);
 
         return result;
     }

@@ -4,10 +4,7 @@ import ichop.constants.URLConstants;
 import ichop.domain.entities.users.User;
 import ichop.domain.models.service.user.UserServiceModel;
 import ichop.domain.models.view.user_all.UsersAllViewModel;
-import ichop.domain.models.view.user_control.UserControlHomeViewModel;
-import ichop.domain.models.view.user_control.UserControlRoleManagementViewModel;
 import ichop.domain.models.view.user_profile.UserProfileViewModel;
-import ichop.service.log.UserLogServices;
 import ichop.service.user.UserServices;
 import ichop.service.user.view.UserViewServices;
 import ichop.web.controllers.BaseController;
@@ -21,7 +18,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -31,14 +27,12 @@ import java.security.Principal;
 public class UserController extends BaseController {
 
     private final UserServices userServices;
-    private final UserLogServices userLogServices;
     private final UserViewServices userViewServices;
     private final ModelMapper modelMapper;
 
     @Autowired
-    public UserController(UserServices userServices, UserLogServices userLogServices, UserViewServices userViewServices, ModelMapper modelMapper) {
+    public UserController(UserServices userServices, UserViewServices userViewServices, ModelMapper modelMapper) {
         this.userServices = userServices;
-        this.userLogServices = userLogServices;
         this.userViewServices = userViewServices;
         this.modelMapper = modelMapper;
     }
@@ -47,7 +41,7 @@ public class UserController extends BaseController {
     @GetMapping(URLConstants.USER_PROFILE_GET)
     public ModelAndView getUserProfile(@PathVariable String username, ModelAndView modelAndView) {
 
-        UserProfileViewModel user = this.userViewServices.getByUsername(username);
+        UserProfileViewModel user = this.userViewServices.getUserProfileViewModel(username);
 
         modelAndView.addObject("user", user);
 
@@ -100,50 +94,5 @@ public class UserController extends BaseController {
         return super.page("user/users-all", "Users", modelAndView);
     }
 
-    @GetMapping(URLConstants.USER_CONTROL_BASE_GET)
-    public ModelAndView userControlBase(ModelAndView modelAndView,@PathVariable(value = "username") String username) {
-
-        UserControlHomeViewModel user = this.userViewServices.getUserControlHomeViewModel(username);
-
-        modelAndView.addObject("controlPage","user/control/user-control-core_information");
-        modelAndView.addObject("user",user);
-
-        return super.page("user/control/user-control-base","Control",modelAndView);
-    }
-
-    @GetMapping(URLConstants.USER_CONTROL_ROLE_MANAGEMENT_GET)
-    public ModelAndView userControlHome(ModelAndView modelAndView,@PathVariable(value = "username") String username) {
-
-        UserControlRoleManagementViewModel user = this.userViewServices.getUserControlRoleManagementViewModel(username);
-
-        modelAndView.addObject("controlPage","user/control/user-control-role_management");
-        modelAndView.addObject("user",user);
-
-        return super.page("user/control/user-control-base","Control - Role Management",modelAndView);
-    }
-
-    //@PreAuthorize("isAuthenticated()")
-    @PostMapping(URLConstants.USER_CONTROL_ROLE_MANAGEMENT_PROMOTE_USER_POST)
-    public String userRolePromote(ModelAndView modelAndView,@PathVariable(value = "username") String username,Principal principal) {
-
-        UserServiceModel user = this.userServices.findUserByUsername(username);
-
-        UserServiceModel promotedUser = this.userServices.promote(user);
-
-        String redirectUrl = URLConstants.USER_CONTROL_ROLE_MANAGEMENT_GET.replace("{username}",user.getUsername());
-        return super.redirect(redirectUrl);
-    }
-
-    //@PreAuthorize("isAuthenticated()")
-    @PostMapping(URLConstants.USER_CONTROL_ROLE_MANAGEMENT_DEMOTE_USER_POST)
-    public String userRoleDemote(ModelAndView modelAndView,@PathVariable(value = "username") String username) {
-
-        UserServiceModel user = this.userServices.findUserByUsername(username);
-
-        this.userServices.demote(user);
-
-        String redirectUrl = URLConstants.USER_CONTROL_ROLE_MANAGEMENT_GET.replace("{username}",user.getUsername());
-        return super.redirect(redirectUrl);
-    }
 
 }

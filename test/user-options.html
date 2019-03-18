@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="components/bootstrap.min.css">
+    <link href="components/font-awesome.min.css" rel='stylesheet'/>
+    <link rel="stylesheet" href="components/bootstrap-social.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css.map">
+
+    <script src="components/jquery.slim.min.js"></script>
+    <script src="components/popper.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script src="components/bootstrap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.js"></script>
+
+</head>
+<body>
+
+<div class="container" style="margin-left: 0">
+    <div class="row">
+        <div class="col-sm">
+            <div class="card" style="width: 15rem;">
+                <div class="card-header">
+                    Options Menu
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item control-option">Information</li>
+                    <li class="list-group-item control-option">Change Password</li>
+                    <li class="list-group-item control-option">Option3</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="card">
+                <div class="card-body">
+
+                    <!--<form method="post" action="#">-->
+
+                        <!--<div class="row">-->
+                            <!--<div class="col-md-auto" style="font-family: Consolas">-->
+                                <!--<span>Status Message:</span>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <!--<div class="row">-->
+                            <!--<div class="col-lg">-->
+                                <!--<textarea name="statusMessage" id="textarea-statusMessage-userOptions"-->
+                                          <!--style="border:1px solid #ccc;border-radius: 3px;height: 60px;overflow: auto;width: 100%;resize: none"></textarea>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="row" style="margin-top: 3px">-->
+                            <!--<div class="col-lg">-->
+                                <!--<small id="small-statusMessageCharactersLeft-userOptions"-->
+                                       <!--style="float: right;display: inline-block;border-color: #ccc;margin-right: 3px;color: darkgreen;font-size: 13px">-->
+                                    <!--16-->
+                                <!--</small>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <!--<div class="dropdown-divider"></div>-->
+
+                        <!--<div class="row" align="center">-->
+                            <!--<div class="col-lg">-->
+                                <!--<span>Avatar:</span>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <!--<div class="row" align="center">-->
+                            <!--<div class="col-lg">-->
+                                <!--<img style="width: 50px;height: 50px" src="avatar-test.png">-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <!--<div class="row" align="center" style="margin-top: 5px">-->
+                            <!--<div class="col-lg">-->
+                                <!--<input name="avatarPath" type="text" class="form-control" style="width: 250px"-->
+                                       <!--placeholder="Avatar url...">-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <!--<div class="dropdown-divider"></div>-->
+
+                        <!--<div class="row" align="center" style="margin-top: 5px">-->
+                            <!--<div class="col-lg">-->
+                                <!--<span>Birthday:</span>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <!--<div class="row" align="center" style="margin-top: 5px">-->
+                            <!--<div class="col-lg">-->
+                                <!--<input name="birthDate" data-provide="datepicker" class="form-control"-->
+                                       <!--style="width: 250px" data-date-format="yyyy-mm-dd">-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <!--<div class="dropdown-divider"></div>-->
+
+                        <!--<div class="row">-->
+                            <!--<div class="col-md-auto" style="font-family: Consolas">-->
+                                <!--<span>About you:</span>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <!--<div class="row">-->
+                            <!--<div class="col-lg">-->
+                                <!--<textarea id="textarea-aboutYou-userOptions" name="aboutYou"-->
+                                          <!--style="border:1px solid;border-color: #ccc;border-radius: 3px;height: 60px;overflow: auto;width: 100%;resize: none"></textarea>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="row" style="margin-top: 3px">-->
+                            <!--<div class="col-lg">-->
+                                <!--<small id="small-aboutYouCharactersLeft-userOptions"-->
+                                       <!--style="float: right;display: inline-block;margin-right: 3px;color: darkgreen;font-size: 13px">-->
+                                    <!--250-->
+                                <!--</small>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <!--<div class="dropdown-divider"></div>-->
+
+                        <!--<div class="row" align="center">-->
+                            <!--<div class="col-lg">-->
+                                <!--<button type="submit" class="btn btn-warning btn-sm">Save Changes</button>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <!--<script>-->
+                            <!--let statusMessageCharactersMAX = 16;-->
+                            <!--let aboutYouCharactersMAX = 250;-->
+                            <!--let statusMessageField = $(`#textarea-statusMessage-userOptions`);-->
+                            <!--let statusMessageCharactersLeft = $(`#small-statusMessageCharactersLeft-userOptions`);-->
+                            <!--let aboutYouField = $(`#textarea-aboutYou-userOptions`);-->
+                            <!--let aboutYouCharactersLeft = $(`#small-aboutYouCharactersLeft-userOptions`);-->
+
+                            <!--magic(statusMessageCharactersMAX,statusMessageField,statusMessageCharactersLeft);-->
+                            <!--magic(aboutYouCharactersMAX,aboutYouField,aboutYouCharactersLeft);-->
+
+                            <!--function magic(maxCharacters,field,leftCharactersField) {-->
+                                <!--field.on(`keypress keydown keyup`, function () {-->
+                                    <!--let text = field.val();-->
+                                    <!--let charLeft = maxCharacters - text.length;-->
+
+                                    <!--leftCharactersField.text(charLeft);-->
+
+                                    <!--if (charLeft < 0) {-->
+                                        <!--field.css(`border-color`,`red`);-->
+                                        <!--leftCharactersField.css(`color`, `red`);-->
+                                    <!--} else {-->
+                                        <!--leftCharactersField.css(`color`, `darkgreen`);-->
+                                        <!--field.css(`border-color`,`#ccc`);-->
+                                    <!--}-->
+
+                                <!--})-->
+
+                            <!--}-->
+
+                        <!--</script>-->
+
+                    <!--</form>-->
+
+                    <!--<div class="container d-flex justify-content-center align-items-center">-->
+                        <!--<div class="col-md-lg">-->
+                            <!--<div class="row">-->
+                                <!--<form class="px-4 py-3" method="post">-->
+                                    <!--<h6 align="center">Enter your new password:</h6>-->
+                                    <!--<div class="dropdown-divider"></div>-->
+                                    <!--<div class="input-group mb-2">-->
+                                        <!--<div class="input-group-prepend">-->
+                                            <!--<div class="input-group-text">🔒</div>-->
+                                        <!--</div>-->
+                                        <!--<input type="password" class="form-control" id="input-password-resetPasswordForm"-->
+                                               <!--autocomplete="off"-->
+                                               <!--data-placement="top"-->
+                                               <!--data-toggle="popover" title="Password Requirements:" data-html="true"-->
+                                               <!--data-trigger="focus"-->
+                                               <!--data-content="-At least one uppercase character</br>-At least one lowercase character</br>-At least 6 characters"-->
+                                               <!--name="password" placeholder="New Password...">-->
+                                        <!--<div class="input-group-append">-->
+                                            <!--<button class="btn btn-outline-success"-->
+                                                    <!--id="button-showPassword-resetPasswordForm"-->
+                                                    <!--type="button">Show-->
+                                            <!--</button>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="form-group">-->
+                                        <!--<div class="input-group mb-2">-->
+                                            <!--<div class="input-group-prepend">-->
+                                                <!--<div class="input-group-text">🔒</div>-->
+                                            <!--</div>-->
+                                            <!--<input type="password" class="form-control" id="input-confirmPassword-resetPasswordForm"-->
+                                                   <!--autocomplete="off"-->
+                                                   <!--name="confirmPassword" placeholder="Confirm New Password...">-->
+                                        <!--</div>-->
+                                        <!--<small id="error-passwordsDoesntMatch-resetPasswordForm">⚡Passwords doesn't match!-->
+                                        <!--</small>-->
+                                    <!--</div>-->
+                                    <!--<div align="center">-->
+                                        <!--<button id="button-proceedResetPassword-resetPasswordForm" type="submit" data-style="zoom-in" class="btn btn-primary btn-ladda">Reset</button>-->
+                                        <!--<div class="dropdown-divider"></div>-->
+                                    <!--</div>-->
+                                <!--</form>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                    <!--<script src="/res/js/auth/reset/resetPasswordFormValidation.js"></script>-->
+                    <!--<script>-->
+                        <!--runResetPasswordFormValidation();-->
+                    <!--</script>-->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(`.control-option`).toArray().forEach(x => {
+        let element = $(x);
+
+        console.log(element);
+
+        element.on('mouseover', function () {
+            element.css(`background-color`, `gray`)
+        });
+
+        element.on('mouseout', function () {
+            element.css(`background-color`, ``)
+        })
+    })
+</script>
+
+
+</body>
+</html>

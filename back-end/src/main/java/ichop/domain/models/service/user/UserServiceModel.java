@@ -24,5 +24,7 @@ public class UserServiceModel extends BaseServiceModel {
     private LocalDateTime lastOnline;
     private String location;
     private Set<UserServiceModel> followings;
+    private UserInformationServiceModel userInformation;
+
 
 }

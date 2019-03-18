@@ -47,7 +47,7 @@ public class HomeController extends BaseController {
     @ResponseBody
     public String testHome(ModelAndView modelAndView, HttpServletRequest httpServletRequest) throws IOException {
 
-        //this.userServices.follow(this.userServices.findUserByUsername("123"),this.userServices.findUserByUsername("1234"));
+        //this.userServices.follow(this.userServices.getUserProfileViewModel("123"),this.userServices.getUserProfileViewModel("1234"));
         this.userServices.unfollow(this.userServices.findUserByUsername("123"),this.userServices.findUserByUsername("1234"));
 
         return "<h1>"+ "brrr" + "</h1>";
