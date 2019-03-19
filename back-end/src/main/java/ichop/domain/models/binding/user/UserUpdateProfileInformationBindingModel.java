@@ -12,7 +12,7 @@ public class UserUpdateProfileInformationBindingModel {
     @Length(max = 16)
     private String statusMessage;
 
-    private String avatarPath;
+    private String avatarBinary;
 
     private String birthDate;
 

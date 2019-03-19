@@ -36,7 +36,6 @@ public class UserInformationServicesImp extends BaseService<UserInformation, Use
         if(this.isUserInformationExistsByUser(user)){
             UserInformationServiceModel userInformationServiceModel = super.modelMapper.map(super.repository.findByUser(super.modelMapper.map(user, User.class)),UserInformationServiceModel.class);
             userInformationServiceModel.setAboutYou(userUpdateProfileInformationBindingModel.getAboutYou());
-            userInformationServiceModel.setAvatarPath(userUpdateProfileInformationBindingModel.getAvatarPath());
             userInformationServiceModel.setBirthDate(LocalDate.parse(userUpdateProfileInformationBindingModel.getBirthDate()));
             userInformationServiceModel.setStatusMessage(userUpdateProfileInformationBindingModel.getStatusMessage());
             return super.save(userInformationServiceModel,UserInformationServiceModel.class);

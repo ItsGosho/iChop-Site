@@ -37,14 +37,82 @@
 
         <div class="row" align="center">
             <div class="col-lg">
-                <img style="width: 50px;height: 50px" th:src="*{avatarPath}">
+                <img id="img-avatar-userOptionsProfile" style="width: 50px;height: 50px" th:src="*{avatarPath}">
             </div>
         </div>
 
         <div class="row" align="center" style="margin-top: 5px">
             <div class="col-lg">
-                <input th:value="*{avatarPath}" name="avatarPath" type="text" class="form-control" style="width: 250px"
-                       placeholder="Avatar url...">
+                <button type="button" class="btn btn-warning btn-sm" id="button-chooseAvatar-userOptionsProfile">Choose</button>
+                <input id="input-chooseAvatar-userOptionsProfile" type="file" style="display: none"><br>
+                <input id="input-avatarData-userOptionsProfile" type="text" name="avatarBinary" style="display: none"><br>
+                <small id="small-errorFileExtensionAvatar-userOptionsProfile" style="display: none">msg</small>
+
+                <script>
+                    $('#button-chooseAvatar-userOptionsProfile').on('click', function() {
+                        $('#input-chooseAvatar-userOptionsProfile').trigger('click');
+                    });
+
+
+                    let extensionError = $(`#small-errorFileExtensionAvatar-userOptionsProfile`);
+                    let buttonSaveChanges = $(`#button-saveChanges-userOptionsProfile`);
+                    let inputChooseAvatar = $(`#input-chooseAvatar-userOptionsProfile`);
+                    let inputAvatarData = $(`#input-avatarData-userOptionsProfile`);
+
+                    inputChooseAvatar.on(`change`,function (event) {
+                        let file = event.target.files[0];
+                        let type = file.type; /*image/png*/
+                        let size = file.size;
+                        let reader = new FileReader();
+
+                        if(type === 'image/png'){
+
+                            if(size > 1048576){
+                                extensionError.text('Image must be less than 1MB');
+                                extensionError.show();
+                                buttonSaveChanges.prop(`type`,`button`);
+                                return;
+                            }
+
+                            getBase64(file).then(data => {
+                                inputAvatarData.val(data);
+                            });
+
+                            reader.readAsDataURL(file);
+
+                            reader.onload = function(e){
+                                let content = e.target.result;
+                                $(`#img-avatar-userOptionsProfile`).attr('src',content);
+
+                            };
+
+                            buttonSaveChanges.prop(`type`,`submit`);
+
+                            extensionError.hide();
+                        }else{
+                            extensionError.text('Image must be in format [PNG]');
+                            extensionError.show();
+                            buttonSaveChanges.prop(`type`,`button`);
+                        }
+
+                    });
+
+                    function getBase64(file) {
+                        return new Promise((resolve, reject) => {
+                            const reader = new FileReader();
+                            reader.readAsDataURL(file);
+                            reader.onload = () => {
+                                let encoded = reader.result.replace(/^data:(.*;base64,)?/, '');
+                                if ((encoded.length % 4) > 0) {
+                                    encoded += '='.repeat(4 - (encoded.length % 4));
+                                }
+                                resolve(encoded);
+                            };
+                            reader.onerror = error => reject(error);
+                        });
+                    }
+                </script>
+
             </div>
         </div>
 
@@ -90,7 +158,7 @@
 
         <div class="row" align="center">
             <div class="col-lg">
-                <button type="submit" class="btn btn-warning btn-sm">Save Changes</button>
+                <button id="button-saveChanges-userOptionsProfile" type="submit" class="btn btn-warning btn-sm">Save Changes</button>
             </div>
         </div>
 
@@ -103,6 +171,7 @@
                 let statusMessageCharactersLeft = $(`#small-statusMessageCharactersLeft-userOptions`);
                 let aboutYouField = $(`#textarea-aboutYou-userOptions`);
                 let aboutYouCharactersLeft = $(`#small-aboutYouCharactersLeft-userOptions`);
+                let buttonSaveChanges = $(`#button-saveChanges-userOptionsProfile`);
 
                 magic(statusMessageCharactersMAX, statusMessageField, statusMessageCharactersLeft);
                 magic(aboutYouCharactersMAX, aboutYouField, aboutYouCharactersLeft);
@@ -122,9 +191,11 @@
                         if (charLeft < 0) {
                             field.css(`border-color`, `red`);
                             leftCharactersField.css(`color`, `red`);
+                            buttonSaveChanges.prop(`type`,`button`);
                         } else {
                             leftCharactersField.css(`color`, `darkgreen`);
                             field.css(`border-color`, `#ccc`);
+                            buttonSaveChanges.prop(`type`,`submit`);
                         }
                     }
 
