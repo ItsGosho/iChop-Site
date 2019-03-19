@@ -1,5 +1,6 @@
 package itsgosho.services.dropbox;
 
+import com.dropbox.core.DbxException;
 import com.dropbox.core.v2.DbxClientV2;
 import com.dropbox.core.v2.files.*;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -25,15 +25,20 @@ public class UserServicesImp implements UserServices {
     @Override
     public void updateAvatar(String username, BufferedImage image) {
         InputStream inputStream = this.convertBufferedImageToInputStream(image);
-        
+
+        String filePath = String.format("/%s/avatar-%s.png",username,username);
+
+        this.dropboxServices.deleteFile(filePath);
+        this.dropboxServices.createFolder("itsgosho");
+        this.dropboxServices.uploadFile(filePath,inputStream);
     }
 
     private InputStream convertBufferedImageToInputStream(BufferedImage image){
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         try {
             ImageIO.write(image, "png", byteArrayOutputStream);
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+
         }
         return new ByteArrayInputStream(byteArrayOutputStream.toByteArray());
     }

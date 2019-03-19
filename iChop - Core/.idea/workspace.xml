@@ -93,6 +93,7 @@
     <session id="-1831837478">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.opened" value="1" />
         </counts>
@@ -126,8 +127,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/ichop/CLR.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="27" column="77" selection-start-line="27" selection-start-column="77" selection-end-line="27" selection-end-column="77" />
+            <state relative-caret-position="256">
+              <caret line="25" column="3921863" selection-start-line="25" selection-end-line="26" />
             </state>
           </provider>
         </entry>
@@ -610,7 +611,7 @@
       <workItem from="1552902316500" duration="24985000" />
       <workItem from="1552999733525" duration="1449000" />
       <workItem from="1553008340747" duration="7864000" />
-      <workItem from="1553018807178" duration="2386000" />
+      <workItem from="1553018807178" duration="2531000" />
     </task>
     <servers />
   </component>
@@ -647,7 +648,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="374097000" />
+    <option name="totallyTimeSpent" value="374242000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -664,7 +665,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32583067" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32583067" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49946696" visible="true" weight="0.4630225" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49946696" weight="0.4630225" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -1042,8 +1043,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ichop/CLR.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="27" column="77" selection-start-line="27" selection-start-column="77" selection-end-line="27" selection-end-column="77" />
+        <state relative-caret-position="256">
+          <caret line="25" column="3921863" selection-start-line="25" selection-end-line="26" />
         </state>
       </provider>
     </entry>
