@@ -1,4 +1,4 @@
-package itsgosho.services;
+package itsgosho.services.dropbox;
 
 import com.dropbox.core.DbxException;
 import com.dropbox.core.v2.files.CreateFolderResult;

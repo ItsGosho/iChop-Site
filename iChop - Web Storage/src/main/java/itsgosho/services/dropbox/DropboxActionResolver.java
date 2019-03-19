@@ -1,4 +1,4 @@
-package itsgosho.services;
+package itsgosho.services.dropbox;
 
 @FunctionalInterface
 interface DropboxActionResolver<T> {
