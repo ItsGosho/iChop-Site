@@ -1,5 +1,6 @@
 package ichop.web.controllers.user;
 
+import ichop.components.jms.JmsServices;
 import ichop.constants.URLConstants;
 import ichop.domain.models.binding.user.UserUpdateProfileInformationBindingModel;
 import ichop.domain.models.service.user.UserServiceModel;
@@ -25,12 +26,14 @@ public class UserProfileOptionsController extends BaseController {
     private final UserServices userServices;
     private final UserInformationServices userInformationServices;
     private final UserViewServices userViewServices;
+    private final JmsServices jmsServices;
 
     @Autowired
-    public UserProfileOptionsController(UserServices userServices, UserInformationServices userInformationServices, UserViewServices userViewServices) {
+    public UserProfileOptionsController(UserServices userServices, UserInformationServices userInformationServices, UserViewServices userViewServices, JmsServices jmsServices) {
         this.userServices = userServices;
         this.userInformationServices = userInformationServices;
         this.userViewServices = userViewServices;
+        this.jmsServices = jmsServices;
     }
 
     @PreAuthorize("isAuthenticated()")
@@ -54,6 +57,7 @@ public class UserProfileOptionsController extends BaseController {
 
         UserServiceModel userServiceModel = this.userServices.findUserByUsername(principal.getName());
         this.userInformationServices.update(userUpdateProfileInformationBindingModel,userServiceModel);
+        this.jmsServices.sendUpdateAvatarRequest(userServiceModel.getUsername(),userUpdateProfileInformationBindingModel.getAvatarBinary());
 
         return super.redirect(URLConstants.USER_PROFILE_OPTIONS_INFORMATION_GET);
     }

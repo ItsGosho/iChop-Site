@@ -9,6 +9,7 @@ import java.time.LocalDate;
 @Setter
 public class UserProfileOptionsInformationViewModel {
 
+    private String username;
     private String statusMessage;
     private String avatarPath;
     private LocalDate birthDate;

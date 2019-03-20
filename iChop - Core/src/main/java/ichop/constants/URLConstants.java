@@ -3,6 +3,10 @@ package ichop.constants;
 
 public final class URLConstants {
 
+    //GLOBAL
+    public static final String DATA_USER_AVATAR = "/data/user/{username}/avatar";
+
+
     //HomeController ------------------------------------------------------------------------------------------
 
     public static final String HOME_GET = "/"; /*EVERYONE*/

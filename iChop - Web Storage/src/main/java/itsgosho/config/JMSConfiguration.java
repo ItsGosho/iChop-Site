@@ -10,7 +10,7 @@ import org.springframework.jms.core.JmsTemplate;
 public class JMSConfiguration {
 
     @Value("${jms.brokerUrl}")
-    private String brokerUrl = "tcp://localhost:61616";
+    private String brokerUrl;
 
 
     @Bean

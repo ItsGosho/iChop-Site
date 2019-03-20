@@ -3,6 +3,10 @@ package itsgosho.services.user;
 import itsgosho.services.dropbox.DropboxServices;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import javax.imageio.ImageIO;
@@ -14,6 +18,7 @@ import java.io.InputStream;
 import java.util.Base64;
 
 @Service
+@CacheConfig(cacheNames = "users")
 public class UserServicesImp implements UserServices {
 
     public static final String USER_AVATAR_FILE_PATH_PATTERN = "/%s/avatar-%s.png";
@@ -26,7 +31,9 @@ public class UserServicesImp implements UserServices {
 
 
     @Override
+    @CacheEvict(allEntries = true)
     public void updateAvatar(String username, BufferedImage image) {
+
         InputStream inputStream = this.convertBufferedImageToInputStream(image);
 
         if(this.getSizeInMB(inputStream) > 1.00){
@@ -44,7 +51,7 @@ public class UserServicesImp implements UserServices {
         this.dropboxServices.uploadFile(filePath,inputStream);
     }
 
-    @Override
+    @Cacheable
     public byte[] getAvatarAsBase64Array(String username) {
 
         InputStream inputStream = this.dropboxServices.downloadFile(String.format(USER_AVATAR_FILE_PATH_PATTERN,username,username));
