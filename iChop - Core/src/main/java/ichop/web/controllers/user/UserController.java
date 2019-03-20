@@ -79,8 +79,8 @@ public class UserController extends BaseController {
                                  @RequestParam(value = "isUsernameLike",required = false) String isUsernameLike,
                                  @RequestParam(value = "hasRole",required = false) String hasRole) {
 
-        Page<UsersAllViewModel> users;
 
+        Page<UsersAllViewModel> users;
         if(isUsernameLike != null) {
             users = this.userViewServices.findUsersByUsernameContains(isUsernameLike, pageable);
 

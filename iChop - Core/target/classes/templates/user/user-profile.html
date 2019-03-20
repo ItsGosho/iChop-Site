@@ -13,7 +13,7 @@
             <div class="col-md-sm user-info">
 
                 <div align="center">
-                    <img src="nav/avatar-user.png" style="width: 70px;height: 70px"/>
+                    <img th:src="@{http://localhost:8001/data/user/{username}/avatar(username=*{username})}" style="width: 70px;height: 70px"/>
                 </div>
 
 

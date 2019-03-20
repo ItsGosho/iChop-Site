@@ -6,5 +6,6 @@ import java.io.InputStream;
 public interface UserServices {
 
     void updateAvatar(String username, BufferedImage image);
+    byte[] getAvatarAsBase64Array(String username);
 
 }
