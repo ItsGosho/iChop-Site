@@ -19,9 +19,6 @@ public class UserInformation extends BaseEntity {
     @Column(name = "status_message")
     private String statusMessage;
 
-    @Column(name = "avatar_path")
-    private String avatarPath;
-
     @Column(name = "birth_date")
     private LocalDate birthDate;
 

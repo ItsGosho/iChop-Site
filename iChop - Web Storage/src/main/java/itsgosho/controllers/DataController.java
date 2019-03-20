@@ -22,7 +22,6 @@ public class DataController {
     @ResponseBody
     public byte[] getAvatar(@PathVariable String username) {
         byte[] result = this.userServices.getAvatarAsBase64Array(username);
-
         return result;
     }
 }
