@@ -4,16 +4,20 @@ import com.ichop.webstorage.services.user.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.jms.core.JmsTemplate;
+import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Component;
 
 import javax.imageio.ImageIO;
 import javax.jms.JMSException;
+import javax.jms.Message;
 import javax.jms.ObjectMessage;
+import javax.jms.Session;
 import javax.xml.bind.DatatypeConverter;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Map;
 
 @Component
 public class JMSListeners {
@@ -29,11 +33,9 @@ public class JMSListeners {
 
 
     @JmsListener(destination = "set_user_avatar")
-    public void setUserAvatar(ObjectMessage objectMessage) throws IOException {
-        HashMap<String, Object> messages = this.objectMessageToMessages(objectMessage);
-
-        String username = (String) messages.get("username");
-        String avatarBinary = (String) messages.get("avatar");
+    public void setUserAvatar(Message message) throws IOException, JMSException {
+        String username = (String) message.getObjectProperty("username");
+        String avatarBinary = (String) message.getObjectProperty("avatar");
 
         byte[] imageBytes = DatatypeConverter.parseBase64Binary(avatarBinary);
 
@@ -43,17 +45,40 @@ public class JMSListeners {
 
     }
 
-    @SuppressWarnings("unchecked")
-    private HashMap<String, Object> objectMessageToMessages(ObjectMessage objectMessage) {
-        Object object = null;
+//    @JmsListener(destination = "test")
+//    public Message test(Message message) throws IOException {
+//        try {
+//            System.out.println(message.getObjectProperty("test"));
+//            System.out.println(message.getObjectProperty("test2"));
+//        } catch (JMSException e) {
+//            e.printStackTrace();
+//        }
+//        HashMap<String,Object> result = new HashMap<>();
+//        result.put("123","asd");
+//        result.put("1234",123);
+//        return this.convertValuesIntoMessage(result);
+//    }
+
+    private Message convertValuesIntoMessage(HashMap<String,Object> values){
         try {
-            object = objectMessage.getObject();
+
+            Session session = this.jmsTemplate.getConnectionFactory().createConnection().createSession(false,
+                    Session.AUTO_ACKNOWLEDGE);
+
+            Message message = session.createMessage();
+
+            for (Map.Entry<String, Object> item : values.entrySet()) {
+                message.setObjectProperty(item.getKey(),item.getValue());
+            }
+
+            return message;
+
         } catch (JMSException e) {
             e.printStackTrace();
         }
-
-        return (HashMap<String, Object>) object;
+        return null;
     }
+
 
 
 }
