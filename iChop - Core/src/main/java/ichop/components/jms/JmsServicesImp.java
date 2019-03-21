@@ -29,7 +29,11 @@ public class JmsServicesImp implements JmsServices {
 
         ObjectMessage objectMessage = this.fillObjectMessage(values);
 
-        this.jmsTemplate.convertAndSend(UPDATE_AVATAR_DESTINATION,objectMessage);
+        try {
+            this.jmsTemplate.convertAndSend(UPDATE_AVATAR_DESTINATION, objectMessage);
+        }catch (Exception ex){
+            System.out.println("Cannot send the request via the jms ,maybe the server is down?");
+        }
 
     }
 

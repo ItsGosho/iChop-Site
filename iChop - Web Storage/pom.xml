@@ -6,7 +6,7 @@
     <groupId>itsgosho</groupId>
     <artifactId>itsgosho</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <name>iChop-User File Storage</name>
     <description>The iChop`s Dropbox file storage</description>

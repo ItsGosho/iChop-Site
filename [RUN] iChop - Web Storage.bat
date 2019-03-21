@@ -1,0 +1,1 @@
+java -jar "iChop - Web Storage"/target/itsgosho-0.0.1-SNAPSHOT.jar
