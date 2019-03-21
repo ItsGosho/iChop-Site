@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="itsgosho" />
+        <module name="webstorage" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="itsgosho" target="11" />
+      <module name="webstorage" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
