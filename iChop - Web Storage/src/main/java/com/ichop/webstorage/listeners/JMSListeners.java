@@ -32,7 +32,7 @@ public class JMSListeners {
     }
 
 
-    @JmsListener(destination = "set_user_avatar")
+    @JmsListener(destination = "ichop_web_storage-set_user_avatar")
     public void setUserAvatar(Message message) throws IOException, JMSException {
         String username = (String) message.getObjectProperty("username");
         String avatarBinary = (String) message.getObjectProperty("avatar");

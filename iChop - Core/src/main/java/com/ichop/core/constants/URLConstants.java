@@ -6,6 +6,10 @@ public final class URLConstants {
     //GLOBAL
     public static final String DATA_USER_AVATAR = "/data/user/{username}/avatar";
 
+    //PlayerController ---------------------------------------------------------------------------------------
+    public static final String PLAYER_LINK_ACCOUNT_GET = "/player/link-account"; /*USER++*/
+    public static final String PLAYER_IS_PLAYER_LINKED_ACCOUNT_GET = "/player/isAccountLinked"; /*EVERYONE*/
+
 
     //HomeController ------------------------------------------------------------------------------------------
 
