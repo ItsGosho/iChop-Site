@@ -7,6 +7,7 @@ import com.ichop.core.domain.models.service.user.UserServiceModel;
 import com.ichop.core.domain.models.view.home.ThreadHomepageViewModel;
 import com.ichop.core.domain.models.view.thread_read.ThreadReadViewModel;
 import com.ichop.core.service.comment.CommentServices;
+import com.ichop.core.service.player.PlayerServices;
 import com.ichop.core.service.thread.ThreadServices;
 import com.ichop.core.service.user.UserServices;
 import org.modelmapper.ModelMapper;
@@ -24,13 +25,15 @@ public class ThreadViewServicesImp implements ThreadViewServices {
     private final UserServices userServices;
     private final CommentServices commentServices;
     private final ModelMapper modelMapper;
+    private final PlayerServices playerServices;
 
     @Autowired
-    public ThreadViewServicesImp(ThreadServices threadServices, UserServices userServices, CommentServices commentServices, ModelMapper modelMapper) {
+    public ThreadViewServicesImp(ThreadServices threadServices, UserServices userServices, CommentServices commentServices, ModelMapper modelMapper, PlayerServices playerServices) {
         this.threadServices = threadServices;
         this.userServices = userServices;
         this.commentServices = commentServices;
         this.modelMapper = modelMapper;
+        this.playerServices = playerServices;
     }
 
     @Override
@@ -58,8 +61,9 @@ public class ThreadViewServicesImp implements ThreadViewServices {
         threadReadViewModel.setTotalComments(threadServiceModel.getComments().size());
         threadReadViewModel.setTotalReactions(threadServiceModel.getReactions().size());
         threadReadViewModel.setCreatorTotalComments(this.commentServices.getTotalCommentsOfUser(this.modelMapper.map(threadServiceModel.getCreator(), UserServiceModel.class)));
+        threadReadViewModel.setMinecraftAccountName((String) this.playerServices.getPlayerDataBySiteUser(threadReadViewModel.getCreatorUsername()).get("name"));
 
-        threadReadViewModel.getComments().forEach(x->{
+        threadReadViewModel.getComments().forEach(x -> {
 
             UserServiceModel commentCreator = this.userServices.findUserByUsername(x.getCreatorUsername());
             CommentServiceModel actualComment = threadServiceModel.getComments().stream()
@@ -68,14 +72,15 @@ public class ThreadViewServicesImp implements ThreadViewServices {
             x.setCreatorTotalComments(this.commentServices.getTotalCommentsOfUser(commentCreator));
             x.setTotalLikes((int) actualComment.getReactions().
                     stream().
-                    filter(react->react.getReactionType().equals(ReactionType.LIKE)).count());
+                    filter(react -> react.getReactionType().equals(ReactionType.LIKE)).count());
             x.setTotalDislikes((int) actualComment.getReactions().
                     stream().
-                    filter(react->react.getReactionType().equals(ReactionType.DISLIKE)).count());
+                    filter(react -> react.getReactionType().equals(ReactionType.DISLIKE)).count());
+            x.setMinecraftAccountName((String) this.playerServices.getPlayerDataBySiteUser(threadReadViewModel.getCreatorUsername()).get("name"));
         });
 
         threadReadViewModel.setComments(threadReadViewModel.getComments().stream()
-        .sorted((x1,x2)->x2.getCreatedOn().compareTo(x1.getCreatedOn())).collect(Collectors.toList()));
+                .sorted((x1, x2) -> x2.getCreatedOn().compareTo(x1.getCreatedOn())).collect(Collectors.toList()));
 
         return threadReadViewModel;
     }

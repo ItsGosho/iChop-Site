@@ -12,6 +12,7 @@ import java.util.List;
 public class UserProfileViewModel {
 
     private String username;
+    private String minecraftAccountName;
     private String role;
     private String location;
     private LocalDateTime lastOnline;

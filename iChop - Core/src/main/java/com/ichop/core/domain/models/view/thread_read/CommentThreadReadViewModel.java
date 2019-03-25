@@ -12,6 +12,7 @@ public class CommentThreadReadViewModel {
     private String id;
     private String content;
     private String creatorUsername;
+    private String minecraftAccountName;
     private Integer creatorTotalComments;
     private LocalDateTime createdOn;
     private Integer totalLikes;

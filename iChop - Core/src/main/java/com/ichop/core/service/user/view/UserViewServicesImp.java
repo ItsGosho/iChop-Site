@@ -15,6 +15,7 @@ import com.ichop.core.domain.models.view.user_profile.UserProfileViewModel;
 import com.ichop.core.exceptions.user.UserNotFoundException;
 import com.ichop.core.service.comment.CommentServices;
 import com.ichop.core.service.log.UserLogServices;
+import com.ichop.core.service.player.PlayerServices;
 import com.ichop.core.service.post.PostServices;
 import com.ichop.core.service.reaction.CommentReactionServices;
 import com.ichop.core.service.reaction.ThreadReactionServices;
@@ -40,10 +41,11 @@ public class UserViewServicesImp implements UserViewServices {
     private final CommentReactionServices commentReactionServices;
     private final UserLogServices userLogServices;
     private final PostServices postServices;
+    private final PlayerServices playerServices;
     private final ModelMapper modelMapper;
 
     @Autowired
-    public UserViewServicesImp(UserServices userServices, UserRoleServices userRoleServices, CommentServices commentServices, ThreadReactionServices threadReactionServices, CommentReactionServices commentReactionServices, UserLogServices userLogServices, PostServices postServices, ModelMapper modelMapper) {
+    public UserViewServicesImp(UserServices userServices, UserRoleServices userRoleServices, CommentServices commentServices, ThreadReactionServices threadReactionServices, CommentReactionServices commentReactionServices, UserLogServices userLogServices, PostServices postServices, PlayerServices playerServices, ModelMapper modelMapper) {
         this.userServices = userServices;
         this.userRoleServices = userRoleServices;
         this.commentServices = commentServices;
@@ -51,6 +53,7 @@ public class UserViewServicesImp implements UserViewServices {
         this.commentReactionServices = commentReactionServices;
         this.userLogServices = userLogServices;
         this.postServices = postServices;
+        this.playerServices = playerServices;
         this.modelMapper = modelMapper;
     }
 
@@ -66,6 +69,7 @@ public class UserViewServicesImp implements UserViewServices {
         UserProfileViewModel result = this.modelMapper.map(user, UserProfileViewModel.class);
         result.setRole(this.userRoleServices.findHighestRoleOfUser(user).getAuthority());
         result.setTotalMessages(this.commentServices.getTotalCommentsOfUser(user));
+        result.setMinecraftAccountName((String) this.playerServices.getPlayerDataBySiteUser(username).get("name"));
 
         int totalLikes = this.threadReactionServices.findTotalThreadReactionsByUserAndType(user, ReactionType.LIKE) + this.commentReactionServices.findTotalCommentReactionsByUserAndType(user,ReactionType.LIKE);
         int totalDislikes = this.threadReactionServices.findTotalThreadReactionsByUserAndType(user, ReactionType.DISLIKE) + this.commentReactionServices.findTotalCommentReactionsByUserAndType(user,ReactionType.DISLIKE);

@@ -27,37 +27,38 @@
     <session id="-277058105">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
-          <entry key="project.open.time.2" value="2" />
+          <entry key="project.closed" value="7" />
+          <entry key="project.open.time.0" value="2" />
+          <entry key="project.open.time.2" value="3" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="4" />
+          <entry key="project.opened" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="2" />
-          <entry key="java" value="31" />
+          <entry key="java" value="33" />
           <entry key="xml" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="2" />
-          <entry key="JAVA" value="31" />
+          <entry key="JAVA" value="33" />
           <entry key="XML" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="961" />
+          <entry key="java" value="1120" />
           <entry key="txt" value="3" />
           <entry key="xml" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="961" />
+          <entry key="JAVA" value="1120" />
           <entry key="PLAIN_TEXT" value="3" />
           <entry key="XML" value="4" />
         </counts>
@@ -69,12 +70,36 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/minecraft/linkaccount/listeners/JMSListeners.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="258">
-              <caret line="77" selection-start-line="77" selection-end-line="77" />
+            <state relative-caret-position="578">
+              <caret line="112" selection-start-line="112" selection-end-line="112" />
               <folding>
+                <element signature="method#JMSListeners#0;class#JMSListeners#0" />
+                <element signature="method#linkPlayerAccount#0;class#JMSListeners#0" />
+                <element signature="method#isPlayerKeyValid#0;class#JMSListeners#0" />
+                <element signature="method#isPlayerLinkedAccountBySiteUser#0;class#JMSListeners#0" />
+                <element signature="method#isPlayerLinkedAccountByUUID#0;class#JMSListeners#0" />
+                <element signature="method#getPlayerDataByKey#0;class#JMSListeners#0" />
                 <element signature="method#messageToHashMap#0;class#JMSListeners#0" />
                 <element signature="method#convertValuesIntoMessage#0;class#JMSListeners#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/minecraft/linkaccount/services/PlayerLinkServices.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="144">
+              <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/minecraft/linkaccount/services/PlayerLinkServicesImp.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="688">
+              <caret line="49" column="74" selection-start-line="49" selection-start-column="74" selection-end-line="49" selection-end-column="74" />
             </state>
           </provider>
         </entry>
@@ -149,8 +174,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/ichop/minecraft/linkaccount/domain/models/service/PlayerLinkServiceModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ichop/minecraft/linkaccount/services/KeyServicesImp.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/minecraft/linkaccount/services/PlayerLinkServices.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ichop/minecraft/linkaccount/repository/PlayerLinkRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ichop/minecraft/linkaccount/services/PlayerLinkServices.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ichop/minecraft/linkaccount/services/PlayerLinkServicesImp.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ichop/minecraft/linkaccount/listeners/JMSListeners.java" />
       </list>
@@ -196,6 +221,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -296,7 +322,6 @@
       </pane>
       <pane id="AndroidView" />
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -369,17 +394,19 @@
       <workItem from="1553455528791" duration="787000" />
       <workItem from="1553458633431" duration="436000" />
       <workItem from="1553505386331" duration="4856000" />
+      <workItem from="1553525731351" duration="798000" />
+      <workItem from="1553536190616" duration="40000" />
+      <workItem from="1553536299143" duration="130000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32412000" />
+    <option name="totallyTimeSpent" value="33380000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27985075" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28944564" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -650,13 +677,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/minecraft/linkaccount/domain/models/binding/KeyCreateBindingModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/minecraft/linkaccount/domain/models/binding/KeyCreateBindingModel.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-messaging/5.1.2.RELEASE/spring-messaging-5.1.2.RELEASE.jar!/org/springframework/messaging/handler/invocation/InvocableHandlerMethod.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
@@ -723,28 +744,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/minecraft/linkaccount/services/PlayerLinkServicesImp.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/minecraft/linkaccount/listeners/JMSListeners.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="754">
-          <caret line="62" column="24" selection-start-line="62" selection-start-column="24" selection-end-line="62" selection-end-column="24" />
+        <state relative-caret-position="578">
+          <caret line="112" selection-start-line="112" selection-end-line="112" />
+          <folding>
+            <element signature="method#JMSListeners#0;class#JMSListeners#0" />
+            <element signature="method#linkPlayerAccount#0;class#JMSListeners#0" />
+            <element signature="method#isPlayerKeyValid#0;class#JMSListeners#0" />
+            <element signature="method#isPlayerLinkedAccountBySiteUser#0;class#JMSListeners#0" />
+            <element signature="method#isPlayerLinkedAccountByUUID#0;class#JMSListeners#0" />
+            <element signature="method#getPlayerDataByKey#0;class#JMSListeners#0" />
+            <element signature="method#messageToHashMap#0;class#JMSListeners#0" />
+            <element signature="method#convertValuesIntoMessage#0;class#JMSListeners#0" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/minecraft/linkaccount/services/PlayerLinkServices.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="11" column="61" selection-start-line="11" selection-start-column="61" selection-end-line="11" selection-end-column="61" />
+        <state relative-caret-position="144">
+          <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/minecraft/linkaccount/listeners/JMSListeners.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/minecraft/linkaccount/services/PlayerLinkServicesImp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="77" selection-start-line="77" selection-end-line="77" />
-          <folding>
-            <element signature="method#messageToHashMap#0;class#JMSListeners#0" />
-            <element signature="method#convertValuesIntoMessage#0;class#JMSListeners#0" />
-          </folding>
+        <state relative-caret-position="688">
+          <caret line="49" column="74" selection-start-line="49" selection-start-column="74" selection-end-line="49" selection-end-column="74" />
         </state>
       </provider>
     </entry>

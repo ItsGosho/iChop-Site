@@ -64,9 +64,9 @@
 
                 <div class="card minecraft-user-link" style="margin-top: 10px">
                     <div>
-                        <img src="avatar-test.png"
+                        <img th:src="@{https://minotar.net/avatar/{minecraftAccountName}(minecraftAccountName=*{minecraftAccountName})}"
                              style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px"/>
-                        <a href="">ItsGosho</a>
+                        <a href="" th:text="*{minecraftAccountName}"></a>
                     </div>
                 </div>
 
@@ -111,12 +111,12 @@
                     <div>
 
                         <div class="row d-flex justify-content-center align-items-center" style="width: 100%;margin-left: 0px">
-                        <th:block th:each="following : *{followings}" th:object="${following}">
-                            <th:block th:if="${followingStat.index < 4}">
-                                <a th:href="@{/user/{username}/profile(username=*{username})}"><img src="nav/avatar-user.png" th:title="*{username}"
-                                                                                                    style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px"/></a>
+                            <th:block th:each="following : *{followings}" th:object="${following}">
+                                <th:block th:if="${followingStat.index < 4}">
+                                    <a th:href="@{/user/{username}/profile(username=*{username})}"><img th:src="@{http://localhost:8001/data/user/{username}/avatar(username=*{username})}" th:title="*{username}"
+                                                                                                        style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px"/></a>
+                                </th:block>
                             </th:block>
-                        </th:block>
                         </div>
 
                     </div>
@@ -186,18 +186,18 @@
                     </div>
                 </div>
                 <th:block sec:authorize="isAuthenticated()">
-                <div class="row">
-                    <div class="col-md-12 head">
+                    <div class="row">
+                        <div class="col-md-12 head">
                             <a th:href="@{/user/{username}/follow(username=*{username})}" id="a-follow_user-userProfile" style="font-size: 13px;float: right;display: none">Follow</a>
                             <a th:href="@{/user/{username}/unfollow(username=*{username})}" id="a-unfollow_user-userProfile" style="font-size: 13px;float: right;display: none">Unfollow</a>
 
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 head">
-                        <small id="a-is_he_followed_you-userProfile" style="font-size: 11px;float: right;display: inline-block"></small>
+                    <div class="row">
+                        <div class="col-md-12 head">
+                            <small id="a-is_he_followed_you-userProfile" style="font-size: 11px;float: right;display: inline-block"></small>
+                        </div>
                     </div>
-                </div>
 
                     <script th:inline="javascript">
                         let currentLoggedInUserUsername = /*[[${#authentication.getName()}]]*/ null;

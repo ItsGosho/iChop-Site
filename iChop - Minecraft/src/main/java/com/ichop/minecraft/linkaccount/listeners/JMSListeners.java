@@ -1,8 +1,10 @@
 package com.ichop.minecraft.linkaccount.listeners;
 
 import com.google.common.collect.Lists;
+import com.ichop.minecraft.linkaccount.domain.entities.PlayerLink;
 import com.ichop.minecraft.linkaccount.domain.models.binding.PlayerLinkCreateBindingModel;
 import com.ichop.minecraft.linkaccount.domain.models.service.KeyServiceModel;
+import com.ichop.minecraft.linkaccount.domain.models.service.PlayerLinkServiceModel;
 import com.ichop.minecraft.linkaccount.services.KeyServices;
 import com.ichop.minecraft.linkaccount.services.PlayerLinkServices;
 import org.aspectj.weaver.Iterators;
@@ -98,6 +100,19 @@ public class JMSListeners {
         resultValues.put("isSuccessful",true);
         resultValues.put("uuid",keyServiceModel.getPlayerUUID());
         resultValues.put("name",keyServiceModel.getPlayerName());
+        return this.convertValuesIntoMessage(resultValues);
+    }
+
+    @JmsListener(destination = "ichop_minecraft-get_player_data_by_site_user")
+    public Message getPlayerDataBySiteUser(Message message) throws JMSException {
+        HashMap<String,Object> resultValues = new HashMap<>();
+        Map<String,Object> recievedValues = this.messageToHashMap(message);
+        String siteUserUsername = (String) recievedValues.get("siteUserUsername");
+
+        PlayerLinkServiceModel playerLinkServiceModel = this.playerLinkServices.getBySiteUser(siteUserUsername);
+
+        resultValues.put("uuid",playerLinkServiceModel.getPlayerUUID());
+        resultValues.put("name",playerLinkServiceModel.getPlayerName());
         return this.convertValuesIntoMessage(resultValues);
     }
 

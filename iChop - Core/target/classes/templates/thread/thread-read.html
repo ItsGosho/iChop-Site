@@ -22,7 +22,7 @@
                                 </div>
                                 <div align="center">
                                     <img class="card-img-top thread-creator-avatar"
-                                         src="/res/img/navbar-icon.png" alt="Card image cap">
+                                         th:src="@{http://localhost:8001/data/user/{username}/avatar(username=*{creatorUsername})}" alt="Card image cap">
                                 </div>
                                 <div align="center">
                                     <small>
@@ -37,8 +37,9 @@
                                     <div class="row">
 
                                         <small>
-                                            <a href=""><img class="card-img-top thread-creator-minecraft_username"
-                                                            src="/res/img/navbar-icon.png" alt="Card image cap"><span>Minecraft Username</span></a>
+                                            <a href=""><img th:src="@{https://minotar.net/avatar/{minecraftAccountName}(minecraftAccountName=*{minecraftAccountName})}"
+                                                    class="card-img-top thread-creator-minecraft_username"
+                                                             alt="Card image cap"><span style="font-size: 15px;font-family: Consolas" th:text="*{minecraftAccountName}"></span></a>
                                         </small>
                                     </div>
                                 </div>
@@ -279,7 +280,7 @@
                             <div class="col-md-3 thread-comment-creator_info_section">
                                 <div>
                                     <img class="card-img-top thread-comment-creator_avatar"
-                                         src="/res/img/avatar-user.png" alt="Card image cap">
+                                         th:src="@{http://localhost:8001/data/user/{username}/avatar(username=*{creatorUsername})}" alt="Card image cap">
                                 </div>
                                 <div>
                                     <small>👤<a href="" th:text="*{creatorUsername}"></a></small>
@@ -294,9 +295,9 @@
 
                                 <div>
                                     <small>
-                                        <a href=""><img
+                                        <a href=""><img th:src="@{https://minotar.net/avatar/{minecraftAccountName}(minecraftAccountName=*{minecraftAccountName})}"
                                                         class="card-img-top thread-comment-creator-minecraft_username"
-                                                        src="/res/img/avatar-test.png" alt="Card image cap"><span>Minecraft Username</span></a>
+                                                        alt="Card image cap"><span th:text="*{minecraftAccountName}"></span></a>
                                     </small>
                                 </div>
                             </div>

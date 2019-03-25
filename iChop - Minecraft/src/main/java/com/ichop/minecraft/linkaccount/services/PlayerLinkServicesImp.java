@@ -47,6 +47,11 @@ public class PlayerLinkServicesImp extends BaseService<PlayerLink, PlayerLinkRep
     }
 
     @Override
+    public PlayerLinkServiceModel getBySiteUser(String siteUserUsername) {
+        return this.modelMapper.map(super.repository.getBySiteUserUsername(siteUserUsername),PlayerLinkServiceModel.class);
+    }
+
+    @Override
     public boolean isAccountLinkedByUUID(String uuid) {
 
         if (super.repository.getByPlayerUUID(uuid) != null) {
