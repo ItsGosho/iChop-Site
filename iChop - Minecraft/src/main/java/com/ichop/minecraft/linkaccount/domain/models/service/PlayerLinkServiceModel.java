@@ -8,6 +8,7 @@ import lombok.Setter;
 public class PlayerLinkServiceModel extends BaseServiceModel {
 
     private String playerUUID;
+    private String playerName;
     private String siteUserUsername;
 
 }

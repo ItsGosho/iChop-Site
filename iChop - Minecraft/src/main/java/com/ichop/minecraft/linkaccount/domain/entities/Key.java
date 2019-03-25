@@ -25,6 +25,9 @@ public class Key {
     @Column(name = "player_uuid")
     private String playerUUID;
 
+    @Column(name = "player_name")
+    private String playerName;
+
     @Column(name = "expirity_date")
     private LocalDateTime expirityDate;
 

@@ -11,9 +11,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class PlayerLinkServicesImp extends BaseService<PlayerLink, PlayerLinkRepository> implements PlayerLinkServices {
 
+    private final KeyServices keyServices;
+
     @Autowired
-    public PlayerLinkServicesImp(ModelMapper modelMapper, PlayerLinkRepository repository) {
+    public PlayerLinkServicesImp(ModelMapper modelMapper, PlayerLinkRepository repository, KeyServices keyServices) {
         super(modelMapper, repository);
+        this.keyServices = keyServices;
     }
 
     @Override
@@ -26,6 +29,7 @@ public class PlayerLinkServicesImp extends BaseService<PlayerLink, PlayerLinkRep
         }
 
         super.save(playerLink, PlayerLinkServiceModel.class);
+        this.keyServices.deleteByUUID(playerLink.getPlayerUUID());
 
         return true;
     }

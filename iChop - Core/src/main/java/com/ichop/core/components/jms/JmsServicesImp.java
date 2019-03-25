@@ -17,8 +17,9 @@ import java.util.Map;
 public class JmsServicesImp implements JmsServices {
 
     public static final String UPDATE_AVATAR_DESTINATION = "ichop_web_storage-set_user_avatar";
-    public static final String IS_PLAYER_LINK_KEY_VALID = "ichop_minecraft-is_player_link_key_valid";
-    public static final String GET_PLAYER_UUID_BY_LINK_KEY = "ichop_minecraft-get_player_uuid_by_key";
+    public static final String IS_PLAYER_LINK_KEY_VALID_DESTINATION = "ichop_minecraft-is_player_link_key_valid";
+    public static final String GET_PLAYER_UUID_BY_LINK_KEY_DESTINATION = "ichop_minecraft-get_player_data_by_key";
+    public static final String LINK_PLAYER_ACCOUNT_DESTINATION = "ichop_minecraft-link_player_account";
 
     private final JmsTemplate jmsTemplate;
 
@@ -47,7 +48,7 @@ public class JmsServicesImp implements JmsServices {
         HashMap<String, Object> valuesToSend = new HashMap<>();
         valuesToSend.put("key", key);
 
-        Message message = this.sendAndReceive(IS_PLAYER_LINK_KEY_VALID, valuesToSend);
+        Message message = this.sendAndReceive(IS_PLAYER_LINK_KEY_VALID_DESTINATION, valuesToSend);
         Map<String,Object> result = this.messageToHashMap(message);
 
         boolean isValid = (boolean) result.get("isValid");
@@ -56,19 +57,28 @@ public class JmsServicesImp implements JmsServices {
     }
 
     @Override
-    public Map<String, Object> getPlayerUUIDByLinkKey(String key) {
+    public Map<String,Object> getPlayerDataByLinkKey(String key) {
         HashMap<String, Object> valuesToSend = new HashMap<>();
         valuesToSend.put("key", key);
 
-        Message message = this.sendAndReceive(GET_PLAYER_UUID_BY_LINK_KEY, valuesToSend);
+        Message message = this.sendAndReceive(GET_PLAYER_UUID_BY_LINK_KEY_DESTINATION, valuesToSend);
         Map<String,Object> result = this.messageToHashMap(message);
 
         return result;
     }
 
     @Override
-    public boolean sendSiteUserToPlayerLinkConnection(String key, String userUsername) {
-        return false;
+    public boolean sendSiteUserToPlayerLinkConnection(String playerName,String playerUUID,String userUsername) {
+
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("playerName", playerName);
+        values.put("playerUUID", playerUUID);
+        values.put("siteUserUsername", userUsername);
+
+        Message message = this.sendAndReceive(LINK_PLAYER_ACCOUNT_DESTINATION,values);
+        Map<String,Object> result = this.messageToHashMap(message);
+
+        return (boolean) result.get("isSuccessful");
     }
 
 //    HashMap<String,Object> values = new HashMap<>();

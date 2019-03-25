@@ -36,7 +36,7 @@ public class JMSListeners {
     public Message linkPlayerAccount(Message message) throws JMSException {
 
         PlayerLinkCreateBindingModel playerLinkCreateBindingModel = new PlayerLinkCreateBindingModel();
-        playerLinkCreateBindingModel.setName((String) message.getObjectProperty("name"));
+        playerLinkCreateBindingModel.setPlayerName((String) message.getObjectProperty("playerName"));
         playerLinkCreateBindingModel.setPlayerUUID((String) message.getObjectProperty("playerUUID"));
         playerLinkCreateBindingModel.setSiteUserUsername((String) message.getObjectProperty("siteUserUsername"));
 
@@ -59,8 +59,8 @@ public class JMSListeners {
         return this.convertValuesIntoMessage(resultValues);
     }
 
-    @JmsListener(destination = "ichop_minecraft-get_player_uuid_by_key")
-    public Message getPlayerUUIDByKey(Message message) throws JMSException {
+    @JmsListener(destination = "ichop_minecraft-get_player_data_by_key")
+    public Message getPlayerDataByKey(Message message) throws JMSException {
         Map<String,Object> recievedValues = this.messageToHashMap(message);
         String key = (String) recievedValues.get("key");
 
@@ -75,7 +75,8 @@ public class JMSListeners {
         }
 
         resultValues.put("isSuccessful",true);
-        resultValues.put("playerUUID",keyServiceModel.getPlayerUUID());
+        resultValues.put("uuid",keyServiceModel.getPlayerUUID());
+        resultValues.put("name",keyServiceModel.getPlayerName());
         return this.convertValuesIntoMessage(resultValues);
     }
 

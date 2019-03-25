@@ -1,7 +1,6 @@
 package com.ichop.minecraft.linkaccount.services;
 
 import com.ichop.minecraft.linkaccount.domain.entities.Key;
-import com.ichop.minecraft.linkaccount.domain.models.binding.KeyCreateBindingModel;
 import com.ichop.minecraft.linkaccount.domain.models.service.KeyServiceModel;
 import com.ichop.minecraft.linkaccount.repository.KeyRepository;
 import org.modelmapper.ModelMapper;
@@ -31,10 +30,10 @@ public class KeyServicesImp extends BaseService<Key,KeyRepository> implements Ke
         boolean isDateExpired = keyy.getExpirityDate().compareTo(LocalDateTime.now()) < 0;
 
         if (isDateExpired) {
-            return false;
+            return true;
         }
 
-        return true;
+        return false;
     }
 
     @Override
@@ -76,7 +75,8 @@ public class KeyServicesImp extends BaseService<Key,KeyRepository> implements Ke
         return result;
     }
 
-    private void deleteByUUID(String uuid) {
+    @Override
+    public void deleteByUUID(String uuid) {
         Key key = super.repository.findByPlayerUUID(uuid);
         if (key != null) {
             super.repository.delete(key);

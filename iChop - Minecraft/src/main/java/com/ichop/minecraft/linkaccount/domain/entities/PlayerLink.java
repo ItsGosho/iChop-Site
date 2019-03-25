@@ -21,9 +21,12 @@ public class PlayerLink {
     @Column(name = "id", nullable = false, unique = true, updatable = false)
     private String id;
 
-    @Column(nullable = false, unique = true, updatable = false)
+    @Column(name = "player_uuid",nullable = false, unique = true, updatable = false)
     private String playerUUID;
 
-    @Column(unique = true,nullable = false,updatable = false)
+    @Column(name = "player_name",nullable = false)
+    private String playerName;
+
+    @Column(name = "site_user_username",unique = true,nullable = false,updatable = false)
     private String siteUserUsername;
 }

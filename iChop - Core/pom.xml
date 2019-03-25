@@ -6,7 +6,7 @@
     <groupId>com.ichop</groupId>
     <artifactId>core</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <name>iChop WebSite</name>
     <description>Made for my upcoming Spring Exam</description>

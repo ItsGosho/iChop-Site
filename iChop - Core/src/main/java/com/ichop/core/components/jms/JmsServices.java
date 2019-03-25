@@ -8,8 +8,8 @@ public interface JmsServices {
     void sendUpdateAvatarRequest(String username,String imageAsBase64String);
 
     boolean isPlayerLinkKeyValid(String key);
-    Map<String,Object> getPlayerUUIDByLinkKey(String key);
+    Map<String,Object> getPlayerDataByLinkKey(String key);
 
-    boolean sendSiteUserToPlayerLinkConnection(String key,String userUsername);
+    boolean sendSiteUserToPlayerLinkConnection(String playerName,String playerUUID,String userUsername);
 
 }

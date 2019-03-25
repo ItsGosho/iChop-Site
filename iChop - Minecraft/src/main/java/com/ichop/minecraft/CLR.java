@@ -1,8 +1,5 @@
 package com.ichop.minecraft;
 
-import com.ichop.minecraft.linkaccount.domain.models.binding.KeyCreateBindingModel;
-import com.ichop.minecraft.linkaccount.domain.models.binding.PlayerLinkCreateBindingModel;
-import com.ichop.minecraft.linkaccount.domain.models.service.KeyServiceModel;
 import com.ichop.minecraft.linkaccount.services.KeyServices;
 import com.ichop.minecraft.linkaccount.services.PlayerLinkServices;
 import org.springframework.beans.factory.annotation.Autowired;

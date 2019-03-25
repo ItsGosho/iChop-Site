@@ -1,6 +1,5 @@
 package com.ichop.minecraft.linkaccount.services;
 
-import com.ichop.minecraft.linkaccount.domain.models.binding.KeyCreateBindingModel;
 import com.ichop.minecraft.linkaccount.domain.models.service.KeyServiceModel;
 
 public interface KeyServices {
@@ -12,4 +11,6 @@ public interface KeyServices {
     KeyServiceModel getByKey(String key);
 
     KeyServiceModel getByPlayerUUID(String playerUUID);
+
+    void deleteByUUID(String uuid);
 }
