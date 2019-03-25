@@ -1,15 +1,15 @@
 package com.ichop.core.components.jms;
 
+import javax.jms.Message;
+import java.util.HashMap;
 import java.util.Map;
 
 public interface JmsServices {
 
 
-    void sendUpdateAvatarRequest(String username,String imageAsBase64String);
+    Map<String, Object> messageToHashMap(Message message);
 
-    boolean isPlayerLinkKeyValid(String key);
-    Map<String,Object> getPlayerDataByLinkKey(String key);
+    Map<String,Object> sendAndReceive(String destinationName, HashMap<String, Object> values);
 
-    boolean sendSiteUserToPlayerLinkConnection(String playerName,String playerUUID,String userUsername);
-
+    Message convertValuesIntoMessage(HashMap<String, Object> values);
 }

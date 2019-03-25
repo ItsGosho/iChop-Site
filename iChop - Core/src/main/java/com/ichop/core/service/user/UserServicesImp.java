@@ -1,6 +1,7 @@
 package com.ichop.core.service.user;
 
 import com.ichop.core.components.email.EmailServices;
+import com.ichop.core.components.jms.JmsServices;
 import com.ichop.core.domain.entities.users.User;
 import com.ichop.core.domain.entities.users.UserRoles;
 import com.ichop.core.domain.models.binding.user.UserForgottenPasswordBindingModel;
@@ -28,29 +29,29 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Service
 public class UserServicesImp extends BaseService<User, UserRepository> implements UserServices {
 
+    private static final String UPDATE_AVATAR_DESTINATION = "ichop_web_storage-set_user_avatar";
     private static final String EMAIL_PATTERN = "(?:[a-z0-9!#$%&'*+\\=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+\\=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])";
     private final BCryptPasswordEncoder passwordEncoder;
     private final UserRoleServices userRoleServices;
     private final PasswordResetTokenServices passwordResetTokenServices;
     private final EmailServices emailServices;
+    private final JmsServices jmsServices;
 
     @Autowired
-    public UserServicesImp(ApplicationEventPublisher applicationEventPublisher, ModelMapper modelMapper, UserRepository repository, BCryptPasswordEncoder passwordEncoder, UserRoleServices userRoleServices, PasswordResetTokenServices passwordResetTokenServices, EmailServices emailServices) {
+    public UserServicesImp(ApplicationEventPublisher applicationEventPublisher, ModelMapper modelMapper, UserRepository repository, BCryptPasswordEncoder passwordEncoder, UserRoleServices userRoleServices, PasswordResetTokenServices passwordResetTokenServices, EmailServices emailServices, JmsServices jmsServices) {
         super(applicationEventPublisher, modelMapper, repository);
         this.passwordEncoder = passwordEncoder;
         this.userRoleServices = userRoleServices;
         this.passwordResetTokenServices = passwordResetTokenServices;
         this.emailServices = emailServices;
+        this.jmsServices = jmsServices;
     }
 
 
@@ -103,6 +104,16 @@ public class UserServicesImp extends BaseService<User, UserRepository> implement
 
         UserServiceModel savedUser = super.save(registeredUser, UserServiceModel.class);
         return savedUser;
+    }
+
+    @Override
+    public void sendUpdateAvatarRequest(String username, String imageAsBase64String) {
+        HashMap<String, Object> values = new HashMap<>();
+        values.put("username", username);
+        values.put("avatar", imageAsBase64String);
+
+        this.jmsServices.sendAndReceive(UPDATE_AVATAR_DESTINATION,values);
+
     }
 
     private Set<UserRoleServiceModel> getInitialAuthorities() {

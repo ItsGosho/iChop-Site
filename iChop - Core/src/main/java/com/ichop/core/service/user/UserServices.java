@@ -21,6 +21,9 @@ public interface UserServices extends UserDetailsService {
     void follow(UserServiceModel user,UserServiceModel userToFollow);
     void unfollow(UserServiceModel user,UserServiceModel userToUnfollow);
 
+    void sendUpdateAvatarRequest(String username,String imageAsBase64String);
+
+
     UserServiceModel promote(UserServiceModel user);
 
     UserServiceModel demote(UserServiceModel user);

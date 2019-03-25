@@ -1,11 +1,12 @@
 package com.ichop.core.web.controllers.player;
 
 import com.google.gson.Gson;
-import com.ichop.core.components.jms.JmsServices;
 import com.ichop.core.constants.URLConstants;
 import com.ichop.core.domain.models.json.IsPlayerAccountLinkedJSONModel;
+import com.ichop.core.service.player.PlayerServices;
 import com.ichop.core.web.controllers.BaseController;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,24 +21,26 @@ import java.util.Map;
 @Controller
 public class PlayerController extends BaseController {
 
-    private final JmsServices jmsServices;
+    private final PlayerServices playerServices;
     private final ModelMapper modelMapper;
 
-    public PlayerController(JmsServices jmsServices, ModelMapper modelMapper) {
-        this.jmsServices = jmsServices;
+    @Autowired
+    public PlayerController(PlayerServices playerServices, ModelMapper modelMapper) {
+        this.playerServices = playerServices;
         this.modelMapper = modelMapper;
     }
+
 
     @PreAuthorize("isAuthenticated()")
     @GetMapping(URLConstants.PLAYER_LINK_ACCOUNT_GET)
     public ModelAndView playerLinkAccountGet(@RequestParam(value = "key") String key, ModelAndView modelAndView){
-        boolean isKeyValid = this.jmsServices.isPlayerLinkKeyValid(key);
+        boolean isKeyValid = this.playerServices.isPlayerLinkKeyValid(key);
 
         if(!isKeyValid){
             return super.viewWithMessage("notification/error","Key Error","Key is expired or not valid!");
         }
 
-        Map result = this.jmsServices.getPlayerDataByLinkKey(key);
+        Map result = this.playerServices.getPlayerDataByLinkKey(key);
         modelAndView.addObject("uuid",result.get("uuid"));
         modelAndView.addObject("name",result.get("name"));
 
@@ -49,14 +52,14 @@ public class PlayerController extends BaseController {
     @PostMapping(URLConstants.PLAYER_LINK_ACCOUNT_POST)
     public ModelAndView playerLinkAccountPost(@RequestParam(value = "key") String key, ModelAndView modelAndView, Principal principal){
 
-        boolean isKeyValid = this.jmsServices.isPlayerLinkKeyValid(key);
+        boolean isKeyValid = this.playerServices.isPlayerLinkKeyValid(key);
 
         if(!isKeyValid){
             return super.viewWithMessage("notification/error","Key Error","Key is expired or not valid!");
         }
 
-        Map result = this.jmsServices.getPlayerDataByLinkKey(key);
-        boolean isSuccessful = this.jmsServices.sendSiteUserToPlayerLinkConnection((String) result.get("name"),(String) result.get("uuid"),principal.getName());
+        Map result = this.playerServices.getPlayerDataByLinkKey(key);
+        boolean isSuccessful = this.playerServices.sendSiteUserToPlayerLinkConnection((String) result.get("name"),(String) result.get("uuid"),principal.getName());
 
         if(isSuccessful){
             return super.viewWithMessage("notification/info","Successful!","You have successful linked your account!");

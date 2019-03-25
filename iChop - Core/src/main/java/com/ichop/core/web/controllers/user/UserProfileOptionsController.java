@@ -57,7 +57,7 @@ public class UserProfileOptionsController extends BaseController {
 
         UserServiceModel userServiceModel = this.userServices.findUserByUsername(principal.getName());
         this.userInformationServices.update(userUpdateProfileInformationBindingModel,userServiceModel);
-        this.jmsServices.sendUpdateAvatarRequest(userServiceModel.getUsername(),userUpdateProfileInformationBindingModel.getAvatarBinary());
+        this.userServices.sendUpdateAvatarRequest(userServiceModel.getUsername(),userUpdateProfileInformationBindingModel.getAvatarBinary());
 
         return super.redirect(URLConstants.USER_PROFILE_OPTIONS_INFORMATION_GET);
     }
