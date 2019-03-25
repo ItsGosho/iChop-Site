@@ -1,6 +1,5 @@
 package com.ichop.core.web.controllers.user;
 
-import com.ichop.core.components.jms.JmsServices;
 import com.ichop.core.domain.models.binding.user.UserUpdateProfileInformationBindingModel;
 import com.ichop.core.domain.models.view.user_options.UserProfileOptionsInformationViewModel;
 import com.ichop.core.service.user.UserInformationServices;
@@ -26,15 +25,14 @@ public class UserProfileOptionsController extends BaseController {
     private final UserServices userServices;
     private final UserInformationServices userInformationServices;
     private final UserViewServices userViewServices;
-    private final JmsServices jmsServices;
 
     @Autowired
-    public UserProfileOptionsController(UserServices userServices, UserInformationServices userInformationServices, UserViewServices userViewServices, JmsServices jmsServices) {
+    public UserProfileOptionsController(UserServices userServices, UserInformationServices userInformationServices, UserViewServices userViewServices) {
         this.userServices = userServices;
         this.userInformationServices = userInformationServices;
         this.userViewServices = userViewServices;
-        this.jmsServices = jmsServices;
     }
+
 
     @PreAuthorize("isAuthenticated()")
     @GetMapping(URLConstants.USER_PROFILE_OPTIONS_INFORMATION_GET)

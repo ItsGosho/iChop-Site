@@ -24,7 +24,7 @@ public class PlayerLinkServicesImp extends BaseService<PlayerLink, PlayerLinkRep
 
         PlayerLinkServiceModel playerLink = this.modelMapper.map(playerLinkCreateBindingModel, PlayerLinkServiceModel.class);
 
-        if (this.isAccountLinked(playerLink)) {
+        if (this.isAccountLinkedByUUID(playerLink.getPlayerUUID())) {
             return false;
         }
 
@@ -37,7 +37,7 @@ public class PlayerLinkServicesImp extends BaseService<PlayerLink, PlayerLinkRep
     @Override
     public boolean unlinkFromSiteUser(PlayerLinkServiceModel playerLink) {
 
-        if (!this.isAccountLinked(playerLink)) {
+        if (!this.isAccountLinkedByUUID(playerLink.getPlayerUUID())) {
             return false;
         }
 
@@ -46,10 +46,20 @@ public class PlayerLinkServicesImp extends BaseService<PlayerLink, PlayerLinkRep
         return true;
     }
 
-    private boolean isAccountLinked(PlayerLinkServiceModel playerLink) {
-        String playerUUID = playerLink.getPlayerUUID();
+    @Override
+    public boolean isAccountLinkedByUUID(String uuid) {
 
-        if (super.repository.getByPlayerUUID(playerUUID) != null) {
+        if (super.repository.getByPlayerUUID(uuid) != null) {
+            return true;
+        }
+
+        return false;
+    }
+
+    @Override
+    public boolean isAccountLinkedBySiteUserUsername(String username) {
+
+        if(super.repository.getBySiteUserUsername(username) != null){
             return true;
         }
 

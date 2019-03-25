@@ -33,46 +33,48 @@ public class PlayerController extends BaseController {
 
     @PreAuthorize("isAuthenticated()")
     @GetMapping(URLConstants.PLAYER_LINK_ACCOUNT_GET)
-    public ModelAndView playerLinkAccountGet(@RequestParam(value = "key") String key, ModelAndView modelAndView){
+    public ModelAndView playerLinkAccountGet(@RequestParam(value = "key") String key, ModelAndView modelAndView) {
         boolean isKeyValid = this.playerServices.isPlayerLinkKeyValid(key);
 
-        if(!isKeyValid){
-            return super.viewWithMessage("notification/error","Key Error","Key is expired or not valid!");
+        if (!isKeyValid) {
+            return super.viewWithMessage("notification/error", "Key Error", "Key is expired or not valid!");
         }
 
         Map result = this.playerServices.getPlayerDataByLinkKey(key);
-        modelAndView.addObject("uuid",result.get("uuid"));
-        modelAndView.addObject("name",result.get("name"));
+        modelAndView.addObject("uuid", result.get("uuid"));
+        modelAndView.addObject("name", result.get("name"));
 
 
-        return super.page("player/player-link-account","Link Account",modelAndView);
+        return super.page("player/player-link-account", "Link Account", modelAndView);
     }
 
     @PreAuthorize("isAuthenticated()")
     @PostMapping(URLConstants.PLAYER_LINK_ACCOUNT_POST)
-    public ModelAndView playerLinkAccountPost(@RequestParam(value = "key") String key, ModelAndView modelAndView, Principal principal){
+    public ModelAndView playerLinkAccountPost(@RequestParam(value = "key") String key, ModelAndView modelAndView, Principal principal) {
 
         boolean isKeyValid = this.playerServices.isPlayerLinkKeyValid(key);
 
-        if(!isKeyValid){
-            return super.viewWithMessage("notification/error","Key Error","Key is expired or not valid!");
+        if (!isKeyValid) {
+            return super.viewWithMessage("notification/error", "Key Error", "Key is expired or not valid!");
         }
 
-        Map result = this.playerServices.getPlayerDataByLinkKey(key);
-        boolean isSuccessful = this.playerServices.sendSiteUserToPlayerLinkConnection((String) result.get("name"),(String) result.get("uuid"),principal.getName());
+        boolean isLinkedAccount = this.playerServices.isPlayerLinkedAccountBySiteUser(principal.getName());
 
-        if(isSuccessful){
-            return super.viewWithMessage("notification/info","Successful!","You have successful linked your account!");
+        if (isLinkedAccount) {
+            return super.viewWithMessage("notification/error", "Link Error", "You already linked account to this account!");
         }
 
-        return super.viewWithMessage("notification/error","Error!","A error occured while linking your account ,please try again!");
+        Map playerDataByLinkKey = this.playerServices.getPlayerDataByLinkKey(key);
+        this.playerServices.sendSiteUserToPlayerLinkConnection((String) playerDataByLinkKey.get("name"), (String) playerDataByLinkKey.get("uuid"), principal.getName());
+
+        return super.viewWithMessage("notification/info", "Successful!", "You have successful linked your account!");
     }
 
-    @GetMapping(value = URLConstants.PLAYER_IS_PLAYER_LINKED_ACCOUNT_GET,produces = "application/json")
+    @GetMapping(value = URLConstants.PLAYER_IS_PLAYER_LINKED_ACCOUNT_GET, produces = "application/json")
     @ResponseBody
-    public String isPlayerLinkedAccount(@RequestParam(value = "playerUUID") String playerUUID){
+    public String isPlayerLinkedAccount(@RequestParam(value = "uuid") String uuid) {
         IsPlayerAccountLinkedJSONModel isPlayerAccountLinkedJSONModel = new IsPlayerAccountLinkedJSONModel();
-        isPlayerAccountLinkedJSONModel.setAccountLinked(false);
+        isPlayerAccountLinkedJSONModel.setAccountLinked(this.playerServices.isPlayerLinkedAccountByUUID(uuid));
         return new Gson().toJson(isPlayerAccountLinkedJSONModel);
     }
 

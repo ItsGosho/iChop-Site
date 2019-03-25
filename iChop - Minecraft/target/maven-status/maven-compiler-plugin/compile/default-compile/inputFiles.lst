@@ -1,7 +1,6 @@
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Minecraft\src\main\java\com\ichop\minecraft\linkaccount\domain\entities\KeyConstants.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Minecraft\src\main\java\com\ichop\minecraft\linkaccount\domain\models\service\BaseServiceModel.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Minecraft\src\main\java\com\ichop\minecraft\linkaccount\repository\PlayerLinkRepository.java
-C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Minecraft\src\main\java\com\ichop\minecraft\linkaccount\domain\models\binding\KeyCreateBindingModel.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Minecraft\src\main\java\com\ichop\minecraft\linkaccount\services\KeyServices.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Minecraft\src\main\java\com\ichop\minecraft\linkaccount\services\PlayerLinkServices.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Minecraft\src\main\java\com\ichop\minecraft\config\BeanConfiguration.java

@@ -1,7 +1,6 @@
 com\ichop\minecraft\Application.class
 com\ichop\minecraft\linkaccount\domain\entities\KeyConstants.class
 com\ichop\minecraft\linkaccount\services\KeyServices.class
-com\ichop\minecraft\linkaccount\domain\models\binding\KeyCreateBindingModel.class
 com\ichop\minecraft\linkaccount\domain\entities\Key.class
 com\ichop\minecraft\linkaccount\domain\entities\PlayerLink.class
 com\ichop\minecraft\linkaccount\domain\models\service\PlayerLinkServiceModel.class
