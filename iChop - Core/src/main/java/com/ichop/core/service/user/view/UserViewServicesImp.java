@@ -69,7 +69,7 @@ public class UserViewServicesImp implements UserViewServices {
         UserProfileViewModel result = this.modelMapper.map(user, UserProfileViewModel.class);
         result.setRole(this.userRoleServices.findHighestRoleOfUser(user).getAuthority());
         result.setTotalMessages(this.commentServices.getTotalCommentsOfUser(user));
-        result.setMinecraftAccountName((String) this.playerServices.getPlayerDataBySiteUser(username).get("name"));
+        result.setMinecraftAccountName((String) this.playerServices.getPlayerDataBySiteUser(username).getPlayerName());
 
         int totalLikes = this.threadReactionServices.findTotalThreadReactionsByUserAndType(user, ReactionType.LIKE) + this.commentReactionServices.findTotalCommentReactionsByUserAndType(user,ReactionType.LIKE);
         int totalDislikes = this.threadReactionServices.findTotalThreadReactionsByUserAndType(user, ReactionType.DISLIKE) + this.commentReactionServices.findTotalCommentReactionsByUserAndType(user,ReactionType.DISLIKE);

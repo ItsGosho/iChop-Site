@@ -2,6 +2,7 @@ package com.ichop.core.web.controllers.player;
 
 import com.google.gson.Gson;
 import com.ichop.core.constants.URLConstants;
+import com.ichop.core.domain.models.jms.key.returnn.PlayerDataByKeyJMSReturnModel;
 import com.ichop.core.domain.models.json.IsPlayerAccountLinkedJSONModel;
 import com.ichop.core.service.player.PlayerServices;
 import com.ichop.core.web.controllers.BaseController;
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.security.Principal;
-import java.util.Map;
 
 @Controller
 public class PlayerController extends BaseController {
@@ -40,9 +40,9 @@ public class PlayerController extends BaseController {
             return super.viewWithMessage("notification/error", "Key Error", "Key is expired or not valid!");
         }
 
-        Map result = this.playerServices.getPlayerDataByLinkKey(key);
-        modelAndView.addObject("uuid", result.get("uuid"));
-        modelAndView.addObject("name", result.get("name"));
+        PlayerDataByKeyJMSReturnModel result = this.playerServices.getPlayerDataByLinkKey(key);
+        modelAndView.addObject("uuid", result.getPlayerUUID());
+        modelAndView.addObject("name", result.getPlayerName());
 
 
         return super.page("player/player-link-account", "Link Account", modelAndView);
@@ -64,8 +64,8 @@ public class PlayerController extends BaseController {
             return super.viewWithMessage("notification/error", "Link Error", "You already linked account to this account!");
         }
 
-        Map playerDataByLinkKey = this.playerServices.getPlayerDataByLinkKey(key);
-        this.playerServices.sendSiteUserToPlayerLinkConnection((String) playerDataByLinkKey.get("name"), (String) playerDataByLinkKey.get("uuid"), principal.getName());
+        PlayerDataByKeyJMSReturnModel playerDataByLinkKey = this.playerServices.getPlayerDataByLinkKey(key);
+        this.playerServices.sendSiteUserToPlayerLinkConnection(playerDataByLinkKey.getPlayerName(), playerDataByLinkKey.getPlayerUUID(), principal.getName());
 
         return super.viewWithMessage("notification/info", "Successful!", "You have successful linked your account!");
     }

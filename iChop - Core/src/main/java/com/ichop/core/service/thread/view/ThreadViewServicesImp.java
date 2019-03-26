@@ -61,7 +61,7 @@ public class ThreadViewServicesImp implements ThreadViewServices {
         threadReadViewModel.setTotalComments(threadServiceModel.getComments().size());
         threadReadViewModel.setTotalReactions(threadServiceModel.getReactions().size());
         threadReadViewModel.setCreatorTotalComments(this.commentServices.getTotalCommentsOfUser(this.modelMapper.map(threadServiceModel.getCreator(), UserServiceModel.class)));
-        threadReadViewModel.setMinecraftAccountName((String) this.playerServices.getPlayerDataBySiteUser(threadReadViewModel.getCreatorUsername()).get("name"));
+        threadReadViewModel.setMinecraftAccountName((String) this.playerServices.getPlayerDataBySiteUser(threadReadViewModel.getCreatorUsername()).getPlayerName());
 
         threadReadViewModel.getComments().forEach(x -> {
 
@@ -76,7 +76,7 @@ public class ThreadViewServicesImp implements ThreadViewServices {
             x.setTotalDislikes((int) actualComment.getReactions().
                     stream().
                     filter(react -> react.getReactionType().equals(ReactionType.DISLIKE)).count());
-            x.setMinecraftAccountName((String) this.playerServices.getPlayerDataBySiteUser(threadReadViewModel.getCreatorUsername()).get("name"));
+            x.setMinecraftAccountName((String) this.playerServices.getPlayerDataBySiteUser(threadReadViewModel.getCreatorUsername()).getPlayerName());
         });
 
         threadReadViewModel.setComments(threadReadViewModel.getComments().stream()

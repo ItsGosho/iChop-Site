@@ -1,14 +1,15 @@
 package com.ichop.core.service.player;
 
-import java.util.Map;
+import com.ichop.core.domain.models.jms.key.returnn.PlayerDataByKeyJMSReturnModel;
+import com.ichop.core.domain.models.jms.key.returnn.PlayerDataBySiteUserJMSReturnModel;
 
 public interface PlayerServices {
 
     boolean isPlayerLinkKeyValid(String key);
     boolean isPlayerLinkedAccountBySiteUser(String siteUserUsername);
     boolean isPlayerLinkedAccountByUUID(String uuid);
-    Map<String,Object> getPlayerDataByLinkKey(String key);
-    Map<String,Object> getPlayerDataBySiteUser(String siteUserUsername);
+    PlayerDataByKeyJMSReturnModel getPlayerDataByLinkKey(String key);
+    PlayerDataBySiteUserJMSReturnModel getPlayerDataBySiteUser(String siteUserUsername);
 
     boolean sendSiteUserToPlayerLinkConnection(String playerName,String playerUUID,String userUsername);
 
