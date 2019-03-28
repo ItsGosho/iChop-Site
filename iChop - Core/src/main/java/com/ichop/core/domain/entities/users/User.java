@@ -60,7 +60,7 @@ public class User extends BaseEntity implements UserDetails {
     inverseJoinColumns = @JoinColumn(name = "follower_id",referencedColumnName = "id"))
     private Set<User> followings;
 
-    @OneToOne(mappedBy = "user",targetEntity = UserInformation.class,optional = false)
+    @OneToOne(mappedBy = "user",targetEntity = UserInformation.class)
     private UserInformation userInformation;
 
     public User(){

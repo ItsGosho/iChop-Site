@@ -68,7 +68,7 @@ public final class URLConstants {
 
     //ThreadRestController  ----------------------------------------------------------------------------------
 
-    public static final String THREAD_CREATE_POST = "/thread/createPost"; /*MODERATOR++*/
+    public static final String THREAD_CREATE_POST = "/thread/create"; /*MODERATOR++*/
 
     //ReactionController -------------------------------------------------------------------------------------
 

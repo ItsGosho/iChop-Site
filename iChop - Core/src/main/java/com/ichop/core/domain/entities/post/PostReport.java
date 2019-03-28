@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @Table(name = "posts_reports")
 public class PostReport extends BaseReport {
 
-    @ManyToOne(optional = false,targetEntity = Post.class)
+    @ManyToOne(targetEntity = Post.class)
     private Post post;
 
 }

@@ -15,10 +15,10 @@ import java.util.List;
 @Table(name = "posts")
 public class Post extends BaseEntity {
 
-    @ManyToOne(optional = false, targetEntity = User.class)
+    @ManyToOne(targetEntity = User.class)
     private User user;
 
-    @ManyToOne(optional = false, targetEntity = User.class)
+    @ManyToOne(targetEntity = User.class)
     private User creator;
 
     @Column(name = "content", nullable = false)

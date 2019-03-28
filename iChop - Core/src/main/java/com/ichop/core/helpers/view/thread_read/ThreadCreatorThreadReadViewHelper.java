@@ -18,15 +18,13 @@ public class ThreadCreatorThreadReadViewHelper extends BaseViewCreator {
     private final ThreadServices threadServices;
     private final CommentServices commentServices;
     private final PlayerLinkServices playerLinkServices;
-    private final CommentThreadReadViewHelper commentThreadReadViewHelper;
 
     @Autowired
-    public ThreadCreatorThreadReadViewHelper(ModelMapper modelMapper, ThreadServices threadServices, CommentServices commentServices, PlayerLinkServices playerLinkServices, UserServices userServices, CommentThreadReadViewHelper commentThreadReadViewHelper) {
+    public ThreadCreatorThreadReadViewHelper(ModelMapper modelMapper, ThreadServices threadServices, CommentServices commentServices, PlayerLinkServices playerLinkServices, UserServices userServices) {
         super(modelMapper);
         this.threadServices = threadServices;
         this.commentServices = commentServices;
         this.playerLinkServices = playerLinkServices;
-        this.commentThreadReadViewHelper = commentThreadReadViewHelper;
     }
 
     public ThreadCreatorThreadReadViewModel create(String threadId) {

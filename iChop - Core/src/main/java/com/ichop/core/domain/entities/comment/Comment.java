@@ -19,13 +19,13 @@ import java.util.List;
 @Table(name = "comments")
 public class Comment extends BaseEntity {
 
-    @ManyToOne(optional = false,fetch = FetchType.EAGER,targetEntity = Thread.class)
+    @ManyToOne(fetch = FetchType.EAGER,targetEntity = Thread.class)
     public Thread thread;
 
     @Column(name = "content",nullable = false)
     public String content;
 
-    @ManyToOne(optional = false,targetEntity = User.class)
+    @ManyToOne(targetEntity = User.class)
     public User creator;
 
     @Column(name="created_on" ,nullable = false,updatable = false)

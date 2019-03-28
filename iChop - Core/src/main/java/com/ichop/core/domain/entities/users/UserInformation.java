@@ -25,7 +25,7 @@ public class UserInformation extends BaseEntity {
     @Column(name = "about_you")
     private String aboutYou;
 
-    @OneToOne(optional = false,targetEntity = User.class)
+    @OneToOne(targetEntity = User.class)
     private User user;
 
 }

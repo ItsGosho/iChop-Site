@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 public abstract class BaseReport extends BaseEntity {
 
-    @ManyToOne(optional = false, targetEntity = User.class)
+    @ManyToOne(targetEntity = User.class)
     private User user;
 
     @Column(name = "reason", nullable = false, updatable = false)

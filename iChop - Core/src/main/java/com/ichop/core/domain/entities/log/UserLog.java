@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Table(name = "users_logs")
 public class UserLog extends BaseLog {
 
-    @ManyToOne(optional = false,targetEntity = User.class)
+    @ManyToOne(targetEntity = User.class)
     private User user;
 
     @Enumerated(EnumType.STRING)

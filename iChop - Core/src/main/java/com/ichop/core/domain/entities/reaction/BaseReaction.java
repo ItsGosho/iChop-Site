@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 public abstract class BaseReaction extends BaseEntity {
 
-    @ManyToOne(optional = false,targetEntity = User.class)
+    @ManyToOne(targetEntity = User.class)
     private User user;
 
     @Column(name = "reaction_type",nullable = false,updatable = false)

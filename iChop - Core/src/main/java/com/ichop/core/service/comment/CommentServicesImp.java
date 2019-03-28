@@ -1,5 +1,6 @@
 package com.ichop.core.service.comment;
 
+import com.ichop.core.domain.entities.comment.Comment;
 import com.ichop.core.domain.entities.users.User;
 import com.ichop.core.domain.models.binding.comment.CommentCreateBindingModel;
 import com.ichop.core.domain.models.service.comment.CommentServiceModel;
@@ -9,7 +10,6 @@ import com.ichop.core.exceptions.thread.ThreadNotFoundException;
 import com.ichop.core.exceptions.user.UserNotFoundException;
 import com.ichop.core.repository.comment.CommentRepository;
 import com.ichop.core.service.BaseService;
-import com.ichop.core.domain.entities.comment.Comment;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

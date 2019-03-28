@@ -89,8 +89,7 @@ public abstract class BaseService<Entity, Repository extends JpaRepository<Entit
     }
 
     public void deleteById(String id) {
-        Entity entity = this.repository.findById(id).orElse(null);
-        this.repository.delete(entity);
+        this.repository.deleteById(id);
     }
 
     public <ReturnModel extends BaseServiceModel> List<ReturnModel> findAll(Class<ReturnModel> returnModelClass) {

@@ -26,13 +26,13 @@ public class Thread extends BaseEntity {
     @Column(name = "content",nullable = false)
     private String content;
 
-    @ManyToOne(optional = false,targetEntity = User.class)
+    @ManyToOne(targetEntity = User.class)
     private User creator;
 
     @Column(name = "created_on", nullable = false,updatable = false)
     private LocalDateTime createdOn;
 
-    @OneToMany(mappedBy = "thread",cascade = CascadeType.ALL,orphanRemoval = true,targetEntity = Comment.class)
+    @OneToMany(mappedBy = "thread",orphanRemoval = true,targetEntity = Comment.class)
     private List<Comment> comments;
 
     @Column(name = "views",nullable = false)

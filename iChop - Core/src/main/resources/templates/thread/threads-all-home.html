@@ -12,6 +12,8 @@
         </div>
         <th:block th:if="${!#lists.isEmpty(threads)}">
 
+            <!--/*@thymesVar id="threads" type="com.ichop.core.domain.models.view.home.ThreadHomepageViewModel"*/-->
+            <!--/*@thymesVar id="thread" type="com.ichop.core.domain.models.view.home.ThreadHomepageViewModel"*/-->
             <th:block th:each="thread : ${threads}" th:object="${thread}">
                 <div th:id="*{id}" class="card-body">
                     <div class="row">
@@ -27,33 +29,16 @@
                     </div>
                     <div class="row">
                         <div class="col-md-8">
-                            <small>by <a href="/SMENI">👤<span class="user" th:text="*{creatorUsername}"></span></a> at
+                            <small>by <a th:href="@{/user/{username}/profile(username=*{creatorUsername})}">👤<span class="user" th:text="*{creatorUsername}"></span></a> at
                                 <span
                                         class="postTime" th:text="*{#temporals.format(createdOn, 'HH:mm')}"></span>
-                                <th:block sec:authorize="isAnonymous()">
-                                    (<span
-                                        class="totalViews" th:text="*{totalViews}">0</span>👀 / <span
-                                        class="totalLikes" th:text="*{totalReactions}">0</span>👍)
-                                </th:block>
-                                <th:block sec:authorize="isAuthenticated()">
-                                    <th:block sec:authorize="hasAuthority('MODERATOR')">
-                                        (<a href="/SAMO AKO IMA PRAVA"><span
-                                            class="totalViews" th:text="*{totalViews}">0</span></a>👀 / <a
-                                            href="/SAMO AKO IMA PRAVA"><span
-                                            class="totalLikes" th:text="*{totalReactions}">0</span></a>👍)
-                                    </th:block>
-                                    <th:block sec:authorize="!hasAuthority('MODERATOR')">
-                                        (<span
-                                            class="totalViews" th:text="*{totalViews}">0</span>👀 / <span
-                                            class="totalLikes" th:text="*{totalReactions}">0</span>👍)
-                                    </th:block>
-                                </th:block>
+                                    (<span class="totalViews" th:text="*{totalViews}">0</span>👀 / <span class="totalLikes" th:text="*{totalReactions}">0</span>👍)
                             </small>
                         </div>
                         <div class="col-md-4">
                             <small class="totalComments">
                                 <small>💬</small>
-                                <a href="/SMENI"><span th:text="*{totalComments}"></span></a> Comments
+                                <a th:href="@{/thread/{id}/read#section-thread_read_comments(id=*{id})}"><span th:text="*{totalComments}"></span></a> Comments
                             </small>
                         </div>
                     </div>
@@ -71,25 +56,19 @@
                     <div class="row">
                         <div class="col-md-8">
                             <div class="btn-group">
-                                <th:block sec:authorize="isAuthenticated()">
-                                    <th:block sec:authorize="hasAuthority('MODERATOR')">
-                                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button"
+                                        <button sec:authorize="isAuthenticated() && hasAuthority('MODERATOR')" class="btn btn-secondary btn-sm dropdown-toggle" type="button"
                                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <small>⚙</small>
                                             Options
                                         </button>
                                         <div class="dropdown-menu">
-                                            <th:block sec:authorize="hasAuthority('MODERATOR')">
                                                 <form class="dropdown-item" th:action="@{/thread/{id}/delete(id=*{id})}" method="post">
-                                                    <button type="submit" class="btn btn-light btn-sm thread-delete_button">
+                                                    <button sec:authorize="isAuthenticated() && hasAuthority('MODERATOR')" type="submit" class="btn btn-light btn-sm thread-delete_button">
                                                         <small>❌</small>
                                                         Delete
                                                     </button>
                                                 </form>
-                                            </th:block>
                                         </div>
-                                    </th:block>
-                                </th:block>
                             </div>
                         </div>
                         <div class="col-md-4">

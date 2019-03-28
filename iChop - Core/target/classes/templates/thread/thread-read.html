@@ -19,11 +19,13 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div align="center">
-                                    <small>👤<a href="" th:text="*{creator.username}"></a></small>
+                                    <small>👤<a th:href="@{/user/{username}/profile(username=*{creator.username})}"
+                                                th:text="*{creator.username}"></a></small>
                                 </div>
                                 <div align="center">
                                     <img class="card-img-top thread-creator-avatar"
-                                         th:src="@{http://localhost:8001/data/user/{username}/avatar(username=*{creator.username})}" alt="Card image cap">
+                                         th:src="@{http://localhost:8001/data/user/{username}/avatar(username=*{creator.username})}"
+                                         alt="No avatar">
                                 </div>
                                 <div align="center">
                                     <small>
@@ -38,9 +40,12 @@
                                     <div class="row">
 
                                         <small>
-                                            <a href=""><img th:src="@{https://minotar.net/avatar/{minecraftAccountName}(minecraftAccountName=*{creator.minecraftAccountName})}"
+                                            <a href=""><img
+                                                    th:src="@{https://minotar.net/avatar/{minecraftAccountName}(minecraftAccountName=*{creator.minecraftAccountName})}"
                                                     class="card-img-top thread-creator-minecraft_username"
-                                                             alt="Card image cap"><span style="font-size: 15px;font-family: Consolas" th:text="*{creator.minecraftAccountName}"></span></a>
+                                                    alt="Card image cap"><span
+                                                    style="font-size: 15px;font-family: Consolas"
+                                                    th:text="*{creator.minecraftAccountName}"></span></a>
                                         </small>
                                     </div>
                                 </div>
@@ -62,34 +67,20 @@
                         </div>
                         <div class="row">
                             <div class="col-md-8">
-                                <small>by <a href="/SMENI">👤<span class="user" th:text="*{creator.username}"></span></a>
+                                <small>Posted</span></a>
                                     at
                                     <span
                                             class="postTime" th:text="*{#temporals.format(createdOn, 'HH:mm')}"></span>
-                                    <th:block sec:authorize="isAnonymous()">
-                                        (<span
+                                    (<span
                                             class="totalViews" th:text="*{totalViews}">0</span>👀 / <span
                                             class="totalLikes" th:text="*{totalReactions}">0</span>👍)
-                                    </th:block>
-                                    <th:block sec:authorize="isAuthenticated()">
-                                        <th:block sec:authorize="hasAuthority('MODERATOR')">
-                                            (<a href="/SAMO AKO IMA PRAVA"><span
-                                                class="totalViews" th:text="*{totalViews}">0</span></a>👀 / <a
-                                                href="/SAMO AKO IMA PRAVA"><span
-                                                class="totalLikes" th:text="*{totalReactions}">0</span></a>👍)
-                                        </th:block>
-                                        <th:block sec:authorize="!hasAuthority('MODERATOR')">
-                                            (<span
-                                                class="totalViews" th:text="*{totalViews}">0</span>👀 / <span
-                                                class="totalLikes" th:text="*{totalReactions}">0</span>👍)
-                                        </th:block>
-                                    </th:block>
                                 </small>
                             </div>
                             <div class="col-md-4">
                                 <small class="thread-total_comments">
                                     <small>💬</small>
-                                    <a href="/SMENI"><span class="totalComments" th:text="*{totalComments}"></span></a>
+                                    <a th:href="@{/thread/{id}/read#section-thread_read_comments(id=*{id})}"><span
+                                            class="totalComments" th:text="*{totalComments}"></span></a>
                                     Comments
                                 </small>
                             </div>
@@ -110,32 +101,31 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="btn-group">
-                                    <th:block sec:authorize="isAuthenticated()">
-                                        <th:block sec:authorize="hasAuthority('MODERATOR')">
-                                            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button"
-                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <small>⚙</small>
-                                                Options
+                                    <button sec:authorize="isAuthenticated() && hasAuthority('MODERATOR')"
+                                            class="btn btn-secondary btn-sm dropdown-toggle" type="button"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <small>⚙</small>
+                                        Options
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <form class="dropdown-item" th:action="@{/thread/{id}/delete(id=*{id})}"
+                                              method="post">
+                                            <button sec:authorize="isAuthenticated() && hasAuthority('MODERATOR')"
+                                                    type="submit" class="btn btn-light btn-sm thread-delete_button">
+                                                <small>❌</small>
+                                                Delete
                                             </button>
-                                            <div class="dropdown-menu">
-                                                <th:block sec:authorize="hasAuthority('MODERATOR')">
-                                                    <form class="dropdown-item" th:action="@{/thread/{id}/delete(id=*{id})}" method="post">
-                                                        <button type="submit" class="btn btn-light btn-sm thread-delete_button">
-                                                            <small>❌</small>
-                                                            Delete
-                                                        </button>
-                                                    </form>
-                                                </th:block>
-                                            </div>
-                                        </th:block>
-                                    </th:block>
+                                        </form>
+                                    </div>
 
-                                    <button class="btn btn-sm thread-report_button" type="button" id="button-reportThread-readThread">
+                                    <button sec:authorize="isAuthenticated()" class="btn btn-sm thread-report_button"
+                                            type="button" id="button-reportThread-readThread">
                                         <small>⚠</small>
                                         Report
                                     </button>
 
-                                    <div class="modal" id="modal-reportThread-readThread" role="dialog">
+                                    <div sec:authorize="isAuthenticated()" class="modal"
+                                         id="modal-reportThread-readThread" role="dialog">
                                         <div class="modal-dialog">
 
                                             <div class="modal-content">
@@ -170,25 +160,29 @@
 
                                 </div>
                                 <div class="btn-group thread-right_side_buttons">
-                                    <button id="button-commentThread-readThreadPage" class="btn btn-sm" type="button"
+                                    <button sec:authorize="isAuthenticated()" id="button-commentThread-readThreadPage"
+                                            class="btn btn-sm" type="button"
                                             aria-haspopup="true" aria-expanded="false">
                                         <small>💬</small>
                                         Comment
                                     </button>
-                                    <button class="btn btn-sm dropdown-toggle" type="button"
+                                    <button sec:authorize="isAuthenticated()" class="btn btn-sm dropdown-toggle"
+                                            type="button"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <small>💡</small>
                                         React
                                     </button>
                                     <div class="dropdown-menu">
                                         <form th:action="@{/thread/{id}/reaction/like(id=*{id})}" method="post">
-                                            <button class="btn btn-sm thread-right_side_button-react" type="submit">
+                                            <button sec:authorize="isAuthenticated()"
+                                                    class="btn btn-sm thread-right_side_button-react" type="submit">
                                                 <small>👍🏻</small>
                                                 Like
                                             </button>
                                         </form>
                                         <form th:action="@{/thread/{id}/reaction/dislike(id=*{id})}" method="post">
-                                            <button class="btn btn-sm thread-right_side_button-react" type="submit">
+                                            <button sec:authorize="isAuthenticated()"
+                                                    class="btn btn-sm thread-right_side_button-react" type="submit">
                                                 <small>👎🏻</small>
                                                 Dislike
                                             </button>
@@ -201,7 +195,7 @@
                 </div>
                 <!--Add comment section-->
 
-                <div class="commentBox thread-comment_box">
+                <div class="commentBox thread-comment_box" sec:authorize="isAuthenticated()">
 
                     <th:block th:insert="editor/text-editor"></th:block>
 
@@ -211,10 +205,12 @@
 
                     </div>
                     <div class="row d-flex justify-content-center align-items-center thread-comment_box-buttons">
-                        <button id="button-createCommentThread-readThreadPage" class="btn btn-sm" type="button">
+                        <button sec:authorize="isAuthenticated()" id="button-createCommentThread-readThreadPage"
+                                class="btn btn-sm" type="button">
                             Comment
                         </button>
-                        <button id="button-cancelCommentThread-readThreadPage" class="btn btn-sm thread-comment_box-button_cancel" type="button">
+                        <button id="button-cancelCommentThread-readThreadPage"
+                                class="btn btn-sm thread-comment_box-button_cancel" type="button">
                             Cancel
                         </button>
                     </div>
@@ -256,148 +252,172 @@
 
                 <!--List all comments related to this thread section -->
 
-                <th:block th:each="comment : *{comments}" th:object="${comment}">
+                <!--/*@thymesVar id="comment" type="com.ichop.core.domain.models.view.thread_read.CommentThreadReadViewModel"*/-->
+                <!--/*@thymesVar id="commentCreator" type="com.ichop.core.domain.models.view.thread_read.CommentCreatorThreadReadViewModel"*/-->
+                <section id="section-thread_read_comments">
+                    <th:block th:each="comment : *{comments}" th:object="${comment}">
 
-                    <div class="card thread-comments">
+                        <div class="card thread-comments">
 
-                        <div>
-                            <small class="thread-comments-date_likes_dislikes">
-                                <small class="dateIcon">📅</small>
-                                <small class="date"
-                                       th:text="*{#temporals.format(createdOn, 'dd MMM,yyyy')}"></small>
-                            </small>
-                            <small class="thread-comments-date_likes_dislikes">
-                                <small>👍</small>
-                                <span class="totalComments" th:text="*{totalLikes}">0</span>
-                            </small>
-                            <small class="thread-comments-date_likes_dislikes">
-                                <small>👎</small>
-                                <span class="totalComments" th:text="*{totalDislikes}">0</span>
-                            </small>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-3 thread-comment-creator_info_section">
-                                <div>
-                                    <img class="card-img-top thread-comment-creator_avatar"
-                                         th:src="@{http://localhost:8001/data/user/{username}/avatar(username=*{commentCreator.username})}" alt="Card image cap">
-                                </div>
-                                <div>
-                                    <small>👤<a href="" th:text="*{commentCreator.username}"></a></small>
-                                </div>
-                                <div>
-                                    <small>
-                                        <small>💬</small>
-                                        <span class="totalComments" th:text="*{commentCreator.totalComments}"></span> total
-                                        comments
-                                    </small>
-                                </div>
-
-                                <div>
-                                    <small>
-                                        <a href=""><img th:src="@{https://minotar.net/avatar/{minecraftAccountName}(minecraftAccountName=*{commentCreator.minecraftAccountName})}"
-                                                        class="card-img-top thread-comment-creator-minecraft_username"
-                                                        alt="Card image cap"><span th:text="*{commentCreator.minecraftAccountName}"></span></a>
-                                    </small>
-                                </div>
+                            <div>
+                                <small class="thread-comments-date_likes_dislikes">
+                                    <small class="dateIcon">📅</small>
+                                    <small class="date"
+                                           th:text="*{#temporals.format(createdOn, 'dd MMM,yyyy')}"></small>
+                                </small>
+                                <small class="thread-comments-date_likes_dislikes">
+                                    <small>👍</small>
+                                    <span class="totalComments" th:text="*{totalLikes}">0</span>
+                                </small>
+                                <small class="thread-comments-date_likes_dislikes">
+                                    <small>👎</small>
+                                    <span class="totalComments" th:text="*{totalDislikes}">0</span>
+                                </small>
                             </div>
 
-                            <div class="content thread-comment-content">
-                                <p class="card-text" th:utext="*{content}">
+                            <div class="row">
+                                <div class="col-md-3 thread-comment-creator_info_section">
+                                    <div>
+                                        <img class="card-img-top thread-comment-creator_avatar"
+                                             th:src="@{http://localhost:8001/data/user/{username}/avatar(username=*{commentCreator.username})}"
+                                             alt="No avatar">
+                                    </div>
+                                    <div>
+                                        <small>👤<a
+                                                th:href="@{/user/{username}/profile(username=*{commentCreator.username})}"
+                                                th:text="*{commentCreator.username}"></a></small>
+                                    </div>
+                                    <div>
+                                        <small>
+                                            <small>💬</small>
+                                            <span class="totalComments"
+                                                  th:text="*{commentCreator.totalComments}"></span> total
+                                            comments
+                                        </small>
+                                    </div>
 
-                                </p>
-                            </div>
-
-                        </div>
-
-
-                        <div>
-                            <div class="btn-group thread-comments-buttons">
-                                <div class="thread-comments-button_options">
-                                    <button class="btn btn-sm dropdown-toggle" type="button"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <small>⚙</small>
-                                        Options
-                                    </button>
-                                    <div class="dropdown-menu">
-                                        <form class="dropdown-item" th:action="@{/comment/{id}/delete(id=*{id})}" method="post">
-                                            <button type="submit" class="btn btn-light btn-sm thread-delete_button">
-                                                <small>❌</small>
-                                                Delete
-                                            </button>
-                                        </form>
+                                    <div>
+                                        <small>
+                                            <a href=""><img
+                                                    th:src="@{https://minotar.net/avatar/{minecraftAccountName}(minecraftAccountName=*{commentCreator.minecraftAccountName})}"
+                                                    class="card-img-top thread-comment-creator-minecraft_username"
+                                                    alt="Card image cap"><span
+                                                    th:text="*{commentCreator.minecraftAccountName}"></span></a>
+                                        </small>
                                     </div>
                                 </div>
-                                <div  class="thread-comments-button_report">
 
-                                    <button class="btn btn-sm" type="button" th:id="*{'reportButtonByThreadId-'+id}">
-                                        <small>⚠</small>
-                                        Report
-                                    </button>
+                                <div class="content thread-comment-content">
+                                    <p class="card-text" th:utext="*{content}">
 
-                                    <div class="modal" th:id="*{'modelReportCommentByThreadId-'+id}" role="dialog">
-                                        <div class="modal-dialog">
+                                    </p>
+                                </div>
 
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title">Report to the kings:</h4>
-                                                </div>
-                                                <form method="post" th:action="@{/comment/{id}/report(id=*{id})}">
-                                                    <div class="modal-body">
-                                        <textarea class="thread-comments-modal"
-                                                  name="reason" placeholder="Reason..."></textarea>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="submit" class="btn btn-default">Report</button>
-                                                        <button type="button" class="btn btn-default" data-dismiss="modal">
-                                                            Cancel
-                                                        </button>
-                                                    </div>
+                            </div>
+
+                            <div>
+                                <div class="btn-group thread-comments-buttons">
+                                    <div class="thread-comments-button_options">
+                                        <th:block sec:authorize="isAuthenticated()">
+                                            <button th:if="${@commentServicesImp.findCommentById(comment.id).creator.username.equals(#authentication.principal.username)} or ${#authorization.expression('hasAuthority(''MODERATOR'')')}"
+                                                    class="btn btn-sm dropdown-toggle" type="button"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <small>⚙</small>
+                                                Options
+                                            </button>
+                                            <div class="dropdown-menu">
+                                                <form class="dropdown-item"
+                                                      th:action="@{/comment/{id}/delete(id=*{id})}" method="post">
+                                                    <button th:if="${@commentServicesImp.findCommentById(comment.id).creator.username.equals(#authentication.principal.username)} or ${#authorization.expression('hasAuthority(''MODERATOR'')')}"
+                                                            type="submit"
+                                                            class="btn btn-light btn-sm thread-delete_button">
+                                                        <small>❌</small>
+                                                        Delete
+                                                    </button>
                                                 </form>
                                             </div>
+                                            <div class="thread-comments-button_report">
 
+
+                                                <button class="btn btn-sm" type="button"
+                                                        th:id="*{'reportButtonByThreadId-'+id}">
+                                                    <small>⚠</small>
+                                                    Report
+                                                </button>
+
+                                                <div class="modal" th:id="*{'modelReportCommentByThreadId-'+id}"
+                                                     role="dialog">
+                                                    <div class="modal-dialog">
+
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h4 class="modal-title">Report to the kings:</h4>
+                                                            </div>
+                                                            <form method="post"
+                                                                  th:action="@{/comment/{id}/report(id=*{id})}">
+                                                                <div class="modal-body">
+                                        <textarea class="thread-comments-modal"
+                                                  name="reason" placeholder="Reason..."></textarea>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="submit" class="btn btn-default">
+                                                                        Report
+                                                                    </button>
+                                                                    <button type="button" class="btn btn-default"
+                                                                            data-dismiss="modal">
+                                                                        Cancel
+                                                                    </button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <script th:inline="javascript">
+                                                f();
+
+                                                function f() {
+                                                    let commentId = /*[[*{id}]]*/ null;
+                                                    $(document).ready(function () {
+                                                        $("#reportButtonByThreadId-" + commentId).click(function () {
+                                                            $("#modelReportCommentByThreadId-" + commentId).modal();
+                                                        });
+                                                    });
+                                                }
+                                            </script>
+                                        </th:block>
+                                    </div>
+                                    <th:block sec:authorize="isAuthenticated()">
+                                    <div class="thread-comments-button_options">
+                                        <button class="btn btn-sm dropdown-toggle" type="button"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <small>💡</small>
+                                            React
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <form th:action="@{/comment/{id}/reaction/like(id=*{id})}" method="post">
+                                                <button class="btn btn-sm thread-right_side_button-react" type="submit">
+                                                    <small>👍🏻</small>
+                                                    Like
+                                                </button>
+                                            </form>
+                                            <form th:action="@{/comment/{id}/reaction/dislike(id=*{id})}" method="post">
+                                                <button class="btn btn-sm thread-right_side_button-react" type="submit">
+                                                    <small>👎🏻</small>
+                                                    Dislike
+                                                </button>
+                                            </form>
                                         </div>
                                     </div>
-                                    <script th:inline="javascript">
-                                        f();
-                                        function f() {
-                                            let commentId = /*[[*{id}]]*/ null;
-                                            $(document).ready(function () {
-                                                $("#reportButtonByThreadId-"+commentId).click(function () {
-                                                    $("#modelReportCommentByThreadId-"+commentId).modal();
-                                                });
-                                            });
-                                        }
-                                    </script>
-
-                                </div>
-                                <div class="thread-comments-button_options">
-                                    <button class="btn btn-sm dropdown-toggle" type="button"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <small>💡</small>
-                                        React
-                                    </button>
-                                    <div class="dropdown-menu">
-                                        <form th:action="@{/comment/{id}/reaction/like(id=*{id})}" method="post">
-                                            <button class="btn btn-sm thread-right_side_button-react" type="submit">
-                                                <small>👍🏻</small>
-                                                Like
-                                            </button>
-                                        </form>
-                                        <form th:action="@{/comment/{id}/reaction/dislike(id=*{id})}" method="post">
-                                            <button class="btn btn-sm thread-right_side_button-react" type="submit">
-                                                <small>👎🏻</small>
-                                                Dislike
-                                            </button>
-                                        </form>
-                                    </div>
+                                    </th:block>
                                 </div>
                             </div>
+
                         </div>
 
-                    </div>
-
-                </th:block>
+                    </th:block>
+                </section>
 
             </div>
         </th:block>
@@ -410,7 +430,7 @@
 <script>
     $(`<script/>`, {type: 'text/javascript', src: '/res/js/thread/thread-substringer.js'}).appendTo('head');
 
-    removeHtmlClassContentKyWord('.thread-content','SHOW_TO_NOW');
+    removeHtmlClassContentKyWord('.thread-content', 'SHOW_TO_NOW');
 </script>
 
 

@@ -29,7 +29,7 @@ public class ThreadController extends BaseController {
     @PreAuthorize("hasAuthority('MODERATOR')")
     @GetMapping(URLConstants.THREAD_CREATE_GET)
     public ModelAndView createThread() {
-        return super.page("thread/thread-createPost", "Create thread");
+        return super.page("thread/thread-create", "Create thread");
     }
 
     @PreAuthorize("hasAuthority('MODERATOR')")

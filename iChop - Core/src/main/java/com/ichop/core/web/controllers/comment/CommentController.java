@@ -36,7 +36,7 @@ public class CommentController extends BaseController {
     }
 
 
-    @PreAuthorize("hasAuthority('MODERATOR') or @commentCrudServicesImp.getById(#commentId).creator.username.equals(principal.username)")
+    @PreAuthorize("hasAuthority('MODERATOR') or @commentServicesImp.findCommentById(#commentId).creator.username.equals(principal.username)")
     @PostMapping(URLConstants.COMMENT_DELETE_POST)
     public String deleteComment(@PathVariable String commentId) {
 

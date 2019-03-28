@@ -18,7 +18,7 @@ public abstract class BaseToken extends BaseEntity {
     @Column(name = "token",nullable = false,updatable = false)
     private String token;
 
-    @ManyToOne(optional = false,targetEntity = User.class)
+    @ManyToOne(targetEntity = User.class)
     private User user;
 
     @Column(name = "expiry_date",nullable = false,updatable = false)

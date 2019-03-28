@@ -1,6 +1,7 @@
 package com.ichop.core.helpers.view.thread_read;
 
 import com.ichop.core.domain.entities.reaction.ReactionType;
+import com.ichop.core.domain.models.service.thread.ThreadServiceModel;
 import com.ichop.core.domain.models.view.thread_read.CommentCreatorThreadReadViewModel;
 import com.ichop.core.domain.models.view.thread_read.CommentThreadReadViewModel;
 import com.ichop.core.helpers.view.BaseViewCreator;
@@ -26,8 +27,9 @@ public class CommentThreadReadViewHelper extends BaseViewCreator {
 
     public List<CommentThreadReadViewModel> create(String threadId){
         List<CommentThreadReadViewModel> result = new LinkedList<>();
+        ThreadServiceModel thread = this.threadServices.findThreadById(threadId);
 
-        this.threadServices.findThreadById(threadId).getComments().forEach(x -> {
+        thread.getComments().forEach(x -> {
             CommentThreadReadViewModel commentThread = super.modelMapper.map(x,CommentThreadReadViewModel.class);
 
             CommentCreatorThreadReadViewModel commentCreator = this.commentCreatorThreadReadViewHelper.create(x.getId());

@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @Table(name = "threads_reports")
 public class ThreadReport extends BaseReport {
 
-    @ManyToOne(optional = false,targetEntity = Thread.class)
+    @ManyToOne(targetEntity = Thread.class)
     private Thread thread;
 
 }

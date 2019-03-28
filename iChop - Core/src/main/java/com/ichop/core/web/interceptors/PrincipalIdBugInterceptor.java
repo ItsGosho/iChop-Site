@@ -17,7 +17,8 @@ public class PrincipalIdBugInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
-        Object u = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Object u = SecurityContextHolder.getContext().getAuthentication() != null ?
+                SecurityContextHolder.getContext().getAuthentication().getPrincipal() : null;
 
         if(u == null){
             return true;
