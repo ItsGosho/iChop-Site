@@ -1,0 +1,9 @@
+name: LinkAccount
+version: ${project.version}
+main: com.ichop.plugin.linkaccount.LinkAccount
+
+commands:
+  linkaccount:
+    description: Link your account to our website
+    permission: ichop.minecraft.plugin
+usage: /plugin
