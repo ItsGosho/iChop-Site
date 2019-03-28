@@ -3,9 +3,8 @@ package com.ichop.core.web.controllers.user;
 import com.google.gson.Gson;
 import com.ichop.core.constants.URLConstants;
 import com.ichop.core.domain.models.binding.user.UserForgottenPasswordBindingModel;
-import com.ichop.core.service.user.UserServices;
 import com.ichop.core.domain.models.service.user.UserServiceModel;
-import com.ichop.core.service.user.view.UserViewServices;
+import com.ichop.core.service.user.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
@@ -17,12 +16,10 @@ import javax.validation.Valid;
 public class UserRestController {
 
     private final UserServices userServices;
-    private final UserViewServices userViewServices;
 
     @Autowired
-    public UserRestController(UserServices userServices, UserViewServices userViewServices) {
+    public UserRestController(UserServices userServices) {
         this.userServices = userServices;
-        this.userViewServices = userViewServices;
     }
 
 

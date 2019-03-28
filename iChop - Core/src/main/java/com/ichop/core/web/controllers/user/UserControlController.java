@@ -1,11 +1,12 @@
 package com.ichop.core.web.controllers.user;
 
-import com.ichop.core.domain.models.view.user_control.UserControlHomeViewModel;
-import com.ichop.core.domain.models.view.user_control.UserControlRoleManagementViewModel;
 import com.ichop.core.constants.URLConstants;
 import com.ichop.core.domain.models.service.user.UserServiceModel;
+import com.ichop.core.domain.models.view.user_control.UserControlHomeViewModel;
+import com.ichop.core.domain.models.view.user_control.UserRoleManagementUserControlViewModel;
+import com.ichop.core.helpers.view.user_control.UserControlHomeViewHelper;
+import com.ichop.core.helpers.view.user_control.UserRoleManagementUserControlViewHelper;
 import com.ichop.core.service.user.UserServices;
-import com.ichop.core.service.user.view.UserViewServices;
 import com.ichop.core.web.controllers.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,18 +21,21 @@ import java.security.Principal;
 public class UserControlController extends BaseController {
 
     private final UserServices userServices;
-    private final UserViewServices userViewServices;
+    private final UserControlHomeViewHelper userControlHomeViewHelper;
+    private final UserRoleManagementUserControlViewHelper userRoleManagementUserControlViewHelper;
 
     @Autowired
-    public UserControlController(UserServices userServices, UserViewServices userViewServices) {
+    public UserControlController(UserServices userServices, UserControlHomeViewHelper userControlHomeViewHelper, UserRoleManagementUserControlViewHelper userRoleManagementUserControlViewHelper) {
         this.userServices = userServices;
-        this.userViewServices = userViewServices;
+        this.userControlHomeViewHelper = userControlHomeViewHelper;
+        this.userRoleManagementUserControlViewHelper = userRoleManagementUserControlViewHelper;
     }
+
 
     @GetMapping(URLConstants.USER_CONTROL_BASE_GET)
     public ModelAndView userControlBase(ModelAndView modelAndView, @PathVariable(value = "username") String username) {
 
-        UserControlHomeViewModel user = this.userViewServices.getUserControlHomeViewModel(username);
+        UserControlHomeViewModel user = this.userControlHomeViewHelper.create(username);
 
         modelAndView.addObject("controlPage","user/control/user-control-core_information");
         modelAndView.addObject("user",user);
@@ -42,7 +46,7 @@ public class UserControlController extends BaseController {
     @GetMapping(URLConstants.USER_CONTROL_ROLE_MANAGEMENT_GET)
     public ModelAndView userControlHome(ModelAndView modelAndView,@PathVariable(value = "username") String username) {
 
-        UserControlRoleManagementViewModel user = this.userViewServices.getUserControlRoleManagementViewModel(username);
+        UserRoleManagementUserControlViewModel user = this.userRoleManagementUserControlViewHelper.create(username);
 
         modelAndView.addObject("controlPage","user/control/user-control-role_management");
         modelAndView.addObject("user",user);

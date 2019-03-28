@@ -7,6 +7,7 @@
 <div id="thread-view" class="container d-flex justify-content-center align-items-center">
     <div class="row">
 
+        <!--/*@thymesVar id="thread" type="com.ichop.core.domain.models.view.thread_read.ThreadReadViewModel"*/-->
         <th:block th:object="${thread}">
             <div class="col-xs-6">
 
@@ -18,16 +19,16 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div align="center">
-                                    <small>👤<a href="" th:text="*{creatorUsername}"></a></small>
+                                    <small>👤<a href="" th:text="*{creator.username}"></a></small>
                                 </div>
                                 <div align="center">
                                     <img class="card-img-top thread-creator-avatar"
-                                         th:src="@{http://localhost:8001/data/user/{username}/avatar(username=*{creatorUsername})}" alt="Card image cap">
+                                         th:src="@{http://localhost:8001/data/user/{username}/avatar(username=*{creator.username})}" alt="Card image cap">
                                 </div>
                                 <div align="center">
                                     <small>
                                         <small>💬</small>
-                                        <span class="totalComments" th:text="*{creatorTotalComments}"></span> total
+                                        <span class="totalComments" th:text="*{creator.totalComments}"></span> total
                                         comments
                                     </small>
                                 </div>
@@ -37,9 +38,9 @@
                                     <div class="row">
 
                                         <small>
-                                            <a href=""><img th:src="@{https://minotar.net/avatar/{minecraftAccountName}(minecraftAccountName=*{minecraftAccountName})}"
+                                            <a href=""><img th:src="@{https://minotar.net/avatar/{minecraftAccountName}(minecraftAccountName=*{creator.minecraftAccountName})}"
                                                     class="card-img-top thread-creator-minecraft_username"
-                                                             alt="Card image cap"><span style="font-size: 15px;font-family: Consolas" th:text="*{minecraftAccountName}"></span></a>
+                                                             alt="Card image cap"><span style="font-size: 15px;font-family: Consolas" th:text="*{creator.minecraftAccountName}"></span></a>
                                         </small>
                                     </div>
                                 </div>
@@ -61,7 +62,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-8">
-                                <small>by <a href="/SMENI">👤<span class="user" th:text="*{creatorUsername}"></span></a>
+                                <small>by <a href="/SMENI">👤<span class="user" th:text="*{creator.username}"></span></a>
                                     at
                                     <span
                                             class="postTime" th:text="*{#temporals.format(createdOn, 'HH:mm')}"></span>
@@ -94,7 +95,7 @@
                             </div>
                         </div>
                         <div class="dropdown-divider"></div>
-                        <div class="content" th:id="'content' + ${thread.getId()}">
+                        <div class="content" th:id="'content' + ${thread.id}">
                             <p class="card-text thread-content" th:utext="*{content}">
 
                             </p>
@@ -198,7 +199,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!--Add comment section-->
 
                 <div class="commentBox thread-comment_box">
@@ -280,24 +280,24 @@
                             <div class="col-md-3 thread-comment-creator_info_section">
                                 <div>
                                     <img class="card-img-top thread-comment-creator_avatar"
-                                         th:src="@{http://localhost:8001/data/user/{username}/avatar(username=*{creatorUsername})}" alt="Card image cap">
+                                         th:src="@{http://localhost:8001/data/user/{username}/avatar(username=*{commentCreator.username})}" alt="Card image cap">
                                 </div>
                                 <div>
-                                    <small>👤<a href="" th:text="*{creatorUsername}"></a></small>
+                                    <small>👤<a href="" th:text="*{commentCreator.username}"></a></small>
                                 </div>
                                 <div>
                                     <small>
                                         <small>💬</small>
-                                        <span class="totalComments" th:text="*{creatorTotalComments}"></span> total
+                                        <span class="totalComments" th:text="*{commentCreator.totalComments}"></span> total
                                         comments
                                     </small>
                                 </div>
 
                                 <div>
                                     <small>
-                                        <a href=""><img th:src="@{https://minotar.net/avatar/{minecraftAccountName}(minecraftAccountName=*{minecraftAccountName})}"
+                                        <a href=""><img th:src="@{https://minotar.net/avatar/{minecraftAccountName}(minecraftAccountName=*{commentCreator.minecraftAccountName})}"
                                                         class="card-img-top thread-comment-creator-minecraft_username"
-                                                        alt="Card image cap"><span th:text="*{minecraftAccountName}"></span></a>
+                                                        alt="Card image cap"><span th:text="*{commentCreator.minecraftAccountName}"></span></a>
                                     </small>
                                 </div>
                             </div>

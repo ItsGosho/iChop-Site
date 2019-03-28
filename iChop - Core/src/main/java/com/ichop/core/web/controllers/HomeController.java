@@ -2,8 +2,9 @@ package com.ichop.core.web.controllers;
 
 import com.ichop.core.constants.URLConstants;
 import com.ichop.core.domain.models.view.home.ThreadHomepageViewModel;
-import com.ichop.core.service.thread.view.ThreadViewServices;
+import com.ichop.core.helpers.view.home.ThreadHomepageViewHelper;
 import com.ichop.core.service.user.UserServices;
+import com.ichop.core.web.interceptors.Viewable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -23,19 +24,19 @@ import java.io.IOException;
 public class HomeController extends BaseController {
 
 
-    private final ThreadViewServices threadViewServices;
-    private final UserServices userServices;
+    private final ThreadHomepageViewHelper threadHomepageViewHelper;
 
     @Autowired
-    public HomeController(ThreadViewServices threadViewServices, UserServices userServices) {
-        this.threadViewServices = threadViewServices;
-        this.userServices = userServices;
+    public HomeController(ThreadHomepageViewHelper threadHomepageViewHelper, UserServices userServices) {
+        this.threadHomepageViewHelper = threadHomepageViewHelper;
     }
 
 
     @GetMapping(value = URLConstants.HOME_GET)
-    public ModelAndView home(ModelAndView modelAndView, @PageableDefault(size = 3, sort = "createdOn", direction = Sort.Direction.DESC) Pageable pageable) {
-        Page<ThreadHomepageViewModel> pages = this.threadViewServices.listAllByPage(pageable);
+    public ModelAndView home(ModelAndView modelAndView,
+                             @PageableDefault(size = 3, sort = "createdOn", direction = Sort.Direction.DESC) Pageable pageable,
+                             @Viewable(name = "threadAll") ThreadHomepageViewModel threadHomepageViewModel) {
+        Page<ThreadHomepageViewModel> pages = this.threadHomepageViewHelper.create(pageable);
 
         modelAndView.addObject("threads", pages);
         modelAndView.addObject("totalPages", pages.getTotalPages());

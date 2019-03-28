@@ -13,9 +13,7 @@ public class ThreadReadViewModel {
     private String id;
     private String title;
     private LocalDateTime createdOn;
-    private String creatorUsername;
-    private String minecraftAccountName;
-    private Integer creatorTotalComments;
+    private ThreadCreatorThreadReadViewModel creator;
     private Integer totalViews;
     private Integer totalReactions;
     private Integer totalComments;

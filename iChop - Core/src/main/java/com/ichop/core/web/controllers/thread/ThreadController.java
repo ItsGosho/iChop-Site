@@ -2,9 +2,8 @@ package com.ichop.core.web.controllers.thread;
 
 import com.ichop.core.constants.URLConstants;
 import com.ichop.core.domain.models.view.thread_read.ThreadReadViewModel;
-import com.ichop.core.exceptions.thread.ThreadNotFoundException;
+import com.ichop.core.helpers.view.thread_read.ThreadReadViewHelper;
 import com.ichop.core.service.thread.ThreadServices;
-import com.ichop.core.service.thread.view.ThreadViewServices;
 import com.ichop.core.web.controllers.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -18,19 +17,19 @@ import org.springframework.web.servlet.ModelAndView;
 public class ThreadController extends BaseController {
 
     private final ThreadServices threadServices;
-    private final ThreadViewServices threadViewServices;
+    private final ThreadReadViewHelper threadReadViewHelper;
 
     @Autowired
-    public ThreadController(ThreadServices threadServices, ThreadViewServices threadViewServices) {
+    public ThreadController(ThreadServices threadServices, ThreadReadViewHelper threadReadViewHelper) {
         this.threadServices = threadServices;
-        this.threadViewServices = threadViewServices;
+        this.threadReadViewHelper = threadReadViewHelper;
     }
 
 
     @PreAuthorize("hasAuthority('MODERATOR')")
     @GetMapping(URLConstants.THREAD_CREATE_GET)
     public ModelAndView createThread() {
-        return super.page("thread/thread-createPost","Create thread");
+        return super.page("thread/thread-createPost", "Create thread");
     }
 
     @PreAuthorize("hasAuthority('MODERATOR')")
@@ -41,17 +40,9 @@ public class ThreadController extends BaseController {
     }
 
     @GetMapping(URLConstants.THREAD_READ_GET)
-    public ModelAndView readThread(@PathVariable String threadId,ModelAndView modelAndView) {
-
-       if(threadId != null && this.threadServices.isThreadExistsById(threadId)){
-
-           this.threadServices.increaseViews(threadId);
-           ThreadReadViewModel threadReadViewModel = this.threadViewServices.getThreadById(threadId);
-
-           modelAndView.addObject("thread",threadReadViewModel);
-           return super.page("thread/thread-read",threadReadViewModel.getTitle(),modelAndView);
-       }
-
-       throw new ThreadNotFoundException();
+    public ModelAndView readThread(@PathVariable String threadId, ModelAndView modelAndView) {
+        ThreadReadViewModel threadReadViewModel = this.threadReadViewHelper.create(threadId);
+        modelAndView.addObject("thread", threadReadViewModel);
+        return super.page("thread/thread-read", threadReadViewModel.getTitle(), modelAndView);
     }
 }

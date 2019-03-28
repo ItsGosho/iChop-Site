@@ -6,7 +6,7 @@
 
 <div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" th:href="@{/user/{username}/control(username=*{username})}"><span><img th:src="@{http://localhost:8001/data/user/{username}/avatar(username=*{username})} style="width: 20px;height: 20px"/> </span><span th:text="*{username}">username</span></a>
+        <a class="navbar-brand" th:href="@{/user/{username}/control(username=*{username})}"><span><img th:src="@{http://localhost:8001/data/user/{username}/avatar(username=*{username})}" style="width: 20px;height: 20px"/> </span><span th:text="*{username}">username</span></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

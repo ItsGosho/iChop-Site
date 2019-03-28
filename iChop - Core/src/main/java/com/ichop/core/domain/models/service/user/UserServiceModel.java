@@ -5,12 +5,13 @@ import com.ichop.core.domain.models.service.role.UserRoleServiceModel;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Set;
 
 @Getter
 @Setter
-public class UserServiceModel extends BaseServiceModel {
+public class UserServiceModel extends BaseServiceModel implements Serializable {
 
     private String username;
     private String password;

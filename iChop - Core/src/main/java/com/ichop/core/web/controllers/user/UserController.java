@@ -1,12 +1,13 @@
 package com.ichop.core.web.controllers.user;
 
 import com.ichop.core.constants.URLConstants;
-import com.ichop.core.domain.models.view.user_all.UsersAllViewModel;
-import com.ichop.core.domain.models.view.user_profile.UserProfileViewModel;
 import com.ichop.core.domain.entities.users.User;
 import com.ichop.core.domain.models.service.user.UserServiceModel;
+import com.ichop.core.domain.models.view.user_all.UsersAllViewModel;
+import com.ichop.core.domain.models.view.user_profile.UserProfileViewModel;
+import com.ichop.core.helpers.view.user_all.UsersAllViewHelper;
+import com.ichop.core.helpers.view.user_profile.UserProfileViewHelper;
 import com.ichop.core.service.user.UserServices;
-import com.ichop.core.service.user.view.UserViewServices;
 import com.ichop.core.web.controllers.BaseController;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,21 +28,23 @@ import java.security.Principal;
 public class UserController extends BaseController {
 
     private final UserServices userServices;
-    private final UserViewServices userViewServices;
+    private final UsersAllViewHelper usersAllViewHelper;
     private final ModelMapper modelMapper;
+    private final UserProfileViewHelper userProfileViewHelper;
 
     @Autowired
-    public UserController(UserServices userServices, UserViewServices userViewServices, ModelMapper modelMapper) {
+    public UserController(UserServices userServices, UsersAllViewHelper usersAllViewHelper, ModelMapper modelMapper, UserProfileViewHelper userProfileViewHelper) {
         this.userServices = userServices;
-        this.userViewServices = userViewServices;
+        this.usersAllViewHelper = usersAllViewHelper;
         this.modelMapper = modelMapper;
+        this.userProfileViewHelper = userProfileViewHelper;
     }
 
 
     @GetMapping(URLConstants.USER_PROFILE_GET)
     public ModelAndView getUserProfile(@PathVariable String username, ModelAndView modelAndView) {
 
-        UserProfileViewModel user = this.userViewServices.getUserProfileViewModel(username);
+        UserProfileViewModel user = this.userProfileViewHelper.create(username);
 
         modelAndView.addObject("user", user);
 
@@ -82,12 +85,11 @@ public class UserController extends BaseController {
 
         Page<UsersAllViewModel> users;
         if(isUsernameLike != null) {
-            users = this.userViewServices.findUsersByUsernameContains(isUsernameLike, pageable);
-
+            users = this.usersAllViewHelper.createWhereUsernameContains(isUsernameLike, pageable);
         }else if(hasRole != null){
-            users = this.userViewServices.findUsersByRole(hasRole, pageable);
+            users = this.usersAllViewHelper.createWhereRoleIsPresent(hasRole, pageable);
         }else{
-            users = this.userViewServices.listAllByPage(pageable);
+            users = this.usersAllViewHelper.create(pageable);
         }
 
         modelAndView.addObject("users",users);

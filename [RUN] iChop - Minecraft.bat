@@ -1,1 +1,1 @@
-java -jar "iChop - Minecraft"/target/minecraft-0.0.1-SNAPSHOT.jar
+java -jar "iChop - Link Account"/target/linkaccount-0.0.1-SNAPSHOT.jar

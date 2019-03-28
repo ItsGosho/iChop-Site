@@ -1,6 +1,5 @@
 package com.ichop.core.domain.models.view.user_profile;
 
-import com.ichop.core.domain.models.service.user.UserServiceModel;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,8 +23,8 @@ public class UserProfileViewModel {
 
     private Integer totalFollowers;
     private Integer totalFollowing;
-    private List<UserServiceModel> followers;
-    private List<UserServiceModel> followings;
+    private List<UserProfileViewModel> followers;
+    private List<UserProfileViewModel> followings;
 
     //TODO:
 

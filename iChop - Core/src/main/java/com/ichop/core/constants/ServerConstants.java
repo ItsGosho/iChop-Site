@@ -3,7 +3,6 @@ package com.ichop.core.constants;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-//these values come from the application.properties
 @Component
 public final class ServerConstants {
 

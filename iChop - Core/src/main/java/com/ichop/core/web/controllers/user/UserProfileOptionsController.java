@@ -1,12 +1,12 @@
 package com.ichop.core.web.controllers.user;
 
-import com.ichop.core.domain.models.binding.user.UserUpdateProfileInformationBindingModel;
-import com.ichop.core.domain.models.view.user_options.UserProfileOptionsInformationViewModel;
-import com.ichop.core.service.user.UserInformationServices;
 import com.ichop.core.constants.URLConstants;
+import com.ichop.core.domain.models.binding.user.UserUpdateProfileInformationBindingModel;
 import com.ichop.core.domain.models.service.user.UserServiceModel;
+import com.ichop.core.domain.models.view.user_options.UserProfileOptionsInformationViewModel;
+import com.ichop.core.helpers.view.user_options.UserProfileOptionsInformationViewHelper;
+import com.ichop.core.service.user.UserInformationServices;
 import com.ichop.core.service.user.UserServices;
-import com.ichop.core.service.user.view.UserViewServices;
 import com.ichop.core.web.controllers.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -24,20 +24,20 @@ public class UserProfileOptionsController extends BaseController {
 
     private final UserServices userServices;
     private final UserInformationServices userInformationServices;
-    private final UserViewServices userViewServices;
+    private final UserProfileOptionsInformationViewHelper userProfileOptionsInformationViewHelper;
 
     @Autowired
-    public UserProfileOptionsController(UserServices userServices, UserInformationServices userInformationServices, UserViewServices userViewServices) {
+    public UserProfileOptionsController(UserServices userServices, UserInformationServices userInformationServices, UserProfileOptionsInformationViewHelper userProfileOptionsInformationViewHelper) {
         this.userServices = userServices;
         this.userInformationServices = userInformationServices;
-        this.userViewServices = userViewServices;
+        this.userProfileOptionsInformationViewHelper = userProfileOptionsInformationViewHelper;
     }
 
 
     @PreAuthorize("isAuthenticated()")
     @GetMapping(URLConstants.USER_PROFILE_OPTIONS_INFORMATION_GET)
     public ModelAndView profileOptionsInformationGet(Principal principal,ModelAndView modelAndView) {
-        UserProfileOptionsInformationViewModel userInfo = this.userViewServices.getUserProfileOptionsInformationViewModel(principal.getName());
+        UserProfileOptionsInformationViewModel userInfo = this.userProfileOptionsInformationViewHelper.create(principal.getName());
 
         modelAndView.addObject("optionsPage","user/options/user-options-profile-information");
         modelAndView.addObject("userInfo",userInfo);

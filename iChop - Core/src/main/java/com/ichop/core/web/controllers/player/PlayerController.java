@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.ichop.core.constants.URLConstants;
 import com.ichop.core.domain.models.jms.key.returnn.PlayerDataByKeyJMSReturnModel;
 import com.ichop.core.domain.models.json.IsPlayerAccountLinkedJSONModel;
-import com.ichop.core.service.player.PlayerServices;
+import com.ichop.core.service.player.link.PlayerLinkServices;
 import com.ichop.core.web.controllers.BaseController;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,12 +21,12 @@ import java.security.Principal;
 @Controller
 public class PlayerController extends BaseController {
 
-    private final PlayerServices playerServices;
+    private final PlayerLinkServices playerLinkServices;
     private final ModelMapper modelMapper;
 
     @Autowired
-    public PlayerController(PlayerServices playerServices, ModelMapper modelMapper) {
-        this.playerServices = playerServices;
+    public PlayerController(PlayerLinkServices playerLinkServices, ModelMapper modelMapper) {
+        this.playerLinkServices = playerLinkServices;
         this.modelMapper = modelMapper;
     }
 
@@ -34,13 +34,13 @@ public class PlayerController extends BaseController {
     @PreAuthorize("isAuthenticated()")
     @GetMapping(URLConstants.PLAYER_LINK_ACCOUNT_GET)
     public ModelAndView playerLinkAccountGet(@RequestParam(value = "key") String key, ModelAndView modelAndView) {
-        boolean isKeyValid = this.playerServices.isPlayerLinkKeyValid(key);
+        boolean isKeyValid = this.playerLinkServices.isPlayerLinkKeyValid(key);
 
         if (!isKeyValid) {
             return super.viewWithMessage("notification/error", "Key Error", "Key is expired or not valid!");
         }
 
-        PlayerDataByKeyJMSReturnModel result = this.playerServices.getPlayerDataByLinkKey(key);
+        PlayerDataByKeyJMSReturnModel result = this.playerLinkServices.getPlayerDataByLinkKey(key);
         modelAndView.addObject("uuid", result.getPlayerUUID());
         modelAndView.addObject("name", result.getPlayerName());
 
@@ -52,20 +52,20 @@ public class PlayerController extends BaseController {
     @PostMapping(URLConstants.PLAYER_LINK_ACCOUNT_POST)
     public ModelAndView playerLinkAccountPost(@RequestParam(value = "key") String key, ModelAndView modelAndView, Principal principal) {
 
-        boolean isKeyValid = this.playerServices.isPlayerLinkKeyValid(key);
+        boolean isKeyValid = this.playerLinkServices.isPlayerLinkKeyValid(key);
 
         if (!isKeyValid) {
             return super.viewWithMessage("notification/error", "Key Error", "Key is expired or not valid!");
         }
 
-        boolean isLinkedAccount = this.playerServices.isPlayerLinkedAccountBySiteUser(principal.getName());
+        boolean isLinkedAccount = this.playerLinkServices.isPlayerLinkedAccountBySiteUser(principal.getName());
 
         if (isLinkedAccount) {
             return super.viewWithMessage("notification/error", "Link Error", "You already linked account to this account!");
         }
 
-        PlayerDataByKeyJMSReturnModel playerDataByLinkKey = this.playerServices.getPlayerDataByLinkKey(key);
-        this.playerServices.sendSiteUserToPlayerLinkConnection(playerDataByLinkKey.getPlayerName(), playerDataByLinkKey.getPlayerUUID(), principal.getName());
+        PlayerDataByKeyJMSReturnModel playerDataByLinkKey = this.playerLinkServices.getPlayerDataByLinkKey(key);
+        this.playerLinkServices.sendSiteUserToPlayerLinkConnection(playerDataByLinkKey.getPlayerName(), playerDataByLinkKey.getPlayerUUID(), principal.getName());
 
         return super.viewWithMessage("notification/info", "Successful!", "You have successful linked your account!");
     }
@@ -74,7 +74,7 @@ public class PlayerController extends BaseController {
     @ResponseBody
     public String isPlayerLinkedAccount(@RequestParam(value = "uuid") String uuid) {
         IsPlayerAccountLinkedJSONModel isPlayerAccountLinkedJSONModel = new IsPlayerAccountLinkedJSONModel();
-        isPlayerAccountLinkedJSONModel.setAccountLinked(this.playerServices.isPlayerLinkedAccountByUUID(uuid));
+        isPlayerAccountLinkedJSONModel.setAccountLinked(this.playerLinkServices.isPlayerLinkedAccountByUUID(uuid));
         return new Gson().toJson(isPlayerAccountLinkedJSONModel);
     }
 

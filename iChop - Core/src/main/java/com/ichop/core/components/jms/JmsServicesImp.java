@@ -53,9 +53,14 @@ public class JmsServicesImp implements JmsServices {
             }
         };
 
-        Message result = this.jmsTemplate.sendAndReceive(destinationName, messageCreator);
+        try{
+            Message result = this.jmsTemplate.sendAndReceive(destinationName, messageCreator);
+            return this.messageToHashMap(result);
+        }catch (Exception ex){
+            System.out.println("There was a problem with the connection in destination "+destinationName);
+        }
 
-        return this.messageToHashMap(result);
+        return new HashMap<>();
     }
 
     @Override
