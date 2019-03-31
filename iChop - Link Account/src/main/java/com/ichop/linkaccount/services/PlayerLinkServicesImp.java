@@ -4,8 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ichop.linkaccount.domain.entities.PlayerLink;
 import com.ichop.linkaccount.domain.models.binding.PlayerLinkCreateBindingModel;
 import com.ichop.linkaccount.domain.models.service.PlayerLinkServiceModel;
-import com.ichop.linkaccount.repository.PlayerLinkRepository;
-import org.modelmapper.ModelMapper;
+import com.ichop.linkaccount.repositories.PlayerLinkRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,6 +44,11 @@ public class PlayerLinkServicesImp extends BaseService<PlayerLink, PlayerLinkRep
         super.delete(playerLink);
 
         return true;
+    }
+
+    @Override
+    public boolean isPlayerLinkExistBySiteUser(String username) {
+        return super.repository.existsBySiteUserUsername(username);
     }
 
     @Override

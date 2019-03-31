@@ -1,1 +1,1 @@
-java -jar "iChop - Web Storage"/target/itsgosho-0.0.1-SNAPSHOT.jar
+java -jar "iChop - Web Storage"/target/webstorage-0.0.1-SNAPSHOT.jar

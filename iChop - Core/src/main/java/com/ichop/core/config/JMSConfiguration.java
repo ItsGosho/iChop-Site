@@ -24,6 +24,7 @@ public class JMSConfiguration {
     public JmsTemplate jmsTemplate(){
         JmsTemplate template = new JmsTemplate();
         template.setConnectionFactory(connectionFactory());
+        template.setReceiveTimeout(1);
         return template;
     }
 

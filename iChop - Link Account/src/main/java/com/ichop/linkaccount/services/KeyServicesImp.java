@@ -3,8 +3,7 @@ package com.ichop.linkaccount.services;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ichop.linkaccount.domain.entities.Key;
 import com.ichop.linkaccount.domain.models.service.KeyServiceModel;
-import com.ichop.linkaccount.repository.KeyRepository;
-import org.modelmapper.ModelMapper;
+import com.ichop.linkaccount.repositories.KeyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

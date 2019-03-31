@@ -1,11 +1,7 @@
 package com.ichop.core.validators;
 
-import org.apache.commons.io.IOUtils;
-
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
-import java.io.IOException;
-import java.io.InputStream;
 
 public class Base64SizeValidator implements ConstraintValidator<Base64Size,String> {
 
@@ -25,19 +21,15 @@ public class Base64SizeValidator implements ConstraintValidator<Base64Size,Strin
             return true;
         }
 
-        InputStream inputStream = IOUtils.toInputStream(value);
-        double sizeInMb = this.getSizeInMB(inputStream);
+        double sizeInMb = this.getSizeInMB(value);
 
         return sizeInMb > this.minInMB || sizeInMb < this.maxInMB;
     }
 
-    private double getSizeInMB(InputStream inputStream){
-        try {
-            return inputStream.available()/1048576.00;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return 0;
+    private Double getSizeInMB(String base64){
+        int y = base64.endsWith("==") ? 2 : 1;
+        double size =(((base64.length() * 3) / 4 - y) /1024.00)/1024.00 ;
+        return size;
     }
 
 }

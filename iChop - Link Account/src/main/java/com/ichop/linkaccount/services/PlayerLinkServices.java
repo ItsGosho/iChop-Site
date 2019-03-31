@@ -8,6 +8,8 @@ public interface PlayerLinkServices {
     boolean linkToSiteUser(PlayerLinkCreateBindingModel playerLinkCreateBindingModel);
     boolean unlinkFromSiteUser(PlayerLinkServiceModel playerLink);
 
+    boolean isPlayerLinkExistBySiteUser(String username);
+
     PlayerLinkServiceModel getBySiteUser(String siteUserUsername);
 
     boolean isAccountLinkedByUUID(String uuid);
