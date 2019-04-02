@@ -2,12 +2,15 @@ package com.ichop.basicstatistics.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateProperties;
+import org.springframework.boot.autoconfigure.orm.jpa.JpaProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
 import javax.sql.DataSource;
+import java.util.HashMap;
+import java.util.Map;
 
 @Configuration
 public class DataSourceConfiguration {
@@ -26,6 +29,9 @@ public class DataSourceConfiguration {
 
     @Value("${spring.jpa.hibernate.ddl-auto}")
     private String ddlAuto;
+
+    @Value("${spring.jpa.properties.hibernate.dialect}")
+    private String dialect;
 
     @Bean
     @Primary
@@ -46,6 +52,17 @@ public class DataSourceConfiguration {
         hibernateProperties.setDdlAuto(this.ddlAuto);
 
         return hibernateProperties;
+    }
+
+    @Bean
+    @Primary
+    public JpaProperties jpaProperties(){
+        JpaProperties jpaProperties = new JpaProperties();
+        Map<String,String> properties = new HashMap<>();
+        properties.put("hibernate.dialect",dialect);
+        jpaProperties.setProperties(properties);
+
+        return jpaProperties;
     }
 
 }

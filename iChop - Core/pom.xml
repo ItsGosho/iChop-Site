@@ -78,6 +78,7 @@
             <version>6.0.13.Final</version>
         </dependency>
 
+
         <dependency>
             <groupId>org.modelmapper</groupId>
             <artifactId>modelmapper</artifactId>
@@ -165,8 +166,6 @@
             <artifactId>commons-beanutils</artifactId>
             <version>1.9.3</version>
         </dependency>
-
-
     </dependencies>
 
     <build>

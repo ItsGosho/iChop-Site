@@ -6,6 +6,10 @@ import lombok.Setter;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
+import static com.ichop.linkaccount.constants.ValidationConstants.UUID_PATTERN;
+import static com.ichop.linkaccount.constants.ValidationMessages.UUID_NOT_VALID;
 
 @Getter
 @Setter

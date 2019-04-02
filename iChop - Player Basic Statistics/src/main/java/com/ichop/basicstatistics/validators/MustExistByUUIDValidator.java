@@ -19,6 +19,7 @@ public class MustExistByUUIDValidator implements ConstraintValidator<MustExistBy
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        return this.playerStatisticsServices.existsByUUID(value);
+        boolean result = this.playerStatisticsServices.existsByUUID(value);
+        return result;
     }
 }

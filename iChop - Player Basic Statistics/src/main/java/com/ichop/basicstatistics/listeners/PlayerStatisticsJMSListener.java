@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ichop.basicstatistics.components.JmsServices;
 import com.ichop.basicstatistics.components.ValidationUtil;
 import com.ichop.basicstatistics.domain.models.jms.receive.GetPlayerBasicStatisticsByUUIDJmsReceiveModel;
+import com.ichop.basicstatistics.domain.models.jms.returnn.BaseJMSReturnModel;
 import com.ichop.basicstatistics.domain.models.jms.returnn.GetPlayerBasicStatisticsByUUIDJmsReturnModel;
 import com.ichop.basicstatistics.domain.models.service.PlayerStatisticsServiceModel;
 import com.ichop.basicstatistics.listeners.annotations.GetPlayerDataByUUIDListener;
@@ -15,8 +16,6 @@ import javax.jms.JMSException;
 import javax.jms.Message;
 import java.util.HashMap;
 import java.util.Map;
-
-import static com.ichop.basicstatistics.constants.JmsConstants.*;
 
 @Component
 public class PlayerStatisticsJMSListener extends BaseJmsListener {
@@ -36,7 +35,7 @@ public class PlayerStatisticsJMSListener extends BaseJmsListener {
         GetPlayerBasicStatisticsByUUIDJmsReceiveModel receivedJMSModel = super.jmsServices.getJmsModel(message, GetPlayerBasicStatisticsByUUIDJmsReceiveModel.class);
 
         if (super.validationUtil.validate(receivedJMSModel).hasErrors()) {
-            return super.jmsServices.returnErrors(receivedJMSModel);
+            return super.jmsServices.returnErrorModel(receivedJMSModel,GetPlayerBasicStatisticsByUUIDJmsReturnModel.class);
         }
 
         PlayerStatisticsServiceModel result = this.playerStatisticsServices.findByUUID(receivedJMSModel.getUuid());

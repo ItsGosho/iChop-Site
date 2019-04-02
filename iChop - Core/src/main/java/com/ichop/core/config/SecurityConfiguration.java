@@ -1,8 +1,8 @@
 package com.ichop.core.config;
 
-import com.ichop.core.handlers.UserAuthenticationSuccessfulHandler;
-import com.ichop.core.handlers.UserLogoutHandler;
-import com.ichop.core.service.user.UserServices;
+import com.ichop.core.areas.user.handlers.UserAuthenticationSuccessfulHandler;
+import com.ichop.core.areas.user.handlers.UserLogoutHandler;
+import com.ichop.core.areas.user.services.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;

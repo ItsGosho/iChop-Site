@@ -1,6 +1,7 @@
 package com.ichop.linkaccount.components;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ichop.linkaccount.domain.models.jms.BaseJMSReturnModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
@@ -100,16 +101,25 @@ public class JmsServicesImp implements JmsServices {
     }
 
     @Override
-    public Message returnErrors(Object model) {
+    public Message returnResultModel(Object model) {
         Map<String, Object> resultValues = new HashMap<>();
-        resultValues.put(SENDING_ERRORS_PARAMETER_NAME, this.validationUtil.getAllErrors(this.validationUtil.validate(model).getAllErrors()));
+        resultValues.put(SENDING_MODEL_PARAMETER_NAME, model != null ? this.objectMapper.convertValue(model, Map.class) : null);
         return this.convertValuesIntoMessage(resultValues);
     }
 
     @Override
-    public Message returnResultModel(Object model) {
+    public Message returnErrorModel(Object jmsModel, Class<? extends BaseJMSReturnModel> getPlayerBasicStatisticsByUUIDJmsReturnModelClass) {
+        BaseJMSReturnModel baseJMSReturnModel = null;
+        try {
+            baseJMSReturnModel = getPlayerBasicStatisticsByUUIDJmsReturnModelClass.newInstance();
+        } catch (InstantiationException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        baseJMSReturnModel.setErrors(this.validationUtil.getAllErrors(this.validationUtil.validate(jmsModel).getAllErrors()));
+
         Map<String, Object> resultValues = new HashMap<>();
-        resultValues.put(SENDING_MODEL_PARAMETER_NAME, model != null ? this.objectMapper.convertValue(model, Map.class) : null);
+        resultValues.put(SENDING_MODEL_PARAMETER_NAME,this.objectMapper.convertValue(baseJMSReturnModel,Map.class));
+
         return this.convertValuesIntoMessage(resultValues);
     }
 

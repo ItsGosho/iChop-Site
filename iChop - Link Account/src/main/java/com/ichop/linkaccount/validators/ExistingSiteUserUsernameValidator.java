@@ -8,7 +8,7 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 @Component
-public class ExistingSiteUserUsernameValidator implements ConstraintValidator<ValidKey, String> {
+public class ExistingSiteUserUsernameValidator implements ConstraintValidator<ExistingSiteUserUsername, String> {
 
     private final PlayerLinkServices playerLinkServices;
 

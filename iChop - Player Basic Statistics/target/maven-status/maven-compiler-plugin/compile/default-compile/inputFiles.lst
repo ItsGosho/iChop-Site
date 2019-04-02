@@ -13,15 +13,14 @@ C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Player Basic Statistics\src\mai
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Player Basic Statistics\src\main\java\com\ichop\basicstatistics\constants\ValidationMessages.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Player Basic Statistics\src\main\java\com\ichop\basicstatistics\domain\models\jms\returnn\GetPlayerBasicStatisticsByUUIDJmsReturnModel.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Player Basic Statistics\src\main\java\com\ichop\basicstatistics\constants\PlayerStatisticsJMSConstants.java
+C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Player Basic Statistics\src\main\java\com\ichop\basicstatistics\domain\models\jms\returnn\BaseJMSReturnModel.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Player Basic Statistics\src\main\java\com\ichop\basicstatistics\listeners\annotations\GetPlayerDataByUUIDListener.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Player Basic Statistics\src\main\java\com\ichop\basicstatistics\services\BaseService.java
-C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Player Basic Statistics\src\main\java\com\ichop\basicstatistics\domain\models\jms\returnn\BaseReturnModel.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Player Basic Statistics\src\main\java\com\ichop\basicstatistics\CLR.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Player Basic Statistics\src\main\java\com\ichop\basicstatistics\listeners\BaseJmsListener.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Player Basic Statistics\src\main\java\com\ichop\basicstatistics\listeners\PlayerStatisticsJMSListener.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Player Basic Statistics\src\main\java\com\ichop\basicstatistics\validators\MustExistByUUID.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Player Basic Statistics\src\main\java\com\ichop\basicstatistics\components\ValidationUtil.java
-C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Player Basic Statistics\src\main\java\com\ichop\basicstatistics\domain\models\jms\returnn\BaseErrorModel.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Player Basic Statistics\src\main\java\com\ichop\basicstatistics\domain\models\jms\receive\GetPlayerBasicStatisticsByUUIDJmsReceiveModel.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Player Basic Statistics\src\main\java\com\ichop\basicstatistics\domain\models\service\PlayerStatisticsServiceModel.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Player Basic Statistics\src\main\java\com\ichop\basicstatistics\components\JmsServicesImp.java

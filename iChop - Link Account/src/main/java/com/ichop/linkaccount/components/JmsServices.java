@@ -1,5 +1,7 @@
 package com.ichop.linkaccount.components;
 
+import com.ichop.linkaccount.domain.models.jms.BaseJMSReturnModel;
+
 import javax.jms.JMSException;
 import javax.jms.Message;
 import java.util.Map;
@@ -16,7 +18,7 @@ public interface JmsServices {
 
     Message convertValuesIntoMessage(Map<String, Object> values);
 
-    Message returnErrors(Object model);
-
     Message returnResultModel(Object model);
+
+    Message returnErrorModel(Object jmsModel, Class<? extends BaseJMSReturnModel> getPlayerBasicStatisticsByUUIDJmsReturnModelClass);
 }

@@ -9,7 +9,10 @@ public final class URLConstants {
     //PlayerController ---------------------------------------------------------------------------------------
     public static final String PLAYER_LINK_ACCOUNT_GET = "/player/link-account"; /*USER++*/
     public static final String PLAYER_LINK_ACCOUNT_POST = "/player/link-account"; /*USER++*/
-    public static final String PLAYER_IS_PLAYER_LINKED_ACCOUNT_GET = "/player/is-account-linked"; /*EVERYONE*/
+    public static final String PLAYER_PROFILE_VIEW_GET = "/player/{uuid}"; /*EVERYONE*/
+
+    //PlayerApiController ------------------------------------------------------------------------------------
+    public static final String PLAYER_IS_PLAYER_LINKED_ACCOUNT_GET = "/api/player/is-account-linked"; /*EVERYONE*/
 
 
     //HomeController ------------------------------------------------------------------------------------------
@@ -34,8 +37,10 @@ public final class URLConstants {
 
     //UserMyProfileController ---------------------------------------------------------------------------------
 
-    public static final String USER_PROFILE_OPTIONS_INFORMATION_GET = "/user/my-profile/options/information"; /*Only LOGGED-IN USER AND HIS PROFILE*/
-    public static final String USER_PROFILE_OPTIONS_INFORMATION_POST = "/user/my-profile/options/information"; /*Only LOGGED-IN USER AND HIS PROFILE*/
+    public static final String USER_PROFILE_OPTIONS_INFORMATION_GET = "/user/my-profile/options/information"; /*Only LOGGED-IN USER IN HIS PROFILE*/
+    public static final String USER_PROFILE_OPTIONS_INFORMATION_POST = "/user/my-profile/options/information"; /*Only LOGGED-IN USER IN HIS PROFILE*/
+    public static final String USER_PROFILE_OPTIONS_CHANGE_PASSWORD_GET = "/user/my-profile/options/change-password"; /*Only LOGGED-IN USER IN HIS PROFILE*/
+    public static final String USER_PROFILE_OPTIONS_CHANGE_PASSWORD_POST = "/user/my-profile/options/change-password"; /*Only LOGGED-IN USER IN HIS PROFILE*/
 
     //UserAuthenticationController ----------------------------------------------------------------------------
 
@@ -51,7 +56,7 @@ public final class URLConstants {
 
     //UserRestController -------------------------------------------------------------------------------------
 
-    public static final String USER_SEND_EMAIL_RESET_PASSWORD_POST = "/user/send-email/reset/password"; /*EVERYONE*/
+    public static final String USER_SEND_EMAIL_RESET_PASSWORD_POST = "/api/user/send-email/reset/password"; /*EVERYONE*/
     public static final String USER_EXISTS_GET = "/api/user/exists"; /*EVERYONE*/
     public static final String IS_USER_FOLLOWING_USER = "/api/user/is-following"; /*EVERYONE*/
 
@@ -76,6 +81,9 @@ public final class URLConstants {
     public static final String THREAD_REACTION_DISLIKE_POST = "/thread/{threadId}/reaction/dislike"; /*USER++*/
     public static final String COMMENT_REACTION_LIKE_POST = "/comment/{commentId}/reaction/like"; /*USER++*/
     public static final String COMMENT_REACTION_DISLIKE_POST = "/comment/{commentId}/reaction/dislike"; /*USER++*/
+
+    //ReactionApiController
+    public static final String IS_COMMENT_ALREADY_REACTED_BY_USER = "/comment/{commentId}/is-reaction-present"; /*EVERYONE*/
 
     //Comment ------------------------------------------------------------------------------------------------
 

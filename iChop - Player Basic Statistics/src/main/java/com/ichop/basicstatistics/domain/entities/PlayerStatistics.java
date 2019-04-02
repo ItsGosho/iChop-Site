@@ -29,23 +29,23 @@ public class PlayerStatistics {
     private String name;
 
     @Column(name = "is_online")
-    private boolean isOnline;
+    private Boolean isOnline;
 
     @Column(name = "DEATHS")
-    private int totalDeaths;
+    private Integer totalDeaths;
 
     @Column(name = "PLAYER_KILLS")
-    private int totalPlayerKills;
+    private Integer totalPlayerKills;
 
     @Column(name = "MOB_KILLS")
-    private int totalMobKills;
+    private Integer totalMobKills;
 
     @Column(name = "DAMAGE_DEALT")
-    private int totalDamageDealt;
+    private Integer totalDamageDealt;
 
     @Column(name = "DAMAGE_TAKEN")
-    private int totalDamageTaken;
+    private Integer totalDamageTaken;
 
     @Column(name = "LAST_JOIN")
-    private int lastJoin;
+    private Integer lastJoin;
 }

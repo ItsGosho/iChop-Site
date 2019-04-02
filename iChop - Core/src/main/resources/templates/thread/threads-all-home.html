@@ -12,8 +12,8 @@
         </div>
         <th:block th:if="${!#lists.isEmpty(threads)}">
 
-            <!--/*@thymesVar id="threads" type="com.ichop.core.domain.models.view.home.ThreadHomepageViewModel"*/-->
-            <!--/*@thymesVar id="thread" type="com.ichop.core.domain.models.view.home.ThreadHomepageViewModel"*/-->
+            <!--/*@thymesVar id="threads" type="com.ichop.core.areas.thread.domain.models.view.thread_homepage.ThreadHomepageViewModel"*/-->
+            <!--/*@thymesVar id="thread" type="com.ichop.core.areas.thread.domain.models.view.thread_homepage.ThreadHomepageViewModel"*/-->
             <th:block th:each="thread : ${threads}" th:object="${thread}">
                 <div th:id="*{id}" class="card-body">
                     <div class="row">

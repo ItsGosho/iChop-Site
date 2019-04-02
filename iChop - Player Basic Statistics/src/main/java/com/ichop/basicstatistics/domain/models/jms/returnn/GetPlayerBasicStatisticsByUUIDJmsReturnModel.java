@@ -5,12 +5,11 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Getter
 @Setter
-public class GetPlayerBasicStatisticsByUUIDJmsReturnModel extends BaseReturnModel {
+public class GetPlayerBasicStatisticsByUUIDJmsReturnModel extends BaseJMSReturnModel {
 
     private String uuid;
     private String name;

@@ -1,19 +1,11 @@
-function runResetPasswordFormValidation() {
-    let buttonShowPassword = $(`#button-showPassword-registerForm`);
-    let buttonProceedReset = $(`#button-proceedResetPassword-resetPasswordForm`);
-
-    let passwordField = $(`#input-password-resetPasswordForm`);
-    let confirmPasswordField = $(`#input-confirmPassword-resetPasswordForm`);
-
-    let errorPasswordsDoesntMatch = $(`#error-passwordsDoesntMatch-resetPasswordForm`);
-
+function runResetPasswordFormValidation(buttonShowPassword,buttonProceedResetPassword,passwordField,confirmPasswordField,errorPasswordsDoesntMatchField) {
     passwordField.on(`keyup`, validatePassword);
 
     confirmPasswordField.on(`keyup`, validateConfirmPassword);
 
     getAuthUtil().runShowPasswordButton(buttonShowPassword,passwordField,confirmPasswordField);
 
-    buttonProceedReset.on(`click`,function () {
+    buttonProceedResetPassword.on(`click`,function () {
 
         let resultPassword = validatePassword();
         let resultConfirmPassword = validateConfirmPassword();
@@ -38,9 +30,9 @@ function runResetPasswordFormValidation() {
     function validateConfirmPassword() {
         let result = getAuthUtil().validatePasswordEquals(passwordField, confirmPasswordField);
         if (result) {
-            getAuthUtil().onSuccessPass(confirmPasswordField, errorPasswordsDoesntMatch);
+            getAuthUtil().onSuccessPass(confirmPasswordField, errorPasswordsDoesntMatchField);
         } else {
-            getAuthUtil().onFailurePass(confirmPasswordField, errorPasswordsDoesntMatch);
+            getAuthUtil().onFailurePass(confirmPasswordField, errorPasswordsDoesntMatchField);
         }
         return result;
     }

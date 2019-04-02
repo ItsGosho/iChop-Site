@@ -1,6 +1,9 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<!--/*@thymesVar id="player" type="com.ichop.core.areas.player.domain.models.view.PlayerProfileViewModel"*/-->
+<th:block th:object="${player}">
 <div class="container" style="margin-top: 100px">
 
     <div class="row" style="">
@@ -9,7 +12,7 @@
             <div class="col-md-sm">
 
                 <div align="center">
-                    <img src="7b6cf400ffd747af840bd54939126153.png" style="width: 175px;height: 350px"/>
+                    <img th:src="@{https://crafatar.com/renders/body/{uuid}(uuid=*{uuid})}" style="width: 175px;height: 350px"/>
                 </div>
 
 
@@ -29,7 +32,8 @@
                     </div>
                 </div>
 
-                <div class="card user-location" style="margin-top: 10px">
+                <th:block th:if="*{siteUserUsername != null}">
+                <div class="card" style="margin-top: 10px">
                     <div class="card-body"
                          style="line-height: 13px;font-family: Consolas;margin-left: -20px;margin-bottom: -15px;margin-top: -15px">
 
@@ -40,25 +44,26 @@
                                 </div>
                                 <div class="col-md-auto" style="column-width: 100px">
                                <span style="display: inline-block;float: right;">
-                                   <a href="">TinaBG</a>
+                                   <a th:href="@{/user/{username}/profile(username=*{siteUserUsername})}" th:text="*{siteUserUsername}"></a>
                                </span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                </th:block>
 
             </div>
         </div>
 
         <div class="central-content" style="margin-left: 5px">
 
-            <div class="col-md-auto username_and_rank_follow_unfollow">
+            <div class="col-md-auto">
                 <div style="line-height: 20px">
                     <div class="row">
                         <div>
                             <div class="col-md-auto head">
-                                <span style="font-size: 25px">TinaBG</span>
+                                    <span style="font-size: 25px" th:text="*{name}"></span>
                             </div>
                         </div>
                     </div>
@@ -71,8 +76,14 @@
                     <div class="row">
                         <div>
                             <div class="col-md-auto head" style="font-size: 19px;font-family: Consolas">
-                                <span>🔋<span style="color: green">Online</span></span>
-                                <span>🔴<span style="color: darkred">Offline</span></span>
+
+                                <th:block th:if="*{getIsOnline()}">
+                                    <span>🔋<span style="color: green">Online</span></span>
+                                </th:block>
+
+                                <th:block th:if="*{!getIsOnline()}">
+                                    <span>🔴<span style="color: darkred">Offline</span></span>
+                                </th:block>
                             </div>
                         </div>
                     </div>
@@ -83,22 +94,22 @@
                 <div class="col-md-auto head" style="font-size: 19px;font-family: Consolas">
                     <span>Basic Statistcs:</span>
                     <div class="row">
-                        <span>💀</span>Deaths: 1
+                        <span>💀</span>Deaths: <span th:text="*{totalDeaths}"></span>
                     </div>
                     <div class="row">
-                        <span>🤕</span>Damage Taken: 17
+                        <span>🗡️ </span>Damage Taken: <span th:text="*{totalDamageDealt}"></span>
                     </div>
                     <div class="row">
-                        <span>❌</span>Death: 1h ago
+                        <span>🤕</span>Damage Taken: <span th:text="*{totalDamageTaken}"></span>
                     </div>
                     <div class="row">
-                        <span>️🧟</span>Mobs Killed: 16
+                        <span>️🧟</span>Mobs Killed: <span th:text="*{totalMobKills}"></span>
                     </div>
                     <div class="row">
-                        <span>👤</span>Player Killed: 164
+                        <span>👤</span>Player Killed: <span th:text="*{totalPlayerKills}"></span>
                     </div>
                     <div class="row">
-                        <span>⏰</span>Last Join: 29/03/2019
+                        <span>⏰</span>Last Join: <span th:text="*{#temporals.format(lastJoin, 'dd/MM/yyyy HH:mm')}"></span>
                     </div>
                 </div>
             </div>
@@ -107,3 +118,4 @@
 
     </div>
 </div>
+</th:block>

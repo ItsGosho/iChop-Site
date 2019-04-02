@@ -1,10 +1,10 @@
 package com.ichop.core.web.controllers;
 
+import com.ichop.core.base.BaseController;
 import com.ichop.core.constants.URLConstants;
-import com.ichop.core.domain.models.view.home.ThreadHomepageViewModel;
-import com.ichop.core.helpers.view.home.ThreadHomepageViewHelper;
-import com.ichop.core.service.user.UserServices;
-import com.ichop.core.web.interceptors.Viewable;
+import com.ichop.core.areas.thread.domain.models.view.thread_homepage.ThreadHomepageViewModel;
+import com.ichop.core.areas.thread.helpers.view.thread_homepage.ThreadHomepageViewHelper;
+import com.ichop.core.areas.user.services.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -34,8 +34,7 @@ public class HomeController extends BaseController {
 
     @GetMapping(value = URLConstants.HOME_GET)
     public ModelAndView home(ModelAndView modelAndView,
-                             @PageableDefault(size = 3, sort = "createdOn", direction = Sort.Direction.DESC) Pageable pageable,
-                             @Viewable(name = "threadAll") ThreadHomepageViewModel threadHomepageViewModel) {
+                             @PageableDefault(size = 3, sort = "createdOn", direction = Sort.Direction.DESC) Pageable pageable) {
         Page<ThreadHomepageViewModel> pages = this.threadHomepageViewHelper.create(pageable);
 
         modelAndView.addObject("threads", pages);

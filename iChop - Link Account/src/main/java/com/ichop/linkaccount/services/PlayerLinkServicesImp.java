@@ -57,6 +57,11 @@ public class PlayerLinkServicesImp extends BaseService<PlayerLink, PlayerLinkRep
     }
 
     @Override
+    public PlayerLinkServiceModel getByUUID(String uuid) {
+        return this.objectMapper.convertValue(super.repository.getByPlayerUUID(uuid),PlayerLinkServiceModel.class);
+    }
+
+    @Override
     public boolean isAccountLinkedByUUID(String uuid) {
 
         if (super.repository.getByPlayerUUID(uuid) != null) {

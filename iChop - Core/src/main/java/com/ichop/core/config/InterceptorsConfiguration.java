@@ -1,7 +1,7 @@
 package com.ichop.core.config;
 
 import com.ichop.core.web.interceptors.TitleInterceptor;
-import com.ichop.core.web.interceptors.PrincipalIdBugInterceptor;
+import com.ichop.core.areas.user.web.interceptors.PrincipalIdBugInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;

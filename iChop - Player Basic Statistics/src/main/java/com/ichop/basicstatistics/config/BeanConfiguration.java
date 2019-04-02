@@ -39,10 +39,13 @@ public class BeanConfiguration {
 
         Converter<Integer, LocalDateTime> epochBraaaaat = new AbstractConverter<>() {
             protected LocalDateTime convert(Integer source) {
-                LocalDateTime date =
-                        LocalDateTime
-                                .ofEpochSecond(source, 0, OffsetDateTime.now().getOffset());
-                return date;
+                if(source!= null){
+                    LocalDateTime date =
+                            LocalDateTime
+                                    .ofEpochSecond(source, 0, OffsetDateTime.now().getOffset());
+                    return  date;
+                }
+                return null;
             }
         };
 

@@ -1,6 +1,7 @@
 com\ichop\basicstatistics\config\BeanConfiguration$1.class
 com\ichop\basicstatistics\components\JmsServicesImp.class
 com\ichop\basicstatistics\validators\MustExistByUUIDValidator.class
+com\ichop\basicstatistics\domain\models\jms\returnn\BaseJMSReturnModel.class
 com\ichop\basicstatistics\repositories\PlayerStatisticsRepository.class
 com\ichop\basicstatistics\components\ValidationUtil.class
 com\ichop\basicstatistics\config\BeanConfiguration.class
@@ -12,7 +13,6 @@ com\ichop\basicstatistics\domain\models\jms\receive\GetPlayerBasicStatisticsByUU
 com\ichop\basicstatistics\CLR.class
 com\ichop\basicstatistics\components\ValidationUtilImp.class
 com\ichop\basicstatistics\config\DataSourceConfiguration.class
-com\ichop\basicstatistics\domain\models\jms\returnn\BaseReturnModel.class
 com\ichop\basicstatistics\services\BaseService.class
 com\ichop\basicstatistics\config\PropertyConfiguration.class
 com\ichop\basicstatistics\domain\models\jms\returnn\GetPlayerBasicStatisticsByUUIDJmsReturnModel.class
@@ -28,5 +28,4 @@ com\ichop\basicstatistics\listeners\PlayerStatisticsJMSListener.class
 com\ichop\basicstatistics\services\PlayerStatisticsServicesImp.class
 com\ichop\basicstatistics\domain\models\service\BaseServiceModel.class
 com\ichop\basicstatistics\validators\MustExistByUUID.class
-com\ichop\basicstatistics\domain\models\jms\returnn\BaseErrorModel.class
 com\ichop\basicstatistics\listeners\annotations\GetPlayerDataByUUIDListener.class

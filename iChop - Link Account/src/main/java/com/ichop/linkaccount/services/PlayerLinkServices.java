@@ -11,6 +11,7 @@ public interface PlayerLinkServices {
     boolean isPlayerLinkExistBySiteUser(String username);
 
     PlayerLinkServiceModel getBySiteUser(String siteUserUsername);
+    PlayerLinkServiceModel getByUUID(String uuid);
 
     boolean isAccountLinkedByUUID(String uuid);
     boolean isAccountLinkedBySiteUserUsername(String username);

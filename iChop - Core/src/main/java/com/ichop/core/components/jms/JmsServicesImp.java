@@ -1,5 +1,7 @@
 package com.ichop.core.components.jms;
 
+import com.ichop.core.base.BaseJMSReceiveModel;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
@@ -17,13 +19,20 @@ import java.util.Map;
 public class JmsServicesImp implements JmsServices {
 
     private final JmsTemplate jmsTemplate;
+    private final ModelMapper modelMapper;
 
     @Autowired
-    public JmsServicesImp(JmsTemplate jmsTemplate) {
+    public JmsServicesImp(JmsTemplate jmsTemplate, ModelMapper modelMapper) {
         this.jmsTemplate = jmsTemplate;
+        this.modelMapper = modelMapper;
     }
 
 
+    @Override
+    @SuppressWarnings("unchecked")
+    public <ReceiveModel extends BaseJMSReceiveModel> ReceiveModel getResultModel(Map<String, Object> values, Class<ReceiveModel> clazz) {
+        return values.get("resultModel") != null ? this.modelMapper.map(values.get("resultModel"), clazz) : null;
+    }
 
     @Override
     public Map<String, Object> messageToHashMap(Message message) {
@@ -53,11 +62,11 @@ public class JmsServicesImp implements JmsServices {
             }
         };
 
-        try{
+        try {
             Message result = this.jmsTemplate.sendAndReceive(destinationName, messageCreator);
             return this.messageToHashMap(result);
-        }catch (Exception ex){
-            System.out.println("There was a problem with the connection in destination "+destinationName);
+        } catch (Exception ex) {
+            System.out.println("There was a problem with the connection in destination " + destinationName);
         }
 
         return new HashMap<>();
