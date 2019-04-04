@@ -11,11 +11,6 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-//The idea behind this is to load text files and to place content in the placeholder
-//Example for placeholder  ${{username}}
-//You MUST set the viewLocation and she must be valid ,otherwise it will throw a exception
-//If one of the properties mismatch or doesnt exist ,nothing will happen
-//Why it uses Builder pattern? - I didn't have other job :D:D:D::D:D
 public class CustomTemplateEngine {
 
     // viewLocation must be under resources!

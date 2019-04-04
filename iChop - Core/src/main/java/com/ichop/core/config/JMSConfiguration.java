@@ -13,6 +13,10 @@ public class JMSConfiguration {
     private String brokerUrl;
 
 
+    @Value("${jms.receive.timeout}")
+    private Integer receiveTimeout;
+
+
     @Bean
     public ActiveMQConnectionFactory connectionFactory() {
         ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory();
@@ -24,7 +28,7 @@ public class JMSConfiguration {
     public JmsTemplate jmsTemplate(){
         JmsTemplate template = new JmsTemplate();
         template.setConnectionFactory(connectionFactory());
-        template.setReceiveTimeout(1000);
+        template.setReceiveTimeout(this.receiveTimeout);
         return template;
     }
 

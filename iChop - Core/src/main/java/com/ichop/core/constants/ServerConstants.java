@@ -10,12 +10,12 @@ public final class ServerConstants {
     public static String SEVER_DOMAIN;
     public static String SERVER_PORT;
 
-    @Value("${custom.server.protocol}")
+    @Value("${server.protocol}")
     private void setServerProtocol(String serverProtocol){
         SERVER_PROTOCOL = serverProtocol;
     }
 
-    @Value("${custom.server.domain}")
+    @Value("${server.domain}")
     private void setSeverDomain(String severDomain) {
         SEVER_DOMAIN = severDomain;
     }

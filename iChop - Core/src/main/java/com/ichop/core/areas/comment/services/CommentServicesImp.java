@@ -50,6 +50,11 @@ public class CommentServicesImp extends BaseService<Comment, CommentRepository> 
 
     @Override
     public int getTotalOfUser(UserServiceModel user) {
+
+        if(user == null){
+            throw new UserNotFoundException();
+        }
+
         User entityUser = this.modelMapper.map(user, User.class);
 
         return super.repository.getTotalCommentsOfUser(entityUser);

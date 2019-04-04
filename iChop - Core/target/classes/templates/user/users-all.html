@@ -2,7 +2,10 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-left: 40px;margin-right: 40px">
+<script src="/res/js/user/user-all.js"></script>
+<link rel="stylesheet" href="/res/css/user/user-all.css">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="/user/all?page=0" title="Clear Filter">👤Users</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarOptions"
             aria-controls="navbarOptions" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,103 +42,14 @@
 
 <script>
     $(document).ready(function () {
-
-        let inputSearchByUsername = $(`#input-searchByUsername-usersAll`);
-        let buttonSearchByUsername = $(`#button-searchByUsernameSend-usersAll`);
-
-        let iconSortUsername = $(`#icon-sortByUsername-usersAll`);
-        let iconSortEmail = $(`#icon-sortByEmail-usersAll`);
-        let iconSortRegistrationDate = $(`#icon-sortByRegistrationDate-usersAll`);
-
-        let sortParam = "sort";
-        let pageParam = "page";
-        let usernameParam = "isUsernameLike";
-        let hasRoleParam = "hasRole";
-
-        let usernameSortValue = "username,asc";
-        let emailSortValue = "email,asc";
-        let registrationDateSortValue = "registrationDate,asc";
-        let adminRoleValue = 'ADMIN';
-        let moderatorRoleValue = 'MODERATOR';
-        let userRoleValue = 'USER';
-
-        let url = new URL(window.location.href);
-
-        if(url.searchParams.get(pageParam) === null){
-            url.searchParams.set(pageParam,0);
-            window.location.href = url.href;
-        }
-
-        if(url.searchParams.get(usernameParam) !== null){
-            inputSearchByUsername.val(url.searchParams.get(usernameParam));
-        }
-
-        colorSortSelectors();
-
-        buttonSearchByUsername.on(`click`, function (event) {
-            let url = new URL(window.location.href);
-            url.searchParams.set(usernameParam,inputSearchByUsername.val());
-            window.location.href = url.href;
-        });
-
-        $(`#a-showOnlyAdministrators-usersAll`).on(`click`, function (event) {
-            event.preventDefault();
-            window.location.href = prepareUrl(hasRoleParam,adminRoleValue);
-        });
-
-        $(`#a-showOnlyModerators-usersAll`).on(`click`, function (event) {
-            event.preventDefault();
-            window.location.href = prepareUrl(hasRoleParam,moderatorRoleValue);
-        });
-
-        $(`#a-showOnlyUsers-usersAll`).on(`click`, function (event) {
-            event.preventDefault();
-            window.location.href = prepareUrl(hasRoleParam,userRoleValue);
-        });
-
-        $(`#a-sortByUsername-usersAll`).on(`click`, function (event) {
-            window.location.href = prepareUrl(sortParam,usernameSortValue);
-        });
-
-        $(`#a-sortByEmail-usersAll`).on(`click`, function (event) {
-            window.location.href = prepareUrl(sortParam,emailSortValue);
-        });
-
-        $(`#a-sortByRegistrationDate-usersAll`).on(`click`, function (event) {
-            window.location.href = prepareUrl(sortParam,registrationDateSortValue);
-        });
-
-        function prepareUrl(param,value) {
-            let url = new URL(window.location.href);
-
-            url.searchParams.set(param,value);
-
-            return url.href;
-        }
-
-        function colorSortSelectors() {
-            let url = new URL(window.location.href);
-
-            switch (url.searchParams.get(sortParam)) {
-                case usernameSortValue:
-                    iconSortUsername.css('color','green');
-                    break;
-                case emailSortValue:
-                    iconSortEmail.css('color','green');
-                    break;
-                case registrationDateSortValue:
-                    iconSortRegistrationDate.css('color','green');
-                    break;
-            }
-        }
-
+        runSortingUrlScript();
     });
 </script>
 
 <th:block th:object="${users}">
 
     <div class="table-responsive" align="center">
-        <table class="table" style="text-align: center;width: 85%">
+        <table class="table all-users-table">
             <thead>
             <tr>
                 <th id="a-sortByUsername-usersAll" style="cursor: pointer;" scope="col">Username <i class="fa fa-fw fa-sort" id="icon-sortByUsername-usersAll"></i></th>

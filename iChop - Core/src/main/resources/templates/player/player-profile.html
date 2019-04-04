@@ -2,25 +2,27 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
+<link rel="stylesheet" href="/res/css/player/player-profile.css">
+
 <!--/*@thymesVar id="player" type="com.ichop.core.areas.player.domain.models.view.PlayerProfileViewModel"*/-->
 <th:block th:object="${player}">
-<div class="container" style="margin-top: 100px">
+<div class="container">
 
-    <div class="row" style="">
+    <div class="row">
 
         <div class="col-md-auto">
             <div class="col-md-sm">
 
                 <div align="center">
-                    <img th:src="@{https://crafatar.com/renders/body/{uuid}(uuid=*{uuid})}" style="width: 175px;height: 350px"/>
+                    <img th:src="@{https://crafatar.com/renders/body/{uuid}(uuid=*{uuid})}" class="img-player_body-player_profile"/>
                 </div>
 
 
-                <div class="card" style="margin-top: 10px">
-                    <div class="card-body" style="line-height: 13px;font-family: Consolas;margin-left: -20px">
+                <div class="card menu">
+                    <div class="card-body menu">
 
                         <div class="col-md-auto">
-                            <button class="btn btn-warning" type="button" style="width: 100%">Statistics</button>
+                            <button class="btn btn-warning btn-statistics" type="button">Statistics</button>
                         </div>
 
                         <div class="col-md-auto">
@@ -33,17 +35,16 @@
                 </div>
 
                 <th:block th:if="*{siteUserUsername != null}">
-                <div class="card" style="margin-top: 10px">
-                    <div class="card-body"
-                         style="line-height: 13px;font-family: Consolas;margin-left: -20px;margin-bottom: -15px;margin-top: -15px">
+                <div class="card site-user-username">
+                    <div class="card-body site-user-username">
 
                         <div class="col-md-auto">
-                            <div class="row" style="font-size: 11px">
-                                <div class="col-md-auto" style="column-width: 75px">
+                            <div class="row site-user-title">
+                                <div class="col-md-auto site-user-title">
                                     Site User:
                                 </div>
-                                <div class="col-md-auto" style="column-width: 100px">
-                               <span style="display: inline-block;float: right;">
+                                <div class="col-md-auto site-user-username">
+                               <span class="site-user-username">
                                    <a th:href="@{/user/{username}/profile(username=*{siteUserUsername})}" th:text="*{siteUserUsername}"></a>
                                </span>
                                 </div>
@@ -56,14 +57,14 @@
             </div>
         </div>
 
-        <div class="central-content" style="margin-left: 5px">
+        <div class="central-content">
 
             <div class="col-md-auto">
-                <div style="line-height: 20px">
+                <div class="player-name-div">
                     <div class="row">
                         <div>
                             <div class="col-md-auto head">
-                                    <span style="font-size: 25px" th:text="*{name}"></span>
+                                    <span class="player-name" th:text="*{name}"></span>
                             </div>
                         </div>
                     </div>
@@ -72,10 +73,10 @@
             </div>
 
             <div class="col-md-auto status">
-                <div style="line-height: 20px">
+                <div class="player-connection-status">
                     <div class="row">
                         <div>
-                            <div class="col-md-auto head" style="font-size: 19px;font-family: Consolas">
+                            <div class="col-md-auto head player-connection-status">
 
                                 <th:block th:if="*{getIsOnline()}">
                                     <span>🔋<span style="color: green">Online</span></span>

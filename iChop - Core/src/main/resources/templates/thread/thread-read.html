@@ -3,6 +3,7 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 <link rel="stylesheet" href="/res/css/thread/thread-read.css">
+<script src="/res/js/thread/thread-read.js"></script>
 
 <div id="thread-view" class="container d-flex justify-content-center align-items-center">
     <div class="row">
@@ -151,11 +152,7 @@
                                     </div>
 
                                     <script>
-                                        $(document).ready(function () {
-                                            $("#button-reportThread-readThread").click(function () {
-                                                $("#modal-reportThread-readThread").modal();
-                                            });
-                                        });
+                                        bindShowModal($(`#button-reportThread-readThread`),$("#modal-reportThread-readThread"));
                                     </script>
 
                                 </div>
@@ -217,35 +214,13 @@
                 </div>
 
                 <script>
-                    $(`#button-commentThread-readThreadPage`).on(`click`, function () {
-                        $(`.commentBox`).show();
-                    });
-
-                    $(`#button-cancelCommentThread-readThreadPage`).on(`click`, function () {
-                        $(`.commentBox`).hide();
-                    });
+                    bindShowCommentBox($(`#button-commentThread-readThreadPage`),$(`.commentBox`));
+                    bindHideCommentBox($(`#button-cancelCommentThread-readThreadPage`),$(`.commentBox`));
                 </script>
 
                 <script th:inline="javascript">
                     let threadId = /*[[*{id}]]*/ null;
-                    let buttonCreateComment = $(`#button-createCommentThread-readThreadPage`);
-                    let contentDiv = $(`#textarea-content-createComment`);
-                    let url = URL_API_COMMENT_THREAD.replace('{id}', threadId);
-                    let successfulRedirectUrl = URL_READ_THREAD.replace('{id}', threadId);
-
-
-                    buttonCreateComment.on(`click`, function () {
-                        $.ajax({
-                            method: "POST",
-                            url: url,
-                            data: {content: contentDiv.html()},
-                            success: function (isSuccessful) {
-                                if (isSuccessful) {
-                                    window.location.href = successfulRedirectUrl;
-                                }
-                            }
-                        });
-                    });
+                    createComment(threadId);
                 </script>
 
                 <script src="/res/js/editor/text-editor.js"></script>
@@ -375,15 +350,11 @@
                                                 </div>
                                             </div>
                                             <script th:inline="javascript">
-                                                f();
+                                                run();
 
-                                                function f() {
+                                                function run() {
                                                     let commentId = /*[[*{id}]]*/ null;
-                                                    $(document).ready(function () {
-                                                        $("#reportButtonByThreadId-" + commentId).click(function () {
-                                                            $("#modelReportCommentByThreadId-" + commentId).modal();
-                                                        });
-                                                    });
+                                                    bindShowModal($("#reportButtonByThreadId-" + commentId),$("#modelReportCommentByThreadId-" + commentId));
                                                 }
                                             </script>
                                         </th:block>
@@ -414,26 +385,12 @@
                                             run();
 
                                             function run() {
+
                                                 let userUsername = /*[[${#authentication.name}]]*/ null;
                                                 let commentId = /*[[*{id}]]*/ null;
                                                 let isLoggedUser = /*[[${#authorization.expression('isAuthenticated()')}]]*/ null;
 
-                                                if(isLoggedUser){
-                                                    let url = URL_API_IS_COMMENT_REACTED_BY_USER.replace('{commentId}',commentId);
-                                                    url = url.replace('{userUsername}',userUsername);
-                                                    console.log(url);
-
-                                                    $.ajax({
-                                                        url:url,
-                                                        success: function (isReacted) {
-                                                            console.log(isReacted);
-                                                            console.log(commentId);
-                                                            if (isReacted) {
-                                                                $(`#thread-comment-${commentId}`).hide();
-                                                            }
-                                                        }
-                                                    })
-                                                }
+                                                hideReactionButtonsIfAlreadyReacted(userUsername,commentId,isLoggedUser);
                                             }
 
                                         </script>
@@ -452,16 +409,11 @@
     </div>
 </div>
 
-<!--Clear the keyword SHOW_TO_NOW-->
 
 <script>
     $(`<script/>`, {type: 'text/javascript', src: '/res/js/thread/thread-substringer.js'}).appendTo('head');
-
-    removeHtmlClassContentKyWord('.thread-content', 'SHOW_TO_NOW');
+    removeHtmlClassContentKyWord('.content', 'SHOW_TO_NOW');
 </script>
-
-
-<!--Inserting the image fitter which will resize images to fit them into their container-->
 
 <script>
     $(document).ready(function () {

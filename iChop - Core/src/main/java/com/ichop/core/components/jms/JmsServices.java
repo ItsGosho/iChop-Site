@@ -1,6 +1,8 @@
 package com.ichop.core.components.jms;
 
 import com.ichop.core.base.BaseJMSReceiveModel;
+import com.ichop.core.base.BaseJMSSendModel;
+import org.springframework.jms.core.MessageCreator;
 
 import javax.jms.Message;
 import java.util.HashMap;
@@ -14,7 +16,11 @@ public interface JmsServices {
 
     Map<String, Object> messageToHashMap(Message message);
 
+    <ReceiveModel extends BaseJMSReceiveModel,SendModel extends BaseJMSSendModel> ReceiveModel sendAndReceiveModel(SendModel sendModel, Class<ReceiveModel> receiveModel, String destination);
+
     Map<String,Object> sendAndReceive(String destinationName, HashMap<String, Object> values);
+
+    MessageCreator convertMessageIntoMessageCreator(Message message);
 
     Message convertValuesIntoMessage(HashMap<String, Object> values);
 }

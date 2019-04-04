@@ -1,0 +1,74 @@
+.container {
+    margin-top: 100px;
+}
+
+.img-player_body-player_profile {
+    width: 175px;
+    height: 350px;
+}
+
+.card.menu {
+    margin-top: 10px;
+}
+
+.card-body.menu {
+    line-height: 13px;
+    font-family: Consolas;
+    margin-left: -20px;
+}
+
+.btn.btn-warning.btn-statistics {
+    width: 100%;
+}
+
+.card.site-user-username {
+    margin-top: 10px;
+}
+
+.card-body.site-user-username {
+    line-height: 13px;
+    font-family: Consolas;
+    margin-left: -20px;
+    margin-bottom: -15px;
+    margin-top: -15px;
+}
+
+.row.site-user-title {
+    font-size: 11px;
+}
+
+.col-md-auto.site-user-title {
+    column-width: 75px;
+}
+
+.col-md-auto.site-user-username {
+    column-width: 100px;
+}
+
+span.site-user-username {
+    display: inline-block;
+    float: right;
+}
+
+div.central-content {
+    margin-left: 5px;
+}
+
+.player-name-div {
+    line-height: 20px;
+}
+
+span.player-name {
+    font-size: 25px;
+}
+
+.player-connection-status {
+    line-height: 20px;
+}
+
+.col-md-auto.head.player-connection-status {
+    font-size: 19px;
+    font-family: Consolas;
+}
+
+

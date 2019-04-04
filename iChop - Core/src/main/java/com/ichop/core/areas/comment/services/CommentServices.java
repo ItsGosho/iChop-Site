@@ -14,5 +14,6 @@ public interface CommentServices {
     CommentServiceModel findById(String commentId);
 
     void delete(String commentId);
+
     void delete(CommentServiceModel commentServiceModel);
 }

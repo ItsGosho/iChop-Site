@@ -2,31 +2,34 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
+<script src="/res/js/user/user-profile.js"></script>
+<link rel="stylesheet" href="/res/css/user/user-profila.css">
+
 <th:block th:object="${user}">
 
-<div class="container" style="margin-top: -75px">
+<div class="container container-user-profile">
 
-    <div class="row" style="">
+    <div class="row">
 
 
         <div class="col-md-auto">
             <div class="col-md-sm user-info">
 
                 <div align="center">
-                    <img th:src="@{http://localhost:8001/data/user/{username}/avatar(username=*{username})}" style="width: 70px;height: 70px"/>
+                    <img th:src="@{http://localhost:8001/data/user/{username}/avatar(username=*{username})}" class="img-user-avatar"/>
                 </div>
 
 
-                <div class="card user-base-info" style="margin-top: 10px;font-size: 13px">
-                    <div class="card-body" style="line-height: 13px;font-family: Consolas;margin-left: -20px">
+                <div class="card user-base-info">
+                    <div class="card-body user-base-info-body">
 
                         <div class="col-md-auto">
-                            <div class="row" style="font-size: 11px">
-                                <div class="col-md-auto" style="column-width: 75px">
+                            <div class="row user-base-info-row">
+                                <div class="col-md-auto user-base-info-last-online-title">
                                     Last online:
                                 </div>
-                                <div class="col-md-auto" style="column-width: 100px">
-                                <span style="display: inline-block;float: right;" th:text="*{#temporals.format(lastOnline, 'MMM dd,yyyy')}" th:title="*{#temporals.format(lastOnline, 'HH:mm')}">
+                                <div class="col-md-auto user-base-info-last-online-content">
+                                <span th:text="*{#temporals.format(lastOnline, 'MMM dd,yyyy')}" th:title="*{#temporals.format(lastOnline, 'HH:mm')}">
                                    Unknown 00,0000
                                 </span>
                                 </div>
@@ -34,8 +37,8 @@
                         </div>
 
                         <div class="col-md-auto">
-                            <div class="row" style="font-size: 11px">
-                                <div class="col-md-auto" style="column-width: 75px">
+                            <div class="row user-base-info-registration_date-title">
+                                <div class="col-md-auto">
                                     Joined on:
                                 </div>
                                 <div class="col-md-auto" style="column-width: 100px">
@@ -205,36 +208,7 @@
                         let currentLoggedInUserUsername = /*[[${#authentication.getName()}]]*/ null;
                         let lookingUserUsername = /*[[*{username}]]*/ null;
 
-                        if(currentLoggedInUserUsername.toLowerCase() !== lookingUserUsername.toLowerCase()){
-                            let url = URL_API_IS_USER_FOLLOWING_USER.replace("${user1Username}",currentLoggedInUserUsername);
-                            url = url.replace("${user2Username}",lookingUserUsername);
-                            $.ajax({
-                                method: "GET",
-                                url: url,
-                                success: function (isFollowing) {
-                                    if(isFollowing){
-                                        $(`#a-unfollow_user-userProfile`).css(`display`,`inline-block`);
-                                    }else{
-                                        $(`#a-follow_user-userProfile`).css(`display`,`inline-block`);
-                                    }
-                                }
-                            });
-
-                            let urlReverse = URL_API_IS_USER_FOLLOWING_USER.replace("${user1Username}",lookingUserUsername);
-                            urlReverse = urlReverse.replace("${user2Username}",currentLoggedInUserUsername);
-
-                            $.ajax({
-                                method: "GET",
-                                url: urlReverse,
-                                success: function (isFollowing) {
-                                    if(isFollowing){
-                                        $(`#a-is_he_followed_you-userProfile`).text(lookingUserUsername + " is following you.");
-                                    }else{
-                                        $(`#a-is_he_followed_you-userProfile`).text(lookingUserUsername + " is not following you.");
-                                    }
-                                }
-                            })
-                        }
+                        runFollowingScript(currentLoggedInUserUsername,lookingUserUsername);
 
                     </script>
 
@@ -305,33 +279,7 @@
                             </form>
 
                             <script>
-                                let minCharacters = POST_MIN_LENGTH;
-                                let maxCharacters = POST_MAX_LENGTH;
-
-                                let textArea = $(`#textarea-createPost-userProfile`);
-                                let leftCharactersField = $(`#small-leftPostCreationCharacters-userProfile`);
-
-                                textArea.on(`keypress keydown keyup`,function () {
-                                    let content = textArea.val();
-                                    let remainingCharacters = maxCharacters-content.length;
-                                    leftCharactersField.text(remainingCharacters);
-
-                                    if(content.length >= minCharacters && content.length <= maxCharacters){
-                                        textArea.css('border-color','')
-                                        $('#button-createPost-userProfile').attr('type','submit')
-
-                                    }else{
-                                        textArea.css('border-color','red')
-                                        $('#button-createPost-userProfile').attr('type','button')
-                                    }
-
-                                    if(remainingCharacters <= 0){
-                                        leftCharactersField.css('color','red')
-                                    }else{
-                                        leftCharactersField.css('color','darkgreen')
-                                    }
-
-                                });
+                               runPostCreateScript();
 
                             </script>
 
@@ -389,11 +337,7 @@
                                                 </div>
 
                                                 <script>
-                                                    $(document).ready(function () {
-                                                        $("#button-reportPost-userProfile").click(function () {
-                                                            $("#modal-reportPost-userProfile").modal();
-                                                        });
-                                                    });
+                                                    bindShowModal($("#button-reportPost-userProfile"),$("#modal-reportPost-userProfile"));
                                                 </script>
 
                                             </div>
