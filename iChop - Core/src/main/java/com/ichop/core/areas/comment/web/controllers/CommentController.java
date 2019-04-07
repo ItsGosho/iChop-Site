@@ -54,7 +54,9 @@ public class CommentController extends BaseController {
 
         ThreadServiceModel threadServiceModel = this.threadServices.findById(threadId);
         UserServiceModel userServiceModel = this.modelMapper.map(((Authentication) principal).getPrincipal(), UserServiceModel.class);
-        this.commentServices.create(commentCreateBindingModel, userServiceModel, threadServiceModel);
+        commentCreateBindingModel.setCreator(userServiceModel);
+        commentCreateBindingModel.setThread(threadServiceModel);
+        this.commentServices.create(commentCreateBindingModel);
 
         return new Gson().toJson(true);
     }

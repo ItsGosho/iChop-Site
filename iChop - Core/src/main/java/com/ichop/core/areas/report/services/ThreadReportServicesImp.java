@@ -1,11 +1,10 @@
 package com.ichop.core.areas.report.services;
 
 import com.ichop.core.areas.report.domain.entities.ThreadReport;
+import com.ichop.core.areas.report.domain.models.binding.ThreadReportCreateBindingModel;
 import com.ichop.core.areas.report.domain.models.service.ThreadReportServiceModel;
 import com.ichop.core.areas.report.repositories.ThreadReportRepository;
-import com.ichop.core.areas.thread.domain.models.service.ThreadServiceModel;
 import com.ichop.core.areas.thread.exceptions.ThreadNotFoundException;
-import com.ichop.core.areas.user.domain.models.service.UserServiceModel;
 import com.ichop.core.areas.user.exceptions.UserNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,23 +22,20 @@ public class ThreadReportServicesImp extends BaseReportServices<ThreadReport, Th
     }
 
     @Override
-    public ThreadReportServiceModel create(ThreadServiceModel thread, UserServiceModel user, String reason) {
+    public ThreadReportServiceModel create(ThreadReportCreateBindingModel bindingModel) {
 
-        if(thread == null){
+        if(bindingModel.getThread() == null){
             throw new ThreadNotFoundException();
         }
 
-        if(user == null){
+        if(bindingModel.getUser() == null){
             throw new UserNotFoundException();
         }
 
-        ThreadReportServiceModel threadReport = new ThreadReportServiceModel();
-        threadReport.setThread(thread);
-        threadReport.setUser(user);
-        threadReport.setReason(reason);
+        ThreadReportServiceModel threadReport = this.modelMapper.map(bindingModel,ThreadReportServiceModel.class);
         threadReport.setReportDate(LocalDateTime.now());
 
-        ThreadReportServiceModel result = super.save(threadReport,ThreadReportServiceModel.class);
+        ThreadReportServiceModel result = this.save(threadReport,ThreadReportServiceModel.class);
 
         return result;
     }

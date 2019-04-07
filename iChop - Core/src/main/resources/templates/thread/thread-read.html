@@ -24,9 +24,12 @@
                                                 th:text="*{creator.username}"></a></small>
                                 </div>
                                 <div align="center">
-                                    <img class="card-img-top thread-creator-avatar"
-                                         th:src="@{http://localhost:8001/data/user/{username}/avatar(username=*{creator.username})}"
-                                         alt="No avatar">
+                                    <object th:data="@{http://localhost:8001/data/user/{username}/avatar(username=*{creator.username})}"
+                                            type="image/png"
+                                            class="card-img-top thread-creator-avatar">
+                                        <img src="/res/img/avatar-user.png" alt="example"
+                                             class="card-img-top thread-creator-avatar">
+                                    </object>
                                 </div>
                                 <div align="center">
                                     <small>
@@ -39,7 +42,7 @@
                             <div class="col-md-8">
                                 <div align="center">
                                     <div class="row">
-
+                                        <th:block th:if="*{creator.minecraftAccountName != null}">
                                         <small>
                                             <a href=""><img
                                                     th:src="@{https://minotar.net/avatar/{minecraftAccountName}(minecraftAccountName=*{creator.minecraftAccountName})}"
@@ -48,6 +51,7 @@
                                                     style="font-size: 15px;font-family: Consolas"
                                                     th:text="*{creator.minecraftAccountName}"></span></a>
                                         </small>
+                                        </th:block>
                                     </div>
                                 </div>
                             </div>
@@ -152,7 +156,7 @@
                                     </div>
 
                                     <script>
-                                        bindShowModal($(`#button-reportThread-readThread`),$("#modal-reportThread-readThread"));
+                                        bindShowModal($(`#button-reportThread-readThread`), $("#modal-reportThread-readThread"));
                                     </script>
 
                                 </div>
@@ -214,8 +218,8 @@
                 </div>
 
                 <script>
-                    bindShowCommentBox($(`#button-commentThread-readThreadPage`),$(`.commentBox`));
-                    bindHideCommentBox($(`#button-cancelCommentThread-readThreadPage`),$(`.commentBox`));
+                    bindShowCommentBox($(`#button-commentThread-readThreadPage`), $(`.commentBox`));
+                    bindHideCommentBox($(`#button-cancelCommentThread-readThreadPage`), $(`.commentBox`));
                 </script>
 
                 <script th:inline="javascript">
@@ -253,9 +257,11 @@
                             <div class="row">
                                 <div class="col-md-3 thread-comment-creator_info_section">
                                     <div>
-                                        <img class="card-img-top thread-comment-creator_avatar"
-                                             th:src="@{http://localhost:8001/data/user/{username}/avatar(username=*{commentCreator.username})}"
-                                             alt="No avatar">
+                                        <object th:data="@{http://localhost:8001/data/user/{username}/avatar(username=*{commentCreator.username})}"
+                                                type="image/png"
+                                                class="card-img-top thread-comment-creator_avatar">
+                                            <img src="/res/img/avatar-user.png" alt="example" class="card-img-top thread-comment-creator_avatar">
+                                        </object>
                                     </div>
                                     <div>
                                         <small>👤<a
@@ -272,6 +278,7 @@
                                     </div>
 
                                     <div>
+                                        <th:block th:if="*{commentCreator.minecraftAccountName != null}">
                                         <small>
                                             <a href=""><img
                                                     th:src="@{https://minotar.net/avatar/{minecraftAccountName}(minecraftAccountName=*{commentCreator.minecraftAccountName})}"
@@ -279,6 +286,7 @@
                                                     alt="Card image cap"><span
                                                     th:text="*{commentCreator.minecraftAccountName}"></span></a>
                                         </small>
+                                        </th:block>
                                     </div>
                                 </div>
 
@@ -354,33 +362,37 @@
 
                                                 function run() {
                                                     let commentId = /*[[*{id}]]*/ null;
-                                                    bindShowModal($("#reportButtonByThreadId-" + commentId),$("#modelReportCommentByThreadId-" + commentId));
+                                                    bindShowModal($("#reportButtonByThreadId-" + commentId), $("#modelReportCommentByThreadId-" + commentId));
                                                 }
                                             </script>
                                         </th:block>
                                     </div>
                                     <th:block sec:authorize="isAuthenticated()">
-                                         <div class="thread-comments-button_options" th:id="'thread-comment-'+*{id}">
-                                             <button class="btn btn-sm dropdown-toggle" type="button"
-                                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                 <small>💡</small>
-                                                 React
-                                             </button>
-                                             <div class="dropdown-menu">
-                                                 <form th:action="@{/comment/{id}/reaction/like(id=*{id})}" method="post">
-                                                     <button class="btn btn-sm thread-right_side_button-react" type="submit">
-                                                         <small>👍🏻</small>
-                                                         Like
-                                                     </button>
-                                                 </form>
-                                                 <form th:action="@{/comment/{id}/reaction/dislike(id=*{id})}" method="post">
-                                                     <button class="btn btn-sm thread-right_side_button-react" type="submit">
-                                                         <small>👎🏻</small>
-                                                         Dislike
-                                                     </button>
-                                                 </form>
-                                             </div>
-                                         </div>
+                                        <div class="thread-comments-button_options" th:id="'thread-comment-'+*{id}">
+                                            <button class="btn btn-sm dropdown-toggle" type="button"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <small>💡</small>
+                                                React
+                                            </button>
+                                            <div class="dropdown-menu">
+                                                <form th:action="@{/comment/{id}/reaction/like(id=*{id})}"
+                                                      method="post">
+                                                    <button class="btn btn-sm thread-right_side_button-react"
+                                                            type="submit">
+                                                        <small>👍🏻</small>
+                                                        Like
+                                                    </button>
+                                                </form>
+                                                <form th:action="@{/comment/{id}/reaction/dislike(id=*{id})}"
+                                                      method="post">
+                                                    <button class="btn btn-sm thread-right_side_button-react"
+                                                            type="submit">
+                                                        <small>👎🏻</small>
+                                                        Dislike
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
                                         <script th:inline="javascript">
                                             run();
 
@@ -390,7 +402,7 @@
                                                 let commentId = /*[[*{id}]]*/ null;
                                                 let isLoggedUser = /*[[${#authorization.expression('isAuthenticated()')}]]*/ null;
 
-                                                hideReactionButtonsIfAlreadyReacted(userUsername,commentId,isLoggedUser);
+                                                hideReactionButtonsIfAlreadyReacted(userUsername, commentId, isLoggedUser);
                                             }
 
                                         </script>

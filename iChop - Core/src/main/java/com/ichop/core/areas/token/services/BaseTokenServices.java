@@ -20,7 +20,7 @@ public abstract class BaseTokenServices<Entity extends BaseToken,Repository exte
         User entityUser = super.modelMapper.map(user,User.class);
         PasswordResetToken result = (PasswordResetToken) super.repository.findByUser(entityUser);
 
-        return super.modelMapper.map(result,PasswordResetTokenServiceModel.class);
+        return result != null ? super.modelMapper.map(result,PasswordResetTokenServiceModel.class) : null;
     }
 
     public PasswordResetTokenServiceModel findTokenByToken(String token){

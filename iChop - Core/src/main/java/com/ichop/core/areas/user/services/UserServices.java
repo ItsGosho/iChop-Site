@@ -1,5 +1,6 @@
 package com.ichop.core.areas.user.services;
 
+import com.ichop.core.areas.role.domain.models.service.UserRoleServiceModel;
 import com.ichop.core.areas.user.domain.models.binding.UserForgottenPasswordBindingModel;
 import com.ichop.core.areas.user.domain.models.binding.UserRegisterBindingModel;
 import com.ichop.core.areas.user.domain.models.binding.UserResetPasswordBindingModel;
@@ -10,10 +11,13 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 public interface UserServices extends UserDetailsService {
 
     UserServiceModel register(UserRegisterBindingModel userRegisterBindingModel);
+
+    Set<UserRoleServiceModel> getInitialAuthorities();
 
     void sendPasswordResetEmail(UserForgottenPasswordBindingModel userForgottenPasswordBindingModel);
     void resetPassword(UserResetPasswordBindingModel userResetPasswordBindingModel, String resetToken);

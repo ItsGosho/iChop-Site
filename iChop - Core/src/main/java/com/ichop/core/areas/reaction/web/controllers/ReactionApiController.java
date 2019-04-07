@@ -46,7 +46,7 @@ public class ReactionApiController extends BaseController {
             return new Gson().toJson(true);
         }
 
-        boolean isReactionPresent = this.commentReactionServices.isReactedByUser(comment,user);
+        boolean isReactionPresent = this.commentReactionServices.isLikedByUser(user,comment);
         return new Gson().toJson(isReactionPresent);
     }
 }

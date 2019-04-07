@@ -16,7 +16,11 @@
             <div class="col-md-sm user-info">
 
                 <div align="center">
-                    <img th:src="@{http://localhost:8001/data/user/{username}/avatar(username=*{username})}" class="img-user-avatar"/>
+                    <object th:data="@{http://localhost:8001/data/user/{username}/avatar(username=*{username})}"
+                            type="image/png"
+                            class="img-user-avatar">
+                        <img src="/res/img/avatar-user.png" alt="example" class="img-user-avatar">
+                    </object>
                 </div>
 
 
@@ -118,8 +122,14 @@
                         <div class="row d-flex justify-content-center align-items-center" style="width: 100%;margin-left: 0px">
                             <th:block th:each="following : *{followings}" th:object="${following}">
                                 <th:block th:if="${followingStat.index < 4}">
-                                    <a th:href="@{/user/{username}/profile(username=*{username})}"><img th:src="@{http://localhost:8001/data/user/{username}/avatar(username=*{username})}" th:title="*{username}"
-                                                                                                        style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px"/></a>
+                                    <a th:href="@{/user/{username}/profile(username=*{username})}">
+                                        <object th:data="@{http://localhost:8001/data/user/{username}/avatar(username=*{username})}"
+                                                type="image/png"
+                                                th:title="*{username}"
+                                                class="img-user-avatar" style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px">
+                                            <img src="/res/img/avatar-user.png" alt="example" class="img-user-avatar" style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px">
+                                        </object>
+                                    </a>
                                 </th:block>
                             </th:block>
                         </div>
@@ -137,8 +147,14 @@
                         <div class="row d-flex justify-content-center align-items-center" style="width: 100%;margin-left: 0px">
                             <th:block th:each="follower : *{followers}" th:object="${follower}">
                                 <th:block th:if="${followerStat.index < 4}">
-                                    <a th:href="@{/user/{username}/profile(username=*{username})}"><img th:src="@{http://localhost:8001/data/user/{username}/avatar(username=*{username})}" th:title="*{username}"
-                                                                                                        style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px"/></a>
+                                    <a th:href="@{/user/{username}/profile(username=*{username})}">
+                                        <object th:data="@{http://localhost:8001/data/user/{username}/avatar(username=*{username})}"
+                                                type="image/png"
+                                                th:title="*{username}"
+                                                class="img-user-avatar" style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px">
+                                            <img src="/res/img/avatar-user.png" alt="example" class="img-user-avatar" style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px">
+                                        </object>
+                                    </a>
                                 </th:block>
                             </th:block>
                         </div>
@@ -256,12 +272,17 @@
 
                         <div class="dropdown-divider"></div>
 
-                        <div class="create-post">
+                        <div class="create-post" sec:authorize="isAuthenticated()">
                             <form method="post" th:action="@{/post/{userUsername}/create(userUsername=*{username})}">
                                 <div class="row">
 
                                     <div class="col-md-1">
-                                        <img th:src="@{http://localhost:8001/data/user/{username}/avatar(username=*{username})}" style="width: 30px;height: 30px"/>
+                                        <object th:data="@{http://localhost:8001/data/user/{username}/avatar(username=*{username})}"
+                                                         type="image/png"
+                                                         th:title="*{username}"
+                                                         class="img-user-avatar" style="width: 30px;height: 30px">
+                                        <img src="/res/img/avatar-user.png" alt="example" class="img-user-avatar" style="width: 30px;height: 30px">
+                                        </object>
                                     </div>
 
                                     <div class="col-lg">
@@ -295,13 +316,17 @@
                                     <div class="card-body"  style="margin-bottom: -15px">
                                         <div class="row"  style="margin-top: -15px">
                                             <div class="col-md-1" style="margin-top: 9px">
-                                                <img th:src="@{http://localhost:8001/data/user/{username}/avatar(username=*{creatorUsername})}" style="width: 30px;height: 30px"/>
+                                                <object th:data="@{http://localhost:8001/data/user/{username}/avatar(username=*{creatorUsername})}"
+                                                        type="image/png" style="width: 30px;height: 30px">
+                                                    <img src="/res/img/avatar-user.png" alt="example"  style="width: 30px;height: 30px">
+                                                </object>
+
                                             </div>
                                             <div class="col-lg" style="width: 150px">
                                                 <a href="" style="color: #775322;font-size: 13px"><b th:text="*{creatorUsername}">Creator Username...</b> </a><small th:text="*{content}">Content...</small>
                                             </div>
                                         </div>
-                                        <div class="row">
+                                        <div class="row" sec:authorize="isAuthenticated()">
                                             <div class="col-md-12">
                                                 <span style="color: #7f7f7f;font-size: 10px" th:text="*{#temporals.format(createdOn, 'MMM dd,yyyy')}">Jan 00,0000</span>
 

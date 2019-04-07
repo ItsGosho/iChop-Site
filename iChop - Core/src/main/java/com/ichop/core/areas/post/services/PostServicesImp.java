@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,42 +27,46 @@ public class PostServicesImp extends BaseService<Post, PostRepository> implement
     }
 
     @Override
-    public PostServiceModel create(UserServiceModel user, UserServiceModel creator , PostCreateBindingModel postCreateBindingModel) {
+    public PostServiceModel create(PostCreateBindingModel postCreateBindingModel) {
 
-        if(user == null || creator == null){
+        if(postCreateBindingModel.getUser() == null || postCreateBindingModel.getCreator() == null){
             throw new UserNotFoundException();
         }
 
-        PostServiceModel post = super.modelMapper.map(postCreateBindingModel,PostServiceModel.class);
-
-        post.setUser(user);
-        post.setCreator(creator);
+        PostServiceModel post = this.modelMapper.map(postCreateBindingModel,PostServiceModel.class);
         post.setCreatedOn(LocalDateTime.now());
+        post.setReports(new LinkedList<>());
 
-        PostServiceModel savedPost = super.save(post,PostServiceModel.class);
+        PostServiceModel savedPost = this.save(post,PostServiceModel.class);
 
         return savedPost;
     }
 
     @Override
     public List<PostServiceModel> findByUser(UserServiceModel user) {
-        User entityUser = super.modelMapper.map(user,User.class);
-        return super.repository.findAllByUser(entityUser).stream().map(x-> super.modelMapper.map(x,PostServiceModel.class))
-                .collect(Collectors.toList());
+
+        if(user == null){
+            throw new UserNotFoundException();
+        }
+
+        User entityUser = this.modelMapper.map(user,User.class);
+        List<Post> posts = this.repository.findAllByUser(entityUser);
+
+        return posts.stream().map(x-> this.modelMapper.map(x,PostServiceModel.class)).collect(Collectors.toList());
     }
 
     @Override
     public PostServiceModel findById(String postId) {
-        return super.findById(postId,PostServiceModel.class);
+        return this.findById(postId,PostServiceModel.class);
     }
 
     @Override
-    public void delete(PostServiceModel postServiceModel) {
+    public void deleteByModel(PostServiceModel postServiceModel) {
 
-        if(postServiceModel == null || !super.existsById(postServiceModel.getId())){
+        if(postServiceModel == null || !this.existsById(postServiceModel.getId())){
             throw new PostNotFoundException();
         }
 
-        super.delete(postServiceModel);
+        this.delete(postServiceModel);
     }
 }

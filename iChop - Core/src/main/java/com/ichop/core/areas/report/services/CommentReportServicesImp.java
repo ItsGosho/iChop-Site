@@ -1,11 +1,10 @@
 package com.ichop.core.areas.report.services;
 
-import com.ichop.core.areas.comment.domain.models.service.CommentServiceModel;
 import com.ichop.core.areas.report.domain.entities.CommentReport;
+import com.ichop.core.areas.report.domain.models.binding.CommentReportCreateBindingModel;
 import com.ichop.core.areas.report.domain.models.service.CommentReportServiceModel;
 import com.ichop.core.areas.report.repositories.CommentReportRepository;
 import com.ichop.core.areas.thread.exceptions.CommentNotFoundException;
-import com.ichop.core.areas.user.domain.models.service.UserServiceModel;
 import com.ichop.core.areas.user.exceptions.UserNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,23 +21,20 @@ public class CommentReportServicesImp extends BaseReportServices<CommentReport, 
     }
 
     @Override
-    public CommentReportServiceModel create(CommentServiceModel comment, UserServiceModel user, String reason) {
+    public CommentReportServiceModel create(CommentReportCreateBindingModel bindingModel) {
 
-        if(comment == null){
+        if(bindingModel.getComment() == null){
             throw new CommentNotFoundException();
         }
 
-        if(user == null){
+        if(bindingModel.getUser() == null){
             throw new UserNotFoundException();
         }
 
-        CommentReportServiceModel commentReport = new CommentReportServiceModel();
-        commentReport.setComment(comment);
-        commentReport.setUser(user);
-        commentReport.setReason(reason);
+        CommentReportServiceModel commentReport = this.modelMapper.map(bindingModel,CommentReportServiceModel.class);
         commentReport.setReportDate(LocalDateTime.now());
 
-        CommentReportServiceModel result = super.save(commentReport,CommentReportServiceModel.class);
+        CommentReportServiceModel result = this.save(commentReport,CommentReportServiceModel.class);
 
         return result;
     }

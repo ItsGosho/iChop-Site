@@ -53,8 +53,8 @@ public class UserProfileViewHelper extends BaseViewCreator {
         int totalMessages = this.commentServices.getTotalOfUser(user);
         PlayerDataBySiteUserJMSReceiveModel playerData = this.playerLinkServices.getPlayerDataBySiteUser(user.getUsername());
         String minecraftAccountName = playerData != null ? playerData.getPlayerName() : null;
-        int totalLikes = this.threadReactionServices.findTotalThreadReactionsByUserAndType(user, ReactionType.LIKE) + this.commentReactionServices.findTotalCommentReactionsByUserAndType(user, ReactionType.LIKE);
-        int totalDislikes = this.threadReactionServices.findTotalThreadReactionsByUserAndType(user, ReactionType.DISLIKE) + this.commentReactionServices.findTotalCommentReactionsByUserAndType(user, ReactionType.DISLIKE);
+        int totalLikes = this.threadReactionServices.findTotalReactionsByUserAndType(user, ReactionType.LIKE) + this.commentReactionServices.findTotalReactionsByUserAndType(user, ReactionType.LIKE);
+        int totalDislikes = this.threadReactionServices.findTotalReactionsByUserAndType(user, ReactionType.DISLIKE) + this.commentReactionServices.findTotalReactionsByUserAndType(user, ReactionType.DISLIKE);
         List<PostsUserProfileViewModel> posts = this.postsUserProfileViewHelper.create(user.getUsername());
         List<UserProfileViewModel> followers = this.userServices.getFollowers(user).stream().map(x -> super.modelMapper.map(x, UserProfileViewModel.class)).collect(Collectors.toList());
 

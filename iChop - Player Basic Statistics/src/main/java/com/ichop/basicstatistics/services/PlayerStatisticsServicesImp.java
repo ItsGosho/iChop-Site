@@ -23,13 +23,13 @@ public class PlayerStatisticsServicesImp extends BaseService<PlayerStatistics, P
             return null;
         }
 
-        PlayerStatisticsServiceModel result = super.modelMapper.map(super.repository.findByUuid(uuid), PlayerStatisticsServiceModel.class);
-        return result;
+        PlayerStatistics playerStatistics = this.repository.findByUuid(uuid);
+        return this.modelMapper.map(playerStatistics, PlayerStatisticsServiceModel.class);
     }
 
     @Override
     public boolean existsByUUID(String uuid){
-        return super.repository.existsByUuid(uuid);
+        return this.repository.existsByUuid(uuid);
     }
 
 }

@@ -3,6 +3,8 @@ package com.ichop.core.areas.reaction.web.controllers;
 import com.ichop.core.areas.comment.domain.models.service.CommentServiceModel;
 import com.ichop.core.areas.comment.services.CommentServices;
 import com.ichop.core.areas.reaction.domain.entities.ReactionType;
+import com.ichop.core.areas.reaction.domain.models.binding.CommentReactionCreateBindingModel;
+import com.ichop.core.areas.reaction.domain.models.binding.ThreadReactionCreateBindingModel;
 import com.ichop.core.areas.reaction.services.CommentReactionServices;
 import com.ichop.core.areas.reaction.services.ThreadReactionServices;
 import com.ichop.core.areas.thread.domain.models.service.ThreadServiceModel;
@@ -68,7 +70,12 @@ public class ReactionController extends BaseController {
         ThreadServiceModel threadServiceModel = this.threadServices.findById(threadId);
         UserServiceModel userServiceModel = this.modelMapper.map(((Authentication) principal).getPrincipal(), UserServiceModel.class);
 
-        this.threadReactionServices.createReaction(threadServiceModel, userServiceModel, reactionType);
+        ThreadReactionCreateBindingModel bindingModel = new ThreadReactionCreateBindingModel();
+        bindingModel.setUser(userServiceModel);
+        bindingModel.setThread(threadServiceModel);
+        bindingModel.setReactionType(reactionType);
+
+        this.threadReactionServices.create(bindingModel);
 
         String redirectUrl = URLConstants.THREAD_READ_GET.replace("{threadId}", threadServiceModel.getId());
         return super.redirect(redirectUrl);
@@ -78,7 +85,12 @@ public class ReactionController extends BaseController {
         CommentServiceModel commentServiceModel = this.commentServices.findById(threadId);
         UserServiceModel userServiceModel = this.modelMapper.map(((Authentication) principal).getPrincipal(), UserServiceModel.class);
 
-        this.commentReactionServices.createReaction(commentServiceModel, userServiceModel, reactionType);
+        CommentReactionCreateBindingModel bindingModel = new CommentReactionCreateBindingModel();
+        bindingModel.setUser(userServiceModel);
+        bindingModel.setComment(commentServiceModel);
+        bindingModel.setReactionType(reactionType);
+
+        this.commentReactionServices.create(bindingModel);
 
         String redirectUrl = URLConstants.THREAD_READ_GET.replace("{threadId}", commentServiceModel.getThread().getId());
         return super.redirect(redirectUrl);

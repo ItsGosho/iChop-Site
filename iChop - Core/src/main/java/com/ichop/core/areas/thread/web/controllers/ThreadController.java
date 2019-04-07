@@ -35,13 +35,14 @@ public class ThreadController extends BaseController {
     @PreAuthorize("hasAuthority('MODERATOR')")
     @PostMapping(URLConstants.THREAD_DELETE_POST)
     public String proceedThreadDeletion(@PathVariable String threadId) {
-        this.threadServices.deleteById(threadId);
+        this.threadServices.delete(threadId);
         return super.redirect("/");
     }
 
     @GetMapping(URLConstants.THREAD_READ_GET)
     public ModelAndView getThreadReadPage(@PathVariable String threadId, ModelAndView modelAndView) {
         ThreadReadViewModel threadReadViewModel = this.threadReadViewHelper.create(threadId);
+        this.threadServices.increaseViews(threadId);
         modelAndView.addObject("thread", threadReadViewModel);
         return super.page("thread/thread-read", threadReadViewModel.getTitle(), modelAndView);
     }

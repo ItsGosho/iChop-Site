@@ -1,5 +1,7 @@
 package com.ichop.core.areas.comment.domain.models.binding;
 
+import com.ichop.core.areas.thread.domain.models.service.ThreadServiceModel;
+import com.ichop.core.areas.user.domain.models.service.UserServiceModel;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,4 +15,7 @@ public class CommentCreateBindingModel {
     @NotNull
     @NotEmpty
     private String content;
+
+    private ThreadServiceModel thread;
+    private UserServiceModel creator;
 }

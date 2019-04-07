@@ -46,7 +46,9 @@ public class PostController extends BaseController {
 
         UserServiceModel user = this.userServices.findUserByUsername(userUsername);
         UserServiceModel creatorServiceModel = this.modelMapper.map(((Authentication) principal).getPrincipal(), UserServiceModel.class);
-        this.postServices.create(user,creatorServiceModel,postCreateBindingModel);
+        postCreateBindingModel.setUser(user);
+        postCreateBindingModel.setCreator(creatorServiceModel);
+        this.postServices.create(postCreateBindingModel);
 
         return super.redirect(redirectUrl);
     }
@@ -56,7 +58,7 @@ public class PostController extends BaseController {
     public String proceedPostDeletion(@PathVariable String postId) {
 
         PostServiceModel postServiceModel = this.postServices.findById(postId);
-        this.postServices.delete(postServiceModel);
+        this.postServices.deleteByModel(postServiceModel);
         String redirectUrl = URLConstants.USER_PROFILE_GET.replace("{username}",postServiceModel.getUser().getUsername());
 
         return super.redirect(redirectUrl);

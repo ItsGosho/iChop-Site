@@ -13,45 +13,74 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 
 @Service
 public class UserInformationServicesImp extends BaseService<UserInformation, UserInformationRepository> implements UserInformationServices {
 
-    private final UserServices userServices;
-
     @Autowired
-    public UserInformationServicesImp(ModelMapper modelMapper, UserInformationRepository repository, UserServices userServices) {
+    public UserInformationServicesImp(ModelMapper modelMapper, UserInformationRepository repository) {
         super(modelMapper, repository);
-        this.userServices = userServices;
     }
 
-    @Override
-    public UserInformationServiceModel update(UserUpdateProfileInformationBindingModel userUpdateProfileInformationBindingModel, UserServiceModel user) {
-        boolean isUserExists = this.userServices.isUserExistsByUsername(user.getUsername());
 
-        if (!isUserExists) {
+    @Override
+    public UserInformationServiceModel update(UserUpdateProfileInformationBindingModel bindingModel) {
+
+        if (bindingModel.getUser() == null) {
             throw new UserNotFoundException();
         }
 
-        if(this.isUserInformationExistsByUser(user)){
-            UserInformationServiceModel userInformationServiceModel = super.modelMapper.map(super.repository.findByUser(super.modelMapper.map(user, User.class)),UserInformationServiceModel.class);
-            userInformationServiceModel.setAboutYou(userUpdateProfileInformationBindingModel.getAboutYou());
-            userInformationServiceModel.setBirthDate(LocalDate.parse(userUpdateProfileInformationBindingModel.getBirthDate()));
-            userInformationServiceModel.setStatusMessage(userUpdateProfileInformationBindingModel.getStatusMessage());
-            return super.save(userInformationServiceModel,UserInformationServiceModel.class);
+        if (this.isUserInformationExistsByUser(bindingModel.getUser())) {
+            User user = this.modelMapper.map(bindingModel.getUser(), User.class);
+            UserInformation existingInformation = this.repository.findByUser(user);
+
+            UserInformationServiceModel userInformation = this.modelMapper.map(existingInformation, UserInformationServiceModel.class);
+            userInformation.setAboutYou(bindingModel.getAboutYou());
+
+            try{
+                userInformation.setBirthDate(LocalDate.parse(bindingModel.getBirthDate()));
+            }catch (DateTimeParseException ex){ }
+
+            userInformation.setStatusMessage(bindingModel.getStatusMessage());
+            return this.save(userInformation, UserInformationServiceModel.class);
         }
 
-        UserInformationServiceModel userInformationServiceModel = super.modelMapper.map(userUpdateProfileInformationBindingModel,UserInformationServiceModel.class);
-        userInformationServiceModel.setBirthDate(LocalDate.parse(userUpdateProfileInformationBindingModel.getBirthDate()));
-        userInformationServiceModel.setUser(user);
+        UserInformationServiceModel userInformationServiceModel = this.modelMapper.map(bindingModel, UserInformationServiceModel.class);
+        try{
+            userInformationServiceModel.setBirthDate(LocalDate.parse(bindingModel.getBirthDate()));
+        }catch (DateTimeParseException ex){}
 
-        return super.save(userInformationServiceModel,UserInformationServiceModel.class);
+        return this.save(userInformationServiceModel, UserInformationServiceModel.class);
+    }
+
+    @Override
+    public UserInformationServiceModel getByUser(UserServiceModel user) {
+        User entityUser = this.modelMapper.map(user,User.class);
+        UserInformation userInformation = this.repository.findByUser(entityUser);
+        return userInformation != null ? this.modelMapper.map(userInformation,UserInformationServiceModel.class) : null;
+    }
+
+    @Override
+    public void createFirstTime(UserServiceModel user) {
+
+        if (!this.isUserInformationExistsByUser(user)) {
+            UserInformationServiceModel userInformation = new UserInformationServiceModel();
+            userInformation.setUser(user);
+            userInformation.setStatusMessage("");
+            userInformation.setAboutYou("");
+            userInformation.setAvatarPath("");
+
+            this.save(userInformation,UserInformationServiceModel.class);
+        }
+
     }
 
     @Override
     public boolean isUserInformationExistsByUser(UserServiceModel user) {
-        User entityUser = super.modelMapper.map(user,User.class);
-        return super.repository.findByUser(entityUser) != null;
+        User entityUser = this.modelMapper.map(user, User.class);
+        UserInformation foundedInfo = this.repository.findByUser(entityUser);
+        return foundedInfo != null;
     }
 
 

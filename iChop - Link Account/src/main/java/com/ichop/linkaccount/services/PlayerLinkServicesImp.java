@@ -28,7 +28,7 @@ public class PlayerLinkServicesImp extends BaseService<PlayerLink, PlayerLinkRep
             return false;
         }
 
-        super.save(playerLink, PlayerLinkServiceModel.class);
+        this.save(playerLink, PlayerLinkServiceModel.class);
         this.keyServices.deleteByUUID(playerLink.getPlayerUUID());
 
         return true;
@@ -41,30 +41,32 @@ public class PlayerLinkServicesImp extends BaseService<PlayerLink, PlayerLinkRep
             return false;
         }
 
-        super.delete(playerLink);
+        this.delete(playerLink);
 
         return true;
     }
 
     @Override
     public boolean isPlayerLinkExistBySiteUser(String username) {
-        return super.repository.existsBySiteUserUsername(username);
+        return this.repository.existsBySiteUserUsername(username);
     }
 
     @Override
     public PlayerLinkServiceModel getBySiteUser(String siteUserUsername) {
-        return this.objectMapper.convertValue(super.repository.getBySiteUserUsername(siteUserUsername),PlayerLinkServiceModel.class);
+        PlayerLink playerLink = this.repository.getBySiteUserUsername(siteUserUsername);
+        return this.objectMapper.convertValue(playerLink, PlayerLinkServiceModel.class);
     }
 
     @Override
     public PlayerLinkServiceModel getByUUID(String uuid) {
-        return this.objectMapper.convertValue(super.repository.getByPlayerUUID(uuid),PlayerLinkServiceModel.class);
+        PlayerLink playerLink = this.repository.getByPlayerUUID(uuid);
+        return this.objectMapper.convertValue(playerLink, PlayerLinkServiceModel.class);
     }
 
     @Override
     public boolean isAccountLinkedByUUID(String uuid) {
 
-        if (super.repository.getByPlayerUUID(uuid) != null) {
+        if (this.repository.getByPlayerUUID(uuid) != null) {
             return true;
         }
 
@@ -74,7 +76,7 @@ public class PlayerLinkServicesImp extends BaseService<PlayerLink, PlayerLinkRep
     @Override
     public boolean isAccountLinkedBySiteUserUsername(String username) {
 
-        if(super.repository.getBySiteUserUsername(username) != null){
+        if (this.repository.getBySiteUserUsername(username) != null) {
             return true;
         }
 

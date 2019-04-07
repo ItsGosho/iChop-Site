@@ -4,6 +4,7 @@ import com.ichop.core.areas.comment.domain.entities.Comment;
 import com.ichop.core.areas.comment.domain.models.service.CommentServiceModel;
 import com.ichop.core.areas.reaction.domain.entities.CommentReaction;
 import com.ichop.core.areas.reaction.domain.entities.ReactionType;
+import com.ichop.core.areas.reaction.domain.models.binding.CommentReactionCreateBindingModel;
 import com.ichop.core.areas.reaction.domain.models.service.CommentReactionServiceModel;
 import com.ichop.core.areas.reaction.exceptions.CantReactException;
 import com.ichop.core.areas.reaction.repositories.CommentReactionRepository;
@@ -27,28 +28,25 @@ public class CommentReactionServicesImp extends BaseReactionServices<CommentReac
     }
 
     @Override
-    public CommentReactionServiceModel createReaction(CommentServiceModel comment, UserServiceModel user, ReactionType reactionType) {
+    public CommentReactionServiceModel create(CommentReactionCreateBindingModel bindingModel) {
 
-        if (comment == null) {
+        if (bindingModel.getComment() == null) {
             throw new CommentNotFoundException();
         }
 
-        if (user == null) {
+        if (bindingModel.getUser() == null) {
             throw new UserNotFoundException();
         }
 
-        if (this.isCommentLikedByUser(user, comment)) {
+        if (this.isLikedByUser(bindingModel.getUser(), bindingModel.getComment())) {
             throw new UserAlreadyReacted();
         }
 
-        if(comment.getCreator().getUsername().equals(user.getUsername())){
+        if(bindingModel.getComment().getCreator().getUsername().equals(bindingModel.getUser().getUsername())){
             throw new CantReactException();
         }
 
-        CommentReactionServiceModel commentReaction = new CommentReactionServiceModel();
-        commentReaction.setReactionType(reactionType);
-        commentReaction.setUser(user);
-        commentReaction.setComment(comment);
+        CommentReactionServiceModel commentReaction = this.modelMapper.map(bindingModel,CommentReactionServiceModel.class);
         commentReaction.setReactionDate(LocalDateTime.now());
 
         CommentReactionServiceModel result = this.save(commentReaction, CommentReactionServiceModel.class);
@@ -57,32 +55,31 @@ public class CommentReactionServicesImp extends BaseReactionServices<CommentReac
     }
 
     @Override
-    public boolean isCommentLikedByUser(UserServiceModel user, CommentServiceModel comment) {
+    public boolean isLikedByUser(UserServiceModel user, CommentServiceModel comment) {
+
+        if(user == null) {
+            throw new UserNotFoundException();
+        }
+        if(comment == null) {
+            throw new CommentNotFoundException();
+        }
+
         User entityUser = this.modelMapper.map(user, User.class);
         Comment entityComment = this.modelMapper.map(comment, Comment.class);
 
-        boolean result = super.repository.isUserLikedThatComment(entityUser, entityComment);
+        boolean result = this.repository.isUserLikedThatComment(entityUser, entityComment);
 
         return result;
     }
 
     @Override
-    public int findTotalCommentReactionsByUserAndType(UserServiceModel user, ReactionType reactionType) {
-        User entityUser = this.modelMapper.map(user, User.class);
-        return super.repository.getUserTotalReactions(entityUser, reactionType);
-    }
+    public int findTotalReactionsByUserAndType(UserServiceModel user, ReactionType reactionType) {
 
-    @Override
-    public boolean isReactedByUser(CommentServiceModel comment,UserServiceModel user) {
-
-        if(comment == null ){
-            throw new CommentNotFoundException();
-        }
-
-        if(user == null){
+        if(user == null) {
             throw new UserNotFoundException();
         }
 
-        return super.repository.isUserLikedThatComment(super.modelMapper.map(user,User.class),super.modelMapper.map(comment,Comment.class));
+        User entityUser = this.modelMapper.map(user, User.class);
+        return this.repository.getUserTotalReactions(entityUser, reactionType);
     }
 }

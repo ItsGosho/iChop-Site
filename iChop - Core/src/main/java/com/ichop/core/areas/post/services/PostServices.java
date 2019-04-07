@@ -9,11 +9,11 @@ import java.util.List;
 public interface PostServices {
 
 
-    PostServiceModel create(UserServiceModel user, UserServiceModel creator , PostCreateBindingModel postCreateBindingModel);
+    PostServiceModel create(PostCreateBindingModel postCreateBindingModel);
 
     List<PostServiceModel> findByUser(UserServiceModel user);
 
     PostServiceModel findById(String postId);
 
-    void delete(PostServiceModel postServiceModel);
+    void deleteByModel(PostServiceModel postServiceModel);
 }

@@ -38,6 +38,7 @@ public class UserProfileOptionsController extends BaseController {
     @PreAuthorize("isAuthenticated()")
     @GetMapping(URLConstants.USER_PROFILE_OPTIONS_INFORMATION_GET)
     public ModelAndView getProfileInformationOptions(Principal principal,ModelAndView modelAndView) {
+        this.userInformationServices.createFirstTime(this.userServices.findUserByUsername(principal.getName()));
         UserProfileOptionsInformationViewModel userInfo = this.userProfileOptionsInformationViewHelper.create(principal.getName());
 
         modelAndView.addObject("optionsPage","user/options/user-options-profile-information");
@@ -48,15 +49,16 @@ public class UserProfileOptionsController extends BaseController {
 
     @PreAuthorize("isAuthenticated()")
     @PostMapping(URLConstants.USER_PROFILE_OPTIONS_INFORMATION_POST)
-    public String proceedProfileInformationUpdate(@Valid UserUpdateProfileInformationBindingModel userUpdateProfileInformationBindingModel, BindingResult bindingResult, Principal principal) {
+    public String proceedProfileInformationUpdate(@Valid UserUpdateProfileInformationBindingModel bindingModel, BindingResult bindingResult, Principal principal) {
 
         if(bindingResult.hasErrors()){
             return super.redirect(URLConstants.USER_PROFILE_OPTIONS_INFORMATION_GET);
         }
 
         UserServiceModel userServiceModel = this.userServices.findUserByUsername(principal.getName());
-        this.userInformationServices.update(userUpdateProfileInformationBindingModel,userServiceModel);
-        this.userServices.sendUpdateAvatarRequest(userServiceModel.getUsername(),userUpdateProfileInformationBindingModel.getAvatarBinary());
+        bindingModel.setUser(userServiceModel);
+        this.userInformationServices.update(bindingModel);
+        this.userServices.sendUpdateAvatarRequest(userServiceModel.getUsername(),bindingModel.getAvatarBinary());
 
         return super.redirect(URLConstants.USER_PROFILE_OPTIONS_INFORMATION_GET);
     }

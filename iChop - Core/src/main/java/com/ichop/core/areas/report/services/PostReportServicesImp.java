@@ -1,11 +1,10 @@
 package com.ichop.core.areas.report.services;
 
 import com.ichop.core.areas.post.domain.entities.PostReport;
-import com.ichop.core.areas.post.domain.models.service.PostServiceModel;
 import com.ichop.core.areas.post.exceptions.PostNotFoundException;
+import com.ichop.core.areas.report.domain.models.binding.PostReportCreateBindingModel;
 import com.ichop.core.areas.report.domain.models.service.PostReportServiceModel;
 import com.ichop.core.areas.report.repositories.PostReportRepository;
-import com.ichop.core.areas.user.domain.models.service.UserServiceModel;
 import com.ichop.core.areas.user.exceptions.UserNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,23 +22,20 @@ public class PostReportServicesImp extends BaseReportServices<PostReport, PostRe
     }
 
     @Override
-    public PostReportServiceModel create(PostServiceModel post, UserServiceModel user, String reason) {
+    public PostReportServiceModel create(PostReportCreateBindingModel bindingModel) {
 
-        if(post == null){
+        if(bindingModel.getPost() == null){
             throw new PostNotFoundException();
         }
 
-        if(user == null){
+        if(bindingModel.getUser() == null){
             throw new UserNotFoundException();
         }
 
-        PostReportServiceModel postReport = new PostReportServiceModel();
-        postReport.setPost(post);
-        postReport.setUser(user);
-        postReport.setReason(reason);
+        PostReportServiceModel postReport = this.modelMapper.map(bindingModel,PostReportServiceModel.class);
         postReport.setReportDate(LocalDateTime.now());
 
-        PostReportServiceModel result = super.save(postReport,PostReportServiceModel.class);
+        PostReportServiceModel result = this.save(postReport,PostReportServiceModel.class);
 
         return result;
     }

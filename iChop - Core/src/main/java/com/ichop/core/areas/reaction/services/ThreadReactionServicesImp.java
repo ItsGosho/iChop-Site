@@ -2,6 +2,7 @@ package com.ichop.core.areas.reaction.services;
 
 import com.ichop.core.areas.reaction.domain.entities.ReactionType;
 import com.ichop.core.areas.reaction.domain.entities.ThreadReaction;
+import com.ichop.core.areas.reaction.domain.models.binding.ThreadReactionCreateBindingModel;
 import com.ichop.core.areas.reaction.domain.models.service.ThreadReactionServiceModel;
 import com.ichop.core.areas.reaction.repositories.ThreadReactionRepository;
 import com.ichop.core.areas.thread.domain.entities.Thread;
@@ -27,44 +28,55 @@ public class ThreadReactionServicesImp extends BaseReactionServices<ThreadReacti
 
 
     @Override
-    public ThreadReactionServiceModel createReaction(ThreadServiceModel thread, UserServiceModel user, ReactionType reactionType) {
+    public ThreadReactionServiceModel create(ThreadReactionCreateBindingModel bindingModel) {
 
-        if(user == null){
+        if (bindingModel.getUser() == null) {
             throw new UserNotFoundException();
         }
 
-        if(thread == null){
+        if (bindingModel.getThread() == null) {
             throw new ThreadNotFoundException();
         }
 
-        if (this.isThreadLikedByUser(user, thread)) {
+        if (this.isLikedByUser(bindingModel.getUser(), bindingModel.getThread())) {
             throw new UserAlreadyReacted();
         }
 
-        ThreadReactionServiceModel threadReaction = new ThreadReactionServiceModel();
-        threadReaction.setReactionType(reactionType);
-        threadReaction.setUser(user);
-        threadReaction.setThread(thread);
+        ThreadReactionServiceModel threadReaction = this.modelMapper.map(bindingModel,ThreadReactionServiceModel.class);
         threadReaction.setReactionDate(LocalDateTime.now());
 
-        ThreadReactionServiceModel result = super.save(threadReaction,ThreadReactionServiceModel.class);
+        ThreadReactionServiceModel result = this.save(threadReaction, ThreadReactionServiceModel.class);
 
         return result;
     }
 
     @Override
-    public boolean isThreadLikedByUser(UserServiceModel user, ThreadServiceModel thread) {
-        User entityUser = this.modelMapper.map(user,User.class);
+    public boolean isLikedByUser(UserServiceModel user, ThreadServiceModel thread) {
+
+        if (user == null) {
+            throw new UserNotFoundException();
+        }
+
+        if (thread == null) {
+            throw new ThreadNotFoundException();
+        }
+
+        User entityUser = this.modelMapper.map(user, User.class);
         Thread entityThread = this.modelMapper.map(thread, Thread.class);
 
-        boolean result = super.repository.isUserLikedThatThread(entityUser,entityThread);
+        boolean result = this.repository.isUserLikedThatThread(entityUser, entityThread);
 
         return result;
     }
 
     @Override
-    public int findTotalThreadReactionsByUserAndType(UserServiceModel user, ReactionType reactionType) {
-        User entityUser = this.modelMapper.map(user,User.class);
-        return super.repository.getUserTotalReactions(entityUser,reactionType);
+    public int findTotalReactionsByUserAndType(UserServiceModel user, ReactionType reactionType) {
+
+        if (user == null) {
+            throw new UserNotFoundException();
+        }
+
+        User entityUser = this.modelMapper.map(user, User.class);
+        return this.repository.getUserTotalReactions(entityUser, reactionType);
     }
 }

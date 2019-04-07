@@ -4,6 +4,9 @@ import com.ichop.core.areas.comment.domain.models.service.CommentServiceModel;
 import com.ichop.core.areas.comment.services.CommentServices;
 import com.ichop.core.areas.post.domain.models.service.PostServiceModel;
 import com.ichop.core.areas.post.services.PostServices;
+import com.ichop.core.areas.report.domain.models.binding.CommentReportCreateBindingModel;
+import com.ichop.core.areas.report.domain.models.binding.PostReportCreateBindingModel;
+import com.ichop.core.areas.report.domain.models.binding.ThreadReportCreateBindingModel;
 import com.ichop.core.areas.report.services.CommentReportServices;
 import com.ichop.core.areas.report.services.PostReportServices;
 import com.ichop.core.areas.report.services.ThreadReportServices;
@@ -52,8 +55,12 @@ public class ReportController extends BaseController {
 
         CommentServiceModel commentServiceModel = this.commentServices.findById(commentId);
         UserServiceModel userServiceModel = this.modelMapper.map(((Authentication) principal).getPrincipal(), UserServiceModel.class);
+        CommentReportCreateBindingModel bindingModel = new CommentReportCreateBindingModel();
+        bindingModel.setReason(reason);
+        bindingModel.setUser(userServiceModel);
+        bindingModel.setComment(commentServiceModel);
 
-        this.commentReportServices.create(commentServiceModel, userServiceModel, reason);
+        this.commentReportServices.create(bindingModel);
         String redirectUrl = URLConstants.THREAD_READ_GET.replace("{threadId}",commentServiceModel.getThread().getId());
 
         return super.redirect(redirectUrl);
@@ -65,8 +72,12 @@ public class ReportController extends BaseController {
 
         ThreadServiceModel threadServiceModel = this.threadServices.findById(threadId);
         UserServiceModel userServiceModel = this.modelMapper.map(((Authentication) principal).getPrincipal(), UserServiceModel.class);
+        ThreadReportCreateBindingModel bindingModel = new ThreadReportCreateBindingModel();
+        bindingModel.setReason(reason);
+        bindingModel.setUser(userServiceModel);
+        bindingModel.setThread(threadServiceModel);
 
-        this.threadReportServices.create(threadServiceModel, userServiceModel, reason);
+        this.threadReportServices.create(bindingModel);
         String redirectUrl = URLConstants.THREAD_READ_GET.replace("{threadId}",threadServiceModel.getId());
 
         return super.redirect(redirectUrl);
@@ -78,8 +89,12 @@ public class ReportController extends BaseController {
 
         PostServiceModel postServiceModel = this.postServices.findById(postId);
         UserServiceModel userServiceModel = this.modelMapper.map(((Authentication) principal).getPrincipal(), UserServiceModel.class);
+        PostReportCreateBindingModel bindingModel = new PostReportCreateBindingModel();
+        bindingModel.setReason(reason);
+        bindingModel.setUser(userServiceModel);
+        bindingModel.setPost(postServiceModel);
 
-        this.postReportServices.create(postServiceModel, userServiceModel, reason);
+        this.postReportServices.create(bindingModel);
         String redirectUrl = URLConstants.USER_PROFILE_GET.replace("{username}",postServiceModel.getCreator().getUsername());
 
         return super.redirect(redirectUrl);

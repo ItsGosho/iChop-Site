@@ -83,8 +83,7 @@ public abstract class BaseService<Entity, Repository extends JpaRepository<Entit
     }
 
     public <ServiceModel extends BaseServiceModel> void delete(ServiceModel serviceModel) {
-        Entity entity = this.modelMapper.map(serviceModel, this.entity);
-        this.repository.delete(entity);
+        this.repository.deleteById(serviceModel.getId());
     }
 
     public void deleteById(String id) {

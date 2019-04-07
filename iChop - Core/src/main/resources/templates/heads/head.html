@@ -1,28 +1,21 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' rel='stylesheet'/>
-<link rel="stylesheet" href="/res/css/bootstrap-social.css">
-<link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css">
-<link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css.map">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
-<script
-        src="https://code.jquery.com/jquery-3.3.1.min.js"
-        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-<script src='https://www.google.com/recaptcha/api.js'></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.js"></script>
+<link rel="stylesheet" href="/res/css/lib/bootstrap-4.0.0.min.css">
+<link href='/res/css/lib/font-awesome-4.3.0.min.css' rel='stylesheet'/>
+<link rel="stylesheet" href="/res/css/bootstrap-social.css">
+<link rel="stylesheet" href="/res/css/lib/bootstrap-datepicker.css">
+<link rel="stylesheet" href="/res/css/lib/bootstrap-datepicker.css.map">
+
+<script src="/res/js/lib/jquery-3.3.1.min.js"></script>
+<script src="/res/js/lib/popper-1.12.9.min.js"></script>
+<script src="/res/js/lib/bootstrap-4.0.0.min.js"></script>
+<link href="/res/css/lib/google-material-icons.css" rel="stylesheet">
+<script src="/res/js/lib/bootstrap-datepicker.js"></script>
 <script src="/res/js/constants-url.js"></script>
 <script src="/res/js/constants-validation.js"></script>
 <script src="/res/js/lib/url-parse.min.js"></script>
 <script src="/res/js/utils/modal-utils.js"></script>
+<link rel="icon" th:href="${favicon}">
 

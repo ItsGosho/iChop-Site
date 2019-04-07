@@ -4,7 +4,6 @@ import com.ichop.core.areas.comment.domain.entities.Comment;
 import com.ichop.core.areas.comment.domain.models.binding.CommentCreateBindingModel;
 import com.ichop.core.areas.comment.domain.models.service.CommentServiceModel;
 import com.ichop.core.areas.comment.repositories.CommentRepository;
-import com.ichop.core.areas.thread.domain.models.service.ThreadServiceModel;
 import com.ichop.core.areas.thread.exceptions.CommentNotFoundException;
 import com.ichop.core.areas.thread.exceptions.ThreadNotFoundException;
 import com.ichop.core.areas.user.domain.entities.User;
@@ -16,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.LinkedList;
 
 @Service
 public class CommentServicesImp extends BaseService<Comment, CommentRepository> implements CommentServices {
@@ -27,23 +27,22 @@ public class CommentServicesImp extends BaseService<Comment, CommentRepository> 
     }
 
     @Override
-    public CommentServiceModel create(CommentCreateBindingModel commentCreateBindingModel, UserServiceModel user, ThreadServiceModel thread) {
+    public CommentServiceModel create(CommentCreateBindingModel commentCreateBindingModel) {
 
-        if (user == null) {
+        if (commentCreateBindingModel.getCreator() == null) {
             throw new UserNotFoundException();
         }
 
-        if (thread == null) {
+        if (commentCreateBindingModel.getThread() == null) {
             throw new ThreadNotFoundException();
         }
 
         CommentServiceModel comment = this.modelMapper.map(commentCreateBindingModel, CommentServiceModel.class);
-
         comment.setCreatedOn(LocalDateTime.now());
-        comment.setCreator(user);
-        comment.setThread(thread);
+        comment.setReactions(new LinkedList<>());
+        comment.setReports(new LinkedList<>());
 
-        CommentServiceModel result = super.save(comment, CommentServiceModel.class);
+        CommentServiceModel result = this.save(comment, CommentServiceModel.class);
 
         return result;
     }
@@ -51,18 +50,18 @@ public class CommentServicesImp extends BaseService<Comment, CommentRepository> 
     @Override
     public int getTotalOfUser(UserServiceModel user) {
 
-        if(user == null){
+        if (user == null) {
             throw new UserNotFoundException();
         }
 
         User entityUser = this.modelMapper.map(user, User.class);
 
-        return super.repository.getTotalCommentsOfUser(entityUser);
+        return this.repository.getTotalCommentsOfUser(entityUser);
     }
 
     @Override
     public CommentServiceModel findById(String commentId) {
-        return super.findById(commentId, CommentServiceModel.class);
+        return this.findById(commentId, CommentServiceModel.class);
     }
 
     @Override
@@ -72,17 +71,17 @@ public class CommentServicesImp extends BaseService<Comment, CommentRepository> 
             throw new CommentNotFoundException();
         }
 
-        super.deleteById(commentId);
+        this.deleteById(commentId);
     }
 
     @Override
-    public void delete(CommentServiceModel commentServiceModel) {
+    public void deleteByModel(CommentServiceModel commentServiceModel) {
 
-        if (commentServiceModel == null || !this.repository.existsById(commentServiceModel.getId())){
+        if (commentServiceModel == null || !this.repository.existsById(commentServiceModel.getId())) {
             throw new CommentNotFoundException();
         }
 
-        super.delete(commentServiceModel);
+        this.delete(commentServiceModel);
     }
 
 }

@@ -1,5 +1,6 @@
 package com.ichop.core.areas.thread.domain.models.binding;
 
+import com.ichop.core.areas.user.domain.models.service.UserServiceModel;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
@@ -19,5 +20,7 @@ public class ThreadCreateBindingModel {
     @NotNull
     @NotEmpty
     private String content;
+
+    private UserServiceModel creator;
 
 }

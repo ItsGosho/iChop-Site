@@ -1,5 +1,6 @@
 package com.ichop.core.areas.user.domain.models.binding;
 
+import com.ichop.core.areas.user.domain.models.service.UserServiceModel;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
@@ -18,5 +19,7 @@ public class UserUpdateProfileInformationBindingModel {
 
     @Length(max = 250)
     private String aboutYou;
+
+    private UserServiceModel user;
 
 }

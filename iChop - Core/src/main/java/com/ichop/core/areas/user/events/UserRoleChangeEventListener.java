@@ -1,6 +1,7 @@
 package com.ichop.core.areas.user.events;
 
 import com.ichop.core.areas.log.domain.entities.UserLogType;
+import com.ichop.core.areas.log.domain.models.binding.UserLogCreateBindingModel;
 import com.ichop.core.areas.log.services.UserLogServices;
 import com.ichop.core.areas.role.services.UserRoleServices;
 import com.ichop.core.areas.user.domain.entities.User;
@@ -36,13 +37,21 @@ public class UserRoleChangeEventListener {
             creationMaker = this.modelMapper.map(principal,UserServiceModel.class).getUsername();
         }
 
-
         UserServiceModel user = this.modelMapper.map(userRoleChangeEvent.getUser(), UserServiceModel.class);
 
         String logMessage = String.format("%s has changed the role of %s to %s",creationMaker,user.getUsername(),this.userRoleServices.findHighestOfUser(user).getAuthority());
 
-        this.userLogServices.create(logMessage,user, UserLogType.ROLE_CHANGE);
+        this.userLogServices.create(this.createLog(logMessage,user, UserLogType.ROLE_CHANGE));
 
+    }
+
+    private UserLogCreateBindingModel createLog(String logMessage,UserServiceModel user,UserLogType logType){
+        UserLogCreateBindingModel userLogCreateBindingModel = new UserLogCreateBindingModel();
+        userLogCreateBindingModel.setUser(user);
+        userLogCreateBindingModel.setMessage(logMessage);
+        userLogCreateBindingModel.setLogType(logType);
+
+        return userLogCreateBindingModel;
     }
 
 }

@@ -20,14 +20,14 @@ public class KeyServicesImp extends BaseService<Key,KeyRepository> implements Ke
     @Override
     public boolean isKeyExpired(String key) {
 
-        Key keyy = super.repository.findByKey(key);
+        Key foundedKey = this.repository.findByKey(key);
 
-        if(keyy == null){
+        if(foundedKey == null){
             return true;
         }
 
 
-        boolean isDateExpired = keyy.getExpirityDate().compareTo(LocalDateTime.now()) < 0;
+        boolean isDateExpired = foundedKey.getExpirityDate().compareTo(LocalDateTime.now()) < 0;
 
         if (isDateExpired) {
             return true;
@@ -38,7 +38,7 @@ public class KeyServicesImp extends BaseService<Key,KeyRepository> implements Ke
 
     @Override
     public boolean isKeyValid(String key) {
-        Key entityKey = super.repository.findByKey(key);
+        Key entityKey = this.repository.findByKey(key);
 
         if(entityKey == null){
             return false;
@@ -53,33 +53,32 @@ public class KeyServicesImp extends BaseService<Key,KeyRepository> implements Ke
 
     @Override
     public KeyServiceModel getByKey(String key) {
-        Key entityKey = super.repository.findByKey(key);
+        Key entityKey = this.repository.findByKey(key);
 
-        KeyServiceModel result = null;
         if(entityKey != null){
-            result = super.objectMapper.convertValue(entityKey,KeyServiceModel.class);
+            return this.objectMapper.convertValue(entityKey,KeyServiceModel.class);
         }
 
-        return result;
+        return null;
     }
 
     @Override
     public KeyServiceModel getByPlayerUUID(String playerUUID) {
-        Key entityKey = super.repository.findByPlayerUUID(playerUUID);
+        Key entityKey = this.repository.findByPlayerUUID(playerUUID);
 
-        KeyServiceModel result = null;
         if(entityKey != null){
-            result = super.objectMapper.convertValue(entityKey,KeyServiceModel.class);
+            return this.objectMapper.convertValue(entityKey,KeyServiceModel.class);
         }
 
-        return result;
+        return null;
     }
 
     @Override
     public void deleteByUUID(String uuid) {
-        Key key = super.repository.findByPlayerUUID(uuid);
+        Key key = this.repository.findByPlayerUUID(uuid);
+
         if (key != null) {
-            super.repository.delete(key);
+            this.repository.delete(key);
         }
 
     }

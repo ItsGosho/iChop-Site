@@ -6,7 +6,7 @@ import com.ichop.core.areas.role.domain.models.service.UserRoleServiceModel;
 import com.ichop.core.areas.role.exceptions.RoleNotFoundException;
 import com.ichop.core.areas.role.repositories.UserRoleRepository;
 import com.ichop.core.areas.user.domain.models.service.UserServiceModel;
-import com.ichop.core.areas.user.exceptions.UserCannotBeNullException;
+import com.ichop.core.areas.user.exceptions.UserNotFoundException;
 import com.ichop.core.base.BaseService;
 import org.apache.commons.lang3.EnumUtils;
 import org.modelmapper.ModelMapper;
@@ -44,7 +44,7 @@ public class UserRoleServicesImp extends BaseService<UserRole, UserRoleRepositor
     public UserRoleServiceModel findHighestOfUser(UserServiceModel user) {
 
         if (user == null) {
-            throw new UserCannotBeNullException();
+            throw new UserNotFoundException();
         }
 
         return user
@@ -57,11 +57,11 @@ public class UserRoleServicesImp extends BaseService<UserRole, UserRoleRepositor
     @Override
     public UserRoleServiceModel getUserNextRole(UserRoleServiceModel userRoleServiceModel) {
 
-        UserRoles userRoles = UserRoles.valueOf(userRoleServiceModel.getAuthority().toUpperCase());
-
         if (!EnumUtils.isValidEnum(UserRoles.class, userRoleServiceModel.getAuthority().toUpperCase())) {
             throw new RoleNotFoundException();
         }
+
+        UserRoles userRoles = UserRoles.valueOf(userRoleServiceModel.getAuthority().toUpperCase());
 
         if (UserRoles.values().length - 1 < userRoles.ordinal() + 1) {
             return null;
@@ -70,17 +70,18 @@ public class UserRoleServicesImp extends BaseService<UserRole, UserRoleRepositor
         UserRoles nextRole = UserRoles.values()[userRoles.ordinal() + 1];
         UserRoleServiceModel result = this.findByAuthority(nextRole.name().toUpperCase());
 
+
         return this.modelMapper.map(result, UserRoleServiceModel.class);
     }
 
     @Override
     public UserRoleServiceModel getUserPreviousRole(UserRoleServiceModel userRoleServiceModel) {
 
-        UserRoles userRoles = UserRoles.valueOf(userRoleServiceModel.getAuthority().toUpperCase());
-
         if (!EnumUtils.isValidEnum(UserRoles.class, userRoleServiceModel.getAuthority().toUpperCase())) {
             throw new RoleNotFoundException();
         }
+
+        UserRoles userRoles = UserRoles.valueOf(userRoleServiceModel.getAuthority().toUpperCase());
 
         if (userRoles.ordinal() - 1 < 0) {
             return null;
@@ -94,7 +95,7 @@ public class UserRoleServicesImp extends BaseService<UserRole, UserRoleRepositor
 
     @Override
     public UserRoleServiceModel findByAuthority(String authority) {
-        UserRole entityUserRole = super.repository.findUserRoleByAuthority(authority);
+        UserRole entityUserRole = this.repository.findUserRoleByAuthority(authority);
 
         if (entityUserRole != null) {
             return this.modelMapper.map(entityUserRole, UserRoleServiceModel.class);
