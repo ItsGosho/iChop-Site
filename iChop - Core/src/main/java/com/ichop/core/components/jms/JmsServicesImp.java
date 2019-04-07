@@ -61,19 +61,19 @@ public class JmsServicesImp implements JmsServices {
     }
 
     @Override
-    public <ReceiveModel extends BaseJMSReceiveModel,SendModel extends BaseJMSSendModel> ReceiveModel sendAndReceiveModel(SendModel sendModel, Class<ReceiveModel> receiveModel, String destination) {
+    public <ReceiveModel extends BaseJMSReceiveModel, SendModel extends BaseJMSSendModel> ReceiveModel sendAndReceiveModel(SendModel sendModel, Class<ReceiveModel> receiveModel, String destination) {
 
-        HashMap<String,Object> valuesToSend = new HashMap<>();
-        valuesToSend.put(SEND_MODEL_PARAMETER_NAME,this.objectMapper.convertValue(sendModel,Map.class));
+        HashMap<String, Object> valuesToSend = new HashMap<>();
+        valuesToSend.put(SEND_MODEL_PARAMETER_NAME, this.objectMapper.convertValue(sendModel, Map.class));
         MessageCreator message = this.convertMessageIntoMessageCreator(this.convertValuesIntoMessage(valuesToSend));
 
         try {
             Message resultMessage = this.jmsTemplate.sendAndReceive(destination, message);
-            Map<String,Object> resultValues = this.messageToHashMap(resultMessage);
-            ReceiveModel resultModel = this.getResultModel(resultValues,receiveModel);
+            Map<String, Object> resultValues = this.messageToHashMap(resultMessage);
+            ReceiveModel resultModel = this.getResultModel(resultValues, receiveModel);
             return resultModel;
         } catch (Exception ex) {
-            System.out.println("There was a problem with the connection in destination " + destination + " "+ ex.getMessage());
+            System.out.println("There was a problem with the connection in destination " + destination + " " + ex.getMessage());
         }
 
         try {
@@ -82,6 +82,20 @@ public class JmsServicesImp implements JmsServices {
             e.printStackTrace();
         }
         return null;
+    }
+
+    @Override
+    public <SendModel extends BaseJMSSendModel> void sendModel(SendModel sendModel, String destination) {
+
+        HashMap<String, Object> valuesToSend = new HashMap<>();
+        valuesToSend.put(SEND_MODEL_PARAMETER_NAME, this.objectMapper.convertValue(sendModel, Map.class));
+        MessageCreator message = this.convertMessageIntoMessageCreator(this.convertValuesIntoMessage(valuesToSend));
+
+        try {
+            this.jmsTemplate.send(destination, message);
+        } catch (Exception ex) {
+            System.out.println("There was a problem with the connection in destination " + destination + " " + ex.getMessage());
+        }
     }
 
     @Override
@@ -99,7 +113,7 @@ public class JmsServicesImp implements JmsServices {
     }
 
     @Override
-    public MessageCreator convertMessageIntoMessageCreator(Message message){
+    public MessageCreator convertMessageIntoMessageCreator(Message message) {
         return session -> message;
     }
 

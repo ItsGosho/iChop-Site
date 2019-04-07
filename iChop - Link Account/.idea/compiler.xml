@@ -15,7 +15,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="linkaccount" options="-parameters" />
+      <module name="linkaccount" options="" />
     </option>
   </component>
 </project>

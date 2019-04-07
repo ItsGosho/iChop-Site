@@ -18,6 +18,9 @@ public interface JmsServices {
 
     <ReceiveModel extends BaseJMSReceiveModel,SendModel extends BaseJMSSendModel> ReceiveModel sendAndReceiveModel(SendModel sendModel, Class<ReceiveModel> receiveModel, String destination);
 
+
+    <SendModel extends BaseJMSSendModel> void sendModel(SendModel sendModel, String destination);
+
     Map<String,Object> sendAndReceive(String destinationName, HashMap<String, Object> values);
 
     MessageCreator convertMessageIntoMessageCreator(Message message);

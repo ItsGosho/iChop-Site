@@ -28,8 +28,19 @@
     <expand />
     <select />
   </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="993322431">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -111,6 +122,12 @@
       </list>
     </option>
   </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
       <MavenImportingSettings>
@@ -136,8 +153,8 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
-    <option name="width" value="1386" />
-    <option name="height" value="745" />
+    <option name="width" value="1940" />
+    <option name="height" value="1050" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -145,8 +162,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -261,6 +278,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -309,7 +327,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.com.ichop.linkaccount.services in linkaccount">
+  <component name="RunManager" selected="Spring Boot.Application">
     <configuration name="PlayerLinkServicesUnitTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="linkaccount" />
       <extension name="coverage">
@@ -320,7 +338,6 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.ichop.linkaccount.services" />
       <option name="MAIN_CLASS_NAME" value="com.ichop.linkaccount.services.PlayerLinkServicesUnitTests" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -395,6 +412,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Spring Boot.Application" />
+      <item itemvalue="JUnit.PlayerLinkServicesUnitTests" />
+      <item itemvalue="JUnit.PlayerLinkServicesUnitTests.getByUUID_withValidData_shouldInvokeMethods" />
+      <item itemvalue="JUnit.PlayerLinkServicesUnitTests.isAccountLinkedBySiteUserUsername_withLinkedAccount_shouldReturnTrue" />
+      <item itemvalue="JUnit.PlayerLinkServicesUnitTests.isAccountLinkedByUUID_withLinkedAccount_shouldReturnTrue" />
+      <item itemvalue="JUnit.com.ichop.linkaccount.services in linkaccount" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.com.ichop.linkaccount.services in linkaccount" />
@@ -448,6 +473,7 @@
       <workItem from="1554624032874" duration="1642000" />
       <workItem from="1554625691742" duration="2625000" />
       <workItem from="1554629232595" duration="226000" />
+      <workItem from="1554662846802" duration="597000" />
     </task>
     <servers />
   </component>
@@ -484,12 +510,12 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="92780000" />
+    <option name="totallyTimeSpent" value="93377000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49919486" visible="true" weight="0.2655068" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49919486" visible="true" weight="0.26812366" />
       <window_info id="Structure" order="1" sideWeight="0.50080514" side_tool="true" weight="0.26172465" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -500,7 +526,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3268921" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.31400967" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39130434" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39121115" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -508,7 +534,7 @@
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32850242" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.3268921" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32583067" />
       <window_info anchor="bottom" id="Java Enterprise" order="12" />
       <window_info anchor="bottom" id="Database Changes" order="13" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="14" />
@@ -528,6 +554,9 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure/2.1.0.RELEASE/spring-boot-autoconfigure-2.1.0.RELEASE-sources.jar!/org/springframework/boot/autoconfigure/orm/jpa/JpaProperties.java">
@@ -702,9 +731,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="15" column="7" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -733,16 +759,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="512">
           <caret line="108" lean-forward="true" selection-start-line="108" selection-end-line="108" />
-          <folding>
-            <element signature="method#JmsServicesImp#0;class#JmsServicesImp#0" />
-            <element signature="method#sendAndReceive#0;class#JmsServicesImp#0" />
-            <element signature="class#1183:1384" />
-            <element signature="method#createMessage#0;class#1183:1384" />
-            <element signature="e#1742#1751#0" />
-            <element signature="method#getJmsModel#0;class#JmsServicesImp#0" />
-            <element signature="method#messageToHashMap#0;class#JmsServicesImp#0" />
-            <element signature="method#convertValuesIntoMessage#0;class#JmsServicesImp#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -764,9 +780,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="128">
           <caret line="8" column="80" selection-start-line="8" selection-start-column="80" selection-end-line="8" selection-end-column="80" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -824,9 +837,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="594">
           <caret line="41" column="81" lean-forward="true" selection-start-line="41" selection-start-column="81" selection-end-line="41" selection-end-column="81" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -855,16 +865,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/ichop/linkaccount/services/KeyServicesUnitTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ichop/linkaccount/services/KeyServicesUnitTests.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/linkaccount/services/BaseService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="197">
@@ -879,16 +880,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/ichop/linkaccount/services/PlayerLinkServicesUnitTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="176" column="20" selection-start-line="176" selection-start-column="20" selection-end-line="176" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ichop/linkaccount/services/PlayerLinkServicesUnitTests.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/linkaccount/services/PlayerLinkServicesImp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="346">

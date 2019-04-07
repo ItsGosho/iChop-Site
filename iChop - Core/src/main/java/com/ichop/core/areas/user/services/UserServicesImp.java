@@ -12,6 +12,7 @@ import com.ichop.core.areas.user.domain.entities.User;
 import com.ichop.core.areas.user.domain.models.binding.UserForgottenPasswordBindingModel;
 import com.ichop.core.areas.user.domain.models.binding.UserRegisterBindingModel;
 import com.ichop.core.areas.user.domain.models.binding.UserResetPasswordBindingModel;
+import com.ichop.core.areas.user.domain.models.jms.UserUpdateAvatarJmsSendModel;
 import com.ichop.core.areas.user.domain.models.service.UserServiceModel;
 import com.ichop.core.areas.user.events.UserRoleChangeEvent;
 import com.ichop.core.areas.user.exceptions.*;
@@ -107,11 +108,11 @@ public class UserServicesImp extends BaseService<User, UserRepository> implement
 
     @Override
     public void sendUpdateAvatarRequest(String username, String imageAsBase64String) {
-        HashMap<String, Object> values = new HashMap<>();
-        values.put("username", username);
-        values.put("avatar", imageAsBase64String);
+        UserUpdateAvatarJmsSendModel bindingModel = new UserUpdateAvatarJmsSendModel();
+        bindingModel.setUsername(username);
+        bindingModel.setAvatar(imageAsBase64String);
 
-        this.jmsServices.sendAndReceive(UPDATE_AVATAR_DESTINATION, values);
+        this.jmsServices.sendModel(bindingModel,UPDATE_AVATAR_DESTINATION);
 
     }
 

@@ -277,9 +277,8 @@
                                 <div class="row">
 
                                     <div class="col-md-1">
-                                        <object th:data="@{http://localhost:8001/data/user/{username}/avatar(username=*{username})}"
+                                        <object th:data="@{http://localhost:8001/data/user/{username}/avatar(username=${#authentication.principal.username})}"
                                                          type="image/png"
-                                                         th:title="*{username}"
                                                          class="img-user-avatar" style="width: 30px;height: 30px">
                                         <img src="/res/img/avatar-user.png" alt="example" class="img-user-avatar" style="width: 30px;height: 30px">
                                         </object>
@@ -330,9 +329,13 @@
                                             <div class="col-md-12">
                                                 <span style="color: #7f7f7f;font-size: 10px" th:text="*{#temporals.format(createdOn, 'MMM dd,yyyy')}">Jan 00,0000</span>
 
-                                                <form method="post" th:action="@{/post/{postId}/delete(postId=*{id})}" style="all: initial">
-                                                    <button type="submit" style="all:initial;cursor: pointer;"><span style="font-size: 10px;color: #007bff">❌Delete</span></button>
-                                                </form>
+                                                <th:block th:if="${@postServicesImp.findById(post.id).creator.username.equals(#authentication.principal.username)
+                                                or @postServicesImp.findById(post.id).user.username.equals(#authentication.principal.username)}
+                                                or ${#authorization.expression('hasAuthority(''MODERATOR'')')}">
+                                                    <form method="post" th:action="@{/post/{postId}/delete(postId=*{id})}" style="all: initial">
+                                                        <button type="submit" style="all:initial;cursor: pointer;"><span style="font-size: 10px;color: #007bff">❌Delete</span></button>
+                                                    </form>
+                                                </th:block>
 
                                                 <button type="button" id="button-reportPost-userProfile" style="all:initial;cursor: pointer;"><span style="font-size: 10px;color: #007bff">🎌Report</span></button>
 
