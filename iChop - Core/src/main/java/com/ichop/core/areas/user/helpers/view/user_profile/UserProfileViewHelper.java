@@ -9,12 +9,14 @@ import com.ichop.core.areas.reaction.services.ThreadReactionServices;
 import com.ichop.core.areas.role.services.UserRoleServices;
 import com.ichop.core.areas.user.domain.models.service.UserServiceModel;
 import com.ichop.core.areas.user.domain.models.view.user_profile.PostsUserProfileViewModel;
+import com.ichop.core.areas.user.domain.models.view.user_profile.UserInformationProfileViewModel;
 import com.ichop.core.areas.user.domain.models.view.user_profile.UserProfileViewModel;
 import com.ichop.core.areas.user.exceptions.UserNotFoundException;
 import com.ichop.core.areas.user.services.UserFollowServices;
 import com.ichop.core.areas.user.services.UserServices;
 import com.ichop.core.base.BaseViewCreator;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -31,8 +33,10 @@ public class UserProfileViewHelper extends BaseViewCreator {
     private final CommentReactionServices commentReactionServices;
     private final PostsUserProfileViewHelper postsUserProfileViewHelper;
     private final UserFollowServices userFollowServices;
+    private final UserInformationProfileViewHelper userInformationProfileViewHelper;
 
-    protected UserProfileViewHelper(ModelMapper modelMapper, UserServices userServices, UserRoleServices userRoleServices, CommentServices commentServices, PlayerLinkServices playerLinkServices, ThreadReactionServices threadReactionServices, CommentReactionServices commentReactionServices, PostsUserProfileViewHelper postsUserProfileViewHelper, UserFollowServices userFollowServices) {
+    @Autowired
+    protected UserProfileViewHelper(ModelMapper modelMapper, UserServices userServices, UserRoleServices userRoleServices, CommentServices commentServices, PlayerLinkServices playerLinkServices, ThreadReactionServices threadReactionServices, CommentReactionServices commentReactionServices, PostsUserProfileViewHelper postsUserProfileViewHelper, UserFollowServices userFollowServices, UserInformationProfileViewHelper userInformationProfileViewHelper) {
         super(modelMapper);
         this.userServices = userServices;
         this.userRoleServices = userRoleServices;
@@ -42,6 +46,7 @@ public class UserProfileViewHelper extends BaseViewCreator {
         this.commentReactionServices = commentReactionServices;
         this.postsUserProfileViewHelper = postsUserProfileViewHelper;
         this.userFollowServices = userFollowServices;
+        this.userInformationProfileViewHelper = userInformationProfileViewHelper;
     }
 
 
@@ -61,6 +66,7 @@ public class UserProfileViewHelper extends BaseViewCreator {
         List<PostsUserProfileViewModel> posts = this.postsUserProfileViewHelper.create(user.getUsername());
         List<UserProfileViewModel> followers = this.userFollowServices.getFollowers(user).stream().map(x -> super.modelMapper.map(x, UserProfileViewModel.class)).collect(Collectors.toList());
         List<UserProfileViewModel> followings = this.userFollowServices.getFollowings(user).stream().map(x -> super.modelMapper.map(x, UserProfileViewModel.class)).collect(Collectors.toList());
+        UserInformationProfileViewModel userInformationProfileViewModel = this.userInformationProfileViewHelper.create(user);
 
         UserProfileViewModel result = super.modelMapper.map(user, UserProfileViewModel.class);
         result.setRole(role);
@@ -73,6 +79,7 @@ public class UserProfileViewHelper extends BaseViewCreator {
         result.setTotalFollowing(this.userFollowServices.findUserTotalFollowings(user));
         result.setFollowers(followers);
         result.setFollowings(followings);
+        result.setInformation(userInformationProfileViewModel);
 
         return result;
     }

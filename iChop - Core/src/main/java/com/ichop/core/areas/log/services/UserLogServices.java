@@ -9,7 +9,21 @@ import java.util.List;
 
 public interface UserLogServices {
 
-    UserLogServiceModel create(UserLogCreateBindingModel userLogCreateBindingModel);
+    /*
+    *
+    * Creates Log from user log binding model
+    * @throws UserNotFoundException if the user is null
+    * @returns UserLogServiceModel which is always valid
+    *
+    * */
+    UserLogServiceModel create(UserLogCreateBindingModel bindingModel);
 
+
+    /*
+    *
+    * Finds all of the user logs by user and logType
+    * @throws UserNotFoundException if the user is null
+    *
+    * */
     List<UserLogServiceModel> findAllByUserAndLogType(UserServiceModel user, UserLogType userLogType);
 }

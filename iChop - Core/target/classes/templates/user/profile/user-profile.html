@@ -260,9 +260,8 @@
                 <div style="line-height: 20px">
                     <div class="row">
                         <div>
-                            <div class="col-md-auto head">
-                                <span style="font-size: 13px;font-family: Georgia;font-style: italic">Knock knock</span><span
-                                    style="font-size: 10px;color: #7f7f7f;"> Jul 25,2017</span>
+                            <div class="col-md-auto head" th:if="*{information != null}">
+                                <span style="font-size: 13px;font-family: Georgia;font-style: italic" th:text="*{information.statusMessage}"></span></span>
                             </div>
                         </div>
                     </div>
@@ -292,118 +291,14 @@
                 <div class="tab-content">
 
                     <div class="tab-pane container active" id="posts">
-
-                        <div class="dropdown-divider"></div>
-
-                        <div class="create-post" sec:authorize="isAuthenticated()">
-                            <form method="post" th:action="@{/post/{userUsername}/create(userUsername=*{username})}">
-                                <div class="row">
-
-                                    <div class="col-md-1">
-                                        <object th:data="@{http://localhost:8001/data/user/{username}/avatar(username=${#authentication.principal.username})}"
-                                                         type="image/png"
-                                                         class="img-user-avatar" style="width: 30px;height: 30px">
-                                        <img src="/res/img/avatar-user.png" alt="example" class="img-user-avatar" style="width: 30px;height: 30px">
-                                        </object>
-                                    </div>
-
-                                    <div class="col-lg">
-                                        <textarea name="content" id="textarea-createPost-userProfile" style="border:1px solid #ccc;border-radius: 3px;height: 60px;overflow: auto;width: 100%;resize: none"></textarea>
-                                    </div>
-
-                                </div>
-
-                                <div class="row" style="margin-top: 3px">
-                                    <div class="col-lg">
-                                        <button type="button" id="button-createPost-userProfile" class="btn btn-info btn-sm" style="float: right;display: inline-block">Post</button>
-                                        <small id="small-leftPostCreationCharacters-userProfile" style="float: right;display: inline-block;margin-right: 3px;color: darkgreen;font-size: 13px">150</small>
-                                    </div>
-                                </div>
-                            </form>
-
-                            <script>
-                               runPostCreateScript();
-
-                            </script>
-
-                        </div>
-
-                        <div class="dropdown-divider"></div>
-
-                        <div class="all-posts" style="margin-top: 10px">
-
-                            <th:block th:each="post : *{posts}" th:object="${post}">
-
-                                <div class="card post" style="margin-top: 10px">
-                                    <div class="card-body"  style="margin-bottom: -15px">
-                                        <div class="row"  style="margin-top: -15px">
-                                            <div class="col-md-1" style="margin-top: 9px">
-                                                <object th:data="@{http://localhost:8001/data/user/{username}/avatar(username=*{creatorUsername})}"
-                                                        type="image/png" style="width: 30px;height: 30px">
-                                                    <img src="/res/img/avatar-user.png" alt="example"  style="width: 30px;height: 30px">
-                                                </object>
-
-                                            </div>
-                                            <div class="col-lg" style="width: 150px">
-                                                <a href="" style="color: #775322;font-size: 13px"><b th:text="*{creatorUsername}">Creator Username...</b> </a><small th:text="*{content}">Content...</small>
-                                            </div>
-                                        </div>
-                                        <div class="row" sec:authorize="isAuthenticated()">
-                                            <div class="col-md-12">
-                                                <span style="color: #7f7f7f;font-size: 10px" th:text="*{#temporals.format(createdOn, 'MMM dd,yyyy')}">Jan 00,0000</span>
-
-                                                <th:block th:if="${@postServicesImp.findById(post.id).creator.username.equals(#authentication.principal.username)
-                                                or @postServicesImp.findById(post.id).user.username.equals(#authentication.principal.username)}
-                                                or ${#authorization.expression('hasAuthority(''MODERATOR'')')}">
-                                                    <form method="post" th:action="@{/post/{postId}/delete(postId=*{id})}" style="all: initial">
-                                                        <button type="submit" style="all:initial;cursor: pointer;"><span style="font-size: 10px;color: #007bff">❌Delete</span></button>
-                                                    </form>
-                                                </th:block>
-
-                                                <button type="button" id="button-reportPost-userProfile" style="all:initial;cursor: pointer;"><span style="font-size: 10px;color: #007bff">🎌Report</span></button>
-
-                                                <div class="modal" id="modal-reportPost-userProfile" role="dialog">
-                                                    <div class="modal-dialog">
-
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h4 class="modal-title">Report to the kings:</h4>
-                                                            </div>
-                                                            <form method="post" th:action="@{/post/{postId}/report(postId=*{id})}">
-                                                                <div class="modal-body">
-                                        <textarea class="post-modal_report-textarea"
-                                                  name="reason" placeholder="Reason..." style="width: 100%;overflow-y: scroll;height: 200px;resize: none;"></textarea>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="submit" class="btn btn-default">Report</button>
-                                                                    <button type="button" class="btn btn-default"
-                                                                            data-dismiss="modal">
-                                                                        Cancel
-                                                                    </button>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <script>
-                                                    bindShowModal($("#button-reportPost-userProfile"),$("#modal-reportPost-userProfile"));
-                                                </script>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </th:block>
-
-                        </div>
-
+                        <th:block th:insert="user/profile/panes/user-profile-pane-posts"></th:block>
                     </div>
 
                     <div class="tab-pane container fade" id="latest-activity">Latest activity</div>
                     <div class="tab-pane container fade" id="latest-in-game-activity">Latest in-game activity</div>
-                    <div class="tab-pane container fade" id="information">Information</div>
+                    <div class="tab-pane container fade" id="information">
+                        <th:block th:insert="user/profile/panes/user-profile-pane-information"></th:block>
+                    </div>
                 </div>
 
             </div>

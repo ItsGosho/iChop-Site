@@ -5,6 +5,14 @@ import com.ichop.core.areas.report.domain.models.service.ThreadReportServiceMode
 
 public interface ThreadReportServices {
 
+    /*
+     *
+     * Creates thread report.
+     * @throws ThreadNotFoundException if the thread is null
+     * @throws UserNotFoundException if the user is null
+     * @returns ThreadReportServiceModel which is always valid
+     *
+     * */
     ThreadReportServiceModel create(ThreadReportCreateBindingModel bindingModel);
 
 }
