@@ -1,10 +1,9 @@
 package com.ichop.core.areas.user.web.controllers;
 
 import com.google.gson.Gson;
-import com.ichop.core.constants.URLConstants;
 import com.ichop.core.areas.user.domain.models.binding.UserForgottenPasswordBindingModel;
-import com.ichop.core.areas.user.domain.models.service.UserServiceModel;
 import com.ichop.core.areas.user.services.UserServices;
+import com.ichop.core.constants.URLConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
@@ -48,21 +47,6 @@ public class UserApiController {
         this.userServices.sendPasswordResetEmail(userForgottenPasswordBindingModel);
 
         return new Gson().toJson(true);
-    }
-
-    @GetMapping(value = URLConstants.IS_USER_FOLLOWING_USER, produces = "application/json")
-    @ResponseBody
-    public String isUserFollowingAnotherUser(@RequestParam String user1Username,@RequestParam String user2Username) {
-
-        if(!this.userServices.isUserExistsByUsername(user1Username) || !this.userServices.isUserExistsByUsername(user2Username)){
-            return new Gson().toJson(false);
-        }
-
-        UserServiceModel user1 = this.userServices.findUserByUsername(user1Username);
-        UserServiceModel user2 = this.userServices.findUserByUsername(user2Username);
-
-        boolean result = this.userServices.isUserAlreadyFollowedUser(user1,user2);
-        return new Gson().toJson(result);
     }
 
 }

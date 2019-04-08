@@ -24,7 +24,6 @@ public class EntityFactory {
         user.setLocation("location");
         user.setRegistrationDate(LocalDateTime.now());
         user.setAuthorities(new HashSet<>());
-        user.setFollowings(new HashSet<>());
         user.setLogs(new LinkedList<>());
         user.setEnabled(true);
         user.setAccountNonExpired(true);

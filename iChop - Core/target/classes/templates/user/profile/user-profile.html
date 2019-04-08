@@ -135,7 +135,18 @@
                         </div>
 
                     </div>
-                    <a href="" class="d-flex justify-content-center align-items-center">See all</a>
+                    <th:block th:if="*{totalFollowing > 4}">
+                        <a href="#" class="d-flex justify-content-center align-items-center" data-toggle="modal" data-target=".modal-all-following">See all</a>
+                        <th:block th:insert="user/profile/user-following-all"></th:block>
+
+                        <script th:inline="javascript">
+                            let username = /*[[*{username}]]*/ null;
+                            $(`*[data-target=".modal-all-following"]`).click(function () {
+                                runUserFollowAllFiller(username,$(`#div-insert_followings-user_followings_all`),URL_API_USER_ALL_FOLLOWINGS);
+                            });
+                        </script>
+
+                    </th:block>
                 </div>
 
                 <div class="card followers" style="margin-top: 10px">
@@ -161,7 +172,19 @@
 
 
                     </div>
-                    <a href="" class="d-flex justify-content-center align-items-center">See all</a>
+
+                    <th:block th:if="*{totalFollowers > 4}">
+                        <a href="#" class="d-flex justify-content-center align-items-center" data-toggle="modal" data-target=".modal-all-followers">See all</a>
+                        <th:block th:insert="user/profile/user-followers-all"></th:block>
+
+                        <script th:inline="javascript">
+                            let username = /*[[*{username}]]*/ null;
+                            $(`*[data-target=".modal-all-followers"]`).click(function () {
+                                runUserFollowAllFiller(username,$(`#div-insert_followers-user_followers_all`),URL_API_USER_ALL_FOLLOWERS);
+                            });
+                        </script>
+
+                    </th:block>
                 </div>
 
                 <div class="card user-location" style="margin-top: 10px">
@@ -360,7 +383,6 @@
                                                                 </div>
                                                             </form>
                                                         </div>
-
                                                     </div>
                                                 </div>
 

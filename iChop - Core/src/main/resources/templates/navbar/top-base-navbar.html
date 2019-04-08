@@ -23,7 +23,18 @@
         <th:block sec:authorize="isAuthenticated()">
             <th:block th:switch="${#session.getAttribute('user-role')}">
 
-                <!--Default User-->
+                <th:block th:case="MODERATOR">
+                    <th:block th:insert="navbar/top/top-navbar-moderator"></th:block>
+                </th:block>
+
+                <th:block th:case="ADMIN">
+                    <th:block th:insert="navbar/top/top-navbar-admin"></th:block>
+                </th:block>
+
+                <th:block th:case="OWNER">
+                    <th:block th:insert="navbar/top/top-navbar-owner"></th:block>
+                </th:block>
+
                 <th:block th:case="*">
                     <th:block th:insert="navbar/top/top-navbar-user"></th:block>
                 </th:block>

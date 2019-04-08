@@ -4,111 +4,54 @@
 
 <footer class="page-footer font-small stylish-color-dark pt-4" style="margin-top: 125px">
 
-    <!-- Footer Links -->
     <div class="container text-center text-md-left">
-
-        <!-- Grid row -->
         <div class="row">
-
-            <!-- Grid column -->
             <div class="col-md-4 mx-auto">
-
-                <!-- Content -->
-                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Footer Content</h5>
-                <p>Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit amet,
-                    consectetur
-                    adipisicing elit.</p>
+                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">iChop - The Minecraft Server</h5>
+                <p>
+                    Welcome to our website ,here you can find the latest news
+                about something new ,to link your account with your in-game account and
+                    so many other things!
+                </p>
 
             </div>
-            <!-- Grid column -->
 
             <hr class="clearfix w-100 d-md-none">
 
-            <!-- Grid column -->
-            <div class="col-md-2 mx-auto">
 
-                <!-- Links -->
-                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+            <th:block sec:authorize="isAnonymous()">
+                <th:block th:insert="footers/footer/footer-guest"></th:block>
+            </th:block>
 
-                <ul class="list-unstyled">
-                    <li>
-                        <a href="#!">Link 1</a>
-                    </li>
-                    <li>
-                        <a href="#!">Link 2</a>
-                    </li>
-                    <li>
-                        <a href="#!">Link 3</a>
-                    </li>
-                    <li>
-                        <a href="#!">Link 4</a>
-                    </li>
-                </ul>
+            <th:block sec:authorize="isAuthenticated()">
+                <th:block th:switch="${#session.getAttribute('user-role')}">
 
-            </div>
-            <!-- Grid column -->
+                    <th:block th:case="MODERATOR">
+                        <th:block th:insert="footers/footer/footer-moderator"></th:block>
+                    </th:block>
 
-            <hr class="clearfix w-100 d-md-none">
+                    <th:block th:case="ADMIN">
+                        <th:block th:insert="footers/footer/footer-admin"></th:block>
+                    </th:block>
 
-            <!-- Grid column -->
-            <div class="col-md-2 mx-auto">
+                    <th:block th:case="OWNER">
+                        <th:block th:insert="footers/footer/footer-owner"></th:block>
+                    </th:block>
 
-                <!-- Links -->
-                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+                    <th:block th:case="*">
+                        <th:block th:insert="footers/footer/footer-user"></th:block>
+                    </th:block>
 
-                <ul class="list-unstyled">
-                    <li>
-                        <a href="#!">Link 1</a>
-                    </li>
-                    <li>
-                        <a href="#!">Link 2</a>
-                    </li>
-                    <li>
-                        <a href="#!">Link 3</a>
-                    </li>
-                    <li>
-                        <a href="#!">Link 4</a>
-                    </li>
-                </ul>
-
-            </div>
-            <!-- Grid column -->
-
-            <hr class="clearfix w-100 d-md-none">
-
-            <!-- Grid column -->
-            <div class="col-md-2 mx-auto">
-
-                <!-- Links -->
-                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
-
-                <ul class="list-unstyled">
-                    <li>
-                        <a href="#!">Link 1</a>
-                    </li>
-                    <li>
-                        <a href="#!">Link 2</a>
-                    </li>
-                    <li>
-                        <a href="#!">Link 3</a>
-                    </li>
-                    <li>
-                        <a href="#!">Link 4</a>
-                    </li>
-                </ul>
-
-            </div>
-            <!-- Grid column -->
+                </th:block>
+            </th:block>
 
         </div>
-        <!-- Grid row -->
 
     </div>
-    <!-- Footer Links -->
 
     <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">Â© 2018 Copyright:
-        <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>
+    <div class="footer-copyright text-center py-3">© 2019 Copyright:
+        <a href="localhost:8000">iChop.bg</a>
     </div>
     <!-- Copyright -->
 </footer>

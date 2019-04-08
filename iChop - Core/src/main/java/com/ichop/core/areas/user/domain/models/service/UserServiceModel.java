@@ -1,7 +1,7 @@
 package com.ichop.core.areas.user.domain.models.service;
 
-import com.ichop.core.base.BaseServiceModel;
 import com.ichop.core.areas.role.domain.models.service.UserRoleServiceModel;
+import com.ichop.core.base.BaseServiceModel;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,7 +24,6 @@ public class UserServiceModel extends BaseServiceModel implements Serializable {
     private LocalDateTime registrationDate;
     private LocalDateTime lastOnline;
     private String location;
-    private Set<UserServiceModel> followings;
     private UserInformationServiceModel userInformation;
 
 

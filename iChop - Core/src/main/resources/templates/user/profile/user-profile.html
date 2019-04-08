@@ -1,0 +1,416 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<script src="/res/js/user/user-profile.js"></script>
+<link rel="stylesheet" href="/res/css/user/user-profila.css">
+
+<th:block th:object="${user}">
+
+<div class="container container-user-profile">
+
+    <div class="row">
+
+
+        <div class="col-md-auto">
+            <div class="col-md-sm user-info">
+
+                <div align="center">
+                    <object th:data="@{http://localhost:8001/data/user/{username}/avatar(username=*{username})}"
+                            type="image/png"
+                            class="img-user-avatar">
+                        <img src="/res/img/avatar-user.png" alt="example" class="img-user-avatar">
+                    </object>
+                </div>
+
+
+                <div class="card user-base-info">
+                    <div class="card-body user-base-info-body">
+
+                        <div class="col-md-auto">
+                            <div class="row user-base-info-row">
+                                <div class="col-md-auto user-base-info-last-online-title">
+                                    Last online:
+                                </div>
+                                <div class="col-md-auto user-base-info-last-online-content">
+                                <span th:text="*{#temporals.format(lastOnline, 'MMM dd,yyyy')}" th:title="*{#temporals.format(lastOnline, 'HH:mm')}">
+                                   Unknown 00,0000
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-auto">
+                            <div class="row user-base-info-registration_date-title">
+                                <div class="col-md-auto">
+                                    Joined on:
+                                </div>
+                                <div class="col-md-auto" style="column-width: 100px">
+                               <span style="display: inline-block;float: right;" th:text="*{#temporals.format(registrationDate, 'MMM dd,yyyy')}" th:title="*{#temporals.format(registrationDate, 'HH:mm')}">
+                                    Unknown 00,0000
+                               </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-auto">
+                            <div class="row" style="font-size: 11px">
+                                <div class="col-md-auto" style="column-width: 75px">
+                                    Messages:
+                                </div>
+                                <div class="col-md-auto" style="column-width: 100px">
+                               <span style="display: inline-block;float: right;" th:text="*{totalMessages}">
+                                    00000
+                               </span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <th:block th:if="*{minecraftAccountName != null}">
+                <div class="card minecraft-user-link" style="margin-top: 10px">
+                    <div>
+                        <img th:src="@{https://minotar.net/avatar/{minecraftAccountName}(minecraftAccountName=*{minecraftAccountName})}"
+                             style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px"/>
+                        <a href="" th:text="*{minecraftAccountName}"></a>
+                    </div>
+                </div>
+                </th:block>
+
+                <div class="card reactions-given" style="margin-top: 10px">
+                    <div class="card-body" style="line-height: 13px;font-family: Consolas;margin-left: -20px">
+
+                        <div class="col-md-auto">
+                            <div class="row" style="font-size: 15px">
+                                <div class="col-md-auto" style="font-size: 16px;">
+                                    👍
+                                </div>
+                                <div class="col-md-auto" style="column-width: 150px">
+                               <span style="display: inline-block;float: right;color:darkgreen" th:text="*{totalDislikes}">
+                                    0000
+                               </span>
+                                </div>
+                            </div>
+                            <div class="dropdown-divider" style="width: 100%"></div>
+                        </div>
+
+                        <div class="col-md-auto">
+                            <div class="row" style="font-size: 15px">
+                                <div class="col-md-auto" style="font-size: 16px">
+                                    👎
+                                </div>
+                                <div class="col-md-auto" style="column-width: 150px">
+                               <span style="display: inline-block;float: right;color: indianred;" th:text="*{totalLikes}">
+                                    0000
+                               </span>
+                                </div>
+                            </div>
+                            <div class="dropdown-divider" style="width: 100%"></div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="card following" style="margin-top: 10px">
+                    <div align="center">
+                        <span>Following: <span th:text="*{totalFollowing}">000</span></span>
+                    </div>
+                    <div>
+
+                        <div class="row d-flex justify-content-center align-items-center" style="width: 100%;margin-left: 0px">
+                            <th:block th:each="following : *{followings}" th:object="${following}">
+                                <th:block th:if="${followingStat.index < 4}">
+                                    <a th:href="@{/user/{username}/profile(username=*{username})}">
+                                        <object th:data="@{http://localhost:8001/data/user/{username}/avatar(username=*{username})}"
+                                                type="image/png"
+                                                th:title="*{username}"
+                                                class="img-user-avatar" style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px">
+                                            <img src="/res/img/avatar-user.png" alt="example" class="img-user-avatar" style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px">
+                                        </object>
+                                    </a>
+                                </th:block>
+                            </th:block>
+                        </div>
+
+                    </div>
+                    <th:block th:if="*{totalFollowing > 4}">
+                        <a href="#" class="d-flex justify-content-center align-items-center" data-toggle="modal" data-target=".modal-all-following">See all</a>
+                        <th:block th:insert="user/profile/user-following-all"></th:block>
+
+                        <script th:inline="javascript">
+                            let username = /*[[*{username}]]*/ null;
+                            $(`*[data-target=".modal-all-following"]`).click(function () {
+                                runUserFollowAllFiller(username,$(`#div-insert_followings-user_followings_all`),URL_API_USER_ALL_FOLLOWINGS);
+                            });
+                        </script>
+
+                    </th:block>
+                </div>
+
+                <div class="card followers" style="margin-top: 10px">
+                    <div align="center">
+                        Followers: <span th:text="*{totalFollowers}">000</span>
+                    </div>
+                    <div>
+
+                        <div class="row d-flex justify-content-center align-items-center" style="width: 100%;margin-left: 0px">
+                            <th:block th:each="follower : *{followers}" th:object="${follower}">
+                                <th:block th:if="${followerStat.index < 4}">
+                                    <a th:href="@{/user/{username}/profile(username=*{username})}">
+                                        <object th:data="@{http://localhost:8001/data/user/{username}/avatar(username=*{username})}"
+                                                type="image/png"
+                                                th:title="*{username}"
+                                                class="img-user-avatar" style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px">
+                                            <img src="/res/img/avatar-user.png" alt="example" class="img-user-avatar" style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px">
+                                        </object>
+                                    </a>
+                                </th:block>
+                            </th:block>
+                        </div>
+
+
+                    </div>
+
+                    <th:block th:if="*{totalFollowers > 4}">
+                        <a href="#" class="d-flex justify-content-center align-items-center" data-toggle="modal" data-target=".modal-all-followers">See all</a>
+                        <th:block th:insert="user/profile/user-followers-all"></th:block>
+
+                        <script th:inline="javascript">
+                            let username = /*[[*{username}]]*/ null;
+                            $(`*[data-target=".modal-all-followers"]`).click(function () {
+                                runUserFollowAllFiller(username,$(`#div-insert_followers-user_followers_all`),URL_API_USER_ALL_FOLLOWERS);
+                            });
+                        </script>
+
+                    </th:block>
+                </div>
+
+                <div class="card user-location" style="margin-top: 10px">
+                    <div class="card-body"
+                         style="line-height: 13px;font-family: Consolas;margin-left: -20px;margin-bottom: -15px;margin-top: -15px">
+
+                        <div class="col-md-auto">
+                            <div class="row" style="font-size: 11px">
+                                <div class="col-md-auto" style="column-width: 75px">
+                                    Location:
+                                </div>
+                                <div class="col-md-auto" style="column-width: 100px">
+                                    <span style="display: inline-block;float: right;">
+                                         <span th:text="*{location}"></span>
+                                    </span>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="central-content" style="margin-left: 5px">
+
+            <div class="col-md-auto username_and_rank_follow_unfollow">
+                <div style="line-height: 20px">
+                    <div class="row">
+                        <div>
+                            <div class="col-md-auto head">
+                                <span style="font-size: 25px" th:text="*{username}">Unknown Username</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div>
+                            <div class="col-md-auto head">
+                                <span style="font-size: 20px" th:text="*{role}">Unknown Rank</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <th:block sec:authorize="isAuthenticated()">
+                    <div class="row">
+                        <div class="col-md-12 head">
+                            <a th:href="@{/user/{username}/follow(username=*{username})}" id="a-follow_user-userProfile" style="font-size: 13px;float: right;display: none">Follow</a>
+                            <a th:href="@{/user/{username}/unfollow(username=*{username})}" id="a-unfollow_user-userProfile" style="font-size: 13px;float: right;display: none">Unfollow</a>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 head">
+                            <small id="a-is_he_followed_you-userProfile" style="font-size: 11px;float: right;display: inline-block"></small>
+                        </div>
+                    </div>
+
+                    <script th:inline="javascript">
+                        let currentLoggedInUserUsername = /*[[${#authentication.getName()}]]*/ null;
+                        let lookingUserUsername = /*[[*{username}]]*/ null;
+
+                        runFollowingScript(currentLoggedInUserUsername,lookingUserUsername);
+
+                    </script>
+
+                </th:block>
+
+                <div class="dropdown-divider"></div>
+            </div>
+
+            <div class="col-md-auto status">
+                <div style="line-height: 20px">
+                    <div class="row">
+                        <div>
+                            <div class="col-md-auto head">
+                                <span style="font-size: 13px;font-family: Georgia;font-style: italic">Knock knock</span><span
+                                    style="font-size: 10px;color: #7f7f7f;"> Jul 25,2017</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-auto user-information-navigation" style="margin-top: 50px">
+
+                <div class="navigation">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#posts">Profile posts</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#latest-activity">Latest Site Activity</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#latest-in-game-activity">Lates In-Game Activity</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#information">Information</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+
+                    <div class="tab-pane container active" id="posts">
+
+                        <div class="dropdown-divider"></div>
+
+                        <div class="create-post" sec:authorize="isAuthenticated()">
+                            <form method="post" th:action="@{/post/{userUsername}/create(userUsername=*{username})}">
+                                <div class="row">
+
+                                    <div class="col-md-1">
+                                        <object th:data="@{http://localhost:8001/data/user/{username}/avatar(username=${#authentication.principal.username})}"
+                                                         type="image/png"
+                                                         class="img-user-avatar" style="width: 30px;height: 30px">
+                                        <img src="/res/img/avatar-user.png" alt="example" class="img-user-avatar" style="width: 30px;height: 30px">
+                                        </object>
+                                    </div>
+
+                                    <div class="col-lg">
+                                        <textarea name="content" id="textarea-createPost-userProfile" style="border:1px solid #ccc;border-radius: 3px;height: 60px;overflow: auto;width: 100%;resize: none"></textarea>
+                                    </div>
+
+                                </div>
+
+                                <div class="row" style="margin-top: 3px">
+                                    <div class="col-lg">
+                                        <button type="button" id="button-createPost-userProfile" class="btn btn-info btn-sm" style="float: right;display: inline-block">Post</button>
+                                        <small id="small-leftPostCreationCharacters-userProfile" style="float: right;display: inline-block;margin-right: 3px;color: darkgreen;font-size: 13px">150</small>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <script>
+                               runPostCreateScript();
+
+                            </script>
+
+                        </div>
+
+                        <div class="dropdown-divider"></div>
+
+                        <div class="all-posts" style="margin-top: 10px">
+
+                            <th:block th:each="post : *{posts}" th:object="${post}">
+
+                                <div class="card post" style="margin-top: 10px">
+                                    <div class="card-body"  style="margin-bottom: -15px">
+                                        <div class="row"  style="margin-top: -15px">
+                                            <div class="col-md-1" style="margin-top: 9px">
+                                                <object th:data="@{http://localhost:8001/data/user/{username}/avatar(username=*{creatorUsername})}"
+                                                        type="image/png" style="width: 30px;height: 30px">
+                                                    <img src="/res/img/avatar-user.png" alt="example"  style="width: 30px;height: 30px">
+                                                </object>
+
+                                            </div>
+                                            <div class="col-lg" style="width: 150px">
+                                                <a href="" style="color: #775322;font-size: 13px"><b th:text="*{creatorUsername}">Creator Username...</b> </a><small th:text="*{content}">Content...</small>
+                                            </div>
+                                        </div>
+                                        <div class="row" sec:authorize="isAuthenticated()">
+                                            <div class="col-md-12">
+                                                <span style="color: #7f7f7f;font-size: 10px" th:text="*{#temporals.format(createdOn, 'MMM dd,yyyy')}">Jan 00,0000</span>
+
+                                                <th:block th:if="${@postServicesImp.findById(post.id).creator.username.equals(#authentication.principal.username)
+                                                or @postServicesImp.findById(post.id).user.username.equals(#authentication.principal.username)}
+                                                or ${#authorization.expression('hasAuthority(''MODERATOR'')')}">
+                                                    <form method="post" th:action="@{/post/{postId}/delete(postId=*{id})}" style="all: initial">
+                                                        <button type="submit" style="all:initial;cursor: pointer;"><span style="font-size: 10px;color: #007bff">❌Delete</span></button>
+                                                    </form>
+                                                </th:block>
+
+                                                <button type="button" id="button-reportPost-userProfile" style="all:initial;cursor: pointer;"><span style="font-size: 10px;color: #007bff">🎌Report</span></button>
+
+                                                <div class="modal" id="modal-reportPost-userProfile" role="dialog">
+                                                    <div class="modal-dialog">
+
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h4 class="modal-title">Report to the kings:</h4>
+                                                            </div>
+                                                            <form method="post" th:action="@{/post/{postId}/report(postId=*{id})}">
+                                                                <div class="modal-body">
+                                        <textarea class="post-modal_report-textarea"
+                                                  name="reason" placeholder="Reason..." style="width: 100%;overflow-y: scroll;height: 200px;resize: none;"></textarea>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="submit" class="btn btn-default">Report</button>
+                                                                    <button type="button" class="btn btn-default"
+                                                                            data-dismiss="modal">
+                                                                        Cancel
+                                                                    </button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <script>
+                                                    bindShowModal($("#button-reportPost-userProfile"),$("#modal-reportPost-userProfile"));
+                                                </script>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </th:block>
+
+                        </div>
+
+                    </div>
+
+                    <div class="tab-pane container fade" id="latest-activity">Latest activity</div>
+                    <div class="tab-pane container fade" id="latest-in-game-activity">Latest in-game activity</div>
+                    <div class="tab-pane container fade" id="information">Information</div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+</th:block>

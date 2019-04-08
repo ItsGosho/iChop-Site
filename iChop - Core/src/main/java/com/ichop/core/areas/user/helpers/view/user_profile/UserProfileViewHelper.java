@@ -11,6 +11,7 @@ import com.ichop.core.areas.user.domain.models.service.UserServiceModel;
 import com.ichop.core.areas.user.domain.models.view.user_profile.PostsUserProfileViewModel;
 import com.ichop.core.areas.user.domain.models.view.user_profile.UserProfileViewModel;
 import com.ichop.core.areas.user.exceptions.UserNotFoundException;
+import com.ichop.core.areas.user.services.UserFollowServices;
 import com.ichop.core.areas.user.services.UserServices;
 import com.ichop.core.base.BaseViewCreator;
 import org.modelmapper.ModelMapper;
@@ -29,8 +30,9 @@ public class UserProfileViewHelper extends BaseViewCreator {
     private final ThreadReactionServices threadReactionServices;
     private final CommentReactionServices commentReactionServices;
     private final PostsUserProfileViewHelper postsUserProfileViewHelper;
+    private final UserFollowServices userFollowServices;
 
-    protected UserProfileViewHelper(ModelMapper modelMapper, UserServices userServices, UserRoleServices userRoleServices, CommentServices commentServices, PlayerLinkServices playerLinkServices, ThreadReactionServices threadReactionServices, CommentReactionServices commentReactionServices, PostsUserProfileViewHelper postsUserProfileViewHelper) {
+    protected UserProfileViewHelper(ModelMapper modelMapper, UserServices userServices, UserRoleServices userRoleServices, CommentServices commentServices, PlayerLinkServices playerLinkServices, ThreadReactionServices threadReactionServices, CommentReactionServices commentReactionServices, PostsUserProfileViewHelper postsUserProfileViewHelper, UserFollowServices userFollowServices) {
         super(modelMapper);
         this.userServices = userServices;
         this.userRoleServices = userRoleServices;
@@ -39,6 +41,7 @@ public class UserProfileViewHelper extends BaseViewCreator {
         this.threadReactionServices = threadReactionServices;
         this.commentReactionServices = commentReactionServices;
         this.postsUserProfileViewHelper = postsUserProfileViewHelper;
+        this.userFollowServices = userFollowServices;
     }
 
 
@@ -56,7 +59,8 @@ public class UserProfileViewHelper extends BaseViewCreator {
         int totalLikes = this.threadReactionServices.findTotalReactionsByUserAndType(user, ReactionType.LIKE) + this.commentReactionServices.findTotalReactionsByUserAndType(user, ReactionType.LIKE);
         int totalDislikes = this.threadReactionServices.findTotalReactionsByUserAndType(user, ReactionType.DISLIKE) + this.commentReactionServices.findTotalReactionsByUserAndType(user, ReactionType.DISLIKE);
         List<PostsUserProfileViewModel> posts = this.postsUserProfileViewHelper.create(user.getUsername());
-        List<UserProfileViewModel> followers = this.userServices.getFollowers(user).stream().map(x -> super.modelMapper.map(x, UserProfileViewModel.class)).collect(Collectors.toList());
+        List<UserProfileViewModel> followers = this.userFollowServices.getFollowers(user).stream().map(x -> super.modelMapper.map(x, UserProfileViewModel.class)).collect(Collectors.toList());
+        List<UserProfileViewModel> followings = this.userFollowServices.getFollowings(user).stream().map(x -> super.modelMapper.map(x, UserProfileViewModel.class)).collect(Collectors.toList());
 
         UserProfileViewModel result = super.modelMapper.map(user, UserProfileViewModel.class);
         result.setRole(role);
@@ -65,9 +69,10 @@ public class UserProfileViewHelper extends BaseViewCreator {
         result.setTotalLikes(totalLikes);
         result.setTotalDislikes(totalDislikes);
         result.setPosts(posts);
-        result.setTotalFollowers(this.userServices.findUserTotalFollowers(user));
-        result.setTotalFollowing(this.userServices.findUserTotalFollowings(user));
+        result.setTotalFollowers(this.userFollowServices.findUserTotalFollowers(user));
+        result.setTotalFollowing(this.userFollowServices.findUserTotalFollowings(user));
         result.setFollowers(followers);
+        result.setFollowings(followings);
 
         return result;
     }

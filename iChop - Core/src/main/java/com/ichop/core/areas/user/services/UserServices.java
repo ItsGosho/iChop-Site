@@ -10,7 +10,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Set;
 
 public interface UserServices extends UserDetailsService {
@@ -24,8 +23,6 @@ public interface UserServices extends UserDetailsService {
 
     void resetPassword(UserResetPasswordBindingModel userResetPasswordBindingModel, UserServiceModel user);
 
-    void follow(UserServiceModel user, UserServiceModel userToFollow);
-    void unfollow(UserServiceModel user,UserServiceModel userToUnfollow);
 
     void sendUpdateAvatarRequest(String username,String imageAsBase64String);
 
@@ -49,13 +46,6 @@ public interface UserServices extends UserDetailsService {
     void updateLastOnline(UserServiceModel user, LocalDateTime dateTime);
 
     void updateUserLocation(UserServiceModel user,String userLocation);
-
-    boolean isUserAlreadyFollowedUser(UserServiceModel user,UserServiceModel followingUser);
-
-    int findUserTotalFollowings(UserServiceModel user);
-    int findUserTotalFollowers(UserServiceModel user);
-
-    List<UserServiceModel> getFollowers(UserServiceModel user);
 
     Page<UserServiceModel> findUsersByUsernameContains(String containingWord, Pageable pageable);
 

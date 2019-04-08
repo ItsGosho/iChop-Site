@@ -23,9 +23,14 @@ public final class URLConstants {
     //UserController ------------------------------------------------------------------------------------------
 
     public static final String USER_PROFILE_GET = "/user/{username}/profile"; /*EVERYONE*/
+    public static final String USER_ALL_GET = "/user/all"; /*ADMIN++*/
+
+    //UserFollowController ------------------------------------------------------------------------------------
+
     public static final String USER_FOLLOW_POST = "/user/{username}/follow"; /*USER++*/
     public static final String USER_UNFOLLOW_POST = "/user/{username}/unfollow"; /*USER++*/
-    public static final String USER_ALL_GET = "/user/all"; /*ADMIN++*/
+    public static final String USER_ALL_FOLLOWERS = "/api/user/{username}/all/followers"; /*EVERYONE*/
+    public static final String USER_ALL_FOLLOWINGS = "/api/user/{username}/all/followings"; /*EVERYONE*/
 
     //UserControlController -----------------------------------------------------------------------------------
 

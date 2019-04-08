@@ -112,7 +112,7 @@ public class UserServicesImp extends BaseService<User, UserRepository> implement
         bindingModel.setUsername(username);
         bindingModel.setAvatar(imageAsBase64String);
 
-        this.jmsServices.sendModel(bindingModel,UPDATE_AVATAR_DESTINATION);
+        this.jmsServices.sendModel(bindingModel, UPDATE_AVATAR_DESTINATION);
 
     }
 
@@ -178,46 +178,6 @@ public class UserServicesImp extends BaseService<User, UserRepository> implement
         this.save(user, UserServiceModel.class);
     }
 
-    @Override
-    public void follow(UserServiceModel user, UserServiceModel userToFollow) {
-
-        if (user == null || userToFollow == null) {
-            throw new UserNotFoundException();
-        }
-
-        if (user.getId().equals(userToFollow.getId())) {
-            throw new UserCannotFollowException();
-        }
-
-        boolean isUserAlreadyFollowingHim = this.isUserAlreadyFollowedUser(user, userToFollow);
-
-        if (isUserAlreadyFollowingHim) {
-            throw new UserAlreadyFollowingHimException();
-        }
-
-        user.getFollowings().add(userToFollow);
-
-        this.save(user, UserServiceModel.class);
-    }
-
-    @Override
-    public void unfollow(UserServiceModel user, UserServiceModel userToUnfollow) {
-
-        if (user == null || userToUnfollow == null) {
-            throw new UserNotFoundException();
-        }
-
-        boolean isEvenUserFollowingHim = this.isUserAlreadyFollowedUser(user, userToUnfollow);
-
-        if (!isEvenUserFollowingHim) {
-            throw new UserNotFollowingHimException();
-        }
-
-        user.getFollowings().removeIf(x -> x.getId().equals(userToUnfollow.getId()));
-
-        this.save(user, UserServiceModel.class);
-
-    }
 
     @Override
     public UserServiceModel promote(UserServiceModel user) {
@@ -261,8 +221,6 @@ public class UserServicesImp extends BaseService<User, UserRepository> implement
         this.createEvent(UserRoleChangeEvent.class, this, this.modelMapper.map(user, User.class));
         return this.save(user, UserServiceModel.class);
     }
-
-
 
 
     @Override
@@ -323,44 +281,6 @@ public class UserServicesImp extends BaseService<User, UserRepository> implement
     public void updateUserLocation(UserServiceModel user, String userLocation) {
         User entityUser = this.modelMapper.map(user, User.class);
         this.repository.updateUserLocation(entityUser, userLocation);
-    }
-
-    @Override
-    public boolean isUserAlreadyFollowedUser(UserServiceModel user, UserServiceModel followingUser) {
-
-        if (!this.isUserExistsByUsername(user.getUsername()) || !this.isUserExistsByUsername(followingUser.getUsername())) {
-            throw new UserNotFoundException();
-        }
-
-        return this.repository.isUserAlreadyFollowedUser(user.getId(), followingUser.getId());
-    }
-
-    @Override
-    public int findUserTotalFollowings(UserServiceModel user) {
-        return this.repository.getUserTotalFollowings(user.getId());
-    }
-
-    @Override
-    public int findUserTotalFollowers(UserServiceModel user) {
-        return this.repository.getUserTotalFollowers(user.getId());
-    }
-
-    @Override
-    public List<UserServiceModel> getFollowers(UserServiceModel user) {
-
-        List<UserServiceModel> result = new LinkedList<>();
-
-        this.repository.findAll().stream().forEach(x -> {
-
-            User foundedUser = x.getFollowings().stream().filter(z -> z.getId().equals(user.getId())).findFirst().orElse(null);
-
-            if (foundedUser != null) {
-                result.add(this.modelMapper.map(x, UserServiceModel.class));
-            }
-
-        });
-
-        return result;
     }
 
     @Override

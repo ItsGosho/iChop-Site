@@ -55,17 +55,10 @@ public class User extends BaseEntity implements UserDetails {
     @Column(name = "location")
     private String location;
 
-    @ManyToMany(fetch = FetchType.EAGER,targetEntity = User.class)
-    @JoinTable(name = "users_followers",
-    joinColumns = @JoinColumn(name = "user_id",referencedColumnName = "id"),
-    inverseJoinColumns = @JoinColumn(name = "follower_id",referencedColumnName = "id"))
-    private Set<User> followings;
-
     @OneToOne(mappedBy = "user",targetEntity = UserInformation.class)
     private UserInformation userInformation;
 
     public User(){
         this.setAuthorities(new HashSet<>());
-        this.setFollowings(new HashSet<>());
     }
 }

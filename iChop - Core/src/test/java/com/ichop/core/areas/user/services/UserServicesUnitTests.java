@@ -180,7 +180,7 @@ public class UserServicesUnitTests {
 
         this.userServices.sendUpdateAvatarRequest("username", "binary64");
 
-        verify(this.jmsServices, times(1)).sendAndReceive(any(), any());
+        verify(this.jmsServices, times(1)).sendModel(any(), any());
     }
 
     @Test
@@ -295,103 +295,6 @@ public class UserServicesUnitTests {
         verify(this.userServices, times(1)).save(user, UserServiceModel.class);
     }
 
-    @Test(expected = UserNotFoundException.class)
-    public void follow_withNullUser_shouldThrowException() {
-        UserServiceModel userToFollow = mock(UserServiceModel.class);
-
-        this.userServices.follow(null, userToFollow);
-    }
-
-    @Test(expected = UserNotFoundException.class)
-    public void follow_withNullUserToFollow_shouldThrowException() {
-        UserServiceModel user = mock(UserServiceModel.class);
-
-        this.userServices.follow(user, null);
-    }
-
-    @Test(expected = UserNotFoundException.class)
-    public void follow_withTwoNullUsers_shouldThrowException() {
-
-        this.userServices.follow(null, null);
-    }
-
-    @Test(expected = UserCannotFollowException.class)
-    public void follow_withUserSelfFollowing_shouldThrowException() {
-        UserServiceModel user = mock(UserServiceModel.class);
-        UserServiceModel userToFollow = mock(UserServiceModel.class);
-
-        when(user.getId()).thenReturn("id");
-        when(userToFollow.getId()).thenReturn("id");
-        this.userServices.follow(user, userToFollow);
-    }
-
-    @Test(expected = UserAlreadyFollowingHimException.class)
-    public void follow_withUserALreadyFollowingHim_shouldTHrowException() {
-        UserServiceModel user = mock(UserServiceModel.class);
-        UserServiceModel userToFollow = mock(UserServiceModel.class);
-
-        when(user.getId()).thenReturn("id");
-        when(userToFollow.getId()).thenReturn("id2");
-        doReturn(true).when(this.userServices).isUserAlreadyFollowedUser(user, userToFollow);
-        this.userServices.follow(user, userToFollow);
-    }
-
-    @Test
-    public void follow_withValidData_shouldInvokeMehtods() {
-        UserServiceModel user = mock(UserServiceModel.class);
-        UserServiceModel userToFollow = mock(UserServiceModel.class);
-
-        when(user.getId()).thenReturn("id");
-        when(userToFollow.getId()).thenReturn("id2");
-        doReturn(false).when(this.userServices).isUserAlreadyFollowedUser(user, userToFollow);
-        doReturn(null).when(this.userServices).save(user, UserServiceModel.class);
-        this.userServices.follow(user, userToFollow);
-
-        verify(this.userServices, times(1)).isUserAlreadyFollowedUser(user, userToFollow);
-        verify(this.userServices, times(1)).save(user, UserServiceModel.class);
-    }
-
-    @Test(expected = UserNotFoundException.class)
-    public void unfollow_withNullUser_shouldThrowException() {
-        UserServiceModel userToUnfollow = mock(UserServiceModel.class);
-
-        this.userServices.unfollow(null, userToUnfollow);
-    }
-
-    @Test(expected = UserNotFoundException.class)
-    public void unfollow_withNullUserToUnfollow_shouldThrowException() {
-        UserServiceModel user = mock(UserServiceModel.class);
-
-        this.userServices.unfollow(user, null);
-    }
-
-    @Test(expected = UserNotFoundException.class)
-    public void unfollow_withTwoNullUsers_shouldThrowException() {
-
-        this.userServices.follow(null, null);
-    }
-
-    @Test(expected = UserNotFollowingHimException.class)
-    public void unfollow_withUserNotFollowingHim_shouldTHrowException() {
-        UserServiceModel user = mock(UserServiceModel.class);
-        UserServiceModel userToUnfollow = mock(UserServiceModel.class);
-
-        doReturn(false).when(this.userServices).isUserAlreadyFollowedUser(user, userToUnfollow);
-        this.userServices.unfollow(user, userToUnfollow);
-    }
-
-    @Test
-    public void unfollow_withValidData_shouldInvokeMehtods() {
-        UserServiceModel user = mock(UserServiceModel.class);
-        UserServiceModel userToUnfollow = mock(UserServiceModel.class);
-
-        doReturn(true).when(this.userServices).isUserAlreadyFollowedUser(user, userToUnfollow);
-        doReturn(null).when(this.userServices).save(user, UserServiceModel.class);
-        this.userServices.unfollow(user, userToUnfollow);
-
-        verify(this.userServices, times(1)).isUserAlreadyFollowedUser(user, userToUnfollow);
-        verify(this.userServices, times(1)).save(user, UserServiceModel.class);
-    }
 
     @Test(expected = UserNotFoundException.class)
     public void promote_withNotExistingUser_shouldThrowException() {
@@ -645,59 +548,6 @@ public class UserServicesUnitTests {
         verify(this.modelMapper,times(1)).map(user,User.class);
         verify(this.userRepository,times(1)).updateUserLocation(entityUser,userLocation);
 
-    }
-
-    @Test(expected = UserNotFoundException.class)
-    public void isUserFOllowedUser_withUserNotExisting_shouldThrowException(){
-        UserServiceModel user = mock(UserServiceModel.class);
-        UserServiceModel followingUser = mock(UserServiceModel.class);
-
-        when(user.getUsername()).thenReturn("username");
-        doReturn(false).when(this.userServices).isUserExistsByUsername("username");
-        this.userServices.isUserAlreadyFollowedUser(user,followingUser);
-    }
-
-    @Test(expected = UserNotFoundException.class)
-    public void isUserFOllowedUser_withFollowerNotExisting_shouldThrowException(){
-        UserServiceModel user = mock(UserServiceModel.class);
-        UserServiceModel followingUser = mock(UserServiceModel.class);
-
-        when(user.getUsername()).thenReturn("username");
-        when(followingUser.getUsername()).thenReturn("followingUsername");
-        doReturn(true).when(this.userServices).isUserExistsByUsername("username");
-        doReturn(false).when(this.userServices).isUserExistsByUsername("followingUsername");
-        this.userServices.isUserAlreadyFollowedUser(user,followingUser);
-    }
-
-    @Test
-    public void findUserTotalFollowings_shouldInvokeMethods(){
-        UserServiceModel user = mock(UserServiceModel.class);
-
-        when(user.getId()).thenReturn("id");
-        when(this.userRepository.getUserTotalFollowings("id")).thenReturn(0);
-        this.userServices.findUserTotalFollowings(user);
-
-        verify(this.userRepository,times(1)).getUserTotalFollowings("id");
-    }
-
-    @Test
-    public void findUserTotalFollowers_shouldInvokeMethods(){
-        UserServiceModel user = mock(UserServiceModel.class);
-
-        when(user.getId()).thenReturn("id");
-        when(this.userRepository.getUserTotalFollowers("id")).thenReturn(0);
-        this.userServices.findUserTotalFollowers(user);
-
-        verify(this.userRepository,times(1)).getUserTotalFollowers("id");
-    }
-
-    @Test
-    public void getFollowers_shouldInvokeMethods(){
-        UserServiceModel user = mock(UserServiceModel.class);
-
-        this.userServices.getFollowers(user);
-
-        verify(this.userRepository,times(1)).findAll();
     }
 
     @Test
