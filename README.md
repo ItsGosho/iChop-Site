@@ -1,3 +1,6 @@
-# iChop Website [Small Minigame]
-
--Currently preparing the basic front-end
+# iChop Website
+Components:
+-iChop Core:
+-iChop Link Account:
+-iChop Basic Statistics:
+TODO:...
