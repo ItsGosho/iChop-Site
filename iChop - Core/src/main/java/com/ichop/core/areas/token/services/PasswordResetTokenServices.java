@@ -4,6 +4,8 @@ import com.ichop.core.areas.token.domain.models.binding.PasswordResetTokenCreate
 import com.ichop.core.areas.token.domain.models.service.PasswordResetTokenServiceModel;
 import com.ichop.core.areas.user.domain.models.service.UserServiceModel;
 
+import java.util.List;
+
 public interface PasswordResetTokenServices {
 
     /*
@@ -47,4 +49,19 @@ public interface PasswordResetTokenServices {
     *
     * */
     PasswordResetTokenServiceModel findByToken(String token);
+
+    /*
+    *
+    * Finds all token which expirity date is before current date
+    *
+    * */
+    List<PasswordResetTokenServiceModel> findAllExpired();
+
+    /*
+    *
+    * Deletes token by id
+    * @throws TokenNotFoundException if token doesn't exists
+    *
+    * */
+    void deleteTokenById(String id);
 }

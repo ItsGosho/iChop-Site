@@ -4,6 +4,7 @@ import com.ichop.core.areas.thread.domain.entities.Thread;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -14,7 +15,7 @@ import javax.persistence.Table;
 @Table(name = "threads_reports")
 public class ThreadReport extends BaseReport {
 
-    @ManyToOne(targetEntity = Thread.class)
+    @ManyToOne(targetEntity = Thread.class,cascade = CascadeType.REMOVE)
     private Thread thread;
 
 }

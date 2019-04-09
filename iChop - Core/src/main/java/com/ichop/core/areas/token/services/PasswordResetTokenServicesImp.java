@@ -3,6 +3,7 @@ package com.ichop.core.areas.token.services;
 import com.ichop.core.areas.token.domain.entities.PasswordResetToken;
 import com.ichop.core.areas.token.domain.models.binding.PasswordResetTokenCreateBindingModel;
 import com.ichop.core.areas.token.domain.models.service.PasswordResetTokenServiceModel;
+import com.ichop.core.areas.token.exceptions.TokenNotFoundException;
 import com.ichop.core.areas.token.repositories.PasswordResetTokenRepository;
 import com.ichop.core.areas.user.domain.models.service.UserServiceModel;
 import org.modelmapper.ModelMapper;
@@ -10,7 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class PasswordResetTokenServicesImp extends BaseTokenServices<PasswordResetToken, PasswordResetTokenRepository> implements PasswordResetTokenServices {
@@ -72,4 +75,24 @@ public class PasswordResetTokenServicesImp extends BaseTokenServices<PasswordRes
     public PasswordResetTokenServiceModel findByToken(String token) {
         return this.findTokenByToken(token);
     }
+
+    @Override
+    public List<PasswordResetTokenServiceModel> findAllExpired(){
+        return this.repository
+                .findAll()
+                .stream()
+                .filter(x-> x.getExpiryDate().isBefore(LocalDateTime.now()))
+                .map(x-> this.modelMapper.map(x,PasswordResetTokenServiceModel.class))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public void deleteTokenById(String id){
+        if(!this.repository.existsById(id)){
+            throw new TokenNotFoundException();
+        }
+
+        this.deleteById(id);
+    }
+
 }

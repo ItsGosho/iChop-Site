@@ -99,7 +99,15 @@ public final class URLConstants {
 
     //ReportController ---------------------------------------------------------------------------------------
     public static final String THREAD_REPORT_POST = "/thread/{threadId}/report"; /*USER++*/
+    public static final String THREAD_REPORT_DELETE_POST = "/thread/report/{reportId}/delete"; /*OWNER++*/
+    public static final String THREAD_REPORTS_ALL_GET = "/thread/reports/all"; /*OWNER++*/
+
     public static final String COMMENT_REPORT_POST = "/comment/{commentId}/report"; /*USER++*/
-    public static final String POST_REPORT_POST = "/post/{postId}/report"; /*USER++*/
+    public static final String COMMENT_REPORT_DELETE_POST = "/comment/report/{reportId}/delete"; /*MODERATOR++*/
+    public static final String COMMENT_REPORTS_ALL_GET = "/comment/reports/all"; /*MODERATOR++*/
+
+    public static final String POST_REPORT_POST = "/post/{postId}/report"; /*MODERATOR++*/
+    public static final String POST_REPORT_DELETE_POST = "/post/report/{reportId}/delete"; /*MODERATOR++*/
+    public static final String POST_REPORTS_ALL_GET = "/post/reports/all"; /*MODERATOR++*/
 
 }

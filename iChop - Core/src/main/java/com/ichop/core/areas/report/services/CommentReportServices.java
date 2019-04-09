@@ -2,6 +2,8 @@ package com.ichop.core.areas.report.services;
 
 import com.ichop.core.areas.report.domain.models.binding.CommentReportCreateBindingModel;
 import com.ichop.core.areas.report.domain.models.service.CommentReportServiceModel;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface CommentReportServices {
 
@@ -15,4 +17,26 @@ public interface CommentReportServices {
     * */
     CommentReportServiceModel create(CommentReportCreateBindingModel bindingModel);
 
+    /*
+     *
+     * Finds comment report by id
+     * @returns CommentReportServiceModel which is null if comment report is not found
+     *
+     * */
+    CommentReportServiceModel findById(String id);
+
+    /*
+     *
+     * Deletes comment report by model
+     * @throws ReportNotFoundException if the comment report is null or doesn't exist
+     *
+     * */
+    void deleteByModel(CommentReportServiceModel commentReport);
+
+    /*
+     *
+     * Finds all reports.
+     *
+     * */
+    Page<CommentReportServiceModel> findAll(Pageable pageable);
 }

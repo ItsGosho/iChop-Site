@@ -2,6 +2,8 @@ package com.ichop.core.areas.report.services;
 
 import com.ichop.core.areas.report.domain.models.binding.ThreadReportCreateBindingModel;
 import com.ichop.core.areas.report.domain.models.service.ThreadReportServiceModel;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface ThreadReportServices {
 
@@ -14,5 +16,29 @@ public interface ThreadReportServices {
      *
      * */
     ThreadReportServiceModel create(ThreadReportCreateBindingModel bindingModel);
+
+    /*
+    *
+    * Finds thread report by id
+    * @returns ThreadReportServiceModel which is null if thread report is not found
+    *
+    * */
+    ThreadReportServiceModel findById(String id);
+
+    /*
+    *
+    * Deletes thread report by model
+    * @throws ReportNotFoundException if the thread report is null or doesn't exist
+    *
+    * */
+    void deleteByModel(ThreadReportServiceModel threadReport);
+
+
+    /*
+    *
+    * Finds all reports.
+    *
+    * */
+    Page<ThreadReportServiceModel> findAll(Pageable pageable);
 
 }

@@ -1,0 +1,97 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+
+<div class="table-responsive" align="center">
+    <table class="table" style="width: 85%;text-align: center">
+        <thead>
+        <tr>
+            <th scope="col">Comment Content</th>
+            <th scope="col">Reason</th>
+            <th scope="col">Reporter</th>
+            <th scope="col">Report Date</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <!--/*@thymesVar id="reports" type="com.ichop.core.areas.report.domain.models.view.CommentAllReportsViewModel"*/-->
+        <th:block th:each="report : ${reports}" th:object="${report}">
+
+            <tr class="user-tr">
+                <td width="300px">
+                    <div style="overflow: scroll;width: 100%;max-height: 100px" th:text="*{commentContent}"></div>
+                </td>
+                <td width="300px">
+                    <div style="overflow: scroll;width: 100%;max-height: 100px" th:text="*{reason}"></div>
+                </td>
+                <td><a th:href="@{/user/{username}/profile(username=*{creatorUsername})}">ItsGosho</a></td>
+                <td th:text="*{#temporals.format(reportDate, 'dd MMM,yyyy')}">12 April,2019</td>
+                <td>
+                    <div class="row">
+                        <div class="dropdown">
+                            <button class="btn btn-warning btn-sm dropdown-toggle" type="button" id="dropdownMenuButton"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                ⚙Take Action!
+                            </button>
+                            <div class="dropdown-menu">
+                                <form method="post" th:action="@{/comment/{commentId}/delete(commentId=*{commentId})}"
+                                      style="all:initial">
+                                    <a class="dropdown-item" href="#">
+                                        <button type="submit" style="all: initial">❌Delete Comment</button>
+                                    </a>
+                                </form>
+                                <form method="post"
+                                      th:action="@{/comment/report/{reportId}/delete(reportId=*{reportId})}"
+                                      style="all:initial">
+                                    <a class="dropdown-item" href="#">
+                                        <button type="submit" style="all: initial">😖Delete Report</button>
+                                    </a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+        </th:block>
+        </tbody>
+    </table>
+</div>
+
+<th:block th:object="${reports}">
+    <nav aria-label="Page navigation example" class="d-flex justify-content-center align-items-center">
+        <ul class="pagination">
+
+            <th:block th:if="${#request.getParameter('page')} != null">
+
+                <th:block th:if="${(#conversions.convert(#request.getParameter('page'), 'Integer')) - 1} >= 0">
+                    <li class="page-item"><a class="page-link"
+                                             th:href="@{/comment/reports/all(page=${(#conversions.convert(#request.getParameter('page'), 'Integer')) - 1})}">Previous</a>
+                    </li>
+                </th:block>
+
+            </th:block>
+
+            <th:block th:each="i: *{#numbers.sequence(1,totalPages)}">
+                <li class="page-item"><a class="page-link" th:text="${i}"
+                                         th:href="@{/comment/reports/all(page=${i-1})}"></a></li>
+            </th:block>
+
+
+            <th:block th:if="${#request.getParameter('page')} != null">
+
+                <th:block
+                        th:if="*{(#conversions.convert(#request.getParameter('page'), 'Integer')) + 1 <= totalPages-1}">
+                    <li class="page-item"><a class="page-link"
+                                             th:href="@{/comment/reports/all(page=${(#conversions.convert(#request.getParameter('page'), 'Integer')) + 1})}">Next</a>
+                    </li>
+                </th:block>
+
+            </th:block>
+
+
+        </ul>
+    </nav>
+</th:block>

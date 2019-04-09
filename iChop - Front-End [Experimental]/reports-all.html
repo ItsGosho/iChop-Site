@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="components/bootstrap.min.css">
+    <link href="components/font-awesome.min.css" rel='stylesheet'/>
+    <link rel="stylesheet" href="components/bootstrap-social.css">
+
+    <script src="components/jquery.min.js"></script>
+    <script src="components/popper.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script src="components/bootstrap.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">⚠Reports</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Threads<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Comments<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Posts<span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" id="input-searchByUsername-usersAll" type="search"
+                   placeholder="Search by username" aria-label="Search">
+        </form>
+    </div>
+</nav>
+
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Thread</th>
+            <th scope="col">Reason</th>
+            <th scope="col">Reporter</th>
+            <th scope="col">Report Date</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="user-tr">
+            <th class="user-tr-username"><a href="">Link</a> </th>
+            <td width="300px"><div style="overflow: scroll;width: 100%;max-height: 100px">Surprisingly, the best answer (IMHO), is the last one. Apply a height to the TD element, and then float it left. This allows for vertical scrolling without adding additional elements to your code as the other answers suggest.</div></td>
+            <td><a href="">ItsGosho</a></td>
+            <td>05-March-2019</td>
+            <td>
+               <div class="row">
+                   <div class="dropdown">
+                       <button class="btn btn-warning btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                           ⚙Take Action!
+                       </button>
+                       <div class="dropdown-menu">
+                           <form method="post" action="/delete/thread" style="all:initial">
+                               <a class="dropdown-item" href="#"><button type="submit" style="all: initial">❌Delete Thread</button></a>
+                           </form>
+                           <form method="post" action="/delete/report" style="all:initial">
+                               <a class="dropdown-item" href="#"><button type="submit" style="all: initial">😖Delete Report</button></a>
+                           </form>
+                       </div>
+                   </div>
+               </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!--<table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Comment Content</th>
+            <th scope="col">Reason</th>
+            <th scope="col">Reporter</th>
+            <th scope="col">Report Date</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="user-tr">
+            <th width="300px"><div style="overflow: scroll;width: 100%;max-height: 100px">Surprisingly, the best answer (IMHO), is the last one. Apply a height to the TD element, and then float it left. This allows for vertical scrolling without adding additional elements to your code as the other answers suggest.</div></th>
+            <td width="300px"><div style="overflow: scroll;width: 100%;max-height: 100px">Surprisingly, the best answer (IMHO), is the last one. Apply a height to the TD element, and then float it left. This allows for vertical scrolling without adding additional elements to your code as the other answers suggest.</div></td>
+            <td><a href="">ItsGosho</a></td>
+            <td>05-March-2019</td>
+            <td>
+                <div class="row">
+                    <div class="dropdown">
+                        <button class="btn btn-warning btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            ⚙Take Action!
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">❌Delete Comment</a>
+                            <a class="dropdown-item" href="#">😖Delete Report</a>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>-->
+
+   <!-- <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Post Content</th>
+            <th scope="col">Reason</th>
+            <th scope="col">Reporter</th>
+            <th scope="col">Report Date</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="user-tr">
+            <th width="300px"><div style="overflow: scroll;width: 100%;max-height: 100px">Surprisingly, the best answer (IMHO), is the last one. Apply a height to the TD element, and then float it left. This allows for vertical scrolling without adding additional elements to your code as the other answers suggest.</div></th>
+            <td width="300px"><div style="overflow: scroll;width: 100%;max-height: 100px">Surprisingly, the best answer (IMHO), is the last one. Apply a height to the TD element, and then float it left. This allows for vertical scrolling without adding additional elements to your code as the other answers suggest.</div></td>
+            <td><a href="">ItsGosho</a></td>
+            <td>05-March-2019</td>
+            <td>
+                <div class="row">
+                    <div class="dropdown">
+                        <button class="btn btn-warning btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            ⚙Take Action!
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">❌Delete Post</a>
+                            <a class="dropdown-item" href="#">😖Delete Report</a>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>-->
+
+</div>
+
+</body>
+</html>

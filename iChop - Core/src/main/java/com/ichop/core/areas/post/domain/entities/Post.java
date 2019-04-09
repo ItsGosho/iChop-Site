@@ -1,5 +1,6 @@
 package com.ichop.core.areas.post.domain.entities;
 
+import com.ichop.core.areas.report.domain.entities.PostReport;
 import com.ichop.core.base.BaseEntity;
 import com.ichop.core.areas.user.domain.entities.User;
 import lombok.Getter;
