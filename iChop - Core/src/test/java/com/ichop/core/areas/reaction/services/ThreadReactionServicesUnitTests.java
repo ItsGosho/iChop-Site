@@ -116,7 +116,7 @@ public class ThreadReactionServicesUnitTests {
 
         verify(this.modelMapper,times(1)).map(user, User.class);
         verify(this.modelMapper,times(1)).map(thread, Thread.class);
-        verify(this.threadReactionRepository,times(1)).isUserLikedThatThread(entityUser,entityThread);
+        verify(this.threadReactionRepository,times(1)).isUserReactedAtThatThread(entityUser,entityThread);
 
     }
 

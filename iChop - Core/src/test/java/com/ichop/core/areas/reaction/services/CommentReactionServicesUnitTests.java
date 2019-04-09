@@ -135,7 +135,7 @@ public class CommentReactionServicesUnitTests {
         when(this.modelMapper.map(comment, Comment.class)).thenReturn(entityComment);
         this.commentReactionServices.isLikedByUser(user, comment);
 
-        verify(this.commentReactionRepository, times(1)).isUserLikedThatComment(entityUser, entityComment);
+        verify(this.commentReactionRepository, times(1)).isUserReactedAtThatComment(entityUser, entityComment);
     }
 
     @Test(expected = UserNotFoundException.class)

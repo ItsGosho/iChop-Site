@@ -67,7 +67,7 @@ public class CommentReactionServicesImp extends BaseReactionServices<CommentReac
         User entityUser = this.modelMapper.map(user, User.class);
         Comment entityComment = this.modelMapper.map(comment, Comment.class);
 
-        boolean result = this.repository.isUserLikedThatComment(entityUser, entityComment);
+        boolean result = this.repository.isUserReactedAtThatComment(entityUser, entityComment);
 
         return result;
     }

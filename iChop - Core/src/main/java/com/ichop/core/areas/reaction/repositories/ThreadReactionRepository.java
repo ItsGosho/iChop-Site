@@ -14,5 +14,5 @@ public interface ThreadReactionRepository extends ReactionRepository<ThreadReact
             "from ThreadReaction AS r\n" +
             "WHERE r.user = :user AND \n" +
             "r.thread = :thread")
-    boolean isUserLikedThatThread(@Param(value = "user") User user, @Param(value = "thread") Thread thread);
+    boolean isUserReactedAtThatThread(@Param(value = "user") User user, @Param(value = "thread") Thread thread);
 }

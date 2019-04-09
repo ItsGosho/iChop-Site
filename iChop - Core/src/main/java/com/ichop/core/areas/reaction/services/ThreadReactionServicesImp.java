@@ -64,7 +64,7 @@ public class ThreadReactionServicesImp extends BaseReactionServices<ThreadReacti
         User entityUser = this.modelMapper.map(user, User.class);
         Thread entityThread = this.modelMapper.map(thread, Thread.class);
 
-        boolean result = this.repository.isUserLikedThatThread(entityUser, entityThread);
+        boolean result = this.repository.isUserReactedAtThatThread(entityUser, entityThread);
 
         return result;
     }

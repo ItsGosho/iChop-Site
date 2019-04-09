@@ -48,25 +48,7 @@ public class UserInformationServicesUnitTests {
     }
 
     @Test
-    public void update_withUserNotHavingInformation_shouldInvokeMethods() {
-        UserUpdateProfileInformationBindingModel bindingModel = mock(UserUpdateProfileInformationBindingModel.class);
-        UserServiceModel user = mock(UserServiceModel.class);
-        UserInformationServiceModel userInformation = mock(UserInformationServiceModel.class);
-
-        when(bindingModel.getUser()).thenReturn(user);
-        when(bindingModel.getBirthDate()).thenReturn("2000-12-07");
-        when(this.modelMapper.map(bindingModel, UserInformationServiceModel.class)).thenReturn(userInformation);
-        doReturn(false).when(this.userInformationServices).isUserInformationExistsByUser(user);
-
-        this.userInformationServices.update(bindingModel);
-
-        verify(this.modelMapper, times(1)).map(bindingModel, UserInformationServiceModel.class);
-        verify(userInformation, times(1)).setBirthDate(any());
-        verify(this.userInformationServices, times(1)).save(userInformation, UserInformationServiceModel.class);
-    }
-
-    @Test
-    public void update_withUserHavingInformation_shouldInvokeMethods() {
+    public void update_withValidData_shouldInvokeMethods() {
         UserUpdateProfileInformationBindingModel bindingModel = mock(UserUpdateProfileInformationBindingModel.class);
         UserServiceModel user = mock(UserServiceModel.class);
         User entityUser = mock(User.class);
@@ -74,23 +56,19 @@ public class UserInformationServicesUnitTests {
         UserInformationServiceModel userInformation = mock(UserInformationServiceModel.class);
 
         when(bindingModel.getUser()).thenReturn(user);
-        when(bindingModel.getAboutYou()).thenReturn("aboutYou");
-        when(bindingModel.getStatusMessage()).thenReturn("statusMessage");
         when(bindingModel.getBirthDate()).thenReturn("2000-12-07");
+        when(entityUserInformation.getId()).thenReturn("id");
+        when(this.modelMapper.map(bindingModel, UserInformationServiceModel.class)).thenReturn(userInformation);
         when(this.modelMapper.map(user, User.class)).thenReturn(entityUser);
         when(this.userInformationRepository.findByUser(entityUser)).thenReturn(entityUserInformation);
-        when(this.modelMapper.map(entityUserInformation,UserInformationServiceModel.class)).thenReturn(userInformation);
-        doReturn(true).when(this.userInformationServices).isUserInformationExistsByUser(user);
 
         this.userInformationServices.update(bindingModel);
 
-        verify(this.modelMapper,times(1)).map(user,User.class);
-        verify(this.userInformationRepository,times(1)).findByUser(entityUser);
-        verify(this.modelMapper,times(1)).map(entityUserInformation,UserInformationServiceModel.class);
-        verify(userInformation,times(1)).setAboutYou(bindingModel.getAboutYou());
-        verify(userInformation,times(1)).setStatusMessage(bindingModel.getStatusMessage());
-        verify(this.userInformationServices,times(1)).save(userInformation,UserInformationServiceModel.class);
-
+        verify(this.modelMapper, times(1)).map(bindingModel, UserInformationServiceModel.class);
+        verify(this.modelMapper, times(1)).map(user, User.class);
+        verify(this.userInformationRepository, times(1)).findByUser(entityUser);
+        verify(userInformation, times(1)).setBirthDate(any());
+        verify(userInformation, times(1)).setId(entityUserInformation.getId());
     }
 
     @Test

@@ -280,7 +280,7 @@ public class UserServicesImp extends BaseService<User, UserRepository> implement
     @Override
     public void updateUserLocation(UserServiceModel user, String userLocation) {
         User entityUser = this.modelMapper.map(user, User.class);
-        this.repository.updateUserLocation(entityUser, userLocation);
+        this.repository.updateLocation(entityUser, userLocation);
     }
 
     @Override

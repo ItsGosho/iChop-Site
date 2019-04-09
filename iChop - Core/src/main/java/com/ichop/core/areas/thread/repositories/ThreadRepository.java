@@ -17,7 +17,7 @@ public interface ThreadRepository extends JpaRepository<Thread,String> {
     Thread findThreadById(String id);
 
     @Transactional
-    @Modifying
+    @Modifying(clearAutomatically = true)
     @Query("UPDATE Thread AS t\n" +
             "SET t.views = t.views + 1\n" +
             "WHERE t.id = :threadId")

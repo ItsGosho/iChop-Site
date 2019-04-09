@@ -14,6 +14,6 @@ public interface CommentReactionRepository extends ReactionRepository<CommentRea
             "from CommentReaction AS r\n" +
             "WHERE r.user = :user AND \n" +
             "r.comment = :comment")
-    boolean isUserLikedThatComment(@Param(value = "user") User user, @Param(value = "comment") Comment comment);
+    boolean isUserReactedAtThatComment(@Param(value = "user") User user, @Param(value = "comment") Comment comment);
 
 }

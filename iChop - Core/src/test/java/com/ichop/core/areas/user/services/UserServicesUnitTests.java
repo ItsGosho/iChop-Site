@@ -546,7 +546,7 @@ public class UserServicesUnitTests {
         this.userServices.updateUserLocation(user, userLocation);
 
         verify(this.modelMapper,times(1)).map(user,User.class);
-        verify(this.userRepository,times(1)).updateUserLocation(entityUser,userLocation);
+        verify(this.userRepository,times(1)).updateLocation(entityUser,userLocation);
 
     }
 

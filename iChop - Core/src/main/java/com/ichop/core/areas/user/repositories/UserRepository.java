@@ -20,7 +20,7 @@ public interface UserRepository extends JpaRepository<User, String> {
     User findUserByEmail(String email);
 
     @Transactional
-    @Modifying
+    @Modifying(clearAutomatically = true)
     @Query("UPDATE User AS u\n" +
             "SET u.lastOnline = :dateTime\n" +
             "WHERE u = :user")
@@ -28,11 +28,11 @@ public interface UserRepository extends JpaRepository<User, String> {
 
 
     @Transactional
-    @Modifying
+    @Modifying(clearAutomatically = true)
     @Query("UPDATE User AS u\n" +
             "SET u.location = :location\n" +
             "WHERE u = :user")
-    void updateUserLocation(@Param(value = "user") User user, @Param(value = "location") String location);
+    void updateLocation(@Param(value = "user") User user, @Param(value = "location") String location);
 
     @Query("SELECT u\n" +
             "FROM User AS u\n" +
