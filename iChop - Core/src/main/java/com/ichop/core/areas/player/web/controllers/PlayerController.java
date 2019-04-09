@@ -76,4 +76,5 @@ public class PlayerController extends BaseController {
         return super.page("player/player-profile",String.format("%s`s profile",player.getName()),modelAndView);
     }
 
+
 }

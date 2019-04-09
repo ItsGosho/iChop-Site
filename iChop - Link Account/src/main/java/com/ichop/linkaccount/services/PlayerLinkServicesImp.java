@@ -3,6 +3,7 @@ package com.ichop.linkaccount.services;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ichop.linkaccount.domain.entities.PlayerLink;
 import com.ichop.linkaccount.domain.models.binding.PlayerLinkCreateBindingModel;
+import com.ichop.linkaccount.domain.models.binding.PlayerUnlinkBindingModel;
 import com.ichop.linkaccount.domain.models.service.PlayerLinkServiceModel;
 import com.ichop.linkaccount.repositories.PlayerLinkRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,13 +36,14 @@ public class PlayerLinkServicesImp extends BaseService<PlayerLink, PlayerLinkRep
     }
 
     @Override
-    public boolean unlinkFromSiteUser(PlayerLinkServiceModel playerLink) {
+    public boolean unlinkFromSiteUser(PlayerUnlinkBindingModel bindingModel) {
 
-        if (!this.isAccountLinkedByUUID(playerLink.getPlayerUUID())) {
+        if (!this.isAccountLinkedBySiteUserUsername(bindingModel.getSiteUserUsername())) {
             return false;
         }
 
-        this.delete(playerLink);
+        PlayerLink playerLink = this.repository.getBySiteUserUsername(bindingModel.getSiteUserUsername());
+        this.repository.delete(playerLink);
 
         return true;
     }

@@ -20,6 +20,7 @@ public class ExistingSiteUserUsernameValidator implements ConstraintValidator<Ex
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        return this.playerLinkServices.isPlayerLinkExistBySiteUser(value);
+        boolean result = this.playerLinkServices.isPlayerLinkExistBySiteUser(value);
+        return result;
     }
 }

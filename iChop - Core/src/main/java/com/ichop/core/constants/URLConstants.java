@@ -46,6 +46,8 @@ public final class URLConstants {
     public static final String USER_PROFILE_OPTIONS_INFORMATION_POST = "/user/my-profile/options/information"; /*Only LOGGED-IN USER IN HIS PROFILE*/
     public static final String USER_PROFILE_OPTIONS_CHANGE_PASSWORD_GET = "/user/my-profile/options/change-password"; /*Only LOGGED-IN USER IN HIS PROFILE*/
     public static final String USER_PROFILE_OPTIONS_CHANGE_PASSWORD_POST = "/user/my-profile/options/change-password"; /*Only LOGGED-IN USER IN HIS PROFILE*/
+    public static final String USER_PROFILE_OPTIONS_MINECRAFT_GET = "/user/my-profile/options/minecraft"; /*Only LOGGED-IN USER IN HIS PROFILE*/
+    public static final String USER_PROFILE_OPTIONS_MINECRAFT_UNLINK_POST= "/user/my-profile/options/minecraft/unlink"; /*Only LOGGED-IN USER IN HIS PROFILE*/
 
     //UserAuthenticationController ----------------------------------------------------------------------------
 

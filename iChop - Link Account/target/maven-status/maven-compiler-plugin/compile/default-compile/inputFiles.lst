@@ -12,9 +12,11 @@ C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Link Account\src\main\java\com\
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Link Account\src\main\java\com\ichop\linkaccount\domain\models\service\KeyServiceModel.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Link Account\src\main\java\com\ichop\linkaccount\constants\KeyJMSConstants.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Link Account\src\main\java\com\ichop\linkaccount\repositories\PlayerLinkRepository.java
+C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Link Account\src\main\java\com\ichop\linkaccount\domain\models\binding\PlayerUnlinkBindingModel.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Link Account\src\main\java\com\ichop\linkaccount\services\KeyServicesImp.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Link Account\src\main\java\com\ichop\linkaccount\domain\models\service\PlayerLinkServiceModel.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Link Account\src\main\java\com\ichop\linkaccount\domain\models\jms\playerlink\returnn\IsPlayerLinkedAccountBySiteUserJMSReturnModel.java
+C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Link Account\src\main\java\com\ichop\linkaccount\domain\models\jms\playerlink\receive\UnlinkPlayerAccountJMSReceiveModel.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Link Account\src\main\java\com\ichop\linkaccount\listeners\annotations\playerlink\GetPlayerDataByUUIDListener.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Link Account\src\main\java\com\ichop\linkaccount\listeners\annotations\key\GetPlayerDataByKeyListener.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Link Account\src\main\java\com\ichop\linkaccount\config\DataSourceConfiguration.java
@@ -29,6 +31,7 @@ C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Link Account\src\main\java\com\
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Link Account\src\main\java\com\ichop\linkaccount\validators\ExistingUUIDValidator.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Link Account\src\main\java\com\ichop\linkaccount\domain\models\jms\key\returnn\GetPlayerDataByKeyJMSReturnModel.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Link Account\src\main\java\com\ichop\linkaccount\domain\models\jms\key\receive\GetPlayerDataBySiteUserJMSReceiveModel.java
+C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Link Account\src\main\java\com\ichop\linkaccount\domain\models\jms\playerlink\returnn\UnlinkPlayerAccountJMSReturnModel.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Link Account\src\main\java\com\ichop\linkaccount\components\JmsServices.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Link Account\src\main\java\com\ichop\linkaccount\validators\ExistingSiteUserUsername.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Link Account\src\main\java\com\ichop\linkaccount\listeners\annotations\playerlink\GetPlayerDataBySiteUserListener.java
@@ -58,5 +61,6 @@ C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Link Account\src\main\java\com\
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Link Account\src\main\java\com\ichop\linkaccount\listeners\KeyJmsListeners.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Link Account\src\main\java\com\ichop\linkaccount\validators\ValidKey.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Link Account\src\main\java\com\ichop\linkaccount\services\PlayerLinkServicesImp.java
+C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Link Account\src\main\java\com\ichop\linkaccount\listeners\annotations\playerlink\UnlinkPlayerAccountListener.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Link Account\src\main\java\com\ichop\linkaccount\validators\NotLinkedByUUIDKey.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Link Account\src\main\java\com\ichop\linkaccount\domain\models\service\BaseServiceModel.java

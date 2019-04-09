@@ -4,21 +4,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ichop.linkaccount.components.JmsServices;
 import com.ichop.linkaccount.components.ValidationUtil;
 import com.ichop.linkaccount.domain.models.binding.PlayerLinkCreateBindingModel;
+import com.ichop.linkaccount.domain.models.binding.PlayerUnlinkBindingModel;
 import com.ichop.linkaccount.domain.models.jms.key.receive.GetPlayerDataBySiteUserJMSReceiveModel;
 import com.ichop.linkaccount.domain.models.jms.key.returnn.GetPlayerDataBySiteUserJMSReturnModel;
-import com.ichop.linkaccount.domain.models.jms.playerlink.receive.GetPlayerDataByPlayerUUIDJMSReceiveModel;
-import com.ichop.linkaccount.domain.models.jms.playerlink.receive.IsPlayerLinkedAccountBySiteUserJMSReceiveModel;
-import com.ichop.linkaccount.domain.models.jms.playerlink.receive.IsPlayerLinkedAccountByUUIDJMSReceiveModel;
-import com.ichop.linkaccount.domain.models.jms.playerlink.receive.LinkPlayerAccountJMSReceiveModel;
-import com.ichop.linkaccount.domain.models.jms.playerlink.returnn.GetPlayerDataByPlayerUUIDJMSReturnModel;
-import com.ichop.linkaccount.domain.models.jms.playerlink.returnn.IsPlayerLinkedAccountBySiteUserJMSReturnModel;
-import com.ichop.linkaccount.domain.models.jms.playerlink.returnn.IsPlayerLinkedAccountByUUIDJMSReturnModel;
-import com.ichop.linkaccount.domain.models.jms.playerlink.returnn.LinkPlayerAccountJMSReturnModel;
+import com.ichop.linkaccount.domain.models.jms.playerlink.receive.*;
+import com.ichop.linkaccount.domain.models.jms.playerlink.returnn.*;
 import com.ichop.linkaccount.domain.models.service.PlayerLinkServiceModel;
-import com.ichop.linkaccount.listeners.annotations.playerlink.GetPlayerDataBySiteUserListener;
-import com.ichop.linkaccount.listeners.annotations.playerlink.GetPlayerDataByUUIDListener;
-import com.ichop.linkaccount.listeners.annotations.playerlink.IsPlayerLinkedAccountByUUIDListener;
-import com.ichop.linkaccount.listeners.annotations.playerlink.LinkPlayerAccountListener;
+import com.ichop.linkaccount.listeners.annotations.playerlink.*;
 import com.ichop.linkaccount.services.KeyServices;
 import com.ichop.linkaccount.services.PlayerLinkServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +48,22 @@ public class PlayerLinkJmsListeners extends BaseJmsListener {
 
         LinkPlayerAccountJMSReturnModel resultModel = new LinkPlayerAccountJMSReturnModel();
         resultModel.setSuccessful(result);
+
+        return super.jmsServices.returnResultModel(resultModel);
+    }
+
+    @UnlinkPlayerAccountListener
+    public Message unlinkPlayerAccount(Message message) throws JMSException {
+        UnlinkPlayerAccountJMSReceiveModel receivedJMSModel = super.jmsServices.getJmsModel(message,UnlinkPlayerAccountJMSReceiveModel.class);
+
+        if(super.validationUtil.validate(receivedJMSModel).hasErrors()){
+            return super.jmsServices.returnErrorModel(receivedJMSModel, UnlinkPlayerAccountJMSReturnModel.class);
+        }
+
+        PlayerUnlinkBindingModel bindingModel = this.objectMapper.convertValue(receivedJMSModel, PlayerUnlinkBindingModel.class);
+        this.playerLinkServices.unlinkFromSiteUser(bindingModel);
+
+        UnlinkPlayerAccountJMSReturnModel resultModel = new UnlinkPlayerAccountJMSReturnModel();
 
         return super.jmsServices.returnResultModel(resultModel);
     }

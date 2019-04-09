@@ -44,7 +44,7 @@
                                     <div class="row">
                                         <th:block th:if="*{creator.minecraftAccountName != null}">
                                         <small>
-                                            <a href=""><img
+                                            <a th:href="@{/player/{uuid}(uuid=*{creator.minecraftAccountUUID})}"><img
                                                     th:src="@{https://minotar.net/avatar/{minecraftAccountName}(minecraftAccountName=*{creator.minecraftAccountName})}"
                                                     class="card-img-top thread-creator-minecraft_username"
                                                     alt="Card image cap"><span
@@ -280,7 +280,7 @@
                                     <div>
                                         <th:block th:if="*{commentCreator.minecraftAccountName != null}">
                                         <small>
-                                            <a href=""><img
+                                            <a th:href="@{/player/{uuid}(uuid=*{commentCreator.minecraftAccountUUID})}"><img
                                                     th:src="@{https://minotar.net/avatar/{minecraftAccountName}(minecraftAccountName=*{commentCreator.minecraftAccountName})}"
                                                     class="card-img-top thread-comment-creator-minecraft_username"
                                                     alt="Card image cap"><span

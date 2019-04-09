@@ -1,15 +1,16 @@
 package com.ichop.core.areas.user.web.controllers;
 
-import com.ichop.core.areas.user.services.UserInformationServices;
-import com.ichop.core.constants.URLConstants;
+import com.ichop.core.areas.player.domain.jms.key.receive.PlayerDataBySiteUserJMSReceiveModel;
+import com.ichop.core.areas.player.services.PlayerLinkServices;
 import com.ichop.core.areas.user.domain.models.binding.UserResetPasswordBindingModel;
 import com.ichop.core.areas.user.domain.models.binding.UserUpdateProfileInformationBindingModel;
 import com.ichop.core.areas.user.domain.models.service.UserServiceModel;
 import com.ichop.core.areas.user.domain.models.view.user_options.UserProfileOptionsInformationViewModel;
 import com.ichop.core.areas.user.helpers.view.user_options.UserProfileOptionsInformationViewHelper;
+import com.ichop.core.areas.user.services.UserInformationServices;
 import com.ichop.core.areas.user.services.UserServices;
 import com.ichop.core.base.BaseController;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.ichop.core.constants.URLConstants;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -26,39 +27,41 @@ public class UserProfileOptionsController extends BaseController {
     private final UserServices userServices;
     private final UserInformationServices userInformationServices;
     private final UserProfileOptionsInformationViewHelper userProfileOptionsInformationViewHelper;
+    private final PlayerLinkServices playerLinkServices;
 
-    @Autowired
-    public UserProfileOptionsController(UserServices userServices, UserInformationServices userInformationServices, UserProfileOptionsInformationViewHelper userProfileOptionsInformationViewHelper) {
+    public UserProfileOptionsController(UserServices userServices, UserInformationServices userInformationServices, UserProfileOptionsInformationViewHelper userProfileOptionsInformationViewHelper, PlayerLinkServices playerLinkServices) {
         this.userServices = userServices;
         this.userInformationServices = userInformationServices;
         this.userProfileOptionsInformationViewHelper = userProfileOptionsInformationViewHelper;
+        this.playerLinkServices = playerLinkServices;
     }
 
 
     @PreAuthorize("isAuthenticated()")
     @GetMapping(URLConstants.USER_PROFILE_OPTIONS_INFORMATION_GET)
-    public ModelAndView getProfileInformationOptions(Principal principal,ModelAndView modelAndView) {
+    public ModelAndView getProfileInformationOptions(Principal principal, ModelAndView modelAndView) {
         this.userInformationServices.createFirstTime(this.userServices.findUserByUsername(principal.getName()));
         UserProfileOptionsInformationViewModel userInfo = this.userProfileOptionsInformationViewHelper.create(principal.getName());
 
-        modelAndView.addObject("optionsPage","user/options/user-options-profile-information");
-        modelAndView.addObject("userInfo",userInfo);
+        modelAndView.addObject("optionsPage", "user/options/user-options-profile-information");
+        modelAndView.addObject("userInfo", userInfo);
 
-        return super.page("user/options/user-options-base","Options",modelAndView);
+        return super.page("user/options/user-options-base", "Options", modelAndView);
     }
 
     @PreAuthorize("isAuthenticated()")
     @PostMapping(URLConstants.USER_PROFILE_OPTIONS_INFORMATION_POST)
     public String proceedProfileInformationUpdate(@Valid UserUpdateProfileInformationBindingModel bindingModel, BindingResult bindingResult, Principal principal) {
 
-        if(bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             return super.redirect(URLConstants.USER_PROFILE_OPTIONS_INFORMATION_GET);
         }
 
         UserServiceModel userServiceModel = this.userServices.findUserByUsername(principal.getName());
         bindingModel.setUser(userServiceModel);
+        this.userInformationServices.createFirstTime(userServiceModel);
         this.userInformationServices.update(bindingModel);
-        this.userServices.sendUpdateAvatarRequest(userServiceModel.getUsername(),bindingModel.getAvatarBinary());
+        this.userServices.sendUpdateAvatarRequest(userServiceModel.getUsername(), bindingModel.getAvatarBinary());
 
         return super.redirect(URLConstants.USER_PROFILE_OPTIONS_INFORMATION_GET);
     }
@@ -67,9 +70,9 @@ public class UserProfileOptionsController extends BaseController {
     @GetMapping(URLConstants.USER_PROFILE_OPTIONS_CHANGE_PASSWORD_GET)
     public ModelAndView getChangePasswordPage(ModelAndView modelAndView) {
 
-        modelAndView.addObject("optionsPage","user/options/user-options-change_password");
+        modelAndView.addObject("optionsPage", "user/options/user-options-profile-change_password");
 
-        return super.page("user/options/user-options-base","Change Password",modelAndView);
+        return super.page("user/options/user-options-base", "Change Password", modelAndView);
     }
 
     @PreAuthorize("isAuthenticated()")
@@ -77,9 +80,31 @@ public class UserProfileOptionsController extends BaseController {
     public ModelAndView proceedChangePassword(Principal principal, UserResetPasswordBindingModel userResetPasswordBindingModel) {
 
         UserServiceModel user = this.userServices.findUserByUsername(principal.getName());
-        this.userServices.resetPassword(userResetPasswordBindingModel,user);
+        this.userServices.resetPassword(userResetPasswordBindingModel, user);
 
-        return super.viewWithMessage("notification/info","Successful Change","You have successful changed your password!");
+        return super.viewWithMessage("notification/info", "Successful Change", "You have successful changed your password!");
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping(URLConstants.USER_PROFILE_OPTIONS_MINECRAFT_GET)
+    public ModelAndView getMinecraftPage(Principal principal, ModelAndView modelAndView) {
+
+        UserServiceModel user = this.userServices.findUserByUsername(principal.getName());
+        PlayerDataBySiteUserJMSReceiveModel playerData = this.playerLinkServices.getPlayerDataBySiteUser(user.getUsername());
+
+        modelAndView.addObject("playerData",playerData);
+        modelAndView.addObject("optionsPage", "user/options/user-options-profile-minecraft");
+
+        return super.page("user/options/user-options-base", "Minecraft", modelAndView);
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @PostMapping(URLConstants.USER_PROFILE_OPTIONS_MINECRAFT_UNLINK_POST)
+    public String proceedAccountUnlink(Principal principal) {
+
+        this.playerLinkServices.unlinkPlayerAccount(principal.getName());
+
+        return super.redirect(URLConstants.USER_PROFILE_OPTIONS_MINECRAFT_GET);
     }
 
 }

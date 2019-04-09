@@ -1,12 +1,13 @@
 package com.ichop.linkaccount.services;
 
 import com.ichop.linkaccount.domain.models.binding.PlayerLinkCreateBindingModel;
+import com.ichop.linkaccount.domain.models.binding.PlayerUnlinkBindingModel;
 import com.ichop.linkaccount.domain.models.service.PlayerLinkServiceModel;
 
 public interface PlayerLinkServices {
 
-    boolean linkToSiteUser(PlayerLinkCreateBindingModel playerLinkCreateBindingModel);
-    boolean unlinkFromSiteUser(PlayerLinkServiceModel playerLink);
+    boolean linkToSiteUser(PlayerLinkCreateBindingModel bindingModel);
+    boolean unlinkFromSiteUser(PlayerUnlinkBindingModel bindingModel);
 
     boolean isPlayerLinkExistBySiteUser(String username);
 

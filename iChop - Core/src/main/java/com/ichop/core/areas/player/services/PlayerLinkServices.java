@@ -58,4 +58,7 @@ public interface PlayerLinkServices {
     * */
     LinkPlayerAccountJMSReceiveModel sendSiteUserToPlayerLinkConnection(String key, String userUsername);
 
+
+
+    void unlinkPlayerAccount(String userUsername);
 }

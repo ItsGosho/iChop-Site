@@ -61,6 +61,7 @@ public class UserProfileViewHelper extends BaseViewCreator {
         int totalMessages = this.commentServices.getTotalOfUser(user);
         PlayerDataBySiteUserJMSReceiveModel playerData = this.playerLinkServices.getPlayerDataBySiteUser(user.getUsername());
         String minecraftAccountName = playerData != null ? playerData.getPlayerName() : null;
+        String minecraftAccountUUID = playerData != null ? playerData.getPlayerUUID() : null;
         int totalLikes = this.threadReactionServices.findTotalReactionsByUserAndType(user, ReactionType.LIKE) + this.commentReactionServices.findTotalReactionsByUserAndType(user, ReactionType.LIKE);
         int totalDislikes = this.threadReactionServices.findTotalReactionsByUserAndType(user, ReactionType.DISLIKE) + this.commentReactionServices.findTotalReactionsByUserAndType(user, ReactionType.DISLIKE);
         List<PostsUserProfileViewModel> posts = this.postsUserProfileViewHelper.create(user.getUsername());
@@ -72,6 +73,7 @@ public class UserProfileViewHelper extends BaseViewCreator {
         result.setRole(role);
         result.setTotalMessages(totalMessages);
         result.setMinecraftAccountName(minecraftAccountName);
+        result.setMinecraftAccountUUID(minecraftAccountUUID);
         result.setTotalLikes(totalLikes);
         result.setTotalDislikes(totalDislikes);
         result.setPosts(posts);

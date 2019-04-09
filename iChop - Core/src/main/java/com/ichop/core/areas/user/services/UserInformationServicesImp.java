@@ -31,22 +31,9 @@ public class UserInformationServicesImp extends BaseService<UserInformation, Use
             throw new UserNotFoundException();
         }
 
-        if (this.isUserInformationExistsByUser(bindingModel.getUser())) {
-            User user = this.modelMapper.map(bindingModel.getUser(), User.class);
-            UserInformation existingInformation = this.repository.findByUser(user);
-
-            UserInformationServiceModel userInformation = this.modelMapper.map(existingInformation, UserInformationServiceModel.class);
-            userInformation.setAboutYou(bindingModel.getAboutYou());
-
-            try{
-                userInformation.setBirthDate(LocalDate.parse(bindingModel.getBirthDate()));
-            }catch (DateTimeParseException ex){ }
-
-            userInformation.setStatusMessage(bindingModel.getStatusMessage());
-            return this.save(userInformation, UserInformationServiceModel.class);
-        }
-
+        User user = this.modelMapper.map(bindingModel.getUser(),User.class);
         UserInformationServiceModel userInformationServiceModel = this.modelMapper.map(bindingModel, UserInformationServiceModel.class);
+        userInformationServiceModel.setId(this.repository.findByUser(user).getId());
         try{
             userInformationServiceModel.setBirthDate(LocalDate.parse(bindingModel.getBirthDate()));
         }catch (DateTimeParseException ex){}

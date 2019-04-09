@@ -1,67 +1,48 @@
 package com.ichop.core.utils;
 
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/*
+ *
+ * Responsible to get resource file under resources folder ,then
+ * to replace all placeholders that match the @field placeholder
+ * and then to return the file as String with the replaced values.
+ *
+ *
+ * */
+@Getter
+@Setter
+@Builder
 public class CustomTemplateEngine {
 
-    // viewLocation must be under resources!
     private String viewLocation;
-
-    private Map<String,String> properties;
-
+    private Map<String, String> properties;
     private String result;
+    private String placeholder;
 
-    private CustomTemplateEngine(TemEngineBuilder temEngineBuilder){
-        this.viewLocation = temEngineBuilder.viewLocation;
-        this.properties = temEngineBuilder.properties;
-        this.result = temEngineBuilder.result;
-    }
 
-    public static class TemEngineBuilder {
-        private String viewLocation;
-        private Map<String,String> properties;
+    public static class CustomTemplateEngineBuilder {
         private String fileContent;
-        private String result;
 
-        public TemEngineBuilder(){}
-
-        public TemEngineBuilder setViewLocation(String viewLocation) {
-            this.viewLocation = viewLocation;
-            return this;
-        }
-
-        public TemEngineBuilder setProperties(Map<String, String> properties) {
-            this.properties = properties;
-            return this;
-        }
-
-        public TemEngineBuilder addProperty(String key,String value) {
-
-            if(this.properties==null){
-                this.properties = new LinkedHashMap<>();
-            }
-
-            this.properties.put(key, value);
-            return this;
-        }
-
-        public CustomTemplateEngine build() {
+        public CustomTemplateEngineBuilder proceedParameters() {
             this.proceedFileContent();
             this.proceedReplacingPlaceholders();
-
-            return new CustomTemplateEngine(this);
+            return this;
         }
 
-        private void proceedFileContent(){
+        private void proceedFileContent() {
             URL url = this.getClass().getClassLoader().getResource(this.viewLocation);
 
             File file = null;
@@ -82,24 +63,14 @@ public class CustomTemplateEngine {
             this.fileContent = result;
         }
 
-        private void proceedReplacingPlaceholders(){
+        private void proceedReplacingPlaceholders() {
             this.result = fileContent;
-            this.properties.forEach((key,value)->{
-                String placeholder = String.format("${{%s}}",key);
-                this.result = this.result.replace(placeholder,value);
+            this.properties.forEach((key, value) -> {
+                String placy = this.placeholder.replace("VALUE", "%s");
+                String placeholder = String.format(placy, key);
+                this.result = this.result.replace(placeholder, value);
             });
         }
-    }
 
-    public String getViewPath() {
-        return viewLocation;
-    }
-
-    public Map<String, String> getProperties() {
-        return properties;
-    }
-
-    public String getResult() {
-        return result;
     }
 }

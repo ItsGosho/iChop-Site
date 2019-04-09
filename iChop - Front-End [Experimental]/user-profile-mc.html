@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="components/bootstrap.min.css">
+    <link href="components/font-awesome.min.css" rel='stylesheet'/>
+    <link rel="stylesheet" href="components/bootstrap-social.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css.map">
+
+    <script src="components/jquery.min.js"></script>
+    <script src="components/popper.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script src="components/bootstrap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.js"></script>
+
+</head>
+<body>
+
+<div class="container" style="margin-left: 0">
+    <div class="row">
+        <div class="col-sm">
+            <div class="card" style="width: 15rem;">
+                <div class="card-header">
+                    Options Menu
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item control-option">Information</li>
+                    <li class="list-group-item control-option">Change Password</li>
+                    <li class="list-group-item control-option">Option3</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="card">
+                <div class="card-body">
+
+
+                    <!--<div class="dropdown-divider"></div>
+
+                    <div class="row" align="center">
+                        <div class="col-lg">
+                            <span>You havent linked account yet!</span>
+                        </div>
+                    </div>
+
+                    <div class="dropdown-divider"></div>
+
+                    <div class="row" align="center">
+                        <div class="col-lg">
+                            <span>To link your account you must be logged in the site with the profile that you want to link your account
+                            ,then in the game type <span><b>/linkaccount</b></span> ,then a <span><b>link</b></span> will be generated ,click
+                                it and a page <span><b>in the site</b></span> will open
+                            with confirmation to link your account.Note that if you link your account you cant link another until <span><b>the
+                            previous is unlinked</b></span>.</span>
+                        </div>
+                    </div>
+
+                    <div class="dropdown-divider"></div>-->
+
+                    <div class="row" align="center">
+                        <div class="col-lg">
+                            <span><b><a href="">TinaBG</a></b></span>
+                        </div>
+                    </div>
+
+                    <div class="dropdown-divider"></div>
+
+                    <div align="center">
+                        <img src="player/7b6cf400ffd747af840bd54939126153.png" style="width: 95px;height: 185px"/>
+                    </div>
+
+                    <div class="dropdown-divider"></div>
+
+                    <div align="center" style="margin-top: 10px">
+                        <button class="btn btn-warning">Unlink</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(`.control-option`).toArray().forEach(x => {
+        let element = $(x);
+
+        console.log(element);
+
+        element.on('mouseover', function () {
+            element.css(`background-color`, `gray`)
+        });
+
+        element.on('mouseout', function () {
+            element.css(`background-color`, ``)
+        })
+    })
+</script>
+
+
+</body>
+</html>

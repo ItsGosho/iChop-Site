@@ -76,31 +76,7 @@ public class PlayerLinkServicesUnitTests {
         verify(this.keyServices, times(1)).deleteByUUID(playerUUID);
     }
 
-    @Test
-    public void unlinkFromSiteUser_withNotLinkedAccount_shouldReturnFalse() {
-        PlayerLinkServiceModel playerLink = mock(PlayerLinkServiceModel.class);
-        String playerUUID = "uuid";
 
-        when(playerLink.getPlayerUUID()).thenReturn(playerUUID);
-        doReturn(false).when(this.playerLinkServices).isAccountLinkedByUUID(playerUUID);
-        boolean result = this.playerLinkServices.unlinkFromSiteUser(playerLink);
-
-        assertFalse(result);
-    }
-
-    @Test
-    public void unlinkFromSiteUser_withValidData_shouldInvokeMethods() {
-        PlayerLinkServiceModel playerLink = mock(PlayerLinkServiceModel.class);
-        String playerUUID = "uuid";
-
-        when(playerLink.getPlayerUUID()).thenReturn(playerUUID);
-        doReturn(true).when(this.playerLinkServices).isAccountLinkedByUUID(playerUUID);
-        doNothing().when(this.playerLinkServices).delete(playerLink);
-        boolean result = this.playerLinkServices.unlinkFromSiteUser(playerLink);
-
-        assertTrue(result);
-        verify(this.playerLinkServices, times(1)).delete(playerLink);
-    }
 
     @Test
     public void isPlayerLinkExistBySiteUser_withValidData_shouldInvokeMethods() {

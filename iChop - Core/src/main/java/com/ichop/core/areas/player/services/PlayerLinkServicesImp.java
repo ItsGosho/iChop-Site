@@ -7,9 +7,11 @@ import com.ichop.core.areas.player.domain.jms.key.send.PlayerDataBySiteUserJMSSe
 import com.ichop.core.areas.player.domain.jms.player.link.receive.GetPlayerDataByPlayerUUIDJMSReceiveModel;
 import com.ichop.core.areas.player.domain.jms.player.link.receive.IsPlayerLinkedAccountByUUIDJMSReceiveModel;
 import com.ichop.core.areas.player.domain.jms.player.link.receive.LinkPlayerAccountJMSReceiveModel;
+import com.ichop.core.areas.player.domain.jms.player.link.receive.UnlinkPlayerAccountJMSReceiveModel;
 import com.ichop.core.areas.player.domain.jms.player.link.send.GetPlayerDataByPlayerUUIDJMSSendModel;
 import com.ichop.core.areas.player.domain.jms.player.link.send.IsPlayerLinkedAccountByUUIDJMSSendModel;
 import com.ichop.core.areas.player.domain.jms.player.link.send.LinkPlayerAccountJMSSendModel;
+import com.ichop.core.areas.player.domain.jms.player.link.send.UnlinkPlayerAccountJMSSendModel;
 import com.ichop.core.components.jms.JmsServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -68,6 +70,15 @@ public class PlayerLinkServicesImp implements PlayerLinkServices {
         sendModel.setSiteUserUsername(userUsername);
 
         return this.jmsServices.sendAndReceiveModel(sendModel,LinkPlayerAccountJMSReceiveModel.class,LINK_PLAYER_ACCOUNT_DESTINATION);
+    }
+
+    @Override
+    public void unlinkPlayerAccount(String userUsername) {
+
+        UnlinkPlayerAccountJMSSendModel sendModel = new UnlinkPlayerAccountJMSSendModel();
+        sendModel.setSiteUserUsername(userUsername);
+
+        this.jmsServices.sendAndReceiveModel(sendModel, UnlinkPlayerAccountJMSReceiveModel.class,UNLINK_PLAYER_ACCOUNT_DESTINATION);
     }
 
 }

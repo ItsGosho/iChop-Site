@@ -38,7 +38,7 @@ public class JmsServicesImp implements JmsServices {
     @Override
     @SuppressWarnings("unchecked")
     public <ReceiveModel extends BaseJMSReceiveModel> ReceiveModel getResultModel(Map<String, Object> values, Class<ReceiveModel> clazz) {
-        return values.get(RECEIVE_MODEL_PARAMETER_NAME) != null ? this.modelMapper.map(values.get(RECEIVE_MODEL_PARAMETER_NAME), clazz) : null;
+        return values.get(RECEIVE_MODEL_PARAMETER_NAME) != null ? this.objectMapper.convertValue(values.get(RECEIVE_MODEL_PARAMETER_NAME), clazz) : null;
     }
 
     @Override

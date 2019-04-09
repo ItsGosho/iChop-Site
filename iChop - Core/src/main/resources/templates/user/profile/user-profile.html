@@ -74,7 +74,7 @@
                     <div>
                         <img th:src="@{https://minotar.net/avatar/{minecraftAccountName}(minecraftAccountName=*{minecraftAccountName})}"
                              style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px"/>
-                        <a href="" th:text="*{minecraftAccountName}"></a>
+                        <a th:href="@{/player/{uuid}(uuid=*{minecraftAccountUUID})}" th:text="*{minecraftAccountName}"></a>
                     </div>
                 </div>
                 </th:block>

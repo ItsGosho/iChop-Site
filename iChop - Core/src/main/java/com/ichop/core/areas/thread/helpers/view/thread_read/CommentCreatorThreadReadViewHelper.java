@@ -30,10 +30,12 @@ public class CommentCreatorThreadReadViewHelper extends BaseViewCreator {
         int totalComments = this.commentServices.getTotalOfUser(commentServiceModel.getCreator());
         PlayerDataBySiteUserJMSReceiveModel playerData = this.playerLinkServices.getPlayerDataBySiteUser(commentServiceModel.getCreator().getUsername());
         String minecraftAccountName = playerData != null ? playerData.getPlayerName() : null;
+        String minecraftAccountUUID = playerData != null ? playerData.getPlayerUUID() : null;
 
         CommentCreatorThreadReadViewModel result = super.modelMapper.map(commentServiceModel.getCreator(), CommentCreatorThreadReadViewModel.class);
         result.setTotalComments(totalComments);
         result.setMinecraftAccountName(minecraftAccountName);
+        result.setMinecraftAccountUUID(minecraftAccountUUID);
 
         return result;
     }

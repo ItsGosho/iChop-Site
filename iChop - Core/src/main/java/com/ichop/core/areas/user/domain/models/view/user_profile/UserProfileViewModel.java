@@ -12,6 +12,7 @@ public class UserProfileViewModel {
 
     private String username;
     private String minecraftAccountName;
+    private String minecraftAccountUUID;
     private UserInformationProfileViewModel information;
     private String role;
     private String location;

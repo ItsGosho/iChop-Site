@@ -33,10 +33,12 @@ public class EmailServicesImp implements EmailServices {
             helper.setTo(to);
             helper.setSubject(subject);
 
-            CustomTemplateEngine tempEngine = new CustomTemplateEngine
-                    .TemEngineBuilder()
-                    .setViewLocation(resourceLocation)
-                    .setProperties(properties)
+            CustomTemplateEngine tempEngine = CustomTemplateEngine
+                    .builder()
+                    .placeholder("${{VALUE}}")
+                    .viewLocation(resourceLocation)
+                    .properties(properties)
+                    .proceedParameters()
                     .build();
 
             helper.setText(tempEngine.getResult(), true);

@@ -9,6 +9,7 @@ public class ThreadCreatorThreadReadViewModel {
 
     private String username;
     private String minecraftAccountName;
+    private String minecraftAccountUUID;
     private Integer totalComments;
 
 }

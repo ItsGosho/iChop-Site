@@ -33,10 +33,12 @@ public class ThreadCreatorThreadReadViewHelper extends BaseViewCreator {
         PlayerDataBySiteUserJMSReceiveModel playerData = this.playerLinkServices.getPlayerDataBySiteUser(thread.getCreator().getUsername());
 
         String minecraftAccountName = playerData!= null ? playerData.getPlayerName() : null;
+        String minecraftAccountUUID = playerData!= null ? playerData.getPlayerUUID() : null;
         int totalComments = this.commentServices.getTotalOfUser(thread.getCreator());
 
         ThreadCreatorThreadReadViewModel result = super.modelMapper.map(thread.getCreator(),ThreadCreatorThreadReadViewModel.class);
         result.setMinecraftAccountName(minecraftAccountName);
+        result.setMinecraftAccountUUID(minecraftAccountUUID);
         result.setTotalComments(totalComments);
 
         return result;
