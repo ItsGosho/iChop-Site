@@ -2,7 +2,7 @@ package com.ichop.core.areas.thread.helpers.view.thread_read;
 
 import com.ichop.core.areas.comment.services.CommentServices;
 import com.ichop.core.areas.player.domain.jms.key.receive.PlayerDataBySiteUserJMSReceiveModel;
-import com.ichop.core.areas.player.services.PlayerLinkServices;
+import com.ichop.core.areas.player.services.PlayerLinkJmsServices;
 import com.ichop.core.areas.thread.domain.models.service.ThreadServiceModel;
 import com.ichop.core.areas.thread.domain.models.view.thread_read.ThreadCreatorThreadReadViewModel;
 import com.ichop.core.areas.thread.services.ThreadServices;
@@ -16,21 +16,21 @@ public class ThreadCreatorThreadReadViewHelper extends BaseViewCreator {
 
     private final ThreadServices threadServices;
     private final CommentServices commentServices;
-    private final PlayerLinkServices playerLinkServices;
+    private final PlayerLinkJmsServices playerLinkJmsServices;
 
     @Autowired
-    public ThreadCreatorThreadReadViewHelper(ModelMapper modelMapper, ThreadServices threadServices, CommentServices commentServices, PlayerLinkServices playerLinkServices) {
+    public ThreadCreatorThreadReadViewHelper(ModelMapper modelMapper, ThreadServices threadServices, CommentServices commentServices, PlayerLinkJmsServices playerLinkJmsServices) {
         super(modelMapper);
         this.threadServices = threadServices;
         this.commentServices = commentServices;
-        this.playerLinkServices = playerLinkServices;
+        this.playerLinkJmsServices = playerLinkJmsServices;
     }
 
 
     public ThreadCreatorThreadReadViewModel create(String threadId) {
         ThreadServiceModel thread = this.threadServices.findById(threadId);
 
-        PlayerDataBySiteUserJMSReceiveModel playerData = this.playerLinkServices.getPlayerDataBySiteUser(thread.getCreator().getUsername());
+        PlayerDataBySiteUserJMSReceiveModel playerData = this.playerLinkJmsServices.getPlayerDataBySiteUser(thread.getCreator().getUsername());
 
         String minecraftAccountName = playerData!= null ? playerData.getPlayerName() : null;
         String minecraftAccountUUID = playerData!= null ? playerData.getPlayerUUID() : null;

@@ -61,15 +61,6 @@ public interface UserServices extends UserDetailsService {
 
     /*
      *
-     * Updates the current user avatar ,by user username.
-     * and image converted in binary64 string.
-     * In case of not consumer ,nothing will happen.
-     *
-     * */
-    void sendUpdateAvatarRequest(String username, String imageAsBase64String);
-
-    /*
-     *
      * Promotes user to his next higher role.
      * @throws UserNotFoundException if the user is not found.
      * @throws RoleNotFoundException if there is no next role or if the next role is OWNER

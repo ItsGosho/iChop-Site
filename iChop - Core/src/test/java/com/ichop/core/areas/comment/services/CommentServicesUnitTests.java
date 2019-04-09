@@ -4,7 +4,7 @@ import com.ichop.core.areas.comment.domain.models.binding.CommentCreateBindingMo
 import com.ichop.core.areas.comment.domain.models.service.CommentServiceModel;
 import com.ichop.core.areas.comment.repositories.CommentRepository;
 import com.ichop.core.areas.thread.domain.models.service.ThreadServiceModel;
-import com.ichop.core.areas.thread.exceptions.CommentNotFoundException;
+import com.ichop.core.areas.comment.exceptions.CommentNotFoundException;
 import com.ichop.core.areas.thread.exceptions.ThreadNotFoundException;
 import com.ichop.core.areas.user.domain.entities.User;
 import com.ichop.core.areas.user.domain.models.service.UserServiceModel;

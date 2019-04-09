@@ -176,14 +176,6 @@ public class UserServicesUnitTests {
     }
 
     @Test
-    public void sendUpdateAvatarRequest_withValidData_shouldInvokeMethods() {
-
-        this.userServices.sendUpdateAvatarRequest("username", "binary64");
-
-        verify(this.jmsServices, times(1)).sendModel(any(), any());
-    }
-
-    @Test
     public void getInitialAuthorities_with0TotalUsersPresented_shouldInvokeMethods() {
 
         doReturn(0L).when(this.userServices).findTotalUsers();

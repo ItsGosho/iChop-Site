@@ -4,7 +4,7 @@ import com.ichop.core.areas.report.domain.entities.CommentReport;
 import com.ichop.core.areas.report.domain.models.binding.CommentReportCreateBindingModel;
 import com.ichop.core.areas.report.domain.models.service.CommentReportServiceModel;
 import com.ichop.core.areas.report.repositories.CommentReportRepository;
-import com.ichop.core.areas.thread.exceptions.CommentNotFoundException;
+import com.ichop.core.areas.comment.exceptions.CommentNotFoundException;
 import com.ichop.core.areas.user.exceptions.UserNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

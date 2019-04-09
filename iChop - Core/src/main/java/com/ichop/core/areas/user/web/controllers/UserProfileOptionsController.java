@@ -1,7 +1,7 @@
 package com.ichop.core.areas.user.web.controllers;
 
 import com.ichop.core.areas.player.domain.jms.key.receive.PlayerDataBySiteUserJMSReceiveModel;
-import com.ichop.core.areas.player.services.PlayerLinkServices;
+import com.ichop.core.areas.player.services.PlayerLinkJmsServices;
 import com.ichop.core.areas.user.domain.models.binding.UserResetPasswordBindingModel;
 import com.ichop.core.areas.user.domain.models.binding.UserUpdateProfileInformationBindingModel;
 import com.ichop.core.areas.user.domain.models.service.UserServiceModel;
@@ -9,6 +9,7 @@ import com.ichop.core.areas.user.domain.models.view.user_options.UserProfileOpti
 import com.ichop.core.areas.user.helpers.view.user_options.UserProfileOptionsInformationViewHelper;
 import com.ichop.core.areas.user.services.UserInformationServices;
 import com.ichop.core.areas.user.services.UserServices;
+import com.ichop.core.areas.user.services.UserWebStorageJmsServices;
 import com.ichop.core.base.BaseController;
 import com.ichop.core.constants.URLConstants;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -27,13 +28,15 @@ public class UserProfileOptionsController extends BaseController {
     private final UserServices userServices;
     private final UserInformationServices userInformationServices;
     private final UserProfileOptionsInformationViewHelper userProfileOptionsInformationViewHelper;
-    private final PlayerLinkServices playerLinkServices;
+    private final PlayerLinkJmsServices playerLinkJmsServices;
+    private final UserWebStorageJmsServices userWebStorageJmsServices;
 
-    public UserProfileOptionsController(UserServices userServices, UserInformationServices userInformationServices, UserProfileOptionsInformationViewHelper userProfileOptionsInformationViewHelper, PlayerLinkServices playerLinkServices) {
+    public UserProfileOptionsController(UserServices userServices, UserInformationServices userInformationServices, UserProfileOptionsInformationViewHelper userProfileOptionsInformationViewHelper, PlayerLinkJmsServices playerLinkJmsServices, UserWebStorageJmsServices userWebStorageJmsServices) {
         this.userServices = userServices;
         this.userInformationServices = userInformationServices;
         this.userProfileOptionsInformationViewHelper = userProfileOptionsInformationViewHelper;
-        this.playerLinkServices = playerLinkServices;
+        this.playerLinkJmsServices = playerLinkJmsServices;
+        this.userWebStorageJmsServices = userWebStorageJmsServices;
     }
 
 
@@ -61,7 +64,7 @@ public class UserProfileOptionsController extends BaseController {
         bindingModel.setUser(userServiceModel);
         this.userInformationServices.createFirstTime(userServiceModel);
         this.userInformationServices.update(bindingModel);
-        this.userServices.sendUpdateAvatarRequest(userServiceModel.getUsername(), bindingModel.getAvatarBinary());
+        this.userWebStorageJmsServices.sendUpdateAvatarRequest(userServiceModel.getUsername(), bindingModel.getAvatarBinary());
 
         return super.redirect(URLConstants.USER_PROFILE_OPTIONS_INFORMATION_GET);
     }
@@ -90,7 +93,7 @@ public class UserProfileOptionsController extends BaseController {
     public ModelAndView getMinecraftPage(Principal principal, ModelAndView modelAndView) {
 
         UserServiceModel user = this.userServices.findUserByUsername(principal.getName());
-        PlayerDataBySiteUserJMSReceiveModel playerData = this.playerLinkServices.getPlayerDataBySiteUser(user.getUsername());
+        PlayerDataBySiteUserJMSReceiveModel playerData = this.playerLinkJmsServices.getPlayerDataBySiteUser(user.getUsername());
 
         modelAndView.addObject("playerData",playerData);
         modelAndView.addObject("optionsPage", "user/options/user-options-profile-minecraft");
@@ -102,7 +105,7 @@ public class UserProfileOptionsController extends BaseController {
     @PostMapping(URLConstants.USER_PROFILE_OPTIONS_MINECRAFT_UNLINK_POST)
     public String proceedAccountUnlink(Principal principal) {
 
-        this.playerLinkServices.unlinkPlayerAccount(principal.getName());
+        this.playerLinkJmsServices.unlinkPlayerAccount(principal.getName());
 
         return super.redirect(URLConstants.USER_PROFILE_OPTIONS_MINECRAFT_GET);
     }

@@ -2,7 +2,7 @@ package com.ichop.core.areas.user.helpers.view.user_profile;
 
 import com.ichop.core.areas.comment.services.CommentServices;
 import com.ichop.core.areas.player.domain.jms.key.receive.PlayerDataBySiteUserJMSReceiveModel;
-import com.ichop.core.areas.player.services.PlayerLinkServices;
+import com.ichop.core.areas.player.services.PlayerLinkJmsServices;
 import com.ichop.core.areas.reaction.domain.entities.ReactionType;
 import com.ichop.core.areas.reaction.services.CommentReactionServices;
 import com.ichop.core.areas.reaction.services.ThreadReactionServices;
@@ -28,7 +28,7 @@ public class UserProfileViewHelper extends BaseViewCreator {
     private final UserServices userServices;
     private final UserRoleServices userRoleServices;
     private final CommentServices commentServices;
-    private final PlayerLinkServices playerLinkServices;
+    private final PlayerLinkJmsServices playerLinkJmsServices;
     private final ThreadReactionServices threadReactionServices;
     private final CommentReactionServices commentReactionServices;
     private final PostsUserProfileViewHelper postsUserProfileViewHelper;
@@ -36,12 +36,12 @@ public class UserProfileViewHelper extends BaseViewCreator {
     private final UserInformationProfileViewHelper userInformationProfileViewHelper;
 
     @Autowired
-    protected UserProfileViewHelper(ModelMapper modelMapper, UserServices userServices, UserRoleServices userRoleServices, CommentServices commentServices, PlayerLinkServices playerLinkServices, ThreadReactionServices threadReactionServices, CommentReactionServices commentReactionServices, PostsUserProfileViewHelper postsUserProfileViewHelper, UserFollowServices userFollowServices, UserInformationProfileViewHelper userInformationProfileViewHelper) {
+    protected UserProfileViewHelper(ModelMapper modelMapper, UserServices userServices, UserRoleServices userRoleServices, CommentServices commentServices, PlayerLinkJmsServices playerLinkJmsServices, ThreadReactionServices threadReactionServices, CommentReactionServices commentReactionServices, PostsUserProfileViewHelper postsUserProfileViewHelper, UserFollowServices userFollowServices, UserInformationProfileViewHelper userInformationProfileViewHelper) {
         super(modelMapper);
         this.userServices = userServices;
         this.userRoleServices = userRoleServices;
         this.commentServices = commentServices;
-        this.playerLinkServices = playerLinkServices;
+        this.playerLinkJmsServices = playerLinkJmsServices;
         this.threadReactionServices = threadReactionServices;
         this.commentReactionServices = commentReactionServices;
         this.postsUserProfileViewHelper = postsUserProfileViewHelper;
@@ -59,7 +59,7 @@ public class UserProfileViewHelper extends BaseViewCreator {
 
         String role = this.userRoleServices.findHighestOfUser(user).getAuthority();
         int totalMessages = this.commentServices.getTotalOfUser(user);
-        PlayerDataBySiteUserJMSReceiveModel playerData = this.playerLinkServices.getPlayerDataBySiteUser(user.getUsername());
+        PlayerDataBySiteUserJMSReceiveModel playerData = this.playerLinkJmsServices.getPlayerDataBySiteUser(user.getUsername());
         String minecraftAccountName = playerData != null ? playerData.getPlayerName() : null;
         String minecraftAccountUUID = playerData != null ? playerData.getPlayerUUID() : null;
         int totalLikes = this.threadReactionServices.findTotalReactionsByUserAndType(user, ReactionType.LIKE) + this.commentReactionServices.findTotalReactionsByUserAndType(user, ReactionType.LIKE);

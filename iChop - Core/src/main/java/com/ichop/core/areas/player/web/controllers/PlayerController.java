@@ -4,7 +4,7 @@ import com.ichop.core.areas.player.domain.jms.key.receive.PlayerDataByKeyJMSRece
 import com.ichop.core.areas.player.domain.jms.player.link.receive.LinkPlayerAccountJMSReceiveModel;
 import com.ichop.core.areas.player.domain.models.view.PlayerProfileViewModel;
 import com.ichop.core.areas.player.helpers.player_profile.PlayerProfileViewCreator;
-import com.ichop.core.areas.player.services.PlayerLinkServices;
+import com.ichop.core.areas.player.services.PlayerLinkJmsServices;
 import com.ichop.core.base.BaseController;
 import com.ichop.core.constants.URLConstants;
 import org.modelmapper.ModelMapper;
@@ -22,13 +22,13 @@ import java.security.Principal;
 @Controller
 public class PlayerController extends BaseController {
 
-    private final PlayerLinkServices playerLinkServices;
+    private final PlayerLinkJmsServices playerLinkJmsServices;
     private final ModelMapper modelMapper;
     private final PlayerProfileViewCreator playerProfileViewCreator;
 
     @Autowired
-    public PlayerController(PlayerLinkServices playerLinkServices, ModelMapper modelMapper, PlayerProfileViewCreator playerProfileViewCreator) {
-        this.playerLinkServices = playerLinkServices;
+    public PlayerController(PlayerLinkJmsServices playerLinkJmsServices, ModelMapper modelMapper, PlayerProfileViewCreator playerProfileViewCreator) {
+        this.playerLinkJmsServices = playerLinkJmsServices;
         this.modelMapper = modelMapper;
         this.playerProfileViewCreator = playerProfileViewCreator;
     }
@@ -37,7 +37,7 @@ public class PlayerController extends BaseController {
     @PreAuthorize("isAuthenticated()")
     @GetMapping(URLConstants.PLAYER_LINK_ACCOUNT_GET)
     public ModelAndView getLinkAccountPage(@RequestParam(value = "key") String key, ModelAndView modelAndView) {
-        PlayerDataByKeyJMSReceiveModel result = this.playerLinkServices.getPlayerDataByLinkKey(key);
+        PlayerDataByKeyJMSReceiveModel result = this.playerLinkJmsServices.getPlayerDataByLinkKey(key);
 
         if (result.hasErrors()) {
             return super.viewWithMessages("notification/errors", "Key Error", result.getErrors());
@@ -54,7 +54,7 @@ public class PlayerController extends BaseController {
     @PreAuthorize("isAuthenticated()")
     @PostMapping(URLConstants.PLAYER_LINK_ACCOUNT_POST)
     public ModelAndView proceedPlayerAccountLink(@RequestParam(value = "key") String key, Principal principal) {
-        LinkPlayerAccountJMSReceiveModel result = this.playerLinkServices.sendSiteUserToPlayerLinkConnection(key, principal.getName());
+        LinkPlayerAccountJMSReceiveModel result = this.playerLinkJmsServices.sendSiteUserToPlayerLinkConnection(key, principal.getName());
 
         if (result.hasErrors()) {
             return super.viewWithMessages("notification/errors", "Key Error", result.getErrors());

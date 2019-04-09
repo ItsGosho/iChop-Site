@@ -7,7 +7,7 @@ import com.ichop.core.areas.reaction.domain.models.binding.CommentReactionCreate
 import com.ichop.core.areas.reaction.domain.models.service.CommentReactionServiceModel;
 import com.ichop.core.areas.reaction.exceptions.CantReactException;
 import com.ichop.core.areas.reaction.repositories.CommentReactionRepository;
-import com.ichop.core.areas.thread.exceptions.CommentNotFoundException;
+import com.ichop.core.areas.comment.exceptions.CommentNotFoundException;
 import com.ichop.core.areas.user.domain.entities.User;
 import com.ichop.core.areas.user.domain.models.service.UserServiceModel;
 import com.ichop.core.areas.user.exceptions.UserAlreadyReacted;

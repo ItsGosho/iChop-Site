@@ -4,7 +4,7 @@ import com.ichop.core.areas.comment.domain.models.service.CommentServiceModel;
 import com.ichop.core.areas.report.domain.models.binding.CommentReportCreateBindingModel;
 import com.ichop.core.areas.report.domain.models.service.CommentReportServiceModel;
 import com.ichop.core.areas.report.repositories.CommentReportRepository;
-import com.ichop.core.areas.thread.exceptions.CommentNotFoundException;
+import com.ichop.core.areas.comment.exceptions.CommentNotFoundException;
 import com.ichop.core.areas.user.domain.models.service.UserServiceModel;
 import com.ichop.core.areas.user.exceptions.UserNotFoundException;
 import org.junit.Before;

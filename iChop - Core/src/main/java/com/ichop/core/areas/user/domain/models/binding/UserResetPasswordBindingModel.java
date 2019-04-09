@@ -1,5 +1,6 @@
 package com.ichop.core.areas.user.domain.models.binding;
 
+import com.ichop.core.areas.user.constants.UserValidationConstants;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
@@ -14,8 +15,8 @@ public class UserResetPasswordBindingModel {
 
     @NotNull
     @NotEmpty
-    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{6,}$")
-    @Length(max = 50)
+    @Pattern(regexp = UserValidationConstants.PASSWORD_PATTERN)
+    @Length(max = UserValidationConstants.PASSWORD_MAX_LENGTH)
     private String password;
 
     @NotNull
