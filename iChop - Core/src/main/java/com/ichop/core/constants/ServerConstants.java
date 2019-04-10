@@ -9,6 +9,7 @@ public final class ServerConstants {
     public static String SERVER_PROTOCOL;
     public static String SEVER_DOMAIN;
     public static String SERVER_PORT;
+    public static String SERVER_URL;
 
     @Value("${server.protocol}")
     private void setServerProtocol(String serverProtocol){
@@ -23,5 +24,10 @@ public final class ServerConstants {
     @Value("${server.port}")
     private void setServerPort(String serverPort) {
         SERVER_PORT = serverPort;
+    }
+
+    @Value("${server.url}")
+    private void setServerUrl(String serverUrl) {
+        SERVER_URL = serverUrl;
     }
 }

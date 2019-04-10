@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Set;
 
 public interface UserServices extends UserDetailsService {
@@ -154,9 +155,17 @@ public interface UserServices extends UserDetailsService {
     /*
      *
      * Finds all users where they have the provided role.
+     * The pageable will determinate sort,size and entries to get.
      *
      * */
     Page<UserServiceModel> findUsersWhomHasRole(String role, Pageable pageable);
+
+    /*
+     *
+     * Finds all users where they have the provided role.
+     *
+     * */
+    List<UserServiceModel> findUsersWhomHasRole(String role);
 
     /*
      *

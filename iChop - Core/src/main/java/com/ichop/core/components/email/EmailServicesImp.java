@@ -1,7 +1,6 @@
 package com.ichop.core.components.email;
 
-import com.ichop.core.constants.ServerConstants;
-import com.ichop.core.constants.URLConstants;
+import com.ichop.core.components.email.dtos.ReportsStatisticsDto;
 import com.ichop.core.utils.CustomTemplateEngine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -14,6 +13,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.LinkedHashMap;
 import java.util.Map;
+
+import static com.ichop.core.constants.ServerConstants.*;
+import static com.ichop.core.constants.URLConstants.*;
 
 @Component
 public class EmailServicesImp implements EmailServices {
@@ -51,11 +53,9 @@ public class EmailServicesImp implements EmailServices {
 
     @Override
     public void sendResetPasswordEmail(String userEmail, String token, LocalDateTime tokenExpireDate) {
-        String passwordResetUrl = String.format("%s://%s:%s%s?token=%s",
-                ServerConstants.SERVER_PROTOCOL,
-                ServerConstants.SEVER_DOMAIN,
-                ServerConstants.SERVER_PORT,
-                URLConstants.USER_RESET_PASSWORD_GET,
+        String passwordResetUrl = String.format("%s%s?token=%s",
+                SERVER_URL,
+                USER_RESET_PASSWORD_GET,
                 token);
 
         Map<String, String> properties = new LinkedHashMap<>();
@@ -64,4 +64,21 @@ public class EmailServicesImp implements EmailServices {
 
         this.sendEmailFromTemplate(userEmail, "iChop - Reset Password", properties, "templates/email/reset-password.html");
     }
+
+    @Override
+    public void sendReportStatisticsEmail(ReportsStatisticsDto reportsStatisticsDto) {
+        Map<String, String> properties = new LinkedHashMap<>();
+        properties.put("totalReports",Integer.toString(reportsStatisticsDto.getTotalReports()));
+        properties.put("totalThreadReports", Integer.toString(reportsStatisticsDto.getTotalThreadReports()));
+        properties.put("totalCommentReports", Integer.toString(reportsStatisticsDto.getTotalCommentReports()));
+        properties.put("totalPostReports", Integer.toString(reportsStatisticsDto.getTotalPostReports()));
+        properties.put("allThreadReportsLink", SERVER_URL + THREAD_REPORTS_ALL_GET);
+        properties.put("allCommentReportsLink", SERVER_URL + COMMENT_REPORTS_ALL_GET);
+        properties.put("allPostReportsLink", SERVER_URL + POST_REPORTS_ALL_GET);
+
+        for (String email : reportsStatisticsDto.getEmails()) {
+            this.sendEmailFromTemplate(email,"iChop - Reports Statistic",properties,"templates/email/reports-statistics.html");
+        }
+    }
+
 }

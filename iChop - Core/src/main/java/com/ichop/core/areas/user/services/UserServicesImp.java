@@ -32,9 +32,11 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServicesImp extends BaseService<User, UserRepository> implements UserServices {
@@ -283,6 +285,15 @@ public class UserServicesImp extends BaseService<User, UserRepository> implement
         return this.repository
                 .findUsersWhomHasRole(role, pageable)
                 .map(x -> this.modelMapper.map(x, UserServiceModel.class));
+    }
+
+    @Override
+    public List<UserServiceModel> findUsersWhomHasRole(String role) {
+        return this.repository
+                .findUsersWhomHasRole(role)
+                .stream()
+                .map(x -> this.modelMapper.map(x, UserServiceModel.class))
+                .collect(Collectors.toList());
     }
 
     @Override

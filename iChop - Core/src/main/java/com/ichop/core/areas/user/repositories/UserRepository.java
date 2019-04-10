@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, String> {
@@ -38,6 +39,12 @@ public interface UserRepository extends JpaRepository<User, String> {
             "FROM User AS u\n" +
             "WHERE u.username LIKE CONCAT('%',:containingWord,'%')")
     Page<User> findUsersByUsernameContains(@Param(value = "containingWord") String containingWord, Pageable pageable);
+
+    @Query("SELECT u\n" +
+            "FROM User AS u\n" +
+            "JOIN u.authorities as au\n" +
+            "WHERE au.authority = :role")
+    List<User> findUsersWhomHasRole(@Param(value = "role") String role);
 
     @Query("SELECT u\n" +
             "FROM User AS u\n" +
