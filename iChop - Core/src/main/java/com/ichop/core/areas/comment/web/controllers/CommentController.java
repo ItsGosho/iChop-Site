@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -50,7 +51,9 @@ public class CommentController extends BaseController {
     @PreAuthorize("isAuthenticated()")
     @PostMapping(value = URLConstants.THREAD_CREATE_COMMENT_POST, produces = "application/json")
     @ResponseBody
-    public String proceedCommentCreation(@PathVariable String threadId, CommentCreateBindingModel commentCreateBindingModel, Principal principal) {
+    public String proceedCommentCreation(@PathVariable String threadId,
+                                         @ModelAttribute CommentCreateBindingModel commentCreateBindingModel,
+                                         Principal principal) {
 
         ThreadServiceModel threadServiceModel = this.threadServices.findById(threadId);
         UserServiceModel userServiceModel = this.modelMapper.map(((Authentication) principal).getPrincipal(), UserServiceModel.class);

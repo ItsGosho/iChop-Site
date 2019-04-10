@@ -14,11 +14,15 @@ import com.ichop.core.areas.player.domain.jms.player.link.send.LinkPlayerAccount
 import com.ichop.core.areas.player.domain.jms.player.link.send.UnlinkPlayerAccountJMSSendModel;
 import com.ichop.core.components.jms.JmsServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import static com.ichop.core.areas.player.constants.LinkAccountJMSConstants.*;
 
 @Service
+@CacheConfig(cacheNames = "players")
 public class PlayerLinkJmsServicesImp implements PlayerLinkJmsServices {
 
     private final JmsServices jmsServices;
@@ -36,6 +40,7 @@ public class PlayerLinkJmsServicesImp implements PlayerLinkJmsServices {
         return this.jmsServices.sendAndReceiveModel(sendModel,IsPlayerLinkedAccountByUUIDJMSReceiveModel.class,IS_PLAYER_LINKED_ACCOUNT_BY_UUID_DESTINATION);
     }
 
+    @Cacheable
     @Override
     public PlayerDataByKeyJMSReceiveModel getPlayerDataByLinkKey(String key) {
         PlayerDataByKeyJMSSendModel sendModel = new PlayerDataByKeyJMSSendModel();
@@ -44,6 +49,7 @@ public class PlayerLinkJmsServicesImp implements PlayerLinkJmsServices {
         return this.jmsServices.sendAndReceiveModel(sendModel,PlayerDataByKeyJMSReceiveModel.class,GET_PLAYER_DATA_BY_LINK_KEY_DESTINATION);
     }
 
+    @Cacheable
     @Override
     public PlayerDataBySiteUserJMSReceiveModel getPlayerDataBySiteUser(String siteUserUsername) {
 
@@ -53,6 +59,7 @@ public class PlayerLinkJmsServicesImp implements PlayerLinkJmsServices {
         return this.jmsServices.sendAndReceiveModel(sendModel,PlayerDataBySiteUserJMSReceiveModel.class,GET_PLAYER_DATA_BY_SITE_USER_DESTINATION);
     }
 
+    @Cacheable
     @Override
     public GetPlayerDataByPlayerUUIDJMSReceiveModel getPlayerDataByPlayerUUID(String uuid) {
 
@@ -62,6 +69,7 @@ public class PlayerLinkJmsServicesImp implements PlayerLinkJmsServices {
         return this.jmsServices.sendAndReceiveModel(sendModel,GetPlayerDataByPlayerUUIDJMSReceiveModel.class,GET_PLAYER_DATA_BY_PLAYER_UUID);
     }
 
+    @CacheEvict(allEntries = true)
     @Override
     public LinkPlayerAccountJMSReceiveModel sendSiteUserToPlayerLinkConnection(String key, String userUsername) {
 
@@ -72,6 +80,7 @@ public class PlayerLinkJmsServicesImp implements PlayerLinkJmsServices {
         return this.jmsServices.sendAndReceiveModel(sendModel,LinkPlayerAccountJMSReceiveModel.class,LINK_PLAYER_ACCOUNT_DESTINATION);
     }
 
+    @CacheEvict(allEntries = true)
     @Override
     public void unlinkPlayerAccount(String userUsername) {
 

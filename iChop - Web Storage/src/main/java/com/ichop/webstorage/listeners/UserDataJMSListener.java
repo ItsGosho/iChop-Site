@@ -15,6 +15,7 @@ import javax.xml.bind.DatatypeConverter;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.util.HashMap;
 
 @Component
 public class UserDataJMSListener {
@@ -36,6 +37,7 @@ public class UserDataJMSListener {
         UserUpdateAvatarJmsReceiveModel receivedModel = this.jmsServices.getJmsModel(message, UserUpdateAvatarJmsReceiveModel.class);
 
         if (this.validationUtil.validate(receivedModel).hasErrors()) {
+            this.jmsServices.returnErrors(receivedModel);
             return;
         }
 

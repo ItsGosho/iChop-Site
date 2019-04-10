@@ -11,4 +11,14 @@ public interface UserWebStorageJmsServices {
      * */
     void sendUpdateAvatarRequest(String username, String imageAsBase64String);
 
+
+    /*
+     *
+     * Updates the current user avatar ,by user username.
+     * and image which is the default and already converted to base64.
+     * In case of not consumer ,nothing will happen.
+     *
+     * */
+    void sendUpdateAvatarRequestWithInitialImage(String username);
+
 }

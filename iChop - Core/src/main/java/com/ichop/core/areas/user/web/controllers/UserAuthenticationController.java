@@ -2,6 +2,7 @@ package com.ichop.core.areas.user.web.controllers;
 
 import com.ichop.core.areas.user.domain.models.binding.UserRegisterBindingModel;
 import com.ichop.core.areas.user.domain.models.binding.UserResetPasswordBindingModel;
+import com.ichop.core.areas.user.services.UserWebStorageJmsServices;
 import com.ichop.core.constants.URLConstants;
 import com.ichop.core.areas.token.exceptions.TokenNotValidException;
 import com.ichop.core.areas.user.exceptions.UserPasswordNotValidException;
@@ -25,11 +26,13 @@ public class UserAuthenticationController extends BaseController {
 
     private final UserServices userServices;
     private final PasswordResetTokenServices passwordResetTokenServices;
+    private final UserWebStorageJmsServices userWebStorageJmsServices;
 
     @Autowired
-    public UserAuthenticationController(UserServices userServices, PasswordResetTokenServices passwordResetTokenServices) {
+    public UserAuthenticationController(UserServices userServices, PasswordResetTokenServices passwordResetTokenServices, UserWebStorageJmsServices userWebStorageJmsServices) {
         this.userServices = userServices;
         this.passwordResetTokenServices = passwordResetTokenServices;
+        this.userWebStorageJmsServices = userWebStorageJmsServices;
     }
 
     @PostMapping(URLConstants.USER_REGISTER_POST)
@@ -40,6 +43,7 @@ public class UserAuthenticationController extends BaseController {
         }
 
         this.userServices.register(userRegisterBindingModel);
+        this.userWebStorageJmsServices.sendUpdateAvatarRequestWithInitialImage(userRegisterBindingModel.getUsername());
         return this.redirectToLoginDropdown();
     }
 

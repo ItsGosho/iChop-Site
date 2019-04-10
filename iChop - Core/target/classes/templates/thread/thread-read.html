@@ -14,7 +14,6 @@
 
 
                 <!--Thread section-->
-
                 <div class="card thread">
                     <div class="card-header">
                         <div class="row">
@@ -24,12 +23,9 @@
                                                 th:text="*{creator.username}"></a></small>
                                 </div>
                                 <div align="center">
-                                    <object th:data="@{http://localhost:8001/data/user/{username}/avatar(username=*{creator.username})}"
-                                            type="image/png"
-                                            class="card-img-top thread-creator-avatar">
-                                        <img src="/res/img/avatar-user.png" alt="example"
-                                             class="card-img-top thread-creator-avatar">
-                                    </object>
+                                    <img th:src="@{http://localhost:8001/data/user/{username}/avatar(username=*{creator.username})}"
+                                         onerror="this.onerror = null;this.src = '/res/img/avatar-user.png'"
+                                         class="card-img-top thread-creator-avatar">
                                 </div>
                                 <div align="center">
                                     <small>
@@ -43,14 +39,14 @@
                                 <div align="center">
                                     <div class="row">
                                         <th:block th:if="*{creator.minecraftAccountName != null}">
-                                        <small>
-                                            <a th:href="@{/player/{uuid}(uuid=*{creator.minecraftAccountUUID})}"><img
-                                                    th:src="@{https://minotar.net/avatar/{minecraftAccountName}(minecraftAccountName=*{creator.minecraftAccountName})}"
-                                                    class="card-img-top thread-creator-minecraft_username"
-                                                    alt="Card image cap"><span
-                                                    style="font-size: 15px;font-family: Consolas"
-                                                    th:text="*{creator.minecraftAccountName}"></span></a>
-                                        </small>
+                                            <small>
+                                                <a th:href="@{/player/{uuid}(uuid=*{creator.minecraftAccountUUID})}"><img
+                                                        th:src="@{https://minotar.net/avatar/{minecraftAccountName}(minecraftAccountName=*{creator.minecraftAccountName})}"
+                                                        class="card-img-top thread-creator-minecraft_username"
+                                                        alt="Card image cap"><span
+                                                        style="font-size: 15px;font-family: Consolas"
+                                                        th:text="*{creator.minecraftAccountName}"></span></a>
+                                            </small>
                                         </th:block>
                                     </div>
                                 </div>
@@ -257,11 +253,10 @@
                             <div class="row">
                                 <div class="col-md-3 thread-comment-creator_info_section">
                                     <div>
-                                        <object th:data="@{http://localhost:8001/data/user/{username}/avatar(username=*{commentCreator.username})}"
-                                                type="image/png"
-                                                class="card-img-top thread-comment-creator_avatar">
-                                            <img src="/res/img/avatar-user.png" alt="example" class="card-img-top thread-comment-creator_avatar">
-                                        </object>
+                                        <img th:src="@{http://localhost:8001/data/user/{username}/avatar(username=*{commentCreator.username})}"
+                                             alt="example"
+                                             onerror="this.onerror = null;this.src = '/res/img/avatar-user.png'"
+                                             class="card-img-top thread-comment-creator_avatar">
                                     </div>
                                     <div>
                                         <small>👤<a
@@ -279,13 +274,13 @@
 
                                     <div>
                                         <th:block th:if="*{commentCreator.minecraftAccountName != null}">
-                                        <small>
-                                            <a th:href="@{/player/{uuid}(uuid=*{commentCreator.minecraftAccountUUID})}"><img
-                                                    th:src="@{https://minotar.net/avatar/{minecraftAccountName}(minecraftAccountName=*{commentCreator.minecraftAccountName})}"
-                                                    class="card-img-top thread-comment-creator-minecraft_username"
-                                                    alt="Card image cap"><span
-                                                    th:text="*{commentCreator.minecraftAccountName}"></span></a>
-                                        </small>
+                                            <small>
+                                                <a th:href="@{/player/{uuid}(uuid=*{commentCreator.minecraftAccountUUID})}"><img
+                                                        th:src="@{https://minotar.net/avatar/{minecraftAccountName}(minecraftAccountName=*{commentCreator.minecraftAccountName})}"
+                                                        class="card-img-top thread-comment-creator-minecraft_username"
+                                                        alt="Card image cap"><span
+                                                        th:text="*{commentCreator.minecraftAccountName}"></span></a>
+                                            </small>
                                         </th:block>
                                     </div>
                                 </div>
