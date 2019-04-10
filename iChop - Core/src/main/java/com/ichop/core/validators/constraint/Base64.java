@@ -1,4 +1,4 @@
-package com.ichop.core.validators;
+package com.ichop.core.validators.constraint;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -11,14 +11,11 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Target({ FIELD})
 @Retention(RUNTIME)
-@Constraint(validatedBy = Base64ImageValidator.class)
+@Constraint(validatedBy = Base64Validator.class)
 @Documented
-public @interface Base64Image {
+public @interface Base64 {
 
-    String message() default "Failed validation of image";
-
-    int maxHeight() default 50;
-    int maxWidth() default 50;
+    String message() default "Its not base64";
 
     Class<?>[] groups() default { };
 

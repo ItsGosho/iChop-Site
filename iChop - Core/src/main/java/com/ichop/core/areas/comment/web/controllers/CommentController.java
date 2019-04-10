@@ -4,22 +4,20 @@ import com.google.gson.Gson;
 import com.ichop.core.areas.comment.domain.models.binding.CommentCreateBindingModel;
 import com.ichop.core.areas.comment.domain.models.service.CommentServiceModel;
 import com.ichop.core.areas.comment.services.CommentServices;
-import com.ichop.core.areas.thread.domain.models.service.ThreadServiceModel;
 import com.ichop.core.areas.thread.services.ThreadServices;
-import com.ichop.core.areas.user.domain.models.service.UserServiceModel;
 import com.ichop.core.base.BaseController;
 import com.ichop.core.constants.URLConstants;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.security.Principal;
+import javax.validation.Valid;
 
 @Controller
 public class CommentController extends BaseController {
@@ -52,13 +50,13 @@ public class CommentController extends BaseController {
     @PostMapping(value = URLConstants.THREAD_CREATE_COMMENT_POST, produces = "application/json")
     @ResponseBody
     public String proceedCommentCreation(@PathVariable String threadId,
-                                         @ModelAttribute CommentCreateBindingModel commentCreateBindingModel,
-                                         Principal principal) {
+                                         @Valid @ModelAttribute CommentCreateBindingModel commentCreateBindingModel,
+                                         BindingResult bindingResult) {
 
-        ThreadServiceModel threadServiceModel = this.threadServices.findById(threadId);
-        UserServiceModel userServiceModel = this.modelMapper.map(((Authentication) principal).getPrincipal(), UserServiceModel.class);
-        commentCreateBindingModel.setCreator(userServiceModel);
-        commentCreateBindingModel.setThread(threadServiceModel);
+        if(bindingResult.hasErrors()){
+            return new Gson().toJson(false);
+        }
+
         this.commentServices.create(commentCreateBindingModel);
 
         return new Gson().toJson(true);

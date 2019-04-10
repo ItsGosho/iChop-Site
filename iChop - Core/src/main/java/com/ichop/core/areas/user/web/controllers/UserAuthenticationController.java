@@ -1,7 +1,7 @@
 package com.ichop.core.areas.user.web.controllers;
 
 import com.ichop.core.areas.user.domain.models.binding.UserRegisterBindingModel;
-import com.ichop.core.areas.user.domain.models.binding.UserResetPasswordBindingModel;
+import com.ichop.core.areas.user.domain.models.binding.UserResetPasswordBindingModelByToken;
 import com.ichop.core.areas.user.services.UserWebStorageJmsServices;
 import com.ichop.core.constants.URLConstants;
 import com.ichop.core.areas.token.exceptions.TokenNotValidException;
@@ -14,6 +14,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -68,13 +69,13 @@ public class UserAuthenticationController extends BaseController {
     }
 
     @PostMapping(URLConstants.USER_RESET_PASSWORD_POST)
-    public ModelAndView proceedPasswordReset(@RequestParam(required = true) String token, @Valid UserResetPasswordBindingModel userResetPasswordBindingModel, BindingResult bindingResult){
+    public ModelAndView proceedPasswordReset(@RequestParam(required = true) String token, @Valid @ModelAttribute UserResetPasswordBindingModelByToken bindingModel, BindingResult bindingResult){
 
         if(bindingResult.hasErrors()){
             throw new UserPasswordNotValidException();
         }
 
-        this.userServices.resetPassword(userResetPasswordBindingModel,token);
+        this.userServices.resetPassword(bindingModel);
 
         return super.viewWithMessage("notification/info","Successful resetted password!","Your password been reset successfully!");
     }

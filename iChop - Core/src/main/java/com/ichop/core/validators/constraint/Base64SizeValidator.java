@@ -1,4 +1,4 @@
-package com.ichop.core.validators;
+package com.ichop.core.validators.constraint;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

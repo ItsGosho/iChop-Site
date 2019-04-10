@@ -11,7 +11,8 @@ import com.ichop.core.areas.token.services.PasswordResetTokenServices;
 import com.ichop.core.areas.user.domain.entities.User;
 import com.ichop.core.areas.user.domain.models.binding.UserForgottenPasswordBindingModel;
 import com.ichop.core.areas.user.domain.models.binding.UserRegisterBindingModel;
-import com.ichop.core.areas.user.domain.models.binding.UserResetPasswordBindingModel;
+import com.ichop.core.areas.user.domain.models.binding.UserResetPasswordBindingModelByToken;
+import com.ichop.core.areas.user.domain.models.binding.UserResetPasswordBindingModelByUser;
 import com.ichop.core.areas.user.domain.models.service.UserServiceModel;
 import com.ichop.core.areas.user.events.UserRoleChangeEvent;
 import com.ichop.core.areas.user.exceptions.UserAlreadyExistsException;
@@ -136,9 +137,9 @@ public class UserServicesImp extends BaseService<User, UserRepository> implement
     }
 
     @Override
-    public void resetPassword(UserResetPasswordBindingModel bindingModel, String resetToken) {
+    public void resetPassword(UserResetPasswordBindingModelByToken bindingModel) {
 
-        if (!this.passwordResetTokenServices.isValid(resetToken)) {
+        if (!this.passwordResetTokenServices.isValid(bindingModel.getToken())) {
             throw new TokenNotValidException();
         }
 
@@ -146,7 +147,7 @@ public class UserServicesImp extends BaseService<User, UserRepository> implement
             throw new UserPasswordNotValidException();
         }
 
-        PasswordResetTokenServiceModel passwordResetToken = this.passwordResetTokenServices.findByToken(resetToken);
+        PasswordResetTokenServiceModel passwordResetToken = this.passwordResetTokenServices.findByToken(bindingModel.getToken());
         UserServiceModel user = passwordResetToken.getUser();
 
         user.setPassword(this.passwordEncoder.encode(bindingModel.getPassword()));
@@ -157,15 +158,19 @@ public class UserServicesImp extends BaseService<User, UserRepository> implement
     }
 
     @Override
-    public void resetPassword(UserResetPasswordBindingModel userResetPasswordBindingModel, UserServiceModel user) {
+    public void resetPassword(UserResetPasswordBindingModelByUser bindingModel) {
 
-        if (!userResetPasswordBindingModel.getPassword().equals(userResetPasswordBindingModel.getConfirmPassword())) {
+        if(bindingModel.getUser() == null){
+            throw new UserNotFoundException();
+        }
+
+        if (!bindingModel.getPassword().equals(bindingModel.getConfirmPassword())) {
             throw new UserPasswordNotValidException();
         }
 
-        user.setPassword(this.passwordEncoder.encode(userResetPasswordBindingModel.getPassword()));
+        bindingModel.getUser().setPassword(this.passwordEncoder.encode(bindingModel.getPassword()));
 
-        this.save(user, UserServiceModel.class);
+        this.save(bindingModel.getUser(), UserServiceModel.class);
     }
 
 

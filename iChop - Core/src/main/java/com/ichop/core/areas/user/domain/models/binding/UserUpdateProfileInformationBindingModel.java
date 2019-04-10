@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 
+import javax.validation.constraints.NotNull;
+
 @Getter
 @Setter
 public class UserUpdateProfileInformationBindingModel {
@@ -20,6 +22,7 @@ public class UserUpdateProfileInformationBindingModel {
     @Length(max = 250)
     private String aboutYou;
 
+    @NotNull
     private UserServiceModel user;
 
 }

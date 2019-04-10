@@ -1,6 +1,7 @@
 package com.ichop.core.areas.user.domain.models.binding;
 
 import com.ichop.core.areas.user.constants.UserValidationConstants;
+import com.ichop.core.areas.user.domain.models.service.UserServiceModel;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
@@ -11,7 +12,7 @@ import javax.validation.constraints.Pattern;
 
 @Getter
 @Setter
-public class UserResetPasswordBindingModel {
+public class UserResetPasswordBindingModelByUser {
 
     @NotNull
     @NotEmpty
@@ -22,5 +23,8 @@ public class UserResetPasswordBindingModel {
     @NotNull
     @NotEmpty
     private String confirmPassword;
+
+    @NotNull
+    private UserServiceModel user;
 
 }

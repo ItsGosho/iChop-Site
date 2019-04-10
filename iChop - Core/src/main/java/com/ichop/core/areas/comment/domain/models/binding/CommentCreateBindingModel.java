@@ -16,6 +16,9 @@ public class CommentCreateBindingModel {
     @NotEmpty
     private String content;
 
+    @NotNull
     private ThreadServiceModel thread;
+
+    @NotNull
     private UserServiceModel creator;
 }

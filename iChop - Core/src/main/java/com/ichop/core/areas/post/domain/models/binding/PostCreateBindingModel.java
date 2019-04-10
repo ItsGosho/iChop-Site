@@ -17,6 +17,9 @@ public class PostCreateBindingModel {
     @Length(min = 3,max = 150)
     private String content;
 
+    @NotNull
     private UserServiceModel user;
+
+    @NotNull
     private UserServiceModel creator;
 }

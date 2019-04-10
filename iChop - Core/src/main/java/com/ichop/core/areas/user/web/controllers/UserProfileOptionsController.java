@@ -2,7 +2,7 @@ package com.ichop.core.areas.user.web.controllers;
 
 import com.ichop.core.areas.player.domain.jms.key.receive.PlayerDataBySiteUserJMSReceiveModel;
 import com.ichop.core.areas.player.services.PlayerLinkJmsServices;
-import com.ichop.core.areas.user.domain.models.binding.UserResetPasswordBindingModel;
+import com.ichop.core.areas.user.domain.models.binding.UserResetPasswordBindingModelByUser;
 import com.ichop.core.areas.user.domain.models.binding.UserUpdateProfileInformationBindingModel;
 import com.ichop.core.areas.user.domain.models.service.UserServiceModel;
 import com.ichop.core.areas.user.domain.models.view.user_options.UserProfileOptionsInformationViewModel;
@@ -16,6 +16,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -80,10 +81,13 @@ public class UserProfileOptionsController extends BaseController {
 
     @PreAuthorize("isAuthenticated()")
     @PostMapping(URLConstants.USER_PROFILE_OPTIONS_CHANGE_PASSWORD_POST)
-    public ModelAndView proceedChangePassword(Principal principal, UserResetPasswordBindingModel userResetPasswordBindingModel) {
+    public ModelAndView proceedChangePassword(@Valid @ModelAttribute UserResetPasswordBindingModelByUser bindingModel, BindingResult bindingResult) {
 
-        UserServiceModel user = this.userServices.findUserByUsername(principal.getName());
-        this.userServices.resetPassword(userResetPasswordBindingModel, user);
+        if (bindingResult.hasErrors()) {
+            return super.viewWithMessage("notification/info", "Whoops", "Error occured with the data that you have entered!");
+        }
+
+        this.userServices.resetPassword(bindingModel);
 
         return super.viewWithMessage("notification/info", "Successful Change", "You have successful changed your password!");
     }
@@ -95,7 +99,7 @@ public class UserProfileOptionsController extends BaseController {
         UserServiceModel user = this.userServices.findUserByUsername(principal.getName());
         PlayerDataBySiteUserJMSReceiveModel playerData = this.playerLinkJmsServices.getPlayerDataBySiteUser(user.getUsername());
 
-        modelAndView.addObject("playerData",playerData);
+        modelAndView.addObject("playerData", playerData);
         modelAndView.addObject("optionsPage", "user/options/user-options-profile-minecraft");
 
         return super.page("user/options/user-options-base", "Minecraft", modelAndView);

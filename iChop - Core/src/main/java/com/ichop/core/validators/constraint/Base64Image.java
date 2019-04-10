@@ -1,4 +1,4 @@
-package com.ichop.core.validators;
+package com.ichop.core.validators.constraint;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -9,17 +9,16 @@ import java.lang.annotation.Target;
 import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
-@Target({FIELD})
+@Target({ FIELD})
 @Retention(RUNTIME)
-@Constraint(validatedBy = Base64SizeValidator.class)
+@Constraint(validatedBy = Base64ImageValidator.class)
 @Documented
-public @interface Base64Size {
+public @interface Base64Image {
 
-    String message() default "Size is not in range.";
+    String message() default "Failed validation of image";
 
-    double minInMB() default 0.00;
-
-    double maxInMB() default 1.00;
+    int maxHeight() default 50;
+    int maxWidth() default 50;
 
     Class<?>[] groups() default { };
 

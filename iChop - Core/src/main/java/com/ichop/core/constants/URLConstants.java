@@ -84,10 +84,8 @@ public final class URLConstants {
 
     //ReactionController -------------------------------------------------------------------------------------
 
-    public static final String THREAD_REACTION_LIKE_POST = "/thread/{threadId}/reaction/like"; /*USER++*/
-    public static final String THREAD_REACTION_DISLIKE_POST = "/thread/{threadId}/reaction/dislike"; /*USER++*/
-    public static final String COMMENT_REACTION_LIKE_POST = "/comment/{commentId}/reaction/like"; /*USER++*/
-    public static final String COMMENT_REACTION_DISLIKE_POST = "/comment/{commentId}/reaction/dislike"; /*USER++*/
+    public static final String THREAD_REACTION_DISLIKE_POST = "/thread/{threadId}/reaction/{reaction}"; /*USER++*/
+    public static final String COMMENT_REACTION_DISLIKE_POST = "/comment/{commentId}/reaction/{reaction}"; /*USER++*/
 
     //ReactionApiController
     public static final String IS_COMMENT_ALREADY_REACTED_BY_USER = "/comment/{commentId}/is-reaction-present"; /*EVERYONE*/

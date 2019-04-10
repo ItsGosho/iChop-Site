@@ -1,98 +1,65 @@
 package com.ichop.core.areas.reaction.web.controllers;
 
-import com.ichop.core.areas.comment.domain.models.service.CommentServiceModel;
-import com.ichop.core.areas.comment.services.CommentServices;
-import com.ichop.core.areas.reaction.domain.entities.ReactionType;
 import com.ichop.core.areas.reaction.domain.models.binding.CommentReactionCreateBindingModel;
 import com.ichop.core.areas.reaction.domain.models.binding.ThreadReactionCreateBindingModel;
 import com.ichop.core.areas.reaction.services.CommentReactionServices;
 import com.ichop.core.areas.reaction.services.ThreadReactionServices;
-import com.ichop.core.areas.thread.domain.models.service.ThreadServiceModel;
-import com.ichop.core.areas.thread.services.ThreadServices;
-import com.ichop.core.areas.user.domain.models.service.UserServiceModel;
 import com.ichop.core.base.BaseController;
 import com.ichop.core.constants.URLConstants;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.security.Principal;
+import javax.validation.Valid;
 
 @Controller
 public class ReactionController extends BaseController {
 
-
-    private final ThreadServices threadServices;
-    private final CommentServices commentServices;
     private final ThreadReactionServices threadReactionServices;
     private final CommentReactionServices commentReactionServices;
-    private final ModelMapper modelMapper;
 
     @Autowired
-    public ReactionController(ThreadServices threadServices, CommentServices commentServices, ThreadReactionServices threadReactionServices, CommentReactionServices commentReactionServices, ModelMapper modelMapper) {
-        this.threadServices = threadServices;
-        this.commentServices = commentServices;
+    public ReactionController(ThreadReactionServices threadReactionServices, CommentReactionServices commentReactionServices) {
         this.threadReactionServices = threadReactionServices;
         this.commentReactionServices = commentReactionServices;
-        this.modelMapper = modelMapper;
     }
 
-
-    @PreAuthorize("isAuthenticated()")
-    @PostMapping(URLConstants.THREAD_REACTION_LIKE_POST)
-    public String proceedThreadLinkReaction(@PathVariable String threadId, Principal principal) {
-        return proceedThreadReaction(threadId, principal, ReactionType.LIKE);
-    }
 
     @PreAuthorize("isAuthenticated()")
     @PostMapping(URLConstants.THREAD_REACTION_DISLIKE_POST)
-    public String proceedThreadDislikedReaction(@PathVariable String threadId, Principal principal) {
-        return proceedThreadReaction(threadId, principal, ReactionType.DISLIKE);
-    }
+    public String proceedThreadDislikedReaction(@PathVariable String threadId, @PathVariable String reaction,
+                                                @Valid @ModelAttribute ThreadReactionCreateBindingModel bindingModel,
+                                                BindingResult bindingResult) {
 
-    @PreAuthorize("isAuthenticated()")
-    @PostMapping(URLConstants.COMMENT_REACTION_LIKE_POST)
-    public String proceedCommentLikeReaction(@PathVariable String commentId, Principal principal) {
-        return proceedCommentReaction(commentId, principal, ReactionType.LIKE);
+        String redirectUrl = URLConstants.THREAD_READ_GET.replace("{threadId}", bindingModel.getThread().getId());
+
+        if (bindingResult.hasErrors()) {
+            return super.redirect(redirectUrl);
+        }
+
+        this.threadReactionServices.create(bindingModel);
+
+        return super.redirect(redirectUrl);
     }
 
     @PreAuthorize("isAuthenticated()")
     @PostMapping(URLConstants.COMMENT_REACTION_DISLIKE_POST)
-    public String proceedCommentDislikeReaction(@PathVariable String commentId, Principal principal) {
-        return proceedCommentReaction(commentId, principal, ReactionType.DISLIKE);
-    }
+    public String proceedCommentDislikeReaction(@PathVariable String commentId, @PathVariable String reaction,
+                                                @Valid @ModelAttribute CommentReactionCreateBindingModel bindingModel,
+                                                BindingResult bindingResult) {
 
-    private String proceedThreadReaction(String threadId, Principal principal, ReactionType reactionType) {
-        ThreadServiceModel threadServiceModel = this.threadServices.findById(threadId);
-        UserServiceModel userServiceModel = this.modelMapper.map(((Authentication) principal).getPrincipal(), UserServiceModel.class);
+        String redirectUrl = URLConstants.THREAD_READ_GET.replace("{threadId}", bindingModel.getComment().getThread().getId());
 
-        ThreadReactionCreateBindingModel bindingModel = new ThreadReactionCreateBindingModel();
-        bindingModel.setUser(userServiceModel);
-        bindingModel.setThread(threadServiceModel);
-        bindingModel.setReactionType(reactionType);
-
-        this.threadReactionServices.create(bindingModel);
-
-        String redirectUrl = URLConstants.THREAD_READ_GET.replace("{threadId}", threadServiceModel.getId());
-        return super.redirect(redirectUrl);
-    }
-
-    private String proceedCommentReaction(String threadId, Principal principal, ReactionType reactionType) {
-        CommentServiceModel commentServiceModel = this.commentServices.findById(threadId);
-        UserServiceModel userServiceModel = this.modelMapper.map(((Authentication) principal).getPrincipal(), UserServiceModel.class);
-
-        CommentReactionCreateBindingModel bindingModel = new CommentReactionCreateBindingModel();
-        bindingModel.setUser(userServiceModel);
-        bindingModel.setComment(commentServiceModel);
-        bindingModel.setReactionType(reactionType);
+        if (bindingResult.hasErrors()) {
+            return super.redirect(redirectUrl);
+        }
 
         this.commentReactionServices.create(bindingModel);
 
-        String redirectUrl = URLConstants.THREAD_READ_GET.replace("{threadId}", commentServiceModel.getThread().getId());
         return super.redirect(redirectUrl);
     }
 

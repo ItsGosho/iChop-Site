@@ -21,6 +21,7 @@ public class ThreadCreateBindingModel {
     @NotEmpty
     private String content;
 
+    @NotNull
     private UserServiceModel creator;
 
 }
