@@ -7,17 +7,20 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
 
+import static com.ichop.core.areas.reaction.constants.ReactionExceptionsMessages.REACTION_CANT_REACT;
+import static com.ichop.core.areas.reaction.constants.ReactionExceptionsMessages.REACTION_NOT_FOUND;
+
 @ControllerAdvice
-public class ReactionExceptionsExceptionController extends BaseExceptionController {
+public class ReactionExceptionController extends BaseExceptionController {
 
     @ExceptionHandler(ReactionNotFoundException.class)
     public ModelAndView reactionNotFound(){
-        return super.errorPage("The provided reaction cannot be found.");
+        return super.errorPage(REACTION_NOT_FOUND);
     }
 
     @ExceptionHandler(CantReactException.class)
     public ModelAndView cantReact(){
-        return super.errorPage("You cannot react on this.");
+        return super.errorPage(REACTION_CANT_REACT);
     }
 
 }

@@ -15,13 +15,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.security.Principal;
 
 @ControllerAdvice(assignableTypes = CommentController.class)
-public class CommentModelFillers {
+public class CommentBindingModelsFillers {
 
     private final ThreadServices threadServices;
     private final UserServices userServices;
 
     @Autowired
-    public CommentModelFillers(ThreadServices threadServices, UserServices userServices) {
+    public CommentBindingModelsFillers(ThreadServices threadServices, UserServices userServices) {
         this.threadServices = threadServices;
         this.userServices = userServices;
     }

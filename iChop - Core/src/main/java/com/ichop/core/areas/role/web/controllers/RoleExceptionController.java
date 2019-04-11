@@ -6,12 +6,14 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
 
+import static com.ichop.core.areas.role.constants.RoleExceptionMessages.ROLE_NOT_FOUND;
+
 @ControllerAdvice
-public class RoleExceptionsExceptionController extends BaseExceptionController {
+public class RoleExceptionController extends BaseExceptionController {
 
     @ExceptionHandler(RoleNotFoundException.class)
     public ModelAndView roleNotFound(){
-        return super.errorPage("The provided user role is not found or not accessible.");
+        return super.errorPage(ROLE_NOT_FOUND);
     }
 
 }

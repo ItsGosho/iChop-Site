@@ -6,52 +6,49 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
 
+import static com.ichop.core.areas.user.constants.UserExceptionMessages.*;
+
 @ControllerAdvice
-public class UserExceptionsExceptionController extends BaseExceptionController {
+public class UserExceptionController extends BaseExceptionController {
 
     @ExceptionHandler(UserAlreadyExistsException.class)
     public ModelAndView userAlreadyExists(){
-        return super.errorPage("The provided user already isThreadExistsById.");
-    }
-
-    @ExceptionHandler(UserCannotBeNullException.class)
-    public ModelAndView userCannotBeNull(){
-        return super.errorPage("The provided user cannot be null.");
+        return super.errorPage(USER_ALREADY_EXISTS);
     }
 
     @ExceptionHandler(UserNotFoundException.class)
     public ModelAndView userNotFound(){
-        return super.errorPage("The provided user wasnt found!");
+        return super.errorPage(USER_NOT_FOUND);
     }
 
     @ExceptionHandler(UserPasswordNotValidException.class)
     public ModelAndView userPasswordsDoesntMatch(){
-        return super.errorPage("The provided passwords doesnt match!");
+        return super.errorPage(USER_PASSWORD_NOT_VALID);
     }
 
     @ExceptionHandler(UserAlreadyReacted.class)
     public ModelAndView userAlreadyLikedThis(){
-        return super.errorPage("You have already casted your vote on this.");
+        return super.errorPage(USER_ALREADY_REACTED);
     }
 
     @ExceptionHandler(UserNotAuthorizedException.class)
     public ModelAndView userNoAuthorized(){
-        return super.errorPage("You cant access this page!");
+        return super.errorPage(USER_NOT_AUTHORIZED);
     }
 
     @ExceptionHandler(UserAlreadyFollowingHimException.class)
     public ModelAndView userAlreadyFollowed(){
-        return super.errorPage("You already followed this user.");
+        return super.errorPage(USER_ALREADY_FOLLOWING_HIM);
     }
 
     @ExceptionHandler(UserNotFollowingHimException.class)
     public ModelAndView userNotFollowingHim(){
-        return super.errorPage("You are not following this user.");
+        return super.errorPage(USER_NOT_FOLLOWING_HIM);
     }
 
     @ExceptionHandler(UserCannotFollowException.class)
     public ModelAndView userCannotFollow(){
-        return super.errorPage("You cannot follow this user.");
+        return super.errorPage(USER_CANT_FOLLOW);
     }
 
 }

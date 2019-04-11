@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import java.security.Principal;
 
 @ControllerAdvice(assignableTypes = ThreadRestController.class)
-public class ThreadModelFillers {
+public class ThreadBindingModelsFillers {
 
     private final UserServices userServices;
 
 
     @Autowired
-    public ThreadModelFillers(UserServices userServices) {
+    public ThreadBindingModelsFillers(UserServices userServices) {
         this.userServices = userServices;
     }
 

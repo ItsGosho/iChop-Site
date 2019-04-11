@@ -15,13 +15,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.security.Principal;
 
 @ControllerAdvice(assignableTypes = {UserAuthenticationController.class, UserProfileOptionsController.class})
-public class UserModelFillers {
+public class UserBindingModelsFillers {
 
     private final UserServices userServices;
 
 
     @Autowired
-    public UserModelFillers(UserServices userServices) {
+    public UserBindingModelsFillers(UserServices userServices) {
         this.userServices = userServices;
     }
 

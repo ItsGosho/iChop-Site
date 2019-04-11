@@ -20,14 +20,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.security.Principal;
 
 @ControllerAdvice(assignableTypes = ReactionController.class)
-public class ReactionModelFillers {
+public class ReactionBindingModelsFillers {
 
     private final UserServices userServices;
     private final ThreadServices threadServices;
     private final CommentServices commentServices;
 
     @Autowired
-    public ReactionModelFillers(UserServices userServices, ThreadServices threadServices, CommentServices commentServices) {
+    public ReactionBindingModelsFillers(UserServices userServices, ThreadServices threadServices, CommentServices commentServices) {
         this.userServices = userServices;
         this.threadServices = threadServices;
         this.commentServices = commentServices;

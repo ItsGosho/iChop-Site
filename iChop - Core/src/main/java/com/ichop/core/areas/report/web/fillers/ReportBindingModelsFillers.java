@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.security.Principal;
 
 @ControllerAdvice(assignableTypes = {CommentReportController.class, PostReportController.class, ThreadReportController.class})
-public class ReportModelFillers {
+public class ReportBindingModelsFillers {
 
     private final UserServices userServices;
     private final CommentServices commentServices;
@@ -31,7 +31,7 @@ public class ReportModelFillers {
     private final PostServices postServices;
 
     @Autowired
-    public ReportModelFillers(UserServices userServices, CommentServices commentServices, ThreadServices threadServices, PostServices postServices) {
+    public ReportBindingModelsFillers(UserServices userServices, CommentServices commentServices, ThreadServices threadServices, PostServices postServices) {
         this.userServices = userServices;
         this.commentServices = commentServices;
         this.threadServices = threadServices;

@@ -6,12 +6,14 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
 
+import static com.ichop.core.areas.thread.constants.ThreadExceptionMessages.THREAD_NOT_FOUND;
+
 @ControllerAdvice
 public class ThreadExceptionController extends BaseExceptionController {
 
     @ExceptionHandler(ThreadNotFoundException.class)
     public ModelAndView threadNotFound(){
-        return super.errorPage("The threads you are searching for cannot be found.");
+        return super.errorPage(THREAD_NOT_FOUND);
     }
 
 }

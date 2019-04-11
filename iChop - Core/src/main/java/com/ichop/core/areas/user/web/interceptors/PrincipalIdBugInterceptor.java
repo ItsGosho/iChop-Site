@@ -10,6 +10,13 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/*
+*
+*
+* Fixes a bug where when the application is restarted the user doesn't have id,
+* so this will logout him.
+*
+* */
 @Component
 public class PrincipalIdBugInterceptor extends HandlerInterceptorAdapter {
 
