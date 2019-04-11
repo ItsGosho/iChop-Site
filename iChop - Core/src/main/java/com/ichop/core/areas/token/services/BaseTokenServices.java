@@ -9,10 +9,16 @@ import com.ichop.core.base.BaseService;
 import com.ichop.core.base.BaseServiceModel;
 import org.modelmapper.ModelMapper;
 
+import java.time.Clock;
+
 public abstract class BaseTokenServices<Entity extends BaseToken,Repository extends TokenRepository<Entity>> extends BaseService<Entity,Repository> {
 
 
     public BaseTokenServices(ModelMapper modelMapper, Repository repository) {
+        super(modelMapper, repository);
+    }
+
+    public BaseTokenServices(ModelMapper modelMapper, Repository repository, Clock clock) {
         super(modelMapper, repository);
     }
 

@@ -5,10 +5,13 @@ import com.ichop.core.areas.role.domain.models.service.UserRoleServiceModel;
 import com.ichop.core.areas.role.exceptions.RoleNotFoundException;
 import com.ichop.core.areas.role.services.UserRoleServices;
 import com.ichop.core.areas.token.domain.models.service.PasswordResetTokenServiceModel;
+import com.ichop.core.areas.token.exceptions.TokenNotValidException;
 import com.ichop.core.areas.token.services.PasswordResetTokenServices;
 import com.ichop.core.areas.user.domain.entities.User;
 import com.ichop.core.areas.user.domain.models.binding.UserForgottenPasswordBindingModel;
 import com.ichop.core.areas.user.domain.models.binding.UserRegisterBindingModel;
+import com.ichop.core.areas.user.domain.models.binding.UserResetPasswordBindingModelByToken;
+import com.ichop.core.areas.user.domain.models.binding.UserResetPasswordBindingModelByUser;
 import com.ichop.core.areas.user.domain.models.service.UserServiceModel;
 import com.ichop.core.areas.user.exceptions.UserAlreadyExistsException;
 import com.ichop.core.areas.user.exceptions.UserNotFoundException;
@@ -218,74 +221,88 @@ public class UserServicesUnitTests {
         verify(this.emailServices, times(1)).sendResetPasswordEmail(any(), any(), any());
     }
 
-//    @Test(expected = TokenNotValidException.class)
-//    public void resetPasswordWithToken_withNotValidToken_shouldThrowException() {
-//        UserResetPasswordBindingModelByToken bindingModel = mock(UserResetPasswordBindingModelByToken.class);
-//
-//        doReturn(false).when(this.passwordResetTokenServices).isValid("token");
-//
-//        this.userServices.resetPassword(bindingModel, "token");
-//    }
-//
-//    @Test(expected = UserPasswordNotValidException.class)
-//    public void resetPasswordWithToken_withNotEqualPasswords_shouldThrowException() {
-//        UserResetPasswordBindingModelByToken bindingModel = mock(UserResetPasswordBindingModelByToken.class);
-//
-//        when(bindingModel.getPassword()).thenReturn("password");
-//        when(bindingModel.getConfirmPassword()).thenReturn("password1");
-//        doReturn(true).when(this.passwordResetTokenServices).isValid("token");
-//
-//        this.userServices.resetPassword(bindingModel, "token");
-//    }
+    @Test(expected = TokenNotValidException.class)
+    public void resetPasswordWithToken_withNotValidToken_shouldThrowException() {
+        UserResetPasswordBindingModelByToken bindingModel = mock(UserResetPasswordBindingModelByToken.class);
 
-//    @Test
-//    public void resetPasswordWithToken_withValidData_shouldInvokeMethods() {
-//        UserResetPasswordBindingModelByToken bindingModel = mock(UserResetPasswordBindingModelByToken.class);
-//        PasswordResetTokenServiceModel passwordResetToken = mock(PasswordResetTokenServiceModel.class);
-//        UserServiceModel user = mock(UserServiceModel.class);
-//
-//        when(bindingModel.getPassword()).thenReturn("password");
-//        when(bindingModel.getConfirmPassword()).thenReturn("password");
-//        doReturn(passwordResetToken).when(this.passwordResetTokenServices).findByToken("token");
-//        when(passwordResetToken.getUser()).thenReturn(user);
-//        doNothing().when(this.passwordResetTokenServices).deleteOldestByUser(user);
-//        doReturn(null).when(this.userServices).save(user, UserServiceModel.class);
-//        doReturn(true).when(this.passwordResetTokenServices).isValid("token");
-//
-//        this.userServices.resetPassword(bindingModel, "token");
-//
-//        verify(this.passwordResetTokenServices, times(1)).isValid("token");
-//        verify(this.passwordResetTokenServices, times(1)).findByToken("token");
-//        verify(this.passwordEncoder, times(1)).encode("password");
-//        verify(this.userServices, times(1)).save(user, UserServiceModel.class);
-//        verify(this.passwordResetTokenServices, times(1)).deleteOldestByUser(user);
-//    }
-//
-//    @Test(expected = UserPasswordNotValidException.class)
-//    public void resetPassword_withNotEqualPasswords_shouldThrowException() {
-//        UserResetPasswordBindingModelByToken bindingModel = mock(UserResetPasswordBindingModelByToken.class);
-//        UserServiceModel user = mock(UserServiceModel.class);
-//
-//        when(bindingModel.getPassword()).thenReturn("password");
-//        when(bindingModel.getConfirmPassword()).thenReturn("password1");
-//
-//        this.userServices.resetPassword(bindingModel, user);
-//    }
-//
-//    @Test
-//    public void resetPassword_withValidData_shouldThrowException() {
-//        UserResetPasswordBindingModelByToken bindingModel = mock(UserResetPasswordBindingModelByToken.class);
-//        UserServiceModel user = mock(UserServiceModel.class);
-//
-//        when(bindingModel.getPassword()).thenReturn("password");
-//        when(bindingModel.getConfirmPassword()).thenReturn("password");
-//        doReturn(null).when(this.userServices).save(user, UserServiceModel.class);
-//
-//        this.userServices.resetPassword(bindingModel, user);
-//
-//        verify(this.passwordEncoder, times(1)).encode("password");
-//        verify(this.userServices, times(1)).save(user, UserServiceModel.class);
-//    }
+        when(bindingModel.getToken()).thenReturn("token");
+        doReturn(false).when(this.passwordResetTokenServices).isValid("token");
+
+        this.userServices.resetPassword(bindingModel);
+    }
+
+    @Test(expected = UserPasswordNotValidException.class)
+    public void resetPasswordWithToken_withNotEqualPasswords_shouldThrowException() {
+        UserResetPasswordBindingModelByToken bindingModel = mock(UserResetPasswordBindingModelByToken.class);
+
+        when(bindingModel.getPassword()).thenReturn("password");
+        when(bindingModel.getConfirmPassword()).thenReturn("password1");
+        when(bindingModel.getToken()).thenReturn("token");
+        doReturn(true).when(this.passwordResetTokenServices).isValid("token");
+
+        this.userServices.resetPassword(bindingModel);
+    }
+
+    @Test
+    public void resetPasswordWithToken_withValidData_shouldInvokeMethods() {
+        UserResetPasswordBindingModelByToken bindingModel = mock(UserResetPasswordBindingModelByToken.class);
+        PasswordResetTokenServiceModel passwordResetToken = mock(PasswordResetTokenServiceModel.class);
+        UserServiceModel user = mock(UserServiceModel.class);
+
+        when(bindingModel.getPassword()).thenReturn("password");
+        when(bindingModel.getConfirmPassword()).thenReturn("password");
+        when(bindingModel.getToken()).thenReturn("token");
+        doReturn(passwordResetToken).when(this.passwordResetTokenServices).findByToken("token");
+        when(passwordResetToken.getUser()).thenReturn(user);
+        doNothing().when(this.passwordResetTokenServices).deleteOldestByUser(user);
+        doReturn(null).when(this.userServices).save(user, UserServiceModel.class);
+        doReturn(true).when(this.passwordResetTokenServices).isValid("token");
+
+        this.userServices.resetPassword(bindingModel);
+
+        verify(this.passwordResetTokenServices, times(1)).isValid(bindingModel.getToken());
+        verify(this.passwordResetTokenServices, times(1)).findByToken(bindingModel.getToken());
+        verify(this.passwordEncoder, times(1)).encode(bindingModel.getPassword());
+        verify(this.userServices, times(1)).save(user, UserServiceModel.class);
+        verify(this.passwordResetTokenServices, times(1)).deleteOldestByUser(user);
+    }
+
+    @Test(expected = UserNotFoundException.class)
+    public void resetPassword_withNotExistingUser_shouldThrowException() {
+        UserResetPasswordBindingModelByUser bindingModel = mock(UserResetPasswordBindingModelByUser.class);
+
+        when(bindingModel.getUser()).thenReturn(null);
+
+        this.userServices.resetPassword(bindingModel);
+    }
+
+    @Test(expected = UserPasswordNotValidException.class)
+    public void resetPassword_withNotEqualPasswords_shouldThrowException() {
+        UserResetPasswordBindingModelByUser bindingModel = mock(UserResetPasswordBindingModelByUser.class);
+        UserServiceModel user = mock(UserServiceModel.class);
+
+        when(bindingModel.getPassword()).thenReturn("password");
+        when(bindingModel.getConfirmPassword()).thenReturn("password1");
+        when(bindingModel.getUser()).thenReturn(user);
+
+        this.userServices.resetPassword(bindingModel);
+    }
+
+    @Test
+    public void resetPassword_withValidData_shouldThrowException() {
+        UserResetPasswordBindingModelByUser bindingModel = mock(UserResetPasswordBindingModelByUser.class);
+        UserServiceModel user = mock(UserServiceModel.class);
+
+        when(bindingModel.getPassword()).thenReturn("password");
+        when(bindingModel.getConfirmPassword()).thenReturn("password");
+        when(bindingModel.getUser()).thenReturn(user);
+        doReturn(null).when(this.userServices).save(user, UserServiceModel.class);
+
+        this.userServices.resetPassword(bindingModel);
+
+        verify(this.passwordEncoder, times(1)).encode(bindingModel.getPassword());
+        verify(this.userServices, times(1)).save(user, UserServiceModel.class);
+    }
 
 
     @Test(expected = UserNotFoundException.class)

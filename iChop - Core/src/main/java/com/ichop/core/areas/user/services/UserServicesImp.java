@@ -8,6 +8,7 @@ import com.ichop.core.areas.token.domain.models.binding.PasswordResetTokenCreate
 import com.ichop.core.areas.token.domain.models.service.PasswordResetTokenServiceModel;
 import com.ichop.core.areas.token.exceptions.TokenNotValidException;
 import com.ichop.core.areas.token.services.PasswordResetTokenServices;
+import com.ichop.core.areas.user.constants.UserValidationConstants;
 import com.ichop.core.areas.user.domain.entities.User;
 import com.ichop.core.areas.user.domain.models.binding.UserForgottenPasswordBindingModel;
 import com.ichop.core.areas.user.domain.models.binding.UserRegisterBindingModel;
@@ -19,7 +20,6 @@ import com.ichop.core.areas.user.exceptions.UserAlreadyExistsException;
 import com.ichop.core.areas.user.exceptions.UserNotFoundException;
 import com.ichop.core.areas.user.exceptions.UserPasswordNotValidException;
 import com.ichop.core.areas.user.repositories.UserRepository;
-import com.ichop.core.areas.user.constants.UserValidationConstants;
 import com.ichop.core.base.BaseService;
 import com.ichop.core.components.email.EmailServices;
 import org.modelmapper.ModelMapper;

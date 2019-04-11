@@ -58,7 +58,7 @@ public class UserRoleServicesUnitTests {
     public void create_withNotExistingRole_shouldInvokeMethods() {
         UserRoles userRoles = UserRoles.OWNER;
 
-        UserRoleServiceModel result = this.userRoleServices.create(userRoles);
+        this.userRoleServices.create(userRoles);
 
         verify(this.userRoleRepository, times(1)).findUserRoleByAuthority(UserRoles.OWNER.name());
         verify(this.userRoleRepository, times(1)).save(any());

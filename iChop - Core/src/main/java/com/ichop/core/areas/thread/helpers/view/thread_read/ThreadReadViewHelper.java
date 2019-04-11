@@ -40,7 +40,7 @@ public class ThreadReadViewHelper extends BaseViewCreator {
         List<CommentThreadReadViewModel> comments = this.commentThreadReadViewHelper.create(threadId);
 
 
-        ThreadReadViewModel threadReadViewModel = super.modelMapper.map(threadServiceModel, ThreadReadViewModel.class);
+        ThreadReadViewModel threadReadViewModel = this.modelMapper.map(threadServiceModel, ThreadReadViewModel.class);
         threadReadViewModel.setTotalViews(threadServiceModel.getViews());
         threadReadViewModel.setTotalComments(threadServiceModel.getComments().size());
         threadReadViewModel.setTotalReactions(threadServiceModel.getReactions().size());

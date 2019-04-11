@@ -62,4 +62,7 @@ public class ThreadReportServicesImp extends BaseReportServices<ThreadReport, Th
     public Page<ThreadReportServiceModel> findAll(Pageable pageable) {
         return this.findAll(ThreadReportServiceModel.class,pageable);
     }
+
+
+
 }

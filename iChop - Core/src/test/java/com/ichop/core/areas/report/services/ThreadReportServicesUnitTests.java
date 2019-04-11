@@ -2,6 +2,7 @@ package com.ichop.core.areas.report.services;
 
 import com.ichop.core.areas.report.domain.models.binding.ThreadReportCreateBindingModel;
 import com.ichop.core.areas.report.domain.models.service.ThreadReportServiceModel;
+import com.ichop.core.areas.report.exceptions.ReportNotFoundException;
 import com.ichop.core.areas.report.repositories.ThreadReportRepository;
 import com.ichop.core.areas.thread.domain.models.service.ThreadServiceModel;
 import com.ichop.core.areas.thread.exceptions.ThreadNotFoundException;
@@ -68,6 +69,35 @@ public class ThreadReportServicesUnitTests {
         verify(this.modelMapper,times(1)).map(bindingModel,ThreadReportServiceModel.class);
         verify(threadReport,times(1)).setReportDate(any());
         verify(this.threadReportRepository,times(1)).save(any());
+    }
+
+    @Test(expected = ReportNotFoundException.class)
+    public void deleteByModel_withNullReportPassed_shouldThrowException() {
+        ThreadReportServiceModel threadReportServiceModel = mock(ThreadReportServiceModel.class);
+
+        this.threadReportServices.deleteByModel(null);
+    }
+
+    @Test(expected = ReportNotFoundException.class)
+    public void deleteByModel_withNotExistingCommentReport_shouldThrowException() {
+        ThreadReportServiceModel threadReportServiceModel = mock(ThreadReportServiceModel.class);
+
+        when(threadReportServiceModel.getId()).thenReturn("id");
+        when(this.threadReportServices.existsById(threadReportServiceModel.getId())).thenReturn(false);
+
+        this.threadReportServices.deleteByModel(threadReportServiceModel);
+    }
+
+    @Test
+    public void deleteByModel_withValidData_shouldInvokeMethods() {
+        ThreadReportServiceModel threadReportServiceModel = mock(ThreadReportServiceModel.class);
+
+        when(threadReportServiceModel.getId()).thenReturn("id");
+        when(this.threadReportServices.existsById(threadReportServiceModel.getId())).thenReturn(true);
+
+        this.threadReportServices.deleteByModel(threadReportServiceModel);
+
+        verify(this.threadReportRepository, times(1)).deleteById(threadReportServiceModel.getId());
     }
 
 }

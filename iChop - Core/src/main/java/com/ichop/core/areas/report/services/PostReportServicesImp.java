@@ -1,7 +1,7 @@
 package com.ichop.core.areas.report.services;
 
-import com.ichop.core.areas.report.domain.entities.PostReport;
 import com.ichop.core.areas.post.exceptions.PostNotFoundException;
+import com.ichop.core.areas.report.domain.entities.PostReport;
 import com.ichop.core.areas.report.domain.models.binding.PostReportCreateBindingModel;
 import com.ichop.core.areas.report.domain.models.service.PostReportServiceModel;
 import com.ichop.core.areas.report.exceptions.ReportNotFoundException;
@@ -17,7 +17,6 @@ import java.time.LocalDateTime;
 
 @Service
 public class PostReportServicesImp extends BaseReportServices<PostReport, PostReportRepository> implements PostReportServices {
-
 
     @Autowired
     public PostReportServicesImp(ModelMapper modelMapper, PostReportRepository repository) {

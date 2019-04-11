@@ -7,9 +7,11 @@ import com.ichop.core.areas.post.domain.entities.Post;
 import com.ichop.core.areas.reaction.domain.entities.CommentReaction;
 import com.ichop.core.areas.reaction.domain.entities.ReactionType;
 import com.ichop.core.areas.reaction.domain.entities.ThreadReaction;
+import com.ichop.core.areas.report.domain.entities.CommentReport;
 import com.ichop.core.areas.role.domain.entities.UserRole;
 import com.ichop.core.areas.role.domain.entities.UserRoles;
 import com.ichop.core.areas.thread.domain.entities.Thread;
+import com.ichop.core.areas.token.domain.entities.PasswordResetToken;
 import com.ichop.core.areas.user.domain.entities.User;
 import com.ichop.core.areas.user.domain.entities.UserFollow;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -20,7 +22,7 @@ import java.util.LinkedList;
 
 public class EntityFactory {
 
-    public User createUser(){
+    public User createUser() {
         User user = new User();
         user.setUsername("username");
         user.setPassword("password");
@@ -37,14 +39,14 @@ public class EntityFactory {
         return user;
     }
 
-    public UserRole createUserRole(UserRoles userRoles){
+    public UserRole createUserRole(UserRoles userRoles) {
         UserRole userRole = new UserRole();
         userRole.setAuthority(userRoles.name());
 
         return userRole;
     }
 
-    public User createUserRANDOM(){
+    public User createUserRANDOM() {
         User user = new User();
         user.setUsername(RandomStringUtils.randomAlphabetic(5));
         user.setPassword(RandomStringUtils.randomAlphabetic(5));
@@ -65,7 +67,7 @@ public class EntityFactory {
         return user;
     }
 
-    public Comment createComment(){
+    public Comment createComment() {
         Comment comment = new Comment();
         comment.setContent("content");
         comment.setCreatedOn(LocalDateTime.now());
@@ -75,7 +77,28 @@ public class EntityFactory {
         return comment;
     }
 
-    public Thread createThread(){
+    public CommentReport createCommentReport(User user,Comment comment) {
+        CommentReport commentReport = new CommentReport();
+        commentReport.setReportDate(LocalDateTime.now());
+        commentReport.setReason("reason");
+        commentReport.setUser(user);
+        commentReport.setComment(comment);
+
+        return commentReport;
+    }
+
+    public Comment createComment(User user) {
+        Comment comment = new Comment();
+        comment.setContent("content");
+        comment.setCreator(user);
+        comment.setCreatedOn(LocalDateTime.now());
+        comment.setReports(new LinkedList<>());
+        comment.setReactions(new LinkedList<>());
+
+        return comment;
+    }
+
+    public Thread createThread() {
         Thread thread = new Thread();
         thread.setTitle("title");
         thread.setContent("content");
@@ -88,7 +111,39 @@ public class EntityFactory {
         return thread;
     }
 
-    public UserLog createUserLog(UserLogType logType){
+    public Thread createThread(User creator) {
+        Thread thread = new Thread();
+        thread.setTitle("title");
+        thread.setContent("content");
+        thread.setCreatedOn(LocalDateTime.now());
+        thread.setViews(0);
+        thread.setCreator(creator);
+        thread.setReports(new LinkedList<>());
+        thread.setComments(new LinkedList<>());
+        thread.setReactions(new LinkedList<>());
+
+        return thread;
+    }
+
+    public PasswordResetToken createPasswordResetToken(User user){
+        PasswordResetToken passwordResetToken = new PasswordResetToken();
+        passwordResetToken.setUser(user);
+        passwordResetToken.setExpiryDate(LocalDateTime.now().plusDays(5));
+        passwordResetToken.setToken(RandomStringUtils.randomAlphabetic(5));
+
+        return passwordResetToken;
+    }
+
+    public PasswordResetToken createExpiredPasswordResetToken(User user){
+        PasswordResetToken passwordResetToken = new PasswordResetToken();
+        passwordResetToken.setUser(user);
+        passwordResetToken.setExpiryDate(LocalDateTime.now().minusYears(10));
+        passwordResetToken.setToken(RandomStringUtils.randomAlphabetic(5));
+
+        return passwordResetToken;
+    }
+
+    public UserLog createUserLog(UserLogType logType) {
         UserLog userLog = new UserLog();
         userLog.setMessage("message");
         userLog.setHappenedOn(LocalDateTime.now());
@@ -97,7 +152,7 @@ public class EntityFactory {
         return userLog;
     }
 
-    public Post createPost(){
+    public Post createPost() {
         Post post = new Post();
         post.setContent("content");
         post.setCreatedOn(LocalDateTime.now());
@@ -106,7 +161,18 @@ public class EntityFactory {
         return post;
     }
 
-    public CommentReaction createCommentReaction(){
+    public Post createPost(User user, User creator) {
+        Post post = new Post();
+        post.setContent("content");
+        post.setUser(user);
+        post.setCreator(creator);
+        post.setCreatedOn(LocalDateTime.now());
+        post.setReports(new LinkedList<>());
+
+        return post;
+    }
+
+    public CommentReaction createCommentReaction() {
         CommentReaction commentReaction = new CommentReaction();
         commentReaction.setReactionDate(LocalDateTime.now());
         commentReaction.setReactionType(ReactionType.LIKE);
@@ -114,7 +180,7 @@ public class EntityFactory {
         return commentReaction;
     }
 
-    public CommentReaction createCommentReaction(User user,Comment comment){
+    public CommentReaction createCommentReaction(User user, Comment comment) {
         CommentReaction commentReaction = new CommentReaction();
         commentReaction.setReactionDate(LocalDateTime.now());
         commentReaction.setReactionType(ReactionType.LIKE);
@@ -124,7 +190,7 @@ public class EntityFactory {
         return commentReaction;
     }
 
-    public CommentReaction createCommentReaction(User user,Comment comment,ReactionType reactionType){
+    public CommentReaction createCommentReaction(User user, Comment comment, ReactionType reactionType) {
         CommentReaction commentReaction = new CommentReaction();
         commentReaction.setReactionDate(LocalDateTime.now());
         commentReaction.setReactionType(reactionType);
@@ -134,7 +200,7 @@ public class EntityFactory {
         return commentReaction;
     }
 
-    public ThreadReaction createThreadReaction(){
+    public ThreadReaction createThreadReaction() {
         ThreadReaction threadReaction = new ThreadReaction();
         threadReaction.setReactionDate(LocalDateTime.now());
         threadReaction.setReactionType(ReactionType.LIKE);
@@ -142,7 +208,7 @@ public class EntityFactory {
         return threadReaction;
     }
 
-    public ThreadReaction createThreadReaction(User user,Thread thread){
+    public ThreadReaction createThreadReaction(User user, Thread thread) {
         ThreadReaction threadReaction = new ThreadReaction();
         threadReaction.setReactionDate(LocalDateTime.now());
         threadReaction.setReactionType(ReactionType.LIKE);
@@ -152,7 +218,7 @@ public class EntityFactory {
         return threadReaction;
     }
 
-    public ThreadReaction createThreadReaction(User user,Thread thread,ReactionType reactionType){
+    public ThreadReaction createThreadReaction(User user, Thread thread, ReactionType reactionType) {
         ThreadReaction threadReaction = new ThreadReaction();
         threadReaction.setReactionDate(LocalDateTime.now());
         threadReaction.setReactionType(reactionType);
@@ -162,7 +228,7 @@ public class EntityFactory {
         return threadReaction;
     }
 
-    public UserFollow createUserFollow(User user,User follower){
+    public UserFollow createUserFollow(User user, User follower) {
         UserFollow userFollow = new UserFollow();
         userFollow.setUser(user);
         userFollow.setFollower(follower);

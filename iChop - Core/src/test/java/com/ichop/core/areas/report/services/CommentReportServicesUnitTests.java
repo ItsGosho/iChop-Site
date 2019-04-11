@@ -1,10 +1,11 @@
 package com.ichop.core.areas.report.services;
 
 import com.ichop.core.areas.comment.domain.models.service.CommentServiceModel;
+import com.ichop.core.areas.comment.exceptions.CommentNotFoundException;
 import com.ichop.core.areas.report.domain.models.binding.CommentReportCreateBindingModel;
 import com.ichop.core.areas.report.domain.models.service.CommentReportServiceModel;
+import com.ichop.core.areas.report.exceptions.ReportNotFoundException;
 import com.ichop.core.areas.report.repositories.CommentReportRepository;
-import com.ichop.core.areas.comment.exceptions.CommentNotFoundException;
 import com.ichop.core.areas.user.domain.models.service.UserServiceModel;
 import com.ichop.core.areas.user.exceptions.UserNotFoundException;
 import org.junit.Before;
@@ -52,7 +53,7 @@ public class CommentReportServicesUnitTests {
     }
 
     @Test
-    public void create_withValidData_shouldInvokeMethods(){
+    public void create_withValidData_shouldInvokeMethods() {
         CommentReportCreateBindingModel bindingModel = mock(CommentReportCreateBindingModel.class);
         CommentServiceModel comment = mock(CommentServiceModel.class);
         UserServiceModel user = mock(UserServiceModel.class);
@@ -64,9 +65,39 @@ public class CommentReportServicesUnitTests {
 
         this.commentReportServices.create(bindingModel);
 
-        verify(this.modelMapper,times(1)).map(bindingModel,CommentReportServiceModel.class);
-        verify(commentReport,times(1)).setReportDate(any());
-        verify(this.commentReportRepository,times(1)).save(any());
+        verify(this.modelMapper, times(1)).map(bindingModel, CommentReportServiceModel.class);
+        verify(commentReport, times(1)).setReportDate(any());
+        verify(this.commentReportRepository, times(1)).save(any());
     }
+
+    @Test(expected = ReportNotFoundException.class)
+    public void deleteByModel_withNullReportPassed_shouldThrowException() {
+        CommentReportServiceModel commentReport = mock(CommentReportServiceModel.class);
+
+        this.commentReportServices.deleteByModel(null);
+    }
+
+    @Test(expected = ReportNotFoundException.class)
+    public void deleteByModel_withNotExistingCommentReport_shouldThrowException() {
+        CommentReportServiceModel commentReport = mock(CommentReportServiceModel.class);
+
+        when(commentReport.getId()).thenReturn("id");
+        when(this.commentReportServices.existsById(commentReport.getId())).thenReturn(false);
+
+        this.commentReportServices.deleteByModel(commentReport);
+    }
+
+    @Test
+    public void deleteByModel_withValidData_shouldInvokeMethods() {
+        CommentReportServiceModel commentReport = mock(CommentReportServiceModel.class);
+
+        when(commentReport.getId()).thenReturn("id");
+        when(this.commentReportServices.existsById(commentReport.getId())).thenReturn(true);
+
+        this.commentReportServices.deleteByModel(commentReport);
+
+        verify(this.commentReportRepository, times(1)).deleteById(commentReport.getId());
+    }
+
 
 }

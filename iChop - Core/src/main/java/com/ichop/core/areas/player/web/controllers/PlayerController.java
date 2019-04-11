@@ -3,7 +3,7 @@ package com.ichop.core.areas.player.web.controllers;
 import com.ichop.core.areas.player.domain.jms.key.receive.PlayerDataByKeyJMSReceiveModel;
 import com.ichop.core.areas.player.domain.jms.player.link.receive.LinkPlayerAccountJMSReceiveModel;
 import com.ichop.core.areas.player.domain.models.view.PlayerProfileViewModel;
-import com.ichop.core.areas.player.helpers.player_profile.PlayerProfileViewCreator;
+import com.ichop.core.areas.player.helpers.player_profile.PlayerProfileViewHelper;
 import com.ichop.core.areas.player.services.PlayerLinkJmsServices;
 import com.ichop.core.base.BaseController;
 import com.ichop.core.constants.URLConstants;
@@ -24,13 +24,13 @@ public class PlayerController extends BaseController {
 
     private final PlayerLinkJmsServices playerLinkJmsServices;
     private final ModelMapper modelMapper;
-    private final PlayerProfileViewCreator playerProfileViewCreator;
+    private final PlayerProfileViewHelper playerProfileViewHelper;
 
     @Autowired
-    public PlayerController(PlayerLinkJmsServices playerLinkJmsServices, ModelMapper modelMapper, PlayerProfileViewCreator playerProfileViewCreator) {
+    public PlayerController(PlayerLinkJmsServices playerLinkJmsServices, ModelMapper modelMapper, PlayerProfileViewHelper playerProfileViewHelper) {
         this.playerLinkJmsServices = playerLinkJmsServices;
         this.modelMapper = modelMapper;
-        this.playerProfileViewCreator = playerProfileViewCreator;
+        this.playerProfileViewHelper = playerProfileViewHelper;
     }
 
 
@@ -65,7 +65,7 @@ public class PlayerController extends BaseController {
 
     @GetMapping(URLConstants.PLAYER_PROFILE_VIEW_GET)
     public ModelAndView getPlayerProfileViewPage(@PathVariable String uuid,ModelAndView modelAndView) {
-        PlayerProfileViewModel player = this.playerProfileViewCreator.create(uuid);
+        PlayerProfileViewModel player = this.playerProfileViewHelper.create(uuid);
 
         if(player == null){
             return super.viewWithMessage("notification/error", "Player Error", "Player not found!");

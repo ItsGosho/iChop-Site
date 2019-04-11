@@ -26,7 +26,6 @@ public class ThreadReactionServicesImp extends BaseReactionServices<ThreadReacti
         super(modelMapper, repository);
     }
 
-
     @Override
     public ThreadReactionServiceModel create(ThreadReactionCreateBindingModel bindingModel) {
 

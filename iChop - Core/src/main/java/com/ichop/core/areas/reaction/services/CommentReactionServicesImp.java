@@ -2,13 +2,13 @@ package com.ichop.core.areas.reaction.services;
 
 import com.ichop.core.areas.comment.domain.entities.Comment;
 import com.ichop.core.areas.comment.domain.models.service.CommentServiceModel;
+import com.ichop.core.areas.comment.exceptions.CommentNotFoundException;
 import com.ichop.core.areas.reaction.domain.entities.CommentReaction;
 import com.ichop.core.areas.reaction.domain.entities.ReactionType;
 import com.ichop.core.areas.reaction.domain.models.binding.CommentReactionCreateBindingModel;
 import com.ichop.core.areas.reaction.domain.models.service.CommentReactionServiceModel;
 import com.ichop.core.areas.reaction.exceptions.CantReactException;
 import com.ichop.core.areas.reaction.repositories.CommentReactionRepository;
-import com.ichop.core.areas.comment.exceptions.CommentNotFoundException;
 import com.ichop.core.areas.user.domain.entities.User;
 import com.ichop.core.areas.user.domain.models.service.UserServiceModel;
 import com.ichop.core.areas.user.exceptions.UserAlreadyReacted;

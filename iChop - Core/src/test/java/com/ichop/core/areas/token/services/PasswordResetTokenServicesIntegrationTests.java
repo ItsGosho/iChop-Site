@@ -1,8 +1,10 @@
 package com.ichop.core.areas.token.services;
 
 import com.ichop.core.EntityFactory;
+import com.ichop.core.areas.token.domain.entities.PasswordResetToken;
 import com.ichop.core.areas.token.domain.models.binding.PasswordResetTokenCreateBindingModel;
 import com.ichop.core.areas.token.domain.models.service.PasswordResetTokenServiceModel;
+import com.ichop.core.areas.token.exceptions.TokenNotFoundException;
 import com.ichop.core.areas.token.repositories.PasswordResetTokenRepository;
 import com.ichop.core.areas.user.domain.entities.User;
 import com.ichop.core.areas.user.domain.models.service.UserServiceModel;
@@ -86,5 +88,42 @@ public class PasswordResetTokenServicesIntegrationTests {
         assertEquals(passwordResetToken.getExpiryDate(),result.getExpiryDate());
     }
 
+    @Test
+    public void isTokenDateExpired_withExpiredDate_shouldReturnTrue(){
+        User user = this.userRepository.save(this.entityFactory.createUser());
+        PasswordResetToken passwordResetToken = this.passwordResetTokenRepository.save(this.entityFactory.createExpiredPasswordResetToken(user));
+
+        boolean result = this.passwordResetTokenServices.isTokenDateExpired(this.modelMapper.map(passwordResetToken,PasswordResetTokenServiceModel.class));
+
+        assertTrue(result);
+    }
+
+    @Test
+    public void isTokenDateExpired_withExpiredDate_shouldReturnFalse(){
+        User user = this.userRepository.save(this.entityFactory.createUser());
+        PasswordResetToken passwordResetToken = this.passwordResetTokenRepository.save(this.entityFactory.createPasswordResetToken(user));
+
+        boolean result = this.passwordResetTokenServices.isTokenDateExpired(this.modelMapper.map(passwordResetToken,PasswordResetTokenServiceModel.class));
+
+        assertFalse(result);
+    }
+
+    @Test(expected = TokenNotFoundException.class)
+    public void deleteTokenById_withNotExistingToken_shouldThrowException(){
+
+        this.passwordResetTokenServices.deleteTokenById("notExistingId");
+
+    }
+
+    @Test
+    public void deleteTokenById_withExistingToken_shouldDeleteIt(){
+        User user = this.userRepository.save(this.entityFactory.createUser());
+        PasswordResetToken passwordResetToken = this.passwordResetTokenRepository.save(this.entityFactory.createPasswordResetToken(user));
+
+        this.passwordResetTokenServices.deleteTokenById(passwordResetToken.getId());
+
+        assertEquals(0,this.passwordResetTokenRepository.findAll().size());
+
+    }
 
 }

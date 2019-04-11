@@ -16,38 +16,34 @@
     <option name="MAKE_PROJECT_ON_SAVE" value="true" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/iChop_Core$UserServicesUnitTests.ic" NAME="UserServicesUnitTests Coverage Results" MODIFIED="1554576905762" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/iChop_Core$UserServicesUnitTests.ic" NAME="UserServicesUnitTests Coverage Results" MODIFIED="1554997034606" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.ichop.core.areas.user.services.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/iChop_Core$CommentServicesTests__1_.ic" NAME="CommentServicesTests (1) Coverage Results" MODIFIED="1554372227740" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.ichop.core.areas.unit.comment.services.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/iChop_Core$UserRoleServicesUnitTests.ic" NAME="UserRoleServicesUnitTests Coverage Results" MODIFIED="1554478026776" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>com.ichop.core.areas.role.services.*</FILTER>
-    </SUITE>
     <SUITE FILE_PATH="coverage/itsgosho$PasswordResetTokenCrudServicesTests.ic" NAME="PasswordResetTokenCrudServicesTests Coverage Results" MODIFIED="1551188085317" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true" />
     <SUITE FILE_PATH="coverage/iChop_Core$CommentServicesTests.ic" NAME="CommentServicesTests Coverage Results" MODIFIED="1554372265818" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/iChop_Core$CommentServicesUnitTests.ic" NAME="CommentServicesUnitTests Coverage Results" MODIFIED="1554372365116" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/iChop_Core$CommentServicesUnitTests.ic" NAME="CommentServicesUnitTests Coverage Results" MODIFIED="1554978930043" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.ichop.core.areas.comment.services.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/iChop_Core$com_ichop_core_areas_comment_services_in_core.ic" NAME="com.ichop.core.areas.comment.services in core Coverage Results" MODIFIED="1554979007469" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.ichop.core.areas.comment.services.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/itsgosho$ichop_services_user_in_itsgosho.ic" NAME="ichop.services.user in itsgosho Coverage Results" MODIFIED="1551188177917" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/iChop_Core$com_ichop_core_areas_thread_in_core.ic" NAME="com.ichop.core.areas.thread in core Coverage Results" MODIFIED="1554491546643" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.ichop.core.areas.thread.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/itsgosho$PasswordResetTokenCrudServicesTests_getTokenByUser_withExistingToken_shouldReturnToken.ic" NAME="PasswordResetTokenCrudServicesTests.getTokenByUser_withExistingToken_shouldReturnToken Coverage Results" MODIFIED="1551186991498" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>ichop.services.token.*</FILTER>
-    </SUITE>
     <SUITE FILE_PATH="coverage/iChop_Core$CommentServicesTests_test.ic" NAME="CommentServicesTests.test Coverage Results" MODIFIED="1554309996443" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.ichop.core.areas.comment.services.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/itsgosho$Application.ic" NAME="Application Coverage Results" MODIFIED="1552576111697" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true" />
-    <SUITE FILE_PATH="coverage/iChop_Core$CommentServicesTests_create_nullUser_shouldThrowException.ic" NAME="CommentServicesTests.create_nullUser_shouldThrowException Coverage Results" MODIFIED="1554310622435" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>com.ichop.core.areas.comment.services.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/iChop_Core$com_ichop_core_areas_in_core.ic" NAME="com.ichop.core.areas in core Coverage Results" MODIFIED="1554491654093" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/iChop_Core$com_ichop_core_areas_in_core.ic" NAME="com.ichop.core.areas in core Coverage Results" MODIFIED="1555008026299" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true">
       <FILTER>com.ichop.core.areas.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/iChop_Core$Application.ic" NAME="Application Coverage Results" MODIFIED="1553618006058" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/iChop_Core$com_ichop_core_in_core.ic" NAME="com.ichop.core in core Coverage Results" MODIFIED="1555007546397" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.ichop.core.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/iChop_Core$com_ichop_core_areas_report___and_8_more.ic" NAME="com.ichop.core.areas.report.* and 8 more Coverage Results" MODIFIED="1555008685001" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/itsgosho$PasswordResetTokenCrudServicesTests_getTokenByUser_withoutPasswordResetToken_shouldReturnNull.ic" NAME="PasswordResetTokenCrudServicesTests.getTokenByUser_withoutPasswordResetToken_shouldReturnNull Coverage Results" MODIFIED="1551185701761" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>ichop.services.token.*</FILTER>
     </SUITE>
@@ -56,6 +52,32 @@
     </SUITE>
     <SUITE FILE_PATH="coverage/iChop_Core$com_ichop_core_areas_role_in_core.ic" NAME="com.ichop.core.areas.role in core Coverage Results" MODIFIED="1554478391740" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.ichop.core.areas.role.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/iChop_Core$PlayerProfileViewHelperUnitTests.ic" NAME="PlayerProfileViewHelperUnitTests Coverage Results" MODIFIED="1554981975798" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.ichop.core.areas.player.helpers.player_profile.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/iChop_Core$UserRoleServicesUnitTests.ic" NAME="UserRoleServicesUnitTests Coverage Results" MODIFIED="1554478026776" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.ichop.core.areas.role.services.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/iChop_Core$com_ichop_core_areas_log_services_in_core.ic" NAME="com.ichop.core.areas.log.services in core Coverage Results" MODIFIED="1554981017680" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.ichop.core.areas.log.services.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/itsgosho$PasswordResetTokenCrudServicesTests_getTokenByUser_withExistingToken_shouldReturnToken.ic" NAME="PasswordResetTokenCrudServicesTests.getTokenByUser_withExistingToken_shouldReturnToken Coverage Results" MODIFIED="1551186991498" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>ichop.services.token.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/itsgosho$Application.ic" NAME="Application Coverage Results" MODIFIED="1552576111697" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/iChop_Core$CommentServicesTests_create_nullUser_shouldThrowException.ic" NAME="CommentServicesTests.create_nullUser_shouldThrowException Coverage Results" MODIFIED="1554310622435" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.ichop.core.areas.comment.services.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/iChop_Core$CommentBindingModelsFillersIntegrationTests.ic" NAME="CommentBindingModelsFillersIntegrationTests Coverage Results" MODIFIED="1554980794817" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.ichop.core.areas.comment.web.fillers.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/iChop_Core$Application.ic" NAME="Application Coverage Results" MODIFIED="1553618006058" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/iChop_Core$UserRoleManagementHistoryUserControlViewHelperUnitTests_create_withValidData_shouldInvokeMethods.ic" NAME="UserRoleManagementHistoryUserControlViewHelperUnitTests.create_withValidData_shouldInvokeMethods Coverage Results" MODIFIED="1555000158186" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.ichop.core.areas.user.view.user_control.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/iChop_Core$UserFollowAllViewHelperUnitTests.ic" NAME="UserFollowAllViewHelperUnitTests Coverage Results" MODIFIED="1555002315456" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.ichop.core.areas.user.view.user_follow_all.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/iChop_Core$UserRepositoryTests_findUserByUsernameContains_withValidData_shouldReturnValidResult.ic" NAME="UserRepositoryTests.findUserByUsernameContains_withValidData_shouldReturnValidResult Coverage Results" MODIFIED="1554818758415" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.ichop.core.areas.user.repository.*</FILTER>
@@ -66,7 +88,7 @@
     <option name="myAddOrReplace" value="0" />
   </component>
   <component name="CoverageViewManager">
-    <option name="myElementSize" value="128" />
+    <option name="myElementSize" value="256" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -86,97 +108,72 @@
     <session id="-1831837478">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="7" />
+          <entry key="project.closed" value="8" />
           <entry key="project.open.time.0" value="1" />
-          <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.20" value="2" />
           <entry key="project.open.time.36" value="1" />
           <entry key="project.open.time.38" value="1" />
           <entry key="project.open.time.44" value="1" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="8" />
+          <entry key="project.opened" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="class" value="24" />
+          <entry key="MockMaker" value="2" />
+          <entry key="class" value="43" />
           <entry key="css" value="7" />
           <entry key="html" value="143" />
-          <entry key="java" value="746" />
+          <entry key="java" value="1062" />
           <entry key="js" value="34" />
+          <entry key="mockito-extensions" value="1" />
           <entry key="png" value="2" />
           <entry key="properties" value="3" />
           <entry key="rnc" value="2" />
-          <entry key="xml" value="6" />
+          <entry key="xml" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLASS" value="24" />
+          <entry key="CLASS" value="43" />
           <entry key="CSS" value="7" />
           <entry key="HTML" value="143" />
           <entry key="Image" value="2" />
-          <entry key="JAVA" value="746" />
+          <entry key="JAVA" value="1062" />
           <entry key="JavaScript" value="34" />
+          <entry key="PLAIN_TEXT" value="3" />
           <entry key="Properties" value="3" />
           <entry key="RNG Compact" value="2" />
-          <entry key="XML" value="6" />
+          <entry key="XML" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="dummy" value="307" />
+          <entry key="dummy" value="447" />
           <entry key="html" value="3684" />
-          <entry key="java" value="33104" />
+          <entry key="java" value="51816" />
           <entry key="js" value="1097" />
           <entry key="properties" value="29" />
-          <entry key="xml" value="22" />
+          <entry key="xml" value="30" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="3681" />
-          <entry key="JAVA" value="33103" />
+          <entry key="JAVA" value="51815" />
           <entry key="JavaScript" value="1097" />
-          <entry key="PLAIN_TEXT" value="307" />
+          <entry key="PLAIN_TEXT" value="447" />
           <entry key="Properties" value="29" />
           <entry key="Spring Data QL" value="1" />
           <entry key="ThymeleafExpressions" value="3" />
-          <entry key="XML" value="22" />
+          <entry key="XML" value="30" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/post/constants/PostExceptionConstants.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="48">
-              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/post/exceptions/PostNotFoundException.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/post/web/controllers/PostExceptionController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="64">
-              <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -194,16 +191,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Pageable</find>
-      <find>userServices</find>
-      <find>super</find>
-      <find>username</find>
-      <find>mockito</find>
-      <find>report</find>
-      <find>@ser</find>
-      <find>@serv</find>
-      <find>Footer co</find>
-      <find>profile</find>
       <find>delete</find>
       <find>Follower</find>
       <find>follow</find>
@@ -211,7 +198,6 @@
       <find>statusMess</find>
       <find>status</find>
       <find>minecr</find>
-      <find>player</find>
       <find>minecraft</find>
       <find>margin</find>
       <find>margi</find>
@@ -224,6 +210,17 @@
       <find>method</find>
       <find>like</find>
       <find>Thread</find>
+      <find>LocalDateTime</find>
+      <find>LocalDate</find>
+      <find>clock</find>
+      <find>Comment</find>
+      <find>Thjre</find>
+      <find>Report</find>
+      <find>Commentthread</find>
+      <find>comment</find>
+      <find>commentSe</find>
+      <find>player</find>
+      <find>powerm</find>
     </findStrings>
     <replaceStrings>
       <replace>ModelMapper</replace>
@@ -238,57 +235,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/validators/method/SkipOnNull.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/validators/method/SkipOnNullAroundProceeder.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/comment/web/fillers/Test.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/comment/web/fillers/BindingModelFillers.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/post/domain/models/binding/PostCreateBindingModel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/comment/web/controllers/CommentController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/post/web/fillers/BindingModelFillers.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/post/web/controllers/PostController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/domain/models/binding/ThreadReactionCreateBindingModel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/web/fillers/BindingModelFillers.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/constants/URLConstants.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/web/controllers/ReactionController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/web/fillers/ReactionModelFillers.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/domain/models/binding/CommentReportCreateBindingModel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/domain/models/binding/BaseReportCreateBindingModel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/domain/models/binding/PostReportCreateBindingModel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/domain/models/binding/ThreadReportCreateBindingModel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/web/fillers/ReportModelFillers.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/web/controllers/ThreadReportController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/web/controllers/PostReportController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/web/controllers/CommentReportController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/thread/web/fillers/ThreadModelFillers.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/thread/web/controllers/ThreadRestController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/thread/domain/models/binding/ThreadCreateBindingModel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/domain/models/binding/UserUpdateProfileInformationBindingModel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/domain/models/binding/UserResetPasswordBindingModel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/web/controllers/UserAuthenticationController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/domain/models/binding/UserForgottenPasswordBindingModel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/domain/models/binding/UserResetPasswordBindingModelByToken.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/domain/models/binding/UserResetPasswordBindingModelByUser.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/services/UserServices.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/services/UserServicesImp.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/web/controllers/UserProfileOptionsController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/web/fillers/UserModelFillers.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ichop/core/areas/reaction/services/CommentReactionServicesIntegrationTests.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ichop/core/areas/reaction/services/ThreadReactionServicesIntegrationTests.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ichop/core/areas/thread/services/ThreadServicesIntegrationTests.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ichop/core/areas/comment/repository/CommentRepositoryTests.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ichop/core/areas/comment/web/fillers/CommentBindingModelsFillersUnitTests.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ichop/core/areas/comment/web/fillers/CommentBindingModelsFillersIntegrationTests.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ichop/core/areas/player/helpers/player_profile/PlayerProfileViewCreatorUnitTests.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ichop/core/areas/player/helpers/player_profile/PlayerProfileViewHelperUnitTests.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ichop/core/areas/post/web/fillers/PostModelFillersIntegrationTests.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ichop/core/areas/post/web/fillers/PostBindingModelsFillersIntegrationTests.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/web/fillers/ReactionBindingModelsFillers.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ichop/core/areas/reaction/web/fillers/ReactionBindingModelsFillersIntegrationTests.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ichop/core/areas/report/web/fillers/ReportBindingModelsFillersIntegrationTests.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/helpers/CommentAllReportsViewHelper.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ichop/core/areas/report/helpers/CommentAllReportsViewHelperUnitTests.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ichop/core/areas/report/helpers/CommentAllReportsViewHelperIntegrationTests.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ichop/core/areas/thread/fillers/ThreadBindingModelsFillersIntegrationTests.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/thread/helpers/view/thread_read/CommentCreatorThreadReadViewHelper.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ichop/core/areas/thread/helper/thread_read/CommentCreatorThreadReadViewHelperUnitTests.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/thread/helpers/view/thread_read/CommentThreadReadViewHelper.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ichop/core/areas/thread/helper/thread_read/CommentThreadReadViewHelperUnitTests.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ichop/core/areas/thread/helper/thread_read/ThreadCreatorThreadReadViewHelperUnitTests.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/thread/helpers/view/thread_read/ThreadReadViewHelper.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/ichop/core/areas/user/services/UserServicesUnitTests.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/web/controllers/UserController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/web/interceptors/PrincipalIdBugInterceptor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/constants/UserExceptionMessages.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/web/controllers/UserExceptionsExceptionController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/token/constants/TokenExceptionMessages.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/token/web/controllers/TokenExceptionController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/thread/constants/ThreadExceptionMessages.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/thread/web/controllers/ThreadExceptionController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/role/constants/RoleExceptionMessages.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/role/web/controllers/RoleExceptionsExceptionController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/constants/ReportExceptionMessages.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/web/controllers/ReportExceptionController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/constants/ReactionExceptionsMessages.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/web/controllers/ReactionExceptionController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/post/constants/PostExceptionConstants.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/post/web/controllers/PostExceptionController.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ichop/core/areas/report/services/CommentReportServicesUnitTests.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ichop/core/areas/report/services/PostReportServicesUnitTests.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/services/ThreadReportServicesImp.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ichop/core/areas/report/services/ThreadReportServicesUnitTests.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ichop/core/areas/report/services/CommentReportServicesIntegrationTests.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ichop/core/areas/report/services/PostReportServicesIntegrationTests.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ichop/core/areas/report/services/ThreadReportServicesIntegrationTests.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ichop/core/areas/user/web/fillers/UserBindingModelsFillersIntegrationTests.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ichop/core/areas/user/view/UserAllViewHelperUnitTests.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ichop/core/areas/user/view/UserControlHomeViewHelperUnitTests.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ichop/core/areas/user/view/user_control/UserControlHomeViewHelperUnitTests.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/helpers/view/user_control/UserRoleManagementHistoryUserControlViewHelper.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ichop/core/areas/user/view/user_control/UserRoleManagementHistoryUserControlViewHelperUnitTests.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ichop/core/areas/user/view/user_control/UserRoleManagementUserControlViewHelperUnitTests.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/helpers/view/user_follow_all/UserFollowAllViewHelper.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ichop/core/areas/user/view/user_follow_all/UserFollowAllViewHelperUnitTests.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ichop/core/areas/user/view/user_options/UserProfileOptionsInformationViewHelperUnitTests.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/helpers/view/user_profile/PostsUserProfileViewHelper.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ichop/core/areas/user/view/user_profile/PostsUserProfileViewHelperUnitTests.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ichop/core/areas/user/view/user_profile/UserInformationProfileViewHelperUnitTests.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/helpers/view/user_profile/UserProfileViewHelper.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ichop/core/areas/comment/services/CommentServicesIntegrationTests.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ichop/core/areas/thread/helper/thread_read/ThreadReadViewHelperUnitTests.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ichop/core/areas/user/view/user_profile/UserProfileViewHelperUnitTests.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ichop/core/areas/role/services/UserRoleServicesUnitTests.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ichop/core/EntityFactory.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ichop/core/areas/token/services/PasswordResetTokenServicesIntegrationTests.java" />
       </list>
     </option>
   </component>
@@ -332,7 +329,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -400,89 +396,60 @@
               <item name="iChop-Core" type="b2602c69:ProjectViewProjectNode" />
               <item name="iChop - Core" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iChop-Core" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iChop - Core" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iChop-Core" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iChop - Core" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iChop-Core" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iChop - Core" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="ichop" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iChop-Core" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iChop - Core" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="ichop" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iChop-Core" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iChop - Core" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="ichop" type="462c0819:PsiDirectoryNode" />
               <item name="core" type="462c0819:PsiDirectoryNode" />
               <item name="areas" type="462c0819:PsiDirectoryNode" />
-              <item name="post" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="iChop-Core" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iChop - Core" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="ichop" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
-              <item name="areas" type="462c0819:PsiDirectoryNode" />
-              <item name="post" type="462c0819:PsiDirectoryNode" />
-              <item name="exceptions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="iChop-Core" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iChop - Core" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="ichop" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
-              <item name="areas" type="462c0819:PsiDirectoryNode" />
-              <item name="post" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="iChop-Core" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iChop - Core" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="ichop" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
-              <item name="areas" type="462c0819:PsiDirectoryNode" />
-              <item name="post" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="iChop-Core" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iChop - Core" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="ichop" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
-              <item name="areas" type="462c0819:PsiDirectoryNode" />
-              <item name="post" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="fillers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="iChop-Core" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iChop - Core" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="iChop-Core" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iChop - Core" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -495,7 +462,7 @@
     <property name="SearchEverywhereHistoryKey" value="PostReport&#9;PSI&#9;JAVA://com.ichop.core.areas.post.domain.entities.PostReport&#10;ModelAttribute&#9;PSI&#9;JAVA://org.springframework.web.method.annotation.ModelAttributeMethodProcessor&#10;Registry..&#9;ACTION&#9;ShowRegistry" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554971997780" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555009038586" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../iChop - Web Storage" />
     <property name="list.type.of.created.stylesheet" value="PLAIN_TEXT" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -506,11 +473,15 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="project.propGUI" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="ichop.web.controllers.thread" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\templates\user\profile\panes" />
+      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\templates\user\profile" />
+      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\static\res\css\lib" />
+      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\static\res\js\lib" />
+      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\templates\img" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.ichop.core.areas.post.services" />
@@ -524,18 +495,14 @@
       <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\static\res\js\user\profile" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.ichop.core.areas.user.domain.models.binding" />
-      <recent name="com.ichop.core.areas.user.web.fillers" />
-      <recent name="com.ichop.core.areas.thread.web.fillers" />
-      <recent name="com.ichop.core.areas.report.web.fillers" />
-      <recent name="com.ichop.core.areas.reaction.web.fillers" />
+      <recent name="com.ichop.core.areas.user.view.user_profile" />
+      <recent name="com.ichop.core.areas.user.view.user_options" />
+      <recent name="com.ichop.core.areas.user.view.user_control" />
+      <recent name="com.ichop.core.areas.thread.helper.thread_read" />
+      <recent name="com.ichop.core.areas.thread.fillers" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\templates\user\profile\panes" />
-      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\templates\user\profile" />
-      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\static\res\css\lib" />
-      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\static\res\js\lib" />
-      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\templates\img" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="ichop.web.controllers.thread" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -550,48 +517,32 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.Application">
-    <configuration name="UserRepositoryTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.com.ichop.core.areas in core">
+    <configuration name="PasswordResetTokenServicesIntegrationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="core" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.ichop.core.areas.user.repository.*" />
+          <option name="PATTERN" value="com.ichop.core.areas.token.services.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.ichop.core.areas.user.repository" />
-      <option name="MAIN_CLASS_NAME" value="com.ichop.core.areas.user.repository.UserRepositoryTests" />
+      <option name="PACKAGE_NAME" value="com.ichop.core.areas.token.services" />
+      <option name="MAIN_CLASS_NAME" value="com.ichop.core.areas.token.services.PasswordResetTokenServicesIntegrationTests" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserRepositoryTests.findUserByUsernameContains_withValidData_shouldReturnValidResult" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PasswordResetTokenServicesIntegrationTests.deleteTokenById_withExistingToken_shouldDeleteIt" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="core" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.ichop.core.areas.user.repository.*" />
+          <option name="PATTERN" value="com.ichop.core.areas.token.services.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.ichop.core.areas.user.repository" />
-      <option name="MAIN_CLASS_NAME" value="com.ichop.core.areas.user.repository.UserRepositoryTests" />
-      <option name="METHOD_NAME" value="findUserByUsernameContains_withValidData_shouldReturnValidResult" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserRepositoryTests.findUsersWhomHasRole_withOneUserHavingMODERATORRole_shouldReturnOne" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="core" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.ichop.core.areas.user.repository.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.ichop.core.areas.user.repository" />
-      <option name="MAIN_CLASS_NAME" value="com.ichop.core.areas.user.repository.UserRepositoryTests" />
-      <option name="METHOD_NAME" value="findUsersWhomHasRole_withOneUserHavingMODERATORRole_shouldReturnOne" />
+      <option name="PACKAGE_NAME" value="com.ichop.core.areas.token.services" />
+      <option name="MAIN_CLASS_NAME" value="com.ichop.core.areas.token.services.PasswordResetTokenServicesIntegrationTests" />
+      <option name="METHOD_NAME" value="deleteTokenById_withExistingToken_shouldDeleteIt" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -620,7 +571,30 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.ichop.core.areas" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
+      <option name="PARAMETERS" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="com.ichop.core.areas.report.* and 8 more" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <option name="TEST_OBJECT" value="pattern" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="wholeProject" />
+      </option>
+      <patterns>
+        <pattern testClass="com.ichop.core.areas.report.*" />
+        <pattern testClass="com.ichop.core.areas.reaction.*" />
+        <pattern testClass="com.ichop.core.areas.post.*" />
+        <pattern testClass="com.ichop.core.areas.player.*" />
+        <pattern testClass="com.ichop.core.areas.log.*" />
+        <pattern testClass="com.ichop.core.areas.comment.*" />
+        <pattern testClass="com.ichop.core.areas.thread.*" />
+        <pattern testClass="com.ichop.core.areas.token.*" />
+        <pattern testClass="com.ichop.core.areas.user.*" />
+      </patterns>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -636,19 +610,19 @@
     </configuration>
     <list>
       <item itemvalue="Spring Boot.Application" />
-      <item itemvalue="JUnit.UserRepositoryTests.findUserByUsernameContains_withValidData_shouldReturnValidResult" />
-      <item itemvalue="JUnit.UserRepositoryTests.findUsersWhomHasRole_withOneUserHavingMODERATORRole_shouldReturnOne" />
-      <item itemvalue="JUnit.UserRepositoryTests" />
-      <item itemvalue="JUnit.com.ichop.core.areas in core" />
       <item itemvalue="JUnit.com.ichop.core in core" />
+      <item itemvalue="JUnit.com.ichop.core.areas in core" />
+      <item itemvalue="JUnit.com.ichop.core.areas.report.* and 8 more" />
+      <item itemvalue="JUnit.PasswordResetTokenServicesIntegrationTests.deleteTokenById_withExistingToken_shouldDeleteIt" />
+      <item itemvalue="JUnit.PasswordResetTokenServicesIntegrationTests" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.com.ichop.core in core" />
         <item itemvalue="JUnit.com.ichop.core.areas in core" />
-        <item itemvalue="JUnit.UserRepositoryTests" />
-        <item itemvalue="JUnit.UserRepositoryTests.findUsersWhomHasRole_withOneUserHavingMODERATORRole_shouldReturnOne" />
-        <item itemvalue="JUnit.UserRepositoryTests.findUserByUsernameContains_withValidData_shouldReturnValidResult" />
+        <item itemvalue="JUnit.PasswordResetTokenServicesIntegrationTests" />
+        <item itemvalue="JUnit.com.ichop.core.areas.report.* and 8 more" />
+        <item itemvalue="JUnit.PasswordResetTokenServicesIntegrationTests.deleteTokenById_withExistingToken_shouldDeleteIt" />
+        <item itemvalue="JUnit.com.ichop.core in core" />
       </list>
     </recent_temporary>
   </component>
@@ -777,44 +751,45 @@
       <workItem from="1554821354333" duration="138000" />
       <workItem from="1554821584375" duration="14939000" />
       <workItem from="1554888128961" duration="28182000" />
-      <workItem from="1554968438277" duration="1783000" />
+      <workItem from="1554968438277" duration="34511000" />
+      <workItem from="1555007748464" duration="1192000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="UserRepositoryTests_findUserByUsernameContains_withValidData_shouldReturnValidResult - 2019.04.09 at 17h 06m 30s.xml">
-      <configuration name="UserRepositoryTests.findUserByUsernameContains_withValidData_shouldReturnValidResult" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UserRepositoryTests_findUserByUsernameContains_withValidData_shouldReturnValidResult - 2019.04.09 at 17h 07m 50s.xml">
-      <configuration name="UserRepositoryTests.findUserByUsernameContains_withValidData_shouldReturnValidResult" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UserRepositoryTests_findUserByUsernameContains_withValidData_shouldReturnValidResult - 2019.04.09 at 17h 08m 30s.xml">
-      <configuration name="UserRepositoryTests.findUserByUsernameContains_withValidData_shouldReturnValidResult" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UserRepositoryTests_findUserByUsernameContains_withValidData_shouldReturnValidResult - 2019.04.09 at 17h 08m 51s.xml">
-      <configuration name="UserRepositoryTests.findUserByUsernameContains_withValidData_shouldReturnValidResult" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UserRepositoryTests_findUserByUsernameContains_withValidData_shouldReturnValidResult - 2019.04.09 at 17h 10m 08s.xml">
-      <configuration name="UserRepositoryTests.findUserByUsernameContains_withValidData_shouldReturnValidResult" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UserRepositoryTests_findUserByUsernameContains_withValidData_shouldReturnValidResult - 2019.04.09 at 17h 10m 11s.xml">
-      <configuration name="UserRepositoryTests.findUserByUsernameContains_withValidData_shouldReturnValidResult" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UserRepositoryTests_findUsersWhomHasRole_withOneUserHavingMODERATORRole_shouldReturnOne - 2019.04.09 at 17h 14m 34s.xml">
-      <configuration name="UserRepositoryTests.findUsersWhomHasRole_withOneUserHavingMODERATORRole_shouldReturnOne" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UserRepositoryTests - 2019.04.09 at 17h 15m 46s.xml">
-      <configuration name="UserRepositoryTests" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="com_ichop_core_areas_in_core - 2019.04.09 at 17h 16m 05s.xml">
+    <history-entry file="com_ichop_core_areas_in_core - 2019.04.11 at 21h 37m 55s.xml">
       <configuration name="com.ichop.core.areas in core" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="com_ichop_core_in_core - 2019.04.10 at 14h 10m 41s.xml">
-      <configuration name="com.ichop.core in core" configurationId="JUnit" />
+    <history-entry file="com_ichop_core_areas_in_core - 2019.04.11 at 21h 39m 48s.xml">
+      <configuration name="com.ichop.core.areas in core" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="com_ichop_core_areas_in_core - 2019.04.11 at 21h 40m 12s.xml">
+      <configuration name="com.ichop.core.areas in core" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="com_ichop_core_areas_in_core - 2019.04.11 at 21h 40m 42s.xml">
+      <configuration name="com.ichop.core.areas in core" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="com_ichop_core_areas_report___and_8_more - 2019.04.11 at 21h 41m 50s.xml">
+      <configuration name="com.ichop.core.areas.report.* and 8 more" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PasswordResetTokenServicesIntegrationTests_deleteTokenById_withExistingToken_shouldDeleteIt - 2019.04.11 at 21h 48m 14s.xml">
+      <configuration name="PasswordResetTokenServicesIntegrationTests.deleteTokenById_withExistingToken_shouldDeleteIt" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PasswordResetTokenServicesIntegrationTests_deleteTokenById_withExistingToken_shouldDeleteIt - 2019.04.11 at 21h 49m 47s.xml">
+      <configuration name="PasswordResetTokenServicesIntegrationTests.deleteTokenById_withExistingToken_shouldDeleteIt" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="com_ichop_core_areas_report___and_8_more - 2019.04.11 at 21h 51m 55s.xml">
+      <configuration name="com.ichop.core.areas.report.* and 8 more" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PasswordResetTokenServicesIntegrationTests - 2019.04.11 at 21h 55m 10s.xml">
+      <configuration name="PasswordResetTokenServicesIntegrationTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="com_ichop_core_areas_in_core - 2019.04.11 at 21h 55m 37s.xml">
+      <configuration name="com.ichop.core.areas in core" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="757497000" />
+    <option name="totallyTimeSpent" value="791417000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -827,9 +802,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.499002" visible="true" weight="0.26918977" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.499002" visible="true" weight="0.271855" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -878,192 +852,187 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/thread/web/controllers/ThreadController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/thread/domain/models/binding/ThreadCreateBindingModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="23" column="12" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/thread/web/controllers/ThreadRestController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="30" column="73" lean-forward="true" selection-start-line="30" selection-start-column="73" selection-end-line="30" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/thread/services/ThreadServicesImp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="514">
-          <caret line="65" selection-start-line="65" selection-end-line="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/domain/models/binding/UserUpdateProfileInformationBindingModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="24" column="12" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/domain/models/binding/UserRegisterBindingModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/domain/models/binding/UserResetPasswordBindingModelByUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/domain/models/binding/UserResetPasswordBindingModelByToken.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        <state relative-caret-position="320">
+          <caret line="27" column="19" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/web/fillers/UserBindingModelsFillers.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ichop/core/areas/user/web/fillers/UserBindingModelsFillersIntegrationTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="23" column="53" selection-start-line="23" selection-start-column="53" selection-end-line="23" selection-end-column="53" />
-          <folding>
-            <element signature="e#1190#1191#0" expanded="true" />
-            <element signature="e#1238#1239#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/ichop/core/areas/user/services/UserServicesUnitTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1378">
-          <caret line="287" column="7" lean-forward="true" selection-start-line="287" selection-start-column="7" selection-end-line="287" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/validators/method/SkipOnNullAroundProceeder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        <state relative-caret-position="676">
+          <caret line="95" column="58" selection-start-line="95" selection-start-column="58" selection-end-line="95" selection-end-column="58" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/domain/models/binding/UserForgottenPasswordBindingModel.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/web/fillers/UserBindingModelsFillers.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        <state relative-caret-position="256">
+          <caret line="30" column="23" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/utils/CustomTemplateEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="41" column="24" lean-forward="true" selection-start-line="41" selection-start-column="24" selection-end-line="41" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/helpers/view/user_all/UsersAllViewHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/modelmapper/modelmapper/2.3.2/modelmapper-2.3.2.jar!/org/modelmapper/ModelMapper.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="130" column="17" selection-start-line="130" selection-start-column="17" selection-end-line="130" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/helpers/view/user_control/UserControlHomeViewHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/domain/models/view/user_control/UserRoleManagementHistoryUserControlViewModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/log/domain/models/service/UserLogServiceModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ichop/core/areas/thread/helper/thread_read/CommentCreatorThreadReadViewHelperUnitTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="617">
+          <caret line="73" column="66" lean-forward="true" selection-start-line="73" selection-start-column="66" selection-end-line="73" selection-end-column="66" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ichop/core/areas/thread/helper/thread_read/CommentThreadReadViewHelperUnitTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ichop/core/areas/thread/helper/thread_read/ThreadCreatorThreadReadViewHelperUnitTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="601">
+          <caret line="77" lean-forward="true" selection-start-line="77" selection-end-line="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/helpers/view/user_control/UserRoleManagementHistoryUserControlViewHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ichop/core/areas/user/view/user_control/UserRoleManagementHistoryUserControlViewHelperUnitTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="640">
+          <caret line="61" column="54" selection-start-line="61" selection-start-column="54" selection-end-line="61" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/validators/constraint/Base64SizeValidator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/role/services/UserRoleServices.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="24" column="25" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/services/UserServices.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="43" column="49" selection-start-line="43" selection-start-column="49" selection-end-line="43" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/web/controllers/UserFollowController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/constants/URLConstants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="66" column="31" selection-start-line="66" selection-start-column="31" selection-end-line="66" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/web/controllers/UserProfileOptionsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16">
-          <caret line="63" column="41" lean-forward="true" selection-start-line="63" selection-start-column="41" selection-end-line="63" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/web/controllers/UserControlController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="41" column="14" lean-forward="true" selection-start-line="41" selection-start-column="14" selection-end-line="41" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/web/controllers/UserAuthorizatonController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/web/controllers/UserAuthenticationController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="580">
-          <caret line="71" column="112" selection-start-line="71" selection-start-column="112" selection-end-line="71" selection-end-column="112" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/web/controllers/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="473">
-          <caret line="46" column="8" selection-start-line="46" selection-start-column="8" selection-end-line="46" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/5.1.1.RELEASE/spring-security-core-5.1.1.RELEASE-sources.jar!/org/springframework/security/authentication/UsernamePasswordAuthenticationToken.java">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="301">
-          <caret line="53" column="11" selection-start-line="53" selection-start-column="11" selection-end-line="53" selection-end-column="11" />
+          <caret line="87" column="21" selection-start-line="87" selection-start-column="21" selection-end-line="87" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/web/interceptors/PrincipalIdBugInterceptor.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/mockito/mockito-core/2.23.0/mockito-core-2.23.0.jar!/org/mockito/Mockito.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="18" column="4" lean-forward="true" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
+        <state relative-caret-position="190">
+          <caret line="153" column="35" selection-start-line="153" selection-start-column="35" selection-end-line="153" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/web/controllers/UserApiController.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ichop/core/areas/user/view/user_control/UserRoleManagementUserControlViewHelperUnitTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="946">
+          <caret line="81" column="26" lean-forward="true" selection-start-line="81" selection-start-column="26" selection-end-line="81" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/helpers/view/user_control/UserRoleManagementUserControlViewHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="496">
+          <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ichop/core/areas/user/view/user_control/UserControlHomeViewHelperUnitTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="17" column="28" lean-forward="true" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/mockito/mockito-core/2.23.0/mockito-core-2.23.0.jar!/org/mockito/internal/invocation/RealMethod.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="336">
-          <caret line="32" column="9" lean-forward="true" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/services/UserFollowServices.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/role/domain/models/service/UserRoleServiceModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        <state relative-caret-position="128">
+          <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/repositories/UserRepository.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ichop/core/areas/user/view/user_follow_all/UserFollowAllViewHelperUnitTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
+        <state relative-caret-position="786">
+          <caret line="117" lean-forward="true" selection-start-line="117" selection-end-line="117" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/repositories/UserInformationRepository.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/helpers/view/user_follow_all/UserFollowAllViewHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+        <state relative-caret-position="690">
+          <caret line="65" selection-start-line="65" selection-end-line="65" />
         </state>
       </provider>
     </entry>
@@ -1074,6 +1043,120 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ichop/core/areas/user/view/user_options/UserProfileOptionsInformationViewHelperUnitTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="22" lean-forward="true" selection-start-column="22" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/helpers/view/user_options/UserProfileOptionsInformationViewHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="26" column="79" lean-forward="true" selection-start-line="26" selection-start-column="79" selection-end-line="26" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/helpers/view/user_profile/PostsUserProfileViewHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="32" column="76" selection-start-line="32" selection-start-column="76" selection-end-line="32" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ichop/core/areas/user/view/user_profile/PostsUserProfileViewHelperUnitTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="658">
+          <caret line="48" column="52" selection-start-line="48" selection-start-column="52" selection-end-line="48" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ichop/core/areas/user/view/user_profile/UserInformationProfileViewHelperUnitTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="592">
+          <caret line="53" lean-forward="true" selection-start-line="53" selection-end-line="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/helpers/view/user_profile/UserInformationProfileViewHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/services/ThreadReactionServices.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="37" column="8" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.base/java/util/List.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="137" column="17" selection-start-line="137" selection-start-column="17" selection-end-line="137" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/domain/models/view/user_profile/UserInformationProfileViewModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="63" selection-start-column="63" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ichop/core/areas/thread/helper/thread_read/ThreadReadViewHelperUnitTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="466">
+          <caret line="62" selection-start-line="62" selection-end-line="62" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ichop/core/areas/comment/services/CommentServicesIntegrationTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="96" column="32" lean-forward="true" selection-start-line="96" selection-start-column="32" selection-end-line="96" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/helpers/view/user_profile/UserProfileViewHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="64" column="12" selection-start-line="64" selection-start-column="12" selection-end-line="64" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ichop/core/areas/user/view/user_profile/UserProfileViewHelperUnitTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="386">
+          <caret line="143" lean-forward="true" selection-start-line="143" selection-end-line="143" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/services/UserInformationServicesImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-352">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/services/UserServicesImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-976">
+          <caret line="42" column="13" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/services/UserWebStorageJmsServicesImp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
@@ -1081,189 +1164,67 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/services/UserServicesImp.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/role/services/UserRoleServicesImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="512">
+          <caret line="43" column="32" selection-start-line="43" selection-start-column="32" selection-end-line="43" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ichop/core/areas/role/services/UserRoleServicesUnitTests.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="16">
-          <caret line="160" column="16" selection-start-line="160" selection-start-column="16" selection-end-line="160" selection-end-column="16" />
+          <caret line="60" column="8" selection-start-line="60" selection-start-column="8" selection-end-line="60" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/web/controllers/GlobalExceptionController.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="22" column="21" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/services/BaseReactionServices.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/thread/services/ThreadServicesImp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/exceptions/UserCannotBeNullException.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ichop/core/areas/token/services/PasswordResetTokenServicesUnitTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        <state relative-caret-position="738">
+          <caret line="105" column="5" lean-forward="true" selection-start-line="105" selection-start-column="5" selection-end-line="105" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/web/controllers/UserExceptionController.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ichop/core/EntityFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="704">
-          <caret line="50" column="47" selection-start-line="50" selection-start-column="47" selection-end-line="50" selection-end-column="47" />
-          <folding>
-            <element signature="e#534#535#0" expanded="true" />
-            <element signature="e#621#622#0" expanded="true" />
-            <element signature="e#888#889#0" expanded="true" />
-            <element signature="e#960#961#0" expanded="true" />
-            <element signature="e#1072#1073#0" expanded="true" />
-            <element signature="e#1150#1151#0" expanded="true" />
-            <element signature="e#1247#1248#0" expanded="true" />
-            <element signature="e#1331#1332#0" expanded="true" />
-            <element signature="e#1432#1433#0" expanded="true" />
-            <element signature="e#1500#1501#0" expanded="true" />
-            <element signature="e#1610#1611#0" expanded="true" />
-            <element signature="e#1683#1684#0" expanded="true" />
-            <element signature="e#1789#1790#0" expanded="true" />
-            <element signature="e#1863#1864#0" expanded="true" />
-            <element signature="e#1963#1964#0" expanded="true" />
-            <element signature="e#2033#2034#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="736">
+          <caret line="139" column="74" selection-start-line="139" selection-start-column="74" selection-end-line="139" selection-end-column="74" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/constants/UserExceptionMessages.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/token/services/PasswordResetTokenServicesImp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="13" column="1" lean-forward="true" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+        <state relative-caret-position="336">
+          <caret line="46" column="5" lean-forward="true" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/token/web/controllers/TokenExceptionController.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ichop/core/areas/token/services/PasswordResetTokenServicesIntegrationTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/token/constants/TokenExceptionMessages.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="5" column="66" selection-start-line="5" selection-start-column="66" selection-end-line="5" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/thread/web/fillers/ThreadBindingModelsFillers.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="13" column="8" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/thread/constants/ThreadExceptionMessages.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="4" column="71" selection-start-line="4" selection-start-column="71" selection-end-line="4" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/thread/web/controllers/ThreadExceptionController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="15" column="46" lean-forward="true" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
-          <folding>
-            <element signature="e#546#547#0" expanded="true" />
-            <element signature="e#593#594#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/role/exceptions/RoleNotFoundException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/role/constants/RoleExceptionMessages.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="3" column="4" lean-forward="true" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/services/CommentReportServicesImp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="608">
-          <caret line="53" column="22" selection-start-line="53" selection-start-column="22" selection-end-line="53" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/role/web/controllers/RoleExceptionController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/web/controllers/ReportExceptionController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="15" column="46" lean-forward="true" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/exceptions/ReportNotFoundException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="8" column="21" lean-forward="true" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/constants/ReportExceptionMessages.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="4" column="70" selection-start-line="4" selection-start-column="70" selection-end-line="4" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/constants/ReactionExceptionsMessages.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/web/controllers/ReactionExceptionController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="22" column="50" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/post/web/controllers/PostController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/post/constants/PostExceptionConstants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/post/exceptions/PostNotFoundException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/post/web/controllers/PostExceptionController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+        <state relative-caret-position="-14">
+          <caret line="79" column="40" selection-start-line="79" selection-start-column="40" selection-end-line="79" selection-end-column="41" />
+          <caret line="78" column="40" selection-start-line="78" selection-start-column="40" selection-end-line="78" selection-end-column="41" />
         </state>
       </provider>
     </entry>

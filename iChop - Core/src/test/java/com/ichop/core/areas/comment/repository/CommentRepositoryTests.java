@@ -35,15 +35,15 @@ public class CommentRepositoryTests {
 
 
     @Test
-    public void getTotalCommentsOfUser_withUserNotHavingComments_shouldReturn0(){
+    public void getTotalCommentsOfUser_withUserNotHavingComments_shouldReturn0() {
         User user = this.userRepository.save(this.entityFactory.createUser());
         int result = this.commentRepository.getTotalCommentsOfUser(user);
 
-        assertEquals(result,0);
+        assertEquals(0, result);
     }
 
     @Test
-    public void getTotalCommentsOfUser_withUserHavingOneComment_shouldReturn1(){
+    public void getTotalCommentsOfUser_withUserHavingOneComment_shouldReturn1() {
         User user = this.userRepository.save(this.entityFactory.createUser());
         Comment comment = this.entityFactory.createComment();
         comment.setCreator(user);
@@ -51,7 +51,7 @@ public class CommentRepositoryTests {
 
         int result = this.commentRepository.getTotalCommentsOfUser(user);
 
-        assertEquals(result,1);
+        assertEquals(1,result);
     }
 
 }

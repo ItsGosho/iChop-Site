@@ -30,7 +30,7 @@ public class PostsUserProfileViewHelper extends BaseViewCreator {
     public List<PostsUserProfileViewModel> create(String username) {
         UserServiceModel user = this.userServices.findUserByUsername(username);
         List<PostServiceModel> posts = this.postServices.findByUser(user);
-        List<PostsUserProfileViewModel> result = posts.stream().map(x -> super.modelMapper.map(x, PostsUserProfileViewModel.class)).collect(Collectors.toList());;
+        List<PostsUserProfileViewModel> result = posts.stream().map(x -> this.modelMapper.map(x, PostsUserProfileViewModel.class)).collect(Collectors.toList());;
 
         return result.stream().sorted((x1, x2) -> x2.getCreatedOn().compareTo(x1.getCreatedOn())).collect(Collectors.toList());
     }

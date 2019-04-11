@@ -25,16 +25,16 @@ public class CommentThreadReadViewHelper extends BaseViewCreator {
     }
 
 
-    public List<CommentThreadReadViewModel> create(String threadId){
+    public List<CommentThreadReadViewModel> create(String threadId) {
         List<CommentThreadReadViewModel> result = new LinkedList<>();
         ThreadServiceModel thread = this.threadServices.findById(threadId);
 
         thread.getComments().forEach(x -> {
-            CommentThreadReadViewModel commentThread = super.modelMapper.map(x,CommentThreadReadViewModel.class);
+            CommentThreadReadViewModel commentThread = super.modelMapper.map(x, CommentThreadReadViewModel.class);
 
             CommentCreatorThreadReadViewModel commentCreator = this.commentCreatorThreadReadViewHelper.create(x.getId());
-            long totalLikes = x.getReactions().stream().filter(z-> z.getReactionType().equals(ReactionType.LIKE)).count();
-            long totalDislikes = x.getReactions().stream().filter(z-> z.getReactionType().equals(ReactionType.DISLIKE)).count();
+            long totalLikes = x.getReactions().stream().filter(z -> z.getReactionType().equals(ReactionType.LIKE)).count();
+            long totalDislikes = x.getReactions().stream().filter(z -> z.getReactionType().equals(ReactionType.DISLIKE)).count();
 
             commentThread.setTotalLikes(totalLikes);
             commentThread.setTotalDislikes(totalDislikes);

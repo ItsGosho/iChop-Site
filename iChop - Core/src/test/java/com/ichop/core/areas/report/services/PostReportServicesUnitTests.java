@@ -4,6 +4,7 @@ import com.ichop.core.areas.post.domain.models.service.PostServiceModel;
 import com.ichop.core.areas.post.exceptions.PostNotFoundException;
 import com.ichop.core.areas.report.domain.models.binding.PostReportCreateBindingModel;
 import com.ichop.core.areas.report.domain.models.service.PostReportServiceModel;
+import com.ichop.core.areas.report.exceptions.ReportNotFoundException;
 import com.ichop.core.areas.report.repositories.PostReportRepository;
 import com.ichop.core.areas.user.domain.models.service.UserServiceModel;
 import com.ichop.core.areas.user.exceptions.UserNotFoundException;
@@ -69,4 +70,34 @@ public class PostReportServicesUnitTests {
         verify(postReport,times(1)).setReportDate(any());
         verify(this.postReportRepository,times(1)).save(any());
     }
+
+    @Test(expected = ReportNotFoundException.class)
+    public void deleteByModel_withNullReportPassed_shouldThrowException() {
+        PostReportServiceModel postReportServiceModel = mock(PostReportServiceModel.class);
+
+        this.postReportServices.deleteByModel(null);
+    }
+
+    @Test(expected = ReportNotFoundException.class)
+    public void deleteByModel_withNotExistingCommentReport_shouldThrowException() {
+        PostReportServiceModel postReportServiceModel = mock(PostReportServiceModel.class);
+
+        when(postReportServiceModel.getId()).thenReturn("id");
+        when(this.postReportServices.existsById(postReportServiceModel.getId())).thenReturn(false);
+
+        this.postReportServices.deleteByModel(postReportServiceModel);
+    }
+
+    @Test
+    public void deleteByModel_withValidData_shouldInvokeMethods() {
+        PostReportServiceModel postReportServiceModel = mock(PostReportServiceModel.class);
+
+        when(postReportServiceModel.getId()).thenReturn("id");
+        when(this.postReportServices.existsById(postReportServiceModel.getId())).thenReturn(true);
+
+        this.postReportServices.deleteByModel(postReportServiceModel);
+
+        verify(this.postReportRepository, times(1)).deleteById(postReportServiceModel.getId());
+    }
+
 }

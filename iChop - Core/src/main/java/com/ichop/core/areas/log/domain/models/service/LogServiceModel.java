@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-public class LogServiceModel extends BaseServiceModel {
+public abstract class LogServiceModel extends BaseServiceModel {
 
     private String id;
     private LocalDateTime happenedOn;

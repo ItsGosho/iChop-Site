@@ -11,4 +11,5 @@ public abstract class BaseReportServices<Entity extends BaseReport,Repository ex
     public BaseReportServices(ModelMapper modelMapper, Repository repository) {
         super(modelMapper, repository);
     }
+
 }

@@ -69,7 +69,7 @@ public class UserProfileViewHelper extends BaseViewCreator {
         List<UserProfileViewModel> followings = this.userFollowServices.getFollowings(user).stream().map(x -> super.modelMapper.map(x, UserProfileViewModel.class)).collect(Collectors.toList());
         UserInformationProfileViewModel userInformationProfileViewModel = this.userInformationProfileViewHelper.create(user);
 
-        UserProfileViewModel result = super.modelMapper.map(user, UserProfileViewModel.class);
+        UserProfileViewModel result = this.modelMapper.map(user, UserProfileViewModel.class);
         result.setRole(role);
         result.setTotalMessages(totalMessages);
         result.setMinecraftAccountName(minecraftAccountName);

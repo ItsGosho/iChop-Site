@@ -16,12 +16,16 @@ import org.junit.runner.RunWith;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.LocalDateTime;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringRunner.class)
@@ -70,6 +74,22 @@ public class CommentReportServicesIntegrationTests {
         assertEquals(result.getReason(),"reason");
         assertEquals(result.getUser().getUsername(),user.getUsername());
         assertTrue(result.getReportDate().isBefore(LocalDateTime.now()));
+    }
+
+    @Test
+    public void findById_withNotExistingCommentReport_shouldReturnNull(){
+        CommentReportServiceModel commentReportServiceModel = this.commentReportServices.findById("id");
+
+        assertNull(commentReportServiceModel);
+    }
+
+    @Test
+    public void findAll_withNotPresentReports_shouldReturn0(){
+        Pageable pageable = PageRequest.of(10,10);
+
+        Page<CommentReportServiceModel> result = this.commentReportServices.findAll(pageable);
+
+        assertEquals(0,result.getNumberOfElements());
     }
 
 }

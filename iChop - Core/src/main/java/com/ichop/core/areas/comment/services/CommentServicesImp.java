@@ -3,8 +3,8 @@ package com.ichop.core.areas.comment.services;
 import com.ichop.core.areas.comment.domain.entities.Comment;
 import com.ichop.core.areas.comment.domain.models.binding.CommentCreateBindingModel;
 import com.ichop.core.areas.comment.domain.models.service.CommentServiceModel;
-import com.ichop.core.areas.comment.repositories.CommentRepository;
 import com.ichop.core.areas.comment.exceptions.CommentNotFoundException;
+import com.ichop.core.areas.comment.repositories.CommentRepository;
 import com.ichop.core.areas.thread.exceptions.ThreadNotFoundException;
 import com.ichop.core.areas.user.domain.entities.User;
 import com.ichop.core.areas.user.domain.models.service.UserServiceModel;
@@ -37,6 +37,7 @@ public class CommentServicesImp extends BaseService<Comment, CommentRepository> 
             throw new ThreadNotFoundException();
         }
 
+        System.out.println(LocalDateTime.now());
         CommentServiceModel comment = this.modelMapper.map(commentCreateBindingModel, CommentServiceModel.class);
         comment.setCreatedOn(LocalDateTime.now());
         comment.setReactions(new LinkedList<>());

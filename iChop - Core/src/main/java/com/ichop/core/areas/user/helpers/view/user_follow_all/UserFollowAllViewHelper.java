@@ -21,17 +21,14 @@ public class UserFollowAllViewHelper extends BaseViewCreator {
     private final UserServices userServices;
     private final UserFollowServices userFollowServices;
     private final UserRoleServices userRoleServices;
-    private final ModelMapper modelMapper;
 
     @Autowired
-    protected UserFollowAllViewHelper(ModelMapper modelMapper, UserServices userServices, UserFollowServices userFollowServices, UserRoleServices userRoleServices, ModelMapper modelMapper1) {
+    public UserFollowAllViewHelper(ModelMapper modelMapper, UserServices userServices, UserFollowServices userFollowServices, UserRoleServices userRoleServices) {
         super(modelMapper);
         this.userServices = userServices;
         this.userFollowServices = userFollowServices;
         this.userRoleServices = userRoleServices;
-        this.modelMapper = modelMapper1;
     }
-
 
     public List<UserFollowAllViewModel> createFollowers(String username) {
         UserServiceModel user = this.userServices.findUserByUsername(username);

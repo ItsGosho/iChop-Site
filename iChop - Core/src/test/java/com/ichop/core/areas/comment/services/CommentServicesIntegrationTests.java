@@ -50,7 +50,8 @@ public class CommentServicesIntegrationTests {
         UserServiceModel user = this.modelMapper.map(this.entityFactory.createUser(),UserServiceModel.class);
         ThreadServiceModel thread = this.modelMapper.map(this.entityFactory.createThread(),ThreadServiceModel.class);
         CommentCreateBindingModel bindingModel = new CommentCreateBindingModel();
-        bindingModel.setContent("content");
+        String content = "content";
+        bindingModel.setContent(content);
         bindingModel.setCreator(user);
         bindingModel.setThread(thread);
 
@@ -60,8 +61,8 @@ public class CommentServicesIntegrationTests {
         assertEquals(result.getThread().getTitle(), thread.getTitle());
         assertEquals(result.getContent(), bindingModel.getContent());
         assertTrue(result.getCreatedOn().isBefore(LocalDateTime.now()));
-        assertEquals(result.getReactions().size(), 0);
-        assertEquals(result.getReports().size(), 0);
+        assertEquals(0,result.getReactions().size());
+        assertEquals(0,result.getReports().size());
     }
 
     @Test
@@ -75,7 +76,7 @@ public class CommentServicesIntegrationTests {
 
         int result = this.commentServices.getTotalOfUser(this.modelMapper.map(user,UserServiceModel.class));
 
-        assertEquals(result,1);
+        assertEquals(1,result);
     }
 
     @Test
@@ -85,7 +86,7 @@ public class CommentServicesIntegrationTests {
 
         int result = this.commentServices.getTotalOfUser(this.modelMapper.map(user,UserServiceModel.class));
 
-        assertEquals(result,0);
+        assertEquals(0,result);
     }
 
     @Test
@@ -101,7 +102,8 @@ public class CommentServicesIntegrationTests {
 
     @Test
     public void findById_withNotExistingComment_shouldReturnNull(){
-        CommentServiceModel result = this.commentServices.findById("id");
+        String commentId = "id";
+        CommentServiceModel result = this.commentServices.findById(commentId);
 
         assertNull(result);
     }
@@ -113,7 +115,7 @@ public class CommentServicesIntegrationTests {
 
         this.commentServices.delete(comment.getId());
 
-        assertEquals(this.commentRepository.findAll().size(),0);
+        assertEquals(0,this.commentRepository.findAll().size());
     }
 
     @Test
@@ -123,7 +125,7 @@ public class CommentServicesIntegrationTests {
 
         this.commentServices.deleteByModel(this.modelMapper.map(comment,CommentServiceModel.class));
 
-        assertEquals(this.commentRepository.findAll().size(),0);
+        assertEquals(0,this.commentRepository.findAll().size());
     }
 
 }
