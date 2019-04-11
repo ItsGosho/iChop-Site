@@ -7,7 +7,7 @@ const PARAMETER_FORGOTTEN_PASSWORD_REQUIRE = "?forgotten-password=require";
 const URL_API_USERNAME_AVAILABILITY = "/api/user/exists?username=";
 const URL_API_EMAIL_AVAILABILITY = "/api/user/exists?email=";
 
-const URL_API_USER_SEND_EMAIL_RESET_PASSWORD = "api/user/send-email/reset/password";
+const URL_API_USER_SEND_EMAIL_RESET_PASSWORD = "/api/user/send-email/reset/password";
 const URL_API_IS_USER_FOLLOWING_USER = "/api/user/is-following?user1Username=${user1Username}&user2Username=${user2Username}";
 
 const URL_API_CREATE_THREAD = "/thread/create";

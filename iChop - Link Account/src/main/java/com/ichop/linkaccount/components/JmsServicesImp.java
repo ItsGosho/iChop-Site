@@ -23,22 +23,20 @@ public class JmsServicesImp implements JmsServices {
     private final JmsTemplate jmsTemplate;
     private final ObjectMapper objectMapper;
     private final ValidationUtil validationUtil;
+    private Session session;
 
     @Autowired
-    public JmsServicesImp(JmsTemplate jmsTemplate, ObjectMapper objectMapper, ValidationUtil validationUtil) {
+    public JmsServicesImp(JmsTemplate jmsTemplate, ObjectMapper objectMapper, ValidationUtil validationUtil) throws JMSException {
         this.jmsTemplate = jmsTemplate;
         this.objectMapper = objectMapper;
         this.validationUtil = validationUtil;
+        this.session = this.jmsTemplate.getConnectionFactory().createConnection().createSession(false,
+                Session.AUTO_ACKNOWLEDGE);
     }
 
     @Override
     public Map<String, Object> sendAndReceive(String destinationName, Map<String, Object> values) {
-        MessageCreator messageCreator = new MessageCreator() {
-            @Override
-            public Message createMessage(Session session) throws JMSException {
-                return convertValuesIntoMessage(values);
-            }
-        };
+        MessageCreator messageCreator = session -> convertValuesIntoMessage(values);
 
         try {
             Message result = this.jmsTemplate.sendAndReceive(destinationName, messageCreator);
@@ -83,10 +81,7 @@ public class JmsServicesImp implements JmsServices {
     public Message convertValuesIntoMessage(Map<String, Object> values) {
         try {
 
-            Session session = this.jmsTemplate.getConnectionFactory().createConnection().createSession(false,
-                    Session.AUTO_ACKNOWLEDGE);
-
-            Message message = session.createMessage();
+            Message message = this.session.createMessage();
 
             for (Map.Entry<String, Object> item : values.entrySet()) {
                 message.setObjectProperty(item.getKey(), item.getValue());

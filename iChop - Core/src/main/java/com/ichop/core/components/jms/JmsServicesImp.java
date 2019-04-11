@@ -26,12 +26,15 @@ public class JmsServicesImp implements JmsServices {
     private final JmsTemplate jmsTemplate;
     private final ModelMapper modelMapper;
     private final ObjectMapper objectMapper;
+    private Session session;
 
     @Autowired
-    public JmsServicesImp(JmsTemplate jmsTemplate, ModelMapper modelMapper, ObjectMapper objectMapper) {
+    public JmsServicesImp(JmsTemplate jmsTemplate, ModelMapper modelMapper, ObjectMapper objectMapper) throws JMSException {
         this.jmsTemplate = jmsTemplate;
         this.modelMapper = modelMapper;
         this.objectMapper = objectMapper;
+        this.session = this.jmsTemplate.getConnectionFactory().createConnection().createSession(false, Session.AUTO_ACKNOWLEDGE);
+        System.out.println("I WAS HERE!");
     }
 
 
@@ -120,8 +123,7 @@ public class JmsServicesImp implements JmsServices {
     @Override
     public Message convertValuesIntoMessage(HashMap<String, Object> values) {
         try {
-            Session session = this.jmsTemplate.getConnectionFactory().createConnection().createSession(false, Session.AUTO_ACKNOWLEDGE);
-            Message message = session.createMessage();
+            Message message = this.session.createMessage();
 
             for (Map.Entry<String, Object> item : values.entrySet()) {
                 message.setObjectProperty(item.getKey(), item.getValue());
