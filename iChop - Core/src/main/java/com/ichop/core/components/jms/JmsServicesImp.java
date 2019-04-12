@@ -3,6 +3,7 @@ package com.ichop.core.components.jms;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ichop.core.base.BaseJMSReceiveModel;
 import com.ichop.core.base.BaseJMSSendModel;
+import org.apache.activemq.command.ActiveMQObjectMessage;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
@@ -11,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import javax.jms.JMSException;
 import javax.jms.Message;
-import javax.jms.Session;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -26,15 +26,12 @@ public class JmsServicesImp implements JmsServices {
     private final JmsTemplate jmsTemplate;
     private final ModelMapper modelMapper;
     private final ObjectMapper objectMapper;
-    private Session session;
 
     @Autowired
     public JmsServicesImp(JmsTemplate jmsTemplate, ModelMapper modelMapper, ObjectMapper objectMapper) throws JMSException {
         this.jmsTemplate = jmsTemplate;
         this.modelMapper = modelMapper;
         this.objectMapper = objectMapper;
-        this.session = this.jmsTemplate.getConnectionFactory().createConnection().createSession(false, Session.AUTO_ACKNOWLEDGE);
-        System.out.println("I WAS HERE!");
     }
 
 
@@ -72,6 +69,11 @@ public class JmsServicesImp implements JmsServices {
 
         try {
             Message resultMessage = this.jmsTemplate.sendAndReceive(destination, message);
+
+            if (resultMessage == null) {
+                return null;
+            }
+
             Map<String, Object> resultValues = this.messageToHashMap(resultMessage);
             ReceiveModel resultModel = this.getResultModel(resultValues, receiveModel);
             return resultModel;
@@ -117,13 +119,15 @@ public class JmsServicesImp implements JmsServices {
 
     @Override
     public MessageCreator convertMessageIntoMessageCreator(Message message) {
-        return session -> message;
+        return session -> {
+            return message;
+        };
     }
 
     @Override
     public Message convertValuesIntoMessage(HashMap<String, Object> values) {
         try {
-            Message message = this.session.createMessage();
+            Message message = new ActiveMQObjectMessage();
 
             for (Map.Entry<String, Object> item : values.entrySet()) {
                 message.setObjectProperty(item.getKey(), item.getValue());

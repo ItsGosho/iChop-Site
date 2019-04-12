@@ -4,6 +4,7 @@ com\ichop\basicstatistics\validators\MustExistByUUIDValidator.class
 com\ichop\basicstatistics\domain\models\jms\returnn\BaseJMSReturnModel.class
 com\ichop\basicstatistics\repositories\PlayerStatisticsRepository.class
 com\ichop\basicstatistics\components\ValidationUtil.class
+com\ichop\basicstatistics\handlers\JmsErrorHandler.class
 com\ichop\basicstatistics\config\BeanConfiguration.class
 com\ichop\basicstatistics\services\PlayerStatisticsServices.class
 com\ichop\basicstatistics\components\JmsServices.class

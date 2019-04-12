@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.ichop.linkaccount.services.KeyServicesUnitTests
 -------------------------------------------------------------------------------
-Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.413 s - in com.ichop.linkaccount.services.KeyServicesUnitTests
+Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.319 s - in com.ichop.linkaccount.services.KeyServicesUnitTests

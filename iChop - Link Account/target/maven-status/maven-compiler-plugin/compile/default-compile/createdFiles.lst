@@ -18,6 +18,7 @@ com\ichop\linkaccount\domain\entities\Key.class
 com\ichop\linkaccount\domain\models\binding\PlayerUnlinkBindingModel.class
 com\ichop\linkaccount\domain\models\jms\key\returnn\IsPlayerLinkKeyValidJMSReturnModel.class
 com\ichop\linkaccount\validators\NotLinkedByUUIDKeyValidator.class
+com\ichop\linkaccount\handlers\JmsErrorHandler.class
 com\ichop\linkaccount\domain\models\jms\key\receive\GetPlayerDataBySiteUserJMSReceiveModel.class
 com\ichop\linkaccount\constants\JmsConstants.class
 com\ichop\linkaccount\listeners\annotations\playerlink\IsPlayerLinkedAccountByUUIDListener.class
@@ -64,4 +65,3 @@ com\ichop\linkaccount\config\BeanConfiguration.class
 com\ichop\linkaccount\domain\entities\PlayerLink.class
 com\ichop\linkaccount\domain\models\service\PlayerLinkServiceModel.class
 com\ichop\linkaccount\config\JMSConfiguration.class
-com\ichop\linkaccount\components\JmsServicesImp$1.class

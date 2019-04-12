@@ -1,5 +1,6 @@
 com\ichop\webstorage\validators\Base64Validator.class
 com\ichop\webstorage\constants\ValidationMessages.class
+com\ichop\webstorage\handlers\JmsErrorHandler.class
 com\ichop\webstorage\listeners\UserDataJMSListener.class
 com\ichop\webstorage\components\JmsServicesImp.class
 com\ichop\webstorage\constants\URLConstants.class

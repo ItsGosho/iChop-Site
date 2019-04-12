@@ -21,6 +21,7 @@ C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Player Basic Statistics\src\mai
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Player Basic Statistics\src\main\java\com\ichop\basicstatistics\listeners\PlayerStatisticsJMSListener.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Player Basic Statistics\src\main\java\com\ichop\basicstatistics\validators\MustExistByUUID.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Player Basic Statistics\src\main\java\com\ichop\basicstatistics\components\ValidationUtil.java
+C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Player Basic Statistics\src\main\java\com\ichop\basicstatistics\handlers\JmsErrorHandler.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Player Basic Statistics\src\main\java\com\ichop\basicstatistics\domain\models\jms\receive\GetPlayerBasicStatisticsByUUIDJmsReceiveModel.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Player Basic Statistics\src\main\java\com\ichop\basicstatistics\domain\models\service\PlayerStatisticsServiceModel.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Player Basic Statistics\src\main\java\com\ichop\basicstatistics\components\JmsServicesImp.java

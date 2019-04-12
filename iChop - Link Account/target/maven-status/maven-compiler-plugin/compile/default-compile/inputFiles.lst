@@ -7,6 +7,7 @@ C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Link Account\src\main\java\com\
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Link Account\src\main\java\com\ichop\linkaccount\domain\models\jms\key\receive\IsPlayerLinkKeyValidJMSReceiveModel.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Link Account\src\main\java\com\ichop\linkaccount\CLR.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Link Account\src\main\java\com\ichop\linkaccount\config\PropertyConfiguration.java
+C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Link Account\src\main\java\com\ichop\linkaccount\handlers\JmsErrorHandler.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Link Account\src\main\java\com\ichop\linkaccount\validators\NotLinkedBySiteUser.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Link Account\src\main\java\com\ichop\linkaccount\validators\ValidKeyValidator.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Link Account\src\main\java\com\ichop\linkaccount\domain\models\service\KeyServiceModel.java
