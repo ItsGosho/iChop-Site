@@ -21,7 +21,7 @@ import com.ichop.core.areas.user.exceptions.UserNotFoundException;
 import com.ichop.core.areas.user.exceptions.UserPasswordNotValidException;
 import com.ichop.core.areas.user.repositories.UserRepository;
 import com.ichop.core.base.BaseService;
-import com.ichop.core.components.email.EmailServices;
+import com.ichop.core.areas.email.services.EmailServices;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.data.domain.Page;

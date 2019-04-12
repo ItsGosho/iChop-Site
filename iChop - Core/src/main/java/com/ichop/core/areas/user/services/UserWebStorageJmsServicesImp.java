@@ -1,7 +1,7 @@
 package com.ichop.core.areas.user.services;
 
 import com.ichop.core.areas.user.domain.models.jms.UserUpdateAvatarJmsSendModel;
-import com.ichop.core.components.jms.JmsServices;
+import com.ichop.core.areas.jms.services.JmsServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

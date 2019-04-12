@@ -7,7 +7,7 @@ import com.ichop.core.areas.user.domain.models.service.UserServiceModel;
 import com.ichop.core.areas.user.services.UserServices;
 import com.ichop.core.areas.user.web.controllers.UserAuthenticationController;
 import com.ichop.core.areas.user.web.controllers.UserProfileOptionsController;
-import com.ichop.core.validators.method.SkipOnNull;
+import com.ichop.core.areas.jms.validations.SkipOnNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;

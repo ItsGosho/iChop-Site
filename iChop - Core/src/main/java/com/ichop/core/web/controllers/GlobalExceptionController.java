@@ -25,5 +25,4 @@ public class GlobalExceptionController extends BaseExceptionController {
     public ModelAndView noRequiredParameter(){
         return super.errorPage("This page requires additional parameter to be accessed!");
     }
-
 }

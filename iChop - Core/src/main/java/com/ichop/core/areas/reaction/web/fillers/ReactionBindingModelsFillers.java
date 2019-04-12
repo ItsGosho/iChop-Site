@@ -10,7 +10,7 @@ import com.ichop.core.areas.thread.domain.models.service.ThreadServiceModel;
 import com.ichop.core.areas.thread.services.ThreadServices;
 import com.ichop.core.areas.user.domain.models.service.UserServiceModel;
 import com.ichop.core.areas.user.services.UserServices;
-import com.ichop.core.validators.method.SkipOnNull;
+import com.ichop.core.areas.jms.validations.SkipOnNull;
 import org.apache.commons.lang3.EnumUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ControllerAdvice;

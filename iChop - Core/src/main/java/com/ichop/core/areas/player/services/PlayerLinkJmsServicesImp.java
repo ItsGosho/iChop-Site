@@ -12,7 +12,7 @@ import com.ichop.core.areas.player.domain.jms.player.link.send.GetPlayerDataByPl
 import com.ichop.core.areas.player.domain.jms.player.link.send.IsPlayerLinkedAccountByUUIDJMSSendModel;
 import com.ichop.core.areas.player.domain.jms.player.link.send.LinkPlayerAccountJMSSendModel;
 import com.ichop.core.areas.player.domain.jms.player.link.send.UnlinkPlayerAccountJMSSendModel;
-import com.ichop.core.components.jms.JmsServices;
+import com.ichop.core.areas.jms.services.JmsServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
