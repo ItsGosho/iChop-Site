@@ -108,7 +108,7 @@
     <session id="-1831837478">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="11" />
+          <entry key="project.closed" value="12" />
           <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.20" value="2" />
@@ -131,7 +131,7 @@
           <entry key="js" value="37" />
           <entry key="mockito-extensions" value="1" />
           <entry key="png" value="2" />
-          <entry key="properties" value="5" />
+          <entry key="properties" value="6" />
           <entry key="rnc" value="2" />
           <entry key="xml" value="11" />
         </counts>
@@ -145,7 +145,7 @@
           <entry key="JAVA" value="1103" />
           <entry key="JavaScript" value="37" />
           <entry key="PLAIN_TEXT" value="3" />
-          <entry key="Properties" value="5" />
+          <entry key="Properties" value="6" />
           <entry key="RNG Compact" value="2" />
           <entry key="XML" value="11" />
         </counts>
@@ -176,11 +176,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/player/services/PlayerLinkJmsServicesImp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="626">
+            <state relative-caret-position="256">
               <caret line="74" selection-start-line="74" selection-end-line="74" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/application-jms.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="32">
+              <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -404,6 +413,64 @@
               <item name="core" type="462c0819:PsiDirectoryNode" />
               <item name="areas" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="iChop-Core" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iChop - Core" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iChop-Core" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iChop - Core" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iChop-Core" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iChop - Core" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iChop-Core" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iChop - Core" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iChop-Core" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iChop - Core" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="ichop" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iChop-Core" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iChop - Core" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="ichop" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iChop-Core" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iChop - Core" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="ichop" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+              <item name="areas" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -423,7 +490,7 @@
     <property name="SearchEverywhereHistoryKey" value="PostReport&#9;PSI&#9;JAVA://com.ichop.core.areas.post.domain.entities.PostReport&#10;ModelAttribute&#9;PSI&#9;JAVA://org.springframework.web.method.annotation.ModelAttributeMethodProcessor&#10;Registry..&#9;ACTION&#9;ShowRegistry" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555057975555" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555059171853" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../iChop - Web Storage" />
     <property name="list.type.of.created.stylesheet" value="PLAIN_TEXT" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -478,7 +545,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.Application">
+  <component name="RunManager" selected="JUnit.com.ichop.core in core">
     <configuration name="PasswordResetTokenServicesIntegrationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="core" />
       <extension name="coverage">
@@ -579,11 +646,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.com.ichop.core in core" />
         <item itemvalue="JUnit.com.ichop.core.areas in core" />
         <item itemvalue="JUnit.PasswordResetTokenServicesIntegrationTests" />
         <item itemvalue="JUnit.com.ichop.core.areas.report.* and 8 more" />
         <item itemvalue="JUnit.PasswordResetTokenServicesIntegrationTests.deleteTokenById_withExistingToken_shouldDeleteIt" />
-        <item itemvalue="JUnit.com.ichop.core in core" />
       </list>
     </recent_temporary>
   </component>
@@ -716,14 +783,11 @@
       <workItem from="1555007748464" duration="1356000" />
       <workItem from="1555009205375" duration="456000" />
       <workItem from="1555012425169" duration="5581000" />
-      <workItem from="1555053786981" duration="3193000" />
+      <workItem from="1555053786981" duration="4431000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="com_ichop_core_areas_in_core - 2019.04.11 at 21h 37m 55s.xml">
-      <configuration name="com.ichop.core.areas in core" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="com_ichop_core_areas_in_core - 2019.04.11 at 21h 39m 48s.xml">
       <configuration name="com.ichop.core.areas in core" configurationId="JUnit" />
     </history-entry>
@@ -751,9 +815,12 @@
     <history-entry file="com_ichop_core_areas_in_core - 2019.04.11 at 21h 55m 37s.xml">
       <configuration name="com.ichop.core.areas in core" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="com_ichop_core_in_core - 2019.04.12 at 11h 52m 24s.xml">
+      <configuration name="com.ichop.core in core" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="800811000" />
+    <option name="totallyTimeSpent" value="802049000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -767,7 +834,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.499002" visible="true" weight="0.28091684" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.499002" visible="true" weight="0.28091684" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -1152,13 +1219,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application-jms.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/components/jms/JmsServicesImp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
@@ -1175,8 +1235,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/core/areas/player/services/PlayerLinkJmsServicesImp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="626">
+        <state relative-caret-position="256">
           <caret line="74" selection-start-line="74" selection-end-line="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application-jms.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
         </state>
       </provider>
     </entry>

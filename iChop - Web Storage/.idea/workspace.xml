@@ -35,62 +35,38 @@
     <session id="-1038114243">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="8" />
-          <entry key="project.open.time.0" value="1" />
-          <entry key="project.open.time.1" value="5" />
+          <entry key="project.closed" value="10" />
+          <entry key="project.open.time.0" value="2" />
+          <entry key="project.open.time.1" value="6" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.36" value="1" />
-          <entry key="project.opened" value="8" />
+          <entry key="project.opened" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="12" />
+          <entry key="java" value="22" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="12" />
+          <entry key="JAVA" value="22" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="34" />
+          <entry key="java" value="229" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="34" />
+          <entry key="JAVA" value="229" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/webstorage/config/JMSConfiguration.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="26" column="9" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
-              <folding>
-                <element signature="e#586#604#1" expanded="true" />
-                <element signature="e#769#770#0" expanded="true" />
-                <element signature="e#823#824#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/webstorage/constants/JmsConstants.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="64">
-              <caret line="4" column="54" selection-start-line="4" selection-start-column="54" selection-end-line="4" selection-end-column="54" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -148,10 +124,14 @@
         <option value="$PROJECT_DIR$/src/main/java/com/ichop/webstorage/validators/Base64SizeValidator.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ichop/webstorage/services/UserDataServices.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ichop/webstorage/services/UserDataServicesImp.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/webstorage/CLR.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ichop/webstorage/listeners/UserDataJMSListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ichop/webstorage/constants/JmsConstants.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ichop/webstorage/config/JMSConfiguration.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ichop/webstorage/events/OnStartUp.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ichop/webstorage/constants/ConsoleColors.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ichop/webstorage/constants/ConsoleMessages.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ichop/webstorage/Application.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ichop/webstorage/CLR.java" />
       </list>
     </option>
   </component>
@@ -252,8 +232,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -311,24 +292,12 @@
               <item name="iChop - Web Storage" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="ichop" type="462c0819:PsiDirectoryNode" />
-              <item name="webstorage" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="iChop - Web Storage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iChop - Web Storage" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -338,7 +307,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554063827314" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555059002493" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -350,9 +319,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.ichop.webstorage.constants" />
       <recent name="com.ichop.webstorage.handlers" />
       <recent name="com.ichop.webstorage.listeners.anotations" />
-      <recent name="com.ichop.webstorage.constants" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Web Storage\src\main\resources" />
@@ -416,11 +385,13 @@
       <workItem from="1554901469589" duration="231000" />
       <workItem from="1554901799222" duration="121000" />
       <workItem from="1555057464374" duration="120000" />
+      <workItem from="1555058262735" duration="601000" />
+      <workItem from="1555058916804" duration="143000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43730000" />
+    <option name="totallyTimeSpent" value="44474000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -434,7 +405,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4994641" visible="true" weight="0.30810234" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4994641" visible="true" weight="0.31130064" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -495,21 +466,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/com/dropbox/core/dropbox-core-sdk/3.0.11/dropbox-core-sdk-3.0.11-sources.jar!/com/dropbox/core/v2/DbxUploadStyleBuilder.java" />
-    <entry file="jar://$MAVEN_REPOSITORY$/javax/jms/javax.jms-api/2.0.1/javax.jms-api-2.0.1.jar!/javax/jms/ObjectMessage.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.1.2.RELEASE/spring-web-5.1.2.RELEASE.jar!/org/springframework/web/bind/annotation/GetMapping.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="54" column="13" selection-start-line="54" selection-start-column="13" selection-end-line="54" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jrt://C:/Program Files/Java/jdk-11.0.1!/java.base/sun/net/www/content-types.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-15">
@@ -661,20 +617,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/webstorage/CLR.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="43" column="8" lean-forward="true" selection-start-line="43" selection-start-column="8" selection-end-line="43" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/webstorage/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/webstorage/services/UserDataServicesImp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -717,6 +659,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/webstorage/config/JMSConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="26" column="9" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/webstorage/constants/JmsConstants.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="64">
@@ -724,15 +673,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/webstorage/config/JMSConfiguration.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/webstorage/events/OnStartUp.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/webstorage/constants/ConsoleColors.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="26" column="9" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
-          <folding>
-            <element signature="e#586#604#1" expanded="true" />
-            <element signature="e#769#770#0" expanded="true" />
-            <element signature="e#823#824#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="16">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/webstorage/constants/ConsoleMessages.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="4" column="133" selection-start-line="4" selection-start-column="133" selection-end-line="4" selection-end-column="133" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/webstorage/CLR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/webstorage/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>

@@ -32,60 +32,37 @@
     <session id="1330136171">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="5" />
-          <entry key="project.open.time.0" value="2" />
-          <entry key="project.open.time.1" value="2" />
+          <entry key="project.closed" value="7" />
+          <entry key="project.open.time.0" value="3" />
+          <entry key="project.open.time.1" value="3" />
           <entry key="project.open.time.5" value="1" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.opened" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="11" />
+          <entry key="java" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="11" />
+          <entry key="JAVA" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="156" />
+          <entry key="java" value="180" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="156" />
+          <entry key="JAVA" value="180" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/basicstatistics/config/JMSConfiguration.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
-              <folding>
-                <element signature="e#1243#1244#0" expanded="true" />
-                <element signature="e#1297#1298#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/basicstatistics/constants/JmsConstants.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="64">
-              <caret line="4" column="54" selection-start-line="4" selection-start-column="54" selection-end-line="4" selection-end-column="54" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -115,8 +92,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/linkaccount/services/PlayerLinkServicesImp.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/linkaccount/config/BeanConfiguration.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ichop/linkaccount/UserServiceModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ichop/linkaccount/CLR.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ichop/basicstatistics/listeners/JMSListeners.java" />
@@ -166,6 +141,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/ichop/basicstatistics/components/JmsServicesImp.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ichop/basicstatistics/constants/JmsConstants.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ichop/basicstatistics/config/JMSConfiguration.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ichop/basicstatistics/Application.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ichop/basicstatistics/constants/ConsoleMessages.java" />
       </list>
     </option>
   </component>
@@ -209,6 +186,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
@@ -261,17 +240,6 @@
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="ichop" type="462c0819:PsiDirectoryNode" />
               <item name="basicstatistics" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="iChop - Player Basic Statistics" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iChop - Player Basic Statistics" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="ichop" type="462c0819:PsiDirectoryNode" />
-              <item name="basicstatistics" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="iChop - Player Basic Statistics" type="b2602c69:ProjectViewProjectNode" />
@@ -335,8 +303,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -346,7 +312,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554581033580" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555058877089" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -366,11 +332,11 @@
       <recent name="com.ichop.minecraft.linkaccount.domain.models.jms.key.returnn" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Player Basic Statistics\src\main\java\com\ichop\basicstatistics\constants" />
       <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Player Basic Statistics\src\main\resources" />
       <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Player Basic Statistics\src\main\java\com\ichop\basicstatistics\services" />
       <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Minecraft\src\main\java\com\ichop\minecraft\config" />
       <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Minecraft\src\main\java\com\ichop\minecraft\services" />
-      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Minecraft\src\main\java\itsgosho" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -537,6 +503,8 @@
       <workItem from="1554807249457" duration="1272000" />
       <workItem from="1555015182523" duration="139000" />
       <workItem from="1555057368075" duration="220000" />
+      <workItem from="1555058798334" duration="80000" />
+      <workItem from="1555058909117" duration="153000" />
     </task>
     <servers />
   </component>
@@ -564,7 +532,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="111205000" />
+    <option name="totallyTimeSpent" value="111438000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -578,7 +546,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27292112" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2761194" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -622,20 +590,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-jms/5.1.2.RELEASE/spring-jms-5.1.2.RELEASE-sources.jar!/org/springframework/jms/listener/adapter/MessagingMessageListenerAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="121" selection-start-line="121" selection-end-line="121" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-jms/5.1.2.RELEASE/spring-jms-5.1.2.RELEASE-sources.jar!/org/springframework/jms/listener/AbstractMessageListenerContainer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="677" selection-start-line="677" selection-end-line="677" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-jms/5.1.2.RELEASE/spring-jms-5.1.2.RELEASE-sources.jar!/org/springframework/jms/listener/AbstractPollingMessageListenerContainer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="91">
@@ -698,13 +652,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="4" lean-forward="true" selection-start-column="4" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/basicstatistics/CLR.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -923,10 +870,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/basicstatistics/CLR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/basicstatistics/constants/JmsConstants.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="64">
           <caret line="4" column="54" selection-start-line="4" selection-start-column="54" selection-end-line="4" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/basicstatistics/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="10" column="49" selection-start-line="10" selection-start-column="49" selection-end-line="10" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/basicstatistics/constants/ConsoleMessages.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="4" column="145" selection-start-line="4" selection-start-column="145" selection-end-line="4" selection-end-column="145" />
         </state>
       </provider>
     </entry>
@@ -935,8 +903,8 @@
         <state relative-caret-position="240">
           <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
           <folding>
-            <element signature="e#1243#1244#0" expanded="true" />
             <element signature="e#1297#1298#0" expanded="true" />
+            <element signature="e#1351#1352#0" expanded="true" />
           </folding>
         </state>
       </provider>
