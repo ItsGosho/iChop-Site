@@ -66,7 +66,7 @@ public class CommentReactionServicesUnitTests {
 
         when(bindingModel.getUser()).thenReturn(user);
         when(bindingModel.getComment()).thenReturn(comment);
-        when(this.commentReactionServices.isLikedByUser(user, comment)).thenReturn(true);
+        when(this.commentReactionServices.isReactedByUser(user, comment)).thenReturn(true);
 
         this.commentReactionServices.create(bindingModel);
     }
@@ -82,7 +82,7 @@ public class CommentReactionServicesUnitTests {
         when(user.getUsername()).thenReturn("username");
         when(comment.getCreator()).thenReturn(user);
         when(comment.getCreator().getUsername()).thenReturn("username");
-        when(this.commentReactionServices.isLikedByUser(user, comment)).thenReturn(false);
+        when(this.commentReactionServices.isReactedByUser(user, comment)).thenReturn(false);
 
         this.commentReactionServices.create(bindingModel);
     }
@@ -100,7 +100,7 @@ public class CommentReactionServicesUnitTests {
         when(user.getUsername()).thenReturn("username");
         when(comment.getCreator()).thenReturn(creator);
         when(creator.getUsername()).thenReturn("username2");
-        when(this.commentReactionServices.isLikedByUser(user, comment)).thenReturn(false);
+        when(this.commentReactionServices.isReactedByUser(user, comment)).thenReturn(false);
         when(this.modelMapper.map(bindingModel, CommentReactionServiceModel.class)).thenReturn(commentReaction);
 
         this.commentReactionServices.create(bindingModel);
@@ -114,14 +114,14 @@ public class CommentReactionServicesUnitTests {
     public void isLikedByUser_withNullUser_shouldThrowException() {
         CommentServiceModel comment = mock(CommentServiceModel.class);
 
-        this.commentReactionServices.isLikedByUser(null, comment);
+        this.commentReactionServices.isReactedByUser(null, comment);
     }
 
     @Test(expected = CommentNotFoundException.class)
     public void isLikedByUser_withNullComment_shouldThrowException() {
         UserServiceModel user = mock(UserServiceModel.class);
 
-        this.commentReactionServices.isLikedByUser(user, null);
+        this.commentReactionServices.isReactedByUser(user, null);
     }
 
     @Test
@@ -133,7 +133,7 @@ public class CommentReactionServicesUnitTests {
 
         when(this.modelMapper.map(user, User.class)).thenReturn(entityUser);
         when(this.modelMapper.map(comment, Comment.class)).thenReturn(entityComment);
-        this.commentReactionServices.isLikedByUser(user, comment);
+        this.commentReactionServices.isReactedByUser(user, comment);
 
         verify(this.commentReactionRepository, times(1)).isUserReactedAtThatComment(entityUser, entityComment);
     }

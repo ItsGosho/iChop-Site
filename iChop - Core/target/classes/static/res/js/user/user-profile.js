@@ -60,3 +60,19 @@ function runPostCreateScript() {
 
     });
 }
+
+function hideReportButtonsOfPostIfReportExists(userUsername, postId, isLoggedUser) {
+    if (isLoggedUser) {
+        let url = URL_API_IS_POST_REPORTED_BY_USER.replace('{postId}', postId);
+        url = url.replace('{userUsername}', userUsername);
+
+        $.ajax({
+            url: url,
+            success: function (isReported) {
+                if (isReported) {
+                    $(`#button-report_post-${postId}`).hide();
+                }
+            }
+        });
+    }
+}

@@ -1,6 +1,5 @@
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Player Basic Statistics\src\main\java\com\ichop\basicstatistics\config\DataSourceConfiguration.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Player Basic Statistics\src\main\java\com\ichop\basicstatistics\config\BeanConfiguration.java
-C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Player Basic Statistics\src\main\java\com\ichop\basicstatistics\constants\ConsoleColors.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Player Basic Statistics\src\main\java\com\ichop\basicstatistics\config\PropertyConfiguration.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Player Basic Statistics\src\main\java\com\ichop\basicstatistics\repositories\PlayerStatisticsRepository.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Player Basic Statistics\src\main\java\com\ichop\basicstatistics\constants\JmsConstants.java
@@ -10,7 +9,6 @@ C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Player Basic Statistics\src\mai
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Player Basic Statistics\src\main\java\com\ichop\basicstatistics\components\JmsServices.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Player Basic Statistics\src\main\java\com\ichop\basicstatistics\validators\MustExistByUUIDValidator.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Player Basic Statistics\src\main\java\com\ichop\basicstatistics\services\PlayerStatisticsServicesImp.java
-C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Player Basic Statistics\src\main\java\com\ichop\basicstatistics\constants\ConsoleMessages.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Player Basic Statistics\src\main\java\com\ichop\basicstatistics\components\ValidationUtilImp.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Player Basic Statistics\src\main\java\com\ichop\basicstatistics\constants\ValidationMessages.java
 C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Player Basic Statistics\src\main\java\com\ichop\basicstatistics\domain\models\jms\returnn\GetPlayerBasicStatisticsByUUIDJmsReturnModel.java

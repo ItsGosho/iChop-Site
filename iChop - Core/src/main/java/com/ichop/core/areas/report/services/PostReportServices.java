@@ -1,7 +1,9 @@
 package com.ichop.core.areas.report.services;
 
+import com.ichop.core.areas.post.domain.models.service.PostServiceModel;
 import com.ichop.core.areas.report.domain.models.binding.PostReportCreateBindingModel;
 import com.ichop.core.areas.report.domain.models.service.PostReportServiceModel;
+import com.ichop.core.areas.user.domain.models.service.UserServiceModel;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -42,4 +44,5 @@ public interface PostReportServices {
      * */
     Page<PostReportServiceModel> findAll(Pageable pageable);
 
+    boolean isReportedByUser(UserServiceModel user, PostServiceModel post);
 }

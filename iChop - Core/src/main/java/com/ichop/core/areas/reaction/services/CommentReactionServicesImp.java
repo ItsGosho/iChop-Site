@@ -38,7 +38,7 @@ public class CommentReactionServicesImp extends BaseReactionServices<CommentReac
             throw new UserNotFoundException();
         }
 
-        if (this.isLikedByUser(bindingModel.getUser(), bindingModel.getComment())) {
+        if (this.isReactedByUser(bindingModel.getUser(), bindingModel.getComment())) {
             throw new UserAlreadyReacted();
         }
 
@@ -55,7 +55,7 @@ public class CommentReactionServicesImp extends BaseReactionServices<CommentReac
     }
 
     @Override
-    public boolean isLikedByUser(UserServiceModel user, CommentServiceModel comment) {
+    public boolean isReactedByUser(UserServiceModel user, CommentServiceModel comment) {
 
         if(user == null) {
             throw new UserNotFoundException();

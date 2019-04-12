@@ -92,7 +92,7 @@ public class CommentReactionServicesIntegrationTests {
         comment.setCreator(commentCreator);
         comment = this.modelMapper.map(this.commentRepository.save(this.modelMapper.map(comment, Comment.class)), CommentServiceModel.class);
 
-        boolean result = this.commentReactionServices.isLikedByUser(liker, comment);
+        boolean result = this.commentReactionServices.isReactedByUser(liker, comment);
 
         assertFalse(result);
     }
@@ -116,7 +116,7 @@ public class CommentReactionServicesIntegrationTests {
         commentReaction.setComment(this.modelMapper.map(comment, Comment.class));
         this.commentReactionRepository.save(commentReaction);
 
-        boolean result = this.commentReactionServices.isLikedByUser(liker, comment);
+        boolean result = this.commentReactionServices.isReactedByUser(liker, comment);
 
         assertTrue(result);
     }

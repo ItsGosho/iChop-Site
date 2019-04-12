@@ -20,7 +20,6 @@ com\ichop\basicstatistics\domain\models\jms\returnn\GetPlayerBasicStatisticsByUU
 com\ichop\basicstatistics\domain\models\service\PlayerStatisticsServiceModel.class
 com\ichop\basicstatistics\constants\ValidationConstants.class
 com\ichop\basicstatistics\config\JMSConfiguration.class
-com\ichop\basicstatistics\constants\ConsoleMessages.class
 com\ichop\basicstatistics\constants\PlayerStatisticsJMSConstants.class
 com\ichop\basicstatistics\constants\JmsConstants.class
 com\ichop\basicstatistics\domain\entities\PlayerStatistics.class
@@ -28,7 +27,6 @@ com\ichop\basicstatistics\Application.class
 com\ichop\basicstatistics\config\BeanConfiguration$2.class
 com\ichop\basicstatistics\listeners\PlayerStatisticsJMSListener.class
 com\ichop\basicstatistics\services\PlayerStatisticsServicesImp.class
-com\ichop\basicstatistics\constants\ConsoleColors.class
 com\ichop\basicstatistics\domain\models\service\BaseServiceModel.class
 com\ichop\basicstatistics\validators\MustExistByUUID.class
 com\ichop\basicstatistics\listeners\annotations\GetPlayerDataByUUIDListener.class

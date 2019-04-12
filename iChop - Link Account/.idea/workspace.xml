@@ -28,51 +28,6 @@
     <expand />
     <select />
   </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="993322431">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="9" />
-          <entry key="project.open.time.0" value="4" />
-          <entry key="project.open.time.1" value="4" />
-          <entry key="project.open.time.6" value="1" />
-          <entry key="project.opened" value="9" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="class" value="2" />
-          <entry key="java" value="72" />
-          <entry key="properties" value="2" />
-          <entry key="xml" value="2" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="CLASS" value="2" />
-          <entry key="JAVA" value="72" />
-          <entry key="Properties" value="2" />
-          <entry key="XML" value="2" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="dummy" value="19" />
-          <entry key="java" value="789" />
-          <entry key="properties" value="2" />
-          <entry key="xml" value="3" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="JAVA" value="789" />
-          <entry key="PLAIN_TEXT" value="19" />
-          <entry key="Properties" value="2" />
-          <entry key="XML" value="3" />
-        </counts>
-      </usages-collector>
-    </session>
-  </component>
   <component name="FileEditorManager">
     <leaf />
   </component>
@@ -156,12 +111,6 @@
       </list>
     </option>
   </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsGulpfileManager">
-    <detection-done>true</detection-done>
-    <sorting>DEFINITION_ORDER</sorting>
-  </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
       <MavenImportingSettings>
@@ -196,6 +145,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -310,9 +261,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -372,6 +320,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.ichop.linkaccount.services" />
       <option name="MAIN_CLASS_NAME" value="com.ichop.linkaccount.services.PlayerLinkServicesUnitTests" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -447,12 +396,12 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Spring Boot.Application" />
       <item itemvalue="JUnit.PlayerLinkServicesUnitTests" />
       <item itemvalue="JUnit.PlayerLinkServicesUnitTests.getByUUID_withValidData_shouldInvokeMethods" />
       <item itemvalue="JUnit.PlayerLinkServicesUnitTests.isAccountLinkedBySiteUserUsername_withLinkedAccount_shouldReturnTrue" />
       <item itemvalue="JUnit.PlayerLinkServicesUnitTests.isAccountLinkedByUUID_withLinkedAccount_shouldReturnTrue" />
       <item itemvalue="JUnit.com.ichop.linkaccount.services in linkaccount" />
+      <item itemvalue="Spring Boot.Application" />
     </list>
     <recent_temporary>
       <list>
@@ -516,6 +465,7 @@
       <workItem from="1555054490805" duration="2981000" />
       <workItem from="1555058630830" duration="244000" />
       <workItem from="1555058912774" duration="148000" />
+      <workItem from="1555080587463" duration="2000" />
     </task>
     <servers />
   </component>
@@ -552,12 +502,12 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="102534000" />
+    <option name="totallyTimeSpent" value="102536000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49919486" visible="true" weight="0.29264393" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49919486" visible="true" weight="0.29727685" />
       <window_info id="Structure" order="1" sideWeight="0.50080514" side_tool="true" weight="0.26172465" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -596,9 +546,6 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/linkaccount/domain/models/jms/BaseJMSReturnModel.java" />
@@ -740,13 +687,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/linkaccount/domain/models/jms/playerlink/receive/UnlinkPlayerAccountJMSReceiveModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/linkaccount/domain/models/jms/playerlink/receive/UnlinkPlayerAccountJMSReceiveModel.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/linkaccount/validators/ExistingSiteUserUsernameValidator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
@@ -754,13 +695,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/linkaccount/domain/models/jms/playerlink/returnn/UnlinkPlayerAccountJMSReturnModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/linkaccount/domain/models/jms/playerlink/returnn/UnlinkPlayerAccountJMSReturnModel.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/linkaccount/domain/models/jms/key/returnn/GetPlayerDataByKeyJMSReturnModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
@@ -875,16 +810,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/linkaccount/handlers/JmsErrorHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/linkaccount/handlers/JmsErrorHandler.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/linkaccount/components/JmsServices.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="256">
@@ -910,20 +836,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/linkaccount/constants/ConsoleColors.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/linkaccount/constants/ConsoleMessages.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="4" column="192" selection-start-line="4" selection-start-column="192" selection-end-line="4" selection-end-column="192" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/linkaccount/constants/ConsoleColors.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/linkaccount/constants/ConsoleMessages.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/linkaccount/Application.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">

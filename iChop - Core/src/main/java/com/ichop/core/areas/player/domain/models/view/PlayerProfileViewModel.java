@@ -13,12 +13,12 @@ public class PlayerProfileViewModel {
 
     private String uuid;
     private String name;
-    private boolean isOnline;
-    private int totalDeaths;
-    private int totalPlayerKills;
-    private int totalMobKills;
-    private int totalDamageDealt;
-    private int totalDamageTaken;
+    private Boolean isOnline;
+    private Integer totalDeaths;
+    private Integer totalPlayerKills;
+    private Integer totalMobKills;
+    private Integer totalDamageDealt;
+    private Integer totalDamageTaken;
     private String siteUserUsername;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)

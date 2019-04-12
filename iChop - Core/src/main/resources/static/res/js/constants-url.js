@@ -16,3 +16,7 @@ const URL_READ_THREAD = "/thread/{id}/read";
 const URL_API_IS_COMMENT_REACTED_BY_USER = "/comment/{commentId}/is-reaction-present?userUsername={userUsername}";
 const URL_API_USER_ALL_FOLLOWINGS = "/api/user/{username}/all/followings";
 const URL_API_USER_ALL_FOLLOWERS = "/api/user/{username}/all/followers";
+
+const URL_API_IS_THREAD_REPORTED_BY_USER = "/thread/{threadId}/is-report-present?userUsername={userUsername}";
+const URL_API_IS_COMMENT_REPORTED_BY_USER = "/comment/{commentId}/is-report-present?userUsername={userUsername}";
+const URL_API_IS_POST_REPORTED_BY_USER = "/post/{postId}/is-report-present?userUsername={userUsername}";

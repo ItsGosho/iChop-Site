@@ -47,7 +47,7 @@ public final class URLConstants {
     public static final String USER_PROFILE_OPTIONS_CHANGE_PASSWORD_GET = "/user/my-profile/options/change-password"; /*Only LOGGED-IN USER IN HIS PROFILE*/
     public static final String USER_PROFILE_OPTIONS_CHANGE_PASSWORD_POST = "/user/my-profile/options/change-password"; /*Only LOGGED-IN USER IN HIS PROFILE*/
     public static final String USER_PROFILE_OPTIONS_MINECRAFT_GET = "/user/my-profile/options/minecraft"; /*Only LOGGED-IN USER IN HIS PROFILE*/
-    public static final String USER_PROFILE_OPTIONS_MINECRAFT_UNLINK_POST= "/user/my-profile/options/minecraft/unlink"; /*Only LOGGED-IN USER IN HIS PROFILE*/
+    public static final String USER_PROFILE_OPTIONS_MINECRAFT_UNLINK_POST = "/user/my-profile/options/minecraft/unlink"; /*Only LOGGED-IN USER IN HIS PROFILE*/
 
     //UserAuthenticationController ----------------------------------------------------------------------------
 
@@ -74,7 +74,7 @@ public final class URLConstants {
 
     //Thread -------------------------------------------------------------------------------------------------
 
-    public static final String THREAD_CREATE_GET =  "/thread/create"; /*MODERATOR++*/
+    public static final String THREAD_CREATE_GET = "/thread/create"; /*MODERATOR++*/
     public static final String THREAD_DELETE_POST = "/thread/{threadId}/delete"; /*MODERATOR++*/
     public static final String THREAD_READ_GET = "/thread/{threadId}/read"; /*EVERYONE*/
 
@@ -107,5 +107,14 @@ public final class URLConstants {
     public static final String POST_REPORT_POST = "/post/{postId}/report"; /*MODERATOR++*/
     public static final String POST_REPORT_DELETE_POST = "/post/report/{reportId}/delete"; /*MODERATOR++*/
     public static final String POST_REPORTS_ALL_GET = "/post/reports/all"; /*MODERATOR++*/
+
+    //ThreadReportApiController
+    public static final String IS_THREAD_ALREADY_REPORTED_BY_USER = "/thread/{threadId}/is-report-present"; /*EVERYONE*/
+
+    //CommentReportApiController
+    public static final String IS_COMMENT_ALREADY_REPORTED_BY_USER = "/comment/{commentId}/is-report-present"; /*EVERYONE*/
+
+    //PostReportApiController
+    public static final String IS_POST_ALREADY_REPORTED_BY_USER = "/post/{postId}/is-report-present"; /*EVERYONE*/
 
 }

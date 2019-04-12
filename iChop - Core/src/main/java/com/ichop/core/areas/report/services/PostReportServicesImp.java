@@ -1,11 +1,16 @@
 package com.ichop.core.areas.report.services;
 
+import com.ichop.core.areas.post.domain.entities.Post;
+import com.ichop.core.areas.post.domain.models.service.PostServiceModel;
 import com.ichop.core.areas.post.exceptions.PostNotFoundException;
 import com.ichop.core.areas.report.domain.entities.PostReport;
 import com.ichop.core.areas.report.domain.models.binding.PostReportCreateBindingModel;
 import com.ichop.core.areas.report.domain.models.service.PostReportServiceModel;
+import com.ichop.core.areas.report.exceptions.ReportAlreadyMadeException;
 import com.ichop.core.areas.report.exceptions.ReportNotFoundException;
 import com.ichop.core.areas.report.repositories.PostReportRepository;
+import com.ichop.core.areas.user.domain.entities.User;
+import com.ichop.core.areas.user.domain.models.service.UserServiceModel;
 import com.ichop.core.areas.user.exceptions.UserNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +39,10 @@ public class PostReportServicesImp extends BaseReportServices<PostReport, PostRe
             throw new UserNotFoundException();
         }
 
+        if(this.isReportedByUser(bindingModel.getUser(),bindingModel.getPost())){
+            throw new ReportAlreadyMadeException();
+        }
+
         PostReportServiceModel postReport = this.modelMapper.map(bindingModel,PostReportServiceModel.class);
         postReport.setReportDate(LocalDateTime.now());
 
@@ -60,6 +69,25 @@ public class PostReportServicesImp extends BaseReportServices<PostReport, PostRe
     @Override
     public Page<PostReportServiceModel> findAll(Pageable pageable) {
         return this.findAll(PostReportServiceModel.class,pageable);
+    }
+
+    @Override
+    public boolean isReportedByUser(UserServiceModel user, PostServiceModel post) {
+
+        if (user == null) {
+            throw new UserNotFoundException();
+        }
+
+        if (post == null) {
+            throw new PostNotFoundException();
+        }
+
+        User entityUser = this.modelMapper.map(user, User.class);
+        Post entityPost = this.modelMapper.map(post, Post.class);
+
+        boolean result = this.repository.isUserReportedPost(entityUser, entityPost);
+
+        return result;
     }
 
 }

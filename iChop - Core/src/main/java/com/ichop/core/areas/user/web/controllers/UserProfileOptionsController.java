@@ -55,17 +55,15 @@ public class UserProfileOptionsController extends BaseController {
 
     @PreAuthorize("isAuthenticated()")
     @PostMapping(URLConstants.USER_PROFILE_OPTIONS_INFORMATION_POST)
-    public String proceedProfileInformationUpdate(@Valid UserUpdateProfileInformationBindingModel bindingModel, BindingResult bindingResult, Principal principal) {
+    public String proceedProfileInformationUpdate(@Valid @ModelAttribute UserUpdateProfileInformationBindingModel bindingModel, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
             return super.redirect(URLConstants.USER_PROFILE_OPTIONS_INFORMATION_GET);
         }
 
-        UserServiceModel userServiceModel = this.userServices.findUserByUsername(principal.getName());
-        bindingModel.setUser(userServiceModel);
-        this.userInformationServices.createFirstTime(userServiceModel);
+        this.userInformationServices.createFirstTime(bindingModel.getUser());
         this.userInformationServices.update(bindingModel);
-        this.userWebStorageJmsServices.sendUpdateAvatarRequest(userServiceModel.getUsername(), bindingModel.getAvatarBinary());
+        this.userWebStorageJmsServices.sendUpdateAvatarRequest(bindingModel.getUser().getUsername(), bindingModel.getAvatarBinary());
 
         return super.redirect(URLConstants.USER_PROFILE_OPTIONS_INFORMATION_GET);
     }

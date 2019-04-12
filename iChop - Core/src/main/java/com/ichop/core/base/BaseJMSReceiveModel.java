@@ -11,8 +11,13 @@ public abstract class BaseJMSReceiveModel {
 
     private List<String> errors;
 
-    public boolean hasErrors(){
-        return errors != null && errors.size() >= 1;
+    public boolean hasErrors() {
+
+        if(this.errors == null){
+            return false;
+        }
+
+        return this.errors.size() >= 1;
     }
 
 }

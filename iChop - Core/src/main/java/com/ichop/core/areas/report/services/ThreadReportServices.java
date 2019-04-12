@@ -2,6 +2,8 @@ package com.ichop.core.areas.report.services;
 
 import com.ichop.core.areas.report.domain.models.binding.ThreadReportCreateBindingModel;
 import com.ichop.core.areas.report.domain.models.service.ThreadReportServiceModel;
+import com.ichop.core.areas.thread.domain.models.service.ThreadServiceModel;
+import com.ichop.core.areas.user.domain.models.service.UserServiceModel;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -41,4 +43,10 @@ public interface ThreadReportServices {
     * */
     Page<ThreadReportServiceModel> findAll(Pageable pageable);
 
+    /*
+    *
+    * Check if the user already reported the provided thread
+    *
+    * */
+    boolean isReportedByUser(UserServiceModel user, ThreadServiceModel thread);
 }

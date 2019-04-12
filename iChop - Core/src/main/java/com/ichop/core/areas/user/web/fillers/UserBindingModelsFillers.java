@@ -2,6 +2,7 @@ package com.ichop.core.areas.user.web.fillers;
 
 import com.ichop.core.areas.user.domain.models.binding.UserResetPasswordBindingModelByToken;
 import com.ichop.core.areas.user.domain.models.binding.UserResetPasswordBindingModelByUser;
+import com.ichop.core.areas.user.domain.models.binding.UserUpdateProfileInformationBindingModel;
 import com.ichop.core.areas.user.domain.models.service.UserServiceModel;
 import com.ichop.core.areas.user.services.UserServices;
 import com.ichop.core.areas.user.web.controllers.UserAuthenticationController;
@@ -36,6 +37,16 @@ public class UserBindingModelsFillers {
     @SkipOnNull
     @ModelAttribute
     public UserResetPasswordBindingModelByUser fill(UserResetPasswordBindingModelByUser bindingModel, Principal principal) {
+        UserServiceModel user = this.userServices.findUserByUsername(principal.getName());
+
+        bindingModel.setUser(user);
+
+        return bindingModel;
+    }
+
+    @SkipOnNull
+    @ModelAttribute
+    public UserUpdateProfileInformationBindingModel fill(UserUpdateProfileInformationBindingModel bindingModel,Principal principal){
         UserServiceModel user = this.userServices.findUserByUsername(principal.getName());
 
         bindingModel.setUser(user);

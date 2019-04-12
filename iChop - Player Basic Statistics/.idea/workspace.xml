@@ -28,39 +28,6 @@
     <expand />
     <select />
   </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="1330136171">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="7" />
-          <entry key="project.open.time.0" value="3" />
-          <entry key="project.open.time.1" value="3" />
-          <entry key="project.open.time.5" value="1" />
-          <entry key="project.opened" value="7" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="java" value="14" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="JAVA" value="14" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="java" value="180" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="JAVA" value="180" />
-        </counts>
-      </usages-collector>
-    </session>
-  </component>
   <component name="FileEditorManager">
     <leaf />
   </component>
@@ -127,7 +94,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/ichop/basicstatistics/domain/models/service/PlayerStatisticsServiceModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ichop/basicstatistics/domain/entities/PlayerStatistics.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ichop/basicstatistics/config/BeanConfiguration.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/basicstatistics/domain/models/jms/returnn/GetPlayerBasicStatisticsByUUIDJmsReturnModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ichop/basicstatistics/domain/models/jms/returnn/BaseJMSReturnModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ichop/basicstatistics/components/JmsServices.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ichop/basicstatistics/listeners/PlayerStatisticsJMSListener.java" />
@@ -141,16 +107,11 @@
         <option value="$PROJECT_DIR$/src/main/java/com/ichop/basicstatistics/components/JmsServicesImp.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ichop/basicstatistics/constants/JmsConstants.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ichop/basicstatistics/config/JMSConfiguration.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ichop/basicstatistics/Application.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ichop/basicstatistics/constants/ConsoleMessages.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ichop/basicstatistics/Application.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ichop/basicstatistics/domain/models/jms/returnn/GetPlayerBasicStatisticsByUUIDJmsReturnModel.java" />
       </list>
     </option>
-  </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsGulpfileManager">
-    <detection-done>true</detection-done>
-    <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -188,7 +149,6 @@
     <panes>
       <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -312,7 +272,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555058877089" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555083725411" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -378,6 +338,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.ichop.basicstatistics.services" />
       <option name="MAIN_CLASS_NAME" value="com.ichop.basicstatistics.services.PlayerStatisticsServicesUnitTests" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -439,12 +400,12 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Spring Boot.Application" />
       <item itemvalue="JUnit.PlayerStatisticsServicesIntegrationTests.findByUUID_withValidData_shouldReturnValidResult" />
       <item itemvalue="JUnit.PlayerStatisticsServicesUnitTests" />
       <item itemvalue="JUnit.PlayerStatisticsServicesUnitTests.existsByUUID_withExistingPlayerStatistic_shouldReturnValidResult" />
       <item itemvalue="JUnit.PlayerStatisticsServicesUnitTests.existsByUUID_withNotExistingPlayerStatistic_shouldReturnNull" />
       <item itemvalue="JUnit.PlayerStatisticsServicesUnitTests.findByUUID_withExistingUUID_shouldInvokeMethods" />
+      <item itemvalue="Spring Boot.Application" />
     </list>
     <recent_temporary>
       <list>
@@ -505,6 +466,7 @@
       <workItem from="1555057368075" duration="220000" />
       <workItem from="1555058798334" duration="80000" />
       <workItem from="1555058909117" duration="153000" />
+      <workItem from="1555080606695" duration="1331000" />
     </task>
     <servers />
   </component>
@@ -532,7 +494,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="111438000" />
+    <option name="totallyTimeSpent" value="112769000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -544,9 +506,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2761194" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2806354" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -556,16 +518,16 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3268921" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3129689" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.31239936" />
       <window_info anchor="bottom" id="TODO" order="3" weight="0.32850242" />
-      <window_info anchor="bottom" id="Debug" order="4" weight="0.51339763" />
+      <window_info anchor="bottom" id="Debug" order="4" sideWeight="0.49924356" weight="0.5120773" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="Spring" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32850242" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.32850242" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.32583067" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50075644" side_tool="true" weight="0.5120773" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.3252818" />
       <window_info anchor="bottom" id="Java Enterprise" order="12" />
       <window_info anchor="bottom" id="Database Changes" order="13" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="14" />
@@ -585,9 +547,6 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-jms/5.1.2.RELEASE/spring-jms-5.1.2.RELEASE-sources.jar!/org/springframework/jms/listener/AbstractPollingMessageListenerContainer.java">
@@ -719,13 +678,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/basicstatistics/domain/models/service/PlayerStatisticsServiceModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="14" column="29" lean-forward="true" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/modelmapper/modelmapper/2.3.2/modelmapper-2.3.2.jar!/org/modelmapper/internal/MappingEngineImpl.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="142">
@@ -755,13 +707,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/basicstatistics/domain/models/jms/returnn/BaseJMSReturnModel.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/basicstatistics/domain/models/jms/returnn/GetPlayerBasicStatisticsByUUIDJmsReturnModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/basicstatistics/components/JmsServices.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
@@ -806,7 +751,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/ichop/basicstatistics/services/PlayerStatisticsServicesUnitTests.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/basicstatistics/domain/entities/PlayerStatistics.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
@@ -849,13 +793,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/basicstatistics/listeners/PlayerStatisticsJMSListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="31" column="23" selection-start-line="31" selection-start-column="23" selection-end-line="31" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/basicstatistics/components/JmsServicesImp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -863,13 +800,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/basicstatistics/handlers/JmsErrorHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/basicstatistics/handlers/JmsErrorHandler.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/basicstatistics/CLR.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -884,20 +815,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/basicstatistics/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="10" column="49" selection-start-line="10" selection-start-column="49" selection-end-line="10" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/basicstatistics/constants/ConsoleMessages.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="4" column="145" selection-start-line="4" selection-start-column="145" selection-end-line="4" selection-end-column="145" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/basicstatistics/constants/ConsoleMessages.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/basicstatistics/config/JMSConfiguration.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -906,6 +824,45 @@
             <element signature="e#1297#1298#0" expanded="true" />
             <element signature="e#1351#1352#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/basicstatistics/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+          <folding>
+            <element signature="e#250#251#0" expanded="true" />
+            <element signature="e#312#313#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/basicstatistics/domain/models/service/PlayerStatisticsServiceModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/basicstatistics/domain/models/jms/returnn/GetPlayerBasicStatisticsByUUIDJmsReturnModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/basicstatistics/listeners/PlayerStatisticsJMSListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="41" column="19" selection-start-line="41" selection-start-column="19" selection-end-line="41" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ichop/basicstatistics/services/PlayerStatisticsServicesUnitTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-484">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
         </state>
       </provider>
     </entry>

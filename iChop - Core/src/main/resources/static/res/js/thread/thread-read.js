@@ -1,10 +1,10 @@
-function bindShowCommentBox(button,commentBox) {
+function bindShowCommentBox(button, commentBox) {
     button.on(`click`, function () {
         commentBox.show();
     });
 }
 
-function bindHideCommentBox(button,commentBox) {
+function bindHideCommentBox(button, commentBox) {
     button.on(`click`, function () {
         commentBox.hide();
     });
@@ -31,19 +31,50 @@ function createComment(threadId) {
     });
 }
 
-function hideReactionButtonsIfAlreadyReacted(userUsername,commentId,isLoggedUser) {
-    if(isLoggedUser){
-        let url = URL_API_IS_COMMENT_REACTED_BY_USER.replace('{commentId}',commentId);
-        url = url.replace('{userUsername}',userUsername);
-        console.log(url);
+function hideReactionButtonsIfAlreadyReacted(userUsername, commentId, isLoggedUser) {
+    if (isLoggedUser) {
+        let url = URL_API_IS_COMMENT_REACTED_BY_USER.replace('{commentId}', commentId);
+        url = url.replace('{userUsername}', userUsername);
 
         $.ajax({
-            url:url,
+            url: url,
             success: function (isReacted) {
                 if (isReacted) {
-                    $(`#thread-comment-${commentId}`).hide();
+                    $(`#thread-comment_react_buttons-${commentId}`).hide();
                 }
             }
-        })
+        });
+    }
+}
+
+function hideReportButtonsOfThreadIfReportExists(userUsername, threadId, isLoggedUser) {
+    if (isLoggedUser) {
+        let url = URL_API_IS_THREAD_REPORTED_BY_USER.replace('{threadId}', threadId);
+        url = url.replace('{userUsername}', userUsername);
+
+        $.ajax({
+            url: url,
+            success: function (isReported) {
+                if (isReported) {
+                    $(`#thread-report_button-${threadId}`).hide();
+                }
+            }
+        });
+    }
+}
+
+function hideReportButtonsOfCommentIfReportExists(userUsername, commentId, isLoggedUser) {
+    if (isLoggedUser) {
+        let url = URL_API_IS_COMMENT_REPORTED_BY_USER.replace('{commentId}', commentId);
+        url = url.replace('{userUsername}', userUsername);
+
+        $.ajax({
+            url: url,
+            success: function (isReported) {
+                if (isReported) {
+                    $(`#thread-comment-report_button-${commentId}`).hide();
+                }
+            }
+        });
     }
 }

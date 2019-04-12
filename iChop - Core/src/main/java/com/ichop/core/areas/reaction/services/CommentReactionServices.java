@@ -27,7 +27,7 @@ public interface CommentReactionServices {
     * @throws CommentNotFoundException if the comment is null
     *
     * */
-    boolean isLikedByUser(UserServiceModel user, CommentServiceModel comment);
+    boolean isReactedByUser(UserServiceModel user, CommentServiceModel comment);
 
 
     /*

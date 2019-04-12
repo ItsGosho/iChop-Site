@@ -1,7 +1,9 @@
 package com.ichop.core.areas.report.services;
 
+import com.ichop.core.areas.comment.domain.models.service.CommentServiceModel;
 import com.ichop.core.areas.report.domain.models.binding.CommentReportCreateBindingModel;
 import com.ichop.core.areas.report.domain.models.service.CommentReportServiceModel;
+import com.ichop.core.areas.user.domain.models.service.UserServiceModel;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -39,4 +41,6 @@ public interface CommentReportServices {
      *
      * */
     Page<CommentReportServiceModel> findAll(Pageable pageable);
+
+    boolean isReportedByUser(UserServiceModel user, CommentServiceModel comment);
 }

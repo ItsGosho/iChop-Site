@@ -9,13 +9,9 @@ import com.ichop.core.areas.user.services.UserServices;
 import com.ichop.core.base.BaseController;
 import com.ichop.core.constants.URLConstants;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 public class ReactionApiController extends BaseController {
 
 
@@ -31,22 +27,22 @@ public class ReactionApiController extends BaseController {
     }
 
 
-    @GetMapping(value = URLConstants.IS_COMMENT_ALREADY_REACTED_BY_USER,produces = "application/json")
+    @GetMapping(value = URLConstants.IS_COMMENT_ALREADY_REACTED_BY_USER, produces = "application/json")
     @ResponseBody
     public String isCommentAlreadyReactedByUser(@PathVariable String commentId, @RequestParam String userUsername) {
 
         CommentServiceModel comment = this.commentServices.findById(commentId);
         UserServiceModel user = this.userServices.findUserByUsername(userUsername);
 
-        if(comment == null || user == null){
+        if (comment == null || user == null) {
             return new Gson().toJson(false);
         }
 
-        if(comment.getCreator().getUsername().equals(user.getUsername())){
+        if (comment.getCreator().getUsername().equals(user.getUsername())) {
             return new Gson().toJson(true);
         }
 
-        boolean isReactionPresent = this.commentReactionServices.isLikedByUser(user,comment);
+        boolean isReactionPresent = this.commentReactionServices.isReactedByUser(user, comment);
         return new Gson().toJson(isReactionPresent);
     }
 }
