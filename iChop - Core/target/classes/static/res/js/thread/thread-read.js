@@ -31,7 +31,7 @@ function createComment(threadId) {
     });
 }
 
-function hideReactionButtonsIfAlreadyReacted(userUsername, commentId, isLoggedUser) {
+function hideCommentReactionButtonsIfAlreadyReacted(userUsername, commentId, isLoggedUser) {
     if (isLoggedUser) {
         let url = URL_API_IS_COMMENT_REACTED_BY_USER.replace('{commentId}', commentId);
         url = url.replace('{userUsername}', userUsername);
@@ -41,6 +41,22 @@ function hideReactionButtonsIfAlreadyReacted(userUsername, commentId, isLoggedUs
             success: function (isReacted) {
                 if (isReacted) {
                     $(`#thread-comment_react_buttons-${commentId}`).hide();
+                }
+            }
+        });
+    }
+}
+
+function hideThreadReactionButtonsIfAlreadyReacted(userUsername, threadId, isLoggedUser) {
+    if (isLoggedUser) {
+        let url = URL_API_IS_THREAD_REACTED_BY_USER.replace('{threadId}', threadId);
+        url = url.replace('{userUsername}', userUsername);
+
+        $.ajax({
+            url: url,
+            success: function (isReacted) {
+                if (isReacted) {
+                    $(`#thread-reaction_buttons-${threadId}`).hide();
                 }
             }
         });

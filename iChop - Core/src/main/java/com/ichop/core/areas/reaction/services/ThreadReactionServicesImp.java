@@ -37,7 +37,7 @@ public class ThreadReactionServicesImp extends BaseReactionServices<ThreadReacti
             throw new ThreadNotFoundException();
         }
 
-        if (this.isLikedByUser(bindingModel.getUser(), bindingModel.getThread())) {
+        if (this.isReactedByUser(bindingModel.getUser(), bindingModel.getThread())) {
             throw new UserAlreadyReacted();
         }
 
@@ -50,7 +50,7 @@ public class ThreadReactionServicesImp extends BaseReactionServices<ThreadReacti
     }
 
     @Override
-    public boolean isLikedByUser(UserServiceModel user, ThreadServiceModel thread) {
+    public boolean isReactedByUser(UserServiceModel user, ThreadServiceModel thread) {
 
         if (user == null) {
             throw new UserNotFoundException();

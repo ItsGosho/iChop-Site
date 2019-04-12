@@ -188,7 +188,7 @@
                                 let commentId = /*[[*{id}]]*/ null;
                                 let isLoggedUser = /*[[${#authorization.expression('isAuthenticated()')}]]*/ null;
 
-                                hideReactionButtonsIfAlreadyReacted(userUsername, commentId, isLoggedUser);
+                                hideCommentReactionButtonsIfAlreadyReacted(userUsername, commentId, isLoggedUser);
                             }
 
                         </script>

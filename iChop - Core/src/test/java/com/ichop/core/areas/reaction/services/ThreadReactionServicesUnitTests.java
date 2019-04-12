@@ -64,7 +64,7 @@ public class ThreadReactionServicesUnitTests {
 
         when(bindingModel.getThread()).thenReturn(thread);
         when(bindingModel.getUser()).thenReturn(user);
-        when(this.threadReactionServices.isLikedByUser(user,thread)).thenReturn(true);
+        when(this.threadReactionServices.isReactedByUser(user,thread)).thenReturn(true);
 
         this.threadReactionServices.create(bindingModel);
     }
@@ -78,7 +78,7 @@ public class ThreadReactionServicesUnitTests {
 
         when(bindingModel.getThread()).thenReturn(thread);
         when(bindingModel.getUser()).thenReturn(user);
-        when(this.threadReactionServices.isLikedByUser(user,thread)).thenReturn(false);
+        when(this.threadReactionServices.isReactedByUser(user,thread)).thenReturn(false);
         when(this.modelMapper.map(bindingModel,ThreadReactionServiceModel.class)).thenReturn(threadReaction);
 
         this.threadReactionServices.create(bindingModel);
@@ -92,14 +92,14 @@ public class ThreadReactionServicesUnitTests {
     public void isLikedByUser_withNullUser_shouldThrowException() {
          ThreadServiceModel thread = mock(ThreadServiceModel.class);
 
-         this.threadReactionServices.isLikedByUser(null,thread);
+         this.threadReactionServices.isReactedByUser(null,thread);
     }
 
     @Test(expected = ThreadNotFoundException.class)
     public void isLikedByUser_withNullThread_shouldThrowException() {
         UserServiceModel user = mock(UserServiceModel.class);
 
-        this.threadReactionServices.isLikedByUser(user,null);
+        this.threadReactionServices.isReactedByUser(user,null);
     }
 
     @Test
@@ -112,7 +112,7 @@ public class ThreadReactionServicesUnitTests {
         when(this.modelMapper.map(user, User.class)).thenReturn(entityUser);
         when(this.modelMapper.map(thread, Thread.class)).thenReturn(entityThread);
 
-        this.threadReactionServices.isLikedByUser(user,thread);
+        this.threadReactionServices.isReactedByUser(user,thread);
 
         verify(this.modelMapper,times(1)).map(user, User.class);
         verify(this.modelMapper,times(1)).map(thread, Thread.class);

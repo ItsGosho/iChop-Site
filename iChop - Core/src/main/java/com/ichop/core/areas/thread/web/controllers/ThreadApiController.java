@@ -15,23 +15,23 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 
 @RestController
-public class ThreadRestController {
+public class ThreadApiController {
 
     private final ThreadServices threadServices;
 
     @Autowired
-    public ThreadRestController(ThreadServices threadServices) {
+    public ThreadApiController(ThreadServices threadServices) {
         this.threadServices = threadServices;
     }
 
 
     @PreAuthorize("hasAuthority('MODERATOR')")
-    @PostMapping(value = URLConstants.THREAD_CREATE_POST,produces = "application/json")
+    @PostMapping(value = URLConstants.THREAD_CREATE_POST, produces = "application/json")
     @ResponseBody
     public String proceedThreadCreation(@Valid @ModelAttribute ThreadCreateBindingModel bindingModel, BindingResult bindingResult) {
 
-        if(bindingResult.hasErrors()){
-             return new Gson().toJson(false);
+        if (bindingResult.hasErrors()) {
+            return new Gson().toJson(false);
         }
 
         this.threadServices.create(bindingModel);

@@ -26,7 +26,7 @@ public interface ThreadReactionServices {
      * @throws ThreadNotFoundException if the thread is null
      *
      * */
-    boolean isLikedByUser(UserServiceModel user, ThreadServiceModel thread);
+    boolean isReactedByUser(UserServiceModel user, ThreadServiceModel thread);
 
 
     /*

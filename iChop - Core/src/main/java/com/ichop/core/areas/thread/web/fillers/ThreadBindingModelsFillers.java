@@ -1,7 +1,7 @@
 package com.ichop.core.areas.thread.web.fillers;
 
 import com.ichop.core.areas.thread.domain.models.binding.ThreadCreateBindingModel;
-import com.ichop.core.areas.thread.web.controllers.ThreadRestController;
+import com.ichop.core.areas.thread.web.controllers.ThreadApiController;
 import com.ichop.core.areas.user.domain.models.service.UserServiceModel;
 import com.ichop.core.areas.user.services.UserServices;
 import com.ichop.core.validators.method.SkipOnNull;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.security.Principal;
 
-@ControllerAdvice(assignableTypes = ThreadRestController.class)
+@ControllerAdvice(assignableTypes = ThreadApiController.class)
 public class ThreadBindingModelsFillers {
 
     private final UserServices userServices;

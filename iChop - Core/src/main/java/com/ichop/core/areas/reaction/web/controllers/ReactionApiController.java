@@ -4,6 +4,9 @@ import com.google.gson.Gson;
 import com.ichop.core.areas.comment.domain.models.service.CommentServiceModel;
 import com.ichop.core.areas.comment.services.CommentServices;
 import com.ichop.core.areas.reaction.services.CommentReactionServices;
+import com.ichop.core.areas.reaction.services.ThreadReactionServices;
+import com.ichop.core.areas.thread.domain.models.service.ThreadServiceModel;
+import com.ichop.core.areas.thread.services.ThreadServices;
 import com.ichop.core.areas.user.domain.models.service.UserServiceModel;
 import com.ichop.core.areas.user.services.UserServices;
 import com.ichop.core.base.BaseController;
@@ -16,14 +19,18 @@ public class ReactionApiController extends BaseController {
 
 
     private final CommentServices commentServices;
+    private final ThreadServices threadServices;
     private final UserServices userServices;
     private final CommentReactionServices commentReactionServices;
+    private final ThreadReactionServices threadReactionServices;
 
     @Autowired
-    public ReactionApiController(CommentServices commentServices, UserServices userServices, CommentReactionServices commentReactionServices) {
+    public ReactionApiController(CommentServices commentServices, ThreadServices threadServices, UserServices userServices, CommentReactionServices commentReactionServices, ThreadReactionServices threadReactionServices) {
         this.commentServices = commentServices;
+        this.threadServices = threadServices;
         this.userServices = userServices;
         this.commentReactionServices = commentReactionServices;
+        this.threadReactionServices = threadReactionServices;
     }
 
 
@@ -45,4 +52,25 @@ public class ReactionApiController extends BaseController {
         boolean isReactionPresent = this.commentReactionServices.isReactedByUser(user, comment);
         return new Gson().toJson(isReactionPresent);
     }
+
+
+    @GetMapping(value = URLConstants.IS_THREAD_ALREADY_REACTED_BY_USER, produces = "application/json")
+    @ResponseBody
+    public String isThreadAlreadyReactedByUser(@PathVariable String threadId, @RequestParam String userUsername) {
+
+        ThreadServiceModel thread = this.threadServices.findById(threadId);
+        UserServiceModel user = this.userServices.findUserByUsername(userUsername);
+
+        if (thread == null || user == null) {
+            return new Gson().toJson(false);
+        }
+
+        if (thread.getCreator().getUsername().equals(user.getUsername())) {
+            return new Gson().toJson(true);
+        }
+
+        boolean isReactionPresent = this.threadReactionServices.isReactedByUser(user, thread);
+        return new Gson().toJson(isReactionPresent);
+    }
+
 }

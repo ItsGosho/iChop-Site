@@ -99,7 +99,7 @@ public class ThreadReactionServicesIntegrationTests {
         bindingModel.setThread(thread);
         this.threadReactionServices.create(bindingModel);
 
-        boolean result = this.threadReactionServices.isLikedByUser(liker, thread);
+        boolean result = this.threadReactionServices.isReactedByUser(liker, thread);
 
         assertTrue(result);
     }
@@ -118,7 +118,7 @@ public class ThreadReactionServicesIntegrationTests {
         thread.setCreator(commentCreator);
         thread = this.modelMapper.map(this.threadRepository.save(this.modelMapper.map(thread, Thread.class)), ThreadServiceModel.class);
 
-        boolean result = this.threadReactionServices.isLikedByUser(liker, thread);
+        boolean result = this.threadReactionServices.isReactedByUser(liker, thread);
 
         assertFalse(result);
     }

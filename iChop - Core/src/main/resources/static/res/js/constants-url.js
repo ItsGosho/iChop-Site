@@ -14,6 +14,7 @@ const URL_API_CREATE_THREAD = "/thread/create";
 const URL_API_COMMENT_THREAD = "/thread/{id}/comment/create";
 const URL_READ_THREAD = "/thread/{id}/read";
 const URL_API_IS_COMMENT_REACTED_BY_USER = "/comment/{commentId}/is-reaction-present?userUsername={userUsername}";
+const URL_API_IS_THREAD_REACTED_BY_USER = "/thread/{threadId}/is-reaction-present?userUsername={userUsername}";
 const URL_API_USER_ALL_FOLLOWINGS = "/api/user/{username}/all/followings";
 const URL_API_USER_ALL_FOLLOWERS = "/api/user/{username}/all/followers";
 

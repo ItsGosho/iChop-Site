@@ -172,12 +172,28 @@
                         <small>💬</small>
                         Comment
                     </button>
-                    <button sec:authorize="isAuthenticated()" class="btn btn-sm dropdown-toggle"
+                    <button th:id="'thread-reaction_buttons-'+*{id}"
+                            sec:authorize="isAuthenticated()" class="btn btn-sm dropdown-toggle"
                             type="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <small>💡</small>
                         React
                     </button>
+
+                    <script th:inline="javascript">
+                        run();
+
+                        function run() {
+
+                            let userUsername = /*[[${#authentication.name}]]*/ null;
+                            let threadId = /*[[*{id}]]*/ null;
+                            let isLoggedUser = /*[[${#authorization.expression('isAuthenticated()')}]]*/ null;
+
+                            hideThreadReactionButtonsIfAlreadyReacted(userUsername, threadId, isLoggedUser);
+                        }
+
+                    </script>
+
                     <div class="dropdown-menu">
                         <form th:action="@{/thread/{id}/reaction/like(id=*{id})}" method="post">
                             <button sec:authorize="isAuthenticated()"
