@@ -37,7 +37,6 @@ public class CommentServicesImp extends BaseService<Comment, CommentRepository> 
             throw new ThreadNotFoundException();
         }
 
-        System.out.println(LocalDateTime.now());
         CommentServiceModel comment = this.modelMapper.map(commentCreateBindingModel, CommentServiceModel.class);
         comment.setCreatedOn(LocalDateTime.now());
         comment.setReactions(new LinkedList<>());

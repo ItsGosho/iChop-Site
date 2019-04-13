@@ -1,6 +1,7 @@
 package com.ichop.core.areas.player.web.controllers;
 
 import com.google.gson.Gson;
+import com.ichop.core.areas.jms.exception.JmsServerIsDownException;
 import com.ichop.core.areas.player.domain.jms.player.link.receive.IsPlayerLinkedAccountByUUIDJMSReceiveModel;
 import com.ichop.core.areas.player.domain.json.IsPlayerAccountLinkedJSONModel;
 import com.ichop.core.areas.player.services.PlayerLinkJmsServices;
@@ -28,6 +29,10 @@ public class PlayerApiController {
     @ResponseBody
     public String isPlayerLinkedAccount(@RequestParam(value = "uuid") String uuid) {
         IsPlayerLinkedAccountByUUIDJMSReceiveModel result = this.playerLinkJmsServices.isPlayerLinkedAccountByUUID(uuid);
+
+        if(result == null){
+            throw new JmsServerIsDownException();
+        }
 
         IsPlayerAccountLinkedJSONModel isPlayerAccountLinkedJSONModel = this.modelMapper.map(result,IsPlayerAccountLinkedJSONModel.class);
         return new Gson().toJson(isPlayerAccountLinkedJSONModel);

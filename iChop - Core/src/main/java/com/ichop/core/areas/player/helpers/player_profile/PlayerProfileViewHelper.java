@@ -1,6 +1,7 @@
 package com.ichop.core.areas.player.helpers.player_profile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ichop.core.areas.jms.exception.JmsServerIsDownException;
 import com.ichop.core.areas.player.domain.jms.player.basicstatistics.receive.GetPlayerBasicStatisticsByUUIDJMSReceiveModel;
 import com.ichop.core.areas.player.domain.jms.player.link.receive.GetPlayerDataByPlayerUUIDJMSReceiveModel;
 import com.ichop.core.areas.player.domain.models.view.PlayerProfileViewModel;
@@ -30,6 +31,10 @@ public class PlayerProfileViewHelper extends BaseViewCreator {
     public PlayerProfileViewModel create(String uuid) {
 
         GetPlayerBasicStatisticsByUUIDJMSReceiveModel foundedPlayer = this.playerBasicStatisticJmsServices.getPlayerDataByUUID(uuid);
+
+        if(foundedPlayer == null){
+            throw new JmsServerIsDownException();
+        }
 
         if (foundedPlayer.hasErrors()) {
             return null;

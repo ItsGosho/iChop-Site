@@ -1,10 +1,12 @@
 package com.ichop.core.areas.player.web.controllers;
 
+import com.ichop.core.areas.jms.exception.JmsServerIsDownException;
 import com.ichop.core.areas.player.domain.jms.key.receive.PlayerDataByKeyJMSReceiveModel;
 import com.ichop.core.areas.player.domain.jms.player.link.receive.LinkPlayerAccountJMSReceiveModel;
 import com.ichop.core.areas.player.domain.models.view.PlayerProfileViewModel;
 import com.ichop.core.areas.player.helpers.player_profile.PlayerProfileViewHelper;
 import com.ichop.core.areas.player.services.PlayerLinkJmsServices;
+import com.ichop.core.areas.player.aspects.IsPlayerAccountLinked;
 import com.ichop.core.base.BaseController;
 import com.ichop.core.constants.URLConstants;
 import org.modelmapper.ModelMapper;
@@ -36,8 +38,14 @@ public class PlayerController extends BaseController {
 
     @PreAuthorize("isAuthenticated()")
     @GetMapping(URLConstants.PLAYER_LINK_ACCOUNT_GET)
-    public ModelAndView getLinkAccountPage(@RequestParam(value = "key") String key, ModelAndView modelAndView) {
+    @IsPlayerAccountLinked
+    public ModelAndView getLinkAccountPage(@RequestParam(value = "key") String key, ModelAndView modelAndView,Principal principal) {
+
         PlayerDataByKeyJMSReceiveModel result = this.playerLinkJmsServices.getPlayerDataByLinkKey(key);
+
+        if (result == null) {
+            throw new JmsServerIsDownException();
+        }
 
         if (result.hasErrors()) {
             return super.viewWithMessages("notification/errors", "Key Error", result.getErrors());
@@ -64,16 +72,16 @@ public class PlayerController extends BaseController {
     }
 
     @GetMapping(URLConstants.PLAYER_PROFILE_VIEW_GET)
-    public ModelAndView getPlayerProfileViewPage(@PathVariable String uuid,ModelAndView modelAndView) {
+    public ModelAndView getPlayerProfileViewPage(@PathVariable String uuid, ModelAndView modelAndView) {
         PlayerProfileViewModel player = this.playerProfileViewHelper.create(uuid);
 
-        if(player == null){
+        if (player == null) {
             return super.viewWithMessage("notification/error", "Player Error", "Player not found!");
         }
 
-        modelAndView.addObject("player",player);
+        modelAndView.addObject("player", player);
 
-        return super.page("player/player-profile",String.format("%s`s profile",player.getName()),modelAndView);
+        return super.page("player/player-profile", String.format("%s`s profile", player.getName()), modelAndView);
     }
 
 

@@ -1,4 +1,4 @@
-package com.ichop.core.areas.jms.validations;
+package com.ichop.core.areas.player.aspects;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -8,6 +8,6 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface SkipOnNull {
+public @interface IsPlayerAccountLinked {
 
 }

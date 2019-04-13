@@ -1,4 +1,4 @@
-package com.ichop.core.areas.jms.validations;
+package com.ichop.core.validators.aspects;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -11,7 +11,7 @@ import java.util.Arrays;
 @Component
 public class SkipOnNullAroundProceeder {
 
-    @Around("@annotation(com.ichop.core.areas.jms.validations.SkipOnNull)")
+    @Around("@annotation(com.ichop.core.validators.aspects.SkipOnNull)")
     public Object skipOnNull(ProceedingJoinPoint joinPoint) throws Throwable {
         Object[] methodPassedValues = joinPoint.getArgs();
 

@@ -1,9 +1,8 @@
 package com.ichop.core.areas.player.services;
 
+import com.ichop.core.areas.jms.services.JmsServices;
 import com.ichop.core.areas.player.domain.jms.player.basicstatistics.receive.GetPlayerBasicStatisticsByUUIDJMSReceiveModel;
 import com.ichop.core.areas.player.domain.jms.player.basicstatistics.send.GetPlayerBasicStatisticsByUUIDJMSSendModel;
-import com.ichop.core.areas.jms.services.JmsServices;
-import com.ichop.core.areas.jms.validations.IsServerDown;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +19,6 @@ public class PlayerBasicStatisticsJmsServicesImp implements PlayerBasicStatistic
     }
 
 
-    @IsServerDown
     @Override
     public GetPlayerBasicStatisticsByUUIDJMSReceiveModel getPlayerDataByUUID(String uuid) {
 

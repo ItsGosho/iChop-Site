@@ -3,9 +3,6 @@ package com.ichop.core.constants;
 
 public final class URLConstants {
 
-    //GLOBAL
-    public static final String DATA_USER_AVATAR = "/data/user/{username}/avatar";
-
     //PlayerController ---------------------------------------------------------------------------------------
     public static final String PLAYER_LINK_ACCOUNT_GET = "/player/link-account"; /*USER++*/
     public static final String PLAYER_LINK_ACCOUNT_POST = "/player/link-account"; /*USER++*/

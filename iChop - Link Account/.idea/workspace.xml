@@ -134,7 +134,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="width" value="1940" />
     <option name="height" value="1050" />
@@ -146,7 +146,6 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -206,61 +205,11 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="iChop-Link Account" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iChop - Link Account" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="iChop-Link Account" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iChop - Link Account" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="iChop-Link Account" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iChop - Link Account" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="iChop-Link Account" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iChop - Link Account" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="ichop" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="iChop-Link Account" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iChop - Link Account" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="ichop" type="462c0819:PsiDirectoryNode" />
-              <item name="linkaccount" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="iChop-Link Account" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iChop - Link Account" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="ichop" type="462c0819:PsiDirectoryNode" />
-              <item name="linkaccount" type="462c0819:PsiDirectoryNode" />
-              <item name="services" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -466,6 +415,7 @@
       <workItem from="1555058630830" duration="244000" />
       <workItem from="1555058912774" duration="148000" />
       <workItem from="1555080587463" duration="2000" />
+      <workItem from="1555171392807" duration="2757000" />
     </task>
     <servers />
   </component>
@@ -502,12 +452,12 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="102536000" />
+    <option name="totallyTimeSpent" value="105293000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="7" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49919486" visible="true" weight="0.29727685" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49919486" visible="true" weight="0.30181542" />
       <window_info id="Structure" order="1" sideWeight="0.50080514" side_tool="true" weight="0.26172465" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -518,7 +468,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32583067" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3129689" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39121115" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.38969404" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -526,7 +476,7 @@
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32850242" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.32583067" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.3252818" />
       <window_info anchor="bottom" id="Java Enterprise" order="12" />
       <window_info anchor="bottom" id="Database Changes" order="13" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="14" />

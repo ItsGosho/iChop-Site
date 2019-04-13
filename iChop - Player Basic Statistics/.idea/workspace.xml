@@ -136,7 +136,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="width" value="1940" />
     <option name="height" value="1050" />
@@ -148,7 +148,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -263,6 +262,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -467,6 +467,7 @@
       <workItem from="1555058798334" duration="80000" />
       <workItem from="1555058909117" duration="153000" />
       <workItem from="1555080606695" duration="1331000" />
+      <workItem from="1555175177769" duration="610000" />
     </task>
     <servers />
   </component>
@@ -494,7 +495,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="112769000" />
+    <option name="totallyTimeSpent" value="113379000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -506,9 +507,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="7" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2806354" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28517398" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -520,7 +521,7 @@
       <window_info anchor="bottom" id="Find" order="1" weight="0.3268921" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.31239936" />
       <window_info anchor="bottom" id="TODO" order="3" weight="0.32850242" />
-      <window_info anchor="bottom" id="Debug" order="4" sideWeight="0.49924356" weight="0.5120773" />
+      <window_info anchor="bottom" id="Debug" order="4" sideWeight="0.49924356" visible="true" weight="0.5120773" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="Spring" order="7" />
