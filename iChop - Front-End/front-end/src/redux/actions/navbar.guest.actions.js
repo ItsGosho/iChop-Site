@@ -1,5 +1,15 @@
 import Actions from "../../constants/actions.constants";
 
+
+let navbarGuestShowDropdownAction = (toShow) => {
+    return async (dispatch) => {
+        dispatch({
+            type: Actions.NAVBAR_GUEST_SHOW_DROPDOWN,
+            showDropdown: toShow
+        });
+    }
+};
+
 let navbarGuestSelectLoginAction = () => {
     return async (dispatch) => {
         dispatch({
@@ -25,6 +35,7 @@ let navbarGuestSelectForgottenPasswordAction = () => {
 };
 
 export {
+    navbarGuestShowDropdownAction,
     navbarGuestSelectLoginAction,
     navbarGuestSelectRegisterAction,
     navbarGuestSelectForgottenPasswordAction,

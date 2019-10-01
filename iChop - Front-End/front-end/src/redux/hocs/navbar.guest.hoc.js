@@ -1,21 +1,22 @@
 import React from 'react';
-import {calculatorClear, calculatorDecrement, calculatorIncrement} from "../actions/calculator.actions";
 import {connect} from "react-redux";
-import Actions from "../actions/action.constants";
 import {
     navbarGuestSelectForgottenPasswordAction,
     navbarGuestSelectLoginAction,
-    navbarGuestSelectRegisterAction
+    navbarGuestSelectRegisterAction, navbarGuestShowDropdownAction
 } from "../actions/navbar.guest.actions";
 
 let props = (state) => {
-    let {isLoginSelected, isRegisterSelected, isForgottenPasswordSelected} = state.navbarGuest;
+    let {showDropdown, isLoginSelected, isRegisterSelected, isForgottenPasswordSelected} = state.navbarGuest;
 
-    return {isLoginSelected, isRegisterSelected, isForgottenPasswordSelected};
+    return {redux: {showDropdown, isLoginSelected, isRegisterSelected, isForgottenPasswordSelected}};
 };
 
 let dispatcher = (dispatch) => {
     return {
+        showDropdown: (toShow) => {
+            dispatch(navbarGuestShowDropdownAction(toShow))
+        },
         selectLogin: () => {
             dispatch(navbarGuestSelectLoginAction())
         },
@@ -28,6 +29,8 @@ let dispatcher = (dispatch) => {
     }
 };
 
-export default (Comp) => {
+let navbarGuestReduxHoc = (Comp) => {
     return connect(props, dispatcher)((props) => (<Comp {...props}/>));
 };
+
+export default navbarGuestReduxHoc;

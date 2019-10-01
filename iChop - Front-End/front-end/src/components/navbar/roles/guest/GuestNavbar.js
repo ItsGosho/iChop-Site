@@ -3,38 +3,61 @@ import './GuestNavbar.css';
 import GuestLoginDropdown from "./GuestLoginDropdown";
 import GuestRegisterDropdown from "./GuestRegisterDropdown";
 import GuestForgottenPasswordDropdown from "./GuestForgottenPasswordDropdown";
+import navbarGuestReduxHoc from "../../../../redux/hocs/navbar.guest.hoc";
 
 class GuestNavbar extends Component {
 
     constructor(props) {
         super(props);
 
-        this.state = {
-            isLoginSelected: true,
-            isRegisterSelected: false,
-            isForgottenPasswordSelected: false,
-        }
+        this.showDropdown = this.showDropdown.bind(this);
     }
 
-    /*TODO: Here redux will play BIG role*/
+    showDropdown() {
+        let toShow = !this.props.redux.showDropdown;
+
+        this.props.showDropdown(toShow);
+    }
 
     render() {
 
         return (
             <div id="div-signIn-signInForms">
-                <button id="button-signIn-navBar" type="button"
-                        className="btn btn-success dropdown-toggle btn-sm"
-                        data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
+
+                <button id="button-signIn-navBar" className="btn btn-success btn-sm" onClick={this.showDropdown}>
                     Sign in
                 </button>
-                <div id="div-authForms-signInForm" className="dropdown-menu dropdown-menu-right">
-                      <GuestLoginDropdown/>
-                </div>
+
+                {
+                    (() => {
+                        if (this.props.redux.showDropdown) {
+                            return (
+                                <div id="div-authForms-signInForm"
+                                     className={"dropdown-menu dropdown-menu-right " + (this.props.showDropdown ? 'show' : '')}>
+                                    {
+                                        (() => {
+                                            if (this.props.redux.isLoginSelected) {
+                                                return (<GuestLoginDropdown/>);
+                                            }
+
+                                            if (this.props.redux.isRegisterSelected) {
+                                                return (<GuestRegisterDropdown/>);
+                                            }
+
+                                            if (this.props.redux.isForgottenPasswordSelected) {
+                                                return (<GuestForgottenPasswordDropdown/>);
+                                            }
+                                        })()
+                                    }
+                                </div>
+                            );
+                        }
+                    })()
+                }
             </div>
         );
     }
 
 }
 
-export default GuestNavbar;
+export default navbarGuestReduxHoc(GuestNavbar);

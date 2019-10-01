@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+import navbarGuestReduxHoc from "../../../../redux/hocs/navbar.guest.hoc";
 
 class GuestRegisterDropdown extends Component {
 
@@ -6,7 +7,7 @@ class GuestRegisterDropdown extends Component {
 
         return (
             <div id="div-register-dropdown">
-                <form className="px-4 py-3" method="post" action="/register">
+                <form className="px-4 py-3">
 
                     <div className="form-group">
                         <small id="error-usernameAlreadyExists-registerForm">⚡Username already
@@ -82,4 +83,4 @@ class GuestRegisterDropdown extends Component {
 
 }
 
-export default GuestRegisterDropdown;
+export default navbarGuestReduxHoc(GuestRegisterDropdown);

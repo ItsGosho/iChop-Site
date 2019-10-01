@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+import navbarGuestReduxHoc from "../../../../redux/hocs/navbar.guest.hoc";
 
 class GuestForgottenPasswordDropdown extends Component {
 
@@ -48,4 +49,4 @@ class GuestForgottenPasswordDropdown extends Component {
 
 }
 
-export default GuestForgottenPasswordDropdown;
+export default navbarGuestReduxHoc(GuestForgottenPasswordDropdown);
