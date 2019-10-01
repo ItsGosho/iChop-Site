@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
 
-class CHANGE extends Component {
+class GuestFooter extends Component {
 
 
     render() {
@@ -37,4 +37,4 @@ class CHANGE extends Component {
 
 }
 
-export default CHANGE;
+export default GuestFooter;
