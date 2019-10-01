@@ -12,7 +12,7 @@ class Footer extends Component {
 
 
     render() {
-        let role = Roles.USER;
+        let role = Roles.MODERATOR;
 
         return (
             <footer className="page-footer font-small stylish-color-dark pt-4" style={{'marginTop': '125px'}}>
@@ -21,8 +21,7 @@ class Footer extends Component {
                     <div className="row">
                         <FooterHeader/>
 
-                        <div className="col-md-2 mx-auto">
-                            <h5 className="font-weight-bold text-uppercase mt-3 mb-4">VISIT</h5>
+
                             {
                                 (() => {
                                     switch (role) {
@@ -39,7 +38,6 @@ class Footer extends Component {
                                     }
                                 })()
                             }
-                        </div>
 
                     </div>
 
