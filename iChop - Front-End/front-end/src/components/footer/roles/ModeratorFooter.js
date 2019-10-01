@@ -1,9 +1,13 @@
 import React, {Component, Fragment} from 'react';
+import {Link} from "react-router-dom";
+import RoutingURLs from "../../../constants/routing.constants";
 
 class ModeratorFooter extends Component {
 
 
     render() {
+        let username = '';
+        let myProfileUrl = RoutingURLs.USER.PROFILE.replace(':username', username);
 
         return (
             <Fragment>
@@ -12,19 +16,19 @@ class ModeratorFooter extends Component {
                     <h5 className="font-weight-bold text-uppercase mt-3 mb-4">---</h5>
                     <ul className="list-unstyled">
                         <li>
-                            <a th:href="@{'/user/'+${#authentication.name}+'/profile'}">
+                            <Link to={myProfileUrl}>
                                 <small>👤</small>
-                                <span>Profile</span></a>
+                                <span>Profile</span></Link>
                         </li>
                         <li>
-                            <a href="/user/my-profile/options/information">
+                            <Link to={RoutingURLs.USER.PROFILE_OPTIONS_INFORMATION}>
                                 <small>⚙</small>
-                                <span>Options</span></a>
+                                <span>Options</span></Link>
                         </li>
                         <li>
-                            <a href="/thread/create">
+                            <Link to={RoutingURLs.THREAD.CREATE}>
                                 <small>🚩</small>
-                                Create Thread</a>
+                                Create Thread</Link>
                         </li>
                     </ul>
 
@@ -39,15 +43,15 @@ class ModeratorFooter extends Component {
                         <ul className="list-unstyled">
 
                             <li>
-                                <a href="/comment/reports/all">
+                                <Link to={RoutingURLs.COMMENT.REPORTS_ALL}>
                                     <small>⚠</small>
-                                    Reports</a>
+                                    Reports</Link>
                             </li>
 
                             <li>
-                                <a href="/logout">
+                                <Link to={RoutingURLs.AUTHENTICATION.LOGOUT}>
                                     <small>🚪</small>
-                                    Logout</a>
+                                    Logout</Link>
                             </li>
                         </ul>
 
