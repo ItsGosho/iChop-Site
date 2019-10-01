@@ -1,15 +1,10 @@
 import React, {Component} from 'react';
 import Roles from "../../constants/roles.constants";
-import UserFooter from "../footer/roles/UserFooter";
-import ModeratorFooter from "../footer/roles/ModeratorFooter";
-import AdminFooter from "../footer/roles/AdminFooter";
-import OwnerFooter from "../footer/roles/OwnerFooter";
-import GuestFooter from "../footer/roles/GuestFooter";
-import UserNavbar from "./roles/UserNavbar";
-import ModeratorNavbar from "./roles/ModeratorNavbar";
-import AdminNavbar from "./roles/AdminNavbar";
-import OwnerNavbar from "./roles/OwnerNavbar";
-import GuestNavbar from "./roles/GuestNavbar";
+import UserNavbar from "./roles/user/UserNavbar";
+import ModeratorNavbar from "./roles/moderator/ModeratorNavbar";
+import AdminNavbar from "./roles/admin/AdminNavbar";
+import OwnerNavbar from "./roles/owner/OwnerNavbar";
+import GuestNavbar from "./roles/guest/GuestNavbar";
 import {Link} from "react-router-dom";
 import RoutingURLs from "../../constants/routing.constants";
 
@@ -27,7 +22,9 @@ class Navbar extends Component {
 
                     <img src="/img/navbar-icon.png" width="30" height="30" className="d-inline-block align-top"
                          alt=""/>
+
                     <Link className="navbar-brand" to={RoutingURLs.HOME}>iChop</Link>
+
                     <button id="button-minimized-navbar" className="navbar-toggler" type="button"
                             data-toggle="collapse"
                             data-target="#navbarSupportedContent"

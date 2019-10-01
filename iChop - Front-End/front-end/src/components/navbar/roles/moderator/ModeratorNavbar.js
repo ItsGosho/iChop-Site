@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import RoutingURLs from "../../../constants/routing.constants";
+import RoutingURLs from "../../../../constants/routing.constants";
 import {Link} from "react-router-dom";
-import './AuthenticatedNavbar.css'
-import AuthenticatedNavbarButton from "../other/AuthenticatedNavbarButton";
-import NavbarAuthenticatedUserListWrapper from "../wrappers/NavbarAuthenticatedUserListWrapper";
+import '../AuthenticatedNavbar.css'
+import AuthenticatedNavbarButton from "../../other/AuthenticatedNavbarButton";
+import NavbarAuthenticatedUserListWrapper from "../../wrappers/NavbarAuthenticatedUserListWrapper";
 
-class OwnerNavbar extends Component {
+class ModeratorNavbar extends Component {
 
 
     render() {
@@ -22,11 +22,6 @@ class OwnerNavbar extends Component {
                         Create Thread
                     </Link>
 
-                    <Link className="dropdown-item" to={RoutingURLs.USER.ALL}>
-                        <small>👥</small>
-                        All Users
-                    </Link>
-
                     <Link className="dropdown-item" to={RoutingURLs.COMMENT.REPORTS_ALL}>
                         <small>⚠</small>
                         Reports
@@ -40,4 +35,4 @@ class OwnerNavbar extends Component {
 
 }
 
-export default OwnerNavbar;
+export default ModeratorNavbar;
