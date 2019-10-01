@@ -1,5 +1,4 @@
 import React, {Fragment, Component} from "react";
-import CreateReactClass from 'create-react-class';
 
 class AuthenticatedNavbarButton extends Component {
 
