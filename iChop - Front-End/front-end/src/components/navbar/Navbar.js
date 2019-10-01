@@ -7,6 +7,7 @@ import OwnerNavbar from "./roles/owner/OwnerNavbar";
 import GuestNavbar from "./roles/guest/GuestNavbar";
 import {Link} from "react-router-dom";
 import RoutingURLs from "../../constants/routing.constants";
+import FrontEndResourcesRoutingURLs from "../../constants/front-end.resources.routings";
 
 class Navbar extends Component {
 
@@ -20,7 +21,7 @@ class Navbar extends Component {
 
                 <nav className="navbar navbar-expand-lg navbar-light bg-light rounded">
 
-                    <img src="/img/navbar-icon.png" width="30" height="30" className="d-inline-block align-top"
+                    <img src={FrontEndResourcesRoutingURLs.NAVBAR.ICON} width="30" height="30" className="d-inline-block align-top"
                          alt=""/>
 
                     <Link className="navbar-brand" to={RoutingURLs.HOME}>iChop</Link>

@@ -27,7 +27,7 @@ class OwnerNavbar extends Component {
                         All Users
                     </Link>
 
-                    <Link className="dropdown-item" to={RoutingURLs.COMMENT.REPORTS_ALL}>
+                    <Link className="dropdown-item" to={RoutingURLs.COMMENT.REPORT.ALL}>
                         <small>⚠</small>
                         Reports
                     </Link>

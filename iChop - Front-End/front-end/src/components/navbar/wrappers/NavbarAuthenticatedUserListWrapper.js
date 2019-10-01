@@ -6,7 +6,7 @@ import RoutingURLs from "../../../constants/routing.constants";
 var NavbarAuthenticatedUserListWrapper = CreateReactClass({
     render() {
         let username = '';
-        let profileUrl = RoutingURLs.USER.PROFILE.replace(':username', username);
+        let profileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', username);
 
         return (
             <div className="dropdown-menu dropdown-menu-right">
@@ -16,7 +16,7 @@ var NavbarAuthenticatedUserListWrapper = CreateReactClass({
                     <span>Profile</span>
                 </Link>
 
-                <Link className="dropdown-item" to={RoutingURLs.USER.PROFILE_OPTIONS_INFORMATION}>
+                <Link className="dropdown-item" to={RoutingURLs.USER.OPTIONS.INFORMATION}>
                     <small>⚙</small>
                     <span>Options</span>
                 </Link>
