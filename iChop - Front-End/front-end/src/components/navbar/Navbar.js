@@ -15,14 +15,14 @@ class Navbar extends Component {
 
 
     render() {
-        let role = Roles.USER;
+        let role = Roles.OWNER;
 
         return (
             <div className="container" id="div-containter-top_nav_bar">
 
                 <nav className="navbar navbar-expand-lg navbar-light bg-light rounded">
 
-                    <img src="/res/img/navbar-icon.png" width="30" height="30" className="d-inline-block align-top"
+                    <img src="/img/navbar-icon.png" width="30" height="30" className="d-inline-block align-top"
                          alt=""/>
                     <a className="navbar-brand" href="/">iChop</a>
                     <button id="button-minimized-navbar" className="navbar-toggler" type="button"
