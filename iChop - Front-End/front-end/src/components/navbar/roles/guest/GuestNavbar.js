@@ -14,9 +14,7 @@ class GuestNavbar extends Component {
                         aria-haspopup="true" aria-expanded="false">
                     Sign in
                 </button>
-               {/* <div id="div-authForms-signInForm" className="dropdown-menu dropdown-menu-right">
-
-
+                <div id="div-authForms-signInForm" className="dropdown-menu dropdown-menu-right">
                     <th:block th:insert="auth/login-dropdown.html"></th:block>
 
 
@@ -24,16 +22,7 @@ class GuestNavbar extends Component {
 
 
                     <th:block th:insert="auth/forgotten_password-dropdown.html"></th:block>
-
-
-                    <script src="/res/js/auth/authFormsConfig.js"></script>
-                    <script src="/res/js/auth/url/authUrlHandlers.js"></script>
-                    <script>
-
-                        runAuthFormsConfig();
-                        runAuthUrlHandlers();
-                    </script>
-                </div>*/}
+                </div>
             </div>
         );
     }
