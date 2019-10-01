@@ -15,7 +15,7 @@ class Navbar extends Component {
 
 
     render() {
-        let role = Roles.USER;
+        let role = Roles.OWNER;
 
         return (
             <div className="container" id="div-containter-top_nav_bar">
