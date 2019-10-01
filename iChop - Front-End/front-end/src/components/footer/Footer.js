@@ -51,10 +51,6 @@ class CHANGE extends Component {
                     </div>
 
                 </div>
-
-                <div className="footer-copyright text-center py-3">© 2019 Copyright:
-                    <a href="localhost:8000">iChop.bg</a>
-                </div>
             </footer>
         );
     }
