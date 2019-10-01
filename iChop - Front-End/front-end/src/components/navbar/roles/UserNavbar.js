@@ -5,6 +5,24 @@ import './AuthenticatedNavbar.css'
 
 class UserNavbar extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            userImageDefaultPath: '/img/avatar-user.png'
+        };
+
+        this.onImageError = this.onImageError.bind(this);
+    }
+
+    onImageError(event) {
+        event.target.onerror = null;
+        this.setState({userImageDefaultPath: '/img/avatar-user.png'});
+    }
+
+    componentDidMount() {
+        this.setState({userImageDefaultPath: 'https://staticassets.hypixel.net/news/5d793c5292000.skyblock%200.7.1.png'})
+    }
 
     render() {
         let username = '';
@@ -23,14 +41,8 @@ class UserNavbar extends Component {
                                     data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false">
                                 <img
-                                    src={avatarUrl}
-                                    onError={
-                                        (e) => {
-                                            console.log(123);
-                                            e.target.onerror = null;
-                                            e.target.src = "/img/avatar-user.png"
-                                        }
-                                    }
+                                    src={this.state.userImageDefaultPath}
+                                    onError={this.onImageError}
                                     className="img-user_avatar-top_nav_bar"/>
                                 <span>⚙</span>
                             </button>
