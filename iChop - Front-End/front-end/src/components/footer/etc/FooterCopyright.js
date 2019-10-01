@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 
-class CHANGE extends Component {
+class FooterCopyright extends Component {
 
 
     render() {
@@ -14,4 +14,4 @@ class CHANGE extends Component {
 
 }
 
-export default CHANGE;
+export default FooterCopyright;

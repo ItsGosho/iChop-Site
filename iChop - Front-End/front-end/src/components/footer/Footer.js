@@ -5,6 +5,7 @@ import ModeratorFooter from "./roles/ModeratorFooter";
 import AdminFooter from "./roles/AdminFooter";
 import OwnerFooter from "./roles/OwnerFooter";
 import GuestFooter from "./roles/GuestFooter";
+import FooterCopyright from "./etc/FooterCopyright";
 
 class CHANGE extends Component {
 
@@ -51,6 +52,8 @@ class CHANGE extends Component {
                     </div>
 
                 </div>
+
+                <FooterCopyright/>
             </footer>
         );
     }
