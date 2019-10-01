@@ -57,10 +57,11 @@ class OwnerFooter extends Component {
                         </ul>
 
                     </div>
+                </hr>
             </Fragment>
-    );
+        );
     }
 
-    }
+}
 
-    export default OwnerFooter;
+export default OwnerFooter;
