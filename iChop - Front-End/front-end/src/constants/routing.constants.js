@@ -8,7 +8,8 @@ const RoutingURLs = {
     USER: {
         PROFILE: '/user/:username/profile',
         ALL: '/user/all',
-        PROFILE_OPTIONS_INFORMATION: '/user/my-profile/options/information'
+        PROFILE_OPTIONS_INFORMATION: '/user/my-profile/options/information',
+        AVATAR: 'http://localhost:8001/data/user/:username/avatar'
     },
 
     THREAD: {
