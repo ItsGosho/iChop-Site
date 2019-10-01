@@ -21,27 +21,23 @@ class GuestNavbar extends Component {
                             </button>
                             <div id="div-authForms-signInForm" className="dropdown-menu dropdown-menu-right">
 
-                                <!--LOGINNN!!!-->
 
-                                <th:block th:insert="auth/login-dropdown.html"></th:block>
+                                {/*<th:block th:insert="auth/login-dropdown.html"></th:block>
 
-                                <!--REGISTERR!!!-->
 
                                 <th:block th:insert="auth/register-dropdown.html"></th:block>
 
-                                <!--FORGOTTEN PASSWORD!!!-->
 
                                 <th:block th:insert="auth/forgotten_password-dropdown.html"></th:block>
 
 
-                                <!--SCRIPT!!!-->
                                 <script src="/res/js/auth/authFormsConfig.js"></script>
                                 <script src="/res/js/auth/url/authUrlHandlers.js"></script>
                                 <script>
 
                                     runAuthFormsConfig();
                                     runAuthUrlHandlers();
-                                </script>
+                                </script>*/}
                             </div>
                         </div>
                     </li>

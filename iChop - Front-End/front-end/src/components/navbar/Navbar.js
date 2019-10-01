@@ -30,7 +30,7 @@ class CHANGE extends Component {
                             data-target="#navbarSupportedContent"
                             aria-controls="navbarSupportedContent" aria-expanded="false"
                             aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
+                        <span className="navbar-toggler-icon"/>
                     </button>
 
                     {
