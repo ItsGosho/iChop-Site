@@ -1,7 +1,7 @@
 import Actions from "../../constants/actions.constants";
 
 let initialState = {
-    showDropdown: true,
+    showDropdown: false,
     isLoginSelected: true,
     isRegisterSelected: false,
     isForgottenPasswordSelected: false,

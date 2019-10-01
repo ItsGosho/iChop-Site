@@ -8,7 +8,7 @@ class FooterCopyright extends Component {
 
         return (
             <div className="footer-copyright text-center py-3">© 2019 Copyright:
-                <a href={RoutingURLs.HOME}>iChop.bg</a>
+                <a href={RoutingURLs.HOME}> iChop.bg</a>
             </div>
         );
     }
