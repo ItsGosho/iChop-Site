@@ -38,9 +38,9 @@ const RoutingURLs = {
         },
 
         OPTIONS: {
-            INFORMATION: '/user/:username/options/information', /*User+*/
-            PASSWORD: '/user/:username/options/password', /*User+*/
-            MINECRAFT: '/user/:username/options/minecraft', /*User+*/
+            INFORMATION: '/user/options/information', /*User+*/
+            PASSWORD: '/user/options/password', /*User+*/
+            MINECRAFT: '/user/options/minecraft', /*User+*/
         },
     },
 

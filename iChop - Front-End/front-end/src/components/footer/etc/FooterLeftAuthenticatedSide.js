@@ -7,7 +7,7 @@ class FooterLeftAuthenticatedSide extends Component {
 
     render() {
         let username = '';
-        let myProfileUrl = RoutingURLs.USER.PROFILE.replace(':username', username);
+        let myProfileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', username);
 
         return (
             <Fragment>
@@ -17,7 +17,7 @@ class FooterLeftAuthenticatedSide extends Component {
                         <span>Profile</span></Link>
                 </li>
                 <li>
-                    <Link to={RoutingURLs.USER.PROFILE_OPTIONS_INFORMATION}>
+                    <Link to={RoutingURLs.USER.OPTIONS.INFORMATION}>
                         <small>⚙</small>
                         <span>Options</span></Link>
                 </li>
