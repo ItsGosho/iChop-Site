@@ -5,6 +5,8 @@ class CHANGE extends Component {
 
     render() {
 
+        let role = '';
+
         return (
             <footer className="page-footer font-small stylish-color-dark pt-4" style="margin-top: 125px">
 
@@ -22,6 +24,13 @@ class CHANGE extends Component {
 
                         <hr className="clearfix w-100 d-md-none">
 
+                            {
+                                (() => {
+                                    switch (role) {
+                                        case "":
+                                    }
+                                })()
+                            }
 
                             <th:block sec:authorize="isAnonymous()">
                                 <th:block th:insert="footers/footer/footer-guest"></th:block>
