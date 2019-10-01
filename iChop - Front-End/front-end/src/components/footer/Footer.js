@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import Roles from "../../constants/roles.constants";
-import UserFooter from "./UserFooter";
-import ModeratorFooter from "./ModeratorFooter";
-import AdminFooter from "./AdminFooter";
-import OwnerFooter from "./OwnerFooter";
-import GuestFooter from "./GuestFooter";
+import UserFooter from "./roles/UserFooter";
+import ModeratorFooter from "./roles/ModeratorFooter";
+import AdminFooter from "./roles/AdminFooter";
+import OwnerFooter from "./roles/OwnerFooter";
+import GuestFooter from "./roles/GuestFooter";
 
 class CHANGE extends Component {
 
@@ -46,7 +46,7 @@ class CHANGE extends Component {
                                     }
                                 })()
                             }
-                            
+
                         </hr>
                     </div>
 
