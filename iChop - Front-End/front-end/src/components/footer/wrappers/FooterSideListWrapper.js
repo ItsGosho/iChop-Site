@@ -1,4 +1,4 @@
-import React,{Fragment} from "react";
+import React from "react";
 import CreateReactClass from 'create-react-class';
 
 var FooterSideListWrapper = CreateReactClass({

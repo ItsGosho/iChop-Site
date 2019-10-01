@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import RoutingURLs from "../../../constants/routing.constants";
-import {Link} from "react-router-dom";
 import FooterLeftAuthenticatedSide from "../etc/FooterLeftAuthenticatedSide";
 import FooterSideListWrapper from "../wrappers/FooterSideListWrapper";
 
