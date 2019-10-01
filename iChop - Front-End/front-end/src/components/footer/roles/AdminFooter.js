@@ -25,7 +25,7 @@ class AdminFooter extends Component {
                             Users</Link>
                     </li>
                     <li>
-                        <Link to={RoutingURLs.COMMENT.REPORTS_ALL}>
+                        <Link to={RoutingURLs.COMMENT.REPORT.ALL}>
                             <small>⚠</small>
                             Reports</Link>
                     </li>

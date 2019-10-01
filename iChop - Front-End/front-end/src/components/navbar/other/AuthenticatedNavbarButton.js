@@ -1,11 +1,12 @@
 import React, {Fragment, Component} from "react";
+import FrontEndResourcesRoutingURLs from "../../../constants/front-end.resources.routings";
 
 class AuthenticatedNavbarButton extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            userImageDefaultPath: '/img/avatar-user.png'
+            userImageDefaultPath: FrontEndResourcesRoutingURLs.USER.AVATAR
         };
 
         this.onImageError = this.onImageError.bind(this);
@@ -13,7 +14,7 @@ class AuthenticatedNavbarButton extends Component {
 
     onImageError(event) {
         event.target.onerror = null;
-        this.setState({userImageDefaultPath: '/img/avatar-user.png'});
+        this.setState({userImageDefaultPath: FrontEndResourcesRoutingURLs.USER.AVATAR});
     }
 
     componentDidMount() {
