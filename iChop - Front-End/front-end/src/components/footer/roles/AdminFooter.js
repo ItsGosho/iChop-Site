@@ -1,64 +1,69 @@
 import React, {Component, Fragment} from 'react';
+import RoutingURLs from "../../../constants/routing.constants";
+import {Link} from "react-router-dom";
 
 class AdminFooter extends Component {
 
 
     render() {
+        let username = '';
+        let myProfileUrl = RoutingURLs.USER.PROFILE.replace(':username', username);
+
 
         return (
-          <Fragment>
-              <div className="col-md-2 mx-auto">
+            <Fragment>
+                <div className="col-md-2 mx-auto">
 
-                  <h5 className="font-weight-bold text-uppercase mt-3 mb-4">---</h5>
+                    <h5 className="font-weight-bold text-uppercase mt-3 mb-4">---</h5>
 
-                  <ul className="list-unstyled">
-                      <li>
-                          <a th:href="@{'/user/'+${#authentication.name}+'/profile'}">
-                              <small>👤</small>
-                              <span>Profile</span></a>
-                      </li>
-                      <li>
-                          <a href="/user/my-profile/options/information">
-                              <small>⚙</small>
-                              <span>Options</span></a>
-                      </li>
-                      <li>
-                          <a href="/thread/create">
-                              <small>🚩</small>
-                              Create Thread</a>
-                      </li>
-                  </ul>
+                    <ul className="list-unstyled">
+                        <li>
+                            <Link to={myProfileUrl}>
+                                <small>👤</small>
+                                <span>Profile</span></Link>
+                        </li>
+                        <li>
+                            <Link to={RoutingURLs.USER.PROFILE_OPTIONS_INFORMATION}>
+                                <small>⚙</small>
+                                <span>Options</span></Link>
+                        </li>
+                        <li>
+                            <Link to={RoutingURLs.THREAD.CREATE}>
+                                <small>🚩</small>
+                                Create Thread</Link>
+                        </li>
+                    </ul>
 
-              </div>
+                </div>
 
-              <hr className="clearfix w-100 d-md-none">
+                <hr className="clearfix w-100 d-md-none">
 
-                  <div className="col-md-2 mx-auto">
+                    <div className="col-md-2 mx-auto">
 
-                      <h5 className="font-weight-bold text-uppercase mt-3 mb-4">---</h5>
+                        <h5 className="font-weight-bold text-uppercase mt-3 mb-4">---</h5>
 
-                      <ul className="list-unstyled">
-                          <li>
-                              <a href="/user/all">
-                                  <small>👥</small>
-                                  Users</a>
-                          </li>
-                          <li>
-                              <a href="/comment/reports/all">
-                                  <small>⚠</small>
-                                  Reports</a>
-                          </li>
+                        <ul className="list-unstyled">
+                            <li>
+                                <Link to={RoutingURLs.USER.ALL}>
+                                    <small>👥</small>
+                                    Users</Link>
+                            </li>
+                            <li>
+                                <Link to={RoutingURLs.COMMENT.REPORTS_ALL}>
+                                    <small>⚠</small>
+                                    Reports</Link>
+                            </li>
 
-                          <li>
-                              <a href="/logout">
-                                  <small>🚪</small>
-                                  Logout</a>
-                          </li>
-                      </ul>
+                            <li>
+                                <Link to={RoutingURLs.AUTHENTICATION.LOGOUT}>
+                                    <small>🚪</small>
+                                    Logout</Link>
+                            </li>
+                        </ul>
 
-                  </div>
-              </hr>
-          </Fragment>
+                    </div>
+                </hr>
+            </Fragment>
         );
     }
 
