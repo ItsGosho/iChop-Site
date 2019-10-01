@@ -12,7 +12,7 @@ class Navbar extends Component {
 
 
     render() {
-        let role = Roles.MODERATOR;
+        let role = '';
 
 
         return (

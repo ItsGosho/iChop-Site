@@ -1,8 +1,22 @@
 import React, {Component} from 'react';
 import './GuestNavbar.css';
+import GuestLoginDropdown from "./GuestLoginDropdown";
+import GuestRegisterDropdown from "./GuestRegisterDropdown";
+import GuestForgottenPasswordDropdown from "./GuestForgottenPasswordDropdown";
 
 class GuestNavbar extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            isLoginSelected: true,
+            isRegisterSelected: false,
+            isForgottenPasswordSelected: false,
+        }
+    }
+
+    /*TODO: Here redux will play BIG role*/
 
     render() {
 
@@ -15,13 +29,7 @@ class GuestNavbar extends Component {
                     Sign in
                 </button>
                 <div id="div-authForms-signInForm" className="dropdown-menu dropdown-menu-right">
-                    <th:block th:insert="auth/login-dropdown.html"></th:block>
-
-
-                    <th:block th:insert="auth/register-dropdown.html"></th:block>
-
-
-                    <th:block th:insert="auth/forgotten_password-dropdown.html"></th:block>
+                      <GuestLoginDropdown/>
                 </div>
             </div>
         );
