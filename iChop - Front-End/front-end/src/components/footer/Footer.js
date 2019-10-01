@@ -8,7 +8,7 @@ import GuestFooter from "./roles/GuestFooter";
 import FooterCopyright from "./etc/FooterCopyright";
 import FooterHeader from "./etc/FooterHeader";
 
-class CHANGE extends Component {
+class Footer extends Component {
 
 
     render() {
@@ -53,4 +53,4 @@ class CHANGE extends Component {
 
 }
 
-export default CHANGE;
+export default Footer;
