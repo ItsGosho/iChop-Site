@@ -57,6 +57,7 @@ class AdminFooter extends Component {
                       </ul>
 
                   </div>
+              </hr>
           </Fragment>
         );
     }
