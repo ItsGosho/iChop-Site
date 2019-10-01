@@ -23,7 +23,7 @@ class GuestForgottenPasswordDropdown extends Component {
                     </div>
 
                     <button type="button" id="button-goToLogin-forgottenPasswordForm"
-                            className="btn btn-primary btn-sm">Back
+                            className="btn btn-primary btn-sm" onClick={this.props.selectLogin}>Back
                     </button>
                     <button id="button-proceedEmailSend-forgottenPasswordForm" type="button" data-style="zoom-in"
                             className="btn btn-success btn-sm">Send

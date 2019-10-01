@@ -24,9 +24,7 @@ class GuestNavbar extends Component {
         return (
             <div id="div-signIn-signInForms">
 
-                <button id="button-signIn-navBar" className="btn btn-success btn-sm" onClick={this.showDropdown}>
-                    Sign in
-                </button>
+                <button id="button-signIn-navBar" className="btn btn-success btn-sm" onClick={this.showDropdown}>Sign in</button>
 
                 {
                     (() => {

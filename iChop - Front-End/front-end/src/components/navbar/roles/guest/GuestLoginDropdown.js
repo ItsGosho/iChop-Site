@@ -40,7 +40,7 @@ class GuestLoginDropdown extends Component {
 
                     <input type="hidden" id="input-user_location-loginDropdown" name="userLocation"/>
 
-                    <button type="submit" data-style="zoom-in" className="btn btn-primary">Login</button>
+                    <button type="button" data-style="zoom-in" className="btn btn-primary">Login</button>
                     <div className="dropdown-divider"/>
                 </form>
                 <a id="button-goToRegister-loginForm" className="dropdown-item">

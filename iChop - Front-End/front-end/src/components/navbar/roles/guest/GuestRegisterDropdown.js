@@ -1,4 +1,4 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
 import navbarGuestReduxHoc from "../../../../redux/hocs/navbar.guest.hoc";
 
 class GuestRegisterDropdown extends Component {
@@ -36,12 +36,12 @@ class GuestRegisterDropdown extends Component {
                                    data-trigger="focus"
                                    data-content="-At least one uppercase character</br>-At least one lowercase character</br>-At least 6 characters"
                                    name="password" placeholder="Password..."/>
-                                <div className="input-group-append">
-                                    <button className="btn btn-outline-success"
-                                            id="button-showPassword-registerForm"
-                                            type="button">Show
-                                    </button>
-                                </div>
+                            <div className="input-group-append">
+                                <button className="btn btn-outline-success"
+                                        id="button-showPassword-registerForm"
+                                        type="button">Show
+                                </button>
+                            </div>
                         </div>
                     </div>
                     <div className="form-group">
@@ -69,13 +69,14 @@ class GuestRegisterDropdown extends Component {
                                    placeholder="Email..."/>
                         </div>
                     </div>
-                    <button id="button-goToLogin-registerForm" type="button" className="btn btn-primary btn-sm">Back
+                    <button id="button-goToLogin-registerForm" type="button" onClick={this.props.selectLogin}
+                            className="btn btn-primary btn-sm">Back
                     </button>
-                    <button id="button-proceedRegister-registerForm" type="submit"
+                    <button id="button-proceedRegister-registerForm" type="button"
                             className="btn btn-success btn-sm btn-ladda" data-style="zoom-in">
                         Register
                     </button>
-                    <div className="dropdown-divider"></div>
+                    <div className="dropdown-divider"/>
                 </form>
             </div>
         );
