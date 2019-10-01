@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import RoutingURLs from "../../../constants/routing.constants";
 import {Link} from "react-router-dom";
+import './AuthenticatedNavbar.css'
 
 class ModeratorNavbar extends Component {
 
@@ -23,7 +24,13 @@ class ModeratorNavbar extends Component {
                                     aria-haspopup="true" aria-expanded="false">
                                 <img
                                     src={avatarUrl}
-                                    onError="this.onerror = null;this.src = '/res/img/avatar-user.png'"
+                                    onError={
+                                        (e) => {
+                                            console.log(123);
+                                            e.target.onerror = null;
+                                            e.target.src = "/img/avatar-user.png"
+                                        }
+                                    }
                                     className="img-user_avatar-top_nav_bar"/>
                                     <span>⚙</span>
                             </button>
