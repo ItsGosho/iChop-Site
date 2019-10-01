@@ -42,9 +42,6 @@ const RoutingURLs = {
             PASSWORD: '/user/:username/options/password', /*User+*/
             MINECRAFT: '/user/:username/options/minecraft', /*User+*/
         },
-
-        /*TODO: move it out from here*/
-        AVATAR: 'http://localhost:8001/data/user/:username/avatar'
     },
 
     POST: {
