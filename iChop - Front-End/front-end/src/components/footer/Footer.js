@@ -1,4 +1,4 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
 
 class CHANGE extends Component {
 
@@ -48,16 +48,14 @@ class CHANGE extends Component {
 
                                 </th:block>
                             </th:block>
-
+                        </hr>
                     </div>
 
                 </div>
 
-                <!-- Copyright -->
                 <div className="footer-copyright text-center py-3">© 2019 Copyright:
                     <a href="localhost:8000">iChop.bg</a>
                 </div>
-                <!-- Copyright -->
             </footer>
         );
     }

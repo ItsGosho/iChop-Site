@@ -9,7 +9,6 @@ class GuestFooter extends Component {
             <Fragment>
                 <div className="col-md-2 mx-auto">
 
-                    <!-- Links -->
                     <h5 className="font-weight-bold text-uppercase mt-3 mb-4">VISIT</h5>
 
                     <ul className="list-unstyled">

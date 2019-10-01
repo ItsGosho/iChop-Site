@@ -54,9 +54,9 @@ class ModeratorFooter extends Component {
                     </div>
                 </hr>
             </Fragment>
-    );
+        );
     }
 
-    }
+}
 
-    export default ModeratorFooter;
+export default ModeratorFooter;
