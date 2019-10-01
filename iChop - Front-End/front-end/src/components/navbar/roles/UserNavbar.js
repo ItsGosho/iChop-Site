@@ -11,9 +11,7 @@ class UserNavbar extends Component {
 
         return (
             <div id="userDiv">
-
                 <AuthenticatedNavbarButton/>
-
                 <NavbarAuthenticatedUserListWrapper/>
             </div>
         );

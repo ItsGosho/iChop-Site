@@ -16,12 +16,17 @@ class ModeratorNavbar extends Component {
                 <AuthenticatedNavbarButton/>
 
                 <NavbarAuthenticatedUserListWrapper>
+
                     <Link className="dropdown-item" to={RoutingURLs.THREAD.CREATE}>
                         <small>🚩</small>
-                        Create Thread</Link>
+                        Create Thread
+                    </Link>
+
                     <Link className="dropdown-item" to={RoutingURLs.COMMENT.REPORTS_ALL}>
                         <small>⚠</small>
-                        Reports</Link>
+                        Reports
+                    </Link>
+
                 </NavbarAuthenticatedUserListWrapper>
 
             </div>

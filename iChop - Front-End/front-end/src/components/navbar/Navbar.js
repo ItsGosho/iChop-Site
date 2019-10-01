@@ -10,6 +10,8 @@ import ModeratorNavbar from "./roles/ModeratorNavbar";
 import AdminNavbar from "./roles/AdminNavbar";
 import OwnerNavbar from "./roles/OwnerNavbar";
 import GuestNavbar from "./roles/GuestNavbar";
+import {Link} from "react-router-dom";
+import RoutingURLs from "../../constants/routing.constants";
 
 class Navbar extends Component {
 
@@ -25,7 +27,7 @@ class Navbar extends Component {
 
                     <img src="/img/navbar-icon.png" width="30" height="30" className="d-inline-block align-top"
                          alt=""/>
-                    <a className="navbar-brand" href="/">iChop</a>
+                    <Link className="navbar-brand" to={RoutingURLs.HOME}>iChop</Link>
                     <button id="button-minimized-navbar" className="navbar-toggler" type="button"
                             data-toggle="collapse"
                             data-target="#navbarSupportedContent"
