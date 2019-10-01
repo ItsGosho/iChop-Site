@@ -20,7 +20,7 @@ class AdminNavbar extends Component {
                                     <img
                                         th:src="@{http://localhost:8001/data/user/{username}/avatar(username=${#authentication.getName()})}"
                                         onError="this.onerror = null;this.src = '/res/img/avatar-user.png'"
-                                        className="img-user_avatar-top_nav_bar">
+                                        className="img-user_avatar-top_nav_bar"/>
                                         <span>⚙</span>
                                 </button>
                                 <div className="dropdown-menu dropdown-menu-right">

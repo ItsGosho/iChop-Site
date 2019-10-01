@@ -1,9 +1,16 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
+import Roles from "../../constants/roles.constants";
+import UserFooter from "../footer/roles/UserFooter";
+import ModeratorFooter from "../footer/roles/ModeratorFooter";
+import AdminFooter from "../footer/roles/AdminFooter";
+import OwnerFooter from "../footer/roles/OwnerFooter";
+import GuestFooter from "../footer/roles/GuestFooter";
 
 class CHANGE extends Component {
 
 
     render() {
+        let role = '';
 
         return (
             <div className="container" id="div-containter-top_nav_bar">
@@ -20,6 +27,23 @@ class CHANGE extends Component {
                                 aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
                         </button>
+
+                        {
+                            (() => {
+                                switch (role) {
+                                    case Roles.USER:
+                                        return (<UserFooter/>);
+                                    case Roles.MODERATOR:
+                                        return (<ModeratorFooter/>);
+                                    case Roles.ADMIN:
+                                        return (<AdminFooter/>);
+                                    case Roles.OWNER:
+                                        return (<OwnerFooter/>);
+                                    default:
+                                        return (<GuestFooter/>);
+                                }
+                            })()
+                        }
 
                         <th:block sec:authorize="isAnonymous()">
                             <th:block th:insert="navbar/top/top-navbar-guest"></th:block>
@@ -49,9 +73,9 @@ class CHANGE extends Component {
 
                 </nav>
             </div>
-        );
+    );
     }
 
-}
+    }
 
-export default CHANGE;
+    export default CHANGE;
