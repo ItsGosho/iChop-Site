@@ -1,9 +1,13 @@
 import React,{Component} from 'react';
+import RoutingURLs from "../../../constants/routing.constants";
+import {Link} from "react-router-dom";
 
 class UserFooter extends Component {
 
 
     render() {
+        let username = '';
+        let myProfileUrl = RoutingURLs.USER.PROFILE.replace(':username', username);
 
         return (
             <div className="col-md-2 mx-auto">
@@ -12,19 +16,19 @@ class UserFooter extends Component {
 
                 <ul className="list-unstyled">
                     <li>
-                        <a th:href="@{'/user/'+${#authentication.name}+'/profile'}">
+                        <Link to={myProfileUrl}>
                             <small>👤</small>
-                            <span>Profile</span></a>
+                            <span>Profile</span></Link>
                     </li>
                     <li>
-                        <a href="/user/my-profile/options/information">
+                        <Link to={RoutingURLs.USER.PROFILE_OPTIONS_INFORMATION}>
                             <small>⚙</small>
-                            <span>Options</span></a>
+                            <span>Options</span></Link>
                     </li>
                     <li>
-                        <a href="/logout">
+                        <Link to={RoutingURLs.AUTHENTICATION.LOGOUT}>
                             <small>🚪</small>
-                            Logout</a>
+                            Logout</Link>
                     </li>
                 </ul>
 
