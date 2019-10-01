@@ -35,7 +35,6 @@ class OwnerFooter extends Component {
 
                 </div>
 
-                <hr className="clearfix w-100 d-md-none">
 
                     <div className="col-md-2 mx-auto">
 
@@ -61,7 +60,6 @@ class OwnerFooter extends Component {
                         </ul>
 
                     </div>
-                </hr>
             </Fragment>
         );
     }

@@ -12,16 +12,15 @@ class Footer extends Component {
 
 
     render() {
-        let role = Roles.USER;
+        let role = '';
 
         return (
-            <footer className="page-footer font-small stylish-color-dark pt-4" style={{'margin-top':'125px'}}>
+            <footer className="page-footer font-small stylish-color-dark pt-4" style={{'marginTop':'125px'}}>
 
                 <div className="container text-center text-md-left">
                     <div className="row">
                         <FooterHeader/>
 
-                        <span className="clearfix w-100 d-md-none">
 
                             {
                                 (() => {
@@ -40,7 +39,6 @@ class Footer extends Component {
                                 })()
                             }
 
-                        </span>
                     </div>
 
                 </div>
