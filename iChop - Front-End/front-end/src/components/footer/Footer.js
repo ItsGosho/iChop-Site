@@ -12,7 +12,7 @@ class Footer extends Component {
 
 
     render() {
-        let role = '';
+        let role = Roles.USER;
 
         return (
             <footer className="page-footer font-small stylish-color-dark pt-4" style={{'marginTop':'125px'}}>
