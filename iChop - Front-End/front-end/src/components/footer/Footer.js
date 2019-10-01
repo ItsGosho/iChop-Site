@@ -1,4 +1,10 @@
 import React, {Component} from 'react';
+import Roles from "../../constants/roles.constants";
+import UserFooter from "./UserFooter";
+import ModeratorFooter from "./ModeratorFooter";
+import AdminFooter from "./AdminFooter";
+import OwnerFooter from "./OwnerFooter";
+import GuestFooter from "./GuestFooter";
 
 class CHANGE extends Component {
 
@@ -27,36 +33,20 @@ class CHANGE extends Component {
                             {
                                 (() => {
                                     switch (role) {
-                                        case "":
+                                        case Roles.USER:
+                                            return (<UserFooter/>);
+                                        case Roles.MODERATOR:
+                                            return (<ModeratorFooter/>);
+                                        case Roles.ADMIN:
+                                            return (<AdminFooter/>);
+                                        case Roles.OWNER:
+                                            return (<OwnerFooter/>);
+                                        default:
+                                            return (<GuestFooter/>);
                                     }
                                 })()
                             }
-
-                            <th:block sec:authorize="isAnonymous()">
-                                <th:block th:insert="footers/footer/footer-guest"></th:block>
-                            </th:block>
-
-                            <th:block sec:authorize="isAuthenticated()">
-                                <th:block th:switch="${#session.getAttribute('user-role')}">
-
-                                    <th:block th:case="MODERATOR">
-                                        <th:block th:insert="footers/footer/footer-moderator"></th:block>
-                                    </th:block>
-
-                                    <th:block th:case="ADMIN">
-                                        <th:block th:insert="footers/footer/footer-admin"></th:block>
-                                    </th:block>
-
-                                    <th:block th:case="OWNER">
-                                        <th:block th:insert="footers/footer/footer-owner"></th:block>
-                                    </th:block>
-
-                                    <th:block th:case="*">
-                                        <th:block th:insert="footers/footer/footer-user"></th:block>
-                                    </th:block>
-
-                                </th:block>
-                            </th:block>
+                            
                         </hr>
                     </div>
 
