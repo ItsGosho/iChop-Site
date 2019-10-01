@@ -11,11 +11,11 @@ import AdminNavbar from "./roles/AdminNavbar";
 import OwnerNavbar from "./roles/OwnerNavbar";
 import GuestNavbar from "./roles/GuestNavbar";
 
-class CHANGE extends Component {
+class Navbar extends Component {
 
 
     render() {
-        let role = '';
+        let role = Roles.USER;
 
         return (
             <div className="container" id="div-containter-top_nav_bar">
@@ -57,4 +57,4 @@ class CHANGE extends Component {
 
 }
 
-export default CHANGE;
+export default Navbar;

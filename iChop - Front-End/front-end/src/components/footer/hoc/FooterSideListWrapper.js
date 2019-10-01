@@ -10,6 +10,7 @@ var FooterSideListWrapper = CreateReactClass({
                 <ul className="list-unstyled">
                     {this.props.children}
                 </ul>
+
             </div>
         );
     }
