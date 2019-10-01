@@ -1,4 +1,4 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
 import './GuestNavbar.css';
 
 class GuestNavbar extends Component {
@@ -7,23 +7,17 @@ class GuestNavbar extends Component {
     render() {
 
         return (
-            <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul className="navbar-nav mr-auto">
-
-                </ul>
-                <ul className="navbar-nav ml-auto">
-                    <li className="nav-item dropdown active">
-                        <div id="div-signIn-signInForms">
-                            <button id="button-signIn-navBar" type="button"
-                                    className="btn btn-success dropdown-toggle btn-sm"
-                                    data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                Sign in
-                            </button>
-                            <div id="div-authForms-signInForm" className="dropdown-menu dropdown-menu-right">
+            <div id="div-signIn-signInForms">
+                <button id="button-signIn-navBar" type="button"
+                        className="btn btn-success dropdown-toggle btn-sm"
+                        data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                    Sign in
+                </button>
+                <div id="div-authForms-signInForm" className="dropdown-menu dropdown-menu-right">
 
 
-                                {/*<th:block th:insert="auth/login-dropdown.html"></th:block>
+                    {/*<th:block th:insert="auth/login-dropdown.html"></th:block>
 
 
                                 <th:block th:insert="auth/register-dropdown.html"></th:block>
@@ -39,10 +33,7 @@ class GuestNavbar extends Component {
                                     runAuthFormsConfig();
                                     runAuthUrlHandlers();
                                 </script>*/}
-                            </div>
-                        </div>
-                    </li>
-                </ul>
+                </div>
             </div>
         );
     }

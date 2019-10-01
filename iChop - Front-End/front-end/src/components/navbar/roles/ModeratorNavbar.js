@@ -1,4 +1,4 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
 import RoutingURLs from "../../../constants/routing.constants";
 import {Link} from "react-router-dom";
 import './AuthenticatedNavbar.css'
@@ -9,29 +9,21 @@ class ModeratorNavbar extends Component {
 
 
     render() {
-        let username = '';
-        let profileUrl = RoutingURLs.USER.PROFILE.replace(':username', username);
 
         return (
-            <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul className="navbar-nav ml-auto">
-                    <li className="nav-item dropdown active">
-                        <div id="userDiv">
+            <div id="userDiv">
 
-                            <AuthenticatedNavbarButton/>
+                <AuthenticatedNavbarButton/>
 
-                            <NavbarAuthenticatedUserListWrapper>
-                                <Link className="dropdown-item" to={RoutingURLs.THREAD.CREATE}>
-                                    <small>🚩</small>
-                                    Create Thread</Link>
-                                <Link className="dropdown-item" to={RoutingURLs.COMMENT.REPORTS_ALL}>
-                                    <small>⚠</small>
-                                    Reports</Link>
-                            </NavbarAuthenticatedUserListWrapper>
+                <NavbarAuthenticatedUserListWrapper>
+                    <Link className="dropdown-item" to={RoutingURLs.THREAD.CREATE}>
+                        <small>🚩</small>
+                        Create Thread</Link>
+                    <Link className="dropdown-item" to={RoutingURLs.COMMENT.REPORTS_ALL}>
+                        <small>⚠</small>
+                        Reports</Link>
+                </NavbarAuthenticatedUserListWrapper>
 
-                        </div>
-                    </li>
-                </ul>
             </div>
         );
     }

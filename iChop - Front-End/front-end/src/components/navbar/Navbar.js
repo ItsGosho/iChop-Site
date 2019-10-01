@@ -15,7 +15,7 @@ class Navbar extends Component {
 
 
     render() {
-        let role = Roles.USER;
+        let role = Roles.MODERATOR;
 
 
         return (
@@ -34,22 +34,28 @@ class Navbar extends Component {
                         <span className="navbar-toggler-icon"/>
                     </button>
 
-                    {
-                        (() => {
-                            switch (role) {
-                                case Roles.USER:
-                                    return (<UserNavbar/>);
-                                case Roles.MODERATOR:
-                                    return (<ModeratorNavbar/>);
-                                case Roles.ADMIN:
-                                    return (<AdminNavbar/>);
-                                case Roles.OWNER:
-                                    return (<OwnerNavbar/>);
-                                default:
-                                    return (<GuestNavbar/>);
-                            }
-                        })()
-                    }
+                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul className="navbar-nav ml-auto">
+                            <li className="nav-item dropdown active">
+                                {
+                                    (() => {
+                                        switch (role) {
+                                            case Roles.USER:
+                                                return (<UserNavbar/>);
+                                            case Roles.MODERATOR:
+                                                return (<ModeratorNavbar/>);
+                                            case Roles.ADMIN:
+                                                return (<AdminNavbar/>);
+                                            case Roles.OWNER:
+                                                return (<OwnerNavbar/>);
+                                            default:
+                                                return (<GuestNavbar/>);
+                                        }
+                                    })()
+                                }
+                            </li>
+                        </ul>
+                    </div>
 
                 </nav>
             </div>
