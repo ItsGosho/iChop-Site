@@ -6,6 +6,7 @@ import AdminFooter from "./roles/AdminFooter";
 import OwnerFooter from "./roles/OwnerFooter";
 import GuestFooter from "./roles/GuestFooter";
 import FooterCopyright from "./etc/FooterCopyright";
+import FooterHeader from "./etc/FooterHeader";
 
 class CHANGE extends Component {
 
@@ -19,15 +20,7 @@ class CHANGE extends Component {
 
                 <div className="container text-center text-md-left">
                     <div className="row">
-                        <div className="col-md-4 mx-auto">
-                            <h5 className="font-weight-bold text-uppercase mt-3 mb-4">iChop - The Minecraft Server</h5>
-                            <p>
-                                Welcome to our website ,here you can find the latest news
-                                about something new ,to link your account with your in-game account and
-                                so many other things!
-                            </p>
-
-                        </div>
+                        <FooterHeader/>
 
                         <hr className="clearfix w-100 d-md-none">
 
