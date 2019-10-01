@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+import RoutingURLs from "../../../constants/routing.constants";
 
 class FooterCopyright extends Component {
 
@@ -7,7 +8,7 @@ class FooterCopyright extends Component {
 
         return (
             <div className="footer-copyright text-center py-3">© 2019 Copyright:
-                <a href="localhost:8000">iChop.bg</a>
+                <a href={RoutingURLs.HOME}>iChop.bg</a>
             </div>
         );
     }
