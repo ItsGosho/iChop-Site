@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import FooterSideListWrapper from "../hoc/FooterSideListWrapper";
+import FooterSideListWrapper from "../wrappers/FooterSideListWrapper";
 
 class GuestFooter extends Component {
 

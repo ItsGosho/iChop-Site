@@ -3,6 +3,7 @@ import RoutingURLs from "../../../constants/routing.constants";
 import {Link} from "react-router-dom";
 import './AuthenticatedNavbar.css'
 import AuthenticatedNavbarButton from "../other/AuthenticatedNavbarButton";
+import NavbarAuthenticatedUserListWrapper from "../wrappers/NavbarAuthenticatedUserListWrapper";
 
 class UserNavbar extends Component {
 
@@ -18,18 +19,7 @@ class UserNavbar extends Component {
 
                             <AuthenticatedNavbarButton/>
 
-                            <div className="dropdown-menu dropdown-menu-right">
-                                <Link className="dropdown-item" to={profileUrl}>
-                                    <small>👤</small>
-                                    <span>Profile</span></Link>
-                                <Link className="dropdown-item" to={RoutingURLs.USER.PROFILE_OPTIONS_INFORMATION}>
-                                    <small>⚙</small>
-                                    <span>Options</span></Link>
-                                <div className="dropdown-divider"/>
-                                <Link className="dropdown-item" to={RoutingURLs.AUTHENTICATION.LOGOUT}>
-                                    <small>🚪</small>
-                                    Logout</Link>
-                            </div>
+                            <NavbarAuthenticatedUserListWrapper/>
                         </div>
                     </li>
                 </ul>

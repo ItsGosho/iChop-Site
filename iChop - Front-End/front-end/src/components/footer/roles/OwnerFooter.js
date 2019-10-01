@@ -2,7 +2,7 @@ import React, {Component, Fragment} from 'react';
 import {Link} from "react-router-dom";
 import RoutingURLs from "../../../constants/routing.constants";
 import FooterLeftAuthenticatedSide from "../etc/FooterLeftAuthenticatedSide";
-import FooterSideListWrapper from "../hoc/FooterSideListWrapper";
+import FooterSideListWrapper from "../wrappers/FooterSideListWrapper";
 
 class OwnerFooter extends Component {
 
