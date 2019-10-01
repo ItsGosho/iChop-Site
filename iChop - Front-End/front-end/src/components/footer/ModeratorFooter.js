@@ -52,6 +52,7 @@ class ModeratorFooter extends Component {
                         </ul>
 
                     </div>
+                </hr>
             </Fragment>
     );
     }
