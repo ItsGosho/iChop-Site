@@ -2,6 +2,7 @@ import React, {Component, Fragment} from 'react';
 import {Link} from "react-router-dom";
 import RoutingURLs from "../../../constants/routing.constants";
 import FooterLeftAuthenticatedSide from "../etc/FooterLeftAuthenticatedSide";
+import FooterSideListWrapper from "../hoc/FooterSideListWrapper";
 
 class OwnerFooter extends Component {
 
@@ -12,34 +13,30 @@ class OwnerFooter extends Component {
             <Fragment>
 
 
-                <ul className="list-unstyled">
+                <FooterSideListWrapper text={'VISIT'}>
                     <FooterLeftAuthenticatedSide/>
-                </ul>
+                </FooterSideListWrapper>
 
 
-                <div className="col-md-2 mx-auto">
+                <FooterSideListWrapper text={'---'}>
 
-                    <h5 className="font-weight-bold text-uppercase mt-3 mb-4">---</h5>
+                    <li>
+                        <Link to={RoutingURLs.USER.ALL}>
+                            <small>👥</small>
+                            Users</Link>
+                    </li>
+                    <li>
+                        <Link to={RoutingURLs.COMMENT.REPORTS_ALL}>
+                            <small>⚠</small>
+                            Reports</Link>
+                    </li>
+                    <li>
+                        <Link to={RoutingURLs.THREAD.CREATE}>
+                            <small>🚩</small>
+                            Create Thread</Link>
+                    </li>
 
-                    <ul className="list-unstyled">
-                        <li>
-                            <Link to={RoutingURLs.USER.ALL}>
-                                <small>👥</small>
-                                Users</Link>
-                        </li>
-                        <li>
-                            <Link to={RoutingURLs.COMMENT.REPORTS_ALL}>
-                                <small>⚠</small>
-                                Reports</Link>
-                        </li>
-                        <li>
-                            <Link to={RoutingURLs.THREAD.CREATE}>
-                                <small>🚩</small>
-                                Create Thread</Link>
-                        </li>
-                    </ul>
-
-                </div>
+                </FooterSideListWrapper>
             </Fragment>
         );
     }

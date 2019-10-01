@@ -1,4 +1,5 @@
 import React, {Component, Fragment} from 'react';
+import FooterSideListWrapper from "../hoc/FooterSideListWrapper";
 
 class GuestFooter extends Component {
 
@@ -8,7 +9,7 @@ class GuestFooter extends Component {
         return (
             <Fragment>
 
-                <ul className="list-unstyled">
+                <FooterSideListWrapper text={'VISIT'}>
                     <li>
                         <a href="?login=require">
                             <small>🔐</small>
@@ -24,7 +25,8 @@ class GuestFooter extends Component {
                             <small>🏷️</small>
                             Forgotten Password</a>
                     </li>
-                </ul>
+
+                </FooterSideListWrapper>
             </Fragment>
         );
     }
