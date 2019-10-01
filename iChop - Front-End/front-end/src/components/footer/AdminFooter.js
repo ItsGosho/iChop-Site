@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
 
-class CHANGE extends Component {
+class AdminFooter extends Component {
 
 
     render() {
@@ -63,4 +63,4 @@ class CHANGE extends Component {
 
 }
 
-export default CHANGE;
+export default AdminFooter;
