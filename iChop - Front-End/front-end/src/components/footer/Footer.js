@@ -12,7 +12,6 @@ class Footer extends Component {
 
 
     render() {
-
         let role = '';
 
         return (
@@ -22,7 +21,7 @@ class Footer extends Component {
                     <div className="row">
                         <FooterHeader/>
 
-                        <hr className="clearfix w-100 d-md-none">
+                        <span className="clearfix w-100 d-md-none">
 
                             {
                                 (() => {
@@ -41,7 +40,7 @@ class Footer extends Component {
                                 })()
                             }
 
-                        </hr>
+                        </span>
                     </div>
 
                 </div>
