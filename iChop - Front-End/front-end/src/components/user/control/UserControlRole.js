@@ -1,19 +1,27 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
+import Roles from "../../../constants/roles.constants";
+import dateFormat from 'dateformat';
 
 class UserControlRole extends Component {
 
 
     render() {
+        let role = Roles.USER;
+        let logs = [
+            {happenedOn: dateFormat(Date.now(), "dd mmmm,yyyy HH:mm"), message: ' Changed the role to X'},
+            {happenedOn: dateFormat(Date.now(), "dd mmmm,yyyy HH:mm"), message: ' Changed the role to X'},
+        ];
+
 
         return (
             <div>
                 <div className="row">
                     <div className="col-md-auto">
-                        <span style="font-family: Consolas">Current Role: <b th:text="*{role}"></b></span>
+                        <span style={{'fontFamily': 'Consolas'}}>Current Role: <b>{role}</b></span>
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-md-auto">
+                    {/*<div className="col-md-auto">
                         <th:block th:if="*{role != 'OWNER'}">
                             <th:block th:if="*{previousRole != null}">
 
@@ -34,20 +42,26 @@ class UserControlRole extends Component {
 
                             </th:block>
                         </th:block>
-                    </div>
+                    </div>*/}
                     <div className="row">
                         <div className="col-md-auto">
                             <small><b>Logs:</b></small>
                         </div>
                         <div className="col-md-auto">
                             <ul>
-                                <th:block th:each="userLog : *{roleChangeHistory}" th:object="${userLog}">
-                                    <li>
-                                        <small><b th:text="*{#temporals.format(happenedOn, 'dd MMMM,yyyy HH:mm')}">[10
-                                            March,2019 20:36] </b> <span th:text="*{message}"></span>.
-                                        </small>
-                                    </li>
-                                </th:block>
+
+                                {
+                                    logs.map((item, index) => {
+                                        return (
+                                            <li key={index}>
+                                                <small>
+                                                    <b>[{item.happenedOn}]</b>
+                                                    <span>{item.message}</span>.
+                                                </small>
+                                            </li>
+                                        );
+                                    })
+                                }
                             </ul>
                         </div>
                     </div>
