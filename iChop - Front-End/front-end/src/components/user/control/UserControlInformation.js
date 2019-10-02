@@ -1,4 +1,5 @@
 import React, {Component, Fragment} from 'react';
+const dateFormat = require('dateformat')
 
 class UserControlInformation extends Component {
 
@@ -8,8 +9,8 @@ class UserControlInformation extends Component {
         let username = 'username';
         let rank = 'rank';
         let email = 'email';
-        let registrationDate = Date.now();
-        let lastOnline = Date.now();
+        let registrationDate = dateFormat(Date.now(), "dd/mm/yyyy");
+        let lastOnline = dateFormat(Date.now(), "dd/mm/yyyy");
         let lastAccessedLocation = 'Bulgaria';
         let enabled = true;
         let isAccountExpired = false;

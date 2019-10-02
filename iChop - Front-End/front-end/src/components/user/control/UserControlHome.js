@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import RoutingURLs from "../../../constants/routing.constants";
 import {Link} from "react-router-dom";
 import ServerRoutingURLs from "../../../constants/server.routing.urls";
+import UserControlInformation from "./UserControlInformation";
 
 class UserControlHome extends Component {
 
@@ -54,7 +55,7 @@ class UserControlHome extends Component {
                             <div className="card">
                                 <div className="card-body">
 
-                                    <UserContr
+                                    <UserControlInformation/>
 
                                 </div>
                             </div>
