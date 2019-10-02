@@ -9,10 +9,10 @@ class UserControlNav extends Component {
     constructor(props) {
         super(props);
 
-        this.onImageError = this.onImageError.bind(this);
+        this.onUserAvatarError = this.onUserAvatarError.bind(this);
     }
 
-    onImageError(event) {
+    onUserAvatarError(event) {
         event.target.onerror = null;
         event.target.src = FrontEndResourcesRoutingURLs.USER.AVATAR;
     }
@@ -26,7 +26,7 @@ class UserControlNav extends Component {
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <Link className="navbar-brand" to={profileUrl}>
                         <span>
-                          <img src={userAvatarUrl} onError={this.onImageError}
+                          <img src={userAvatarUrl} onError={this.onUserAvatarError}
                                style={{'width': '20px', 'height': '20px'}}/>
                         </span>
                     <span>{username}</span>

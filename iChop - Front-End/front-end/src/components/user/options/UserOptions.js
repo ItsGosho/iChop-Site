@@ -3,6 +3,7 @@ import UserOptionsSidebar from "./other/UserOptionsSidebar";
 import optionsSidebarReduxHoc from "../../../redux/hocs/options.sidebar.hoc";
 import UserOptionsMinecraft from "./minecraft/UserOptionsMinecraft";
 import UserOptionsChangePassword from "./password/UserOptionsChangePassword";
+import UserOptionsInformation from "./information/UserOptionsInformation";
 
 class UserOptions extends Component {
 
@@ -23,7 +24,7 @@ class UserOptions extends Component {
                                 {
                                     (() => {
                                         if (isInformationSelected) {
-                                            return (<h1>Information</h1>)
+                                            return (<UserOptionsInformation/>)
                                         } else if (isChangePasswordSelected) {
                                             return (<UserOptionsChangePassword/>);
                                         } else if (isMinecraftSelected) {

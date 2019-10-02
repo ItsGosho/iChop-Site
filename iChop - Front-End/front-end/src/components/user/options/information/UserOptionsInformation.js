@@ -1,9 +1,27 @@
 import React, {Component} from 'react';
+import ServerRoutingURLs from "../../../../constants/server.routing.urls";
+import FrontEndResourcesRoutingURLs from "../../../../constants/front-end.resources.routings";
+import dateFormat from 'dateformat';
 
 class UserOptionsInformation extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.onUserAvatarError = this.onUserAvatarError.bind(this);
+    }
+
+    onUserAvatarError(event) {
+        event.target.onerror = null;
+        event.target.src = FrontEndResourcesRoutingURLs.USER.AVATAR;
+    }
 
     render() {
+        let statusMessage = 'Hi!';
+        let username = 'ItsGosho';
+        let aboutYou = 'Just me :)';
+        let birthDate = dateFormat(Date.now(), "yyyy-mm-dd");
+        let userAvatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', username);
 
         return (
             <form>
@@ -24,11 +42,10 @@ class UserOptionsInformation extends Component {
                                       'overflow': 'auto',
                                       'width': '100%',
                                       'resize': 'none'
-                                  }}
-                                  th:text="*{statusMessage}"/>
+                                  }}>{statusMessage}</textarea>
                     </div>
                 </div>
-                <div className="row" style="margin-top: 3px">
+                <div className="row" style={{'margin-top': '3px'}}>
                     <div className="col-lg">
                         <small id="small-statusMessageCharactersLeft-userOptions"
                                style={{
@@ -55,7 +72,7 @@ class UserOptionsInformation extends Component {
                 <div className="row" align="center">
                     <div className="col-lg">
                         <img id="img-avatar-userOptionsProfile" style={{'width': '50px', 'height': '50px'}}
-                             th:src="@{http://localhost:8001/data/user/{username}/avatar(username=${#authentication.getName()})}"/>
+                             src={userAvatarUrl} onError={this.onUserAvatarError}/>
                     </div>
                 </div>
 
@@ -90,7 +107,7 @@ class UserOptionsInformation extends Component {
 
                 <div className="row" align="center" style={{'margin-top': '5px'}}>
                     <div className="col-lg">
-                        <input th:value="*{birthDate}" name="birthDate" data-provide="datepicker"
+                        <input value={birthDate} name="birthDate" data-provide="datepicker"
                                className="form-control" style={{'width': '250px'}} data-date-format="yyyy-mm-dd"/>
                     </div>
                 </div>
@@ -105,7 +122,7 @@ class UserOptionsInformation extends Component {
 
                 <div className="row">
                     <div className="col-lg">
-                        <textarea th:text="*{aboutYou}" id="textarea-aboutYou-userOptions" name="aboutYou"
+                        <textarea id="textarea-aboutYou-userOptions" name="aboutYou"
                                   style={{
                                       'border': '1px solid',
                                       'border-color': '#ccc',
@@ -114,7 +131,7 @@ class UserOptionsInformation extends Component {
                                       'overflow': 'auto',
                                       'width': '100%',
                                       'resize': 'none'
-                                  }}/>
+                                  }}>{aboutYou}</textarea>
                     </div>
                 </div>
                 <div className="row" style={{'margin-top': '3px'}}>
