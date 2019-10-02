@@ -3,6 +3,7 @@ import RoutingURLs from "../../../constants/routing.constants";
 import {Link} from "react-router-dom";
 import ServerRoutingURLs from "../../../constants/server.routing.urls";
 import UserControlInformation from "./UserControlInformation";
+import UserControlRole from "./UserControlRole";
 
 class UserControlHome extends Component {
 
@@ -55,7 +56,7 @@ class UserControlHome extends Component {
                             <div className="card">
                                 <div className="card-body">
 
-                                    <UserControlInformation/>
+                                    <UserControlRole/>
 
                                 </div>
                             </div>
