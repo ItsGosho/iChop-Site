@@ -19,7 +19,7 @@ class CHANGE extends Component {
         return (
             <Fragment>
                 <div className="row">
-                    <div className="col-md-auto" style="font-family: Consolas">
+                    <div className="col-md-auto" style={{'font-family': 'Consolas'}}>
                         <span>Core Information:</span>
                     </div>
                 </div>
