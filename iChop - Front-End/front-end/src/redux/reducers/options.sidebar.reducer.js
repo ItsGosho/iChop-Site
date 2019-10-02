@@ -2,24 +2,34 @@ import Actions from "../../constants/actions.constants";
 
 let initialState = {
     isInformationSelected: true,
-    isRoleManagementSelected: false,
+    isChangePasswordSelected: false,
+    isMinecraftSelected: false,
 };
 
 
-let controlSidebarReducer = (state = initialState, action) => {
+let optionsSidebarReducer = (state = initialState, action) => {
 
     switch (action.type) {
 
-        case Actions.CONTROL_SIDEBAR_SELECT_INFORMATION:
+        case Actions.OPTIONS_SIDEBAR_SELECT_INFORMATION:
             return Object.assign({}, state, {
                 isInformationSelected: true,
-                isRoleManagementSelected: false
+                isChangePasswordSelected: false,
+                isMinecraftSelected: false,
             });
 
-        case Actions.CONTROL_SIDEBAR_SELECT_ROLE_MANAGEMENT:
+        case Actions.OPTIONS_SIDEBAR_SELECT_CHANGE_PASSWORD:
             return Object.assign({}, state, {
                 isInformationSelected: false,
-                isRoleManagementSelected: true
+                isChangePasswordSelected: true,
+                isMinecraftSelected: false,
+            });
+
+        case Actions.OPTIONS_SIDEBAR_SELECT_MINECRAFT:
+            return Object.assign({}, state, {
+                isInformationSelected: false,
+                isChangePasswordSelected: false,
+                isMinecraftSelected: true,
             });
 
         default:
@@ -28,4 +38,4 @@ let controlSidebarReducer = (state = initialState, action) => {
     }
 };
 
-export default controlSidebarReducer;
+export default optionsSidebarReducer;
