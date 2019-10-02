@@ -1,11 +1,8 @@
 import React, {Component} from 'react';
-import RoutingURLs from "../../../constants/routing.constants";
-import {Link} from "react-router-dom";
-import ServerRoutingURLs from "../../../constants/server.routing.urls";
 import UserControlInformation from "./UserControlInformation";
 import UserControlRole from "./role/UserControlRole";
 import controlSidebarReduxHoc from "../../../redux/hocs/control.sidebar.hoc";
-import FrontEndResourcesRoutingURLs from "../../../constants/front-end.resources.routings";
+import UserControlNav from "./base/UserControlNav";
 
 class UserControl extends Component {
 
@@ -14,13 +11,8 @@ class UserControl extends Component {
 
         this.onInformationClick = this.onInformationClick.bind(this);
         this.onRoleManagementClick = this.onRoleManagementClick.bind(this);
-        this.onImageError = this.onImageError.bind(this);
     }
 
-    onImageError(event) {
-        event.target.onerror = null;
-        event.target.src = FrontEndResourcesRoutingURLs.USER.AVATAR;
-    }
 
     onInformationClick(event) {
         event.preventDefault();
@@ -35,21 +27,9 @@ class UserControl extends Component {
     render() {
         let {isInformationSelected, isRoleManagementSelected} = this.props.redux;
 
-        let username = 'ItsGosho';
-        let userAvatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', username);
-        let profileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', username);
-
         return (
             <div>
-                <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                    <Link className="navbar-brand" to={profileUrl}>
-                        <span>
-                          <img src={userAvatarUrl} onError={this.onImageError}
-                               style={{'width': '20px', 'height': '20px'}}/>
-                        </span>
-                        <span>{username}</span>
-                    </Link>
-                </nav>
+                <UserControlNav/>
 
                 <div className="container" style={{'marginLeft': '0', 'marginTop': '10px'}}>
                     <div className="row">
