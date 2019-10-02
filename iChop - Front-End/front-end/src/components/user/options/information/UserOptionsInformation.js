@@ -18,7 +18,7 @@ class UserOptionsInformation extends Component {
                     <div className="col-lg">
                         <textarea name="statusMessage" id="textarea-statusMessage-userOptions"
                                   style="border:1px solid #ccc;border-radius: 3px;height: 60px;overflow: auto;width: 100%;resize: none"
-                                  th:text="*{statusMessage}"></textarea>
+                                  th:text="*{statusMessage}"/>
                     </div>
                 </div>
                 <div className="row" style="margin-top: 3px">
@@ -30,7 +30,7 @@ class UserOptionsInformation extends Component {
                     </div>
                 </div>
 
-                <div className="dropdown-divider"></div>
+                <div className="dropdown-divider"/>
 
                 <div className="row" align="center">
                     <div className="col-lg">
@@ -50,23 +50,23 @@ class UserOptionsInformation extends Component {
                         <button type="button" className="btn btn-warning btn-sm"
                                 id="button-chooseAvatar-userOptionsProfile">Choose
                         </button>
-                        <input id="input-chooseAvatar-userOptionsProfile" type="file" style="display: none">
-                            <br>
-                                <input id="input-avatarData-userOptionsProfile" type="text" name="avatarBinary"
-                                       style="display: none">
-                                    <br>
-                                        <small id="small-errorFileExtensionAvatar-userOptionsProfile"
-                                               style="display: none">msg
-                                        </small>
+                        <input id="input-chooseAvatar-userOptionsProfile" type="file" style="display: none"/>
+                        <br/>
+                        <input id="input-avatarData-userOptionsProfile" type="text" name="avatarBinary"
+                               style="display: none"/>
+                        <br/>
+                        <small id="small-errorFileExtensionAvatar-userOptionsProfile"
+                               style="display: none">msg
+                        </small>
 
-                                        <script>
+
+                        {/*  <script>
                                             runProceedChoosingAvatar();
-                                        </script>
-
+                                        </script>*/}
                     </div>
                 </div>
 
-                <div className="dropdown-divider"></div>
+                <div className="dropdown-divider"/>
 
                 <div className="row" align="center" style="margin-top: 5px">
                     <div className="col-lg">
@@ -77,11 +77,11 @@ class UserOptionsInformation extends Component {
                 <div className="row" align="center" style="margin-top: 5px">
                     <div className="col-lg">
                         <input th:value="*{birthDate}" name="birthDate" data-provide="datepicker"
-                               className="form-control" style="width: 250px" data-date-format="yyyy-mm-dd">
+                               className="form-control" style="width: 250px" data-date-format="yyyy-mm-dd"/>
                     </div>
                 </div>
 
-                <div className="dropdown-divider"></div>
+                <div className="dropdown-divider"/>
 
                 <div className="row">
                     <div className="col-md-auto" style="font-family: Consolas">
@@ -92,7 +92,7 @@ class UserOptionsInformation extends Component {
                 <div className="row">
                     <div className="col-lg">
                         <textarea th:text="*{aboutYou}" id="textarea-aboutYou-userOptions" name="aboutYou"
-                                  style="border:1px solid;border-color: #ccc;border-radius: 3px;height: 60px;overflow: auto;width: 100%;resize: none"></textarea>
+                                  style="border:1px solid;border-color: #ccc;border-radius: 3px;height: 60px;overflow: auto;width: 100%;resize: none"/>
                     </div>
                 </div>
                 <div className="row" style="margin-top: 3px">
@@ -104,7 +104,7 @@ class UserOptionsInformation extends Component {
                     </div>
                 </div>
 
-                <div className="dropdown-divider"></div>
+                <div className="dropdown-divider"/>
 
                 <div className="row" align="center">
                     <div className="col-lg">
@@ -113,16 +113,10 @@ class UserOptionsInformation extends Component {
                         </button>
                     </div>
                 </div>
-
-                <script>
-                    $(document).ready(function() {
-                    runValidatorsOfFields();
-                })
-                </script>
             </form>
-        );
+    );
     }
 
-}
+    }
 
-export default UserOptionsInformation;
+    export default UserOptionsInformation;
