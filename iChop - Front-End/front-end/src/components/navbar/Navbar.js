@@ -21,7 +21,8 @@ class Navbar extends Component {
 
                 <nav className="navbar navbar-expand-lg navbar-light bg-light rounded">
 
-                    <img src={FrontEndResourcesRoutingURLs.NAVBAR.ICON} width="30" height="30" className="d-inline-block align-top"
+                    <img src={FrontEndResourcesRoutingURLs.NAVBAR.ICON} width="30" height="30"
+                         className="d-inline-block align-top"
                          alt=""/>
 
                     <Link className="navbar-brand" to={RoutingURLs.HOME}>iChop</Link>

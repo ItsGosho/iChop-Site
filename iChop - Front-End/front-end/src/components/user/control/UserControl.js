@@ -5,6 +5,7 @@ import ServerRoutingURLs from "../../../constants/server.routing.urls";
 import UserControlInformation from "./UserControlInformation";
 import UserControlRole from "./UserControlRole";
 import controlSidebarReduxHoc from "../../../redux/hocs/control.sidebar.hoc";
+import FrontEndResourcesRoutingURLs from "../../../constants/front-end.resources.routings";
 
 class UserControl extends Component {
 
@@ -13,8 +14,13 @@ class UserControl extends Component {
 
         this.onInformationClick = this.onInformationClick.bind(this);
         this.onRoleManagementClick = this.onRoleManagementClick.bind(this);
+        this.onImageError = this.onImageError.bind(this);
     }
 
+    onImageError(event) {
+        event.target.onerror = null;
+        event.target.src = FrontEndResourcesRoutingURLs.USER.AVATAR;
+    }
 
     onInformationClick(event) {
         event.preventDefault();
@@ -29,7 +35,7 @@ class UserControl extends Component {
     render() {
         let {isInformationSelected, isRoleManagementSelected} = this.props.redux;
 
-        let username = '${Username of the profile of the user}';
+        let username = 'ItsGosho';
         let userAvatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', username);
         let profileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', username);
 
@@ -39,7 +45,7 @@ class UserControl extends Component {
                     <Link className="navbar-brand" to={profileUrl}>
                         <span>
                           <img src={userAvatarUrl}
-                               alt=''
+                               onError={this.onImageError}
                                style={{'width': '20px', 'height': '20px'}}/>
                         </span>
                         <span>{username}</span></Link>
@@ -58,9 +64,7 @@ class UserControl extends Component {
                     <div className="row">
                         <div className="col-sm">
                             <div className="card" style={{'width': '15rem'}}>
-                                <div className="card-header">
-                                    Options Menu
-                                </div>
+                                <div className="card-header">Options Menu</div>
                                 <ul className="list-group list-group-flush">
 
                                     <a href=' ' onClick={this.onInformationClick}>
@@ -77,7 +81,6 @@ class UserControl extends Component {
                         <div className="col-sm">
                             <div className="card">
                                 <div className="card-body">
-
                                     {
                                         (() => {
                                             if (isInformationSelected) {
