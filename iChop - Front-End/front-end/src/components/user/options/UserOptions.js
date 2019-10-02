@@ -6,10 +6,10 @@ class UserOptions extends Component {
     render() {
 
         return (
-            <div className="container" style="margin-left: 0">
+            <div className="container" style={{'marginLeft': '0'}}>
                 <div className="row">
                     <div className="col-sm">
-                        <div className="card" style="width: 15rem;">
+                        <div className="card" style={{'width': '15rem'}}>
                             <div className="card-header">
                                 Options Menu
                             </div>
@@ -29,7 +29,7 @@ class UserOptions extends Component {
                     <div className="col-sm">
                         <div className="card">
                             <div className="card-body">
-                                <th:block th:insert="${optionsPage}"/>
+                                {/*<th:block th:insert="${optionsPage}"/>*/}
                             </div>
                         </div>
                     </div>

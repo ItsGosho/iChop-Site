@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react';
 import Footer from "./components/footer/Footer";
 import Navbar from "./components/navbar/Navbar";
-import UserControlHome from "./components/user/control/UserControl";
+import UserOptions from "./components/user/options/UserOptions";
 
 function App() {
     return (
@@ -9,7 +9,7 @@ function App() {
             <Navbar/>
 
             <h1>TEST</h1>
-            <UserControlHome/>
+            <UserOptions/>
 
             <Footer/>
         </Fragment>
