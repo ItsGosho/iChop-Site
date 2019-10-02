@@ -6,11 +6,11 @@ import UserControlInformation from "./UserControlInformation";
 import UserControlRole from "./UserControlRole";
 import controlSidebarReduxHoc from "../../../redux/hocs/control.sidebar.hoc";
 
-class UserControlHome extends Component {
+class UserControl extends Component {
 
 
     render() {
-        let {isHomeSelected, isRoleManagementSelected} = this.props.redux;
+        let {isInformationSelected, isRoleManagementSelected} = this.props.redux;
 
         let username = '${Username of the profile of the user}';
         let userAvatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', username);
@@ -61,7 +61,7 @@ class UserControlHome extends Component {
 
                                     {
                                         (() => {
-                                            if (isHomeSelected) {
+                                            if (isInformationSelected) {
                                                 return (<UserControlInformation/>)
                                             } else if (isRoleManagementSelected) {
                                                 return (<UserControlRole/>);
@@ -80,4 +80,4 @@ class UserControlHome extends Component {
 
 }
 
-export default controlSidebarReduxHoc(UserControlHome);
+export default controlSidebarReduxHoc(UserControl);

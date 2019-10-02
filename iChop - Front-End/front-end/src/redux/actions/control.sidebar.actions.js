@@ -1,10 +1,10 @@
 import Actions from "../../constants/actions.constants";
 
 
-let controlSidebarSelectHome = () => {
+let controlSidebarSelectInformation = () => {
     return async (dispatch) => {
         dispatch({
-            type: Actions.CONTROL_SIDEBAR_SELECT_HOME,
+            type: Actions.CONTROL_SIDEBAR_SELECT_INFORMATION,
         });
     }
 };
@@ -18,6 +18,6 @@ let controlSidebarSelectRoleManagement = () => {
 };
 
 export {
-    controlSidebarSelectHome,
+    controlSidebarSelectInformation,
     controlSidebarSelectRoleManagement
 }

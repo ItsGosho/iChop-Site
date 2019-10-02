@@ -1,7 +1,7 @@
 import Actions from "../../constants/actions.constants";
 
 let initialState = {
-    isHomeSelected: true,
+    isInformationSelected: true,
     isRoleManagementSelected: false,
 };
 
@@ -10,15 +10,15 @@ let controlSidebarReducer = (state = initialState, action) => {
 
     switch (action.type) {
 
-        case Actions.CONTROL_SIDEBAR_SELECT_HOME:
+        case Actions.CONTROL_SIDEBAR_SELECT_INFORMATION:
             return Object.assign({}, state, {
-                isHomeSelected: true,
+                isInformationSelected: true,
                 isRoleManagementSelected: false
             });
 
         case Actions.CONTROL_SIDEBAR_SELECT_ROLE_MANAGEMENT:
             return Object.assign({}, state, {
-                isHomeSelected: false,
+                isInformationSelected: false,
                 isRoleManagementSelected: true
             });
 

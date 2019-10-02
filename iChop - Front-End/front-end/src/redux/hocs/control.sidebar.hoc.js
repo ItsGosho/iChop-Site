@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {controlSidebarSelectHome, controlSidebarSelectRoleManagement} from "../actions/control.sidebar.actions";
+import {controlSidebarSelectInformation, controlSidebarSelectRoleManagement} from "../actions/control.sidebar.actions";
 
 let props = (state) => {
     return {redux: state.controlSidebar}
@@ -8,8 +8,8 @@ let props = (state) => {
 
 let dispatcher = (dispatch) => {
     return {
-        selectHome: () => {
-            dispatch(controlSidebarSelectHome())
+        selectInformation: () => {
+            dispatch(controlSidebarSelectInformation())
         },
         selectRoleManagement: () => {
             dispatch(controlSidebarSelectRoleManagement())

@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react';
 import Footer from "./components/footer/Footer";
 import Navbar from "./components/navbar/Navbar";
-import UserControlHome from "./components/user/control/UserControlHome";
+import UserControlHome from "./components/user/control/UserControl";
 
 function App() {
     return (
