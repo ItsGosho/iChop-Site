@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import UserControlInformation from "./information/UserControlInformation";
 import UserControlRole from "./role/UserControlRole";
 import controlSidebarReduxHoc from "../../../redux/hocs/control.sidebar.hoc";
-import UserControlNav from "./base/UserControlNav";
-import UserControlSidebar from "./base/UserControlSidebar";
+import UserControlNav from "./other/UserControlNav";
+import UserControlSidebar from "./other/UserControlSidebar";
 
 class UserControl extends Component {
 
@@ -31,7 +31,6 @@ class UserControl extends Component {
                                             }
                                         })()
                                     }
-
                                 </div>
                             </div>
                         </div>

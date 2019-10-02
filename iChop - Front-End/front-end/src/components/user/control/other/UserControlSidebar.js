@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+import controlSidebarReduxHoc from "../../../../redux/hocs/control.sidebar.hoc";
 
 class UserControlSidebar extends Component {
 
@@ -45,4 +46,4 @@ class UserControlSidebar extends Component {
 
 }
 
-export default UserControlSidebar;
+export default controlSidebarReduxHoc(UserControlSidebar);
