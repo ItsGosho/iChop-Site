@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react';
-const dateFormat = require('dateformat')
+import dateFormat from 'dateformat';
 
 class UserControlInformation extends Component {
 
@@ -20,7 +20,7 @@ class UserControlInformation extends Component {
         return (
             <Fragment>
                 <div className="row">
-                    <div className="col-md-auto" style={{'font-family': 'Consolas'}}>
+                    <div className="col-md-auto" style={{'fontFamily': 'Consolas'}}>
                         <span>Core Information:</span>
                     </div>
                 </div>
