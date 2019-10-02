@@ -1,9 +1,26 @@
 import React, {Component} from 'react';
 import navbarGuestReduxHoc from "../../../../redux/hocs/navbar.guest.hoc";
+import formHoc from "../../../../hocs/form.hoc";
 
 class GuestRegisterDropdown extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.onRegister = this.onRegister.bind(this);
+    }
+
+    onRegister() {
+        let {username, password,confirmPassword,email} = this.props.formData;
+
+        console.log(username);
+        console.log(password);
+        console.log(confirmPassword);
+        console.log(email);
+    }
+
     render() {
+        let {onChange} = this.props.formMethods;
 
         return (
             <div id="div-register-dropdown">
@@ -21,7 +38,7 @@ class GuestRegisterDropdown extends Component {
                                 <div className="input-group-text">👤</div>
                             </div>
                             <input type="text" className="form-control" id="input-username-registerForm"
-                                   name="username" placeholder="Username..." autoComplete="off"/>
+                                   name="username" placeholder="Username..." autoComplete="off" onChange={onChange}/>
                         </div>
                     </div>
                     <div className="form-group">
@@ -35,7 +52,7 @@ class GuestRegisterDropdown extends Component {
                                    data-toggle="popover" title="Password Requirements:" data-html="true"
                                    data-trigger="focus"
                                    data-content="-At least one uppercase character</br>-At least one lowercase character</br>-At least 6 characters"
-                                   name="password" placeholder="Password..."/>
+                                   name="password" placeholder="Password..." onChange={onChange}/>
                             <div className="input-group-append">
                                 <button className="btn btn-outline-success"
                                         id="button-showPassword-registerForm"
@@ -53,7 +70,7 @@ class GuestRegisterDropdown extends Component {
                             </div>
                             <input type="password" className="form-control" id="input-confirmPassword-registerForm"
                                    autoComplete="off"
-                                   name="confirmPassword" placeholder="Confirm Password..."/>
+                                   name="confirmPassword" placeholder="Confirm Password..." onChange={onChange}/>
                         </div>
                     </div>
                     <div className="form-group">
@@ -66,14 +83,14 @@ class GuestRegisterDropdown extends Component {
                             </div>
                             <input type="email" className="form-control" id="input-email-registerForm" name="email"
                                    autoComplete="off"
-                                   placeholder="Email..."/>
+                                   placeholder="Email..." onChange={onChange}/>
                         </div>
                     </div>
                     <button id="button-goToLogin-registerForm" type="button" onClick={this.props.selectLogin}
                             className="btn btn-primary btn-sm">Back
                     </button>
                     <button id="button-proceedRegister-registerForm" type="button"
-                            className="btn btn-success btn-sm btn-ladda" data-style="zoom-in">
+                            className="btn btn-success btn-sm btn-ladda" data-style="zoom-in" onClick={this.onRegister}>
                         Register
                     </button>
                     <div className="dropdown-divider"/>
@@ -84,4 +101,4 @@ class GuestRegisterDropdown extends Component {
 
 }
 
-export default navbarGuestReduxHoc(GuestRegisterDropdown);
+export default formHoc(navbarGuestReduxHoc(GuestRegisterDropdown));
