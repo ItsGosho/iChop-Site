@@ -13,6 +13,8 @@ class UserOptionsChangePassword extends Component {
     onResetClick() {
         let {password, confirmPassword} = this.props.formData;
 
+        console.log(password);
+        console.log(confirmPassword);
     }
 
     render() {
