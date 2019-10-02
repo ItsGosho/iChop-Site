@@ -44,7 +44,9 @@ class UserControlHome extends Component {
                                     <Link to={roleManagementUrl}>
                                         <li className="list-group-item control-option">Role Management</li>
                                     </Link>
-                                    <li className="list-group-item control-option">Future</li>
+                                    <Link to={''}>
+                                        <li className="list-group-item control-option">Future</li>
+                                    </Link>
                                 </ul>
                             </div>
                         </div>
