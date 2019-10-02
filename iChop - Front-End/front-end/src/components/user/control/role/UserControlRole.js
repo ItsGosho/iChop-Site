@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import Roles from "../../../constants/roles.constants";
-import dateFormat from 'dateformat';
+import Roles from "../../../../constants/roles.constants";
+import UserControlRoleLogs from "./UserControlRoleLogs";
 
 class UserControlRole extends Component {
 
@@ -9,11 +9,6 @@ class UserControlRole extends Component {
         let previousRole = null;
         let role = Roles.USER;
         let nextRole = Roles.MODERATOR;
-
-        let logs = [
-            {happenedOn: dateFormat(Date.now(), "dd mmmm,yyyy HH:mm"), message: ' Changed the role to X'},
-            {happenedOn: dateFormat(Date.now(), "dd mmmm,yyyy HH:mm"), message: ' Changed the role to X'},
-        ];
 
         return (
             <div>
@@ -31,7 +26,8 @@ class UserControlRole extends Component {
 
                                     if (previousRole !== null) {
                                         return (
-                                            <button type="button" className="btn btn-warning btn-sm" style={{'marginRight':'10px'}}>
+                                            <button type="button" className="btn btn-warning btn-sm"
+                                                    style={{'marginRight': '10px'}}>
                                                 <span>👇🏻</span><span>{previousRole}</span>
                                             </button>
                                         );
@@ -48,7 +44,8 @@ class UserControlRole extends Component {
 
                                     if (nextRole !== null && nextRole !== Roles.OWNER) {
                                         return (
-                                            <button type="button" className="btn btn-warning btn-sm" style={{'marginRight':'10px'}}>
+                                            <button type="button" className="btn btn-warning btn-sm"
+                                                    style={{'marginRight': '10px'}}>
                                                 <span>👆🏻</span>
                                                 <span>{nextRole}</span>
                                             </button>
@@ -62,26 +59,7 @@ class UserControlRole extends Component {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-md-auto">
-                        <small><b>Logs:</b></small>
-                    </div>
-                    <div className="col-md-auto">
-                        <ul>
-
-                            {
-                                logs.map((item, index) => {
-                                    return (
-                                        <li key={index}>
-                                            <small>
-                                                <b>[{item.happenedOn}]</b>
-                                                <span>{item.message}</span>.
-                                            </small>
-                                        </li>
-                                    );
-                                })
-                            }
-                        </ul>
-                    </div>
+                    <UserControlRoleLogs/>
                 </div>
             </div>
         );

@@ -3,7 +3,7 @@ import RoutingURLs from "../../../constants/routing.constants";
 import {Link} from "react-router-dom";
 import ServerRoutingURLs from "../../../constants/server.routing.urls";
 import UserControlInformation from "./UserControlInformation";
-import UserControlRole from "./UserControlRole";
+import UserControlRole from "./role/UserControlRole";
 import controlSidebarReduxHoc from "../../../redux/hocs/control.sidebar.hoc";
 import FrontEndResourcesRoutingURLs from "../../../constants/front-end.resources.routings";
 
@@ -44,20 +44,11 @@ class UserControl extends Component {
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
                     <Link className="navbar-brand" to={profileUrl}>
                         <span>
-                          <img src={userAvatarUrl}
-                               onError={this.onImageError}
+                          <img src={userAvatarUrl} onError={this.onImageError}
                                style={{'width': '20px', 'height': '20px'}}/>
                         </span>
-                        <span>{username}</span></Link>
-                    <button className="navbar-toggler" type="button" data-toggle="collapse"
-                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"/>
-                    </button>
-
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-
-                    </div>
+                        <span>{username}</span>
+                    </Link>
                 </nav>
 
                 <div className="container" style={{'marginLeft': '0', 'marginTop': '10px'}}>
