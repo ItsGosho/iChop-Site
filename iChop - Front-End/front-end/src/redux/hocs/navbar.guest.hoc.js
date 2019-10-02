@@ -7,9 +7,7 @@ import {
 } from "../actions/navbar.guest.actions";
 
 let props = (state) => {
-    let {showDropdown, isLoginSelected, isRegisterSelected, isForgottenPasswordSelected} = state.navbarGuest;
-
-    return {redux: {showDropdown, isLoginSelected, isRegisterSelected, isForgottenPasswordSelected}};
+    return {redux: state.navbarGuest};
 };
 
 let dispatcher = (dispatch) => {

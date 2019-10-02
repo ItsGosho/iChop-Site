@@ -4,11 +4,14 @@ import {Link} from "react-router-dom";
 import ServerRoutingURLs from "../../../constants/server.routing.urls";
 import UserControlInformation from "./UserControlInformation";
 import UserControlRole from "./UserControlRole";
+import controlSidebarReduxHoc from "../../../redux/hocs/control.sidebar.hoc";
 
 class UserControlHome extends Component {
 
 
     render() {
+        let {isHomeSelected, isRoleManagementSelected} = this.props.redux;
+
         let username = '${Username of the profile of the user}';
         let userAvatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', username);
         let profileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', username);
@@ -56,21 +59,25 @@ class UserControlHome extends Component {
                             <div className="card">
                                 <div className="card-body">
 
-                                    <UserControlRole/>
+                                    {
+                                        (() => {
+                                            if (isHomeSelected) {
+                                                return (<UserControlInformation/>)
+                                            } else if (isRoleManagementSelected) {
+                                                return (<UserControlRole/>);
+                                            }
+                                        })()
+                                    }
 
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                {/*<script>
-                    runMenuSelectorColorizer();
-                </script>*/}
             </div>
         );
     }
 
 }
 
-export default UserControlHome;
+export default controlSidebarReduxHoc(UserControlHome);

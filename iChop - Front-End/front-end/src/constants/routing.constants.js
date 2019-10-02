@@ -33,9 +33,7 @@ const RoutingURLs = {
             ALL: '/user/:username/followings/all' /*Everyone+*/
         },
 
-        CONTROL_PANEL: {
-            ROLE: '/user/:username/control/role' /*Admin+*/
-        },
+        CONTROL_PANEL: '/user/:username/control/role',
 
         OPTIONS: {
             INFORMATION: '/user/options/information', /*User+*/
