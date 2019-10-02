@@ -8,6 +8,23 @@ import controlSidebarReduxHoc from "../../../redux/hocs/control.sidebar.hoc";
 
 class UserControl extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.onInformationClick = this.onInformationClick.bind(this);
+        this.onRoleManagementClick = this.onRoleManagementClick.bind(this);
+    }
+
+
+    onInformationClick(event) {
+        event.preventDefault();
+        this.props.selectInformation();
+    }
+
+    onRoleManagementClick(event) {
+        event.preventDefault();
+        this.props.selectRoleManagement();
+    }
 
     render() {
         let {isInformationSelected, isRoleManagementSelected} = this.props.redux;
@@ -15,7 +32,6 @@ class UserControl extends Component {
         let username = '${Username of the profile of the user}';
         let userAvatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', username);
         let profileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', username);
-        let roleManagementUrl = RoutingURLs.USER.CONTROL_PANEL.ROLE.replace(':username', username);
 
         return (
             <div>
@@ -46,12 +62,15 @@ class UserControl extends Component {
                                     Options Menu
                                 </div>
                                 <ul className="list-group list-group-flush">
-                                    <Link to={roleManagementUrl}>
+
+                                    <a href=' ' onClick={this.onInformationClick}>
+                                        <li className="list-group-item control-option">Information</li>
+                                    </a>
+
+                                    <a href=' ' onClick={this.onRoleManagementClick}>
                                         <li className="list-group-item control-option">Role Management</li>
-                                    </Link>
-                                    <Link to={''}>
-                                        <li className="list-group-item control-option">Future</li>
-                                    </Link>
+                                    </a>
+
                                 </ul>
                             </div>
                         </div>
