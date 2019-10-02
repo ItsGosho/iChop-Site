@@ -7,10 +7,10 @@ class UserControlHome extends Component {
 
 
     render() {
-        let username = 'ItsGosho';
+        let username = '${Username of the profile of the user}';
         let userAvatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', username);
         let profileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', username);
-        let roleManagementUrl = RoutingURLs.USER.CONTROL_PANEL.ROLE.replace(':username', userAvatarUrl);
+        let roleManagementUrl = RoutingURLs.USER.CONTROL_PANEL.ROLE.replace(':username', username);
 
         return (
             <div>
@@ -33,7 +33,7 @@ class UserControlHome extends Component {
                     </div>
                 </nav>
 
-                <div className="container" style={{'margin-left': '0', 'margin-top': '10px'}}>
+                <div className="container" style={{'marginLeft': '0', 'marginTop': '10px'}}>
                     <div className="row">
                         <div className="col-sm">
                             <div className="card" style={{'width': '15rem'}}>
@@ -44,8 +44,7 @@ class UserControlHome extends Component {
                                     <Link to={roleManagementUrl}>
                                         <li className="list-group-item control-option">Role Management</li>
                                     </Link>
-                                    <li className="list-group-item control-option">Option2</li>
-                                    <li className="list-group-item control-option">Option3</li>
+                                    <li className="list-group-item control-option">Future</li>
                                 </ul>
                             </div>
                         </div>
