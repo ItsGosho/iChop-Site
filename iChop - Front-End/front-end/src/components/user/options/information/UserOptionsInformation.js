@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import ServerRoutingURLs from "../../../../constants/server.routing.urls";
 import FrontEndResourcesRoutingURLs from "../../../../constants/front-end.resources.routings";
 import dateFormat from 'dateformat';
+import formHoc from "../../../../hocs/form.hoc";
 
 class UserOptionsInformation extends Component {
 
@@ -9,6 +10,7 @@ class UserOptionsInformation extends Component {
         super(props);
 
         this.onUserAvatarError = this.onUserAvatarError.bind(this);
+        this.onSaveChanges = this.onSaveChanges.bind(this);
     }
 
     onUserAvatarError(event) {
@@ -16,7 +18,13 @@ class UserOptionsInformation extends Component {
         event.target.src = FrontEndResourcesRoutingURLs.USER.AVATAR;
     }
 
+    onSaveChanges() {
+        console.log(this.props);
+    }
+
     render() {
+        let {onChange} = this.props.formMethods;
+
         let statusMessage = 'Hi!';
         let username = 'ItsGosho';
         let aboutYou = 'Just me :)';
@@ -27,7 +35,7 @@ class UserOptionsInformation extends Component {
             <form>
 
                 <div className="row">
-                    <div className="col-md-auto" style={{'font-family': 'Consolas'}}>
+                    <div className="col-md-auto" style={{'fontFamily': 'Consolas'}}>
                         <span>Status Message:</span>
                     </div>
                 </div>
@@ -37,24 +45,24 @@ class UserOptionsInformation extends Component {
                         <textarea name="statusMessage" id="textarea-statusMessage-userOptions"
                                   style={{
                                       'border': '1px solid #ccc',
-                                      'border-radius': '3px',
+                                      'borderRadius': '3px',
                                       'height': '60px',
                                       'overflow': 'auto',
                                       'width': '100%',
                                       'resize': 'none'
-                                  }}>{statusMessage}</textarea>
+                                   }} value={statusMessage} onChange={onChange}/>
                     </div>
                 </div>
-                <div className="row" style={{'margin-top': '3px'}}>
+                <div className="row" style={{'marginTop': '3px'}}>
                     <div className="col-lg">
                         <small id="small-statusMessageCharactersLeft-userOptions"
                                style={{
                                    'float': 'right',
                                    'display': 'inline-block',
-                                   'border-color': '#ccc',
-                                   'margin-right': '3px',
+                                   'borderColor': '#ccc',
+                                   'marginRight': '3px',
                                    'color': 'darkgreen',
-                                   'font-size': '13px'
+                                   'fontSize': '13px'
                                }}>
                             16
                         </small>
@@ -76,7 +84,7 @@ class UserOptionsInformation extends Component {
                     </div>
                 </div>
 
-                <div className="row" align="center" style={{'margin-top': '5px'}}>
+                <div className="row" align="center" style={{'marginTop': '5px'}}>
                     <div className="col-lg">
                         <button type="button" className="btn btn-warning btn-sm"
                                 id="button-chooseAvatar-userOptionsProfile">Choose
@@ -99,15 +107,15 @@ class UserOptionsInformation extends Component {
 
                 <div className="dropdown-divider"/>
 
-                <div className="row" align="center" style={{'margin-top': '5px'}}>
+                <div className="row" align="center" style={{'marginTop': '5px'}}>
                     <div className="col-lg">
                         <span>Birthday:</span>
                     </div>
                 </div>
 
-                <div className="row" align="center" style={{'margin-top': '5px'}}>
+                <div className="row" align="center" style={{'marginTop': '5px'}}>
                     <div className="col-lg">
-                        <input value={birthDate} name="birthDate" data-provide="datepicker"
+                        <input value={birthDate} name="birthDate" data-provide="datepicker" onChange={onChange}
                                className="form-control" style={{'width': '250px'}} data-date-format="yyyy-mm-dd"/>
                     </div>
                 </div>
@@ -115,7 +123,7 @@ class UserOptionsInformation extends Component {
                 <div className="dropdown-divider"/>
 
                 <div className="row">
-                    <div className="col-md-auto" style={{'font-family': 'Consolas'}}>
+                    <div className="col-md-auto" style={{'fontFamily': 'Consolas'}}>
                         <span>About you:</span>
                     </div>
                 </div>
@@ -125,24 +133,24 @@ class UserOptionsInformation extends Component {
                         <textarea id="textarea-aboutYou-userOptions" name="aboutYou"
                                   style={{
                                       'border': '1px solid',
-                                      'border-color': '#ccc',
-                                      'border-radius': '3px',
+                                      'borderColor': '#ccc',
+                                      'borderRadius': '3px',
                                       'height': '60px',
                                       'overflow': 'auto',
                                       'width': '100%',
                                       'resize': 'none'
-                                  }}>{aboutYou}</textarea>
+                                  }} value={aboutYou} onChange={onChange}/>
                     </div>
                 </div>
-                <div className="row" style={{'margin-top': '3px'}}>
+                <div className="row" style={{'marginTop': '3px'}}>
                     <div className="col-lg">
                         <small id="small-aboutYouCharactersLeft-userOptions"
                                style={{
                                    'float': 'right',
                                    'display': 'inline-block',
-                                   'margin-right': '3px',
+                                   'marginRight': '3px',
                                    'color': 'darkgreen',
-                                   'font-size': '13px'
+                                   'fontSize': '13px'
                                }}>
                             250
                         </small>
@@ -153,7 +161,7 @@ class UserOptionsInformation extends Component {
 
                 <div className="row" align="center">
                     <div className="col-lg">
-                        <button id="button-saveChanges-userOptionsProfile" type="submit"
+                        <button id="button-saveChanges-userOptionsProfile" type="button" onClick={this.onSaveChanges}
                                 className="btn btn-warning btn-sm">Save Changes
                         </button>
                     </div>
@@ -164,4 +172,4 @@ class UserOptionsInformation extends Component {
 
 }
 
-export default UserOptionsInformation;
+export default formHoc(UserOptionsInformation);
