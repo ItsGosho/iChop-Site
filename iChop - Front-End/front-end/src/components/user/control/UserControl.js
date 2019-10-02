@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import UserControlInformation from "./UserControlInformation";
+import UserControlInformation from "./information/UserControlInformation";
 import UserControlRole from "./role/UserControlRole";
 import controlSidebarReduxHoc from "../../../redux/hocs/control.sidebar.hoc";
 import UserControlNav from "./base/UserControlNav";
