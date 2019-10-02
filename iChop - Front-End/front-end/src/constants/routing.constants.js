@@ -34,7 +34,7 @@ const RoutingURLs = {
         },
 
         CONTROL_PANEL: {
-            Role: '/user/:username/control/role' /*Admin+*/
+            ROLE: '/user/:username/control/role' /*Admin+*/
         },
 
         OPTIONS: {
