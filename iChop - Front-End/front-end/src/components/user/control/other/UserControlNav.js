@@ -27,7 +27,7 @@ class UserControlNav extends Component {
                 <Link className="navbar-brand" to={profileUrl}>
                         <span>
                           <img src={userAvatarUrl} onError={this.onUserAvatarError}
-                               style={{'width': '20px', 'height': '20px'}}/>
+                               style={{'width': '20px', 'height': '20px'}} alt=''/>
                         </span>
                     <span>{username}</span>
                 </Link>
