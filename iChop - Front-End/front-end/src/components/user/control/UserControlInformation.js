@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
 
-class CHANGE extends Component {
+class UserControlInformation extends Component {
 
 
     render() {
@@ -48,4 +48,4 @@ class CHANGE extends Component {
 
 }
 
-export default CHANGE;
+export default UserControlInformation;

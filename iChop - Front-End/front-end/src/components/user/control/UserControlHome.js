@@ -54,7 +54,7 @@ class UserControlHome extends Component {
                             <div className="card">
                                 <div className="card-body">
 
-                                    {/*<th:block th:insert="${controlPage}"/>*/}
+                                    <UserContr
 
                                 </div>
                             </div>
