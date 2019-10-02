@@ -1,10 +1,24 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
 import navbarGuestReduxHoc from "../../../../redux/hocs/navbar.guest.hoc";
+import formHoc from "../../../../hocs/form.hoc";
 
 class GuestForgottenPasswordDropdown extends Component {
 
 
+    constructor(props) {
+        super(props);
+
+        this.onForggotenPassword = this.onForggotenPassword.bind(this);
+    }
+
+    onForggotenPassword() {
+        let {usernameOrEmail} = this.props.formData;
+
+        console.log(usernameOrEmail);
+    }
+
     render() {
+        let {onChange} = this.props.formMethods;
 
         return (
             <div id="div-forgotten_password-dropdown">
@@ -18,7 +32,7 @@ class GuestForgottenPasswordDropdown extends Component {
                             <input type="text" className="form-control"
                                    id="input-usernameOrEmail-forgottenPasswordForm"
                                    autoComplete="off"
-                                   name="usernameOrEmail" placeholder="Username or Email..."/>
+                                   name="usernameOrEmail" placeholder="Username or Email..." onChange={onChange}/>
                         </div>
                     </div>
 
@@ -26,10 +40,10 @@ class GuestForgottenPasswordDropdown extends Component {
                             className="btn btn-primary btn-sm" onClick={this.props.selectLogin}>Back
                     </button>
                     <button id="button-proceedEmailSend-forgottenPasswordForm" type="button" data-style="zoom-in"
-                            className="btn btn-success btn-sm">Send
+                            className="btn btn-success btn-sm" onClick={this.onForggotenPassword}>Send
                     </button>
 
-                    <div className="dropdown-divider"></div>
+                    <div className="dropdown-divider"/>
                     <div id="container-notification-forgottenPassword">
                         <div className="alert alert-danger p-1"
                              id="error-noUserExistsWithTheProvidedCredentials-forgottenPasswordForm">
@@ -49,4 +63,4 @@ class GuestForgottenPasswordDropdown extends Component {
 
 }
 
-export default navbarGuestReduxHoc(GuestForgottenPasswordDropdown);
+export default formHoc(navbarGuestReduxHoc(GuestForgottenPasswordDropdown));
