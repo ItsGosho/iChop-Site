@@ -6,19 +6,22 @@ class UserOptionsChangePassword extends Component {
     constructor(props) {
         super(props);
 
+        this.state = {
+            password: '',
+            confirmPassword: '123'
+        };
+
         this.onResetClick = this.onResetClick.bind(this);
     }
 
 
     onResetClick() {
-        let {password, confirmPassword} = this.props.formData;
-
-        console.log(password);
-        console.log(confirmPassword);
+        console.log(this.state.password);
+        console.log(this.state.confirmPassword);
     }
 
     render() {
-        let {onChange} = this.props.formMethods;
+        let onChange = (event) => (this.setState({[event.target.name]: event.target.value}));
 
         return (
             <div className="container d-flex justify-content-center align-items-center">
@@ -32,13 +35,12 @@ class UserOptionsChangePassword extends Component {
                                     <div className="input-group-text">🔒</div>
                                 </div>
                                 <input type="password" className="form-control" id="input-password-resetPasswordForm"
-                                       onChange={onChange}
                                        autoComplete="off"
                                        data-placement="top"
                                        data-toggle="popover" title="Password Requirements:" data-html="true"
                                        data-trigger="focus"
                                        data-content="-At least one uppercase character</br>-At least one lowercase character</br>-At least 6 characters"
-                                       name="password" placeholder="New Password..."/>
+                                       name="password" placeholder="New Password..." onChange={onChange} value={this.state.password}/>
                                 <div className="input-group-append">
                                     <button className="btn btn-outline-success"
                                             id="button-showPassword-resetPasswordForm"
@@ -51,10 +53,12 @@ class UserOptionsChangePassword extends Component {
                                     <div className="input-group-prepend">
                                         <div className="input-group-text">🔒</div>
                                     </div>
-                                    <input type="password" className="form-control" onChange={onChange}
+                                    <input type="password" className="form-control"
                                            id="input-confirmPassword-resetPasswordForm"
                                            autoComplete="off"
-                                           name="confirmPassword" placeholder="Confirm New Password..."/>
+                                           name="confirmPassword"
+                                           placeholder="Confirm New Password..."
+                                           onChange={onChange} value={this.state.confirmPassword}/>
                                 </div>
                                 <small
                                     id="error-passwordsDoesntMatch-resetPasswordForm">⚡Passwords doesn't match!
@@ -76,4 +80,4 @@ class UserOptionsChangePassword extends Component {
 
 }
 
-export default formHoc(UserOptionsChangePassword);
+export default UserOptionsChangePassword;

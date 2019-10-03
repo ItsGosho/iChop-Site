@@ -11,11 +11,13 @@ let formHoc = (Comp) => {
         }
 
         onChange(event) {
+            event.preventDefault();
+            console.log(event.target);
+
             let inputName = event.target.name;
             let value = event.target.value;
 
             this.setState({[inputName]: value});
-            event.preventDefault();
         }
 
         render() {
@@ -23,7 +25,7 @@ let formHoc = (Comp) => {
                 <Comp
                     formMethods={
                         {
-                            onChange: this.onChange
+                            onChange: this.onChange,
                         }
                     }
                     formData={this.state}
