@@ -6,6 +6,8 @@ class UserProfileCentralContent extends Component {
     render() {
         let username = '';
         let role = '';
+        let statusMessage = '';
+        let isAuthenticated = true;
 
         return (
             <Fragment>
@@ -16,50 +18,72 @@ class UserProfileCentralContent extends Component {
                             <div className="row">
                                 <div>
                                     <div className="col-md-auto head">
-                                        <span style="font-size: 25px" th:text="*{username}">Unknown Username</span>
+                                        <span style="font-size: 25px">{username}</span>
                                     </div>
                                 </div>
                             </div>
                             <div className="row">
                                 <div>
-                                    <div class="col-md-auto head">
-                                        <span style="font-size: 20px" th:text="*{role}">Unknown Rank</span>
+                                    <div className="col-md-auto head">
+                                        <span style="font-size: 20px">{role}</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <th:block sec:authorize="isAuthenticated()">
-                            <div className="row">
-                                <div className="col-md-12 head">
-                                    <a th:href="@{/user/{username}/follow(username=*{username})}"
-                                       id="a-follow_user-userProfile"
-                                       style="font-size: 13px;float: right;display: none">Follow</a>
-                                    <a th:href="@{/user/{username}/unfollow(username=*{username})}"
-                                       id="a-unfollow_user-userProfile"
-                                       style="font-size: 13px;float: right;display: none">Unfollow</a>
 
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-md-12 head">
-                                    <small id="a-is_he_followed_you-userProfile"
-                                           style="font-size: 11px;float: right;display: inline-block"></small>
-                                </div>
-                            </div>
+                        {
+                            (() => {
+                                if (isAuthenticated) {
+                                    return (
+                                        <Fragment>
+                                            <div className="row">
+                                                <div className="col-md-12 head">
+                                                    <a href=' '
+                                                       onClick={(event) => {
+                                                           event.preventDefault();
+                                                       }}
+                                                       id="a-follow_user-userProfile"
+                                                       style="font-size: 13px;float: right;display: none">Follow</a>
+                                                    <a href=' '
+                                                       onClick={(event) => {
+                                                           event.preventDefault();
+                                                       }}
+                                                       id="a-unfollow_user-userProfile"
+                                                       style="font-size: 13px;float: right;display: none">Unfollow</a>
 
-                        </th:block>
+                                                </div>
+                                            </div>
+                                            <div className="row">
+                                                <div className="col-md-12 head">
+                                                    <small id="a-is_he_followed_you-userProfile"
+                                                           style="font-size: 11px;float: right;display: inline-block"/>
+                                                </div>
+                                            </div>
+                                        </Fragment>
+                                    )
+                                }
+                            })()
+                        }
 
-                        <div className="dropdown-divider"></div>
+                        <div className="dropdown-divider"/>
                     </div>
 
                     <div className="col-md-auto status">
                         <div style="line-height: 20px">
                             <div className="row">
                                 <div>
-                                    <div className="col-md-auto head" th:if="*{information != null}">
-                                    <span style="font-size: 13px;font-family: Georgia;font-style: italic"
-                                          th:text="*{information.statusMessage}"></span>
-                                    </span>
+                                    {
+                                        (() => {
+                                            if (statusMessage != null) {
+                                                return (
+                                                    <div className="col-md-auto head">
+                                                        <span
+                                                            style="font-size: 13px;font-family: Georgia;font-style: italic">{statusMessage}</span>
+                                                    </div>
+                                                );
+                                            }
+                                        })()
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -74,7 +98,8 @@ class UserProfileCentralContent extends Component {
                                 <a className="nav-link active" data-toggle="tab" href="#posts">Profile posts</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" data-toggle="tab" href="#latest-activity">Latest Site Activity</a>
+                                <a className="nav-link" data-toggle="tab" href="#latest-activity">Latest Site
+                                    Activity</a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" data-toggle="tab" href="#latest-in-game-activity">Lates In-Game
@@ -86,27 +111,26 @@ class UserProfileCentralContent extends Component {
                         </ul>
                     </div>
 
-                    <!-- Tab panes -->
+
                     <div className="tab-content">
 
                         <div className="tab-pane container active" id="posts">
-                           {/* <th:block th:insert="user/profile/panes/user-profile-pane-posts"></th:block>*/}
+                            {/* <th:block th:insert="user/profile/panes/user-profile-pane-posts"></th:block>*/}
                         </div>
 
                         <div className="tab-pane container fade" id="latest-activity">Latest activity</div>
-                        <div className="tab-pane container fade" id="latest-in-game-activity">Latest in-game activity</div>
+                        <div className="tab-pane container fade" id="latest-in-game-activity">Latest in-game activity
+                        </div>
                         <div className="tab-pane container fade" id="information">
                             {/*<th:block th:insert="user/profile/panes/user-profile-pane-information"></th:block>*/}
                         </div>
                     </div>
 
                 </div>
+                < /Fragment>
+                    );
+                    }
 
-            </div>
-            < /Fragment>
-        );
-    }
+                    }
 
-}
-
-export default UserProfileCentralContent;
+                    export default UserProfileCentralContent;
