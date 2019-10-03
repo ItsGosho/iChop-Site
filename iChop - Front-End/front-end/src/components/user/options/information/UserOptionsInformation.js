@@ -9,6 +9,12 @@ class UserOptionsInformation extends Component {
     constructor(props) {
         super(props);
 
+        this.state = {
+            statusMessage: 'Hi!',
+            birthday: dateFormat(Date.now(), "yyyy-mm-dd"),
+            aboutYou: 'Just me :)'
+        };
+
         this.onUserAvatarError = this.onUserAvatarError.bind(this);
         this.onSaveChanges = this.onSaveChanges.bind(this);
     }
@@ -19,16 +25,13 @@ class UserOptionsInformation extends Component {
     }
 
     onSaveChanges() {
-        console.log(this.props);
+        console.log(this.state);
     }
 
     render() {
-        let {onChange} = this.props.formMethods;
+        let onChange = (event) => (this.setState({[event.target.name]: event.target.value}));
 
-        let statusMessage = 'Hi!';
         let username = 'ItsGosho';
-        let aboutYou = 'Just me :)';
-        let birthDate = dateFormat(Date.now(), "yyyy-mm-dd");
         let userAvatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', username);
 
         return (
@@ -50,7 +53,7 @@ class UserOptionsInformation extends Component {
                                       'overflow': 'auto',
                                       'width': '100%',
                                       'resize': 'none'
-                                   }} value={statusMessage} onChange={onChange}/>
+                                  }} value={this.state.statusMessage} onChange={onChange}/>
                     </div>
                 </div>
                 <div className="row" style={{'marginTop': '3px'}}>
@@ -97,11 +100,6 @@ class UserOptionsInformation extends Component {
                         <small id="small-errorFileExtensionAvatar-userOptionsProfile"
                                style={{'display': 'none'}}>msg
                         </small>
-
-
-                        {/*  <script>
-                                            runProceedChoosingAvatar();
-                                        </script>*/}
                     </div>
                 </div>
 
@@ -115,7 +113,7 @@ class UserOptionsInformation extends Component {
 
                 <div className="row" align="center" style={{'marginTop': '5px'}}>
                     <div className="col-lg">
-                        <input value={birthDate} name="birthDate" data-provide="datepicker" onChange={onChange}
+                        <input value={this.state.birthday} name="birthDate" data-provide="datepicker" onChange={onChange}
                                className="form-control" style={{'width': '250px'}} data-date-format="yyyy-mm-dd"/>
                     </div>
                 </div>
@@ -139,7 +137,7 @@ class UserOptionsInformation extends Component {
                                       'overflow': 'auto',
                                       'width': '100%',
                                       'resize': 'none'
-                                  }} value={aboutYou} onChange={onChange}/>
+                                  }} value={this.state.aboutYou} onChange={onChange}/>
                     </div>
                 </div>
                 <div className="row" style={{'marginTop': '3px'}}>
@@ -172,4 +170,4 @@ class UserOptionsInformation extends Component {
 
 }
 
-export default formHoc(UserOptionsInformation);
+export default UserOptionsInformation;
