@@ -7,18 +7,18 @@ class UserProfileCentralContent extends Component {
 
         return (
             <Fragment>
-                <div class="central-content" style="margin-left: 5px">
+                <div className="central-content" style="margin-left: 5px">
 
-                    <div class="col-md-auto username_and_rank_follow_unfollow">
+                    <div className="col-md-auto username_and_rank_follow_unfollow">
                         <div style="line-height: 20px">
-                            <div class="row">
+                            <div className="row">
                                 <div>
-                                    <div class="col-md-auto head">
+                                    <div className="col-md-auto head">
                                         <span style="font-size: 25px" th:text="*{username}">Unknown Username</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div className="row">
                                 <div>
                                     <div class="col-md-auto head">
                                         <span style="font-size: 20px" th:text="*{role}">Unknown Rank</span>
@@ -27,8 +27,8 @@ class UserProfileCentralContent extends Component {
                             </div>
                         </div>
                         <th:block sec:authorize="isAuthenticated()">
-                            <div class="row">
-                                <div class="col-md-12 head">
+                            <div className="row">
+                                <div className="col-md-12 head">
                                     <a th:href="@{/user/{username}/follow(username=*{username})}"
                                        id="a-follow_user-userProfile"
                                        style="font-size: 13px;float: right;display: none">Follow</a>
@@ -38,8 +38,8 @@ class UserProfileCentralContent extends Component {
 
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-12 head">
+                            <div className="row">
+                                <div className="col-md-12 head">
                                     <small id="a-is_he_followed_you-userProfile"
                                            style="font-size: 11px;float: right;display: inline-block"></small>
                                 </div>
@@ -55,14 +55,14 @@ class UserProfileCentralContent extends Component {
 
                         </th:block>
 
-                        <div class="dropdown-divider"></div>
+                        <div className="dropdown-divider"></div>
                     </div>
 
-                    <div class="col-md-auto status">
+                    <div className="col-md-auto status">
                         <div style="line-height: 20px">
-                            <div class="row">
+                            <div className="row">
                                 <div>
-                                    <div class="col-md-auto head" th:if="*{information != null}">
+                                    <div className="col-md-auto head" th:if="*{information != null}">
                                     <span style="font-size: 13px;font-family: Georgia;font-style: italic"
                                           th:text="*{information.statusMessage}"></span></span>
                                 </div>
@@ -71,36 +71,36 @@ class UserProfileCentralContent extends Component {
                     </div>
                 </div>
 
-                <div class="col-md-auto user-information-navigation" style="margin-top: 50px">
+                <div className="col-md-auto user-information-navigation" style="margin-top: 50px">
 
-                    <div class="navigation">
-                        <ul class="nav nav-tabs">
-                            <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#posts">Profile posts</a>
+                    <div className="navigation">
+                        <ul className="nav nav-tabs">
+                            <li className="nav-item">
+                                <a className="nav-link active" data-toggle="tab" href="#posts">Profile posts</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#latest-activity">Latest Site Activity</a>
+                            <li className="nav-item">
+                                <a className="nav-link" data-toggle="tab" href="#latest-activity">Latest Site Activity</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#latest-in-game-activity">Lates In-Game
+                            <li className="nav-item">
+                                <a className="nav-link" data-toggle="tab" href="#latest-in-game-activity">Lates In-Game
                                     Activity</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#information">Information</a>
+                            <li className="nav-item">
+                                <a className="nav-link" data-toggle="tab" href="#information">Information</a>
                             </li>
                         </ul>
                     </div>
 
                     <!-- Tab panes -->
-                    <div class="tab-content">
+                    <div className="tab-content">
 
-                        <div class="tab-pane container active" id="posts">
+                        <div className="tab-pane container active" id="posts">
                             <th:block th:insert="user/profile/panes/user-profile-pane-posts"></th:block>
                         </div>
 
-                        <div class="tab-pane container fade" id="latest-activity">Latest activity</div>
-                        <div class="tab-pane container fade" id="latest-in-game-activity">Latest in-game activity</div>
-                        <div class="tab-pane container fade" id="information">
+                        <div className="tab-pane container fade" id="latest-activity">Latest activity</div>
+                        <div className="tab-pane container fade" id="latest-in-game-activity">Latest in-game activity</div>
+                        <div className="tab-pane container fade" id="information">
                             <th:block th:insert="user/profile/panes/user-profile-pane-information"></th:block>
                         </div>
                     </div>

@@ -1,4 +1,4 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
 
 class UserProfileLeftSideInformation extends Component {
 
@@ -212,9 +212,8 @@ class UserProfileLeftSideInformation extends Component {
 
                 </div>
             </div>
-        );
+    );
+    }
     }
 
-}
-
-export default UserProfileLeftSideInformation;
+    export default UserProfileLeftSideInformation;
