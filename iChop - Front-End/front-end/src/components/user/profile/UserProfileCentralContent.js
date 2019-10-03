@@ -11,21 +11,21 @@ class UserProfileCentralContent extends Component {
 
         return (
             <Fragment>
-                <div className="central-content" style="margin-left: 5px">
+                <div className="central-content" style={{'margin-left': '5px'}}>
 
                     <div className="col-md-auto username_and_rank_follow_unfollow">
-                        <div style="line-height: 20px">
+                        <div style={{'line-height': '20px'}}>
                             <div className="row">
                                 <div>
                                     <div className="col-md-auto head">
-                                        <span style="font-size: 25px">{username}</span>
+                                        <span style={{'font-size': '25px'}}>{username}</span>
                                     </div>
                                 </div>
                             </div>
                             <div className="row">
                                 <div>
                                     <div className="col-md-auto head">
-                                        <span style="font-size: 20px">{role}</span>
+                                        <span style={{'font-size': '25px'}}>{role}</span>
                                     </div>
                                 </div>
                             </div>
@@ -43,20 +43,32 @@ class UserProfileCentralContent extends Component {
                                                            event.preventDefault();
                                                        }}
                                                        id="a-follow_user-userProfile"
-                                                       style="font-size: 13px;float: right;display: none">Follow</a>
+                                                       style={{
+                                                           'font-size': '13px',
+                                                           'float': 'right',
+                                                           'display': 'none'
+                                                       }}>Follow</a>
                                                     <a href=' '
                                                        onClick={(event) => {
                                                            event.preventDefault();
                                                        }}
                                                        id="a-unfollow_user-userProfile"
-                                                       style="font-size: 13px;float: right;display: none">Unfollow</a>
+                                                       style={{
+                                                           'font-size': '13px',
+                                                           'float': 'right',
+                                                           'display': 'none'
+                                                       }}>Unfollow</a>
 
                                                 </div>
                                             </div>
                                             <div className="row">
                                                 <div className="col-md-12 head">
                                                     <small id="a-is_he_followed_you-userProfile"
-                                                           style="font-size: 11px;float: right;display: inline-block"/>
+                                                           style={{
+                                                               'font-size': '11px',
+                                                               'float': 'right',
+                                                               'display': 'inline-block'
+                                                           }}/>
                                                 </div>
                                             </div>
                                         </Fragment>
@@ -69,7 +81,7 @@ class UserProfileCentralContent extends Component {
                     </div>
 
                     <div className="col-md-auto status">
-                        <div style="line-height: 20px">
+                        <div style={{'line-height': '20px'}}>
                             <div className="row">
                                 <div>
                                     {
@@ -78,7 +90,7 @@ class UserProfileCentralContent extends Component {
                                                 return (
                                                     <div className="col-md-auto head">
                                                         <span
-                                                            style="font-size: 13px;font-family: Georgia;font-style: italic">{statusMessage}</span>
+                                                            style={{font-size: 13px;font-family: 'Georgia';'font-style': 'italic'}}>{statusMessage}</span>
                                                     </div>
                                                 );
                                             }
@@ -127,10 +139,10 @@ class UserProfileCentralContent extends Component {
                     </div>
 
                 </div>
-                < /Fragment>
-                    );
-                    }
+            </Fragment>
+        );
+    }
 
-                    }
+}
 
-                    export default UserProfileCentralContent;
+export default UserProfileCentralContent;
