@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import ServerRoutingURLs from "../../../../constants/server.routing.urls";
 import FrontEndResourcesRoutingURLs from "../../../../constants/front-end.resources.routings";
 import dateFormat from 'dateformat';
-import formHoc from "../../../../hocs/form.hoc";
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 class UserOptionsInformation extends Component {
 
@@ -11,7 +13,7 @@ class UserOptionsInformation extends Component {
 
         this.state = {
             statusMessage: 'Hi!',
-            birthday: dateFormat(Date.now(), "yyyy-mm-dd"),
+            birthday: Date.now(),
             aboutYou: 'Just me :)'
         };
 
@@ -25,7 +27,11 @@ class UserOptionsInformation extends Component {
     }
 
     onSaveChanges() {
-        console.log(this.state);
+        let {statusMessage,birthday,aboutYou} = this.state;
+
+        console.log(statusMessage);
+        console.log(dateFormat(birthday,'dd/mm/yyyy'));
+        console.log(aboutYou);
     }
 
     render() {
@@ -113,8 +119,18 @@ class UserOptionsInformation extends Component {
 
                 <div className="row" align="center" style={{'marginTop': '5px'}}>
                     <div className="col-lg">
-                        <input value={this.state.birthday} name="birthDate" data-provide="datepicker" onChange={onChange}
-                               className="form-control" style={{'width': '250px'}} data-date-format="yyyy-mm-dd"/>
+                        {/*<input value={this.state.birthday} name="birthDate" data-provide="datepicker" onChange={onChange}
+                               className="form-control" style={{'width': '250px'}} data-date-format="yyyy-mm-dd"/>*/}
+                        <DatePicker
+                            format='Pp'
+                            value={this.state.birthday}
+                            selected={this.state.birthday}
+                            onChange={date => {
+                                this.setState({
+                                    birthday: date
+                                });
+                            }}
+                        />
                     </div>
                 </div>
 
