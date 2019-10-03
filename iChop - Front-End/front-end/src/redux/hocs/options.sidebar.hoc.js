@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {controlSidebarSelectInformation, controlSidebarSelectRoleManagement} from "../actions/control.sidebar.actions";
 import {
     optionsSidebarSelectChangePassword,
     optionsSidebarSelectInformation,
