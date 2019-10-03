@@ -4,6 +4,8 @@ class UserProfileCentralContent extends Component {
 
 
     render() {
+        let username = '';
+        let role = '';
 
         return (
             <Fragment>
@@ -45,14 +47,6 @@ class UserProfileCentralContent extends Component {
                                 </div>
                             </div>
 
-                            <script th:inline="javascript">
-                                let currentLoggedInUserUsername = /*[[${#authentication.getName()}]]*/ null;
-                                let lookingUserUsername = /*[[*{username}]]*/ null;
-
-                                runFollowingScript(currentLoggedInUserUsername, lookingUserUsername);
-
-                            </script>
-
                         </th:block>
 
                         <div className="dropdown-divider"></div>
@@ -64,7 +58,8 @@ class UserProfileCentralContent extends Component {
                                 <div>
                                     <div className="col-md-auto head" th:if="*{information != null}">
                                     <span style="font-size: 13px;font-family: Georgia;font-style: italic"
-                                          th:text="*{information.statusMessage}"></span></span>
+                                          th:text="*{information.statusMessage}"></span>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -95,13 +90,13 @@ class UserProfileCentralContent extends Component {
                     <div className="tab-content">
 
                         <div className="tab-pane container active" id="posts">
-                            <th:block th:insert="user/profile/panes/user-profile-pane-posts"></th:block>
+                           {/* <th:block th:insert="user/profile/panes/user-profile-pane-posts"></th:block>*/}
                         </div>
 
                         <div className="tab-pane container fade" id="latest-activity">Latest activity</div>
                         <div className="tab-pane container fade" id="latest-in-game-activity">Latest in-game activity</div>
                         <div className="tab-pane container fade" id="information">
-                            <th:block th:insert="user/profile/panes/user-profile-pane-information"></th:block>
+                            {/*<th:block th:insert="user/profile/panes/user-profile-pane-information"></th:block>*/}
                         </div>
                     </div>
 
