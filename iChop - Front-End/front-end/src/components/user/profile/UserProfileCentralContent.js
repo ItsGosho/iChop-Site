@@ -90,7 +90,7 @@ class UserProfileCentralContent extends Component {
                                                 return (
                                                     <div className="col-md-auto head">
                                                         <span
-                                                            style={{font-size: 13px;font-family: 'Georgia';'font-style': 'italic'}}>{statusMessage}</span>
+                                                            style={{'font-size': '13px','font-family': 'Georgia','font-style': 'italic'}}>{statusMessage}</span>
                                                     </div>
                                                 );
                                             }
@@ -102,7 +102,7 @@ class UserProfileCentralContent extends Component {
                     </div>
                 </div>
 
-                <div className="col-md-auto user-information-navigation" style="margin-top: 50px">
+                <div className="col-md-auto user-information-navigation" style={{'margin-top': '50px'}}>
 
                     <div className="navigation">
                         <ul className="nav nav-tabs">

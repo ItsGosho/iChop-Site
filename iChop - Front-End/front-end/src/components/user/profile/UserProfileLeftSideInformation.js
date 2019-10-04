@@ -4,6 +4,7 @@ class UserProfileLeftSideInformation extends Component {
 
 
     render() {
+        let username = 'ItsGosho';
 
         return (
             <div className="col-md-auto">
