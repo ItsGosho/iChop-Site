@@ -3,10 +3,11 @@ import React, {Component, Fragment} from 'react';
 class PanePosts extends Component {
 
     render() {
+        let isAuthenticated = false;
 
         return (
             <Fragment>
-                <div className="dropdown-divider"></div>
+                <div className="dropdown-divider"/>
 
                 <div className="create-post" sec:authorize="isAuthenticated()">
                     <form method="post" th:action="@{/post/{userUsername}/create(userUsername=*{username})}">
@@ -48,7 +49,7 @@ class PanePosts extends Component {
 
                 </div>
 
-                <div className="dropdown-divider"></div>
+                <div className="dropdown-divider"/>
 
                 <div className="all-posts" style="margin-top: 10px">
 
