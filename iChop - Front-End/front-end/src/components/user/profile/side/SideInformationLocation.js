@@ -3,16 +3,17 @@ import React,{Component} from 'react';
 class SideInformationLocation extends Component {
 
     render() {
+        let location = 'Bulgaria';
 
         return (
             <div className="col-md-auto">
-                <div className="row" style="font-size: 11px">
-                    <div className="col-md-auto" style="column-width: 75px">
+                <div className="row" style={{'fontSize': '11px'}}>
+                    <div className="col-md-auto" style={{'columnWidth': '75px'}}>
                         Location:
                     </div>
-                    <div className="col-md-auto" style="column-width: 100px">
-                                    <span style="display: inline-block;float: right;">
-                                         <span th:text="*{location}"></span>
+                    <div className="col-md-auto" style={{'columnWidth': '100px'}}>
+                                    <span style={{'display': 'inlineBlock','float': 'right'}}>
+                                        {location}
                                     </span>
 
                     </div>
