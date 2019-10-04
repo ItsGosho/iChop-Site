@@ -25,6 +25,8 @@ class UserProfileLeftSideInformation extends Component {
     render() {
         let username = 'ItsGosho';
         let userAvatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', username);
+        let totalFollowings = 7;
+        let totalFollowers = 5;
 
         return (
             <div className="col-md-auto">
@@ -49,8 +51,9 @@ class UserProfileLeftSideInformation extends Component {
                     </div>
 
 
-                    <div className="card reactions-given" style="margin-top: 10px">
-                        <div className="card-body" style="line-height: 13px;font-family: Consolas;margin-left: -20px">
+                    <div className="card reactions-given" style={{'marginTop': '10px'}}>
+                        <div className="card-body"
+                             style={{'lineHeight': '13px', 'fontFamily': 'Consolas', 'marginLeft': '-20px'}}>
 
                             <SideInformationTotalLikes/>
                             <SideInformationTotalDislikes/>
@@ -58,33 +61,33 @@ class UserProfileLeftSideInformation extends Component {
                         </div>
                     </div>
 
-                    <div className="card following" style="margin-top: 10px">
+                    <div className="card following" style={{'marginTop': '10px'}}>
                         <div align="center">
-                            <span>Following: <span th:text="*{totalFollowing}">000</span></span>
+                            <span>Following: {totalFollowings}</span>
                         </div>
                         <div>
 
                             <SideInformationFollowings/>
 
                         </div>
-                        <th:block th:if="*{totalFollowing > 4}">
-                            <a href="#" className="d-flex justify-content-center align-items-center" data-toggle="modal"
-                               data-target=".modal-all-following">See all</a>
-                            <th:block th:insert="user/profile/user-following-all"></th:block>
 
-                            <script th:inline="javascript">
-                                let username = /*[[*{username}]]*/ null;
-                                $(`*[data-target=".modal-all-following"]`).click(function () {
-                                runUserFollowAllFiller(username, $(`#div-insert_followings-user_followings_all`), URL_API_USER_ALL_FOLLOWINGS);
-                            });
-                            </script>
+                        {
+                            (() => {
+                                if (totalFollowings > 4) {
+                                    return (
+                                        <a href="#" className="d-flex justify-content-center align-items-center"
+                                           data-toggle="modal"
+                                           data-target=".modal-all-following">See all</a>
+                                    );
+                                }
+                            })()
+                        }
 
-                        </th:block>
                     </div>
 
-                    <div className="card followers" style="margin-top: 10px">
+                    <div className="card followers" style={{'marginTop': '10px'}}>
                         <div align="center">
-                            Followers: <span th:text="*{totalFollowers}">000</span>
+                            <span>Followers: {totalFollowers}</span>
                         </div>
                         <div>
 
@@ -113,12 +116,12 @@ class UserProfileLeftSideInformation extends Component {
 
                             <SideInformationLocation/>
 
+                        </div>
+
                     </div>
-
                 </div>
-            </div>
-        );
-    }
-}
+                );
+                }
+                }
 
-export default UserProfileLeftSideInformation;
+                export default UserProfileLeftSideInformation;
