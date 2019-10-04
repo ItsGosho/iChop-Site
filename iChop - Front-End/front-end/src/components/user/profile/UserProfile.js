@@ -1,4 +1,5 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
+import UserProfileLeftSideInformation from "./UserProfileLeftSideInformation";
 
 class UserProfile extends Component {
 
@@ -9,6 +10,8 @@ class UserProfile extends Component {
             <div className="container container-user-profile">
 
                 <div className="row">
+
+                    <UserProfileLeftSideInformation/>
 
                     {/*<th:block th:insert="user/profile/partials/user-profile-left-side-information"></th:block>
 
