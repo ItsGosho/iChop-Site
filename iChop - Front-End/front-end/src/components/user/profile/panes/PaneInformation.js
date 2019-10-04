@@ -9,42 +9,72 @@ class PaneInformation extends Component {
             aboutYou: ''
         };
 
+        let {birthday, aboutYou} = information;
+
         return (
             <Fragment>
                 {
                     (() => {
                         if (information != null) {
                             return (
-                                    <div className="row">
-                                        <div className="w-100" style="margin-top: 10px">
+                                <div className="row">
+                                    <div className="w-100" style={{'marginTop': '10px'}}>
+                                        {
+                                            (() => {
+                                                if (birthday != null) {
+                                                    return (
+                                                        <span
+                                                            style={{
+                                                                'fontFamily': 'Consolas',
+                                                                'fontSize': '20px'
+                                                            }}>
+                                                            <small>🎂</small>Birthday:
+                                                            <span
+                                                                style={{'fontFamily': 'Tahoma'}}>
+                                                                {dateFormat(birthday, 'dd/MM/yyyy')}
+                                                            </span>
+                                                        </span>
+                                                    );
+                                                }
+                                            })()
+                                        }
 
-        <span th:if="*{birthDate != null}"
-              style="font-family: Consolas;font-size: 20px"><small>🎂</small>Birthday: <span
-            style="font-family: Tahoma"
-            th:text="*{#temporals.format(birthDate, 'dd/MM/yyyy')}"></span></span>
+                                        <div className="dropdown-divider"/>
 
-                                            <div className="dropdown-divider"></div>
-                                            <th:block th:if="*{aboutYou != null}">
+                                        {
+                                            (() => {
+                                                return (
+                                                    <Fragment>
+                                                    <span style={{'fontFamily': 'Consolas', 'fontSize': '20px'}}>
+                                                    <small>🖊️</small>About:</span>
 
-                                                <span style="font-family: Consolas;font-size: 20px"><small>🖊️</small>About:</span>
+                                                        <textarea readOnly name="content"
+                                                                  style={{
+                                                                      'border': '0px solid #ccc',
+                                                                      'borderRadius': '3px',
+                                                                      'width': '100%',
+                                                                      'resize': 'none',
+                                                                      'overflow': 'hidden',
+                                                                      'fontFamily': 'Consolas'
+                                                                  }}>{aboutYou}</textarea>
+                                                    </Fragment>
+                                                );
+                                            })()
+                                        }
 
-                                                <textarea readOnly name="content"
-                                                          style="border:0px solid #ccc;border-radius: 3px;width: 100%;resize: none;overflow: hidden;font-family: Consolas"
-                                                          th:text="*{aboutYou}"></textarea>
-
-                                            </th:block>
-                                            <div className="dropdown-divider"></div>
-                                        </div>
+                                        <div className="dropdown-divider"/>
                                     </div>
-                            );
+                                </div>
+                            )
                         } else {
                             return (<span>User has not any information!</span>);
                         }
                     })()
                 }
             </Fragment>
-        );
+        )
     }
 }
+
 
 export default PaneInformation;
