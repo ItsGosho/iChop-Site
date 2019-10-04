@@ -1,10 +1,16 @@
 import React, {Component} from 'react';
+import dateFormat from 'dateformat';
+import ServerRoutingURLs from "../../../constants/server.routing.urls";
+import SideInformationLastOnline from "./side/SideInformationLastOnline";
+import SideInformationJoinedOn from "./side/SideInformationJoinedOn";
 
 class UserProfileLeftSideInformation extends Component {
 
 
     render() {
         let username = 'ItsGosho';
+        let userAvatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', username);
+        let lastOnline = new Date();
 
         return (
             <div className="col-md-auto">
@@ -13,41 +19,15 @@ class UserProfileLeftSideInformation extends Component {
                     <div align="center">
                         <img th:src="@{http://localhost:8001/data/user/{username}/avatar(username=*{username})}"
                              onError="this.onerror = null;this.src = '/res/img/avatar-user.png'"
-                             className="img-user-avatar">
+                             className="img-user-avatar"/>
                     </div>
 
 
                     <div className="card user-base-info">
                         <div className="card-body user-base-info-body">
 
-                            <div className="col-md-auto">
-                                <div className="row user-base-info-row">
-                                    <div className="col-md-auto user-base-info-last-online-title">
-                                        Last online:
-                                    </div>
-                                    <div className="col-md-auto user-base-info-last-online-content">
-                                <span th:text="*{#temporals.format(lastOnline, 'MMM dd,yyyy')}"
-                                      th:title="*{#temporals.format(lastOnline, 'HH:mm')}">
-                                   Unknown 00,0000
-                                </span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="col-md-auto">
-                                <div className="row user-base-info-registration_date-title">
-                                    <div className="col-md-auto">
-                                        Joined on:
-                                    </div>
-                                    <div className="col-md-auto" style="column-width: 100px">
-                               <span style="display: inline-block;float: right;"
-                                     th:text="*{#temporals.format(registrationDate, 'MMM dd,yyyy')}"
-                                     th:title="*{#temporals.format(registrationDate, 'HH:mm')}">
-                                    Unknown 00,0000
-                               </span>
-                                    </div>
-                                </div>
-                            </div>
+                            <SideInformationLastOnline/>
+                            <SideInformationJoinedOn/>
 
                             <div className="col-md-auto">
                                 <div className="row" style="font-size: 11px">
