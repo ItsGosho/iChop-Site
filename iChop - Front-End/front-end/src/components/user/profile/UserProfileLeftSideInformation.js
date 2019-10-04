@@ -33,18 +33,7 @@ class UserProfileLeftSideInformation extends Component {
 
                         </div>
                     </div>
-
-                    <th:block th:if="*{minecraftAccountName != null}">
-                        <div className="card minecraft-user-link" style="margin-top: 10px">
-                            <div>
-                                <img
-                                    th:src="@{https://minotar.net/avatar/{minecraftAccountName}(minecraftAccountName=*{minecraftAccountName})}"
-                                    style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px"/>
-                                <a th:href="@{/player/{uuid}(uuid=*{minecraftAccountUUID})}"
-                                   th:text="*{minecraftAccountName}"></a>
-                            </div>
-                        </div>
-                    </th:block>
+                    
 
                     <div className="card reactions-given" style="margin-top: 10px">
                         <div className="card-body" style="line-height: 13px;font-family: Consolas;margin-left: -20px">
