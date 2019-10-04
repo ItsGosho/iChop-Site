@@ -11,21 +11,21 @@ class UserProfileCentralContent extends Component {
 
         return (
             <Fragment>
-                <div className="central-content" style={{'margin-left': '5px'}}>
+                <div className="central-content" style={{'marginLeft': '5px'}}>
 
                     <div className="col-md-auto username_and_rank_follow_unfollow">
-                        <div style={{'line-height': '20px'}}>
+                        <div style={{'lineHeight': '20px'}}>
                             <div className="row">
                                 <div>
                                     <div className="col-md-auto head">
-                                        <span style={{'font-size': '25px'}}>{username}</span>
+                                        <span style={{'fontSize': '25px'}}>{username}</span>
                                     </div>
                                 </div>
                             </div>
                             <div className="row">
                                 <div>
                                     <div className="col-md-auto head">
-                                        <span style={{'font-size': '25px'}}>{role}</span>
+                                        <span style={{'fontSize': '25px'}}>{role}</span>
                                     </div>
                                 </div>
                             </div>
@@ -44,7 +44,7 @@ class UserProfileCentralContent extends Component {
                                                        }}
                                                        id="a-follow_user-userProfile"
                                                        style={{
-                                                           'font-size': '13px',
+                                                           'fontSize': '13px',
                                                            'float': 'right',
                                                            'display': 'none'
                                                        }}>Follow</a>
@@ -54,7 +54,7 @@ class UserProfileCentralContent extends Component {
                                                        }}
                                                        id="a-unfollow_user-userProfile"
                                                        style={{
-                                                           'font-size': '13px',
+                                                           'fontSize': '13px',
                                                            'float': 'right',
                                                            'display': 'none'
                                                        }}>Unfollow</a>
@@ -65,9 +65,9 @@ class UserProfileCentralContent extends Component {
                                                 <div className="col-md-12 head">
                                                     <small id="a-is_he_followed_you-userProfile"
                                                            style={{
-                                                               'font-size': '11px',
+                                                               'fontSize': '11px',
                                                                'float': 'right',
-                                                               'display': 'inline-block'
+                                                               'display': 'inlineBlock'
                                                            }}/>
                                                 </div>
                                             </div>
@@ -81,7 +81,7 @@ class UserProfileCentralContent extends Component {
                     </div>
 
                     <div className="col-md-auto status">
-                        <div style={{'line-height': '20px'}}>
+                        <div style={{'lineHeight': '20px'}}>
                             <div className="row">
                                 <div>
                                     {
@@ -90,7 +90,11 @@ class UserProfileCentralContent extends Component {
                                                 return (
                                                     <div className="col-md-auto head">
                                                         <span
-                                                            style={{'font-size': '13px','font-family': 'Georgia','font-style': 'italic'}}>{statusMessage}</span>
+                                                            style={{
+                                                                'fontSize': '13px',
+                                                                'fontFamily': 'Georgia',
+                                                                'fontStyle': 'italic'
+                                                            }}>{statusMessage}</span>
                                                     </div>
                                                 );
                                             }
@@ -102,7 +106,7 @@ class UserProfileCentralContent extends Component {
                     </div>
                 </div>
 
-                <div className="col-md-auto user-information-navigation" style={{'margin-top': '50px'}}>
+                <div className="col-md-auto user-information-navigation" style={{'marginTop': '50px'}}>
 
                     <div className="navigation">
                         <ul className="nav nav-tabs">

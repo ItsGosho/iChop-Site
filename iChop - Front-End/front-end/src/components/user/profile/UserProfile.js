@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import UserProfileLeftSideInformation from "./UserProfileLeftSideInformation";
 import './UserProfile.css';
+import UserProfileCentralContent from "./UserProfileCentralContent";
 
 class UserProfile extends Component {
 
@@ -13,11 +14,8 @@ class UserProfile extends Component {
                 <div className="row">
 
                     <UserProfileLeftSideInformation/>
+                    <UserProfileCentralContent/>
 
-                    {/*<th:block th:insert="user/profile/partials/user-profile-left-side-information"></th:block>
-
-                    <th:block th:insert="user/profile/partials/user-profile-central-content"></th:block>
-*/}
                 </div>
             </div>
         );

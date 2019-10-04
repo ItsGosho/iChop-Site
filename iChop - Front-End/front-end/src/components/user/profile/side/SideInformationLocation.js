@@ -19,7 +19,6 @@ class SideInformationLocation extends Component {
                     </div>
                 </div>
             </div>
-            </div>
         );
     }
 }
