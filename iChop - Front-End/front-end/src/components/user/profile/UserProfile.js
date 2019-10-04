@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import UserProfileLeftSideInformation from "./UserProfileLeftSideInformation";
+import './UserProfile.css';
 
 class UserProfile extends Component {
 
