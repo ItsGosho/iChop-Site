@@ -1,13 +1,24 @@
 import React,{Component} from 'react';
 
-class Change extends Component {
+class SideInformationMessages extends Component {
 
     render() {
 
         return (
-f
+            <div className="col-md-auto">
+                <div className="row" style="font-size: 11px">
+                    <div className="col-md-auto" style="column-width: 75px">
+                        Messages:
+                    </div>
+                    <div className="col-md-auto" style="column-width: 100px">
+                               <span style="display: inline-block;float: right;" th:text="*{totalMessages}">
+                                    00000
+                               </span>
+                    </div>
+                </div>
+            </div>
         );
     }
 }
 
-export default Change;
+export default SideInformationMessages;
