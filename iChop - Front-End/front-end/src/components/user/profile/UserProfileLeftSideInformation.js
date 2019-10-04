@@ -99,20 +99,9 @@ class UserProfileLeftSideInformation extends Component {
                         <div className="card-body"
                              style="line-height: 13px;font-family: Consolas;margin-left: -20px;margin-bottom: -15px;margin-top: -15px">
 
-                            <div className="col-md-auto">
-                                <div className="row" style="font-size: 11px">
-                                    <div className="col-md-auto" style="column-width: 75px">
-                                        Location:
-                                    </div>
-                                    <div className="col-md-auto" style="column-width: 100px">
-                                    <span style="display: inline-block;float: right;">
-                                         <span th:text="*{location}"></span>
-                                    </span>
 
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
+
                     </div>
 
                 </div>
