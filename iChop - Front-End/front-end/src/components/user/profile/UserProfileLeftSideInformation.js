@@ -95,24 +95,29 @@ class UserProfileLeftSideInformation extends Component {
 
                         </div>
 
-                        <th:block th:if="*{totalFollowers > 4}">
-                            <a href="#" className="d-flex justify-content-center align-items-center" data-toggle="modal"
-                               data-target=".modal-all-followers">See all</a>
-                            <th:block th:insert="user/profile/user-followers-all"></th:block>
+                        {
+                            (() => {
+                                if (totalFollowers > 4) {
+                                    return (
+                                        <a href="#" className="d-flex justify-content-center align-items-center"
+                                           data-toggle="modal"
+                                           data-target=".modal-all-followers">See all</a>
+                                    );
+                                }
+                            })()
+                        }
 
-                            <script th:inline="javascript">
-                                let username = /*[[*{username}]]*/ null;
-                                $(`*[data-target=".modal-all-followers"]`).click(function () {
-                                runUserFollowAllFiller(username, $(`#div-insert_followers-user_followers_all`), URL_API_USER_ALL_FOLLOWERS);
-                            });
-                            </script>
-
-                        </th:block>
                     </div>
 
-                    <div className="card user-location" style="margin-top: 10px">
+                    <div className="card user-location" style={{'marginTop': '10px'}}>
                         <div className="card-body"
-                             style="line-height: 13px;font-family: Consolas;margin-left: -20px;margin-bottom: -15px;margin-top: -15px">
+                             style={{
+                                 'lineHeight': '13px',
+                                 'fontFamily': 'Consolas',
+                                 'marginLeft': '-20px',
+                                 'marginBottom': '-15px',
+                                 'marginTop': ' -15px'
+                             }}>
 
                             <SideInformationLocation/>
 
@@ -120,8 +125,9 @@ class UserProfileLeftSideInformation extends Component {
 
                     </div>
                 </div>
-                );
-                }
-                }
+            </div>
+        );
+    }
+}
 
-                export default UserProfileLeftSideInformation;
+export default UserProfileLeftSideInformation;
