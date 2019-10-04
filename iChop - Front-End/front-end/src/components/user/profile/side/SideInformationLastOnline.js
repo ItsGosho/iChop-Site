@@ -4,6 +4,7 @@ import dateFormat from "dateformat";
 class SideInformationLastOnline extends Component {
 
     render() {
+        let lastOnline = new Date();
 
         return (
             <div className="col-md-auto">
