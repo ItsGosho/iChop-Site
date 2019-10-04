@@ -23,7 +23,7 @@ class SideInformationFollowers extends Component {
 
         return (
             <div className="row d-flex justify-content-center align-items-center"
-                 style={{'width': '100%', 'margin-left': '0px'}}>
+                 style={{'width': '100%', 'marginLeft': '0px'}}>
 
                 {
                     (() => {

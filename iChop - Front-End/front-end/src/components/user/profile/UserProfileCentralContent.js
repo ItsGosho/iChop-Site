@@ -94,7 +94,8 @@ class UserProfileCentralContent extends Component {
                                                                 'fontSize': '13px',
                                                                 'fontFamily': 'Georgia',
                                                                 'fontStyle': 'italic'
-                                                            }}>{statusMessage}</span>
+                                                            }}>{statusMessage}
+                                                        </span>
                                                     </div>
                                                 );
                                             }
