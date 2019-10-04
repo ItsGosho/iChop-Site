@@ -28,12 +28,16 @@ class SideInformationFollowers extends Component {
                 {
                     (() => {
                         followers.map((follower, index) => {
+                            let {username} = follower;
+                            let profileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', username);
+                            let avatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', username);
+
                             return (
-                                <Link to={RoutingURLs.USER.PROFILE.VIEW.replace(':username', follower.username)}>
-                                    <img
-                                        src={ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', follower.username)}
+                                <Link to={profileUrl}>
+                                    <img key={index}
+                                        src={avatarUrl}
                                         className="img-user-avatar"
-                                        title={follower.username}
+                                        title={username}
                                         onError={this.onUserAvatarError}
                                         alt=''
                                         style={{
