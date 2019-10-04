@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import dateFormat from 'dateformat'
 import PanelInformationBirthday from "./information/PanelInformationBirthday";
+import PanelInformationAboutYou from "./information/PanelInformationAboutYou";
 
 class PaneInformation extends Component {
 
@@ -36,20 +37,7 @@ class PaneInformation extends Component {
                                             (() => {
                                                 if (aboutYou != null) {
                                                     return (
-                                                        <Fragment>
-                                                    <span style={{'fontFamily': 'Consolas', 'fontSize': '20px'}}>
-                                                    <small>🖊️</small>About:</span>
-
-                                                            <textarea readOnly name="content"
-                                                                      style={{
-                                                                          'border': '0px solid #ccc',
-                                                                          'borderRadius': '3px',
-                                                                          'width': '100%',
-                                                                          'resize': 'none',
-                                                                          'overflow': 'hidden',
-                                                                          'fontFamily': 'Consolas'
-                                                                      }}>{aboutYou}</textarea>
-                                                        </Fragment>
+                                                       <PanelInformationAboutYou/>
                                                     );
                                                 }
                                             })()
