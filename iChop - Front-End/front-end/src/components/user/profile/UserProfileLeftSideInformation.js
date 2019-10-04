@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import dateFormat from 'dateformat';
 import ServerRoutingURLs from "../../../constants/server.routing.urls";
 import SideInformationLastOnline from "./side/SideInformationLastOnline";
 import SideInformationJoinedOn from "./side/SideInformationJoinedOn";
