@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 class SideInformationTotalDislikes extends Component {
 
     render() {
-        let totalDislikes = 32;
+        let totalDislikes = 3;
 
         return (
             <div className="col-md-auto">

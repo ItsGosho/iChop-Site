@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 class SideInformationTotalLikes extends Component {
 
     render() {
-        let totaLikes = 32;
+        let totaLikes = 56;
 
         return (
             <div className="col-md-auto">
@@ -12,7 +12,7 @@ class SideInformationTotalLikes extends Component {
                         👍
                     </div>
                     <div className="col-md-auto" style={{'columnWidth': '150px'}}>
-                               <span style={{'display': 'inlineBlock', 'float': 'right', 'color': 'indianred'}}>
+                               <span style={{'display': 'inlineBlock', 'float': 'right', 'color': 'green'}}>
                                     {totaLikes}
                                </span>
                     </div>
