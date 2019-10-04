@@ -7,6 +7,8 @@ import SideInformationTotalLikes from "./side/SideInformationTotalLikes";
 import SideInformationTotalDislikes from "./side/SideInformationTotalDislikes";
 import SideInformationLocation from "./side/SideInformationLocation";
 import FrontEndResourcesRoutingURLs from "../../../constants/front-end.resources.routings";
+import SideInformationFollowings from "./side/SideInformationFollowings";
+import SideInformationFollowers from "./side/SideInformationFollowers";
 
 class UserProfileLeftSideInformation extends Component {
 
