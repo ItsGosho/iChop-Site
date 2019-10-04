@@ -1,5 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import dateFormat from 'dateformat'
+import PanelInformationBirthday from "./information/PanelInformationBirthday";
 
 class PaneInformation extends Component {
 
@@ -23,17 +24,7 @@ class PaneInformation extends Component {
                                             (() => {
                                                 if (birthday != null) {
                                                     return (
-                                                        <span
-                                                            style={{
-                                                                'fontFamily': 'Consolas',
-                                                                'fontSize': '20px'
-                                                            }}>
-                                                            <small>🎂</small>Birthday:
-                                                            <span
-                                                                style={{'fontFamily': 'Tahoma'}}>
-                                                                {dateFormat(birthday, 'dd/MM/yyyy')}
-                                                            </span>
-                                                        </span>
+                                                        <PanelInformationBirthday/>
                                                     );
                                                 }
                                             })()
