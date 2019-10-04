@@ -1,22 +1,41 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
+import ServerRoutingURLs from "../../../../constants/server.routing.urls";
+import RoutingURLs from "../../../../constants/routing.constants";
+import {Link} from "react-router-dom";
 
 class SideInformationMinecraftAccount extends Component {
 
     render() {
+        let uuid = 'fdsfs';
+        let accountName = 'ItsGosho';
+        let headAvatarUrl = ServerRoutingURLs.OUTSIDE.MINOTAR.MINECRAFT.HEAD.replace(':accountName', accountName);
+        let accountProfileUrl = RoutingURLs.PLAYER.PROFILE.VIEW.replace(':uuid', uuid);
 
         return (
-            <th:block th:if="*{minecraftAccountName != null}">
-                <div className="card minecraft-user-link" style="margin-top: 10px">
-                    <div>
-                        <img
-                            th:src="@{https://minotar.net/avatar/{minecraftAccountName}(minecraftAccountName=*{minecraftAccountName})}"
-                            style="width: 30px;height: 30px;margin-left: 5px;margin-top: 2px;margin-bottom: 2px"/>
-                        <a th:href="@{/player/{uuid}(uuid=*{minecraftAccountUUID})}"
-                           th:text="*{minecraftAccountName}"></a>
-                    </div>
-                </div>
-            </th:block>
-        );
+            (() => {
+                if (accountName != null) {
+                    return (
+                        <div className="card minecraft-user-link" style={{'marginTop': '10px'}}>
+                            <div>
+                                <img
+                                    src={headAvatarUrl}
+                                    alt=''
+                                    style={{
+                                        'width': '30px',
+                                        'height': '30px',
+                                        'marginLeft': '5px',
+                                        'marginTop': '2px',
+                                        'marginBottom': '2px'
+                                    }}/>
+                                <Link to={accountProfileUrl}>
+                                    {accountName}
+                                </Link>
+                            </div>
+                        </div>
+                    )
+                }
+            })()
+        )
     }
 }
 
