@@ -16,7 +16,7 @@ class TextEditorFontSizePicker extends Component {
 
                 <ul className="dropdown-menu scrollable-menu" role="menu"
                     style={{'minHeight': '100px', 'maxHeight': '100px', 'overflow': 'auto'}}>
-                    
+
                     <a id="button-fontSize_1-textEditor" data-content="1" href="#" onClick={this.preventDefault}>
                         <li style={{'fontSize': '9px'}}>1</li>
                     </a>
