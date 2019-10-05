@@ -1,7 +1,21 @@
 import React, {Component, Fragment} from 'react';
 import PanePostActions from "./PanePostActions";
+import ServerRoutingURLs from "../../../../../constants/server.routing.urls";
+import FrontEndResourcesRoutingURLs from "../../../../../constants/front-end.resources.routings";
 
 class PaneAllPosts extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.onUserAvatarError = this.onUserAvatarError.bind(this);
+    }
+
+
+    onUserAvatarError(event) {
+        event.target.onerror = null;
+        event.target.src = FrontEndResourcesRoutingURLs.USER.AVATAR;
+    }
 
     render() {
         let isAuthenticated = true;
@@ -9,47 +23,50 @@ class PaneAllPosts extends Component {
 
         return (
             <Fragment>
-            {
-                (() => {
-                    posts.map((post,index)=>{
-                        return (
-                            <div className="card post" style={{'marginTop': '10px'}}>
-                                <div className="card-body" style={{'marginBottom': '-15px'}}>
+                {
+                    (() => {
+                        posts.map((post, index) => {
+                            let creatorUsername = 'ItsGosho';
+                            let creatorAvatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', creatorUsername);
+                            let content = '';
 
-                                    <div className="row" style={{'marginTop': '-15px'}}>
-                                        <div className="col-md-1" style={{'marginTop': '9px'}}>
-                                            <img
-                                                th:src="@{http://localhost:8001/data/user/{username}/avatar(username=*{creatorUsername})}"
-                                                alt="example"
-                                                onError="this.onerror = null;this.src = '/res/img/avatar-user.png'"
-                                                style="width: 30px;height: 30px">
+                            return (
+                                <div className="card post" style={{'marginTop': '10px'}}>
+                                    <div className="card-body" style={{'marginBottom': '-15px'}}>
+
+                                        <div className="row" style={{'marginTop': '-15px'}}>
+                                            <div className="col-md-1" style={{'marginTop': '9px'}}>
+                                                <img
+                                                    src={creatorAvatarUrl}
+                                                    alt=''
+                                                    onError={this.onUserAvatarError}
+                                                    style={{'width': '30px', 'height': '30px'}}/>
+                                            </div>
+                                            <div className="col-lg" style={{'width': '150px'}}>
+                                                <a href=' ' style={{'color': '#775322', 'fontSize': '13px'}}>
+                                                    <b>{creatorUsername}</b> </a>
+                                                <small>{content}</small>
+                                            </div>
                                         </div>
-                                        <div className="col-lg" style="width: 150px">
-                                            <a href="" style="color: #775322;font-size: 13px"><b
-                                                th:text="*{creatorUsername}">Creator
-                                                Username...</b> </a>
-                                            <small th:text="*{content}">Content...</small>
-                                        </div>
+
+                                        {
+                                            (() => {
+                                                if (isAuthenticated) {
+                                                    return (
+                                                        <div className="row">
+                                                            <PanePostActions/>
+                                                        </div>
+                                                    );
+                                                }
+                                            })()
+                                        }
+
                                     </div>
-
-                                    {
-                                        (() => {
-                                            if (isAuthenticated) {
-                                                return (
-                                                    <div className="row">
-                                                        <PanePostActions/>
-                                                    </div>
-                                                );
-                                            }
-                                        })()
-                                    }
-
                                 </div>
-                            </div>
-                        );
-                    })
-                })()
-            }
+                            );
+                        })
+                    })()
+                }
             </Fragment>
         );
     }
