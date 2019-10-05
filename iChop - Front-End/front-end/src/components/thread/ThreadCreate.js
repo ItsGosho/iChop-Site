@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+import TextEditor from "../editor/TextEditor";
 
 class ThreadCreate extends Component {
 
@@ -22,16 +23,16 @@ class ThreadCreate extends Component {
                                                 <input id="input-title-threadCreate" type="text"
                                                        className="form-control" aria-label="Title"
                                                        aria-describedby="basic-addon1" name="title"
-                                                       placeholder="Thread title">
+                                                       placeholder="Thread title"/>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="dropdown-divider"></div>
+                                    <div className="dropdown-divider"/>
 
 
-                                    <th:block th:insert="editor/text-editor"></th:block>
+                                    <TextEditor/>
 
-                                    <div className="dropdown-divider"></div>
+                                    <div className="dropdown-divider"/>
                                     <div className="col-md-13">
 
                                         <a href="" type="button" data-toggle="modal" data-target="#exampleModal">
@@ -67,7 +68,7 @@ class ThreadCreate extends Component {
                                         </div>
                                     </div>
 
-                                    <div className="dropdown-divider"></div>
+                                    <div className="dropdown-divider"/>
 
                                     <div className="row">
                                         <button id="button-proceedCreateThread-createThread" type="button"
@@ -75,14 +76,10 @@ class ThreadCreate extends Component {
                                         </button>
                                     </div>
 
-                                    <script src="/res/js/thread/create-thread-send.js"></script>
-
-                                    <script src="/res/js/editor/text-editor.js"></script>
-
                                 </form>
                             </div>
 
-                            <div className="dropdown-divider"></div>
+                            <div className="dropdown-divider"/>
                         </div>
                     </div>
 
