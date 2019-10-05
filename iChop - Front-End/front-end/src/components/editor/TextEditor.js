@@ -1,6 +1,17 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
 
-class Change extends Component {
+class TextEditor extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.preventDefault = this.preventDefault.bind(this);
+    }
+
+
+    preventDefault(event) {
+        event.preventDefault();
+    }
 
     render() {
 
@@ -8,7 +19,7 @@ class Change extends Component {
             <div className="col-md-8">
                 <a href="#" id="button-formatBold-textEditor" title="Bold" onClick="event.preventDefault()"><i
                     className="material-icons">format_bold</i></a>
-                <a href="#" id="button-formatItalic-textEditor" title="Italic" onClick="event.preventDefault()"><i
+                <a href="#" id="button-formatItalic-textEditor" title="Italic" onClick={}><i
                     className="material-icons">format_italic</i></a>
                 <a href="#" id="button-formatUnderline-textEditor" title="Underline" onClick="event.preventDefault()"><i
                     className="material-icons">format_underlined</i></a>
@@ -164,7 +175,7 @@ class Change extends Component {
                                 <div className="input-group mb-3">
                                     <input id="input-insertLink-textEditor" type="text" className="form-control"
                                            aria-describedby="basic-addon1"
-                                           placeholder="Example: https://youtube.com...">
+                                           placeholder="Example: https://youtube.com..."/>
                                 </div>
                             </div>
                             <div className="modal-footer">
@@ -193,7 +204,7 @@ class Change extends Component {
                             <div className="modal-body">
                                 <div className="input-group mb-3">
                                     <input id="input-insertImage-textEditor" type="text" className="form-control"
-                                           aria-describedby="basic-addon1" placeholder="">
+                                           aria-describedby="basic-addon1" placeholder=""/>
                                 </div>
                             </div>
                             <div className="modal-footer">
@@ -236,4 +247,4 @@ class Change extends Component {
     }
 }
 
-export default Change;
+export default TextEditor;
