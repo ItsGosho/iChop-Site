@@ -4,17 +4,23 @@ import PanePostsCreate from "./posts/PanePostsCreate";
 class PanePosts extends Component {
 
     render() {
-        let isAuthenticated = false;
+        let isAuthenticated = true;
 
         return (
             <Fragment>
                 <div className="dropdown-divider"/>
 
-                <div className="create-post" sec:authorize="isAuthenticated()">
-
-                    <PanePostsCreate/>
-
-                </div>
+                {
+                    (() => {
+                        if (isAuthenticated) {
+                            return (
+                                <div className="create-post">
+                                    <PanePostsCreate/>
+                                </div>
+                            )
+                        }
+                    })()
+                }
 
                 <div className="dropdown-divider"/>
 
