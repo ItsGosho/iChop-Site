@@ -1,10 +1,24 @@
 import React, {Component} from 'react';
 import ServerRoutingURLs from "../../../../../constants/server.routing.urls";
+import FrontEndResourcesRoutingURLs from "../../../../../constants/front-end.resources.routings";
 
 class PanePostsCreate extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.onUserAvatarError = this.onUserAvatarError.bind(this);
+    }
+
+
+    onUserAvatarError(event) {
+        event.target.onerror = null;
+        event.target.src = FrontEndResourcesRoutingURLs.USER.AVATAR;
+    }
+
     render() {
-        let userAvatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', creatorUsername);
+        let username = 'ItsGosho';
+        let userAvatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', username);
 
         return (
             <form>
@@ -12,11 +26,11 @@ class PanePostsCreate extends Component {
 
                     <div className="col-md-1">
                         <object
-                            th:data="@{http://localhost:8001/data/user/{username}/avatar(username=${#authentication.principal.username})}"
+                            data={userAvatarUrl}
                             type="image/png"
                             className="img-user-avatar" style={{'width': '30px', 'height': '30px'}}>
-                            <img src="/res/img/avatar-user.png" alt="example" className="img-user-avatar"
-                                 style={{'width': '30px', 'height': '30px'}}>
+                            <img onError={this.onUserAvatarError} alt=' ' className="img-user-avatar"
+                                 style={{'width': '30px', 'height': '30px'}}/>
                         </object>
                     </div>
 
@@ -29,7 +43,7 @@ class PanePostsCreate extends Component {
                               'overflow': 'auto',
                               'width': '100%',
                               'resize': 'none'
-                          }}></textarea>
+                          }}/>
                     </div>
 
                 </div>
@@ -51,8 +65,8 @@ class PanePostsCreate extends Component {
                     </div>
                 </div>
             </form>
-    );
+        );
     }
-    }
+}
 
-    export default PanePostsCreate;
+export default PanePostsCreate;
