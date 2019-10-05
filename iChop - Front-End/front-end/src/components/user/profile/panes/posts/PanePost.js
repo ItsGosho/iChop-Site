@@ -24,4 +24,4 @@ class PanePost extends Component {
     }
     }
 
-    export default Change;
+    export default PanePost;
