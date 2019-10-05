@@ -9,7 +9,9 @@ function App() {
         <Fragment>
             <Navbar/>
 
-            <ThreadCreate/>
+            <div style={{'marginTop':'75px'}}>
+                <ThreadCreate/>
+            </div>
 
             <Footer/>
         </Fragment>
