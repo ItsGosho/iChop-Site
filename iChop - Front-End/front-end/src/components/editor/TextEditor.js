@@ -11,14 +11,8 @@ class TextEditor extends Component {
     constructor(props) {
         super(props);
 
-        this.preventDefault = this.preventDefault.bind(this);
 
         this.execCommand = this.execCommand.bind(this);
-    }
-
-
-    preventDefault(event) {
-        event.preventDefault();
     }
 
     execCommand(command) {
