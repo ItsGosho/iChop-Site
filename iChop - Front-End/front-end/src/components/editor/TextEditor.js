@@ -12,6 +12,8 @@ class TextEditor extends Component {
         super(props);
 
         this.preventDefault = this.preventDefault.bind(this);
+
+        this.execCommand = this.execCommand.bind(this);
     }
 
 
@@ -19,16 +21,30 @@ class TextEditor extends Component {
         event.preventDefault();
     }
 
+    execCommand(command) {
+        return (event) => {
+            event.preventDefault();
+            document.execCommand(command);
+        }
+    }
+
     render() {
 
         return (
             <div className="col-md-8">
-                <a href="#" id="button-formatBold-textEditor" title="Bold" onClick={this.preventDefault}><i
-                    className="material-icons">format_bold</i></a>
-                <a href="#" id="button-formatItalic-textEditor" title="Italic" onClick={this.preventDefault}><i
-                    className="material-icons">format_italic</i></a>
-                <a href="#" id="button-formatUnderline-textEditor" title="Underline" onClick={this.preventDefault}><i
-                    className="material-icons">format_underlined</i></a>
+
+                <a href="#" id="button-formatBold-textEditor" title="Bold" onClick={this.execCommand('bold')}>
+                    <i className="material-icons">format_bold</i>
+                </a>
+
+                <a href="#" id="button-formatItalic-textEditor" title="Italic" onClick={this.execCommand('italic')}>
+                    <i className="material-icons">format_italic</i>
+                </a>
+
+                <a href="#" id="button-formatUnderline-textEditor" title="Underline"
+                   onClick={this.execCommand('underline')}>
+                    <i className="material-icons">format_underlined</i>
+                </a>
 
                 <TextEditorColorPicker/>
 
@@ -41,13 +57,18 @@ class TextEditor extends Component {
                 <TextEditorInsertImageModal/>
 
 
-                <a href="#" id="button-undo-textEditor" title="Undo" onClick={this.preventDefault}><i
-                    className="material-icons">undo</i></a>
-                <a href="#" id="button-redo-textEditor" title="Redo" onClick={this.preventDefault}><i
-                    className="material-icons">redo</i></a>
+                <a href="#" id="button-undo-textEditor" title="Undo" onClick={this.execCommand('undo')}>
+                    <i className="material-icons">undo</i>
+                </a>
+
+                <a href="#" id="button-redo-textEditor" title="Redo" onClick={this.execCommand('redo')}>
+                    <i className="material-icons">redo</i>
+                </a>
+
                 <a href="#" id="button-removeFormatting-textEditor" title="Remove Formatting"
-                   onClick={this.preventDefault}><i
-                    className="material-icons">format_clear</i></a>
+                   onClick={this.execCommand('removeFormat')}>
+                    <i className="material-icons">format_clear</i>
+                </a>
 
                 <TextEditorAlignPicker/>
 
