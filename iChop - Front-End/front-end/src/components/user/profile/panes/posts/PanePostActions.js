@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import PanePostReportModal from "./PanePostReportModal";
 import dateFormat from 'dateformat';
 import Roles from "../../../../../constants/roles.constants";
 
@@ -16,7 +15,7 @@ class PanePostActions extends Component {
         return (
             <div className="col-md-12">
                 <span style={{'color': '#7f7f7f', 'fontSize': '10px'}}>{createdOn}</span>
-                
+
                 {
                     (() => {
                         let isPostCreator = postCreatorUsername === username;
@@ -37,7 +36,6 @@ class PanePostActions extends Component {
                     <span style={{'fontSize': '10px', 'color': '#007bff'}}>🎌Report</span>
                 </button>
 
-                <PanePostReportModal/>
             </div>
         );
     }
