@@ -4,6 +4,7 @@ import PanePostActions from "./PanePostActions";
 class PaneAllPosts extends Component {
 
     render() {
+        let isAuthenticated = true;
 
         return (
         <div className="card post" style="margin-top: 10px">

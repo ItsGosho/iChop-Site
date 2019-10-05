@@ -24,7 +24,7 @@ class PanePosts extends Component {
 
                 <div className="dropdown-divider"/>
 
-                <div className="all-posts" style="margin-top: 10px">
+                <div className="all-posts" style={{'marginTop': '10px'}}>
 
                     <PaneAllPosts/>
 
