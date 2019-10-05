@@ -72,4 +72,4 @@ class PaneAllPosts extends Component {
     }
 }
 
-export default PanePost;
+export default PaneAllPosts;

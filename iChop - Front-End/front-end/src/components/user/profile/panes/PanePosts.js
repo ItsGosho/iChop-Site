@@ -1,5 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import PanePostsCreate from "./posts/PanePostsCreate";
+import PaneAllPosts from "./posts/PaneAllPosts";
 
 class PanePosts extends Component {
 
