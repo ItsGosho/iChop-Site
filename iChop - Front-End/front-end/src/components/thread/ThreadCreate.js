@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import TextEditor from "../editor/TextEditor";
+import './ThreadCreate.css'
 
 class ThreadCreate extends Component {
 
@@ -63,9 +64,8 @@ class ThreadCreate extends Component {
                                             </div>
                                         </div>
 
-                                        <div id="textarea-content-createThread" contentEditable="true">
+                                        <div id="textarea-content-createThread" contentEditable="true"/>
 
-                                        </div>
                                     </div>
 
                                     <div className="dropdown-divider"/>
