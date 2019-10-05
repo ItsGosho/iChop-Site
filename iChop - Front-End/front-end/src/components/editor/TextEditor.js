@@ -36,67 +36,67 @@ class TextEditor extends Component {
                                             className="material-icons">format_paint</i></a>
                                         <a href="#" id="button-color_black-textEditor" title="Black"
                                            onClick={this.preventDefault}><i className="material-icons"
-                                                                            style="color: black">format_paint</i></a>
+                                                                            style={{'color': 'black'}}>format_paint</i></a>
                                         <a href="#" id="button-color_grey-textEditor" title="Grey"
                                            onClick={this.preventDefault}><i className="material-icons"
-                                                                            style="color: gray">format_paint</i></a>
+                                                                            style={{'color': 'gray'}}>format_paint</i></a>
                                         <a href="#" id="button-color_red-textEditor" title="Red"
                                            onClick={this.preventDefault}><i className="material-icons"
-                                                                            style="color: red">format_paint</i></a>
+                                                                            style={{'color': 'red'}}>format_paint</i></a>
                                         <a href="#" id="button-color_redDark-textEditor" title="Dark Red"
                                            onClick={this.preventDefault}><i className="material-icons"
-                                                                            style="color: darkred">format_paint</i></a>
+                                                                            style={{'color': 'darkred'}}>format_paint</i></a>
                                         <a href="#" id="button-color_redIndian-textEditor" title="Indian Red"
                                            onClick={this.preventDefault}><i className="material-icons"
-                                                                            style="color: indianred">format_paint</i></a>
+                                                                            style={{'color': 'indianred'}}>format_paint</i></a>
                                         <a href="#" id="button-color_green-textEditor" title="Green"
                                            onClick={this.preventDefault}><i className="material-icons"
-                                                                            style="color: green">format_paint</i></a>
+                                                                            style={{'color': 'green'}}>format_paint</i></a>
                                         <a href="#" id="button-color_greenDark-textEditor" title="Dark Green"
                                            onClick={this.preventDefault}><i className="material-icons"
-                                                                            style="color: darkgreen">format_paint</i></a>
+                                                                            style={{'color': 'darkgreen'}}>format_paint</i></a>
                                         <a href="#" id="button-color_greenYellow-textEditor" title="Yellow Green"
                                            onClick={this.preventDefault}><i className="material-icons"
-                                                                            style="color: greenyellow">format_paint</i></a>
+                                                                            style={{'color': 'greenyellow'}}>format_paint</i></a>
                                         <a href="#" id="button-color_blue-textEditor" title="Blue"
                                            onClick={this.preventDefault}><i className="material-icons"
-                                                                            style="color: blue">format_paint</i></a>
+                                                                            style={{'color': 'blue'}}>format_paint</i></a>
                                         <a href="#" id="button-color_blueDark-textEditor" title="Dark Blue"
                                            onClick={this.preventDefault}><i className="material-icons"
-                                                                            style="color: darkblue">format_paint</i></a>
+                                                                            style={{'color': 'darkblue'}}>format_paint</i></a>
                                         <a href="#" id="button-color_blueDeepSky-textEditor" title="Deep Sky Blue"
                                            onClick={this.preventDefault}><i className="material-icons"
-                                                                            style="color: deepskyblue">format_paint</i></a>
+                                                                            style={{'color': 'deepskyblue'}}>format_paint</i></a>
                                         <a href="#" id="button-color_brown-textEditor" title="Brown"
                                            onClick={this.preventDefault}><i className="material-icons"
-                                                                            style="color: brown">format_paint</i></a>
+                                                                            style={{'color': 'brown'}}>format_paint</i></a>
                                         <a href="#" id="button-color_brownSaddle-textEditor" title="Saddle Brown"
                                            onClick={this.preventDefault}><i className="material-icons"
-                                                                            style="color: saddlebrown">format_paint</i></a>
+                                                                            style={{'color': 'saddlebrown'}}>format_paint</i></a>
                                         <a href="#" id="button-color_brownSandy-textEditor" title="Sandy Brown"
                                            onClick={this.preventDefault}><i className="material-icons"
-                                                                            style="color: sandybrown">format_paint</i></a>
+                                                                            style={{'color': 'sandybrown'}}>format_paint</i></a>
                                         <a href="#" id="button-color_pink-textEditor" title="Pink"
                                            onClick={this.preventDefault}><i className="material-icons"
-                                                                            style="color: pink">format_paint</i></a>
+                                                                            style={{'color': 'pink'}}>format_paint</i></a>
                                         <a href="#" id="button-color_pinkDeep-textEditor" title="Deep Pink"
                                            onClick={this.preventDefault}><i className="material-icons"
-                                                                            style="color: deeppink">format_paint</i></a>
+                                                                            style={{'color': 'deeppink'}}>format_paint</i></a>
                                         <a href="#" id="button-color_pinkHot-textEditor" title="Hot Pink"
                                            onClick={this.preventDefault}><i className="material-icons"
-                                                                            style="color: hotpink">format_paint</i></a>
+                                                                            style={{'color': 'hotpink'}}>format_paint</i></a>
                                         <a href="#" id="button-color_yellow-textEditor" title="Yellow"
                                            onClick={this.preventDefault}><i className="material-icons"
-                                                                            style="color: yellow">format_paint</i></a>
+                                                                            style={{'color': 'yellow'}}>format_paint</i></a>
                                         <a href="#" id="button-color_purple-textEditor" title="Purple"
                                            onClick={this.preventDefault}><i className="material-icons"
-                                                                            style="color: purple">format_paint</i></a>
+                                                                            style={{'color': 'purple'}}>format_paint</i></a>
                                         <a href="#" id="button-color_purpleMedium-textEditor" title="Medium Purple"
                                            onClick={this.preventDefault}><i className="material-icons"
-                                                                            style="color: mediumpurple">format_paint</i></a>
+                                                                            style={{'color': 'mediumpurple'}}>format_paint</i></a>
                                         <a href="#" id="button-color_purpleRebeca-textEditor" title="Rebeca Purple"
                                            onClick={this.preventDefault}><i className="material-icons"
-                                                                            style="color: rebeccapurple">format_paint</i></a>
+                                                                            style={{'color': 'rebeccapurple'}}>format_paint</i></a>
                                     </div>
                                 </span>
 
@@ -106,21 +106,21 @@ class TextEditor extends Component {
                                            title="Font Size" onClick={this.preventDefault}><i
                                             className="material-icons">format_size</i></a>
                                         <ul className="dropdown-menu scrollable-menu" role="menu"
-                                            style="min-height: 100px;max-height: 100px;overflow: auto">
+                                            style={{'minHeight': '100px','maxHeight': '100px','overflow': 'auto'}}>
                                         <a id="button-fontSize_1-textEditor" data-content="1" href="#"
-                                           onClick={this.preventDefault}><li style="font-size: 9px;">1</li></a>
+                                           onClick={this.preventDefault}><li style={{'fontSize': '9px'}}>1</li></a>
                                         <a id="button-fontSize_2-textEditor" data-content="2" href="#"
-                                           onClick={this.preventDefault}><li style="font-size: 10px;">2</li></a>
+                                           onClick={this.preventDefault}><li style={{'fontSize': '10px'}}>2</li></a>
                                         <a id="button-fontSize_3-textEditor" data-content="3" href="#"
-                                           onClick={this.preventDefault}><li style="font-size: 12px;">3</li></a>
+                                           onClick={this.preventDefault}><li style={{'fontSize': '12px'}}>3</li></a>
                                         <a id="button-fontSize_4-textEditor" data-content="4" href="#"
-                                           onClick={this.preventDefault}><li style="font-size: 15px;">4</li></a>
+                                           onClick={this.preventDefault}><li style={{'fontSize': '15px'}}>4</li></a>
                                         <a id="button-fontSize_5-textEditor" data-content="5" href="#"
-                                           onClick={this.preventDefault}><li style="font-size: 18px;">5</li></a>
+                                           onClick={this.preventDefault}><li style={{'fontSize': '18px'}}>5</li></a>
                                         <a id="button-fontSize_6-textEditor" data-content="6" href="#"
-                                           onClick={this.preventDefault}><li style="font-size: 22px;">6</li></a>
+                                           onClick={this.preventDefault}><li style={{'fontSize': '22px'}}>6</li></a>
                                         <a id="button-fontSize_7-textEditor" data-content="7" href="#"
-                                           onClick={this.preventDefault}><li style="font-size: 26px;">7</li></a>
+                                           onClick={this.preventDefault}><li style={{'fontSize': '26px'}}>7</li></a>
                                     </ul>
                                 </span>
 
@@ -130,30 +130,30 @@ class TextEditor extends Component {
                                            title="Font Family" onClick={this.preventDefault}><i
                                             className="material-icons">font_download</i></a>
                                         <ul className="dropdown-menu scrollable-menu" role="menu"
-                                            style="min-height: 100px;max-height: 100px;overflow: auto">
+                                            style={{'minHeight': '100px','maxHeight': '100px','overflow': 'auto'}}>
                                         <a id="button-fontFamily_arial-textEditor" data-content="Arial" href="#"
-                                           onClick={this.preventDefault}><li style="font-family: 'Arial'">Arial</li></a>
+                                           onClick={this.preventDefault}><li style={{'fontFamily': 'Arial'}}>Arial</li></a>
                                         <a id="button-fontFamily_bookAntiqua-textEditor" data-content="Book Antiqua"
                                            href="#" onClick={this.preventDefault}><li
-                                            style="font-family: 'Book Antiqua'">Book Antiqua</li></a>
+                                            style={{'fontFamily': 'Book Antiqua'}}>Book Antiqua</li></a>
                                         <a id="button-fontFamily_courierNew-textEditor" data-content="Courier New"
                                            href="#" onClick={this.preventDefault}><li
-                                            style="font-family: 'Courier New'">Courier New</li></a>
+                                            style={{'fontFamily': 'Courier New'}}>Courier New</li></a>
                                         <a id="button-fontFamily_georgia-textEditor" data-content="Georgia" href="#"
                                            onClick={this.preventDefault}><li
-                                            style="font-family: 'Georgia'">Georgia</li></a>
+                                            style={{'fontFamily': 'Georgia'}}>Georgia</li></a>
                                         <a id="button-fontFamily_tahoma-textEditor" data-content="Tahoma" href="#"
                                            onClick={this.preventDefault}><li
-                                            style="font-family: 'Tahoma'">Tahoma</li></a>
+                                            style={{'fontFamily': 'Tahoma'}}>Tahoma</li></a>
                                         <a id="button-fontFamily_timesNewRoman-textEditor"
                                            data-content="Times New Roman" href="#" onClick={this.preventDefault}><li
-                                            style="font-family: 'Times New Roman'">Times New Roman</li></a>
+                                            style={{'fontFamily': 'Times New Roman'}}>Times New Roman</li></a>
                                         <a id="button-fontFamily_trebuchetMS-textEditor" data-content="Trebuchet MS"
                                            href="#" onClick={this.preventDefault}><li
-                                            style="font-family: 'Trebuchet MS'">Trebuchet MS</li></a>
+                                            style={{'fontFamily': 'Trebuchet MS'}}>Trebuchet MS</li></a>
                                         <a id="button-fontFamily_verdana-textEditor" data-content="Verdana" href="#"
                                            onClick={this.preventDefault}><li
-                                            style="font-family: 'Verdana'">Verdana</li></a>
+                                            style={{'fontFamily': 'Verdana'}}>Verdana</li></a>
                                     </ul>
                                 </span>
 
