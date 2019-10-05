@@ -17,7 +17,7 @@ class TextEditorFontPicker extends Component {
 
                 <ul className="dropdown-menu scrollable-menu" role="menu"
                     style={{'minHeight': '100px', 'maxHeight': '100px', 'overflow': 'auto'}}>
-                    
+
                     <a id="button-fontFamily_arial-textEditor" data-content="Arial" href="#"
                        onClick={this.preventDefault}>
                         <li style={{'fontFamily': 'Arial'}}>Arial</li>
