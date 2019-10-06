@@ -5,7 +5,7 @@ import TextEditorFontPicker from "./TextEditorFontPicker";
 import TextEditorAlignPicker from "./TextEditorAlignPicker";
 import TextEditorInsertLinkModal from "./TextEditorInsertLinkModal";
 import TextEditorInsertImageModal from "./TextEditorInsertImageModal";
-import CommandExecutorHoc from "./CommandExecutorHoc";
+import CommandExecutorHoc from "./command.executor.hoc";
 
 class TextEditor extends Component {
 
