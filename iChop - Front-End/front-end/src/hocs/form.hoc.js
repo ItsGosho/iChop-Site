@@ -12,7 +12,6 @@ const FormHoc = (Comp) => {
 
         onChange(event) {
             event.preventDefault();
-            console.log(event.target);
 
             let inputName = event.target.name;
             let value = event.target.value;
