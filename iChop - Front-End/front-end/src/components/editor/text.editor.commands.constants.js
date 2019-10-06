@@ -18,7 +18,7 @@ const TextEditorCommands = {
 
     SET_COLOR: 'foreColor',
     SET_FONT_SIZE: 'fontSize',
-    SET_FONT_FAMILY: 'undo',
+    SET_FONT_FAMILY: 'fontName',
 };
 
 export default TextEditorCommands;
