@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import CommandExecutorHoc from "./command.executor.hoc";
 
 class TextEditorAlignPicker extends Component {
 
@@ -35,4 +36,4 @@ class TextEditorAlignPicker extends Component {
     }
 }
 
-export default TextEditorAlignPicker;
+export default CommandExecutorHoc(TextEditorAlignPicker);
