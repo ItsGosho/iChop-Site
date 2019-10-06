@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 
 class TextEditorAlignPicker extends Component {
 
+
     render() {
+        let {execCommand} = this.props;
 
         return (
             <span>
