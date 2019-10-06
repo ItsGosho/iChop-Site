@@ -1,17 +1,28 @@
 import React, {Component, Fragment} from 'react';
+import CommandExecutorHoc from "./command.executor.hoc";
+import FormHoc from "../../hocs/form.hoc";
 
 class TextEditorInsertLinkModal extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.proceedInsertLink = this.proceedInsertLink.bind(this);
+    }
+
+    proceedInsertLink(event) {
+        console.log(this.);
+    }
+
     render() {
+        let {preventDefault} = this.props;
 
         return (
-
-
             <Fragment>
 
                 <a href="#" i d="button-insertLink-textEditor" data-toggle="modal"
                    data-target="#modal-insertLink-textEditor"
-                   title="Insert Link" onClick={this.preventDefault}><i
+                   title="Insert Link" onClick={preventDefault}><i
                     className="material-icons">insert_link</i>
                 </a>
 
@@ -31,6 +42,7 @@ class TextEditorInsertLinkModal extends Component {
                                 <div className="input-group mb-3">
                                     <input id="input-insertLink-textEditor" type="text" className="form-control"
                                            aria-describedby="basic-addon1"
+
                                            placeholder="Example: https://youtube.com..."/>
                                 </div>
                             </div>
@@ -38,7 +50,7 @@ class TextEditorInsertLinkModal extends Component {
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
                                 <button id="button-proceedInsertLink-textEditor" type="button"
-                                        className="btn btn-primary">Insert
+                                        className="btn btn-primary" onClick={this.proceedInsertLink}>Insert
                                 </button>
                             </div>
 
@@ -52,4 +64,4 @@ class TextEditorInsertLinkModal extends Component {
     }
 }
 
-export default TextEditorInsertLinkModal;
+export default FormHoc(CommandExecutorHoc(TextEditorInsertLinkModal));

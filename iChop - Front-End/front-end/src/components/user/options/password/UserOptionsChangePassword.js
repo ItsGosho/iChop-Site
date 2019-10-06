@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import formHoc from "../../../../hocs/form.hoc";
+import FormHoc from "../../../../hocs/form.hoc";
 
 class UserOptionsChangePassword extends Component {
 

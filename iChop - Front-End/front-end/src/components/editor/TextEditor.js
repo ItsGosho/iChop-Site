@@ -16,11 +16,13 @@ class TextEditor extends Component {
         return (
             <div className="col-md-8">
 
-                <a href="#" id="button-formatBold-textEditor" title="Bold" onClick={execCommand(TextEditorCommands.FORMAT_BOLD)}>
+                <a href="#" id="button-formatBold-textEditor" title="Bold"
+                   onClick={execCommand(TextEditorCommands.FORMAT_BOLD)}>
                     <i className="material-icons">format_bold</i>
                 </a>
 
-                <a href="#" id="button-formatItalic-textEditor" title="Italic" onClick={execCommand(TextEditorCommands.FORMAT_ITALIC)}>
+                <a href="#" id="button-formatItalic-textEditor" title="Italic"
+                   onClick={execCommand(TextEditorCommands.FORMAT_ITALIC)}>
                     <i className="material-icons">format_italic</i>
                 </a>
 
