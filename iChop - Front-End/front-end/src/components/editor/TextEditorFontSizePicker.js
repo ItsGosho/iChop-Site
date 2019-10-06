@@ -2,11 +2,11 @@ import React, {Component} from 'react';
 
 class TextEditorFontSizePicker extends Component {
 
+
+
     render() {
 
         return (
-
-
             <span>
                 <a href="#" id="button-fontSize-textEditor" className="dropdown-toggle"
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
