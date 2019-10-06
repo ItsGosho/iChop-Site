@@ -8,33 +8,33 @@ class TextEditorColorPicker extends Component {
       super(props);
 
       this.autoColorProceeder = this.autoColorProceeder.bind(this);
+      this.getHexColor = this.getHexColor.bind(this);
    }
 
 
    autoColorProceeder(event) {
         let element = event.target;
-        let colorHex = getHexColor(element);
+        let colorHex = this.getHexColor(element);
 
         console.log(colorHex);
-
-        function getHexColor(element) {
-           console.log(element);
-
-            //return rgb2hex($(element.children()[0]).css(`color`));
-
-            function rgb2hex(rgb) {
-                rgb = rgb.match(/^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i);
-                return (rgb && rgb.length === 4) ? "#" +
-                    ("0" + parseInt(rgb[1], 10).toString(16)).slice(-2) +
-                    ("0" + parseInt(rgb[2], 10).toString(16)).slice(-2) +
-                    ("0" + parseInt(rgb[3], 10).toString(16)).slice(-2) : '';
-            }
-        }
 
         function formatColor(event) {
             document.execCommand(TextEditorCommands.SET_COLOR, false, event.data.colorHex);
         }
     }
+
+    getHexColor(element) {
+      let colorAsRGB = window.getComputedStyle(element).color;
+      return rgb2hex(colorAsRGB);
+
+      function rgb2hex(rgb) {
+         rgb = rgb.match(/^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i);
+         return (rgb && rgb.length === 4) ? "#" +
+             ("0" + parseInt(rgb[1], 10).toString(16)).slice(-2) +
+             ("0" + parseInt(rgb[2], 10).toString(16)).slice(-2) +
+             ("0" + parseInt(rgb[3], 10).toString(16)).slice(-2) : '';
+      }
+   }
 
     render() {
        let {preventDefault,execCommand} = this.props;
