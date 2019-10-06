@@ -69,8 +69,6 @@ class TextEditorInsertLinkModal extends Component {
                     </div>
                 </div>
             </Fragment>
-
-
         );
     }
 }
