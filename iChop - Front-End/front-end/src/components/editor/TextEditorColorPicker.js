@@ -16,11 +16,7 @@ class TextEditorColorPicker extends Component {
         let element = event.target;
         let colorHex = this.getHexColor(element);
 
-        console.log(colorHex);
-
-        function formatColor(event) {
-            document.execCommand(TextEditorCommands.SET_COLOR, false, event.data.colorHex);
-        }
+        document.execCommand(TextEditorCommands.SET_COLOR, false, colorHex);
     }
 
     getHexColor(element) {
@@ -37,7 +33,7 @@ class TextEditorColorPicker extends Component {
    }
 
     render() {
-       let {preventDefault,execCommand} = this.props;
+       let {preventDefault} = this.props;
 
         return (
             <span>
@@ -53,92 +49,92 @@ class TextEditorColorPicker extends Component {
                      <i className="material-icons" style={{'color': 'white'}}>format_paint</i>
                   </a>
 
-                  <a href="#" id="button-color_black-textEditor" title="Black" onClick={this.preventDefault}>
+                  <a href="#" id="button-color_black-textEditor" title="Black" onClick={this.autoColorProceeder}>
                      <i className="material-icons" style={{'color': 'black'}}>format_paint</i>
                   </a>
 
-                  <a href="#" id="button-color_grey-textEditor" title="Grey" onClick={this.preventDefault}>
+                  <a href="#" id="button-color_grey-textEditor" title="Grey" onClick={this.autoColorProceeder}>
                      <i className="material-icons" style={{'color': 'gray'}}>format_paint</i>
                   </a>
 
-                  <a href="#" id="button-color_red-textEditor" title="Red" onClick={this.preventDefault}>
+                  <a href="#" id="button-color_red-textEditor" title="Red" onClick={this.autoColorProceeder}>
                      <i className="material-icons" style={{'color': 'red'}}>format_paint</i>
                   </a>
 
-                  <a href="#" id="button-color_redDark-textEditor" title="Dark Red" onClick={this.preventDefault}>
+                  <a href="#" id="button-color_redDark-textEditor" title="Dark Red" onClick={this.autoColorProceeder}>
                      <i className="material-icons" style={{'color': 'darkred'}}>format_paint</i>
                   </a>
 
-                  <a href="#" id="button-color_redIndian-textEditor" title="Indian Red" onClick={this.preventDefault}>
+                  <a href="#" id="button-color_redIndian-textEditor" title="Indian Red" onClick={this.autoColorProceeder}>
                      <i className="material-icons" style={{'color': 'indianred'}}>format_paint</i>
                   </a>
 
-                  <a href="#" id="button-color_green-textEditor" title="Green" onClick={this.preventDefault}>
+                  <a href="#" id="button-color_green-textEditor" title="Green" onClick={this.autoColorProceeder}>
                      <i className="material-icons" style={{'color': 'green'}}>format_paint</i>
                   </a>
 
-                  <a href="#" id="button-color_greenDark-textEditor" title="Dark Green" onClick={this.preventDefault}>
+                  <a href="#" id="button-color_greenDark-textEditor" title="Dark Green" onClick={this.autoColorProceeder}>
                      <i className="material-icons" style={{'color': 'darkgreen'}}>format_paint</i>
                   </a>
 
                   <a href="#" id="button-color_greenYellow-textEditor" title="Yellow Green"
-                     onClick={this.preventDefault}>
+                     onClick={this.autoColorProceeder}>
                      <i className="material-icons" style={{'color': 'greenyellow'}}>format_paint</i>
                   </a>
 
-                  <a href="#" id="button-color_blue-textEditor" title="Blue" onClick={this.preventDefault}>
+                  <a href="#" id="button-color_blue-textEditor" title="Blue" onClick={this.autoColorProceeder}>
                      <i className="material-icons" style={{'color': 'blue'}}>format_paint</i>
                   </a>
 
-                  <a href="#" id="button-color_blueDark-textEditor" title="Dark Blue" onClick={this.preventDefault}>
+                  <a href="#" id="button-color_blueDark-textEditor" title="Dark Blue" onClick={this.autoColorProceeder}>
                      <i className="material-icons" style={{'color': 'darkblue'}}>format_paint</i>
                   </a>
 
                   <a href="#" id="button-color_blueDeepSky-textEditor" title="Deep Sky Blue"
-                     onClick={this.preventDefault}>
+                     onClick={this.autoColorProceeder}>
                      <i className="material-icons" style={{'color': 'deepskyblue'}}>format_paint</i>
                   </a>
 
-                  <a href="#" id="button-color_brown-textEditor" title="Brown" onClick={this.preventDefault}>
+                  <a href="#" id="button-color_brown-textEditor" title="Brown" onClick={this.autoColorProceeder}>
                      <i className="material-icons" style={{'color': 'brown'}}>format_paint</i>
                   </a>
 
                   <a href="#" id="button-color_brownSaddle-textEditor" title="Saddle Brown"
-                     onClick={this.preventDefault}>
+                     onClick={this.autoColorProceeder}>
                      <i className="material-icons" style={{'color': 'saddlebrown'}}>format_paint</i>
                   </a>
 
-                  <a href="#" id="button-color_brownSandy-textEditor" title="Sandy Brown" onClick={this.preventDefault}>
+                  <a href="#" id="button-color_brownSandy-textEditor" title="Sandy Brown" onClick={this.autoColorProceeder}>
                      <i className="material-icons" style={{'color': 'sandybrown'}}>format_paint</i>
                   </a>
 
-                  <a href="#" id="button-color_pink-textEditor" title="Pink" onClick={this.preventDefault}>
+                  <a href="#" id="button-color_pink-textEditor" title="Pink" onClick={this.autoColorProceeder}>
                      <i className="material-icons" style={{'color': 'pink'}}>format_paint</i>
                   </a>
 
-                  <a href="#" id="button-color_pinkDeep-textEditor" title="Deep Pink" onClick={this.preventDefault}>
+                  <a href="#" id="button-color_pinkDeep-textEditor" title="Deep Pink" onClick={this.autoColorProceeder}>
                      <i className="material-icons" style={{'color': 'deeppink'}}>format_paint</i>
                   </a>
 
-                  <a href="#" id="button-color_pinkHot-textEditor" title="Hot Pink" onClick={this.preventDefault}>
+                  <a href="#" id="button-color_pinkHot-textEditor" title="Hot Pink" onClick={this.autoColorProceeder}>
                      <i className="material-icons" style={{'color': 'hotpink'}}>format_paint</i>
                   </a>
 
-                  <a href="#" id="button-color_yellow-textEditor" title="Yellow" onClick={this.preventDefault}>
+                  <a href="#" id="button-color_yellow-textEditor" title="Yellow" onClick={this.autoColorProceeder}>
                      <i className="material-icons" style={{'color': 'yellow'}}>format_paint</i>
                   </a>
 
-                  <a href="#" id="button-color_purple-textEditor" title="Purple" onClick={this.preventDefault}>
+                  <a href="#" id="button-color_purple-textEditor" title="Purple" onClick={this.autoColorProceeder}>
                      <i className="material-icons" style={{'color': 'purple'}}>format_paint</i>
                   </a>
 
                   <a href="#" id="button-color_purpleMedium-textEditor" title="Medium Purple"
-                     onClick={this.preventDefault}>
+                     onClick={this.autoColorProceeder}>
                      <i className="material-icons" style={{'color': 'mediumpurple'}}>format_paint</i>
                   </a>
 
                   <a href="#" id="button-color_purpleRebeca-textEditor" title="Rebeca Purple"
-                     onClick={this.preventDefault}>
+                     onClick={this.autoColorProceeder}>
                      <i className="material-icons" style={{'color': 'rebeccapurple'}}>format_paint</i>
                   </a>
 
