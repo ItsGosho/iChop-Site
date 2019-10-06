@@ -18,44 +18,37 @@ class TextEditorFontPicker extends Component {
                 <ul className="dropdown-menu scrollable-menu" role="menu"
                     style={{'minHeight': '100px', 'maxHeight': '100px', 'overflow': 'auto'}}>
 
-                    <a id="button-fontFamily_arial-textEditor" data-content="Arial" href="#"
-                       onClick={this.preventDefault}>
-                        <li style={{'fontFamily': 'Arial'}}>Arial</li>
+                    <a id="button-fontFamily_arial-textEditor" href="#" onClick={this.preventDefault}>
+                        <li data-content="Arial" style={{'fontFamily': 'Arial'}}>Arial</li>
                     </a>
 
-                    <a id="button-fontFamily_bookAntiqua-textEditor" data-content="Book Antiqua" href="#"
-                       onClick={this.preventDefault}>
-                        <li style={{'fontFamily': 'Book Antiqua'}}>Book Antiqua</li>
+                    <a id="button-fontFamily_bookAntiqua-textEditor" href="#" onClick={this.preventDefault}>
+                        <li data-content="Book Antiqua" style={{'fontFamily': 'Book Antiqua'}}>Book Antiqua</li>
                     </a>
 
-                    <a id="button-fontFamily_courierNew-textEditor" data-content="Courier New" href="#"
-                       onClick={this.preventDefault}>
-                        <li style={{'fontFamily': 'Courier New'}}>Courier New</li>
+                    <a id="button-fontFamily_courierNew-textEditor" href="#" onClick={this.preventDefault}>
+                        <li data-content="Courier New" style={{'fontFamily': 'Courier New'}}>Courier New</li>
                     </a>
 
-                    <a id="button-fontFamily_georgia-textEditor" data-content="Georgia" href="#"
-                       onClick={this.preventDefault}>
-                        <li style={{'fontFamily': 'Georgia'}}>Georgia</li>
+                    <a id="button-fontFamily_georgia-textEditor" href="#" onClick={this.preventDefault}>
+                        <li data-content="Georgia" style={{'fontFamily': 'Georgia'}}>Georgia</li>
                     </a>
 
-                    <a id="button-fontFamily_tahoma-textEditor" data-content="Tahoma" href="#"
-                       onClick={this.preventDefault}>
-                        <li style={{'fontFamily': 'Tahoma'}}>Tahoma</li>
+                    <a id="button-fontFamily_tahoma-textEditor" href="#" onClick={this.preventDefault}>
+                        <li data-content="Tahoma" style={{'fontFamily': 'Tahoma'}}>Tahoma</li>
                     </a>
 
-                    <a id="button-fontFamily_timesNewRoman-textEditor" data-content="Times New Roman" href="#"
-                       onClick={this.preventDefault}>
-                        <li style={{'fontFamily': 'Times New Roman'}}>Times New Roman</li>
+                    <a id="button-fontFamily_timesNewRoman-textEditor" href="#" onClick={this.preventDefault}>
+                        <li data-content="Times New Roman"
+                            style={{'fontFamily': 'Times New Roman'}}>Times New Roman</li>
                     </a>
 
-                    <a id="button-fontFamily_trebuchetMS-textEditor" data-content="Trebuchet MS" href="#"
-                       onClick={this.preventDefault}>
-                        <li style={{'fontFamily': 'Trebuchet MS'}}>Trebuchet MS</li>
+                    <a id="button-fontFamily_trebuchetMS-textEditor" href="#" onClick={this.preventDefault}>
+                        <li data-content="Trebuchet MS" style={{'fontFamily': 'Trebuchet MS'}}>Trebuchet MS</li>
                     </a>
 
-                    <a id="button-fontFamily_verdana-textEditor" data-content="Verdana" href="#"
-                       onClick={this.preventDefault}>
-                        <li style={{'fontFamily': 'Verdana'}}>Verdana</li>
+                    <a id="button-fontFamily_verdana-textEditor" href="#" onClick={this.preventDefault}>
+                        <li data-content="Verdana" style={{'fontFamily': 'Verdana'}}>Verdana</li>
                     </a>
 
                 </ul>
