@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import CommandExecutorHoc from "./command.executor.hoc";
+import TextEditorCommands from "./text.editor.commands.constants";
 
 class TextEditorAlignPicker extends Component {
 
@@ -17,15 +18,15 @@ class TextEditorAlignPicker extends Component {
 
                 <ul className="dropdown-menu scrollable-menu" role="menu">
 
-                    <a id="button-alignLeft-textEditor" href="#" onClick={execCommand('justifyLeft')}>
+                    <a id="button-alignLeft-textEditor" href="#" onClick={execCommand(TextEditorCommands.ALIGN_LEFT)}>
                         <li><i className="material-icons">format_align_left</i>Align Left</li>
                     </a>
 
-                    <a id="button-alignCenter-textEditor" href="#" onClick={execCommand('justifyCenter')}>
+                    <a id="button-alignCenter-textEditor" href="#" onClick={execCommand(TextEditorCommands.ALIGN_CENTER)}>
                         <li><i className="material-icons">format_align_center</i>Align Center</li>
                     </a>
 
-                    <a id="button-alignRight-textEditor" href="#" onClick={execCommand('justifyRight')}>
+                    <a id="button-alignRight-textEditor" href="#" onClick={execCommand(TextEditorCommands.ALIGN_RIGHT)}>
                         <li><i className="material-icons">format_align_right</i>Align Right</li>
                     </a>
 
