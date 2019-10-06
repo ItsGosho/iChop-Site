@@ -13,7 +13,7 @@ class ThreadCreate extends Component {
                     <div id="news" className="col-xs-6">
                         <div className="card">
                             <div className="card-header">
-                                <small>🆕</small>
+                                <small>🆕 </small>
                                 Create a new thread:
                             </div>
                             <div className="card-body">
@@ -34,6 +34,7 @@ class ThreadCreate extends Component {
                                     <TextEditor/>
 
                                     <div className="dropdown-divider"/>
+
                                     <div className="col-md-13">
 
                                         <a href="" type="button" data-toggle="modal" data-target="#exampleModal">
@@ -63,8 +64,6 @@ class ThreadCreate extends Component {
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <div id="textarea-content-createThread" contentEditable="true"/>
 
                                     </div>
 

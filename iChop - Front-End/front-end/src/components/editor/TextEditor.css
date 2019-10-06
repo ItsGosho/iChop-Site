@@ -1,0 +1,9 @@
+#textarea-content {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    width: 60vw;
+    min-width: 230px;
+    min-height: 25vw;
+    max-height: 25vw;
+    overflow: auto;
+}
