@@ -6,6 +6,7 @@ import TextEditorAlignPicker from "./TextEditorAlignPicker";
 import TextEditorInsertLinkModal from "./TextEditorInsertLinkModal";
 import TextEditorInsertImageModal from "./TextEditorInsertImageModal";
 import CommandExecutorHoc from "./command.executor.hoc";
+import TextEditorCommands from "./text.editor.commands.constants";
 
 class TextEditor extends Component {
 
@@ -15,16 +16,16 @@ class TextEditor extends Component {
         return (
             <div className="col-md-8">
 
-                <a href="#" id="button-formatBold-textEditor" title="Bold" onClick={execCommand('bold')}>
+                <a href="#" id="button-formatBold-textEditor" title="Bold" onClick={execCommand(TextEditorCommands.FORMAT_BOLD)}>
                     <i className="material-icons">format_bold</i>
                 </a>
 
-                <a href="#" id="button-formatItalic-textEditor" title="Italic" onClick={execCommand('italic')}>
+                <a href="#" id="button-formatItalic-textEditor" title="Italic" onClick={execCommand(TextEditorCommands.FORMAT_ITALIC)}>
                     <i className="material-icons">format_italic</i>
                 </a>
 
                 <a href="#" id="button-formatUnderline-textEditor" title="Underline"
-                   onClick={execCommand('underline')}>
+                   onClick={execCommand(TextEditorCommands.FORMAT_UNDERLINE)}>
                     <i className="material-icons">format_underlined</i>
                 </a>
 
@@ -39,20 +40,20 @@ class TextEditor extends Component {
                 <TextEditorInsertImageModal/>
 
 
-                <a href="#" id="button-undo-textEditor" title="Undo" onClick={execCommand('undo')}>
+                <a href="#" id="button-undo-textEditor" title="Undo" onClick={execCommand(TextEditorCommands.UNDO)}>
                     <i className="material-icons">undo</i>
                 </a>
 
-                <a href="#" id="button-redo-textEditor" title="Redo" onClick={execCommand('redo')}>
+                <a href="#" id="button-redo-textEditor" title="Redo" onClick={execCommand(TextEditorCommands.REDO)}>
                     <i className="material-icons">redo</i>
                 </a>
 
                 <a href="#" id="button-removeFormatting-textEditor" title="Remove Formatting"
-                   onClick={execCommand('removeFormat')}>
+                   onClick={execCommand(TextEditorCommands.REMOVE_FORMAT)}>
                     <i className="material-icons">format_clear</i>
                 </a>
 
-                <TextEditorAlignPicker execCommand={execCommand} preventDefault={this.preventDefault}/>
+                <TextEditorAlignPicker/>
 
 
             </div>
