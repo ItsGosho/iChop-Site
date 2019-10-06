@@ -1,20 +1,56 @@
 import React, {Component} from 'react';
+import TextEditorCommands from "./text.editor.commands.constants";
+import CommandExecutorHoc from "./command.executor.hoc";
 
 class TextEditorColorPicker extends Component {
 
+   constructor(props) {
+      super(props);
+
+      this.autoColorProceeder = this.autoColorProceeder.bind(this);
+   }
+
+
+   autoColorProceeder(event) {
+        let element = event.target;
+        let colorHex = getHexColor(element);
+
+        console.log(colorHex);
+
+        function getHexColor(element) {
+           console.log(element);
+
+            //return rgb2hex($(element.children()[0]).css(`color`));
+
+            function rgb2hex(rgb) {
+                rgb = rgb.match(/^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i);
+                return (rgb && rgb.length === 4) ? "#" +
+                    ("0" + parseInt(rgb[1], 10).toString(16)).slice(-2) +
+                    ("0" + parseInt(rgb[2], 10).toString(16)).slice(-2) +
+                    ("0" + parseInt(rgb[3], 10).toString(16)).slice(-2) : '';
+            }
+        }
+
+        function formatColor(event) {
+            document.execCommand(TextEditorCommands.SET_COLOR, false, event.data.colorHex);
+        }
+    }
+
     render() {
+       let {preventDefault,execCommand} = this.props;
 
         return (
             <span>
+
                <a href="#" id="button-color-textEditor" data-toggle="dropdown"
                   aria-haspopup="true" aria-expanded="false" title="Color"
-                  onClick={this.preventDefault}><i className="material-icons">invert_colors</i></a>
+                  onClick={preventDefault}><i className="material-icons">invert_colors</i></a>
 
                <div id="div-textColorChoose-textEditor" className="col-md-12 dropdown-menu"
                     aria-labelledby="button-color-textEditor">
 
-                  <a href="#" id="button-color_white-textEditor" title="White" onClick={this.preventDefault}>
-                     <i className="material-icons">format_paint</i>
+                  <a href="#" id="button-color_white-textEditor" title="White" onClick={this.autoColorProceeder}>
+                     <i className="material-icons" style={{'color': 'white'}}>format_paint</i>
                   </a>
 
                   <a href="#" id="button-color_black-textEditor" title="Black" onClick={this.preventDefault}>
@@ -112,4 +148,4 @@ class TextEditorColorPicker extends Component {
     }
 }
 
-export default TextEditorColorPicker;
+export default CommandExecutorHoc(TextEditorColorPicker);
