@@ -1,9 +1,24 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
 import TextEditor from "../editor/TextEditor";
 import './ThreadCreate.css'
 import ThreadCreateHelperButton from "./ThreadCreateHelperButton";
+import FormHoc from "../../hocs/form.hoc";
 
 class ThreadCreate extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.onCreate = this.onCreate.bind(this);
+        this.contentRef = React.createRef();
+    }
+
+
+    onCreate() {
+        let content = this.contentRef.current.innerHTML;
+        console.log(content);
+    }
+
 
     render() {
 
@@ -13,12 +28,15 @@ class ThreadCreate extends Component {
 
                     <div id="news" className="col-xs-6">
                         <div className="card">
+
                             <div className="card-header">
-                                <small>🆕 </small>
-                                Create a new thread:
+                                <small>🆕</small>
+                                <span>Create a new thread:</span>
                             </div>
+
                             <div className="card-body">
-                                <form method="post">
+                                <form>
+
                                     <div className="row">
                                         <div className="col-md-12">
                                             <div className="input-group mb-3">
@@ -34,6 +52,8 @@ class ThreadCreate extends Component {
 
                                     <TextEditor/>
 
+                                    <div id="textarea-content" contentEditable="true" ref={this.contentRef}/>
+
                                     <div className="dropdown-divider"/>
 
                                     <div className="col-md-13">
@@ -46,7 +66,8 @@ class ThreadCreate extends Component {
 
                                     <div className="row">
                                         <button id="button-proceedCreateThread-createThread" type="button"
-                                                className="btn btn-success btn-lg btn-block">Create
+                                                className="btn btn-success btn-lg btn-block"
+                                                onClick={this.onCreate}>Create
                                         </button>
                                     </div>
 
