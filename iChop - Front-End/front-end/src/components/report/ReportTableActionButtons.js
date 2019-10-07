@@ -20,16 +20,14 @@ class ReportTableActionButtons extends Component {
 
                     <span className="dropdown-menu">
 
-                        <a className="dropdown-item" href="#">
-                            <button type="button" onClick={onDeleteEntity}
-                                    style={{'all': 'initial'}}>❌Delete {entityName}</button>
-                        </a>
 
-                        <a className="dropdown-item" href="#">
-                            <button onClick={onDeleteReport} type="button"
-                                    style={{'all': 'initial'}}>😖Delete Report
+                        <button type="button" onClick={onDeleteEntity}
+                                className="btn btn-danger btn-sm dropdown-item">❌Delete {entityName}</button>
+
+
+                        <button type="button" onClick={onDeleteReport}
+                                className="btn btn-danger btn-sm dropdown-item">😖Delete Report
                             </button>
-                        </a>
 
                     </span>
                 </div>
