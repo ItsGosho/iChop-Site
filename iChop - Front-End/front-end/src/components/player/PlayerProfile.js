@@ -111,14 +111,14 @@ class PlayerProfile extends Component {
 
                                             {
                                                 (() => {
-                                                    if (linkedToUsername != null) {
+                                                    if (isOnline) {
                                                         return (
-                                                            <span>🔋<span
+                                                            <span>🔋 <span
                                                                 style={{'color': 'green'}}>Online</span></span>
                                                         );
                                                     } else {
                                                         return (
-                                                            <span>🔴<span
+                                                            <span>🔴 <span
                                                                 style={{'color': 'darkred'}}>Offline</span></span>
                                                         );
                                                     }
@@ -131,27 +131,26 @@ class PlayerProfile extends Component {
                             </div>
                         </div>
                         <div className="col-md-auto">
-                            <div className="dropdown-divider"></div>
-                            <div className="col-md-auto head" style="font-size: 19px;font-family: Consolas">
+                            <div className="dropdown-divider"/>
+                            <div className="col-md-auto head" style={{'fontSize': '19px', 'fontFamily': 'Consolas'}}>
                                 <span>Basic Statistcs:</span>
                                 <div className="row">
-                                    <span>💀</span>Deaths: <span th:text="*{totalDeaths}"></span>
+                                    <span>💀</span>Deaths: <span>{totalDeaths}</span>
                                 </div>
                                 <div className="row">
-                                    <span>🗡️ </span>Damage Taken: <span th:text="*{totalDamageDealt}"></span>
+                                    <span>🗡️ </span>Damage Taken: <span>{totalDamageDealt}</span>
                                 </div>
                                 <div className="row">
-                                    <span>🤕</span>Damage Taken: <span th:text="*{totalDamageTaken}"></span>
+                                    <span>🤕</span>Damage Taken: <span>{totalDamageTaken}</span>
                                 </div>
                                 <div className="row">
-                                    <span>️🧟</span>Mobs Killed: <span th:text="*{totalMobKills}"></span>
+                                    <span>️🧟</span>Mobs Killed: <span>{totalMobKills}</span>
                                 </div>
                                 <div className="row">
-                                    <span>👤</span>Player Killed: <span th:text="*{totalPlayerKills}"></span>
+                                    <span>👤</span>Player Killed: <span>{totalPlayerKills}</span>
                                 </div>
                                 <div className="row">
-                                    <span>⏰</span>Last Join: <span
-                                    th:text="*{#temporals.format(lastJoin, 'dd/MM/yyyy HH:mm')}"></span>
+                                    <span>⏰</span>Last Join: <span>{lastJoin}</span>
                                 </div>
                             </div>
                         </div>
