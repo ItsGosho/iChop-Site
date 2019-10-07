@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import TextEditor from "../editor/TextEditor";
 import './ThreadCreate.css'
+import ThreadCreateHelperButton from "./ThreadCreateHelperButton";
 
 class ThreadCreate extends Component {
 
@@ -28,8 +29,8 @@ class ThreadCreate extends Component {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="dropdown-divider"/>
 
+                                    <div className="dropdown-divider"/>
 
                                     <TextEditor/>
 
@@ -37,33 +38,7 @@ class ThreadCreate extends Component {
 
                                     <div className="col-md-13">
 
-                                        <a href="" type="button" data-toggle="modal" data-target="#exampleModal">
-                                            ❓
-                                        </a>
-                                        <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog"
-                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div className="modal-dialog" role="document">
-                                                <div className="modal-content">
-                                                    <div className="modal-header">
-                                                        <h5 className="modal-title" id="exampleModalLabel">How to show
-                                                            only first X rows from thread on the news page:</h5>
-                                                        <button type="button" className="close" data-dismiss="modal"
-                                                                aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div className="modal-body">
-                                                        If you dont want all of the content to be show on the news page
-                                                        /better/ ,place SHOW_TO_NOW whether you want to end.
-                                                    </div>
-                                                    <div className="modal-footer">
-                                                        <button type="button" className="btn btn-secondary"
-                                                                data-dismiss="modal">Close
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <ThreadCreateHelperButton/>
 
                                     </div>
 
