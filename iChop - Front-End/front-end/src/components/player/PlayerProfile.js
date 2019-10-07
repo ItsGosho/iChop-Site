@@ -95,12 +95,12 @@ class PlayerProfile extends Component {
                                 <div className="row">
                                     <div>
                                         <div className="col-md-auto head">
-                                            <span className="player-name" th:text="*{name}"></span>
+                                            <span className="player-name">{playerName}</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div className="dropdown-divider"></div>
+                            <div className="dropdown-divider"/>
                         </div>
 
                         <div className="col-md-auto status">
@@ -109,13 +109,22 @@ class PlayerProfile extends Component {
                                     <div>
                                         <div className="col-md-auto head player-connection-status">
 
-                                            <th:block th:if="*{getIsOnline()}">
-                                                <span>🔋<span style="color: green">Online</span></span>
-                                            </th:block>
+                                            {
+                                                (() => {
+                                                    if (linkedToUsername != null) {
+                                                        return (
+                                                            <span>🔋<span
+                                                                style={{'color': 'green'}}>Online</span></span>
+                                                        );
+                                                    } else {
+                                                        return (
+                                                            <span>🔴<span
+                                                                style={{'color': 'darkred'}}>Offline</span></span>
+                                                        );
+                                                    }
+                                                })()
+                                            }
 
-                                            <th:block th:if="*{!getIsOnline()}">
-                                                <span>🔴<span style="color: darkred">Offline</span></span>
-                                            </th:block>
                                         </div>
                                     </div>
                                 </div>
