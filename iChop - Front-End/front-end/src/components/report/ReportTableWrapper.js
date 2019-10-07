@@ -38,10 +38,10 @@ var ReportTableWrapper = CreateReactClass({
                                     </button>
                                     <div className="dropdown-menu">
                                         <a className="dropdown-item" href="#">
-                                            <button type="submit" style="all: initial">❌Delete Comment</button>
+                                            <button type="button" style="all: initial">❌Delete Comment</button>
                                         </a>
                                         <a className="dropdown-item" href="#">
-                                            <button type="submit" style="all: initial">😖Delete Report</button>
+                                            <button type="button" style="all: initial">😖Delete Report</button>
                                         </a>
                                     </div>
                                 </div>
