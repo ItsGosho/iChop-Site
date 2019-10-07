@@ -12,7 +12,19 @@ class ReportsThread extends Component {
             {
                 threadId: 'id1',
                 reason: 'Really bad thread!',
-                creatorUsername: 'Really bad thread!',
+                creatorUsername: 'itsgosho',
+                reportDate: new Date(2018,1)
+            },
+            {
+                threadId: 'id2',
+                reason: 'Whoop ugly!',
+                creatorUsername: 'penka123',
+                reportDate: new Date(2018,1)
+            },
+            {
+                threadId: 'id3',
+                reason: 'Meh!',
+                creatorUsername: 'roki49',
                 reportDate: new Date(2018,1)
             },
         ];
