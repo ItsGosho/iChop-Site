@@ -5,7 +5,10 @@ import RoutingURLs from "../../../constants/routing.constants";
 
 var ReportTableWrapper = CreateReactClass({
     render() {
+        let entityName = this.props.entityName;
         let thFirstName = this.props.thFirstName;
+        let onDeleteEntity = this.props.onDeleteEntity;
+        let onDeleteReport = this.props.onDeleteReport;
 
         return (
             <div className="table-responsive" align="center">
@@ -34,20 +37,12 @@ var ReportTableWrapper = CreateReactClass({
                                         ⚙Take Action!
                                     </button>
                                     <div className="dropdown-menu">
-                                        <form method="post"
-                                              th:action="@{/comment/{commentId}/delete(commentId=*{commentId})}"
-                                              style="all:initial">
-                                            <a className="dropdown-item" href="#">
-                                                <button type="submit" style="all: initial">❌Delete Comment</button>
-                                            </a>
-                                        </form>
-                                        <form method="post"
-                                              th:action="@{/comment/report/{reportId}/delete(reportId=*{reportId})}"
-                                              style="all:initial">
-                                            <a className="dropdown-item" href="#">
-                                                <button type="submit" style="all: initial">😖Delete Report</button>
-                                            </a>
-                                        </form>
+                                        <a className="dropdown-item" href="#">
+                                            <button type="submit" style="all: initial">❌Delete Comment</button>
+                                        </a>
+                                        <a className="dropdown-item" href="#">
+                                            <button type="submit" style="all: initial">😖Delete Report</button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
