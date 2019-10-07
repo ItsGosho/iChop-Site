@@ -10,12 +10,17 @@ class ThreadCreate extends Component {
         super(props);
 
         this.onCreate = this.onCreate.bind(this);
+
+        this.titleRef = React.createRef();
         this.contentRef = React.createRef();
     }
 
 
     onCreate() {
+        let title = this.titleRef.current.value;
         let content = this.contentRef.current.innerHTML;
+
+        console.log(title);
         console.log(content);
     }
 
@@ -43,7 +48,7 @@ class ThreadCreate extends Component {
                                                 <input id="input-title-threadCreate" type="text"
                                                        className="form-control" aria-label="Title"
                                                        aria-describedby="basic-addon1" name="title"
-                                                       placeholder="Thread title"/>
+                                                       placeholder="Thread title" ref={this.titleRef}/>
                                             </div>
                                         </div>
                                     </div>
