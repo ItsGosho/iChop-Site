@@ -1,12 +1,15 @@
 import React, {Component} from 'react';
 import './PlayerProfile.css'
 import formatDate from 'dateformat';
+import ServerRoutingURLs from "../../constants/server.routing.urls";
+import RoutingURLs from "../../constants/routing.constants";
+import {Link} from "react-router-dom";
 
 class PlayerProfile extends Component {
 
 
     render() {
-        let siteUser = 'ItsGosho';
+        let linkedToUsername = 'ItsGosho';
         let uuid = '8ed20904-3262-401a-901a-1946504d2eea';
         let playerName = 'ItsGosho';
 
@@ -17,7 +20,10 @@ class PlayerProfile extends Component {
         let totalDamageTaken = 12332;
         let totalMobKills = 655;
         let totalPlayerKills = 11;
-        let lastJoin = formatDate(new Date(),'dd/MM/yyyy HH:mm');
+        let lastJoin = formatDate(new Date(), 'dd/MM/yyyy HH:mm');
+
+        let bodyAvatarUrl = ServerRoutingURLs.OUTSIDE.CRAFATAR.MINECRAFT.SKIN.replace(':uuid', uuid);
+        let userProfileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', linkedToUsername);
 
         return (
             <div className="container">
@@ -28,7 +34,8 @@ class PlayerProfile extends Component {
                         <div className="col-md-sm">
 
                             <div align="center">
-                                <img th:src="@{https://crafatar.com/renders/body/{uuid}(uuid=*{uuid})}"
+                                <img src={bodyAvatarUrl}
+                                     alt=''
                                      className="img-player_body-player_profile"/>
                             </div>
 
@@ -50,26 +57,33 @@ class PlayerProfile extends Component {
                                 </div>
                             </div>
 
-                            <th:block th:if="*{siteUserUsername != null}">
-                                <div className="card site-user-username">
-                                    <div className="card-body site-user-username">
+                            {
+                                (() => {
+                                    if (linkedToUsername != null) {
+                                        return (
+                                            <div className="card site-user-username">
+                                                <div className="card-body site-user-username">
+                                                    <div className="col-md-auto">
+                                                        <div className="row site-user-title">
 
-                                        <div className="col-md-auto">
-                                            <div className="row site-user-title">
-                                                <div className="col-md-auto site-user-title">
-                                                    Site User:
-                                                </div>
-                                                <div className="col-md-auto site-user-username">
-                               <span className="site-user-username">
-                                   <a th:href="@{/user/{username}/profile(username=*{siteUserUsername})}"
-                                      th:text="*{siteUserUsername}"></a>
-                               </span>
+                                                            <div className="col-md-auto site-user-title">
+                                                                Site User:
+                                                            </div>
+
+                                                            <div className="col-md-auto site-user-username">
+                                                                <span className="site-user-username">
+                                                                    <Link to={userProfileUrl}>{linkedToUsername}</Link>
+                                                                </span>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </th:block>
+                                        );
+                                    }
+                                })()
+                            }
 
                         </div>
                     </div>
