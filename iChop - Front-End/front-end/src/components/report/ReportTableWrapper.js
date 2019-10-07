@@ -1,7 +1,5 @@
 import React from "react";
 import CreateReactClass from 'create-react-class';
-import {Link} from "react-router-dom";
-import RoutingURLs from "../../../constants/routing.constants";
 
 var ReportTableWrapper = CreateReactClass({
     render() {
