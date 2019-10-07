@@ -8,46 +8,52 @@ import formatDate from 'dateformat'
 class ReportsThread extends Component {
 
     render() {
-        let reports = [];
+        let reports = [
+            {
+                threadId: 'id1',
+                reason: 'Really bad thread!',
+                creatorUsername: 'Really bad thread!',
+                reportDate: new Date(2018,1)
+            },
+        ];
 
 
         return (
             <ReportTableWrapper>
 
                 {
-                    (() => {
-                        reports.map((report, index) => {
-                            let {threadId, reason, creatorUsername, reportDate} = report;
+                    (() => reports.map((report, index) => {
+                        console.log(123);
+                        let {threadId, reason, creatorUsername, reportDate} = report;
 
-                            let threadReadUrl = RoutingURLs.THREAD.VIEW.replace(':id', threadId);
-                            let creatorProfile = RoutingURLs.USER.PROFILE.VIEW.replace(':username', creatorUsername);
+                        let threadReadUrl = RoutingURLs.THREAD.VIEW.replace(':id', threadId);
+                        let creatorProfile = RoutingURLs.USER.PROFILE.VIEW.replace(':username', creatorUsername);
 
-                            return (
-                                <Fragment>
-                                    <th>
-                                        <Link to={threadReadUrl}>Link</Link>
-                                    </th>
+                        return (
+                            <tr key={index}>
+                                <th>
+                                    <Link to={threadReadUrl}>Link</Link>
+                                </th>
 
-                                    <td width="300px">
-                                        <div style={{
-                                            'overflow': 'scroll',
-                                            'width': '100%',
-                                            "maxHeight": '100px'
-                                        }}>{reason}</div>
-                                    </td>
+                                <td width="300px">
+                                    <div style={{
+                                        'overflow': 'scroll',
+                                        'width': '100%',
+                                        "maxHeight": '100px'
+                                    }}>{reason}</div>
+                                </td>
 
-                                    <td>
-                                        <Link to={creatorProfile}>{creatorUsername}</Link>
-                                    </td>
+                                <td>
+                                    <Link to={creatorProfile}>{creatorUsername}</Link>
+                                </td>
 
-                                    <td>{formatDate(reportDate, 'dd MMM,yyyy')}</td>
+                                <td>{formatDate(reportDate, 'dd mmm,yyyy')}</td>
 
-                                    <ReportTableActionButtons entityName={'Thread'} onDeleteEntity={null}
-                                                              onDeleteReport={null}/>
-                                </Fragment>
-                            );
-                        })
-                    })()
+                                <ReportTableActionButtons entityName={'Thread'} onDeleteEntity={null}
+                                                          onDeleteReport={null}/>
+                            </tr>
+                        );
+                    }))()
                 }
 
             </ReportTableWrapper>

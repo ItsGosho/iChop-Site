@@ -18,7 +18,7 @@ class ReportTableActionButtons extends Component {
                         ⚙Take Action!
                     </button>
 
-                    <div className="dropdown-menu">
+                    <span className="dropdown-menu">
 
                         <a className="dropdown-item" href="#">
                             <button type="button" onClick={onDeleteEntity}
@@ -31,7 +31,7 @@ class ReportTableActionButtons extends Component {
                             </button>
                         </a>
 
-                    </div>
+                    </span>
                 </div>
             </div>
         );

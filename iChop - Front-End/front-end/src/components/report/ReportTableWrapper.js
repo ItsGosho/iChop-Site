@@ -19,11 +19,7 @@ var ReportTableWrapper = CreateReactClass({
                     </thead>
 
                     <tbody>
-                    <tr>
-
-                        {this.props.children}
-
-                    </tr>
+                    {this.props.children}
                     </tbody>
                 </table>
             </div>
