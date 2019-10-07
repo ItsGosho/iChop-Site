@@ -16,12 +16,12 @@ class Reports extends Component {
                     <a className="navbar-brand" href="#">⚠ Reports</a>
 
                     <button className="navbar-toggler" type="button" data-toggle="collapse"
-                            data-target="#reports-categories"
-                            aria-controls="reports-categories" aria-expanded="false" aria-label="Toggle navigation">
+                            data-target="#nav-reports-categories"
+                            aria-controls="nav-reports-categories" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"/>
                     </button>
 
-                    <div className="collapse navbar-collapse" id="reports-categories">
+                    <div className="collapse navbar-collapse" id="nav-reports-categories">
 
                         <ul className="navbar-nav mr-auto">
 

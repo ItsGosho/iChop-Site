@@ -29,13 +29,13 @@ class Navbar extends Component {
 
                     <button id="button-minimized-navbar" className="navbar-toggler" type="button"
                             data-toggle="collapse"
-                            data-target="#navbarSupportedContent"
-                            aria-controls="navbarSupportedContent" aria-expanded="false"
-                            aria-label="Toggle navigation">
+                            data-target="#navbar"
+                            aria-controls="navbar" aria-expanded="false"
+                            aria-label="Toggle Navigation Bar">
                         <span className="navbar-toggler-icon"/>
                     </button>
 
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div className="collapse navbar-collapse" id="navbar">
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item dropdown active">
                                 {
