@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import TextEditor from "../editor/TextEditor";
 import './ThreadCreate.css'
 import ThreadCreateHelperButton from "./ThreadCreateHelperButton";
-import FormHoc from "../../hocs/form.hoc";
 
 class ThreadCreate extends Component {
 
