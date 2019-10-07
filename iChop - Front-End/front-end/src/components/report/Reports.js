@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import {Link} from "react-router-dom";
+import {Link, Route, Switch} from "react-router-dom";
 import RoutingURLs from "../../constants/routing.constants";
 
 class Reports extends Component {
@@ -49,7 +49,12 @@ class Reports extends Component {
                     </div>
                 </nav>
 
-                {/*TODO: insert here*/}
+                <Switch>
+                    <Route exact path={RoutingURLs.THREAD.REPORT.ALL} component={() => (<h1>Thread Reports!</h1>)}/>
+                    <Route exact path={RoutingURLs.COMMENT.REPORT.ALL} component={() => (<h1>Comment Reports!</h1>)}/>
+                    <Route exact path={RoutingURLs.POST.REPORT.ALL} component={() => (<h1>Post Reports!</h1>)}/>
+                </Switch>
+
             </Fragment>
         );
     }

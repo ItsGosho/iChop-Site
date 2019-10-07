@@ -5,14 +5,15 @@ import TextEditor from "./components/editor/TextEditor";
 import ThreadCreate from "./components/thread/ThreadCreate";
 import PlayerLinkAccount from "./components/player/PlayerLinkAccount";
 import PlayerProfile from "./components/player/PlayerProfile";
+import Reports from "./components/report/Reports";
 
 function App() {
     return (
         <Fragment>
             <Navbar/>
 
-            <div style={{'marginTop':'75px'}}>
-                <PlayerProfile/>
+            <div style={{'marginTop': '75px'}}>
+                <Reports/>
             </div>
 
             <Footer/>
