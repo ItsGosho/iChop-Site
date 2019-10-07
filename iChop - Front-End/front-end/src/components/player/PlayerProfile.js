@@ -1,10 +1,23 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
 import './PlayerProfile.css'
+import formatDate from 'dateformat';
 
 class PlayerProfile extends Component {
 
 
     render() {
+        let siteUser = 'ItsGosho';
+        let uuid = '8ed20904-3262-401a-901a-1946504d2eea';
+        let playerName = 'ItsGosho';
+
+        let isOnline = false;
+
+        let totalDeaths = 1;
+        let totalDamageDealt = 53422;
+        let totalDamageTaken = 12332;
+        let totalMobKills = 655;
+        let totalPlayerKills = 11;
+        let lastJoin = formatDate(new Date(),'dd/MM/yyyy HH:mm');
 
         return (
             <div className="container">
@@ -30,7 +43,7 @@ class PlayerProfile extends Component {
 
                                     <div className="col-md-auto">
                                         <div className="row">
-                                            <!--reserved-->
+
                                         </div>
                                     </div>
 
