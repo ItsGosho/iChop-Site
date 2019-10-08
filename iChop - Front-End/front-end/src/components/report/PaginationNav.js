@@ -31,24 +31,28 @@ class PaginationNav extends Component {
                                 for (let i = 1; i <= totalPages; i++) {
                                     return (
                                         <li className="page-item"><a className="page-link" th:text="${i}"
-                                                                     th:href="@{/post/reports/all(page=${i-1})}"></a></li>
+                                                                     th:href="@{/post/reports/all(page=${i-1})}"></a>
+                                        </li>
                                     )
                                 }
                             }
                         )()
                     }
 
-
-                    <th:block th:if="${#request.getParameter('page')} != null">
-
-                        <th:block
-                            th:if="*{(#conversions.convert(#request.getParameter('page'), 'Integer')) + 1 <= totalPages-1}">
-                            <li className="page-item"><a className="page-link"
-                                                         th:href="@{/post/reports/all(page=${(#conversions.convert(#request.getParameter('page'), 'Integer')) + 1})}">Next</a>
-                            </li>
-                        </th:block>
-
-                    </th:block>
+                    {
+                        (() => {
+                                if (page !== undefined && page + 1 <= totalPages - 1) {
+                                    return (
+                                        <li className="page-item">
+                                            <a className="page-link"
+                                               th:href="@{/post/reports/all(page=${(#conversions.convert(#request.getParameter('page'), 'Integer')) + 1})}">Next
+                                            </a>
+                                        </li>
+                                    );
+                                }
+                            }
+                        )()
+                    }
 
                 </ul>
             </nav>
