@@ -1,26 +1,36 @@
 import React, {Component} from 'react';
 import qs from 'qs';
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import Pagination from "react-bootstrap/Pagination";
 
 class PaginationNav extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.onChange = this.onChange.bind(this);
+    }
+
+    onChange() {
+        console.log(123);
+    }
 
 
     render() {
         // eslint-disable-next-line no-restricted-globals
         let page = qs.parse(location.search, {ignoreQueryPrefix: true}).page;
 
-        let totalPages = 10;
+        let totalPages = 2;
         let redirectPage = '/thread/reports/all';
 
-        page = page === undefined ? 1 : page;
+        page = page === undefined ? 1 : Number(page);
 
         return (
             <Pagination className={'justify-content-center'}>
 
                 {
                     (() => {
-                            if (page - 1 >= 0) {
+                            if (page - 1 > 0) {
                                 return (
                                     <Pagination.Prev>
                                         <Link to={redirectPage + '?page=' + (page - 1)}>Prev</Link>
@@ -48,7 +58,7 @@ class PaginationNav extends Component {
 
                 {
                     (() => {
-                            if (page + 1 <= totalPages - 1) {
+                            if (page < totalPages) {
                                 return (
                                     <Pagination.Next>
                                         <Link to={redirectPage + '?page=' + (page + 1)}>Next</Link>
@@ -58,7 +68,6 @@ class PaginationNav extends Component {
                         }
                     )()
                 }
-
             </Pagination>
         );
     }
