@@ -1,8 +1,9 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import ReportTableWrapper from "./wrappers/ReportTableWrapper";
 import RoutingURLs from "../../constants/routing.constants";
 import ReportTableColumnsWrapper from "./wrappers/ReportTableColumnsWrapper";
 import {Link} from "react-router-dom";
+import ReactPaginate from 'react-paginate';
 
 class ReportsThread extends Component {
 
@@ -45,29 +46,32 @@ class ReportsThread extends Component {
 
 
         return (
-            <ReportTableWrapper>
-                {
-                    (() => reports.map((report, index) => {
-                        let {threadId, reason, creatorUsername, reportDate} = report;
+            <Fragment>
+                <ReportTableWrapper>
+                    {
+                        (() => reports.map((report, index) => {
+                            let {threadId, reason, creatorUsername, reportDate} = report;
 
-                        let threadReadUrl = RoutingURLs.THREAD.VIEW.replace(':id', threadId);
+                            let threadReadUrl = RoutingURLs.THREAD.VIEW.replace(':id', threadId);
 
-                        return (
-                            <ReportTableColumnsWrapper onDeleteEntity={this.onDeleteEntity}
-                                                       onDeleteReport={this.onDeleteReport}
-                                                       entityName={'Thread'}
-                                                       index={index}
-                                                       reason={reason}
-                                                       creatorUsername={creatorUsername}
-                                                       reportDate={reportDate}>
-                                <th>
-                                    <Link to={threadReadUrl}>Link</Link>
-                                </th>
-                            </ReportTableColumnsWrapper>
-                        );
-                    }))()
-                }
-            </ReportTableWrapper>
+                            return (
+                                <ReportTableColumnsWrapper onDeleteEntity={this.onDeleteEntity}
+                                                           onDeleteReport={this.onDeleteReport}
+                                                           entityName={'Thread'}
+                                                           index={index}
+                                                           reason={reason}
+                                                           creatorUsername={creatorUsername}
+                                                           reportDate={reportDate}>
+                                    <th>
+                                        <Link to={threadReadUrl}>Link</Link>
+                                    </th>
+                                </ReportTableColumnsWrapper>
+                            );
+                        }))()
+                    }
+                </ReportTableWrapper>
+                <ReactPaginate/>
+            </Fragment>
         );
     }
 }
