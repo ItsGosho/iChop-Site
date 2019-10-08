@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import qs from 'qs';
+import {Link} from "react-router-dom";
 
 class PaginationNav extends Component {
 
@@ -8,6 +9,10 @@ class PaginationNav extends Component {
         // eslint-disable-next-line no-restricted-globals
         let page = qs.parse(location.search, {ignoreQueryPrefix: true}).page;
         let totalPages = 10;
+        let redirectPage = '/thread/reports/all';
+
+        page = page !== undefined ? Number(page) : undefined;
+        let pagesIterator = [10];
 
         return (
             <nav aria-label="Page navigation example" className="d-flex justify-content-center align-items-center">
@@ -17,8 +22,8 @@ class PaginationNav extends Component {
                         (() => {
                                 if (page !== undefined && page - 1 >= 0) {
                                     return (
-                                        <li className="page-item"><a className="page-link"
-                                                                     th:href="@{/post/reports/all(page=${(#conversions.convert(#request.getParameter('page'), 'Integer')) - 1})}">Previous</a>
+                                        <li className="page-item">
+                                            <Link to={redirectPage + '?page=' + (page - 1)}>Next</Link>
                                         </li>
                                     );
                                 }
@@ -28,13 +33,13 @@ class PaginationNav extends Component {
 
                     {
                         (() => {
+                                let result = [];
                                 for (let i = 1; i <= totalPages; i++) {
-                                    return (
-                                        <li className="page-item"><a className="page-link" th:text="${i}"
-                                                                     th:href="@{/post/reports/all(page=${i-1})}"></a>
-                                        </li>
-                                    )
+                                    result.push(<li className="page-item">
+                                        <Link to={redirectPage + '?page=' + i}>{i}</Link>
+                                    </li>)
                                 }
+                                return result;
                             }
                         )()
                     }
@@ -44,9 +49,7 @@ class PaginationNav extends Component {
                                 if (page !== undefined && page + 1 <= totalPages - 1) {
                                     return (
                                         <li className="page-item">
-                                            <a className="page-link"
-                                               th:href="@{/post/reports/all(page=${(#conversions.convert(#request.getParameter('page'), 'Integer')) + 1})}">Next
-                                            </a>
+                                            <Link to={redirectPage + '?page=' + (page + 1)}>Next</Link>
                                         </li>
                                     );
                                 }
