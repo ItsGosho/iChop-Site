@@ -78,7 +78,7 @@ class ReportsThread extends Component {
                     }
                 </ReportTableWrapper>
 
-                <PaginationNav/>
+                <PaginationNav totalResults={reports.length} resultsPerPage={1}/>
 
             </Fragment>
         );
