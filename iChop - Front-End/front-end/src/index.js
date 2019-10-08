@@ -8,6 +8,7 @@ import reducers from './redux/reducers'
 import thunk from 'redux-thunk'
 import logger from 'redux-logger'
 import Provider from "react-redux/es/components/Provider";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 let store = createStore(
     combineReducers(reducers),

@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react';
+import React from 'react';
 import {Link} from "react-router-dom";
 import formatDate from "dateformat";
 import ReportTableActionButtons from "../ReportTableActionButtons";
