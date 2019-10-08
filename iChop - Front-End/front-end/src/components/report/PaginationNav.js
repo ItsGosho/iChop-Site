@@ -7,7 +7,7 @@ class PaginationNav extends Component {
     render() {
         // eslint-disable-next-line no-restricted-globals
         let page = qs.parse(location.search, {ignoreQueryPrefix: true}).page;
-        console.log(page);
+        let totalPages = 10;
 
         return (
             <nav aria-label="Page navigation example" className="d-flex justify-content-center align-items-center">
@@ -26,15 +26,14 @@ class PaginationNav extends Component {
                         )()
                     }
 
-
-                    <th:block th:each="i: *{#numbers.sequence(1,totalPages)}">
-                        <li className="page-item"><a className="page-link" th:text="${i}"
-                                                     th:href="@{/post/reports/all(page=${i-1})}"></a></li>
-                    </th:block>
-
                     {
                         (() => {
-                              return ()
+                                for (let i = 1; i <= totalPages; i++) {
+                                    return (
+                                        <li className="page-item"><a className="page-link" th:text="${i}"
+                                                                     th:href="@{/post/reports/all(page=${i-1})}"></a></li>
+                                    )
+                                }
                             }
                         )()
                     }
