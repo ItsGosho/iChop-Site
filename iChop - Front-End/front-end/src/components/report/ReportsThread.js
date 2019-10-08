@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import ReportTableWrapper from "./ReportTableWrapper";
+import ReportTableWrapper from "./wrappers/ReportTableWrapper";
 import RoutingURLs from "../../constants/routing.constants";
-import ReportTableColumnsWrapper from "./ReportTableColumnsWrapper";
+import ReportTableColumnsWrapper from "./wrappers/ReportTableColumnsWrapper";
 import {Link} from "react-router-dom";
 
 class ReportsThread extends Component {
@@ -31,7 +31,6 @@ class ReportsThread extends Component {
 
         return (
             <ReportTableWrapper>
-
                 {
                     (() => reports.map((report, index) => {
                         let {threadId, reason, creatorUsername, reportDate} = report;
@@ -39,7 +38,7 @@ class ReportsThread extends Component {
                         let threadReadUrl = RoutingURLs.THREAD.VIEW.replace(':id', threadId);
 
                         return (
-                           <ReportTableColumnsWrapper index={index} reason={reason} creatorUsername={creatorUsername} reportDate={reportDate}>
+                           <ReportTableColumnsWrapper entityName={'Thread'} index={index} reason={reason} creatorUsername={creatorUsername} reportDate={reportDate}>
                                <th>
                                    <Link to={threadReadUrl}>Link</Link>
                                </th>
@@ -47,7 +46,6 @@ class ReportsThread extends Component {
                         );
                     }))()
                 }
-
             </ReportTableWrapper>
         );
     }
