@@ -4,6 +4,20 @@ import ReportTableColumnsWrapper from "./wrappers/ReportTableColumnsWrapper";
 
 class ReportsPost extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.onDeleteEntity = this.onDeleteEntity.bind(this);
+        this.onDeleteReport = this.onDeleteReport.bind(this);
+    }
+
+    onDeleteEntity() {
+        console.log('Delete Entity');
+    }
+
+    onDeleteReport() {
+        console.log('Delete Report');
+    }
 
     render() {
         let reports = [
@@ -37,7 +51,14 @@ class ReportsPost extends Component {
                         let {content, reason, creatorUsername, reportDate} = report;
 
                         return (
-                            <ReportTableColumnsWrapper entityName={'Post'} index={index} reason={reason} creatorUsername={creatorUsername} reportDate={reportDate}>
+                            <ReportTableColumnsWrapper
+                                onDeleteEntity={this.onDeleteEntity}
+                                onDeleteReport={this.onDeleteReport}
+                                entityName={'Post'}
+                                index={index}
+                                reason={reason}
+                                creatorUsername={creatorUsername}
+                                reportDate={reportDate}>
                                 <td width="300px">
                                     <div style={{'overflow': 'scroll','width': '100%','maxHeight': '100px'}}>{content}</div>
                                 </td>
