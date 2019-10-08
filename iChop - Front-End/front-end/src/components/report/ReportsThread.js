@@ -3,7 +3,9 @@ import ReportTableWrapper from "./wrappers/ReportTableWrapper";
 import RoutingURLs from "../../constants/routing.constants";
 import ReportTableColumnsWrapper from "./wrappers/ReportTableColumnsWrapper";
 import {Link} from "react-router-dom";
-import ReactPaginate from 'react-paginate';
+import Pagination from "react-bootstrap/Pagination";
+import PaginationNav from "./PaginationNav";
+
 
 class ReportsThread extends Component {
 
@@ -12,6 +14,7 @@ class ReportsThread extends Component {
 
         this.onDeleteEntity = this.onDeleteEntity.bind(this);
         this.onDeleteReport = this.onDeleteReport.bind(this);
+        this.onPageChange = this.onPageChange.bind(this);
     }
 
     onDeleteEntity() {
@@ -20,6 +23,10 @@ class ReportsThread extends Component {
 
     onDeleteReport() {
         console.log('Delete Report');
+    }
+
+    onPageChange(page) {
+        console.log(page);
     }
 
     render() {
@@ -70,7 +77,9 @@ class ReportsThread extends Component {
                         }))()
                     }
                 </ReportTableWrapper>
-                <ReactPaginate/>
+
+                <PaginationNav/>
+
             </Fragment>
         );
     }
