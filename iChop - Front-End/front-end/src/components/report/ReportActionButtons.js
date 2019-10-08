@@ -7,20 +7,18 @@ class ReportActionButtons extends Component {
     render() {
         let entityName = this.props.entityName;
 
-        let {onDeleteEntity,onDeleteReport} = this.props;
+        let {onDeleteEntity, onDeleteReport} = this.props;
 
         return (
-            <div className="row">
-                <Dropdown>
+            <Dropdown>
 
-                    <Dropdown.Toggle variant={'warning'} size={'sm'}>⚙Take Action!</Dropdown.Toggle>
+                <Dropdown.Toggle variant={'warning'} size={'sm'}>⚙Take Action!</Dropdown.Toggle>
 
-                    <Dropdown.Menu>
-                        <Dropdown.Item onClick={onDeleteEntity}>❌Delete {entityName}</Dropdown.Item>
-                        <Dropdown.Item onClick={onDeleteReport}>😖Delete Report</Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown>
-            </div>
+                <Dropdown.Menu>
+                    <Dropdown.Item onClick={onDeleteEntity}>❌Delete {entityName}</Dropdown.Item>
+                    <Dropdown.Item onClick={onDeleteReport}>😖Delete Report</Dropdown.Item>
+                </Dropdown.Menu>
+            </Dropdown>
         );
     }
 }
