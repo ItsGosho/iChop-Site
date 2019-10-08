@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import formatDate from "dateformat";
-import ReportTableActionButtons from "../ReportTableActionButtons";
+import ReportActionButtons from "../ReportActionButtons";
 import CreateReactClass from "create-react-class";
 import RoutingURLs from "../../../constants/routing.constants";
 
@@ -30,8 +30,8 @@ let ReportTableColumnsWrapper = CreateReactClass({
 
                 <td>{formatDate(reportDate, 'dd mmm,yyyy')}</td>
 
-                <ReportTableActionButtons entityName={entityName} onDeleteEntity={null}
-                                          onDeleteReport={null}/>
+                <ReportActionButtons entityName={entityName} onDeleteEntity={null}
+                                     onDeleteReport={null}/>
             </tr>
         );
     }

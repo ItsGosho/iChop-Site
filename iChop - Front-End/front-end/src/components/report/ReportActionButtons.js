@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class ReportTableActionButtons extends Component {
+class ReportActionButtons extends Component {
 
     render() {
         let entityName = this.props.entityName;
@@ -36,4 +36,4 @@ class ReportTableActionButtons extends Component {
     }
 }
 
-export default ReportTableActionButtons;
+export default ReportActionButtons;
