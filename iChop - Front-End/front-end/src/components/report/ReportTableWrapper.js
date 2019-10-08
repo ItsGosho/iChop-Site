@@ -1,7 +1,7 @@
 import React from "react";
 import CreateReactClass from 'create-react-class';
 
-var ReportTableWrapper = CreateReactClass({
+let ReportTableWrapper = CreateReactClass({
     render() {
         let thFirstName = this.props.thFirstName;
 

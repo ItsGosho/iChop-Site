@@ -1,9 +1,8 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 import ReportTableWrapper from "./ReportTableWrapper";
-import ReportTableActionButtons from "./ReportTableActionButtons";
 import RoutingURLs from "../../constants/routing.constants";
+import ReportTableColumnsWrapper from "./ReportTableColumnsWrapper";
 import {Link} from "react-router-dom";
-import formatDate from 'dateformat'
 
 class ReportsThread extends Component {
 
@@ -35,35 +34,16 @@ class ReportsThread extends Component {
 
                 {
                     (() => reports.map((report, index) => {
-                        console.log(123);
                         let {threadId, reason, creatorUsername, reportDate} = report;
 
                         let threadReadUrl = RoutingURLs.THREAD.VIEW.replace(':id', threadId);
-                        let creatorProfile = RoutingURLs.USER.PROFILE.VIEW.replace(':username', creatorUsername);
 
                         return (
-                            <tr key={index}>
-                                <th>
-                                    <Link to={threadReadUrl}>Link</Link>
-                                </th>
-
-                                <td width="300px">
-                                    <div style={{
-                                        'overflow': 'scroll',
-                                        'width': '100%',
-                                        "maxHeight": '100px'
-                                    }}>{reason}</div>
-                                </td>
-
-                                <td>
-                                    <Link to={creatorProfile}>{creatorUsername}</Link>
-                                </td>
-
-                                <td>{formatDate(reportDate, 'dd mmm,yyyy')}</td>
-
-                                <ReportTableActionButtons entityName={'Thread'} onDeleteEntity={null}
-                                                          onDeleteReport={null}/>
-                            </tr>
+                           <ReportTableColumnsWrapper index={index} reason={reason} creatorUsername={creatorUsername} reportDate={reportDate}>
+                               <th>
+                                   <Link to={threadReadUrl}>Link</Link>
+                               </th>
+                           </ReportTableColumnsWrapper>
                         );
                     }))()
                 }
