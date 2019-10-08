@@ -1,5 +1,6 @@
 import React from "react";
 import CreateReactClass from 'create-react-class';
+import Table from "react-bootstrap/Table";
 
 let ReportTableWrapper = CreateReactClass({
     render() {
@@ -7,7 +8,8 @@ let ReportTableWrapper = CreateReactClass({
 
         return (
             <div className="table-responsive" align="center">
-                <table className="table" style={{'width': '85%', 'textAlign': 'center'}}>
+                <Table responsive style={{'width': '85%', 'textAlign': 'center'}}>
+                    
                     <thead>
                     <tr>
                         <th scope="col">{thFirstName}</th>
@@ -21,7 +23,8 @@ let ReportTableWrapper = CreateReactClass({
                     <tbody>
                     {this.props.children}
                     </tbody>
-                </table>
+
+                </Table>
             </div>
         );
     }
