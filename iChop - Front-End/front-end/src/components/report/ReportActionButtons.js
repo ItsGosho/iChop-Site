@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Button from "react-bootstrap/Button";
 import {Dropdown} from "react-bootstrap";
 
 class ReportActionButtons extends Component {
@@ -11,7 +10,6 @@ class ReportActionButtons extends Component {
 
         return (
             <Dropdown>
-
                 <Dropdown.Toggle variant={'warning'} size={'sm'}>⚙Take Action!</Dropdown.Toggle>
 
                 <Dropdown.Menu>
