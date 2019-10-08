@@ -10,8 +10,8 @@ class PaginationNav extends Component {
         // eslint-disable-next-line no-restricted-globals
         let page = qs.parse(location.search, {ignoreQueryPrefix: true}).page;
 
-        let totalResults = 50;
-        let resultsPerPage = 20;
+        let totalResults = 15;
+        let resultsPerPage = 1;
 
         let totalPages = totalResults / resultsPerPage + (totalResults % resultsPerPage !== 0 ? 1 : 0);
         let redirectPage = '/thread/reports/all';
@@ -37,7 +37,7 @@ class PaginationNav extends Component {
                 {
                     (() => {
                             let result = [];
-                            for (let i = 1; i <= totalPages; i++) {
+                            for (let i = 1; i <= totalResults; i++) {
                                 result.push(
                                     <Pagination.Item>
                                         <Link to={redirectPage + '?page=' + i}>{i}</Link>
