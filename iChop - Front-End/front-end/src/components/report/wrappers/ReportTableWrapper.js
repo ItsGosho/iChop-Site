@@ -9,7 +9,7 @@ let ReportTableWrapper = CreateReactClass({
         return (
             <div className="table-responsive" align="center">
                 <Table responsive style={{'width': '85%', 'textAlign': 'center'}}>
-                    
+
                     <thead>
                     <tr>
                         <th scope="col">{thFirstName}</th>

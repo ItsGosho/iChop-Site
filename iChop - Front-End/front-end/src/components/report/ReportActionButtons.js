@@ -9,7 +9,7 @@ class ReportActionButtons extends Component {
         let {onDeleteEntity, onDeleteReport} = this.props;
 
         return (
-            <Dropdown>
+            <Dropdown style={{'marginTop':'10px'}}>
                 <Dropdown.Toggle variant={'warning'} size={'sm'}>⚙Take Action!</Dropdown.Toggle>
 
                 <Dropdown.Menu>
