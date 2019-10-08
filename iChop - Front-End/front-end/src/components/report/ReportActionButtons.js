@@ -1,36 +1,25 @@
 import React, {Component} from 'react';
+import Button from "react-bootstrap/Button";
+import {Dropdown} from "react-bootstrap";
 
 class ReportActionButtons extends Component {
 
     render() {
         let entityName = this.props.entityName;
 
-        let onDeleteEntity = this.props.onDeleteEntity;
-        let onDeleteReport = this.props.onDeleteReport;
+        let {onDeleteEntity,onDeleteReport} = this.props;
 
         return (
             <div className="row">
-                <div className="dropdown">
+                <Dropdown>
 
-                    <button className="btn btn-warning btn-sm dropdown-toggle" type="button"
-                            id="dropdownMenuButton"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        ⚙Take Action!
-                    </button>
+                    <Dropdown.Toggle variant={'warning'} size={'sm'}>⚙Take Action!</Dropdown.Toggle>
 
-                    <span className="dropdown-menu">
-
-
-                        <button type="button" onClick={onDeleteEntity}
-                                className="btn btn-danger btn-sm dropdown-item">❌Delete {entityName}</button>
-
-
-                        <button type="button" onClick={onDeleteReport}
-                                className="btn btn-danger btn-sm dropdown-item">😖Delete Report
-                            </button>
-
-                    </span>
-                </div>
+                    <Dropdown.Menu>
+                        <Dropdown.Item onClick={onDeleteEntity}>❌Delete {entityName}</Dropdown.Item>
+                        <Dropdown.Item onClick={onDeleteReport}>😖Delete Report</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
             </div>
         );
     }

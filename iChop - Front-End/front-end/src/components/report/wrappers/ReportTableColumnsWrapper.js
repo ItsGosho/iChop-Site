@@ -8,7 +8,7 @@ import RoutingURLs from "../../../constants/routing.constants";
 
 let ReportTableColumnsWrapper = CreateReactClass({
     render() {
-        let {entityName,index,reason, creatorUsername, reportDate} = this.props;
+        let {entityName,index,reason, creatorUsername, reportDate,onDeleteEntity,onDeleteReport} = this.props;
         let creatorProfile = RoutingURLs.USER.PROFILE.VIEW.replace(':username', creatorUsername);
 
         return (
@@ -30,8 +30,8 @@ let ReportTableColumnsWrapper = CreateReactClass({
 
                 <td>{formatDate(reportDate, 'dd mmm,yyyy')}</td>
 
-                <ReportActionButtons entityName={entityName} onDeleteEntity={null}
-                                     onDeleteReport={null}/>
+                <ReportActionButtons entityName={entityName} onDeleteEntity={onDeleteEntity}
+                                     onDeleteReport={onDeleteReport}/>
             </tr>
         );
     }
