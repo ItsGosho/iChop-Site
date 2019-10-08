@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import qs from 'qs';
 import {Link} from "react-router-dom";
+import Pagination from "react-bootstrap/Pagination";
 
 class PaginationNav extends Component {
 
@@ -8,57 +9,57 @@ class PaginationNav extends Component {
     render() {
         // eslint-disable-next-line no-restricted-globals
         let page = qs.parse(location.search, {ignoreQueryPrefix: true}).page;
+
         let totalPages = 10;
         let redirectPage = '/thread/reports/all';
 
-        page = page !== undefined ? Number(page) : undefined;
-        let pagesIterator = [10];
+        page = page === undefined ? 1 : page;
 
         return (
-            <nav aria-label="Page navigation example" className="d-flex justify-content-center align-items-center">
-                <ul className="pagination">
+            <Pagination className={'justify-content-center'}>
 
-                    {
-                        (() => {
-                                if (page !== undefined && page - 1 >= 0) {
-                                    return (
-                                        <li className="page-item">
-                                            <Link to={redirectPage + '?page=' + (page - 1)}>Next</Link>
-                                        </li>
-                                    );
-                                }
+                {
+                    (() => {
+                            if (page - 1 >= 0) {
+                                return (
+                                    <Pagination.Prev>
+                                        <Link to={redirectPage + '?page=' + (page - 1)}>Prev</Link>
+                                    </Pagination.Prev>
+                                );
                             }
-                        )()
-                    }
+                        }
+                    )()
+                }
 
-                    {
-                        (() => {
-                                let result = [];
-                                for (let i = 1; i <= totalPages; i++) {
-                                    result.push(<li className="page-item">
+                {
+                    (() => {
+                            let result = [];
+                            for (let i = 1; i <= totalPages; i++) {
+                                result.push(
+                                    <Pagination.Item>
                                         <Link to={redirectPage + '?page=' + i}>{i}</Link>
-                                    </li>)
-                                }
-                                return result;
+                                    </Pagination.Item>
+                                )
                             }
-                        )()
-                    }
+                            return result;
+                        }
+                    )()
+                }
 
-                    {
-                        (() => {
-                                if (page !== undefined && page + 1 <= totalPages - 1) {
-                                    return (
-                                        <li className="page-item">
-                                            <Link to={redirectPage + '?page=' + (page + 1)}>Next</Link>
-                                        </li>
-                                    );
-                                }
+                {
+                    (() => {
+                            if (page + 1 <= totalPages - 1) {
+                                return (
+                                    <Pagination.Next>
+                                        <Link to={redirectPage + '?page=' + (page + 1)}>Next</Link>
+                                    </Pagination.Next>
+                                );
                             }
-                        )()
-                    }
+                        }
+                    )()
+                }
 
-                </ul>
-            </nav>
+            </Pagination>
         );
     }
 
