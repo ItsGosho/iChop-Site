@@ -28,7 +28,7 @@ class PaginationNav extends Component {
                                     <Pagination.Prev>
                                         <Link to={redirectPage + '?page=' + (page - 1)}>Prev</Link>
                                     </Pagination.Prev>
-                                );
+                                ); 
                             }
                         }
                     )()
