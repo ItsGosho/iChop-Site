@@ -74,7 +74,7 @@ class ReportsPost extends Component {
                     }
                 </ReportTableWrapper>
 
-                <PaginationNav totalResults={reports.length} resultsPerPage={1}/>
+                <PaginationNav totalResults={reports.length} resultsPerPage={1} redirectPage={'/post/reports/all'}/>
             </Fragment>
         );
     }

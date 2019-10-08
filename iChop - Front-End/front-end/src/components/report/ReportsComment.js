@@ -73,7 +73,7 @@ class ReportsComment extends Component {
                         }))()
                     }
                 </ReportTableWrapper>
-                <PaginationNav totalResults={reports.length} resultsPerPage={1}/>
+                <PaginationNav totalResults={reports.length} resultsPerPage={1} redirectPage={'/comment/reports/all'}/>
             </Fragment>
         );
     }

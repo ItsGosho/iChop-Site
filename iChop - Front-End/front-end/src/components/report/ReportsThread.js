@@ -78,7 +78,7 @@ class ReportsThread extends Component {
                     }
                 </ReportTableWrapper>
 
-                <PaginationNav totalResults={reports.length} resultsPerPage={1}/>
+                <PaginationNav totalResults={reports.length} resultsPerPage={1} redirectPage={'/thread/reports/all'}/>
 
             </Fragment>
         );

@@ -10,10 +10,9 @@ class PaginationNav extends Component {
         // eslint-disable-next-line no-restricted-globals
         let page = qs.parse(location.search, {ignoreQueryPrefix: true}).page;
 
-        let {totalResults, resultsPerPage} = this.props;
+        let {totalResults, resultsPerPage,redirectPage} = this.props;
 
         let totalPages = totalResults / resultsPerPage;
-        let redirectPage = '/thread/reports/all';
 
         page = page === undefined ? 1 : Number(page);
         let lastPage = Math.ceil(totalResults / resultsPerPage);
@@ -28,7 +27,7 @@ class PaginationNav extends Component {
                                     <Pagination.Prev>
                                         <Link to={redirectPage + '?page=' + (page - 1)}>Prev</Link>
                                     </Pagination.Prev>
-                                ); 
+                                );
                             }
                         }
                     )()
