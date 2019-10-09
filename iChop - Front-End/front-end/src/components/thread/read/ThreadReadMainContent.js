@@ -36,10 +36,11 @@ class ThreadReadMainContent extends Component {
         let creatorMinecraftProfileUrl = RoutingURLs.PLAYER.PROFILE.VIEW.replace(':uuid', uuid);
 
         return (
-            <div class="card thread">
-                <div class="card-header">
-                    <div class="row">
-                        <div class="col-md-4">
+            <div className="card thread">
+
+                <div className="card-header">
+                    <div className="row">
+                        <div className="col-md-4">
                             <div align="center">
                                 <small>
                                     👤 <Link to={creatorProfileUrl}>{creatorUsername}</Link>
@@ -49,18 +50,19 @@ class ThreadReadMainContent extends Component {
                                 <img
                                     src={creatorAvatarUrl}
                                     onError={this.onUserAvatarError}
-                                    class="card-img-top thread-creator-avatar"/>
+                                    alt=''
+                                    className="card-img-top thread-creator-avatar"/>
                             </div>
                             <div align="center">
                                 <small>
                                     <small>💬</small>
-                                    <span class="totalComments">{creatorTotalComments}</span> total comments
+                                    <span className="totalComments">{creatorTotalComments}</span> total comments
                                 </small>
                             </div>
                         </div>
-                        <div class="col-md-8">
+                        <div className="col-md-8">
                             <div align="center">
-                                <div class="row">
+                                <div className="row">
 
                                     {
                                         (() => {
@@ -73,7 +75,7 @@ class ThreadReadMainContent extends Component {
                                                                 className="card-img-top thread-creator-minecraft_username"
                                                                 alt=''/>
                                                             <span
-                                                                style="font-size: 15px;font-family: Consolas">{creatorMinecraftAccountName}
+                                                                style={{'fontSize': '15px','fontFamily': 'Consolas'}}>{creatorMinecraftAccountName}
                                                             </span>
                                                         </Link>
                                                     </small>
@@ -87,6 +89,7 @@ class ThreadReadMainContent extends Component {
                         </div>
                     </div>
                 </div>
+
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-8">
