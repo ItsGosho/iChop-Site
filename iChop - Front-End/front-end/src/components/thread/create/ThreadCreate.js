@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import TextEditor from "../editor/TextEditor";
+import TextEditor from "../../editor/TextEditor";
 import './ThreadCreate.css'
 import ThreadCreateHelperButton from "./ThreadCreateHelperButton";
 
