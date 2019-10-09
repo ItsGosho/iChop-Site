@@ -71,6 +71,8 @@ class ThreadReadComments extends Component {
 
                         let creatorProfileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', creatorUsername);
                         let creatorAvatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', creatorUsername);
+                        let creatorMinecraftPorfileUrl = RoutingURLs.PLAYER.PROFILE.VIEW.replace(':uuid', creatorMinecraftAccountUUID);
+                        let creatorMinecraftAvatarUrl = ServerRoutingURLs.OUTSIDE.MINOTAR.MINECRAFT.HEAD.replace(':accountName', creatorMinecraftAccountName);
 
                         return (
                             <div className="card thread-comments">
@@ -113,169 +115,194 @@ class ThreadReadComments extends Component {
                                         </div>
 
                                         <div>
-                                            <th:block th:if="*{commentCreator.minecraftAccountName != null}">
-                                                <small>
-                                                    <a th:href="@{/player/{uuid}(uuid=*{commentCreator.minecraftAccountUUID})}"><img
-                                                        th:src="@{https://minotar.net/avatar/{minecraftAccountName}(minecraftAccountName=*{commentCreator.minecraftAccountName})}"
-                                                        className="card-img-top thread-comment-creator-minecraft_username"
-                                                        alt="Card image cap"><span
-                                                        th:text="*{commentCreator.minecraftAccountName}"></span></a>
-                                                </small>
-                                            </th:block>
-                                        </div>
-                                    </div>
 
-                                    <div className="content thread-comment-content">
-                                        <p className="card-text" th:utext="*{content}">
-
-                                        </p>
-                                    </div>
-
-                                </div>
-
-                                <div>
-                                    <div className="btn-group thread-comments-buttons">
-                                        <div className="thread-comments-button_options">
-                                            <th:block sec:authorize="isAuthenticated()">
-                                                <button
-                                                    th:if="${@commentServicesImp.findById(comment.id).creator.username.equals(#authentication.principal.username)} or ${#authorization.expression('hasAuthority(''MODERATOR'')')}"
-                                                    className="btn btn-sm dropdown-toggle" type="button"
-                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    <small>⚙</small>
-                                                    Options
-                                                </button>
-                                                <div className="dropdown-menu">
-                                                    <form className="dropdown-item"
-                                                          th:action="@{/comment/{id}/delete(id=*{id})}" method="post">
-                                                        <button
-                                                            th:if="${@commentServicesImp.findById(comment.id).creator.username.equals(#authentication.principal.username)} or ${#authorization.expression('hasAuthority(''MODERATOR'')')}"
-                                                            type="submit"
-                                                            className="btn btn-light btn-sm thread-delete_button">
-                                                            <small>❌</small>
-                                                            Delete
-                                                        </button>
-                                                    </form>
-                                                </div>
-                                                <div className="thread-comments-button_report">
-
-
-                                                    <button className="btn btn-sm" type="button"
-                                                            th:id="'thread-comment-report_button-'+*{id}">
-                                                        <small>⚠</small>
-                                                        Report
-                                                    </button>
-
-                                                    <script th:inline="javascript">
-                                                        run();
-
-                                                        function run() {
-
-                                                        let userUsername = /*[[${#authentication.name}]]*/ null;
-                                                        let commentId = /*[[*{id}]]*/ null;
-                                                        let isLoggedUser = /*[[${#authorization.expression('isAuthenticated()')}]]*/ null;
-
-                                                        hideReportButtonsOfCommentIfReportExists(userUsername, commentId, isLoggedUser);
+                                            {
+                                                (() => {
+                                                    if (creatorMinecraftAccountName !== undefined) {
+                                                        return (
+                                                            <small>
+                                                                <Link to={creatorMinecraftPorfileUrl}>
+                                                                    <img
+                                                                        src={creatorMinecraftAvatarUrl}
+                                                                        className="card-img-top thread-comment-creator-minecraft_username"
+                                                                        alt=' '/>
+                                                                    {creatorMinecraftAccountName}
+                                                                </Link>
+                                                            </small>
+                                                        );
                                                     }
-
-                                                    </script>
-
-                                                    <div className="modal" th:id="*{'modelReportCommentByThreadId-'+id}"
-                                                         role="dialog">
-                                                        <div className="modal-dialog">
-
-                                                            <div className="modal-content">
-                                                                <div className="modal-header">
-                                                                    <h4 className="modal-title">Report to the
-                                                                        kings:</h4>
-                                                                </div>
-                                                                <form method="post"
-                                                                      th:action="@{/comment/{id}/report(id=*{id})}">
-                                                                    <div className="modal-body">
-                                        <textarea className="thread-comments-modal"
-                                                  name="reason" placeholder="Reason..."></textarea>
-                                                                    </div>
-                                                                    <div className="modal-footer">
-                                                                        <button type="submit"
-                                                                                className="btn btn-default">
-                                                                            Report
-                                                                        </button>
-                                                                        <button type="button"
-                                                                                className="btn btn-default"
-                                                                                data-dismiss="modal">
-                                                                            Cancel
-                                                                        </button>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <script th:inline="javascript">
-                                                    run();
-
-                                                    function run() {
-                                                    let commentId = /*[[*{id}]]*/ null;
-                                                    bindShowModal($("#thread-comment-report_button-" + commentId), $("#modelReportCommentByThreadId-" + commentId));
-                                                }
-                                                </script>
-                                            </th:block>
-                                        </div>
-                                        <th:block sec:authorize="isAuthenticated()">
-                                            <div className="thread-comments-button_options"
-                                                 th:id="'thread-comment_react_buttons-'+*{id}">
-                                                <button className="btn btn-sm dropdown-toggle" type="button"
-                                                        data-toggle="dropdown" aria-haspopup="true"
-                                                        aria-expanded="false">
-                                                    <small>💡</small>
-                                                    React
-                                                </button>
-                                                <div className="dropdown-menu">
-                                                    <form th:action="@{/comment/{id}/reaction/like(id=*{id})}"
-                                                          method="post">
-                                                        <button className="btn btn-sm thread-right_side_button-react"
-                                                                type="submit">
-                                                            <small>👍🏻</small>
-                                                            Like
-                                                        </button>
-                                                    </form>
-                                                    <form th:action="@{/comment/{id}/reaction/dislike(id=*{id})}"
-                                                          method="post">
-                                                        <button className="btn btn-sm thread-right_side_button-react"
-                                                                type="submit">
-                                                            <small>👎🏻</small>
-                                                            Dislike
-                                                        </button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                            <script th:inline="javascript">
-                                                run();
-
-                                                function run() {
-
-                                                let userUsername = /*[[${#authentication.name}]]*/ null;
-                                                let commentId = /*[[*{id}]]*/ null;
-                                                let isLoggedUser = /*[[${#authorization.expression('isAuthenticated()')}]]*/ null;
-
-                                                hideCommentReactionButtonsIfAlreadyReacted(userUsername, commentId, isLoggedUser);
+                                                })()
                                             }
 
-                                            </script>
-                                        </th:block>
-                                    </div>
-                                </div>
+                                        </div>
+                                        <
+                                            /div>
 
-                            </div>
-                    );
-                    }))()
-                    }
+                                            <div className="content thread-comment-content">
+                                                <p className="card-text" th:utext="*{content}">
 
-                    </section>
-                    )
-                        ;
-                    }
+                                                </p>
+                                            </div>
 
-                }
+                                            < /div>
 
-                export default ThreadReadComments;
+                                                <div>
+                                                    <div className="btn-group thread-comments-buttons">
+                                                        <div className="thread-comments-button_options">
+                                                            <th:block sec:authorize="isAuthenticated()">
+                                                                <button
+                                                                    th:if="${@commentServicesImp.findById(comment.id).creator.username.equals(#authentication.principal.username)} or ${#authorization.expression('hasAuthority(''MODERATOR'')')}"
+                                                                    className="btn btn-sm dropdown-toggle"
+                                                                    type="button"
+                                                                    data-toggle="dropdown" aria-haspopup="true"
+                                                                    aria-expanded="false">
+                                                                    <small>⚙</small>
+                                                                    Options
+                                                                </button>
+                                                                <div className="dropdown-menu">
+                                                                    <form className="dropdown-item"
+                                                                          th:action="@{/comment/{id}/delete(id=*{id})}"
+                                                                          method="post">
+                                                                        <button
+                                                                            th:if="${@commentServicesImp.findById(comment.id).creator.username.equals(#authentication.principal.username)} or ${#authorization.expression('hasAuthority(''MODERATOR'')')}"
+                                                                            type="submit"
+                                                                            className="btn btn-light btn-sm thread-delete_button">
+                                                                            <small>❌</small>
+                                                                            Delete
+                                                                        </button>
+                                                                    </form>
+                                                                </div>
+                                                                <div className="thread-comments-button_report">
+
+
+                                                                    <button className="btn btn-sm" type="button"
+                                                                            th:id="'thread-comment-report_button-'+*{id}">
+                                                                        <small>⚠</small>
+                                                                        Report
+                                                                    </button>
+
+                                                                    <script th:inline="javascript">
+                                                                        run();
+
+                                                                        function run() {
+
+                                                                        let userUsername = /*[[${#authentication.name}]]*/ null;
+                                                                        let commentId = /*[[*{id}]]*/ null;
+                                                                        let isLoggedUser = /*[[${#authorization.expression('isAuthenticated()')}]]*/ null;
+
+                                                                        hideReportButtonsOfCommentIfReportExists(userUsername, commentId, isLoggedUser);
+                                                                    }
+
+                                                                    </script>
+
+                                                                    <div className="modal"
+                                                                         th:id="*{'modelReportCommentByThreadId-'+id}"
+                                                                         role="dialog">
+                                                                        <div className="modal-dialog">
+
+                                                                            <div className="modal-content">
+                                                                                <div className="modal-header">
+                                                                                    <h4 className="modal-title">Report
+                                                                                        to the
+                                                                                        kings:</h4>
+                                                                                </div>
+                                                                                <form method="post"
+                                                                                      th:action="@{/comment/{id}/report(id=*{id})}">
+                                                                                    <div className="modal-body">
+                                        <textarea className="thread-comments-modal"
+                                                  name="reason" placeholder="Reason..."></textarea>
+                                                                                    </div>
+                                                                                    <div
+                                                                                        className="modal-footer">
+                                                                                        <button type="submit"
+                                                                                                className="btn btn-default">
+                                                                                            Report
+                                                                                        </button>
+                                                                                        <button type="button"
+                                                                                                className="btn btn-default"
+                                                                                                data-dismiss="modal">
+                                                                                            Cancel
+                                                                                        </button>
+                                                                                    </div>
+                                                                                </form>
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <script th:inline="javascript">
+                                                                    run();
+
+                                                                    function run() {
+                                                                    let commentId = /*[[*{id}]]*/ null;
+                                                                    bindShowModal($("#thread-comment-report_button-" + commentId), $("#modelReportCommentByThreadId-" + commentId));
+                                                                }
+                                                                </script>
+                                                            </th:block>
+                                                        </div>
+                                                        <th:block sec:authorize="isAuthenticated()">
+                                                            <div className="thread-comments-button_options"
+                                                                 th:id="'thread-comment_react_buttons-'+*{id}">
+                                                                <button className="btn btn-sm dropdown-toggle"
+                                                                        type="button"
+                                                                        data-toggle="dropdown"
+                                                                        aria-haspopup="true"
+                                                                        aria-expanded="false">
+                                                                    <small>💡</small>
+                                                                    React
+                                                                </button>
+                                                                <div className="dropdown-menu">
+                                                                    <form
+                                                                        th:action="@{/comment/{id}/reaction/like(id=*{id})}"
+                                                                        method="post">
+                                                                        <button
+                                                                            className="btn btn-sm thread-right_side_button-react"
+                                                                            type="submit">
+                                                                            <small>👍🏻</small>
+                                                                            Like
+                                                                        </button>
+                                                                    </form>
+                                                                    <form
+                                                                        th:action="@{/comment/{id}/reaction/dislike(id=*{id})}"
+                                                                        method="post">
+                                                                        <button
+                                                                            className="btn btn-sm thread-right_side_button-react"
+                                                                            type="submit">
+                                                                            <small>👎🏻</small>
+                                                                            Dislike
+                                                                        </button>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                            <script th:inline="javascript">
+                                                                run();
+
+                                                                function run() {
+
+                                                                let userUsername = /*[[${#authentication.name}]]*/ null;
+                                                                let commentId = /*[[*{id}]]*/ null;
+                                                                let isLoggedUser = /*[[${#authorization.expression('isAuthenticated()')}]]*/ null;
+
+                                                                hideCommentReactionButtonsIfAlreadyReacted(userUsername, commentId, isLoggedUser);
+                                                            }
+
+                                                            </script>
+                                                        </th:block>
+                                                    </div>
+                                                </div>
+
+                                                < /div>
+                                                    )
+                                                    ;
+                                                    }
+                                                    ))()
+                                                    }
+
+                                                </section>
+                                                )
+                                                ;
+                                                }
+
+                                                }
+
+                                                export default ThreadReadComments;
