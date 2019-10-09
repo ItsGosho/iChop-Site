@@ -3,7 +3,6 @@ import ReportTableWrapper from "./wrappers/ReportTableWrapper";
 import RoutingURLs from "../../constants/routing.constants";
 import ReportTableColumnsWrapper from "./wrappers/ReportTableColumnsWrapper";
 import {Link} from "react-router-dom";
-import Pagination from "react-bootstrap/Pagination";
 import PaginationNav from "./PaginationNav";
 
 
