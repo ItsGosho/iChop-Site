@@ -3,9 +3,20 @@ import ServerRoutingURLs from "../../../constants/server.routing.urls";
 import formatDate from 'dateformat';
 import {Link} from "react-router-dom";
 import RoutingURLs from "../../../constants/routing.constants";
+import FrontEndResourcesRoutingURLs from "../../../constants/front-end.resources.routings";
 
 class ThreadReadMainContent extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.onUserAvatarError = this.onUserAvatarError.bind(this);
+    }
+
+    onUserAvatarError(event) {
+        event.target.onerror = null;
+        event.target.src = FrontEndResourcesRoutingURLs.USER.AVATAR;
+    }
 
     render() {
         let creatorUsername = 'ItsGosho';
