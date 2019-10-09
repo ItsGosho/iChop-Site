@@ -128,170 +128,167 @@ class ThreadReadMainContent extends Component {
                             </small>
                         </div>
                     </div>
+
+                    <div className="dropdown-divider"/>
+
+                    <div className="content">
+                        <p className="card-text thread-content">{content}</p>
+                    </div>
+
+
                     < div
-                        class
-                            ="dropdown-divider">
-                        < /div>
-                            <div className="content" th:id="'content' + ${thread.id}">
-                                <p className="card-text thread-content" th:utext="*{content}">
+                        className
+                            ="row">
+                        < div
+                            className
+                                ="col-md-8 thread-random_separation">
+                            < /div>
+                        </div>
 
-                                </p>
-                            </div>
-
-
-                            < div
-                                className
-                                    ="row">
-                                < div
-                                    className
-                                        ="col-md-8 thread-random_separation">
-                                    < /div>
-                                </div>
-
-                                <div className="row">
-                                    <div className="col-md-12">
-                                        <div className="btn-group">
-                                            <button sec:authorize="isAuthenticated() && hasAuthority('MODERATOR')"
-                                                    className="btn btn-secondary btn-sm dropdown-toggle" type="button"
-                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <small>⚙</small>
-                                                Options
+                        <div className="row">
+                            <div className="col-md-12">
+                                <div className="btn-group">
+                                    <button sec:authorize="isAuthenticated() && hasAuthority('MODERATOR')"
+                                            className="btn btn-secondary btn-sm dropdown-toggle" type="button"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <small>⚙</small>
+                                        Options
+                                    </button>
+                                    <div className="dropdown-menu">
+                                        <form className="dropdown-item"
+                                              th:action="@{/thread/{id}/delete(id=*{id})}"
+                                              method="post">
+                                            <button
+                                                sec:authorize="isAuthenticated() && hasAuthority('MODERATOR')"
+                                                type="submit"
+                                                className="btn btn-light btn-sm thread-delete_button">
+                                                <small>❌</small>
+                                                Delete
                                             </button>
-                                            <div className="dropdown-menu">
-                                                <form className="dropdown-item"
-                                                      th:action="@{/thread/{id}/delete(id=*{id})}"
-                                                      method="post">
-                                                    <button
-                                                        sec:authorize="isAuthenticated() && hasAuthority('MODERATOR')"
-                                                        type="submit"
-                                                        className="btn btn-light btn-sm thread-delete_button">
-                                                        <small>❌</small>
-                                                        Delete
-                                                    </button>
-                                                </form>
-                                            </div>
+                                        </form>
+                                    </div>
 
-                                            <button th:id="'thread-report_button-'+*{id}"
-                                                    sec:authorize="isAuthenticated()"
-                                                    className="btn btn-sm thread-report_button"
-                                                    type="button" id="button-reportThread-readThread">
-                                                <small>⚠</small>
-                                                Report
-                                            </button>
+                                    <button th:id="'thread-report_button-'+*{id}"
+                                            sec:authorize="isAuthenticated()"
+                                            className="btn btn-sm thread-report_button"
+                                            type="button" id="button-reportThread-readThread">
+                                        <small>⚠</small>
+                                        Report
+                                    </button>
 
-                                            <script th:inline="javascript">
-                                                run();
+                                    <script th:inline="javascript">
+                                        run();
 
-                                                function run() {
+                                        function run() {
 
-                                                let userUsername = /*[[${#authentication.name}]]*/ null;
-                                                let threadId = /*[[*{id}]]*/ null;
-                                                let isLoggedUser = /*[[${#authorization.expression('isAuthenticated()')}]]*/ null;
+                                        let userUsername = /*[[${#authentication.name}]]*/ null;
+                                        let threadId = /*[[*{id}]]*/ null;
+                                        let isLoggedUser = /*[[${#authorization.expression('isAuthenticated()')}]]*/ null;
 
-                                                hideReportButtonsOfThreadIfReportExists(userUsername, threadId, isLoggedUser);
-                                            }
+                                        hideReportButtonsOfThreadIfReportExists(userUsername, threadId, isLoggedUser);
+                                    }
 
-                                            </script>
+                                    </script>
 
 
-                                            <div sec:authorize="isAuthenticated()" className="modal" role="dialog"
-                                                 th:id="*{'modelReportThreadByThreadId-'+id}">
-                                                <div className="modal-dialog">
+                                    <div sec:authorize="isAuthenticated()" className="modal" role="dialog"
+                                         th:id="*{'modelReportThreadByThreadId-'+id}">
+                                        <div className="modal-dialog">
 
-                                                    <div className="modal-content">
-                                                        <div className="modal-header">
-                                                            <h4 className="modal-title">Report to the kings:</h4>
-                                                        </div>
-                                                        <form method="post"
-                                                              th:action="@{/thread/{id}/report(id=*{id})}">
-                                                            <div className="modal-body">
+                                            <div className="modal-content">
+                                                <div className="modal-header">
+                                                    <h4 className="modal-title">Report to the kings:</h4>
+                                                </div>
+                                                <form method="post"
+                                                      th:action="@{/thread/{id}/report(id=*{id})}">
+                                                    <div className="modal-body">
     <textarea className="thread-modal_report-textarea"
               name="reason" placeholder="Reason..."></textarea>
-                                                            </div>
-                                                            <div className="modal-footer">
-                                                                <button type="submit" className="btn btn-default">Report
-                                                                </button>
-                                                                <button type="button" className="btn btn-default"
-                                                                        data-dismiss="modal">
-                                                                    Cancel
-                                                                </button>
-                                                            </div>
-                                                        </form>
                                                     </div>
-
-                                                    <script th:inline="javascript">
-                                                        run();
-
-                                                        function run() {
-                                                        let threadId = /*[[*{id}]]*/ null;
-                                                        bindShowModal($("#thread-report_button-" + threadId), $("#modelReportThreadByThreadId-" + threadId));
-                                                    }
-                                                    </script>
-
-                                                </div>
+                                                    <div className="modal-footer">
+                                                        <button type="submit" className="btn btn-default">Report
+                                                        </button>
+                                                        <button type="button" className="btn btn-default"
+                                                                data-dismiss="modal">
+                                                            Cancel
+                                                        </button>
+                                                    </div>
+                                                </form>
                                             </div>
-
-                                        </div>
-                                        <div className="btn-group thread-right_side_buttons">
-                                            <button sec:authorize="isAuthenticated()"
-                                                    id="button-commentThread-readThreadPage"
-                                                    className="btn btn-sm" type="button"
-                                                    aria-haspopup="true" aria-expanded="false">
-                                                <small>💬</small>
-                                                Comment
-                                            </button>
-                                            <button th:id="'thread-reaction_buttons-'+*{id}"
-                                                    sec:authorize="isAuthenticated()"
-                                                    className="btn btn-sm dropdown-toggle"
-                                                    type="button"
-                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <small>💡</small>
-                                                React
-                                            </button>
 
                                             <script th:inline="javascript">
                                                 run();
 
                                                 function run() {
-
-                                                let userUsername = /*[[${#authentication.name}]]*/ null;
                                                 let threadId = /*[[*{id}]]*/ null;
-                                                let isLoggedUser = /*[[${#authorization.expression('isAuthenticated()')}]]*/ null;
-
-                                                hideThreadReactionButtonsIfAlreadyReacted(userUsername, threadId, isLoggedUser);
+                                                bindShowModal($("#thread-report_button-" + threadId), $("#modelReportThreadByThreadId-" + threadId));
                                             }
-
                                             </script>
 
-                                            <div className="dropdown-menu">
-                                                <form th:action="@{/thread/{id}/reaction/like(id=*{id})}" method="post">
-                                                    <button sec:authorize="isAuthenticated()"
-                                                            className="btn btn-sm thread-right_side_button-react"
-                                                            type="submit">
-                                                        <small>👍🏻</small>
-                                                        Like
-                                                    </button>
-                                                </form>
-                                                <form th:action="@{/thread/{id}/reaction/dislike(id=*{id})}"
-                                                      method="post">
-                                                    <button sec:authorize="isAuthenticated()"
-                                                            className="btn btn-sm thread-right_side_button-react"
-                                                            type="submit">
-                                                        <small>👎🏻</small>
-                                                        Dislike
-                                                    </button>
-                                                </form>
-                                            </div>
                                         </div>
+                                    </div>
+
+                                </div>
+                                <div className="btn-group thread-right_side_buttons">
+                                    <button sec:authorize="isAuthenticated()"
+                                            id="button-commentThread-readThreadPage"
+                                            className="btn btn-sm" type="button"
+                                            aria-haspopup="true" aria-expanded="false">
+                                        <small>💬</small>
+                                        Comment
+                                    </button>
+                                    <button th:id="'thread-reaction_buttons-'+*{id}"
+                                            sec:authorize="isAuthenticated()"
+                                            className="btn btn-sm dropdown-toggle"
+                                            type="button"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <small>💡</small>
+                                        React
+                                    </button>
+
+                                    <script th:inline="javascript">
+                                        run();
+
+                                        function run() {
+
+                                        let userUsername = /*[[${#authentication.name}]]*/ null;
+                                        let threadId = /*[[*{id}]]*/ null;
+                                        let isLoggedUser = /*[[${#authorization.expression('isAuthenticated()')}]]*/ null;
+
+                                        hideThreadReactionButtonsIfAlreadyReacted(userUsername, threadId, isLoggedUser);
+                                    }
+
+                                    </script>
+
+                                    <div className="dropdown-menu">
+                                        <form th:action="@{/thread/{id}/reaction/like(id=*{id})}" method="post">
+                                            <button sec:authorize="isAuthenticated()"
+                                                    className="btn btn-sm thread-right_side_button-react"
+                                                    type="submit">
+                                                <small>👍🏻</small>
+                                                Like
+                                            </button>
+                                        </form>
+                                        <form th:action="@{/thread/{id}/reaction/dislike(id=*{id})}"
+                                              method="post">
+                                            <button sec:authorize="isAuthenticated()"
+                                                    className="btn btn-sm thread-right_side_button-react"
+                                                    type="submit">
+                                                <small>👎🏻</small>
+                                                Dislike
+                                            </button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
-                            <
-                                /div>
-                                )
-                                ;
-                                }
+                        </div>
+                    </div>
+                    <
+                        /div>
+                        )
+                        ;
+                        }
 
-                                }
+                        }
 
-                                export default ThreadReadMainContent;
+                        export default ThreadReadMainContent;
