@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+import ThreadReadMainContent from "./ThreadReadMainContent";
+import ThreadReadAddComment from "./ThreadReadAddComment";
+import ThreadReadComments from "./ThreadReadComments";
 
 class ThreadRead extends Component {
 
@@ -8,21 +11,13 @@ class ThreadRead extends Component {
         return (
             <div id="thread-view" className="container d-flex justify-content-center align-items-center">
                 <div className="row">
+                    <div className="col-xs-6">
+                        
+                        <ThreadReadMainContent/>
+                        <ThreadReadAddComment/>
+                        <ThreadReadComments/>
 
-                    <th:block th:object="${thread}">
-                        <div className="col-xs-6">
-
-
-                            <th:block th:insert="thread/partials/read/thread-main-content"></th:block>
-
-                            <th:block th:insert="thread/partials/read/add-comment-section"></th:block>
-
-                            <th:block th:insert="thread/partials/read/thread-all-comments"></th:block>
-
-
-                        </div>
-                    </th:block>
-
+                    </div>
                 </div>
             </div>
         );
