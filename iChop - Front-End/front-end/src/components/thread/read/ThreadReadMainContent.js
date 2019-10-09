@@ -1,9 +1,23 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
+import ServerRoutingURLs from "../../../constants/server.routing.urls";
+import formatDate from 'dateformat';
 
 class ThreadReadMainContent extends Component {
 
 
     render() {
+        let creatorUsername = 'ItsGosho';
+        let creatorAvatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', creatorUsername);
+        let creatorTotalComments = 15;
+        let createdOn = formatDate(new Date(), 'dd MMM,yyyy');
+        let postedAt = formatDate(new Date(), 'HH:mm');
+        let totalViews = 45;
+        let totalReactions = 15;
+        let totalComments = 3;
+        let content = '<center><h1>Hi!</h1></center>';
+
+        let creatorMinecraftAccountName = 'ItsGosho';
+        let creatorMinecraftAvatarUrl = ServerRoutingURLs.OUTSIDE.MINOTAR.MINECRAFT.HEAD.replace(':accountName', creatorMinecraftAccountName);
 
         return (
             <div class="card thread">
@@ -15,9 +29,10 @@ class ThreadReadMainContent extends Component {
                                             th:text="*{creator.username}"></a></small>
                             </div>
                             <div align="center">
-                                <img th:src="@{http://localhost:8001/data/user/{username}/avatar(username=*{creator.username})}"
-                                     onerror="this.onerror = null;this.src = '/res/img/avatar-user.png'"
-                                     class="card-img-top thread-creator-avatar">
+                                <img
+                                    th:src="@{http://localhost:8001/data/user/{username}/avatar(username=*{creator.username})}"
+                                    onerror="this.onerror = null;this.src = '/res/img/avatar-user.png'"
+                                    class="card-img-top thread-creator-avatar">
                             </div>
                             <div align="center">
                                 <small>
@@ -60,7 +75,8 @@ class ThreadReadMainContent extends Component {
                     </div>
                     <div class="row">
                         <div class="col-md-8">
-                            <small>Posted</span></a>
+                            <small>Posted</span>
+                        </a>
                         at
                         <span
                             class="postTime" th:text="*{#temporals.format(createdOn, 'HH:mm')}"></span>
@@ -219,7 +235,8 @@ class ThreadReadMainContent extends Component {
         </div>
     </div>
     </div>
-        );
+    )
+        ;
     }
 
 }

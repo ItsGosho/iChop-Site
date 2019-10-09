@@ -12,7 +12,7 @@ class ThreadRead extends Component {
             <div id="thread-view" className="container d-flex justify-content-center align-items-center">
                 <div className="row">
                     <div className="col-xs-6">
-                        
+
                         <ThreadReadMainContent/>
                         <ThreadReadAddComment/>
                         <ThreadReadComments/>
