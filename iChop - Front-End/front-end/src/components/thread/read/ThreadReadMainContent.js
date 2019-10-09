@@ -19,6 +19,7 @@ class ThreadReadMainContent extends Component {
     }
 
     render() {
+        let threadId = 'threadId123';
         let creatorUsername = 'ItsGosho';
         let creatorProfileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', creatorUsername);
         let creatorAvatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', creatorUsername);
@@ -30,6 +31,7 @@ class ThreadReadMainContent extends Component {
         let totalReactions = 15;
         let totalComments = 3;
         let content = '<center><h1>Hi!</h1></center>';
+        let threadCommentsFragmentUrl = RoutingURLs.THREAD.VIEW.replace(':id', threadId) + '#section-thread_read_comments';
 
         let uuid = '8ed20904-3262-401a-901a-1946504d2eea';
         let creatorMinecraftAccountName = 'ItsGosho';
@@ -121,9 +123,10 @@ class ThreadReadMainContent extends Component {
                         <div className="col-md-4">
                             <small className="thread-total_comments">
                                 <small>💬</small>
-                                <a th:href="@{/thread/{id}/read#section-thread_read_comments(id=*{id})}"><span
-                                    className="totalComments" th:text="*{totalComments}"></span></a>
-                                Comments
+                                <Link to={threadCommentsFragmentUrl}>
+                                    <span className="totalComments">{totalComments}</span>
+                                </Link>
+                                <span>Comments</span>
                             </small>
                         </div>
                     </div>
