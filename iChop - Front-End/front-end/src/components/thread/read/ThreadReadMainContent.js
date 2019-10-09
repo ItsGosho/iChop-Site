@@ -4,6 +4,7 @@ import formatDate from 'dateformat';
 import {Link} from "react-router-dom";
 import RoutingURLs from "../../../constants/routing.constants";
 import FrontEndResourcesRoutingURLs from "../../../constants/front-end.resources.routings";
+import Interweave from "interweave";
 
 class ThreadReadMainContent extends Component {
 
@@ -139,7 +140,9 @@ class ThreadReadMainContent extends Component {
                     <div className="dropdown-divider"/>
 
                     <div className="content">
-                        <p className="card-text thread-content">{content}</p>
+                        <p className="card-text thread-content">
+                            <Interweave content={content} />
+                        </p>
                     </div>
 
 
