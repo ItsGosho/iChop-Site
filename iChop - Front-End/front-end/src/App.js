@@ -6,6 +6,7 @@ import ThreadCreate from "./components/thread/create/ThreadCreate";
 import PlayerLinkAccount from "./components/player/PlayerLinkAccount";
 import PlayerProfile from "./components/player/PlayerProfile";
 import Reports from "./components/report/Reports";
+import ThreadRead from "./components/thread/read/ThreadRead";
 
 function App() {
     return (
@@ -13,7 +14,7 @@ function App() {
             <Navbar/>
 
             <div style={{'marginTop': '75px'}}>
-                <Reports/>
+                <ThreadRead/>
             </div>
 
             <Footer/>

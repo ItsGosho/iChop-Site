@@ -25,7 +25,7 @@ class ThreadReadMainContent extends Component {
         let creatorAvatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', creatorUsername);
         let creatorTotalComments = 15;
         let title = 'Abra kadabra';
-        let createdOn = formatDate(new Date(), 'dd MMM,yyyy');
+        let createdOn = formatDate(new Date(), 'dd mmm,yyyy');
         let postedAt = formatDate(new Date(), 'HH:mm');
         let totalViews = 45;
         let totalReactions = 15;

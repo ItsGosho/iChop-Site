@@ -311,4 +311,4 @@ class ThreadReadComments extends Component {
     }
 }
 
-return ThreadReadComments;
+export default ThreadReadComments;
