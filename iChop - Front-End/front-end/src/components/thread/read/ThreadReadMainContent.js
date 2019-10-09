@@ -4,6 +4,7 @@ import formatDate from 'dateformat';
 import {Link} from "react-router-dom";
 import RoutingURLs from "../../../constants/routing.constants";
 import FrontEndResourcesRoutingURLs from "../../../constants/front-end.resources.routings";
+import Roles from "../../../constants/roles.constants";
 
 class ThreadReadMainContent extends Component {
 
@@ -37,6 +38,9 @@ class ThreadReadMainContent extends Component {
         let creatorMinecraftAccountName = 'ItsGosho';
         let creatorMinecraftAvatarUrl = ServerRoutingURLs.OUTSIDE.MINOTAR.MINECRAFT.HEAD.replace(':accountName', creatorMinecraftAccountName);
         let creatorMinecraftProfileUrl = RoutingURLs.PLAYER.PROFILE.VIEW.replace(':uuid', uuid);
+
+        let isAuthenticated = true;
+        let hasRoleModerator = true;
 
         return (
             <div className="card thread">
@@ -136,24 +140,39 @@ class ThreadReadMainContent extends Component {
                     </div>
 
 
-                    < div
-                        className
-                            ="row">
-                        < div
-                            className
-                                ="col-md-8 thread-random_separation">
-                            < /div>
-                        </div>
+                    <div className="row">
+                        <div className="col-md-8 thread-random_separation"/>
 
                         <div className="row">
                             <div className="col-md-12">
                                 <div className="btn-group">
+
+                                    {
+                                        (() => {
+
+                                            if (isAuthenticated && hasRoleModerator) {
+                                                return (
+                                                    <button
+                                                        className="btn btn-secondary btn-sm dropdown-toggle"
+                                                        type="button"
+                                                        data-toggle="dropdown" aria-haspopup="true"
+                                                        aria-expanded="false">
+                                                        <small>⚙</small>
+                                                        <span>Options</span>
+                                                    </button>
+                                                );
+                                            }
+
+                                        })()
+                                    }
+
                                     <button sec:authorize="isAuthenticated() && hasAuthority('MODERATOR')"
                                             className="btn btn-secondary btn-sm dropdown-toggle" type="button"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <small>⚙</small>
                                         Options
                                     </button>
+
                                     <div className="dropdown-menu">
                                         <form className="dropdown-item"
                                               th:action="@{/thread/{id}/delete(id=*{id})}"
@@ -202,8 +221,8 @@ class ThreadReadMainContent extends Component {
                                                 <form method="post"
                                                       th:action="@{/thread/{id}/report(id=*{id})}">
                                                     <div className="modal-body">
-    <textarea className="thread-modal_report-textarea"
-              name="reason" placeholder="Reason..."></textarea>
+                                                        <textarea className="thread-modal_report-textarea"
+                                                                  name="reason" placeholder="Reason..."></textarea>
                                                     </div>
                                                     <div className="modal-footer">
                                                         <button type="submit" className="btn btn-default">Report
@@ -227,8 +246,8 @@ class ThreadReadMainContent extends Component {
 
                                         </div>
                                     </div>
-
                                 </div>
+
                                 <div className="btn-group thread-right_side_buttons">
                                     <button sec:authorize="isAuthenticated()"
                                             id="button-commentThread-readThreadPage"
