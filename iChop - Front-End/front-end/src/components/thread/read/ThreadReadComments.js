@@ -4,6 +4,7 @@ import RoutingURLs from "../../../constants/routing.constants";
 import FrontEndResourcesRoutingURLs from "../../../constants/front-end.resources.routings";
 import ServerRoutingURLs from "../../../constants/server.routing.urls";
 import {Link} from "react-router-dom";
+import Interweave from "interweave";
 
 class ThreadReadComments extends Component {
 
@@ -141,7 +142,7 @@ class ThreadReadComments extends Component {
 
                                     <div className="content thread-comment-content">
                                         <p className="card-text">
-                                            {content}
+                                            <Interweave content={content} />
                                         </p>
                                     </div>
 
