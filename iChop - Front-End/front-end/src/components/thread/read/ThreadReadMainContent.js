@@ -61,7 +61,7 @@ class ThreadReadMainContent extends Component {
                                     src={creatorAvatarUrl}
                                     onError={this.onUserAvatarError}
                                     alt=''
-                                    style={{'width':'50px','height':'50px'}}
+                                    style={{'width': '50px', 'height': '50px'}}
                                     className="card-img-top thread-creator-avatar"/>
                             </div>
                             <div align="center">
@@ -83,7 +83,7 @@ class ThreadReadMainContent extends Component {
                                                         <Link to={creatorMinecraftProfileUrl}>
                                                             <img
                                                                 src={creatorMinecraftAvatarUrl}
-                                                                style={{'width':'22px','height':'22px'}}
+                                                                style={{'width': '22px', 'height': '22px'}}
                                                                 alt=''/>
                                                             <span
                                                                 style={{
@@ -128,11 +128,10 @@ class ThreadReadMainContent extends Component {
 
                         <div className="col-md-4">
                             <small className="thread-total_comments">
-                                <small>💬</small>
                                 <Link to={threadCommentsFragmentUrl}>
                                     <span className="totalComments">{totalComments}</span>
                                 </Link>
-                                <span>Comments</span>
+                                <small>💬</small>
                             </small>
                         </div>
                     </div>
@@ -141,7 +140,7 @@ class ThreadReadMainContent extends Component {
 
                     <div className="content">
                         <p className="card-text thread-content">
-                            <Interweave content={content} />
+                            <Interweave content={content}/>
                         </p>
                     </div>
 
@@ -253,7 +252,7 @@ class ThreadReadMainContent extends Component {
                                                         className="btn btn-sm" type="button"
                                                         aria-haspopup="true" aria-expanded="false">
                                                         <small>💬</small>
-                                                        Comment
+                                                        <span>Comment</span>
                                                     </button>
 
                                                     <button className="btn btn-sm dropdown-toggle"
