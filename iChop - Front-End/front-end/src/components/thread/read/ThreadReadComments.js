@@ -1,8 +1,22 @@
 import React, {Component} from 'react';
 import dateFormat from 'dateformat'
+import RoutingURLs from "../../../constants/routing.constants";
+import FrontEndResourcesRoutingURLs from "../../../constants/front-end.resources.routings";
+import ServerRoutingURLs from "../../../constants/server.routing.urls";
+import {Link} from "react-router-dom";
 
 class ThreadReadComments extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.onUserAvatarError = this.onUserAvatarError.bind(this);
+    }
+
+    onUserAvatarError(event) {
+        event.target.onerror = null;
+        event.target.src = FrontEndResourcesRoutingURLs.USER.AVATAR;
+    }
 
     render() {
 
@@ -44,6 +58,19 @@ class ThreadReadComments extends Component {
 
                 {
                     (() => comments.map((comment, index) => {
+                        let {
+                            createdOn,
+                            totalLikes,
+                            totalDislikes,
+                            content,
+                            creatorUsername,
+                            creatorTotalComments,
+                            creatorMinecraftAccountName,
+                            creatorMinecraftAccountUUID
+                        } = comment;
+
+                        let creatorProfileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', creatorUsername);
+                        let creatorAvatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', creatorUsername);
 
                         return (
                             <div className="card thread-comments">
@@ -51,16 +78,15 @@ class ThreadReadComments extends Component {
                                 <div>
                                     <small className="thread-comments-date_likes_dislikes">
                                         <small className="dateIcon">📅</small>
-                                        <small className="date"
-                                               th:text="*{#temporals.format(createdOn, 'dd MMM,yyyy')}"></small>
+                                        <small className="date">{createdOn}</small>
                                     </small>
                                     <small className="thread-comments-date_likes_dislikes">
                                         <small>👍</small>
-                                        <span className="totalComments" th:text="*{totalLikes}">0</span>
+                                        <span className="totalComments">{totalLikes}</span>
                                     </small>
                                     <small className="thread-comments-date_likes_dislikes">
                                         <small>👎</small>
-                                        <span className="totalComments" th:text="*{totalDislikes}">0</span>
+                                        <span className="totalComments">{totalDislikes}</span>
                                     </small>
                                 </div>
 
@@ -68,22 +94,21 @@ class ThreadReadComments extends Component {
                                     <div className="col-md-3 thread-comment-creator_info_section">
                                         <div>
                                             <img
-                                                th:src="@{http://localhost:8001/data/user/{username}/avatar(username=*{commentCreator.username})}"
-                                                alt="example"
-                                                onError="this.onerror = null;this.src = '/res/img/avatar-user.png'"
-                                                className="card-img-top thread-comment-creator_avatar">
+                                                src={creatorAvatarUrl}
+                                                alt=' '
+                                                onError={this.onUserAvatarError}
+                                                className="card-img-top thread-comment-creator_avatar"/>
                                         </div>
                                         <div>
-                                            <small>👤<a
-                                                th:href="@{/user/{username}/profile(username=*{commentCreator.username})}"
-                                                th:text="*{commentCreator.username}"></a></small>
+                                            <small>
+                                                👤<Link to={creatorProfileUrl}>{creatorUsername}</Link>
+                                            </small>
                                         </div>
                                         <div>
                                             <small>
                                                 <small>💬</small>
-                                                <span className="totalComments"
-                                                      th:text="*{commentCreator.totalComments}"></span> total
-                                                comments
+                                                <span
+                                                    className="totalComments">{creatorTotalComments} total comments</span>
                                             </small>
                                         </div>
 
@@ -160,7 +185,8 @@ class ThreadReadComments extends Component {
 
                                                             <div className="modal-content">
                                                                 <div className="modal-header">
-                                                                    <h4 className="modal-title">Report to the kings:</h4>
+                                                                    <h4 className="modal-title">Report to the
+                                                                        kings:</h4>
                                                                 </div>
                                                                 <form method="post"
                                                                       th:action="@{/comment/{id}/report(id=*{id})}">
@@ -169,10 +195,12 @@ class ThreadReadComments extends Component {
                                                   name="reason" placeholder="Reason..."></textarea>
                                                                     </div>
                                                                     <div className="modal-footer">
-                                                                        <button type="submit" className="btn btn-default">
+                                                                        <button type="submit"
+                                                                                className="btn btn-default">
                                                                             Report
                                                                         </button>
-                                                                        <button type="button" className="btn btn-default"
+                                                                        <button type="button"
+                                                                                className="btn btn-default"
                                                                                 data-dismiss="modal">
                                                                             Cancel
                                                                         </button>
@@ -197,7 +225,8 @@ class ThreadReadComments extends Component {
                                             <div className="thread-comments-button_options"
                                                  th:id="'thread-comment_react_buttons-'+*{id}">
                                                 <button className="btn btn-sm dropdown-toggle" type="button"
-                                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        data-toggle="dropdown" aria-haspopup="true"
+                                                        aria-expanded="false">
                                                     <small>💡</small>
                                                     React
                                                 </button>
@@ -238,14 +267,15 @@ class ThreadReadComments extends Component {
                                 </div>
 
                             </div>
-                        );
+                    );
                     }))()
+                    }
+
+                    </section>
+                    )
+                        ;
+                    }
+
                 }
 
-            </section>
-        );
-    }
-
-}
-
-export default ThreadReadComments;
+                export default ThreadReadComments;
