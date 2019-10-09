@@ -4,7 +4,6 @@ import formatDate from 'dateformat';
 import {Link} from "react-router-dom";
 import RoutingURLs from "../../../constants/routing.constants";
 import FrontEndResourcesRoutingURLs from "../../../constants/front-end.resources.routings";
-import Roles from "../../../constants/roles.constants";
 
 class ThreadReadMainContent extends Component {
 
@@ -244,6 +243,7 @@ class ThreadReadMainContent extends Component {
                                         if (isAuthenticated) {
                                             return (
                                                 <div className="btn-group thread-right_side_buttons">
+
                                                     <button
                                                         id="button-commentThread-readThreadPage"
                                                         className="btn btn-sm" type="button"
@@ -251,6 +251,7 @@ class ThreadReadMainContent extends Component {
                                                         <small>💬</small>
                                                         Comment
                                                     </button>
+
                                                     <button className="btn btn-sm dropdown-toggle"
                                                             type="button"
                                                             data-toggle="dropdown" aria-haspopup="true"
@@ -279,7 +280,7 @@ class ThreadReadMainContent extends Component {
                                                                     </div>
                                                                 );
                                                             }
-                                                    })()
+                                                        })()
                                                     }
 
                                                 </div>
