@@ -59,7 +59,7 @@ class ThreadReadMainContent extends Component {
                             <div align="center">
                                 <small>
                                     <small>💬</small>
-                                    <span className="totalComments">{creatorTotalComments}</span> total comments
+                                    <span className="totalComments">{creatorTotalComments} total comments</span>
                                 </small>
                             </div>
                         </div>
@@ -113,9 +113,7 @@ class ThreadReadMainContent extends Component {
                     <div className="row">
                         <div className="col-md-8">
                             <small>
-                                <span className="postTime">Posted at {postedAt}</span>
-                                (<span className="totalViews">{totalViews}</span>👀 / <span
-                                className="totalLikes">{totalReactions}</span>👍 )
+                                <span>Posted at {postedAt} ( {totalViews}👀 / {totalReactions}👍 )</span>
                             </small>
                         </div>
 
