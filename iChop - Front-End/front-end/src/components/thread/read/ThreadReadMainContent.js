@@ -45,9 +45,9 @@ class ThreadReadMainContent extends Component {
                             </div>
                             <div align="center">
                                 <img
-                                    th:src="@{http://localhost:8001/data/user/{username}/avatar(username=*{creator.username})}"
-                                    onerror="this.onerror = null;this.src = '/res/img/avatar-user.png'"
-                                    class="card-img-top thread-creator-avatar">
+                                    src={creatorAvatarUrl}
+                                    onError={this.onUserAvatarError}
+                                    class="card-img-top thread-creator-avatar"/>
                             </div>
                             <div align="center">
                                 <small>
