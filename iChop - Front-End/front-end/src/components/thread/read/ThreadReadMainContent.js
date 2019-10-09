@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import ServerRoutingURLs from "../../../constants/server.routing.urls";
 import formatDate from 'dateformat';
 import {Link} from "react-router-dom";
@@ -41,6 +41,8 @@ class ThreadReadMainContent extends Component {
 
         let isAuthenticated = true;
         let hasRoleModerator = true;
+
+        let isReportedThreadAlready = false;
 
         return (
             <div className="card thread">
@@ -184,65 +186,55 @@ class ThreadReadMainContent extends Component {
 
                                     </div>
 
-                                    <button th:id="'thread-report_button-'+*{id}"
-                                            sec:authorize="isAuthenticated()"
-                                            className="btn btn-sm thread-report_button"
-                                            type="button" id="button-reportThread-readThread">
-                                        <small>⚠</small>
-                                        Report
-                                    </button>
+                                    {
+                                        (() => {
+                                            if (isAuthenticated && !isReportedThreadAlready) {
+                                                return (
+                                                    <Fragment>
 
-                                    <script th:inline="javascript">
-                                        run();
+                                                        <button className="btn btn-sm thread-report_button"
+                                                                type="button" id="button-reportThread-readThread">
+                                                            <small>⚠</small>
+                                                            Report
+                                                        </button>
 
-                                        function run() {
+                                                        <div className="modal" role="dialog">
+                                                            <div className="modal-dialog">
 
-                                        let userUsername = /*[[${#authentication.name}]]*/ null;
-                                        let threadId = /*[[*{id}]]*/ null;
-                                        let isLoggedUser = /*[[${#authorization.expression('isAuthenticated()')}]]*/ null;
+                                                                <div className="modal-content">
+                                                                    <div className="modal-header">
+                                                                        <h4 className="modal-title">Report to the
+                                                                            kings:</h4>
+                                                                    </div>
 
-                                        hideReportButtonsOfThreadIfReportExists(userUsername, threadId, isLoggedUser);
+                                                                    <div className="modal-body">
+                                                                        <textarea
+                                                                            className="thread-modal_report-textarea"
+                                                                            name="reason" placeholder="Reason..."/>
+                                                                    </div>
+
+                                                                    <div className="modal-footer">
+
+                                                                        <button type="button"
+                                                                                className="btn btn-default">Report
+                                                                        </button>
+
+                                                                        <button type="button"
+                                                                                className="btn btn-default"
+                                                                                data-dismiss="modal">Cancel
+                                                                        </button>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </Fragment>
+                                                );
+                                            }
+                                        })()
                                     }
 
-                                    </script>
-
-
-                                    <div sec:authorize="isAuthenticated()" className="modal" role="dialog"
-                                         th:id="*{'modelReportThreadByThreadId-'+id}">
-                                        <div className="modal-dialog">
-
-                                            <div className="modal-content">
-                                                <div className="modal-header">
-                                                    <h4 className="modal-title">Report to the kings:</h4>
-                                                </div>
-                                                <form method="post"
-                                                      th:action="@{/thread/{id}/report(id=*{id})}">
-                                                    <div className="modal-body">
-                                                        <textarea className="thread-modal_report-textarea"
-                                                                  name="reason" placeholder="Reason..."></textarea>
-                                                    </div>
-                                                    <div className="modal-footer">
-                                                        <button type="submit" className="btn btn-default">Report
-                                                        </button>
-                                                        <button type="button" className="btn btn-default"
-                                                                data-dismiss="modal">
-                                                            Cancel
-                                                        </button>
-                                                    </div>
-                                                </form>
-                                            </div>
-
-                                            <script th:inline="javascript">
-                                                run();
-
-                                                function run() {
-                                                let threadId = /*[[*{id}]]*/ null;
-                                                bindShowModal($("#thread-report_button-" + threadId), $("#modelReportThreadByThreadId-" + threadId));
-                                            }
-                                            </script>
-
-                                        </div>
-                                    </div>
                                 </div>
 
                                 <div className="btn-group thread-right_side_buttons">
