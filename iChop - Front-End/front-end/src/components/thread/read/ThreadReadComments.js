@@ -145,7 +145,7 @@ class ThreadReadComments extends Component {
                                         </p>
                                     </div>
 
-                                    < /div>
+                                    <div>
 
                                         <div>
                                             <div className="btn-group thread-comments-buttons">
@@ -190,141 +190,125 @@ class ThreadReadComments extends Component {
                                                                             })()
                                                                         }
 
-                                                                        <div className="thread-comments-button_report">
+
+                                                                        {
+                                                                            (() => {
+                                                                                let isCurrentLoggedInUserReportedTheComment = false;
+
+                                                                                if (!isCurrentLoggedInUserReportedTheComment) {
+                                                                                    return (
+                                                                                        <div
+                                                                                            className="thread-comments-button_report">
 
 
-                                                                            <button className="btn btn-sm" type="button"
-                                                                                    th:id="'thread-comment-report_button-'+*{id}">
-                                                                                <small>⚠</small>
-                                                                                Report
-                                                                            </button>
+                                                                                            <button
+                                                                                                className="btn btn-sm"
+                                                                                                type="button">
+                                                                                                <small>⚠</small>
+                                                                                                <span>Report</span>
+                                                                                            </button>
 
-                                                                            <script th:inline="javascript">
-                                                                                run();
+                                                                                            <div className="modal"
+                                                                                                 role="dialog">
+                                                                                                <div
+                                                                                                    className="modal-dialog">
 
-                                                                                function run() {
-
-                                                                                let userUsername = /*[[${#authentication.name}]]*/ null;
-                                                                                let commentId = /*[[*{id}]]*/ null;
-                                                                                let isLoggedUser = /*[[${#authorization.expression('isAuthenticated()')}]]*/ null;
-
-                                                                                hideReportButtonsOfCommentIfReportExists(userUsername, commentId, isLoggedUser);
-                                                                            }
-
-                                                                            </script>
-
-                                                                            <div className="modal"
-                                                                                 th:id="*{'modelReportCommentByThreadId-'+id}"
-                                                                                 role="dialog">
-                                                                                <div className="modal-dialog">
-
-                                                                                    <div className="modal-content">
-                                                                                        <div className="modal-header">
-                                                                                            <h4 className="modal-title">Report
-                                                                                                to the
-                                                                                                kings:</h4>
+                                                                                                    <div
+                                                                                                        className="modal-content">
+                                                                                                        <div
+                                                                                                            className="modal-header">
+                                                                                                            <h4 className="modal-title">Report
+                                                                                                                to the
+                                                                                                                kings:</h4>
+                                                                                                        </div>
+                                                                                                        <div
+                                                                                                            className="modal-body">
+                                                                                                            <textarea
+                                                                                                                className="thread-comments-modal"
+                                                                                                                name="reason"
+                                                                                                                placeholder="Reason..."/>
+                                                                                                        </div>
+                                                                                                        <div
+                                                                                                            className="modal-footer">
+                                                                                                            <button
+                                                                                                                type="button"
+                                                                                                                className="btn btn-default">
+                                                                                                                Report
+                                                                                                            </button>
+                                                                                                            <button
+                                                                                                                type="button"
+                                                                                                                className="btn btn-default"
+                                                                                                                data-dismiss="modal">
+                                                                                                                Cancel
+                                                                                                            </button>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
                                                                                         </div>
-                                                                                        <form method="post"
-                                                                                              th:action="@{/comment/{id}/report(id=*{id})}">
-                                                                                            <div className="modal-body"><textarea
-                                                                                                className="thread-comments-modal"
-                                                                                                name="reason"
-                                                                                                placeholder="Reason..."></textarea>
-                                                                                            </div>
-                                                                                            <div
-                                                                                                className="modal-footer">
-                                                                                                <button type="submit"
-                                                                                                        className="btn btn-default">
-                                                                                                    Report
-                                                                                                </button>
-                                                                                                <button type="button"
-                                                                                                        className="btn btn-default"
-                                                                                                        data-dismiss="modal">
-                                                                                                    Cancel
-                                                                                                </button>
-                                                                                            </div>
-                                                                                        </form>
-                                                                                    </div>
+                                                                                    );
+                                                                                }
+                                                                            })()
+                                                                        }
 
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
+                                                                        {
+                                                                            (() => {
+                                                                                let isReactedAlready = false;
+
+                                                                                if (isAuthenticated && !isReactedAlready) {
+                                                                                    return (
+                                                                                        <Fragment>
+                                                                                            <div
+                                                                                                className="thread-comments-button_options">
+                                                                                                <button
+                                                                                                    className="btn btn-sm dropdown-toggle"
+                                                                                                    type="button"
+                                                                                                    data-toggle="dropdown"
+                                                                                                    aria-haspopup="true"
+                                                                                                    aria-expanded="false">
+                                                                                                    <small>💡</small>
+                                                                                                    <span>React</span>
+                                                                                                </button>
+                                                                                                <div
+                                                                                                    className="dropdown-menu">
+
+                                                                                                    <button
+                                                                                                        className="btn btn-sm thread-right_side_button-react"
+                                                                                                        type="submit">
+                                                                                                        <small>👍🏻</small>
+                                                                                                        <span>Like</span>
+                                                                                                    </button>
+
+                                                                                                    <button
+                                                                                                        className="btn btn-sm thread-right_side_button-react"
+                                                                                                        type="submit">
+                                                                                                        <small>👎🏻</small>
+                                                                                                        <span>Dislike</span>
+                                                                                                    </button>
+
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </Fragment>
+                                                                                    )
+                                                                                }
+                                                                            })()
+                                                                        }
                                                                     </Fragment>
-                                                                );
+                                                                )
                                                             }
                                                         })()
                                                     }
                                                 </div>
-
-                                                {
-                                                    (() => {
-                                                        if (isAuthenticated) {
-                                                            <Fragment>
-                                                                <div className="thread-comments-button_options"
-                                                                     th:id="'thread-comment_react_buttons-'+*{id}">
-                                                                    <button className="btn btn-sm dropdown-toggle"
-                                                                            type="button"
-                                                                            data-toggle="dropdown"
-                                                                            aria-haspopup="true"
-                                                                            aria-expanded="false">
-                                                                        <small>💡</small>
-                                                                        React
-                                                                    </button>
-                                                                    <div className="dropdown-menu">
-                                                                        <form
-                                                                            th:action="@{/comment/{id}/reaction/like(id=*{id})}"
-                                                                            method="post">
-                                                                            <button
-                                                                                className="btn btn-sm thread-right_side_button-react"
-                                                                                type="submit">
-                                                                                <small>👍🏻</small>
-                                                                                Like
-                                                                            </button>
-                                                                        </form>
-                                                                        <form
-                                                                            th:action="@{/comment/{id}/reaction/dislike(id=*{id})}"
-                                                                            method="post">
-                                                                            <button
-                                                                                className="btn btn-sm thread-right_side_button-react"
-                                                                                type="submit">
-                                                                                <small>👎🏻</small>
-                                                                                Dislike
-                                                                            </button>
-                                                                        </form>
-                                                                    </div>
-                                                                </div>
-                                                                <script th:inline="javascript">
-                                                                    run();
-
-                                                                    function run() {
-
-                                                                    let userUsername = /*[[${#authentication.name}]]*/ null;
-                                                                    let commentId = /*[[*{id}]]*/ null;
-                                                                    let isLoggedUser = /*[[${#authorization.expression('isAuthenticated()')}]]*/ null;
-
-                                                                    hideCommentReactionButtonsIfAlreadyReacted(userUsername, commentId, isLoggedUser);
-                                                                }
-
-                                                                </script>
-                                                            </Fragment>
-                                                        }
-                                                    })()
-                                                }
                                             </div>
                                         </div>
-
+                                    </div>
                                 </div>
-                                )
-                                ;
-                                }
-                                ))()
-                                }
+                            </div>
+                        )
+                    })())
+                }
+            </section>)
+    }
+}
 
-                            </section>
-                    )
-                    ;
-                    }
-
-                    }
-
-                    export default ThreadReadComments;
+return ThreadReadComments;
