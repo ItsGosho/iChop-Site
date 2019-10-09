@@ -1,12 +1,15 @@
 import React, {Component} from 'react';
 import ServerRoutingURLs from "../../../constants/server.routing.urls";
 import formatDate from 'dateformat';
+import {Link} from "react-router-dom";
+import RoutingURLs from "../../../constants/routing.constants";
 
 class ThreadReadMainContent extends Component {
 
 
     render() {
         let creatorUsername = 'ItsGosho';
+        let creatorProfileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', creatorUsername);
         let creatorAvatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', creatorUsername);
         let creatorTotalComments = 15;
         let createdOn = formatDate(new Date(), 'dd MMM,yyyy');
@@ -25,8 +28,9 @@ class ThreadReadMainContent extends Component {
                     <div class="row">
                         <div class="col-md-4">
                             <div align="center">
-                                <small>👤<a th:href="@{/user/{username}/profile(username=*{creator.username})}"
-                                            th:text="*{creator.username}"></a></small>
+                                <small>
+                                    👤 <Link to={creatorProfileUrl}>{creatorUsername}</Link>
+                                </small>
                             </div>
                             <div align="center">
                                 <img
