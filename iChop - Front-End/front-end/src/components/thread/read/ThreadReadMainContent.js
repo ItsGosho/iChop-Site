@@ -60,6 +60,7 @@ class ThreadReadMainContent extends Component {
                                     src={creatorAvatarUrl}
                                     onError={this.onUserAvatarError}
                                     alt=''
+                                    style={{'width':'50px','height':'50px'}}
                                     className="card-img-top thread-creator-avatar"/>
                             </div>
                             <div align="center">
@@ -81,7 +82,7 @@ class ThreadReadMainContent extends Component {
                                                         <Link to={creatorMinecraftProfileUrl}>
                                                             <img
                                                                 src={creatorMinecraftAvatarUrl}
-                                                                className="card-img-top thread-creator-minecraft_username"
+                                                                style={{'width':'22px','height':'22px'}}
                                                                 alt=''/>
                                                             <span
                                                                 style={{
