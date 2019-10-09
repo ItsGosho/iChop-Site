@@ -1,4 +1,5 @@
 import React, {Component, Fragment} from 'react';
+import TextEditor from "../../editor/TextEditor";
 
 class ThreadReadAddComment extends Component {
 
@@ -12,9 +13,9 @@ class ThreadReadAddComment extends Component {
                     (() => {
                         if (isAuthenticated) {
                             return (
-                                <div className="commentBox thread-comment_box" sec:authorize="isAuthenticated()">
+                                <div className="commentBox thread-comment_box">
 
-                                    <th:block th:insert="editor/text-editor"></th:block>
+                                    <TextEditor/>
 
                                     <div id="textarea-content-createComment"
                                          className="thread-comment_box-textarea"
