@@ -1,15 +1,47 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
+import dateFormat from 'dateformat'
 
 class ThreadReadComments extends Component {
 
 
     render() {
 
+        let comments = [
+            {
+                createdOn: dateFormat(new Date(), 'dd MMM,yyyy'),
+                totalLikes: 3,
+                totalDislikes: 1,
+                content: '<h1>Nicee!</h1>',
+                creatorUsername: 'ItsGosho',
+                creatorTotalComments: 16,
+                creatorMinecraftAccountName: 'ItsGosho',
+                creatorMinecraftAccountUUID: '8ed20904-3262-401a-901a-1946504d2eea'
+            },
+            {
+                createdOn: dateFormat(new Date(), 'dd MMM,yyyy'),
+                totalLikes: 14,
+                totalDislikes: 4,
+                content: '<h1>Mhhhm!</h1>',
+                creatorUsername: 'Penka',
+                creatorTotalComments: 3,
+                creatorMinecraftAccountName: 'Penka',
+                creatorMinecraftAccountUUID: 'd54e8697-7a78-4816-aac1-30f2ec414b1b'
+            },
+            {
+                createdOn: dateFormat(new Date(), 'dd MMM,yyyy'),
+                totalLikes: 1,
+                totalDislikes: 0,
+                content: '<h1>Yeeey!</h1>',
+                creatorUsername: 'Roshko',
+                creatorTotalComments: 16,
+                creatorMinecraftAccountName: 'Roshko',
+                creatorMinecraftAccountUUID: '09c5ff23-9bf2-4f5c-b5b1-7feed1802b9d'
+            }
+        ];
+
         return (
             <section id="section-thread_read_comments">
 
-                <!--/*@thymesVar id="comment" type="com.ichop.core.areas.thread.domain.models.view.thread_read.CommentThreadReadViewModel"*/-->
-                <!--/*@thymesVar id="commentCreator" type="com.ichop.core.areas.thread.domain.models.view.thread_read.CommentCreatorThreadReadViewModel"*/-->
                 <th:block th:each="comment : *{comments}" th:object="${comment}">
 
                     <div className="card thread-comments">
@@ -207,9 +239,9 @@ class ThreadReadComments extends Component {
 
                 </th:block>
             </section>
-        );
+    );
     }
 
-}
+    }
 
-export default ThreadReadComments;
+    export default ThreadReadComments;
