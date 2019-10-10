@@ -5,6 +5,7 @@ import FrontEndResourcesRoutingURLs from "../../../constants/front-end.resources
 import ServerRoutingURLs from "../../../constants/server.routing.urls";
 import {Link} from "react-router-dom";
 import Interweave from "interweave";
+import CommentInformation from "./comments/CommentInformation";
 
 class ThreadReadComments extends Component {
 
@@ -23,7 +24,7 @@ class ThreadReadComments extends Component {
 
         let comments = [
             {
-                createdOn: dateFormat(new Date(), 'dd MMM,yyyy'),
+                createdOn: dateFormat(new Date(), 'dd mmm,yyyy'),
                 totalLikes: 3,
                 totalDislikes: 1,
                 content: '<h1>Nicee!</h1>',
@@ -33,7 +34,7 @@ class ThreadReadComments extends Component {
                 creatorMinecraftAccountUUID: '8ed20904-3262-401a-901a-1946504d2eea'
             },
             {
-                createdOn: dateFormat(new Date(), 'dd MMM,yyyy'),
+                createdOn: dateFormat(new Date(), 'dd mmm,yyyy'),
                 totalLikes: 14,
                 totalDislikes: 4,
                 content: '<h1>Mhhhm!</h1>',
@@ -43,7 +44,7 @@ class ThreadReadComments extends Component {
                 creatorMinecraftAccountUUID: 'd54e8697-7a78-4816-aac1-30f2ec414b1b'
             },
             {
-                createdOn: dateFormat(new Date(), 'dd MMM,yyyy'),
+                createdOn: dateFormat(new Date(), 'dd mmm,yyyy'),
                 totalLikes: 1,
                 totalDislikes: 0,
                 content: '<h1>Yeeey!</h1>',
@@ -78,21 +79,10 @@ class ThreadReadComments extends Component {
                         let isAuthenticated = true;
 
                         return (
-                            <div className="card thread-comments">
+                            <div className="card thread-comments" style={{'borderColor':'black'}}>
 
                                 <div>
-                                    <small className="thread-comments-date_likes_dislikes">
-                                        <small className="dateIcon">📅</small>
-                                        <small className="date">{createdOn}</small>
-                                    </small>
-                                    <small className="thread-comments-date_likes_dislikes">
-                                        <small>👍</small>
-                                        <span className="totalComments">{totalLikes}</span>
-                                    </small>
-                                    <small className="thread-comments-date_likes_dislikes">
-                                        <small>👎</small>
-                                        <span className="totalComments">{totalDislikes}</span>
-                                    </small>
+                                    <CommentInformation createdOn={createdOn} totalLikes={totalLikes} totalDislikes={totalDislikes}/>
                                 </div>
 
                                 <div className="row">

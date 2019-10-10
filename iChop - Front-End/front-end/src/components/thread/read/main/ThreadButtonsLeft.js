@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import ThreadReportModal from "../ThreadReportModal";
+import ThreadReportModal from "./ThreadReportModal";
 
 class ThreadButtonsLeft extends Component {
 
