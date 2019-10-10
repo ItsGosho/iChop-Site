@@ -1,7 +1,7 @@
 import React, {Fragment} from "react";
 import CreateReactClass from 'create-react-class';
 
-var FooterSideListWrapper = CreateReactClass({
+var FooterLinksWrapper = CreateReactClass({
     render() {
         return (
             <Fragment>
@@ -17,4 +17,4 @@ var FooterSideListWrapper = CreateReactClass({
 });
 
 
-export default FooterSideListWrapper;
+export default FooterLinksWrapper;

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import FooterLeftAuthenticatedSide from "../etc/FooterLeftAuthenticatedSide";
-import FooterSideListWrapper from "../wrappers/FooterSideListWrapper";
+import FooterLinksWrapper from "../wrappers/FooterLinksWrapper";
 
 class UserFooter extends Component {
 
@@ -8,9 +8,9 @@ class UserFooter extends Component {
     render() {
 
         return (
-            <FooterSideListWrapper text={'VISIT'}>
+            <FooterLinksWrapper text={'VISIT'}>
                 <FooterLeftAuthenticatedSide/>
-            </FooterSideListWrapper>
+            </FooterLinksWrapper>
         );
     }
 

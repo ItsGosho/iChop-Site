@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import {Link} from "react-router-dom";
 import RoutingURLs from "../../../constants/routing.constants";
-import FooterSideListWrapper from "../wrappers/FooterSideListWrapper";
+import FooterLinksWrapper from "../wrappers/FooterLinksWrapper";
 import LinkIconLi from "../../other/LinkIconLi";
 
 class ModeratorFooter extends Component {
@@ -14,21 +14,21 @@ class ModeratorFooter extends Component {
         return (
             <Fragment>
 
-                <FooterSideListWrapper text={'VISIT'}>
+                <FooterLinksWrapper text={'VISIT'}>
 
                     <LinkIconLi url={myProfileUrl} icon={'👤'} text={'Profile'}/>
                     <LinkIconLi url={RoutingURLs.USER.OPTIONS.INFORMATION} icon={'⚙'} text={'Options'}/>
                     <LinkIconLi url={RoutingURLs.THREAD.CREATE} icon={'🚩'} text={'Create Thread'}/>
 
-                </FooterSideListWrapper>
+                </FooterLinksWrapper>
 
 
-                <FooterSideListWrapper text={'---'}>
+                <FooterLinksWrapper text={'---'}>
 
                     <LinkIconLi url={RoutingURLs.COMMENT.REPORT.ALL} icon={'⚠'} text={'Reports'}/>
                     <LinkIconLi url={RoutingURLs.AUTHENTICATION.LOGOUT} icon={'🚪'} text={'Logout'}/>
-                    
-                </FooterSideListWrapper>
+
+                </FooterLinksWrapper>
             </Fragment>
         );
     }

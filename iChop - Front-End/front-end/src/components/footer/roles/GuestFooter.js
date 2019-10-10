@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import FooterSideListWrapper from "../wrappers/FooterSideListWrapper";
+import FooterLinksWrapper from "../wrappers/FooterLinksWrapper";
 import navbarGuestReduxHoc from "../../../redux/hocs/navbar.guest.hoc";
 import LinkIconLi from "../../other/LinkIconLi";
 
@@ -40,13 +40,13 @@ class GuestFooter extends Component {
         return (
             <Fragment>
 
-                <FooterSideListWrapper text={'VISIT'}>
+                <FooterLinksWrapper text={'VISIT'}>
 
                     <LinkIconLi icon={'🔐'} text={'Login'} onClick={this.onLoginRequired}/>
                     <LinkIconLi icon={'🗝️'} text={'Register'} onClick={this.onRegisterRequired}/>
                     <LinkIconLi icon={'🏷️'} text={'Forgotten Password'} onClick={this.onForgottenPasswordRequired}/>
 
-                </FooterSideListWrapper>
+                </FooterLinksWrapper>
             </Fragment>
         );
     }
