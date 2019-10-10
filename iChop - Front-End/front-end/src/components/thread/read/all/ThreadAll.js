@@ -5,6 +5,7 @@ import PaginationNav from "../../../report/PaginationNav";
 import RoutingURLs from "../../../../constants/routing.constants";
 import ThreadAllInformation from "./ThreadAllInformation";
 import Interweave from "interweave";
+import ThreadAllOptionsDropdown from "./ThreadAllOptionsDropdown";
 
 class ThreadAll extends Component {
 
@@ -87,28 +88,7 @@ class ThreadAll extends Component {
                                             <div className="row">
                                                 <div className="col-md-8">
                                                     <div className="btn-group">
-                                                        <button
-                                                            sec:authorize="isAuthenticated() && hasAuthority('MODERATOR')"
-                                                            className="btn btn-secondary btn-sm dropdown-toggle"
-                                                            type="button"
-                                                            data-toggle="dropdown" aria-haspopup="true"
-                                                            aria-expanded="false">
-                                                            <small>⚙</small>
-                                                            Options
-                                                        </button>
-                                                        <div className="dropdown-menu">
-                                                            <form className="dropdown-item"
-                                                                  th:action="@{/thread/{id}/delete(id=*{id})}"
-                                                                  method="post">
-                                                                <button
-                                                                    sec:authorize="isAuthenticated() && hasAuthority('MODERATOR')"
-                                                                    type="submit"
-                                                                    className="btn btn-light btn-sm thread-delete_button">
-                                                                    <small>❌</small>
-                                                                    Delete
-                                                                </button>
-                                                            </form>
-                                                        </div>
+                                                        <ThreadAllOptionsDropdown/>
                                                     </div>
                                                 </div>
                                                 <div className="col-md-4">
