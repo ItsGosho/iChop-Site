@@ -3,7 +3,8 @@ import './ThreadAll.css';
 import formatDate from 'dateformat'
 import PaginationNav from "../../../report/PaginationNav";
 import RoutingURLs from "../../../../constants/routing.constants";
-import ThreadAlInformation from "./ThreadAlInformation";
+import ThreadAllInformation from "./ThreadAllInformation";
+import Interweave from "interweave";
 
 class ThreadAll extends Component {
 
@@ -63,21 +64,20 @@ class ThreadAll extends Component {
 
                                     return (
                                         <div className="card-body">
-                                            <ThreadAlInformation id={id}
-                                                                 title={title}
-                                                                 createdOn={createdOn}
-                                                                 username={creatorUsername}
-                                                                 postTime={postTime}
-                                                                 totalViews={totalViews}
-                                                                 totalReactions={totalReactions}
-                                                                 totalComments={totalComments}/>
+                                            <ThreadAllInformation id={id}
+                                                                  title={title}
+                                                                  createdOn={createdOn}
+                                                                  username={creatorUsername}
+                                                                  postTime={postTime}
+                                                                  totalViews={totalViews}
+                                                                  totalReactions={totalReactions}
+                                                                  totalComments={totalComments}/>
 
                                             <div className="dropdown-divider"/>
 
-                                            <div className="content thread-content"
-                                                 th:id="'content' + ${thread.getId()}">
-                                                <p className="card-text" th:utext="${thread.getContent()}">
-
+                                            <div className="content thread-content">
+                                                <p className="card-text">
+                                                    <Interweave content={content}/>
                                                 </p>
                                             </div>
 
