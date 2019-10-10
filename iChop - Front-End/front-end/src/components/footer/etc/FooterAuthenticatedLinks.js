@@ -4,7 +4,7 @@ import RoutingURLs from "../../../constants/routing.constants";
 import LinkIcon from "../../other/LinkIcon";
 import LinkIconLi from "../../other/LinkIconLi";
 
-class FooterLeftAuthenticatedSide extends Component {
+class FooterAuthenticatedLinks extends Component {
 
 
     render() {
@@ -24,4 +24,4 @@ class FooterLeftAuthenticatedSide extends Component {
 
 }
 
-export default FooterLeftAuthenticatedSide;
+export default FooterAuthenticatedLinks;

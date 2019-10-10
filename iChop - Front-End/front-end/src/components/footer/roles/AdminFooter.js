@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import RoutingURLs from "../../../constants/routing.constants";
 import {Link} from "react-router-dom";
-import FooterLeftAuthenticatedSide from "../etc/FooterLeftAuthenticatedSide";
+import FooterAuthenticatedLinks from "../etc/FooterAuthenticatedLinks";
 import FooterLinksWrapper from "../wrappers/FooterLinksWrapper";
 import LinkIconLi from "../../other/LinkIconLi";
 
@@ -14,7 +14,7 @@ class AdminFooter extends Component {
             <Fragment>
 
                 <FooterLinksWrapper text={'VISIT'}>
-                    <FooterLeftAuthenticatedSide/>
+                    <FooterAuthenticatedLinks/>
                 </FooterLinksWrapper>
 
 

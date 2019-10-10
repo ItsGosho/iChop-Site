@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import FooterLeftAuthenticatedSide from "../etc/FooterLeftAuthenticatedSide";
+import FooterAuthenticatedLinks from "../etc/FooterAuthenticatedLinks";
 import FooterLinksWrapper from "../wrappers/FooterLinksWrapper";
 
 class UserFooter extends Component {
@@ -9,7 +9,7 @@ class UserFooter extends Component {
 
         return (
             <FooterLinksWrapper text={'VISIT'}>
-                <FooterLeftAuthenticatedSide/>
+                <FooterAuthenticatedLinks/>
             </FooterLinksWrapper>
         );
     }
