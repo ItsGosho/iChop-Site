@@ -7,6 +7,7 @@ import ModalBody from "../modal/ModalBody";
 import ModalFooter from "../modal/ModalFooter";
 import ModalTitle from "../modal/ModalTitle";
 import ModalOpen from "../modal/ModalOpen";
+import MaterialIcons from "../../constants/material-icons.constants";
 
 class TextEditorInsertImageModal extends Component {
 
@@ -43,8 +44,10 @@ class TextEditorInsertImageModal extends Component {
         return (
             <Fragment>
 
+                {/*TODO: constants*/}
+
                 <ModalOpen>
-                    <i className="material-icons btn-link">photo</i>
+                    <i className="material-icons btn-link">{MaterialIcons.PHOTO}</i>
                 </ModalOpen>
 
 
