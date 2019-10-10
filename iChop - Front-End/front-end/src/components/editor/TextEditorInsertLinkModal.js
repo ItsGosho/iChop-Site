@@ -37,7 +37,7 @@ class TextEditorInsertLinkModal extends Component {
 
                 <ModalBody>
                     <div className="input-group mb-3">
-                        <input id="input-insertLink-textEditor" type="text" className="form-control"
+                        <input type="text" className="form-control"
                                aria-describedby="basic-addon1"
                                onChange={onChange} name='link'
                                placeholder="Example: https://youtube.com..."/>
@@ -46,7 +46,7 @@ class TextEditorInsertLinkModal extends Component {
 
                 <ModalFooter>
                     <ModalCloseButton/>
-                    <button id="button-proceedInsertLink-textEditor" type="button" data-dismiss="modal"
+                    <button  type="button" data-dismiss="modal"
                             className="btn btn-primary" onClick={this.proceedInsertLink}>Insert
                     </button>
                 </ModalFooter>

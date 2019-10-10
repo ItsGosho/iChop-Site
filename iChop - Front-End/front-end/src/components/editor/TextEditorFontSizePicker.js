@@ -22,7 +22,7 @@ class TextEditorFontSizePicker extends Component {
 
         return (
             <span>
-                <a href="#" id="button-fontSize-textEditor" className="dropdown-toggle"
+                <a href="#" className="dropdown-toggle"
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                    title="Font Size" onClick={preventDefault}>
                     <i className="material-icons">format_size</i>
@@ -31,31 +31,31 @@ class TextEditorFontSizePicker extends Component {
                 <ul className="dropdown-menu scrollable-menu" role="menu"
                     style={{'minHeight': '100px', 'maxHeight': '100px', 'overflow': 'auto'}}>
 
-                    <a id="button-fontSize_1-textEditor" href="#" onClick={this.autoFontSizeProceed}>
+                    <a href="#" onClick={this.autoFontSizeProceed}>
                         <li data-content="1" style={{'fontSize': '9px'}}>1</li>
                     </a>
 
-                    <a id="button-fontSize_2-textEditor" href="#" onClick={this.autoFontSizeProceed}>
+                    <a href="#" onClick={this.autoFontSizeProceed}>
                         <li data-content="2" style={{'fontSize': '10px'}}>2</li>
                     </a>
 
-                    <a id="button-fontSize_3-textEditor" href="#" onClick={this.autoFontSizeProceed}>
+                    <a href="#" onClick={this.autoFontSizeProceed}>
                         <li data-content="3" style={{'fontSize': '12px'}}>3</li>
                     </a>
 
-                    <a id="button-fontSize_4-textEditor" href="#" onClick={this.autoFontSizeProceed}>
+                    <a href="#" onClick={this.autoFontSizeProceed}>
                         <li data-content="4" style={{'fontSize': '15px'}}>4</li>
                     </a>
 
-                    <a id="button-fontSize_5-textEditor" href="#" onClick={this.autoFontSizeProceed}>
+                    <a href="#" onClick={this.autoFontSizeProceed}>
                         <li data-content="5" style={{'fontSize': '18px'}}>5</li>
                     </a>
 
-                    <a id="button-fontSize_6-textEditor" href="#" onClick={this.autoFontSizeProceed}>
+                    <a href="#" onClick={this.autoFontSizeProceed}>
                         <li data-content="6" style={{'fontSize': '22px'}}>6</li>
                     </a>
 
-                    <a id="button-fontSize_7-textEditor" href="#" onClick={this.autoFontSizeProceed}>
+                    <a href="#" onClick={this.autoFontSizeProceed}>
                         <li data-content="7" style={{'fontSize': '26px'}}>7</li>
                     </a>
 

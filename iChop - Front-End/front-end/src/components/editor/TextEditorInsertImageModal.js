@@ -51,7 +51,7 @@ class TextEditorInsertImageModal extends Component {
 
                 <ModalBody>
                     <div className="input-group mb-3">
-                        <input id="input-insertImage-textEditor" type="text" className="form-control"
+                        <input type="text" className="form-control"
                                onChange={onChange} name='link'
                                aria-describedby="basic-addon1" placeholder=""/>
                     </div>
