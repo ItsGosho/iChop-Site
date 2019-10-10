@@ -5,19 +5,9 @@ import {Link} from "react-router-dom";
 import RoutingURLs from "../../../constants/routing.constants";
 import FrontEndResourcesRoutingURLs from "../../../constants/front-end.resources.routings";
 import Interweave from "interweave";
+import ThreadCreatorInformation from "./ThreadCreatorInformation";
 
 class ThreadReadMainContent extends Component {
-
-    constructor(props) {
-        super(props);
-
-        this.onUserAvatarError = this.onUserAvatarError.bind(this);
-    }
-
-    onUserAvatarError(event) {
-        event.target.onerror = null;
-        event.target.src = FrontEndResourcesRoutingURLs.USER.AVATAR;
-    }
 
     render() {
         let threadId = 'threadId123';
@@ -49,7 +39,7 @@ class ThreadReadMainContent extends Component {
             <div className="card thread">
 
                 <div className="card-header">
-
+                   <ThreadCreatorInformation uuid={uuid} username={creatorUsername} totalComments={creatorTotalComments} minecraftAccountName={creatorMinecraftAccountName}/>
                 </div>
 
                 <div className="card-body">

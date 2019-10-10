@@ -2,8 +2,20 @@ import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 import ServerRoutingURLs from "../../../constants/server.routing.urls";
 import RoutingURLs from "../../../constants/routing.constants";
+import FrontEndResourcesRoutingURLs from "../../../constants/front-end.resources.routings";
 
-class CommentCreatorInformation extends Component {
+class ThreadCreatorInformation extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.onUserAvatarError = this.onUserAvatarError.bind(this);
+    }
+
+    onUserAvatarError(event) {
+        event.target.onerror = null;
+        event.target.src = FrontEndResourcesRoutingURLs.USER.AVATAR;
+    }
 
 
     render() {
@@ -73,4 +85,4 @@ class CommentCreatorInformation extends Component {
 
 }
 
-export default CommentCreatorInformation;
+export default ThreadCreatorInformation;
