@@ -1,5 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import CommentReportModal from "./CommentReportModal";
+import ModalOpen from "../../../modal/ModalOpen";
 
 class CommentReportButton extends Component {
 
@@ -18,13 +19,13 @@ class CommentReportButton extends Component {
                                 <div
                                     className="thread-comments-button_report">
 
-
-                                    <button
-                                        className="btn btn-sm"
-                                        type="button">
-                                        <small>⚠</small>
-                                        <span>Report</span>
-                                    </button>
+                                    <ModalOpen relationTo={'reportComment'} title={'Report Comment'}>
+                                        <button
+                                            className="btn btn-sm">
+                                            <small>⚠</small>
+                                            <span>Report</span>
+                                        </button>
+                                    </ModalOpen>
 
                                     <CommentReportModal/>
                                 </div>
