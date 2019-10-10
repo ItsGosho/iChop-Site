@@ -8,6 +8,7 @@ import ModalFooter from "../modal/ModalFooter";
 import ModalTitle from "../modal/ModalTitle";
 import ModalOpen from "../modal/ModalOpen";
 import MaterialIcons from "../../constants/material-icons.constants";
+import ModalCloseButton from "../modal/ModalCloseButton";
 
 class TextEditorInsertImageModal extends Component {
 
@@ -65,7 +66,7 @@ class TextEditorInsertImageModal extends Component {
                     </ModalBody>
 
                     <ModalFooter>
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <ModalCloseButton/>
                         <button type="button" data-dismiss="modal" className="btn btn-primary"
                                 onClick={this.proceedInsertImage}>Insert
                         </button>

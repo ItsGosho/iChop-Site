@@ -4,6 +4,7 @@ import ModalOpen from "../../modal/ModalOpen";
 import ModalTitle from "../../modal/ModalTitle";
 import ModalBody from "../../modal/ModalBody";
 import ModalFooter from "../../modal/ModalFooter";
+import ModalCloseButton from "../../modal/ModalCloseButton";
 
 class ThreadCreateHelperButton extends Component {
 
@@ -27,7 +28,7 @@ class ThreadCreateHelperButton extends Component {
                     </ModalBody>
 
                     <ModalFooter>
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <ModalCloseButton/>
                     </ModalFooter>
 
                 </Modal>
