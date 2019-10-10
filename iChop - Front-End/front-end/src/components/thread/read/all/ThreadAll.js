@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import './ThreadAll.css';
 import formatDate from 'dateformat'
+import PaginationNav from "../../../report/PaginationNav";
+import RoutingURLs from "../../../../constants/routing.constants";
 
 class ThreadAll extends Component {
 
@@ -60,6 +62,8 @@ class ThreadAll extends Component {
                             }
                         })()
                     }
+
+                    <PaginationNav totalResults={threads.length} resultsPerPage={10} redirectPage={RoutingURLs.HOME}/>
 
                     <th:block th:if="${!#lists.isEmpty(threads)}">
 
@@ -145,44 +149,7 @@ class ThreadAll extends Component {
                             </div>
                         </th:block>
 
-                        <nav aria-label="Page navigation example"
-                             className="d-flex justify-content-center align-items-center">
-                            <ul className="pagination">
-
-                                <th:block th:if="${#request.getParameter('page')} != null">
-
-                                    <th:block
-                                        th:if="${(#conversions.convert(#request.getParameter('page'), 'Integer')) - 1} >= 0">
-                                        <li className="page-item"><a className="page-link"
-                                                                     th:href="@{/(page=${(#conversions.convert(#request.getParameter('page'), 'Integer')) - 1})}">Previous</a>
-                                        </li>
-                                    </th:block>
-
-                                </th:block>
-
-                                <th:block th:each="i: ${#numbers.sequence(1,totalPages)}">
-                                    <li className="page-item"><a className="page-link" th:text="${i}"
-                                                                 th:href="@{/?page={pId}(pId=${i-1})}"></a></li>
-                                </th:block>
-
-
-                                <th:block th:if="${#request.getParameter('page')} != null">
-
-                                    <th:block
-                                        th:if="${(#conversions.convert(#request.getParameter('page'), 'Integer')) + 1 <= totalPages-1}">
-                                        <li className="page-item"><a className="page-link"
-                                                                     th:href="@{/(page=${(#conversions.convert(#request.getParameter('page'), 'Integer')) + 1})}">Next</a>
-                                        </li>
-                                    </th:block>
-
-                                </th:block>
-
-
-                            </ul>
-                        </nav>
-
-
-                        <div className="dropdown-divider"></div>
+                        <div className="dropdown-divider"/>
 
                     </th:block>
 
