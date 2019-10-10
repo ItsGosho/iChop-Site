@@ -16,9 +16,9 @@ class ThreadReportModal extends Component {
                         </div>
 
                         <div className="modal-body">
-                                                                        <textarea
-                                                                            className="thread-modal_report-textarea"
-                                                                            name="reason" placeholder="Reason..."/>
+                            <textarea
+                                className="thread-modal_report-textarea"
+                                name="reason" placeholder="Reason..."/>
                         </div>
 
                         <div className="modal-footer">
