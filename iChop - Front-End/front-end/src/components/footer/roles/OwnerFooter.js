@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import RoutingURLs from "../../../constants/routing.constants";
 import FooterLeftAuthenticatedSide from "../etc/FooterLeftAuthenticatedSide";
 import FooterSideListWrapper from "../wrappers/FooterSideListWrapper";
+import LinkIconLi from "../../other/LinkIconLi";
 
 class OwnerFooter extends Component {
 
@@ -20,21 +21,9 @@ class OwnerFooter extends Component {
 
                 <FooterSideListWrapper text={'---'}>
 
-                    <li>
-                        <Link to={RoutingURLs.USER.ALL}>
-                            <small>👥</small>
-                            Users</Link>
-                    </li>
-                    <li>
-                        <Link to={RoutingURLs.COMMENT.REPORT.ALL}>
-                            <small>⚠</small>
-                            Reports</Link>
-                    </li>
-                    <li>
-                        <Link to={RoutingURLs.THREAD.CREATE}>
-                            <small>🚩</small>
-                            Create Thread</Link>
-                    </li>
+                    <LinkIconLi url={RoutingURLs.USER.ALL} icon={'👥'} text={'Users'}/>
+                    <LinkIconLi url={RoutingURLs.COMMENT.REPORT.ALL} icon={'⚠'} text={'Reports'}/>
+                    <LinkIconLi url={RoutingURLs.THREAD.CREATE} icon={'🚩'} text={'Create Thread'}/>
 
                 </FooterSideListWrapper>
             </Fragment>
