@@ -23,9 +23,7 @@ class CommentReportModal extends Component {
 
                 <ModalFooter>
                     <button
-                        type="button"
-                        className="btn btn-danger">
-                        Report
+                        className="btn btn-danger">Report
                     </button>
                     <ModalCloseButton/>
                 </ModalFooter>

@@ -1,4 +1,9 @@
 import React, {Component} from 'react';
+import ModalTitle from "../../../modal/ModalTitle";
+import ModalBody from "../../../modal/ModalBody";
+import ModalFooter from "../../../modal/ModalFooter";
+import ModalCloseButton from "../../../modal/ModalCloseButton";
+import Modal from "../../../modal/Modal";
 
 class ThreadReportModal extends Component {
 
@@ -6,36 +11,23 @@ class ThreadReportModal extends Component {
     render() {
 
         return (
-            <div className="modal" role="dialog">
-                <div className="modal-dialog">
+            <Modal relationTo={'reportThread'}>
+                <ModalTitle>Report</ModalTitle>
 
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h4 className="modal-title">Report to the
-                                kings:</h4>
-                        </div>
+                <ModalBody>
+                   <textarea
+                       className="thread-comments-modal"
+                       name="reason"
+                       placeholder="Reason..."/>
+                </ModalBody>
 
-                        <div className="modal-body">
-                            <textarea
-                                className="thread-modal_report-textarea"
-                                name="reason" placeholder="Reason..."/>
-                        </div>
-
-                        <div className="modal-footer">
-
-                            <button type="button"
-                                    className="btn btn-default">Report
-                            </button>
-
-                            <button type="button"
-                                    className="btn btn-default"
-                                    data-dismiss="modal">Cancel
-                            </button>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
+                <ModalFooter>
+                    <button
+                        className="btn btn-danger">Report
+                    </button>
+                    <ModalCloseButton/>
+                </ModalFooter>
+            </Modal>
         );
     }
 

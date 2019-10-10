@@ -1,5 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import ThreadReportModal from "./ThreadReportModal";
+import ModalOpen from "../../../modal/ModalOpen";
 
 class ThreadButtonsLeft extends Component {
 
@@ -54,11 +55,13 @@ class ThreadButtonsLeft extends Component {
                             return (
                                 <Fragment>
 
-                                    <button className="btn btn-sm thread-report_button"
-                                            type="button" id="button-reportThread-readThread">
-                                        <small>⚠</small>
-                                        Report
-                                    </button>
+                                    <ModalOpen relationTo={'reportThread'}>
+                                        <button className="btn btn-sm thread-report_button">
+                                            <small>⚠</small>
+                                            Report
+                                        </button>
+                                    </ModalOpen>
+
 
                                     <ThreadReportModal/>
 
