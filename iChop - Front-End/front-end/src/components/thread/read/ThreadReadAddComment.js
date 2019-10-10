@@ -15,6 +15,7 @@ class ThreadReadAddComment extends Component {
                             return (
                                 <div className="commentBox thread-comment_box">
 
+                                    <TextEditor/>
 
                                     <div id="textarea-content-createComment"
                                          className="thread-comment_box-textarea"
