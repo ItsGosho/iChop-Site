@@ -44,12 +44,6 @@ class TextEditorInsertImageModal extends Component {
 
         return (
             <Fragment>
-
-                <ModalOpen relationTo={'insertImage'} title={'Insert Image'}>
-                    <i className="material-icons btn-link">{MaterialIcons.PHOTO}</i>
-                </ModalOpen>
-
-
                 <Modal relationTo={'insertImage'}>
 
 
@@ -73,7 +67,6 @@ class TextEditorInsertImageModal extends Component {
                     </ModalFooter>
 
                 </Modal>
-
             </Fragment>
         );
     }

@@ -8,6 +8,8 @@ import TextEditorInsertImageModal from "./TextEditorInsertImageModal";
 import CommandExecutorHoc from "./command.executor.hoc";
 import TextEditorCommands from "./text.editor.commands.constants";
 import './TextEditor.css'
+import MaterialIcons from "../../constants/material-icons.constants";
+import ModalOpen from "../modal/ModalOpen";
 
 class TextEditor extends Component {
 
@@ -39,6 +41,11 @@ class TextEditor extends Component {
                 <TextEditorFontPicker/>
 
                 <TextEditorInsertLinkModal/>
+
+
+                <ModalOpen relationTo={'insertImage'} title={'Insert Image'}>
+                    <i className="material-icons btn-link">{MaterialIcons.PHOTO}</i>
+                </ModalOpen>
 
                 <TextEditorInsertImageModal/>
 
