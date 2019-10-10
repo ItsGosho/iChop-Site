@@ -6,16 +6,12 @@ import ModalBody from "../../modal/ModalBody";
 import ModalFooter from "../../modal/ModalFooter";
 import ModalCloseButton from "../../modal/ModalCloseButton";
 
-class ThreadCreateHelperButton extends Component {
+class ThreadCreateHelpModal extends Component {
 
     render() {
 
         return (
             <Fragment>
-
-                <ModalOpen relationTo={'help'} title={'Help'}>
-                    <span>❓</span>
-                </ModalOpen>
 
                 <Modal relationTo={'help'}>
 
@@ -38,4 +34,4 @@ class ThreadCreateHelperButton extends Component {
 
 }
 
-export default ThreadCreateHelperButton;
+export default ThreadCreateHelpModal;

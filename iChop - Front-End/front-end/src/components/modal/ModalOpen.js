@@ -11,7 +11,7 @@ let ModalOpen = CreateReactClass({
             <button style={{'all': 'initial'}}
                     data-toggle="modal"
                     data-target={'#' + relationTo}
-                    title={title}>
+                    title={title} onClick={(event => event.preventDefault())}>
                 {this.props.children}
             </button>
         );

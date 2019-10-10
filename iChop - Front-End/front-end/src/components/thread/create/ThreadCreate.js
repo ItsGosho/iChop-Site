@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import TextEditor from "../../editor/TextEditor";
 import './ThreadCreate.css'
-import ThreadCreateHelperButton from "./ThreadCreateHelperButton";
+import ThreadCreateHelpModal from "./ThreadCreateHelpModal";
+import ModalOpen from "../../modal/ModalOpen";
 
 class ThreadCreate extends Component {
 
@@ -62,7 +63,11 @@ class ThreadCreate extends Component {
 
                                     <div className="col-md-13">
 
-                                        <ThreadCreateHelperButton/>
+                                        <ModalOpen relationTo={'help'} title={'Help'}>
+                                            <span>❓</span>
+                                        </ModalOpen>
+
+                                        <ThreadCreateHelpModal/>
 
                                     </div>
 

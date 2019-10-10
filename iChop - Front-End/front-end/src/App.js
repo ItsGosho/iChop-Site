@@ -9,7 +9,7 @@ import Reports from "./components/report/Reports";
 import ThreadRead from "./components/thread/read/ThreadRead";
 import ThreadAll from "./components/thread/read/all/ThreadAll";
 import TextEditorInsertImageModal from "./components/editor/TextEditorInsertImageModal";
-import ThreadCreateHelperButton from "./components/thread/create/ThreadCreateHelperButton";
+import ThreadCreateHelpModal from "./components/thread/create/ThreadCreateHelpModal";
 
 function App() {
     return (
@@ -17,7 +17,7 @@ function App() {
             <Navbar/>
 
             <div style={{'marginTop': '75px'}}>
-                <TextEditor/>
+                <ThreadCreate/>
             </div>
 
             <Footer/>
