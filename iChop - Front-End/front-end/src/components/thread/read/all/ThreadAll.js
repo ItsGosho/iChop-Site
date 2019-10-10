@@ -49,6 +49,18 @@ class ThreadAll extends Component {
                         <small>📰</small>
                         News:
                     </div>
+
+
+                    {
+                        (() => {
+                            if (threads.length > 0) {
+
+                            } else {
+                                return (<span>There are no news!</span>);
+                            }
+                        })()
+                    }
+
                     <th:block th:if="${!#lists.isEmpty(threads)}">
 
                         <th:block th:each="thread : ${threads}" th:object="${thread}">
@@ -172,10 +184,6 @@ class ThreadAll extends Component {
 
                         <div className="dropdown-divider"></div>
 
-                    </th:block>
-
-                    <th:block th:if="${#lists.isEmpty(threads)}">
-                        There are no news!
                     </th:block>
 
                 </div>
