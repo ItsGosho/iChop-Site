@@ -43,19 +43,8 @@ class GuestFooter extends Component {
                 <FooterSideListWrapper text={'VISIT'}>
 
                     <LinkIconLi icon={'🔐'} text={'Login'} onClick={this.onLoginRequired}/>
-                    <LinkIconLi icon={'🔐'} text={'Login'} onClick={this.onLoginRequired}/>
-                    <LinkIconLi icon={'🔐'} text={'Login'} onClick={this.onLoginRequired}/>
-
-                    <li>
-                        <a onClick={this.onRegisterRequired} href=' '>
-                            <small>🗝️</small>
-                            Register</a>
-                    </li>
-                    <li>
-                        <a onClick={this.onForgottenPasswordRequired} href=' '>
-                            <small>🏷️</small>
-                            Forgotten Password</a>
-                    </li>
+                    <LinkIconLi icon={'🗝️'} text={'Register'} onClick={this.onRegisterRequired}/>
+                    <LinkIconLi icon={'🏷️'} text={'Forgotten Password'} onClick={this.onForgottenPasswordRequired}/>
 
                 </FooterSideListWrapper>
             </Fragment>
