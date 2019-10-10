@@ -13,10 +13,6 @@ class TextEditorInsertImageModal extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            modal: ''
-        };
-
         this.proceedInsertImage = this.proceedInsertImage.bind(this);
     }
 
@@ -25,7 +21,6 @@ class TextEditorInsertImageModal extends Component {
         let {link} = this.props.formData;
 
         document.execCommand(TextEditorCommands.INSERT_IMAGE, false, link);
-        this.setState({'modal': 'hide'});
 
         try {
             let image = document.querySelector(`img[src='${link}']`);
