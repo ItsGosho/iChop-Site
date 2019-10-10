@@ -1,7 +1,8 @@
- import React, {Component, Fragment} from 'react';
+import React, {Component, Fragment} from 'react';
 import {Link} from "react-router-dom";
 import RoutingURLs from "../../../constants/routing.constants";
- import LinkIcon from "../../other/LinkIcon";
+import LinkIcon from "../../other/LinkIcon";
+import LinkIconLi from "../../other/LinkIconLi";
 
 class FooterLeftAuthenticatedSide extends Component {
 
@@ -12,21 +13,11 @@ class FooterLeftAuthenticatedSide extends Component {
 
         return (
             <Fragment>
-                <li>
-                    <Link to={myProfileUrl}>
-                        <small>👤</small>
-                        <span>Profile</span></Link>
-                </li>
-                <li>
-                    <Link to={RoutingURLs.USER.OPTIONS.INFORMATION}>
-                        <small>⚙</small>
-                        <span>Options</span></Link>
-                </li>
-                <li>
-                    <Link to={RoutingURLs.AUTHENTICATION.LOGOUT}>
-                        <small>🚪</small>
-                        Logout</Link>
-                </li>
+
+                <LinkIconLi url={myProfileUrl} icon={'👤'} text={'Profile'}/>
+                <LinkIconLi url={RoutingURLs.USER.OPTIONS.INFORMATION} icon={'⚙'} text={'Options'}/>
+                <LinkIconLi url={RoutingURLs.AUTHENTICATION.LOGOUT} icon={'🚪'} text={'Logout'}/>
+
             </Fragment>
         );
     }
