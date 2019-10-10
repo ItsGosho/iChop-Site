@@ -10,6 +10,7 @@ import CommentCreatorInformation from "./comments/CommentCreatorInformation";
 import CommentReportModal from "./comments/CommentReportModal";
 import CommentOptionsDropdown from "./comments/CommentOptionsDropdown";
 import CommentReportButton from "./comments/CommentReportButton";
+import CommentReactDropdown from "./comments/CommentReactDropdown";
 
 class ThreadReadComments extends Component {
 
@@ -65,8 +66,6 @@ class ThreadReadComments extends Component {
                             creatorMinecraftAccountUUID
                         } = comment;
 
-                        let isAuthenticated = true;
-
                         return (
                             <div className="card thread-comments" style={{'borderColor': 'black'}}>
 
@@ -96,66 +95,13 @@ class ThreadReadComments extends Component {
                                             <div className="btn-group thread-comments-buttons">
                                                 <div className="thread-comments-button_options">
 
-                                                    {
-                                                        (() => {
-                                                            let currentLoggedInUserUsername = 'ItsGosho';
-                                                            let hasRoleModerator = true;
+                                                    <Fragment>
+                                                        <CommentOptionsDropdown/>
 
-                                                            if (isAuthenticated) {
-                                                                return (
-                                                                    <Fragment>
+                                                        <CommentReportButton/>
 
-                                                                        <CommentOptionsDropdown/>
-
-                                                                        <CommentReportButton/>
-
-                                                                        {
-                                                                            (() => {
-                                                                                let isReactedAlready = false;
-
-                                                                                if (isAuthenticated && !isReactedAlready) {
-                                                                                    return (
-                                                                                        <Fragment>
-                                                                                            <div
-                                                                                                className="thread-comments-button_options">
-                                                                                                <button
-                                                                                                    className="btn btn-sm dropdown-toggle"
-                                                                                                    type="button"
-                                                                                                    data-toggle="dropdown"
-                                                                                                    aria-haspopup="true"
-                                                                                                    aria-expanded="false">
-                                                                                                    <small>💡</small>
-                                                                                                    <span>React</span>
-                                                                                                </button>
-                                                                                                <div
-                                                                                                    className="dropdown-menu">
-
-                                                                                                    <button
-                                                                                                        className="btn btn-sm thread-right_side_button-react"
-                                                                                                        type="submit">
-                                                                                                        <small>👍🏻</small>
-                                                                                                        <span>Like</span>
-                                                                                                    </button>
-
-                                                                                                    <button
-                                                                                                        className="btn btn-sm thread-right_side_button-react"
-                                                                                                        type="submit">
-                                                                                                        <small>👎🏻</small>
-                                                                                                        <span>Dislike</span>
-                                                                                                    </button>
-
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </Fragment>
-                                                                                    )
-                                                                                }
-                                                                            })()
-                                                                        }
-                                                                    </Fragment>
-                                                                )
-                                                            }
-                                                        })()
-                                                    }
+                                                        <CommentReactDropdown/>
+                                                    </Fragment>
                                                 </div>
                                             </div>
                                         </div>
