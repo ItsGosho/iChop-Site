@@ -8,6 +8,7 @@ import Interweave from "interweave";
 import CommentInformation from "./comments/CommentInformation";
 import CommentCreatorInformation from "./comments/CommentCreatorInformation";
 import CommentReportModal from "./comments/CommentReportModal";
+import CommentOptionsDropdown from "./comments/CommentOptionsDropdown";
 
 class ThreadReadComments extends Component {
 
@@ -103,35 +104,7 @@ class ThreadReadComments extends Component {
                                                                 return (
                                                                     <Fragment>
 
-                                                                        {
-                                                                            (() => {
-                                                                                if (currentLoggedInUserUsername === creatorUsername || hasRoleModerator) {
-                                                                                    return (
-                                                                                        <Fragment>
-
-                                                                                            <button
-                                                                                                className="btn btn-sm dropdown-toggle"
-                                                                                                type="button"
-                                                                                                data-toggle="dropdown"
-                                                                                                aria-haspopup="true"
-                                                                                                aria-expanded="false">
-                                                                                                <small>⚙</small>
-                                                                                                <span>Options</span>
-                                                                                            </button>
-
-                                                                                            <div
-                                                                                                className="dropdown-menu">
-                                                                                                <button type="submit"
-                                                                                                        className="btn btn-light btn-sm thread-delete_button">
-                                                                                                    <small>❌</small>
-                                                                                                    <span>Delete</span>
-                                                                                                </button>
-                                                                                            </div>
-                                                                                        </Fragment>
-                                                                                    )
-                                                                                }
-                                                                            })()
-                                                                        }
+                                                                        <CommentOptionsDropdown/>
 
 
                                                                         {
