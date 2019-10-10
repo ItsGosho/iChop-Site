@@ -17,7 +17,7 @@ function App() {
             <Navbar/>
 
             <div style={{'marginTop': '75px'}}>
-                <TextEditorInsertImageModal/>
+                <ThreadCreateHelperButton/>
             </div>
 
             <Footer/>
