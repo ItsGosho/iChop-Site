@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import formatDate from 'dateformat';
 import Interweave from "interweave";
-import ThreadCreatorInformation from "./ThreadCreatorInformation";
-import ThreadInformation from "./ThreadInformation";
-import ThreadButtonsLeft from "./ThreadButtonsLeft";
-import ThreadButtonsRight from "./ThreadButtonsRight";
+import ThreadCreatorInformation from "./main/ThreadCreatorInformation";
+import ThreadInformation from "./main/ThreadInformation";
+import ThreadButtonsLeft from "./main/ThreadButtonsLeft";
+import ThreadButtonsRight from "./main/ThreadButtonsRight";
 
 class ThreadReadMainContent extends Component {
 
