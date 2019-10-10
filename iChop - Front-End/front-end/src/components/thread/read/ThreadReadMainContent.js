@@ -1,14 +1,10 @@
-import React, {Component, Fragment} from 'react';
-import ServerRoutingURLs from "../../../constants/server.routing.urls";
+import React, {Component} from 'react';
 import formatDate from 'dateformat';
-import {Link} from "react-router-dom";
-import RoutingURLs from "../../../constants/routing.constants";
-import FrontEndResourcesRoutingURLs from "../../../constants/front-end.resources.routings";
 import Interweave from "interweave";
 import ThreadCreatorInformation from "./ThreadCreatorInformation";
 import ThreadInformation from "./ThreadInformation";
-import ThreadReportModal from "./ThreadReportModal";
 import ThreadButtonsLeft from "./ThreadButtonsLeft";
+import ThreadButtonsRight from "./ThreadButtonsRight";
 
 class ThreadReadMainContent extends Component {
 
@@ -26,12 +22,6 @@ class ThreadReadMainContent extends Component {
 
         let uuid = '8ed20904-3262-401a-901a-1946504d2eea';
         let creatorMinecraftAccountName = 'ItsGosho';
-
-        let isAuthenticated = true;
-        let hasRoleModerator = true;
-
-        let isReportedThreadAlready = false;
-        let isLikedThreadAlready = false;
 
         return (
             <div className="card thread">
@@ -68,61 +58,11 @@ class ThreadReadMainContent extends Component {
 
                         <div className="row">
                             <div className="col-md-12">
-                                <div className="btn-group">
-
+                                <div className="btn-group thread-left_side_buttons">
                                     <ThreadButtonsLeft/>
-
                                 </div>
                                 <div className="btn-group thread-right_side_buttons">
-                                    {
-                                        (() => {
-                                            if (isAuthenticated) {
-                                                return (
-                                                    <Fragment>
-                                                        <button
-                                                            id="button-commentThread-readThreadPage"
-                                                            className="btn btn-sm" type="button"
-                                                            aria-haspopup="true" aria-expanded="false">
-                                                            <small>💬</small>
-                                                            <span>Comment</span>
-                                                        </button>
-
-                                                        <button className="btn btn-sm dropdown-toggle"
-                                                                type="button"
-                                                                data-toggle="dropdown" aria-haspopup="true"
-                                                                aria-expanded="false">
-                                                            <small>💡</small>
-                                                            React
-                                                        </button>
-
-                                                        {
-                                                            (() => {
-                                                                if (!isLikedThreadAlready) {
-                                                                    return (
-                                                                        <div className="dropdown-menu">
-                                                                            <button
-                                                                                className="btn btn-sm thread-right_side_button-react"
-                                                                                type="button">
-                                                                                <small>👍🏻</small>
-                                                                                <span> Like</span>
-                                                                            </button>
-                                                                            <button
-                                                                                className="btn btn-sm thread-right_side_button-react"
-                                                                                type="button">
-                                                                                <small>👎🏻</small>
-                                                                                <span> Dislike</span>
-                                                                            </button>
-                                                                        </div>
-                                                                    );
-                                                                }
-                                                            })()
-                                                        }
-
-                                                    </Fragment>
-                                                );
-                                            }
-                                        })()
-                                    }
+                                    <ThreadButtonsRight/>
                                 </div>
                             </div>
                         </div>

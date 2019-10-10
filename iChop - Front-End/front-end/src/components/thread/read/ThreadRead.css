@@ -30,6 +30,11 @@
     resize: none;
 }
 
+.thread-left_side_buttons {
+    display: inline-block;
+    float: left;
+}
+
 .thread-right_side_buttons {
     display: inline-block;
     float: right;
