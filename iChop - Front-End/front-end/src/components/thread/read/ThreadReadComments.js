@@ -102,6 +102,7 @@ class ThreadReadComments extends Component {
                                                 src={creatorAvatarUrl}
                                                 alt=' '
                                                 onError={this.onUserAvatarError}
+                                                style={{'width':'50px','height':'50px','maxWidth':'100%'}}
                                                 className="card-img-top thread-comment-creator_avatar"/>
                                         </div>
                                         <div>
@@ -127,7 +128,8 @@ class ThreadReadComments extends Component {
                                                                 <Link to={creatorMinecraftPorfileUrl}>
                                                                     <img
                                                                         src={creatorMinecraftAvatarUrl}
-                                                                        className="card-img-top thread-comment-creator-minecraft_username"
+                                                                        className="card-img-top"
+                                                                        style={{'width':'15px','height':'15px','maxWidth':'100%'}}
                                                                         alt=' '/>
                                                                     {creatorMinecraftAccountName}
                                                                 </Link>

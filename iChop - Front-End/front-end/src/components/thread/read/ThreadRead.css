@@ -94,18 +94,6 @@
     margin-top: 30px;
 }
 
-.thread-comment-creator_avatar {
-    width: 50px;
-    height: 50px;
-    max-width: 100%;
-}
-
-.thread-comment-creator-minecraft_username {
-    width: 15px;
-    height: 15px;
-    max-width: 100%;
-}
-
 .thread-comment-content {
     margin-left: 15px;
     margin-right: 15px;
