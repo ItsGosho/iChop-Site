@@ -2,6 +2,7 @@ import React, {Component, Fragment} from 'react';
 import {Link} from "react-router-dom";
 import RoutingURLs from "../../../constants/routing.constants";
 import FooterSideListWrapper from "../wrappers/FooterSideListWrapper";
+import LinkIconLi from "../../other/LinkIconLi";
 
 class ModeratorFooter extends Component {
 
@@ -14,37 +15,19 @@ class ModeratorFooter extends Component {
             <Fragment>
 
                 <FooterSideListWrapper text={'VISIT'}>
-                    <li>
-                        <Link to={myProfileUrl}>
-                            <small>👤</small>
-                            <span>Profile</span></Link>
-                    </li>
-                    <li>
-                        <Link to={RoutingURLs.USER.OPTIONS.INFORMATION}>
-                            <small>⚙</small>
-                            <span>Options</span></Link>
-                    </li>
-                    <li>
-                        <Link to={RoutingURLs.THREAD.CREATE}>
-                            <small>🚩</small>
-                            Create Thread</Link>
-                    </li>
+
+                    <LinkIconLi url={myProfileUrl} icon={'👤'} text={'Profile'}/>
+                    <LinkIconLi url={RoutingURLs.USER.OPTIONS.INFORMATION} icon={'⚙'} text={'Options'}/>
+                    <LinkIconLi url={RoutingURLs.THREAD.CREATE} icon={'🚩'} text={'Create Thread'}/>
+
                 </FooterSideListWrapper>
 
 
                 <FooterSideListWrapper text={'---'}>
 
-                    <li>
-                        <Link to={RoutingURLs.COMMENT.REPORT.ALL}>
-                            <small>⚠</small>
-                            Reports</Link>
-                    </li>
-
-                    <li>
-                        <Link to={RoutingURLs.AUTHENTICATION.LOGOUT}>
-                            <small>🚪</small>
-                            Logout</Link>
-                    </li>
+                    <LinkIconLi url={RoutingURLs.COMMENT.REPORT.ALL} icon={'⚠'} text={'Reports'}/>
+                    <LinkIconLi url={RoutingURLs.AUTHENTICATION.LOGOUT} icon={'🚪'} text={'Logout'}/>
+                    
                 </FooterSideListWrapper>
             </Fragment>
         );
