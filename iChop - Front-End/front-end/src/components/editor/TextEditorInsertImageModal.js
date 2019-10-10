@@ -2,6 +2,9 @@ import React, {Component, Fragment} from 'react';
 import TextEditorCommands from "./text.editor.commands.constants";
 import FormHoc from "../../hocs/form.hoc";
 import CommandExecutorHoc from "./command.executor.hoc";
+import Modal from "../modal/Modal";
+import ModalBody from "../modal/ModalBody";
+import ModalFooter from "../modal/ModalFooter";
 
 class TextEditorInsertImageModal extends Component {
 
@@ -39,44 +42,36 @@ class TextEditorInsertImageModal extends Component {
         return (
             <Fragment>
 
-                <a href="#" id="button-insertImage-textEditor" data-toggle="modal"
-                   data-target="#modal-insertImage-textEditor"
+                <a href="#" data-toggle="modal"
+                   data-target="#insertImage"
                    title="Insert Image" onClick={preventDefault}>
                     <i className="material-icons">photo</i>
                 </a>
 
-                <div className="modal fade" id="modal-insertImage-textEditor" tabIndex="-1" role="dialog"
-                     aria-labelledby="modalLabelInsertImage" aria-hidden="true">
+                <Modal relationTo={'insertImage'} title={'Insert Image:'}>
 
-                    <div className="modal-dialog" role="document">
-                        <div className="modal-content">
 
-                            <div className="modal-header">
-                                <h5 className="modal-title" id="modalLabelInsertImage">Image URL</h5>
-                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
+                    <ModalTitle>
+                        <h5 className="modal-title">Image URL</h5>
+                    </ModalTitle>
 
-                            <div className="modal-body">
-                                <div className="input-group mb-3">
-                                    <input id="input-insertImage-textEditor" type="text" className="form-control"
-                                           onChange={onChange} name='link'
-                                           aria-describedby="basic-addon1" placeholder=""/>
-                                </div>
-                            </div>
-
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                <button id="button-proceedInsertImage-textEditor" type="button" data-dismiss="modal"
-                                        className="btn btn-primary" onClick={this.proceedInsertImage}>Insert
-                                </button>
-                            </div>
-
+                    <ModalBody>
+                        <div className="input-group mb-3">
+                            <input id="input-insertImage-textEditor" type="text" className="form-control"
+                                   onChange={onChange} name='link'
+                                   aria-describedby="basic-addon1" placeholder=""/>
                         </div>
-                    </div>
+                    </ModalBody>
 
-                </div>
+                    <ModalFooter>
+                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button id="button-proceedInsertImage-textEditor" type="button" data-dismiss="modal"
+                                className="btn btn-primary" onClick={this.proceedInsertImage}>Insert
+                        </button>
+                    </ModalFooter>
+
+                </Modal>
+
             </Fragment>
         );
     }

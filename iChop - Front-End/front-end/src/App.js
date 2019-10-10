@@ -8,6 +8,7 @@ import PlayerProfile from "./components/player/PlayerProfile";
 import Reports from "./components/report/Reports";
 import ThreadRead from "./components/thread/read/ThreadRead";
 import ThreadAll from "./components/thread/read/all/ThreadAll";
+import TextEditorInsertImageModal from "./components/editor/TextEditorInsertImageModal";
 
 function App() {
     return (
@@ -15,7 +16,7 @@ function App() {
             <Navbar/>
 
             <div style={{'marginTop': '75px'}}>
-                <ThreadAll/>
+                <TextEditorInsertImageModal/>
             </div>
 
             <Footer/>
