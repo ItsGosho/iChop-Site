@@ -35,37 +35,29 @@ class TextEditorInsertLinkModal extends Component {
         let {onChange} = this.props.formMethods;
 
         return (
-            <Fragment>
-                
-                <ModalOpen relationTo={'insertLink'} title={'Insert Link'}>
-                    <i className="material-icons btn-link">{MaterialIcons.INSERT_LINK}</i>
-                </ModalOpen>
+            <Modal relationTo={'insertLink'}>
 
-                <Modal relationTo={'insertLink'}>
+                <ModalTitle>
+                    <span>Insert Link</span>
+                </ModalTitle>
 
-                    <ModalTitle>
-                        <span>Insert Link</span>
-                    </ModalTitle>
+                <ModalBody>
+                    <div className="input-group mb-3">
+                        <input id="input-insertLink-textEditor" type="text" className="form-control"
+                               aria-describedby="basic-addon1"
+                               onChange={onChange} name='link'
+                               placeholder="Example: https://youtube.com..."/>
+                    </div>
+                </ModalBody>
 
-                    <ModalBody>
-                        <div className="input-group mb-3">
-                            <input id="input-insertLink-textEditor" type="text" className="form-control"
-                                   aria-describedby="basic-addon1"
-                                   onChange={onChange} name='link'
-                                   placeholder="Example: https://youtube.com..."/>
-                        </div>
-                    </ModalBody>
+                <ModalFooter>
+                    <ModalCloseButton/>
+                    <button id="button-proceedInsertLink-textEditor" type="button" data-dismiss="modal"
+                            className="btn btn-primary" onClick={this.proceedInsertLink}>Insert
+                    </button>
+                </ModalFooter>
 
-                    <ModalFooter>
-                        <ModalCloseButton/>
-                        <button id="button-proceedInsertLink-textEditor" type="button" data-dismiss="modal"
-                                className="btn btn-primary" onClick={this.proceedInsertLink}>Insert
-                        </button>
-                    </ModalFooter>
-
-                </Modal>
-
-            </Fragment>
+            </Modal>
         );
     }
 }

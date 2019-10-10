@@ -40,6 +40,11 @@ class TextEditor extends Component {
 
                 <TextEditorFontPicker/>
 
+
+                <ModalOpen relationTo={'insertLink'} title={'Insert Link'}>
+                    <i className="material-icons btn-link">{MaterialIcons.INSERT_LINK}</i>
+                </ModalOpen>
+
                 <TextEditorInsertLinkModal/>
 
 
