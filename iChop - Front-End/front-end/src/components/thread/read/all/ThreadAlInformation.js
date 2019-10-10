@@ -1,4 +1,6 @@
 import React, {Component, Fragment} from 'react';
+import RoutingURLs from "../../../../constants/routing.constants";
+import {Link} from "react-router-dom";
 
 class ThreadAlInformation extends Component {
 
@@ -6,40 +8,38 @@ class ThreadAlInformation extends Component {
     render() {
         let {id, title, createdOn, postTime, username, totalViews, totalReactions, totalComments} = this.props;
 
+        let userProfileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', username);
+        let threadReadUrl = RoutingURLs.THREAD.VIEW.replace(':id', id);
+
         return (
             <Fragment>
                 <div className="row">
                     <div className="col-md-8">
-                        <h3 className="title" th:text="*{title}">...</h3>
+                        <h3 className="title">{title}</h3>
                     </div>
                     <div className="col-md-4">
                         <small className="date">
                             <small className="dateIcon">📅</small>
-                            <small
-                                th:text="*{#temporals.format(createdOn, 'dd MMM,yyyy')}">1
-                                Jan,1970
-                            </small>
+                            <small>{createdOn}</small>
                         </small>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-md-8">
-                        <small>by <a
-                            th:href="@{/user/{username}/profile(username=*{creatorUsername})}">👤<span
-                            className="user" th:text="*{creatorUsername}"></span></a> at
+                        <small>by <Link
+                            to={userProfileUrl}>👤<span
+                            className="user">{username}</span></Link> at
                             <span
-                                className="postTime"
-                                th:text="*{#temporals.format(createdOn, 'HH:mm')}"></span>
-                            (<span className="totalViews" th:text="*{totalViews}">0</span>👀
+                                className="postTime">{postTime}</span>
+                            (<span className="totalViews">{totalViews}</span>👀
                             / <span
-                                className="totalLikes" th:text="*{totalReactions}">0</span>👍)
+                                className="totalLikes">{totalReactions}</span>👍)
                         </small>
                     </div>
                     <div className="col-md-4">
                         <small className="totalComments">
                             <small>💬</small>
-                            <a th:href="@{/thread/{id}/read#section-thread_read_comments(id=*{id})}"><span
-                                th:text="*{totalComments}"></span></a> Comments
+                            <Link to={threadReadUrl}><span>{totalComments}</span></Link> Comments
                         </small>
                     </div>
                 </div>
