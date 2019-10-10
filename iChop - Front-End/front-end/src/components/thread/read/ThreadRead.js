@@ -16,7 +16,7 @@ class ThreadRead extends Component {
 
                         <ThreadReadMainContent/>
                         <ThreadReadAddComment/>
-                        {/*<ThreadReadComments/>*/}
+                        <ThreadReadComments/>
 
                     </div>
                 </div>

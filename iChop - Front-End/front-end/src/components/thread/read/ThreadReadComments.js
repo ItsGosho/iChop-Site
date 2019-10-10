@@ -306,7 +306,7 @@ class ThreadReadComments extends Component {
                                 </div>
                             </div>
                         )
-                    })())
+                    }))()
                 }
             </section>)
     }
