@@ -6,14 +6,13 @@ import RoutingURLs from "../../../constants/routing.constants";
 import FrontEndResourcesRoutingURLs from "../../../constants/front-end.resources.routings";
 import Interweave from "interweave";
 import ThreadCreatorInformation from "./ThreadCreatorInformation";
+import ThreadInformation from "./ThreadInformation";
 
 class ThreadReadMainContent extends Component {
 
     render() {
         let threadId = 'threadId123';
         let creatorUsername = 'ItsGosho';
-        let creatorProfileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', creatorUsername);
-        let creatorAvatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', creatorUsername);
         let creatorTotalComments = 15;
         let title = 'Abra kadabra';
         let createdOn = formatDate(new Date(), 'dd mmm,yyyy');
@@ -22,12 +21,9 @@ class ThreadReadMainContent extends Component {
         let totalReactions = 15;
         let totalComments = 3;
         let content = '<center><h1>Hi!</h1></center>';
-        let threadCommentsFragmentUrl = RoutingURLs.THREAD.VIEW.replace(':id', threadId) + '#section-thread_read_comments';
 
         let uuid = '8ed20904-3262-401a-901a-1946504d2eea';
         let creatorMinecraftAccountName = 'ItsGosho';
-        let creatorMinecraftAvatarUrl = ServerRoutingURLs.OUTSIDE.MINOTAR.MINECRAFT.HEAD.replace(':accountName', creatorMinecraftAccountName);
-        let creatorMinecraftProfileUrl = RoutingURLs.PLAYER.PROFILE.VIEW.replace(':uuid', uuid);
 
         let isAuthenticated = true;
         let hasRoleModerator = true;
@@ -39,40 +35,22 @@ class ThreadReadMainContent extends Component {
             <div className="card thread">
 
                 <div className="card-header">
-                   <ThreadCreatorInformation uuid={uuid} username={creatorUsername} totalComments={creatorTotalComments} minecraftAccountName={creatorMinecraftAccountName}/>
+                    <ThreadCreatorInformation uuid={uuid}
+                                              username={creatorUsername}
+                                              totalComments={creatorTotalComments}
+                                              minecraftAccountName={creatorMinecraftAccountName}/>
                 </div>
 
                 <div className="card-body">
 
-                    <div className="row">
-                        <div className="col-md-8">
-                            <h3 className="title">{title}</h3>
-                        </div>
-                        <div className="col-md-4">
-                            <small className="thread-createdOn">
-                                <small className="dateIcon">📅</small>
-                                <small className="date">{createdOn}</small>
-                            </small>
-                        </div>
-                    </div>
-
-                    <div className="row">
-                        <div className="col-md-8">
-                            <small>
-                                <span>Posted at {postedAt} ( {totalViews}👀 / {totalReactions}👍 )</span>
-                            </small>
-                        </div>
-
-
-                        <div className="col-md-4">
-                            <small className="thread-total_comments">
-                                <Link to={threadCommentsFragmentUrl}>
-                                    <span className="totalComments">{totalComments}</span>
-                                </Link>
-                                <small>💬</small>
-                            </small>
-                        </div>
-                    </div>
+                    <ThreadInformation
+                        id={threadId}
+                        title={title}
+                        createdOn={createdOn}
+                        postedAt={postedAt}
+                        totalViews={totalViews}
+                        totalReactions={totalReactions}
+                        totalComments={totalComments}/>
 
                     <div className="dropdown-divider"/>
 
