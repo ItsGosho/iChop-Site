@@ -15,10 +15,6 @@ class TextEditorInsertLinkModal extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            modal: ''
-        };
-
         this.proceedInsertLink = this.proceedInsertLink.bind(this);
     }
 
@@ -27,11 +23,9 @@ class TextEditorInsertLinkModal extends Component {
         let {link} = this.props.formData;
 
         document.execCommand(TextEditorCommands.CREATE_LINK, false, link);
-        this.setState({'modal': 'hide'})
     }
 
     render() {
-        let {preventDefault} = this.props;
         let {onChange} = this.props.formMethods;
 
         return (
