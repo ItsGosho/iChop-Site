@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import FooterLinksWrapper from "../wrappers/FooterLinksWrapper";
+import FooterLinksWrapper from "../etc/FooterLinksWrapper";
 import navbarGuestReduxHoc from "../../../redux/hocs/navbar.guest.hoc";
 import LinkIconLi from "../../other/LinkIconLi";
 
