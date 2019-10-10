@@ -7,6 +7,7 @@ import {Link} from "react-router-dom";
 import Interweave from "interweave";
 import CommentInformation from "./comments/CommentInformation";
 import CommentCreatorInformation from "./comments/CommentCreatorInformation";
+import CommentReportModal from "./comments/CommentReportModal";
 
 class ThreadReadComments extends Component {
 
@@ -150,44 +151,7 @@ class ThreadReadComments extends Component {
                                                                                                 <span>Report</span>
                                                                                             </button>
 
-                                                                                            <div className="modal"
-                                                                                                 role="dialog">
-                                                                                                <div
-                                                                                                    className="modal-dialog">
-
-                                                                                                    <div
-                                                                                                        className="modal-content">
-                                                                                                        <div
-                                                                                                            className="modal-header">
-                                                                                                            <h4 className="modal-title">Report
-                                                                                                                to the
-                                                                                                                kings:</h4>
-                                                                                                        </div>
-                                                                                                        <div
-                                                                                                            className="modal-body">
-                                                                                                            <textarea
-                                                                                                                className="thread-comments-modal"
-                                                                                                                name="reason"
-                                                                                                                placeholder="Reason..."/>
-                                                                                                        </div>
-                                                                                                        <div
-                                                                                                            className="modal-footer">
-                                                                                                            <button
-                                                                                                                type="button"
-                                                                                                                className="btn btn-default">
-                                                                                                                Report
-                                                                                                            </button>
-                                                                                                            <button
-                                                                                                                type="button"
-                                                                                                                className="btn btn-default"
-                                                                                                                data-dismiss="modal">
-                                                                                                                Cancel
-                                                                                                            </button>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
+                                                                                            <CommentReportModal/>
                                                                                     );
                                                                                 }
                                                                             })()
