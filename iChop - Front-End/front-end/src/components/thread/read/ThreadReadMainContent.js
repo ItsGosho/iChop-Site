@@ -49,59 +49,7 @@ class ThreadReadMainContent extends Component {
             <div className="card thread">
 
                 <div className="card-header">
-                    <div className="row">
-                        <div className="col-md-4">
-                            <div align="center">
-                                <small>
-                                    👤 <Link to={creatorProfileUrl}>{creatorUsername}</Link>
-                                </small>
-                            </div>
-                            <div align="center">
-                                <img
-                                    src={creatorAvatarUrl}
-                                    onError={this.onUserAvatarError}
-                                    alt=''
-                                    style={{'width': '50px', 'height': '50px'}}
-                                    className="card-img-top thread-creator-avatar"/>
-                            </div>
-                            <div align="center">
-                                <small>
-                                    <small>💬</small>
-                                    <span className="totalComments">{creatorTotalComments} total comments</span>
-                                </small>
-                            </div>
-                        </div>
-                        <div className="col-md-8">
-                            <div align="center">
-                                <div className="row">
 
-                                    {
-                                        (() => {
-                                            if (creatorMinecraftAccountName !== undefined) {
-                                                return (
-                                                    <small>
-                                                        <Link to={creatorMinecraftProfileUrl}>
-                                                            <img
-                                                                src={creatorMinecraftAvatarUrl}
-                                                                style={{'width': '22px', 'height': '22px'}}
-                                                                alt=''/>
-                                                            <span
-                                                                style={{
-                                                                    'fontSize': '15px',
-                                                                    'fontFamily': 'Consolas'
-                                                                }}>{creatorMinecraftAccountName}
-                                                            </span>
-                                                        </Link>
-                                                    </small>
-                                                );
-                                            }
-                                        })()
-                                    }
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
                 <div className="card-body">
