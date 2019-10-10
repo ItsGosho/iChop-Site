@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import TextEditorCommands from "./text.editor.commands.constants";
 import CommandExecutorHoc from "./command.executor.hoc";
+import MaterialIcons from "../../constants/material.icons.types.constants";
 
 class TextEditorFontSizePicker extends Component {
 
@@ -25,7 +26,7 @@ class TextEditorFontSizePicker extends Component {
                 <a href="#" className="dropdown-toggle"
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                    title="Font Size" onClick={preventDefault}>
-                    <i className="material-icons">format_size</i>
+                    <i className="material-icons">{MaterialIcons.FORMAT_SIZE}</i>
                 </a>
 
                 <ul className="dropdown-menu scrollable-menu" role="menu"

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import TextEditorCommands from "./text.editor.commands.constants";
+import MaterialIcons from "../../constants/material.icons.types.constants";
 
 class TextEditorFontPicker extends Component {
 
@@ -19,10 +20,10 @@ class TextEditorFontPicker extends Component {
         return (
             <span>
 
-                <a href="#" id="button-fontFamily-textEditor" className="dropdown-toggle"
+                <a href="#" className="dropdown-toggle"
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                    title="Font Family" onClick={this.preventDefault}>
-                    <i className="material-icons">font_download</i>
+                    <i className="material-icons">{MaterialIcons.FONT_DOWNLOAD}</i>
                 </a>
 
                 <ul className="dropdown-menu scrollable-menu" role="menu"

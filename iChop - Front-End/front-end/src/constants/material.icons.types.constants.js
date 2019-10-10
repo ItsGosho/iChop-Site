@@ -6,6 +6,7 @@ const MaterialIcons = {
     FORMAT_ITALIC: 'format_italic',
     FORMAT_UNDERLINE: 'format_underlined',
     FORMAT_CLEAR: 'format_clear',
+    FORMAT_SIZE: 'format_size',
 
     UNDO: 'undo',
     REDO: 'redo',
@@ -17,6 +18,8 @@ const MaterialIcons = {
 
     INVERT_COLORS: 'invert_colors',
     FORMAT_PAINT: 'format_paint',
+
+    FONT_DOWNLOAD: 'font_download'
 };
 
 export default MaterialIcons;
