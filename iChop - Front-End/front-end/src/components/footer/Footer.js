@@ -24,23 +24,24 @@ class Footer extends Component {
                             <FooterHeader/>
                         </div>
 
-                        {
-                            (() => {
-                                switch (role) {
-                                    case Roles.USER:
-                                        return (<UserFooter/>);
-                                    case Roles.MODERATOR:
-                                        return (<ModeratorFooter/>);
-                                    case Roles.ADMIN:
-                                        return (<AdminFooter/>);
-                                    case Roles.OWNER:
-                                        return (<OwnerFooter/>);
-                                    default:
-                                        return (<GuestFooter/>);
-                                }
-                            })()
-                        }
-
+                        <div className="col-md-2 mx-auto">
+                            {
+                                (() => {
+                                    switch (role) {
+                                        case Roles.USER:
+                                            return (<UserFooter/>);
+                                        case Roles.MODERATOR:
+                                            return (<ModeratorFooter/>);
+                                        case Roles.ADMIN:
+                                            return (<AdminFooter/>);
+                                        case Roles.OWNER:
+                                            return (<OwnerFooter/>);
+                                        default:
+                                            return (<GuestFooter/>);
+                                    }
+                                })()
+                            }
+                        </div>
                     </div>
 
                 </div>
