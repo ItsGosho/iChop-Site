@@ -6,6 +6,7 @@ import Modal from "../modal/Modal";
 import ModalBody from "../modal/ModalBody";
 import ModalFooter from "../modal/ModalFooter";
 import ModalTitle from "../modal/ModalTitle";
+import ModalOpen from "../modal/ModalOpen";
 
 class TextEditorInsertImageModal extends Component {
 
@@ -37,17 +38,15 @@ class TextEditorInsertImageModal extends Component {
     }
 
     render() {
-        let {preventDefault} = this.props;
         let {onChange} = this.props.formMethods;
 
         return (
             <Fragment>
 
-                <a href="#" data-toggle="modal"
-                   data-target="#insertImage"
-                   title="Insert Image" onClick={preventDefault}>
-                    <i className="material-icons">photo</i>
-                </a>
+                <ModalOpen>
+                    <i className="material-icons btn-link">photo</i>
+                </ModalOpen>
+
 
                 <Modal relationTo={'insertImage'}>
 
