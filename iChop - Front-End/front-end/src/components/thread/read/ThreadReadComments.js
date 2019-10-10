@@ -9,6 +9,7 @@ import CommentInformation from "./comments/CommentInformation";
 import CommentCreatorInformation from "./comments/CommentCreatorInformation";
 import CommentReportModal from "./comments/CommentReportModal";
 import CommentOptionsDropdown from "./comments/CommentOptionsDropdown";
+import CommentReportButton from "./comments/CommentReportButton";
 
 class ThreadReadComments extends Component {
 
@@ -106,29 +107,7 @@ class ThreadReadComments extends Component {
 
                                                                         <CommentOptionsDropdown/>
 
-
-                                                                        {
-                                                                            (() => {
-                                                                                let isCurrentLoggedInUserReportedTheComment = false;
-
-                                                                                if (!isCurrentLoggedInUserReportedTheComment) {
-                                                                                    return (
-                                                                                        <div
-                                                                                            className="thread-comments-button_report">
-
-
-                                                                                            <button
-                                                                                                className="btn btn-sm"
-                                                                                                type="button">
-                                                                                                <small>⚠</small>
-                                                                                                <span>Report</span>
-                                                                                            </button>
-
-                                                                                            <CommentReportModal/>
-                                                                                    );
-                                                                                }
-                                                                            })()
-                                                                        }
+                                                                        <CommentReportButton/>
 
                                                                         {
                                                                             (() => {
