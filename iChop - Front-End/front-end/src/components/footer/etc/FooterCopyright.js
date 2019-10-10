@@ -3,7 +3,6 @@ import RoutingURLs from "../../../constants/routing.constants";
 
 class FooterCopyright extends Component {
 
-
     render() {
 
         return (

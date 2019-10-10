@@ -19,7 +19,10 @@ class Footer extends Component {
 
                 <div className="container text-center text-md-left">
                     <div className="row">
-                        <FooterHeader/>
+
+                        <div className="col-md-4 mx-auto">
+                            <FooterHeader/>
+                        </div>
 
                         {
                             (() => {
