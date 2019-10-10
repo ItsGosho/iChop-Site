@@ -21,17 +21,17 @@ class TextEditor extends Component {
 
                 <a href="#" title="Bold"
                    onClick={execCommand(TextEditorCommands.FORMAT_BOLD)}>
-                    <i className="material-icons">format_bold</i>
+                    <i className="material-icons">{MaterialIcons.FORMAT_BOLD}</i>
                 </a>
 
                 <a href="#" title="Italic"
                    onClick={execCommand(TextEditorCommands.FORMAT_ITALIC)}>
-                    <i className="material-icons">format_italic</i>
+                    <i className="material-icons">{MaterialIcons.FORMAT_ITALIC}</i>
                 </a>
 
                 <a href="#" title="Underline"
                    onClick={execCommand(TextEditorCommands.FORMAT_UNDERLINE)}>
-                    <i className="material-icons">format_underlined</i>
+                    <i className="material-icons">{MaterialIcons.FORMAT_UNDERLINE}</i>
                 </a>
 
                 <TextEditorColorPicker/>
@@ -56,16 +56,16 @@ class TextEditor extends Component {
 
 
                 <a href="#" title="Undo" onClick={execCommand(TextEditorCommands.UNDO)}>
-                    <i className="material-icons">undo</i>
+                    <i className="material-icons">{MaterialIcons.UNDO}</i>
                 </a>
 
                 <a href="#" title="Redo" onClick={execCommand(TextEditorCommands.REDO)}>
-                    <i className="material-icons">redo</i>
+                    <i className="material-icons">{MaterialIcons.REDO}</i>
                 </a>
 
                 <a href="#" title="Remove Formatting"
                    onClick={execCommand(TextEditorCommands.REMOVE_FORMAT)}>
-                    <i className="material-icons">format_clear</i>
+                    <i className="material-icons">{MaterialIcons.FORMAT_CLEAR}</i>
                 </a>
 
                 <TextEditorAlignPicker/>
