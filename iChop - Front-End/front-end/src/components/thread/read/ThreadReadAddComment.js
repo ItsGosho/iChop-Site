@@ -15,7 +15,6 @@ class ThreadReadAddComment extends Component {
                             return (
                                 <div className="commentBox thread-comment_box">
 
-                                    <TextEditor/>
 
                                     <div id="textarea-content-createComment"
                                          className="thread-comment_box-textarea"
@@ -24,13 +23,13 @@ class ThreadReadAddComment extends Component {
                                     <div
                                         className="row d-flex justify-content-center align-items-center thread-comment_box-buttons">
 
-                                        <button id="button-createCommentThread-readThreadPage" className="btn btn-sm"
+                                        <button id="button-createCommentThread-readThreadPage" className="btn btn-sm btn-success"
                                                 type="button">
                                             Comment
                                         </button>
 
                                         <button id="button-cancelCommentThread-readThreadPage"
-                                                className="btn btn-sm thread-comment_box-button_cancel" type="button">
+                                                className="btn btn-sm btn-danger thread-comment_box-button_cancel" type="button">
                                             Cancel
                                         </button>
 
