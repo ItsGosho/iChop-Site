@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import ThreadReadMainContent from "./ThreadReadMainContent";
-import ThreadReadAddComment from "./ThreadReadAddComment";
 import ThreadReadComments from "./ThreadReadComments";
 import './ThreadRead.css'
 
