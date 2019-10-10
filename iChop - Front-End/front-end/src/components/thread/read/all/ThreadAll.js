@@ -49,79 +49,81 @@ class ThreadAll extends Component {
         ];
 
         return (
-            <div id="threads" className="col-xs-6">
-                <div className="card">
-                    <div className="card-header">
-                        <small>📰</small>
-                        News:
-                    </div>
+            <div className="col-md-auto" style={{'width': '100%'}}>
+                <div id="threads" className="col-xs-6">
+                    <div className="card">
+                        <div className="card-header">
+                            <small>📰</small>
+                            News:
+                        </div>
 
 
-                    {
-                        (() => {
-                            if (threads.length > 0) {
-                                threads.map((thread, index) => {
+                        {
+                            (() => {
+                                if (threads.length > 0) {
+                                    threads.map((thread, index) => {
 
-                                    let {id, title, createdOn, creatorUsername, postTime, totalViews, totalReactions, totalComments, content} = thread;
-                                    let threadReadUrl = RoutingURLs.THREAD.VIEW.replace(':id', id);
+                                        let {id, title, createdOn, creatorUsername, postTime, totalViews, totalReactions, totalComments, content} = thread;
+                                        let threadReadUrl = RoutingURLs.THREAD.VIEW.replace(':id', id);
 
-                                    return (
-                                        <div className="card-body">
-                                            <ThreadAllInformation id={id}
-                                                                  title={title}
-                                                                  createdOn={createdOn}
-                                                                  username={creatorUsername}
-                                                                  postTime={postTime}
-                                                                  totalViews={totalViews}
-                                                                  totalReactions={totalReactions}
-                                                                  totalComments={totalComments}/>
+                                        return (
+                                            <div className="card-body">
+                                                <ThreadAllInformation id={id}
+                                                                      title={title}
+                                                                      createdOn={createdOn}
+                                                                      username={creatorUsername}
+                                                                      postTime={postTime}
+                                                                      totalViews={totalViews}
+                                                                      totalReactions={totalReactions}
+                                                                      totalComments={totalComments}/>
 
-                                            <div className="dropdown-divider"/>
+                                                <div className="dropdown-divider"/>
 
-                                            <div className="content thread-content">
-                                                <p className="card-text">
-                                                    <Interweave content={content}/>
-                                                </p>
-                                            </div>
+                                                <div className="content thread-content">
+                                                    <p className="card-text">
+                                                        <Interweave content={content}/>
+                                                    </p>
+                                                </div>
 
 
-                                            <div className="dropdown-divider"/>
+                                                <div className="dropdown-divider"/>
 
-                                            <div className="row">
-                                                <div className="col-md-8">
-                                                    <div className="btn-group">
-                                                        <ThreadAllOptionsDropdown/>
+                                                <div className="row">
+                                                    <div className="col-md-8">
+                                                        <div className="btn-group">
+                                                            <ThreadAllOptionsDropdown/>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div className="col-md-4">
-                                                    <Link className="dropdown-item"
-                                                          to={threadReadUrl}>
-                                                        <button type="button"
-                                                                className="btn btn-primary btn-sm btn-brand btn-reddit continueReading">
-                                                            <small>📖</small>
-                                                            <span>Continue reading...</span>
-                                                        </button>
-                                                    </Link>
-                                                </div>
+                                                    <div className="col-md-4">
+                                                        <Link className="dropdown-item"
+                                                              to={threadReadUrl}>
+                                                            <button type="button"
+                                                                    className="btn btn-primary btn-sm btn-brand btn-reddit continueReading">
+                                                                <small>📖</small>
+                                                                <span>Continue reading...</span>
+                                                            </button>
+                                                        </Link>
+                                                    </div>
 
+                                                </div>
+                                                <div className="dropdown-divider"/>
                                             </div>
-                                            <div className="dropdown-divider"/>
-                                        </div>
-                                    );
-                                })
-                            } else {
-                                return (<span>There are no news!</span>);
-                            }
-                        })()
-                    }
+                                        );
+                                    })
+                                } else {
+                                    return (<span>There are no news!</span>);
+                                }
+                            })()
+                        }
 
-                    <div className="dropdown-divider"/>
+                        <div className="dropdown-divider"/>
 
-                    <PaginationNav totalResults={threads.length} resultsPerPage={10} redirectPage={RoutingURLs.HOME}/>
+                        <PaginationNav totalResults={threads.length} resultsPerPage={10}
+                                       redirectPage={RoutingURLs.HOME}/>
 
+                    </div>
                 </div>
             </div>
-
         );
     }
 
