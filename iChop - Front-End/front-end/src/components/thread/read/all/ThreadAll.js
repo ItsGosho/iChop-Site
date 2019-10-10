@@ -1,9 +1,46 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
+import './ThreadAll.css';
+import formatDate from 'dateformat'
 
 class ThreadAll extends Component {
 
 
     render() {
+        let threads = [
+            {
+                id: 'id1',
+                title: 'Welcome',
+                createdOn: formatDate(new Date(), 'dd mmm,yyyy'),
+                creatorUsername: 'ItsGosho',
+                postTime: formatDate(new Date(), 'HH:mm'),
+                totalViews: 10,
+                totalReactions: 5,
+                totalComments: 3,
+                content: '<h1>Welcome</h1>'
+            },
+            {
+                id: 'id2',
+                title: 'Ooops',
+                createdOn: formatDate(new Date(), 'dd mmm,yyyy'),
+                creatorUsername: 'Mariika',
+                postTime: formatDate(new Date(), 'HH:mm'),
+                totalViews: 3,
+                totalReactions: 16,
+                totalComments: 2,
+                content: '<h1>Welcome</h1>'
+            },
+            {
+                id: 'id3',
+                title: 'Guten tag!',
+                createdOn: formatDate(new Date(), 'dd mmm,yyyy'),
+                creatorUsername: 'Ivancho',
+                postTime: formatDate(new Date(), 'HH:mm'),
+                totalViews: 4,
+                totalReactions: 7,
+                totalComments: 19,
+                content: '<h1>Welcome</h1>'
+            }
+        ];
 
         return (
             <div id="threads" className="col-xs-6">
@@ -14,8 +51,6 @@ class ThreadAll extends Component {
                     </div>
                     <th:block th:if="${!#lists.isEmpty(threads)}">
 
-                        <!--/*@thymesVar id="threads" type="com.ichop.core.areas.thread.domain.models.view.thread_homepage.ThreadHomepageViewModel"*/-->
-                        <!--/*@thymesVar id="thread" type="com.ichop.core.areas.thread.domain.models.view.thread_homepage.ThreadHomepageViewModel"*/-->
                         <th:block th:each="thread : ${threads}" th:object="${thread}">
                             <div th:id="*{id}" className="card-body">
                                 <div className="row">
