@@ -19,27 +19,20 @@ class ThreadAlInformation extends Component {
                     </div>
                     <div className="col-md-4">
                         <small className="date">
-                            <small className="dateIcon">📅</small>
-                            <small>{createdOn}</small>
+                            <small className="dateIcon">📅 {createdOn}</small>
                         </small>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-md-8">
-                        <small>by <Link
-                            to={userProfileUrl}>👤<span
-                            className="user">{username}</span></Link> at
-                            <span
-                                className="postTime">{postTime}</span>
-                            (<span className="totalViews">{totalViews}</span>👀
-                            / <span
-                                className="totalLikes">{totalReactions}</span>👍)
+                        <small>by
+                            <Link
+                                to={userProfileUrl}>👤 {username}</Link> at <span>{postTime} ({totalViews}👀/{totalReactions} 👍</span>
                         </small>
                     </div>
                     <div className="col-md-4">
                         <small className="totalComments">
-                            <small>💬</small>
-                            <Link to={threadReadUrl}><span>{totalComments}</span></Link> Comments
+                            <Link to={threadReadUrl}>{totalComments}</Link><span>💬</span>
                         </small>
                     </div>
                 </div>
