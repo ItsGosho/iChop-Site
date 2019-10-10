@@ -5,6 +5,10 @@ import TextEditorCommands from "./text.editor.commands.constants";
 import Modal from "../modal/Modal";
 import MaterialIcons from "../../constants/material.icons.types.constants";
 import ModalOpen from "../modal/ModalOpen";
+import ModalTitle from "../modal/ModalTitle";
+import ModalBody from "../modal/ModalBody";
+import ModalFooter from "../modal/ModalFooter";
+import ModalCloseButton from "../modal/ModalCloseButton";
 
 class TextEditorInsertLinkModal extends Component {
 
@@ -32,52 +36,33 @@ class TextEditorInsertLinkModal extends Component {
 
         return (
             <Fragment>
-
-                <a href="#" id="button-insertLink-textEditor" data-toggle="modal"
-                   data-target="#modal-insertLink-textEditor"
-                   title="Insert Link" onClick={preventDefault}><i
-                    className="material-icons">insert_link</i>
-                </a>
-
-                <div className={'modal fade ' + this.state.modal} id="modal-insertLink-textEditor" tabIndex="-1"
-                     role="dialog"
-                     aria-labelledby="modalLabelInsertLink" aria-hidden="true">
-                    <div className="modal-dialog" role="document">
-                        <div className="modal-content">
-
-                            <div className="modal-header">
-                                <h5 className="modal-title" id="modalLabelInsertLink">Insert Link</h5>
-                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-
-                            <div className="modal-body">
-                                <div className="input-group mb-3">
-                                    <input id="input-insertLink-textEditor" type="text" className="form-control"
-                                           aria-describedby="basic-addon1"
-                                           onChange={onChange} name='link'
-                                           placeholder="Example: https://youtube.com..."/>
-                                </div>
-                            </div>
-
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                <button id="button-proceedInsertLink-textEditor" type="button" data-dismiss="modal"
-                                        className="btn btn-primary" onClick={this.proceedInsertLink}>Insert
-                                </button>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
+                
                 <ModalOpen relationTo={'insertLink'} title={'Insert Link'}>
-                    <i className="material-icons">{MaterialIcons.INSERT_LINK}</i>
+                    <i className="material-icons btn-link">{MaterialIcons.INSERT_LINK}</i>
                 </ModalOpen>
 
                 <Modal relationTo={'insertLink'}>
-                       {/*TODO*/}
+
+                    <ModalTitle>
+                        <span>Insert Link</span>
+                    </ModalTitle>
+
+                    <ModalBody>
+                        <div className="input-group mb-3">
+                            <input id="input-insertLink-textEditor" type="text" className="form-control"
+                                   aria-describedby="basic-addon1"
+                                   onChange={onChange} name='link'
+                                   placeholder="Example: https://youtube.com..."/>
+                        </div>
+                    </ModalBody>
+
+                    <ModalFooter>
+                        <ModalCloseButton/>
+                        <button id="button-proceedInsertLink-textEditor" type="button" data-dismiss="modal"
+                                className="btn btn-primary" onClick={this.proceedInsertLink}>Insert
+                        </button>
+                    </ModalFooter>
+
                 </Modal>
 
             </Fragment>
