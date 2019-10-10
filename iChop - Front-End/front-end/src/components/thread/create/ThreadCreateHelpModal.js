@@ -11,24 +11,21 @@ class ThreadCreateHelpModal extends Component {
     render() {
 
         return (
-            <Fragment>
+            <Modal relationTo={'help'}>
 
-                <Modal relationTo={'help'}>
+                <ModalTitle>
+                    <span>How to show only first X rows from thread on the news page:</span>
+                </ModalTitle>
 
-                    <ModalTitle>
-                        <span>How to show only first X rows from thread on the news page:</span>
-                    </ModalTitle>
+                <ModalBody>
+                    <span>If you dont want all of the content to be show on the news page /better/ ,place SHOW_TO_NOW whether you want to end.</span>
+                </ModalBody>
 
-                    <ModalBody>
-                        <span>If you dont want all of the content to be show on the news page /better/ ,place SHOW_TO_NOW whether you want to end.</span>
-                    </ModalBody>
+                <ModalFooter>
+                    <ModalCloseButton/>
+                </ModalFooter>
 
-                    <ModalFooter>
-                        <ModalCloseButton/>
-                    </ModalFooter>
-
-                </Modal>
-            </Fragment>
+            </Modal>
         );
     }
 

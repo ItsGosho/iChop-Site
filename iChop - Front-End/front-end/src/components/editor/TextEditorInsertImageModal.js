@@ -43,31 +43,29 @@ class TextEditorInsertImageModal extends Component {
         let {onChange} = this.props.formMethods;
 
         return (
-            <Fragment>
-                <Modal relationTo={'insertImage'}>
+            <Modal relationTo={'insertImage'}>
 
 
-                    <ModalTitle>
-                        <h5>Image URL</h5>
-                    </ModalTitle>
+                <ModalTitle>
+                    <h5>Image URL</h5>
+                </ModalTitle>
 
-                    <ModalBody>
-                        <div className="input-group mb-3">
-                            <input id="input-insertImage-textEditor" type="text" className="form-control"
-                                   onChange={onChange} name='link'
-                                   aria-describedby="basic-addon1" placeholder=""/>
-                        </div>
-                    </ModalBody>
+                <ModalBody>
+                    <div className="input-group mb-3">
+                        <input id="input-insertImage-textEditor" type="text" className="form-control"
+                               onChange={onChange} name='link'
+                               aria-describedby="basic-addon1" placeholder=""/>
+                    </div>
+                </ModalBody>
 
-                    <ModalFooter>
-                        <ModalCloseButton/>
-                        <button type="button" data-dismiss="modal" className="btn btn-primary"
-                                onClick={this.proceedInsertImage}>Insert
-                        </button>
-                    </ModalFooter>
+                <ModalFooter>
+                    <ModalCloseButton/>
+                    <button type="button" data-dismiss="modal" className="btn btn-primary"
+                            onClick={this.proceedInsertImage}>Insert
+                    </button>
+                </ModalFooter>
 
-                </Modal>
-            </Fragment>
+            </Modal>
         );
     }
 }
