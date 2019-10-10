@@ -7,6 +7,7 @@ import FrontEndResourcesRoutingURLs from "../../../constants/front-end.resources
 import Interweave from "interweave";
 import ThreadCreatorInformation from "./ThreadCreatorInformation";
 import ThreadInformation from "./ThreadInformation";
+import ThreadReportModal from "./ThreadReportModal";
 
 class ThreadReadMainContent extends Component {
 
@@ -117,36 +118,7 @@ class ThreadReadMainContent extends Component {
                                                             Report
                                                         </button>
 
-                                                        <div className="modal" role="dialog">
-                                                            <div className="modal-dialog">
-
-                                                                <div className="modal-content">
-                                                                    <div className="modal-header">
-                                                                        <h4 className="modal-title">Report to the
-                                                                            kings:</h4>
-                                                                    </div>
-
-                                                                    <div className="modal-body">
-                                                                        <textarea
-                                                                            className="thread-modal_report-textarea"
-                                                                            name="reason" placeholder="Reason..."/>
-                                                                    </div>
-
-                                                                    <div className="modal-footer">
-
-                                                                        <button type="button"
-                                                                                className="btn btn-default">Report
-                                                                        </button>
-
-                                                                        <button type="button"
-                                                                                className="btn btn-default"
-                                                                                data-dismiss="modal">Cancel
-                                                                        </button>
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                        <ThreadReportModal/>
 
                                                     </Fragment>
                                                 );
