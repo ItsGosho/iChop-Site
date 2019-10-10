@@ -13,7 +13,7 @@ class Footer extends Component {
 
 
     render() {
-        let role = '';
+        let role = Roles.ADMIN;
 
         return (
             <footer className="page-footer font-small stylish-color-dark pt-4">
@@ -24,7 +24,6 @@ class Footer extends Component {
                             <FooterHeader/>
                         </div>
 
-                        <div className="col-md-2 mx-auto">
                             {
                                 (() => {
                                     switch (role) {
@@ -41,7 +40,6 @@ class Footer extends Component {
                                     }
                                 })()
                             }
-                        </div>
                     </div>
 
                 </div>
