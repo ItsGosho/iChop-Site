@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import FooterSideListWrapper from "../wrappers/FooterSideListWrapper";
 import navbarGuestReduxHoc from "../../../redux/hocs/navbar.guest.hoc";
+import LinkIconLi from "../../other/LinkIconLi";
 
 class GuestFooter extends Component {
 
@@ -14,10 +15,10 @@ class GuestFooter extends Component {
 
 
     onLoginRequired(event) {
-       event.preventDefault();
+        event.preventDefault();
 
-       this.props.showDropdown(true);
-       this.props.selectLogin();
+        this.props.showDropdown(true);
+        this.props.selectLogin();
     }
 
     onRegisterRequired(event) {
@@ -40,11 +41,11 @@ class GuestFooter extends Component {
             <Fragment>
 
                 <FooterSideListWrapper text={'VISIT'}>
-                    <li>
-                        <a onClick={this.onLoginRequired} href=' '>
-                            <small>🔐</small>
-                            Login</a>
-                    </li>
+
+                    <LinkIconLi icon={'🔐'} text={'Login'} onClick={this.onLoginRequired}/>
+                    <LinkIconLi icon={'🔐'} text={'Login'} onClick={this.onLoginRequired}/>
+                    <LinkIconLi icon={'🔐'} text={'Login'} onClick={this.onLoginRequired}/>
+
                     <li>
                         <a onClick={this.onRegisterRequired} href=' '>
                             <small>🗝️</small>

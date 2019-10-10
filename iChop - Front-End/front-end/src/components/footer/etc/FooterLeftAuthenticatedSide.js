@@ -1,6 +1,7 @@
  import React, {Component, Fragment} from 'react';
 import {Link} from "react-router-dom";
 import RoutingURLs from "../../../constants/routing.constants";
+ import LinkIcon from "../../other/LinkIcon";
 
 class FooterLeftAuthenticatedSide extends Component {
 
