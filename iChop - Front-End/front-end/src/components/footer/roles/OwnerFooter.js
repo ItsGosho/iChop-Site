@@ -1,5 +1,4 @@
 import React, {Component, Fragment} from 'react';
-import {Link} from "react-router-dom";
 import RoutingURLs from "../../../constants/routing.constants";
 import FooterAuthenticatedLinks from "../etc/FooterAuthenticatedLinks";
 import FooterLinksWrapper from "../wrappers/FooterLinksWrapper";

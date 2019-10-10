@@ -17,7 +17,6 @@ class Footer extends Component {
 
         return (
             <footer className="page-footer font-small stylish-color-dark pt-4">
-
                 <div className="container text-center text-md-left">
                     <div className="row">
 
@@ -46,7 +45,6 @@ class Footer extends Component {
                     </div>
 
                 </div>
-
                 <FooterCopyright/>
             </footer>
         );
