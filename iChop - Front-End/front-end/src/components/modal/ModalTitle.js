@@ -2,7 +2,7 @@ import React from 'react';
 import CreateReactClass from "create-react-class";
 
 
-let ModalFooter = CreateReactClass({
+let ModalTitle = CreateReactClass({
 
     render() {
 
@@ -20,4 +20,4 @@ let ModalFooter = CreateReactClass({
 });
 
 
-export default ModalFooter;
+export default ModalTitle;

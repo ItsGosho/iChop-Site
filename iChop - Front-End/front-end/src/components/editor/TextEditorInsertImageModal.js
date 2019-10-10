@@ -5,6 +5,7 @@ import CommandExecutorHoc from "./command.executor.hoc";
 import Modal from "../modal/Modal";
 import ModalBody from "../modal/ModalBody";
 import ModalFooter from "../modal/ModalFooter";
+import ModalTitle from "../modal/ModalTitle";
 
 class TextEditorInsertImageModal extends Component {
 
@@ -48,11 +49,11 @@ class TextEditorInsertImageModal extends Component {
                     <i className="material-icons">photo</i>
                 </a>
 
-                <Modal relationTo={'insertImage'} title={'Insert Image:'}>
+                <Modal relationTo={'insertImage'}>
 
 
                     <ModalTitle>
-                        <h5 className="modal-title">Image URL</h5>
+                        <h5>Image URL</h5>
                     </ModalTitle>
 
                     <ModalBody>
@@ -65,7 +66,7 @@ class TextEditorInsertImageModal extends Component {
 
                     <ModalFooter>
                         <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <button id="button-proceedInsertImage-textEditor" type="button" data-dismiss="modal"
+                        <button type="button" data-dismiss="modal"
                                 className="btn btn-primary" onClick={this.proceedInsertImage}>Insert
                         </button>
                     </ModalFooter>
