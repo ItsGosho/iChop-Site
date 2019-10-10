@@ -1,5 +1,6 @@
 const MaterialIcons = {
-    PHOTO: 'photo'
+    PHOTO: 'photo',
+    INSERT_LINK: 'insert_link'
 };
 
 export default MaterialIcons;

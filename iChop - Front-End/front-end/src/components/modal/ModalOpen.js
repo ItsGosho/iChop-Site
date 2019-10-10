@@ -8,7 +8,7 @@ let ModalOpen = CreateReactClass({
         let {relationTo, title} = this.props;
 
         return (
-            <button style={{'all': 'initial'}}
+            <button style={{'background': 'none','color': 'inherit','border': 'none','padding': '0','font': 'inherit'}}
                     data-toggle="modal"
                     data-target={'#' + relationTo}
                     title={title} onClick={(event => event.preventDefault())}>

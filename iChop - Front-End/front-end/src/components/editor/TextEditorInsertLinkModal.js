@@ -2,6 +2,9 @@ import React, {Component, Fragment} from 'react';
 import CommandExecutorHoc from "./command.executor.hoc";
 import FormHoc from "../../hocs/form.hoc";
 import TextEditorCommands from "./text.editor.commands.constants";
+import Modal from "../modal/Modal";
+import MaterialIcons from "../../constants/material.icons.types.constants";
+import ModalOpen from "../modal/ModalOpen";
 
 class TextEditorInsertLinkModal extends Component {
 
@@ -30,7 +33,7 @@ class TextEditorInsertLinkModal extends Component {
         return (
             <Fragment>
 
-                <a href="#" i d="button-insertLink-textEditor" data-toggle="modal"
+                <a href="#" id="button-insertLink-textEditor" data-toggle="modal"
                    data-target="#modal-insertLink-textEditor"
                    title="Insert Link" onClick={preventDefault}><i
                     className="material-icons">insert_link</i>
@@ -68,6 +71,15 @@ class TextEditorInsertLinkModal extends Component {
                         </div>
                     </div>
                 </div>
+
+                <ModalOpen relationTo={'insertLink'} title={'Insert Link'}>
+                    <i className="material-icons">{MaterialIcons.INSERT_LINK}</i>
+                </ModalOpen>
+
+                <Modal relationTo={'insertLink'}>
+                       {/*TODO*/}
+                </Modal>
+
             </Fragment>
         );
     }

@@ -7,7 +7,7 @@ import ModalBody from "../modal/ModalBody";
 import ModalFooter from "../modal/ModalFooter";
 import ModalTitle from "../modal/ModalTitle";
 import ModalOpen from "../modal/ModalOpen";
-import MaterialIcons from "../../constants/material-icons.constants";
+import MaterialIcons from "../../constants/material.icons.types.constants";
 import ModalCloseButton from "../modal/ModalCloseButton";
 
 class TextEditorInsertImageModal extends Component {
@@ -44,7 +44,6 @@ class TextEditorInsertImageModal extends Component {
 
         return (
             <Modal relationTo={'insertImage'}>
-
 
                 <ModalTitle>
                     <h5>Image URL</h5>
