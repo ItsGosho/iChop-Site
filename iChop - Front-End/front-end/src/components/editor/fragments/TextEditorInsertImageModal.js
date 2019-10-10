@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import TextEditorCommands from "./text.editor.commands.constants";
-import FormHoc from "../../hocs/form.hoc";
-import CommandExecutorHoc from "./command.executor.hoc";
-import Modal from "../modal/Modal";
-import ModalBody from "../modal/ModalBody";
-import ModalFooter from "../modal/ModalFooter";
-import ModalTitle from "../modal/ModalTitle";
-import ModalCloseButton from "../modal/ModalCloseButton";
+import TextEditorCommands from "../text.editor.commands.constants";
+import FormHoc from "../../../hocs/form.hoc";
+import CommandExecutorHoc from "../command.executor.hoc";
+import Modal from "../../modal/Modal";
+import ModalBody from "../../modal/ModalBody";
+import ModalFooter from "../../modal/ModalFooter";
+import ModalTitle from "../../modal/ModalTitle";
+import ModalCloseButton from "../../modal/ModalCloseButton";
 
 class TextEditorInsertImageModal extends Component {
 

@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import TextEditorColorPicker from "./TextEditorColorPicker";
-import TextEditorFontSizePicker from "./TextEditorFontSizePicker";
-import TextEditorFontPicker from "./TextEditorFontPicker";
-import TextEditorAlignPicker from "./TextEditorAlignPicker";
-import TextEditorInsertLinkModal from "./TextEditorInsertLinkModal";
-import TextEditorInsertImageModal from "./TextEditorInsertImageModal";
+import TextEditorColorPicker from "./fragments/TextEditorColorPicker";
+import TextEditorFontSizePicker from "./fragments/TextEditorFontSizePicker";
+import TextEditorFontPicker from "./fragments/TextEditorFontPicker";
+import TextEditorAlignPicker from "./fragments/TextEditorAlignPicker";
+import TextEditorInsertLinkModal from "./fragments/TextEditorInsertLinkModal";
+import TextEditorInsertImageModal from "./fragments/TextEditorInsertImageModal";
 import CommandExecutorHoc from "./command.executor.hoc";
 import TextEditorCommands from "./text.editor.commands.constants";
 import './TextEditor.css'

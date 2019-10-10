@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import CommandExecutorHoc from "./command.executor.hoc";
-import FormHoc from "../../hocs/form.hoc";
-import TextEditorCommands from "./text.editor.commands.constants";
-import Modal from "../modal/Modal";
-import ModalTitle from "../modal/ModalTitle";
-import ModalBody from "../modal/ModalBody";
-import ModalFooter from "../modal/ModalFooter";
-import ModalCloseButton from "../modal/ModalCloseButton";
+import CommandExecutorHoc from "../command.executor.hoc";
+import FormHoc from "../../../hocs/form.hoc";
+import TextEditorCommands from "../text.editor.commands.constants";
+import Modal from "../../modal/Modal";
+import ModalTitle from "../../modal/ModalTitle";
+import ModalBody from "../../modal/ModalBody";
+import ModalFooter from "../../modal/ModalFooter";
+import ModalCloseButton from "../../modal/ModalCloseButton";
 
 class TextEditorInsertLinkModal extends Component {
 

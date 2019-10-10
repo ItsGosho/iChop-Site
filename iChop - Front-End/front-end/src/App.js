@@ -8,7 +8,7 @@ import PlayerProfile from "./components/player/PlayerProfile";
 import Reports from "./components/report/Reports";
 import ThreadRead from "./components/thread/read/ThreadRead";
 import ThreadAll from "./components/thread/read/all/ThreadAll";
-import TextEditorInsertImageModal from "./components/editor/TextEditorInsertImageModal";
+import TextEditorInsertImageModal from "./components/editor/fragments/TextEditorInsertImageModal";
 import ThreadCreateHelpModal from "./components/thread/create/ThreadCreateHelpModal";
 
 function App() {
