@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './Footer.css'
 import Roles from "../../constants/roles.constants";
 import UserFooter from "./roles/UserFooter";
 import ModeratorFooter from "./roles/ModeratorFooter";
@@ -15,7 +16,7 @@ class Footer extends Component {
         let role = '';
 
         return (
-            <footer className="page-footer font-small stylish-color-dark pt-4" style={{'marginTop': '125px'}}>
+            <footer className="page-footer font-small stylish-color-dark pt-4">
 
                 <div className="container text-center text-md-left">
                     <div className="row">
