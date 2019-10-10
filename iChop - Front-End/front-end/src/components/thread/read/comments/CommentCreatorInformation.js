@@ -1,6 +1,8 @@
 import React, {Component, Fragment} from 'react';
 import {Link} from "react-router-dom";
 import FrontEndResourcesRoutingURLs from "../../../../constants/front-end.resources.routings";
+import RoutingURLs from "../../../../constants/routing.constants";
+import ServerRoutingURLs from "../../../../constants/server.routing.urls";
 
 class CommentCreatorInformation extends Component {
 
@@ -16,13 +18,18 @@ class CommentCreatorInformation extends Component {
     }
 
     render() {
-        let {username,totalComments,minecraftAccountName} = this.props;
+        let {uuid,username,totalComments,minecraftAccountName} = this.props;
+
+        let userProfileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', username);
+        let userAvatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', username);
+        let minecraftPorfileUrl = RoutingURLs.PLAYER.PROFILE.VIEW.replace(':uuid', uuid);
+        let minecraftAvatarUrl = ServerRoutingURLs.OUTSIDE.MINOTAR.MINECRAFT.HEAD.replace(':accountName', minecraftAccountName);
 
         return (
             <Fragment>
                 <div>
                     <img
-                        src={creatorAvatarUrl}
+                        src={userAvatarUrl}
                         alt=' '
                         onError={this.onUserAvatarError}
                         style={{'width':'50px','height':'50px','maxWidth':'100%'}}
@@ -30,14 +37,14 @@ class CommentCreatorInformation extends Component {
                 </div>
                 <div>
                     <small>
-                        👤<Link to={creatorProfileUrl}>{creatorUsername}</Link>
+                        👤<Link to={userProfileUrl}>{username}</Link>
                     </small>
                 </div>
                 <div>
                     <small>
                         <small>💬</small>
                         <span
-                            className="totalComments">{creatorTotalComments} total comments</span>
+                            className="totalComments">{totalComments} total comments</span>
                     </small>
                 </div>
 
@@ -45,16 +52,16 @@ class CommentCreatorInformation extends Component {
 
                     {
                         (() => {
-                            if (creatorMinecraftAccountName !== undefined) {
+                            if (minecraftAccountName !== undefined) {
                                 return (
                                     <small>
-                                        <Link to={creatorMinecraftPorfileUrl}>
+                                        <Link to={minecraftPorfileUrl}>
                                             <img
-                                                src={creatorMinecraftAvatarUrl}
+                                                src={minecraftAvatarUrl}
                                                 className="card-img-top"
                                                 style={{'width':'15px','height':'15px','maxWidth':'100%'}}
                                                 alt=' '/>
-                                            {creatorMinecraftAccountName}
+                                            {minecraftAccountName}
                                         </Link>
                                     </small>
                                 );

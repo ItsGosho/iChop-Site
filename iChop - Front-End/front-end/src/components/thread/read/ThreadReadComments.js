@@ -6,9 +6,9 @@ import ServerRoutingURLs from "../../../constants/server.routing.urls";
 import {Link} from "react-router-dom";
 import Interweave from "interweave";
 import CommentInformation from "./comments/CommentInformation";
+import CommentCreatorInformation from "./comments/CommentCreatorInformation";
 
 class ThreadReadComments extends Component {
-
 
 
     render() {
@@ -62,28 +62,28 @@ class ThreadReadComments extends Component {
                             creatorMinecraftAccountUUID
                         } = comment;
 
-                        let creatorProfileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', creatorUsername);
-                        let creatorAvatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', creatorUsername);
-                        let creatorMinecraftPorfileUrl = RoutingURLs.PLAYER.PROFILE.VIEW.replace(':uuid', creatorMinecraftAccountUUID);
-                        let creatorMinecraftAvatarUrl = ServerRoutingURLs.OUTSIDE.MINOTAR.MINECRAFT.HEAD.replace(':accountName', creatorMinecraftAccountName);
-
                         let isAuthenticated = true;
 
                         return (
-                            <div className="card thread-comments" style={{'borderColor':'black'}}>
+                            <div className="card thread-comments" style={{'borderColor': 'black'}}>
 
                                 <div>
-                                    <CommentInformation createdOn={createdOn} totalLikes={totalLikes} totalDislikes={totalDislikes}/>
+                                    <CommentInformation createdOn={createdOn}
+                                                        totalLikes={totalLikes}
+                                                        totalDislikes={totalDislikes}/>
                                 </div>
 
                                 <div className="row">
                                     <div className="col-md-3 thread-comment-creator_info_section">
-
+                                        <CommentCreatorInformation uuid={creatorMinecraftAccountUUID}
+                                                                   username={creatorUsername}
+                                                                   totalComments={creatorTotalComments}
+                                                                   minecraftAccountName={creatorMinecraftAccountName}/>
                                     </div>
 
                                     <div className="content thread-comment-content">
                                         <p className="card-text">
-                                            <Interweave content={content} />
+                                            <Interweave content={content}/>
                                         </p>
                                     </div>
 
