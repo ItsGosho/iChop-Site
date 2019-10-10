@@ -44,9 +44,7 @@ class TextEditorInsertImageModal extends Component {
         return (
             <Fragment>
 
-                {/*TODO: constants*/}
-
-                <ModalOpen>
+                <ModalOpen relationTo={'insertImage'} title={'Insert Image'}>
                     <i className="material-icons btn-link">{MaterialIcons.PHOTO}</i>
                 </ModalOpen>
 
@@ -68,8 +66,8 @@ class TextEditorInsertImageModal extends Component {
 
                     <ModalFooter>
                         <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <button type="button" data-dismiss="modal"
-                                className="btn btn-primary" onClick={this.proceedInsertImage}>Insert
+                        <button type="button" data-dismiss="modal" className="btn btn-primary"
+                                onClick={this.proceedInsertImage}>Insert
                         </button>
                     </ModalFooter>
 

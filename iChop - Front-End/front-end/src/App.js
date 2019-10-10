@@ -9,6 +9,7 @@ import Reports from "./components/report/Reports";
 import ThreadRead from "./components/thread/read/ThreadRead";
 import ThreadAll from "./components/thread/read/all/ThreadAll";
 import TextEditorInsertImageModal from "./components/editor/TextEditorInsertImageModal";
+import ThreadCreateHelperButton from "./components/thread/create/ThreadCreateHelperButton";
 
 function App() {
     return (

@@ -1,4 +1,6 @@
 import React, {Component, Fragment} from 'react';
+import Modal from "../../modal/Modal";
+import ModalOpen from "../../modal/ModalOpen";
 
 class ThreadCreateHelperButton extends Component {
 
@@ -20,6 +22,16 @@ class ThreadCreateHelperButton extends Component {
                 <a href="" type="button" data-toggle="modal" data-target="#exampleModal">
                     ❓
                 </a>
+
+                <ModalOpen relationTo={'help'} title={'Help'}>
+
+                </ModalOpen>
+
+                <Modal>
+
+
+
+                </Modal>
 
                 <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog"
                      aria-labelledby="exampleModalLabel" aria-hidden="true">
