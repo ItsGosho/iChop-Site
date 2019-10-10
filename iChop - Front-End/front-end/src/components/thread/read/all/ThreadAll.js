@@ -6,6 +6,7 @@ import RoutingURLs from "../../../../constants/routing.constants";
 import ThreadAllInformation from "./ThreadAllInformation";
 import Interweave from "interweave";
 import ThreadAllOptionsDropdown from "./ThreadAllOptionsDropdown";
+import {Link} from "react-router-dom";
 
 class ThreadAll extends Component {
 
@@ -62,6 +63,7 @@ class ThreadAll extends Component {
                                 threads.map((thread, index) => {
 
                                     let {id, title, createdOn, creatorUsername, postTime, totalViews, totalReactions, totalComments, content} = thread;
+                                    let threadReadUrl = RoutingURLs.THREAD.VIEW.replace(':id', id);
 
                                     return (
                                         <div className="card-body">
@@ -92,14 +94,14 @@ class ThreadAll extends Component {
                                                     </div>
                                                 </div>
                                                 <div className="col-md-4">
-                                                    <a className="dropdown-item"
-                                                       th:href="@{/thread/{id}/read(id=*{id})}">
+                                                    <Link className="dropdown-item"
+                                                          to={threadReadUrl}>
                                                         <button type="button"
                                                                 className="btn btn-primary btn-sm btn-brand btn-reddit continueReading">
                                                             <small>📖</small>
-                                                            Continue reading...
+                                                            <span>Continue reading...</span>
                                                         </button>
-                                                    </a>
+                                                    </Link>
                                                 </div>
 
                                             </div>
