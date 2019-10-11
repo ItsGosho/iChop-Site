@@ -1,4 +1,4 @@
-import React, {Fragment, Component} from "react";
+import React, {Component} from "react";
 import Image from "../../other/Image";
 import FrontEndResourcesRoutingURLs from "../../../constants/front-end.resources.routings";
 

@@ -66,8 +66,6 @@ class GuestRegister extends Component {
                             </div>
                             <input type="password" className="form-control"
                                    autoComplete="off"
-                                   data-placement="top"
-                                   data-toggle="popover" title="Password Requirements:" data-html="true"
                                    data-trigger="focus"
                                    name="password" placeholder="Password..." ref={this.passwordRef}
                                    onChange={onChange}/>

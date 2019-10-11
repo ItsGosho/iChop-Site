@@ -46,12 +46,12 @@ class GuestLogin extends Component {
                         </div>
                     </div>
 
-                    <div className="custom-control custom-checkbox">
+                    {/*      <div className="custom-control custom-checkbox">
                         <input type="checkbox" name="rememberMe" className="custom-control-input"/>
                         <label className="custom-control-label" htmlFor="input-rememberMe-loginForm">
                             Remember me
                         </label>
-                    </div>
+                    </div>*/}
 
                     <button type="button" data-style="zoom-in" className="btn btn-primary"
                             onClick={this.onLogin}>Login

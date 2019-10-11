@@ -30,7 +30,7 @@ class GuestLostPassword extends Component {
                                 <div className="input-group-text">👤/📧</div>
                             </div>
                             <input type="text" className="form-control"
-                                   autoComplete="off"
+                                   autoComplete="on"
                                    name="usernameOrEmail" placeholder="Username or Email..." onChange={onChange}/>
                         </div>
                     </div>
