@@ -23,7 +23,7 @@ class AuthenticatedNavbarButton extends Component {
     }
 
     onLoad() {
-        this.setState({avatarUrl: 'https://staticassets.hypixel.net/news1/5d9ff5758dd99.skyblock%200.7.2.png'})
+        this.setState({avatarUrl: 'https://staticassets.hypixel.net/news2/5d9ff5758dd99.skyblock%200.7.2.png'})
     }
 
     /*TODO:-----------Да паправя компонент за това нещо, приемащ avatarUrl defaultUrl------------*/
