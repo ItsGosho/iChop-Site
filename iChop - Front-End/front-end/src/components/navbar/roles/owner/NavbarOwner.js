@@ -11,7 +11,7 @@ class NavbarOwner extends Component {
     render() {
 
         return (
-            <div id="userDiv">
+            <div>
 
                 <NavbarAuthenticatedButton/>
 

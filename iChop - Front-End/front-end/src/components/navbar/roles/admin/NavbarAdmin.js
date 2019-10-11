@@ -11,7 +11,7 @@ class NavbarAdmin extends Component {
     render() {
 
         return (
-            <div id="userDiv">
+            <div>
 
                 <NavbarAuthenticatedButton/>
 

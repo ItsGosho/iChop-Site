@@ -23,7 +23,7 @@ class GuestRegisterDropdown extends Component {
         let {onChange} = this.props.formMethods;
 
         return (
-            <div id="div-register-dropdown">
+            <div>
                 <form className="px-4 py-3">
 
                     <div className="form-group">
@@ -37,7 +37,7 @@ class GuestRegisterDropdown extends Component {
                             <div className="input-group-prepend">
                                 <div className="input-group-text">👤</div>
                             </div>
-                            <input type="text" className="form-control" id="input-username-registerForm"
+                            <input type="text" className="form-control"
                                    name="username" placeholder="Username..." autoComplete="off" onChange={onChange}/>
                         </div>
                     </div>
@@ -46,7 +46,7 @@ class GuestRegisterDropdown extends Component {
                             <div className="input-group-prepend">
                                 <div className="input-group-text">🔒</div>
                             </div>
-                            <input type="password" className="form-control" id="input-password-registerForm"
+                            <input type="password" className="form-control"
                                    autoComplete="off"
                                    data-placement="top"
                                    data-toggle="popover" title="Password Requirements:" data-html="true"
@@ -55,41 +55,40 @@ class GuestRegisterDropdown extends Component {
                                    name="password" placeholder="Password..." onChange={onChange}/>
                             <div className="input-group-append">
                                 <button className="btn btn-outline-success"
-                                        id="button-showPassword-registerForm"
                                         type="button">Show
                                 </button>
                             </div>
                         </div>
                     </div>
                     <div className="form-group">
-                        <small id="error-passwordsDoesntMatch-registerForm">⚡Passwords doesn't match!
+                        <small>⚡Passwords doesn't match!
                         </small>
                         <div className="input-group mb-2">
                             <div className="input-group-prepend">
                                 <div className="input-group-text">🔒</div>
                             </div>
-                            <input type="password" className="form-control" id="input-confirmPassword-registerForm"
+                            <input type="password" className="form-control"
                                    autoComplete="off"
                                    name="confirmPassword" placeholder="Confirm Password..." onChange={onChange}/>
                         </div>
                     </div>
                     <div className="form-group">
-                        <small id="error-emailAlreadyExists-registerForm">⚡Email already
+                        <small>⚡Email already
                             exists!
                         </small>
                         <div className="input-group mb-2">
                             <div className="input-group-prepend">
                                 <div className="input-group-text">📧</div>
                             </div>
-                            <input type="email" className="form-control" id="input-email-registerForm" name="email"
+                            <input type="email" className="form-control"  name="email"
                                    autoComplete="off"
                                    placeholder="Email..." onChange={onChange}/>
                         </div>
                     </div>
-                    <button id="button-goToLogin-registerForm" type="button" onClick={this.props.selectLogin}
+                    <button type="button" onClick={this.props.selectLogin}
                             className="btn btn-primary btn-sm">Back
                     </button>
-                    <button id="button-proceedRegister-registerForm" type="button"
+                    <button type="button"
                             className="btn btn-success btn-sm btn-ladda" data-style="zoom-in" onClick={this.onRegister}>
                         Register
                     </button>

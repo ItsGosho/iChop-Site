@@ -21,8 +21,8 @@ class GuestForgottenPasswordDropdown extends Component {
         let {onChange} = this.props.formMethods;
 
         return (
-            <div id="div-forgotten_password-dropdown">
-                <form className="px-4 py-3" id="form-forgottenPassword">
+            <div>
+                <form className="px-4 py-3">
                     <div className="form-group">
                         <div className="input-group mb-2">
 
@@ -30,29 +30,27 @@ class GuestForgottenPasswordDropdown extends Component {
                                 <div className="input-group-text">👤/📧</div>
                             </div>
                             <input type="text" className="form-control"
-                                   id="input-usernameOrEmail-forgottenPasswordForm"
                                    autoComplete="off"
                                    name="usernameOrEmail" placeholder="Username or Email..." onChange={onChange}/>
                         </div>
                     </div>
 
-                    <button type="button" id="button-goToLogin-forgottenPasswordForm"
+                    <button type="button"
                             className="btn btn-primary btn-sm" onClick={this.props.selectLogin}>Back
                     </button>
-                    <button id="button-proceedEmailSend-forgottenPasswordForm" type="button" data-style="zoom-in"
+                    <button type="button" data-style="zoom-in"
                             className="btn btn-success btn-sm" onClick={this.onForggotenPassword}>Send
                     </button>
 
                     <div className="dropdown-divider"/>
-                    <div id="container-notification-forgottenPassword">
-                        <div className="alert alert-danger p-1"
-                             id="error-noUserExistsWithTheProvidedCredentials-forgottenPasswordForm">
+                    <div>
+                        <div className="alert alert-danger p-1">
                             <strong>⚡</strong> No user exists with the provided credentials!
                         </div>
-                        <div className="alert alert-info p-1" id="notification-pleaseWait-forgottenPasswordForm">
+                        <div className="alert alert-info p-1">
                             <strong>🔔</strong> Please wait!
                         </div>
-                        <div className="alert alert-success p-1" id="notification-successful-forgottenPasswordForm">
+                        <div className="alert alert-success p-1">
                             <strong>✔</strong> Password reset token has been sent to your email!
                         </div>
                     </div>

@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 import RoutingURLs from "../../../constants/routing.constants";
 
 let NavbarAuthenticatedList = CreateReactClass({
+
     render() {
         let username = '';
         let profileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', username);
@@ -31,6 +32,7 @@ let NavbarAuthenticatedList = CreateReactClass({
             </div>
         );
     }
+
 });
 
 

@@ -22,16 +22,16 @@ class NavbarGuest extends Component {
     render() {
 
         return (
-            <div id="div-signIn-signInForms">
+            <div>
 
-                <button id="button-signIn-navBar" className="btn btn-success btn-sm" onClick={this.showDropdown}>Sign in</button>
+                <button className="btn btn-success btn-sm" onClick={this.showDropdown}>Sign in</button>
 
                 {
                     (() => {
                         if (this.props.redux.showDropdown) {
                             return (
-                                <div id="div-authForms-signInForm"
-                                     className={"dropdown-menu dropdown-menu-right " + (this.props.showDropdown ? 'show' : '')}>
+                                <div
+                                    className={"dropdown-menu dropdown-menu-right guest-navbar-form " + (this.props.showDropdown ? 'show' : '')}>
                                     {
                                         (() => {
                                             if (this.props.redux.isLoginSelected) {

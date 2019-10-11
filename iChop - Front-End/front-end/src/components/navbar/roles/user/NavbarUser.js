@@ -8,7 +8,7 @@ class NavbarUser extends Component {
     render() {
 
         return (
-            <div id="userDiv">
+            <div>
                 <NavbarAuthenticatedButton/>
                 <NavbarAuthenticatedList/>
             </div>

@@ -13,11 +13,11 @@ class Navbar extends Component {
 
 
     render() {
-        let role = Roles.ADMIN;
+        let role = '';
 
 
         return (
-            <div className="container" id="div-containter-top_nav_bar">
+            <div className="container">
 
                 <nav className="navbar navbar-expand-lg navbar-light bg-light rounded">
 
@@ -27,7 +27,7 @@ class Navbar extends Component {
 
                     <Link className="navbar-brand" to={RoutingURLs.HOME}>iChop</Link>
 
-                    <button id="button-minimized-navbar" className="navbar-toggler" type="button"
+                    <button className="navbar-toggler" type="button"
                             data-toggle="collapse"
                             data-target="#navbar"
                             aria-controls="navbar" aria-expanded="false"
@@ -35,7 +35,7 @@ class Navbar extends Component {
                         <span className="navbar-toggler-icon"/>
                     </button>
 
-                    <div className="collapse navbar-collapse" id="navbar">
+                    <div className="collapse navbar-collapse">
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item dropdown active">
                                 {

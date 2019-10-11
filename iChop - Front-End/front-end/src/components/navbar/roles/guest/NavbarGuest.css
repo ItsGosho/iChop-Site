@@ -1,5 +1,5 @@
 @media screen and (min-width: 600px) {
-    #div-authForms-signInForm {
+    .guest-navbar-form {
         width: 350px;
     }
 }

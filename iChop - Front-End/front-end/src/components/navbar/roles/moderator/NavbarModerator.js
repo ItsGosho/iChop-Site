@@ -11,7 +11,7 @@ class NavbarModerator extends Component {
     render() {
 
         return (
-            <div id="userDiv">
+            <div>
 
                 <NavbarAuthenticatedButton/>
 
