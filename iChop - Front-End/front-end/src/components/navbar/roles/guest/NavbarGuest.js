@@ -24,7 +24,11 @@ class NavbarGuest extends Component {
         return (
             <Fragment>
 
-                <button className="btn btn-success btn-sm" onClick={this.showDropdown}>Sign in</button>
+                <button type="button"
+                        className="btn btn-success btn-sm"
+                        onClick={this.showDropdown}>
+                    Sign In
+                </button>
 
                 {
                     (() => {

@@ -18,16 +18,18 @@ class Navbar extends Component {
 
         return (
             <div className="container">
-
                 <nav className="navbar navbar-expand-lg navbar-light bg-light rounded">
 
-                    <img src={FrontEndResourcesRoutingURLs.NAVBAR.ICON} width="30" height="30"
+                    <img src={FrontEndResourcesRoutingURLs.NAVBAR.ICON}
+                         width="30"
+                         height="30"
                          className="d-inline-block align-top"
                          alt=""/>
 
                     <Link className="navbar-brand" to={RoutingURLs.HOME}>iChop</Link>
 
-                    <button className="navbar-toggler" type="button"
+                    <button type="button"
+                            className="navbar-toggler"
                             data-toggle="collapse"
                             data-target="#navbar"
                             aria-controls="navbar" aria-expanded="false"
