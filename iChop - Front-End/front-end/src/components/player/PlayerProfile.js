@@ -1,20 +1,17 @@
 import React, {Component} from 'react';
 import './PlayerProfile.css'
 import ServerRoutingURLs from "../../constants/server.routing.urls";
-import RoutingURLs from "../../constants/routing.constants";
-import {Link} from "react-router-dom";
 import PlayerStatistics from "./profile/PlayerStatistics";
 import PlayerProfileNavigation from "./profile/PlayerProfileNavigation";
+import PlayerLinkedTo from "./profile/PlayerLinkedTo";
 
 class PlayerProfile extends Component {
 
 
     render() {
-        let linkedToUsername = 'ItsGosho';
         let uuid = '8ed20904-3262-401a-901a-1946504d2eea';
 
         let bodyAvatarUrl = ServerRoutingURLs.OUTSIDE.CRAFATAR.MINECRAFT.SKIN.replace(':uuid', uuid);
-        let userProfileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', linkedToUsername);
 
         return (
             <div className="container">
@@ -39,33 +36,7 @@ class PlayerProfile extends Component {
                                 </div>
                             </div>
 
-                            {
-                                (() => {
-                                    if (linkedToUsername != null) {
-                                        return (
-                                            <div className="card site-user-username">
-                                                <div className="card-body site-user-username">
-                                                    <div className="col-md-auto">
-                                                        <div className="row site-user-title">
-
-                                                            <div className="col-md-auto site-user-title">
-                                                                Site User:
-                                                            </div>
-
-                                                            <div className="col-md-auto site-user-username">
-                                                                <span className="site-user-username">
-                                                                    <Link to={userProfileUrl}>{linkedToUsername}</Link>
-                                                                </span>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        );
-                                    }
-                                })()
-                            }
+                           <PlayerLinkedTo/>
 
                         </div>
                     </div>
