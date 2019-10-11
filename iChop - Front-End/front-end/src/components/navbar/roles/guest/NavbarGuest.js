@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import './GuestNavbar.css';
+import './Navbarguest.css';
 import GuestLoginDropdown from "./GuestLoginDropdown";
 import GuestRegisterDropdown from "./GuestRegisterDropdown";
 import GuestForgottenPasswordDropdown from "./GuestForgottenPasswordDropdown";
 import navbarGuestReduxHoc from "../../../../redux/hocs/navbar.guest.hoc";
 
-class GuestNavbar extends Component {
+class NavbarGuest extends Component {
 
     constructor(props) {
         super(props);
@@ -58,4 +58,4 @@ class GuestNavbar extends Component {
 
 }
 
-export default navbarGuestReduxHoc(GuestNavbar);
+export default navbarGuestReduxHoc(NavbarGuest);

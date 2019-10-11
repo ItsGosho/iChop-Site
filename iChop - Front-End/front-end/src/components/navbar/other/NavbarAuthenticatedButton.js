@@ -3,7 +3,7 @@ import Image from "../../other/Image";
 import ServerRoutingURLs from "../../../constants/server.routing.urls";
 import FrontEndResourcesRoutingURLs from "../../../constants/front-end.resources.routings";
 
-class AuthenticatedNavbarButton extends Component {
+class NavbarAuthenticatedButton extends Component {
 
 
     /*TODO:Да споделя решението си тук:*/
@@ -29,4 +29,4 @@ class AuthenticatedNavbarButton extends Component {
 };
 
 
-export default AuthenticatedNavbarButton;
+export default NavbarAuthenticatedButton;

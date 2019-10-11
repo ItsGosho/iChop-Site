@@ -2,10 +2,10 @@ import React, {Component} from 'react';
 import RoutingURLs from "../../../../constants/routing.constants";
 import {Link} from "react-router-dom";
 import '../AuthenticatedNavbar.css'
-import AuthenticatedNavbarButton from "../../other/AuthenticatedNavbarButton";
+import NavbarAuthenticatedButton from "../../other/NavbarAuthenticatedButton";
 import NavbarAuthenticatedUserListWrapper from "../../wrappers/NavbarAuthenticatedUserListWrapper";
 
-class OwnerNavbar extends Component {
+class NavbarOwner extends Component {
 
 
     render() {
@@ -13,7 +13,7 @@ class OwnerNavbar extends Component {
         return (
             <div id="userDiv">
 
-                <AuthenticatedNavbarButton/>
+                <NavbarAuthenticatedButton/>
 
                 <NavbarAuthenticatedUserListWrapper>
 
@@ -40,4 +40,4 @@ class OwnerNavbar extends Component {
 
 }
 
-export default OwnerNavbar;
+export default NavbarOwner;

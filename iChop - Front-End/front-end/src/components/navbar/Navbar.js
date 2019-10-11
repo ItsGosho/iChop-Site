@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import Roles from "../../constants/roles.constants";
-import UserNavbar from "./roles/user/UserNavbar";
-import ModeratorNavbar from "./roles/moderator/ModeratorNavbar";
-import AdminNavbar from "./roles/admin/AdminNavbar";
-import OwnerNavbar from "./roles/owner/OwnerNavbar";
-import GuestNavbar from "./roles/guest/GuestNavbar";
+import NavbarUser from "./roles/user/NavbarUser";
+import NavbarModerator from "./roles/moderator/NavbarModerator";
+import NavbarAdmin from "./roles/admin/NavbarAdmin";
+import NavbarOwner from "./roles/owner/NavbarOwner";
+import GuestNavbar from "./roles/guest/NavbarGuest";
 import {Link} from "react-router-dom";
 import RoutingURLs from "../../constants/routing.constants";
 import FrontEndResourcesRoutingURLs from "../../constants/front-end.resources.routings";
@@ -42,13 +42,13 @@ class Navbar extends Component {
                                     (() => {
                                         switch (role) {
                                             case Roles.USER:
-                                                return (<UserNavbar/>);
+                                                return (<NavbarUser/>);
                                             case Roles.MODERATOR:
-                                                return (<ModeratorNavbar/>);
+                                                return (<NavbarModerator/>);
                                             case Roles.ADMIN:
-                                                return (<AdminNavbar/>);
+                                                return (<NavbarAdmin/>);
                                             case Roles.OWNER:
-                                                return (<OwnerNavbar/>);
+                                                return (<NavbarOwner/>);
                                             default:
                                                 return (<GuestNavbar/>);
                                         }

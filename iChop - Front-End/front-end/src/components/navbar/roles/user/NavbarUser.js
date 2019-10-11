@@ -1,15 +1,15 @@
 import React, {Component} from 'react';
 import '../AuthenticatedNavbar.css'
-import AuthenticatedNavbarButton from "../../other/AuthenticatedNavbarButton";
+import NavbarAuthenticatedButton from "../../other/NavbarAuthenticatedButton";
 import NavbarAuthenticatedUserListWrapper from "../../wrappers/NavbarAuthenticatedUserListWrapper";
 
-class UserNavbar extends Component {
+class NavbarUser extends Component {
 
     render() {
 
         return (
             <div id="userDiv">
-                <AuthenticatedNavbarButton/>
+                <NavbarAuthenticatedButton/>
                 <NavbarAuthenticatedUserListWrapper/>
             </div>
         );
@@ -17,4 +17,4 @@ class UserNavbar extends Component {
 
 }
 
-export default UserNavbar;
+export default NavbarUser;

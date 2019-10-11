@@ -2,10 +2,10 @@ import React, {Component} from 'react';
 import RoutingURLs from "../../../../constants/routing.constants";
 import {Link} from "react-router-dom";
 import '../AuthenticatedNavbar.css'
-import AuthenticatedNavbarButton from "../../other/AuthenticatedNavbarButton";
+import NavbarAuthenticatedButton from "../../other/NavbarAuthenticatedButton";
 import NavbarAuthenticatedUserListWrapper from "../../wrappers/NavbarAuthenticatedUserListWrapper";
 
-class ModeratorNavbar extends Component {
+class NavbarAdmin extends Component {
 
 
     render() {
@@ -13,13 +13,18 @@ class ModeratorNavbar extends Component {
         return (
             <div id="userDiv">
 
-                <AuthenticatedNavbarButton/>
+                <NavbarAuthenticatedButton/>
 
                 <NavbarAuthenticatedUserListWrapper>
 
                     <Link className="dropdown-item" to={RoutingURLs.THREAD.CREATE}>
                         <small>🚩</small>
                         Create Thread
+                    </Link>
+
+                    <Link className="dropdown-item" to={RoutingURLs.USER.ALL}>
+                        <small>👥</small>
+                        Users
                     </Link>
 
                     <Link className="dropdown-item" to={RoutingURLs.COMMENT.REPORT.ALL}>
@@ -35,4 +40,4 @@ class ModeratorNavbar extends Component {
 
 }
 
-export default ModeratorNavbar;
+export default NavbarAdmin;
