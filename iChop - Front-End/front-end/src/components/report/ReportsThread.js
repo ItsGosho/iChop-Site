@@ -3,7 +3,7 @@ import ReportTableWrapper from "./wrappers/ReportTableWrapper";
 import RoutingURLs from "../../constants/routing.constants";
 import ReportTableColumnsWrapper from "./wrappers/ReportTableColumnsWrapper";
 import {Link} from "react-router-dom";
-import PaginationNav from "./PaginationNav";
+import PaginationNav from "../other/PaginationNav";
 
 
 class ReportsThread extends Component {

@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import ReportTableWrapper from "./wrappers/ReportTableWrapper";
 import ReportTableColumnsWrapper from "./wrappers/ReportTableColumnsWrapper";
-import PaginationNav from "./PaginationNav";
+import PaginationNav from "../other/PaginationNav";
 
 class ReportsPost extends Component {
 

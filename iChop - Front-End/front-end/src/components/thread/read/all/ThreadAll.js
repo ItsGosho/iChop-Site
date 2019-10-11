@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './ThreadAll.css';
 import formatDate from 'dateformat'
-import PaginationNav from "../../../report/PaginationNav";
+import PaginationNav from "../../../other/PaginationNav";
 import RoutingURLs from "../../../../constants/routing.constants";
 import ThreadAllInformation from "./ThreadAllInformation";
 import Interweave from "interweave";
