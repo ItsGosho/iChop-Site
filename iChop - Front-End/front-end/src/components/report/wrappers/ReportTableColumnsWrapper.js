@@ -7,6 +7,7 @@ import RoutingURLs from "../../../constants/routing.constants";
 
 
 let ReportTableColumnsWrapper = CreateReactClass({
+
     render() {
         let {entityName,index,reason, creatorUsername, reportDate,onDeleteEntity,onDeleteReport} = this.props;
         let creatorProfile = RoutingURLs.USER.PROFILE.VIEW.replace(':username', creatorUsername);
@@ -35,6 +36,7 @@ let ReportTableColumnsWrapper = CreateReactClass({
             </tr>
         );
     }
+
 });
 
 

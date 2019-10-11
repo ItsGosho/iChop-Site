@@ -2,6 +2,7 @@ import React, {Component, Fragment} from 'react';
 import ReportTableWrapper from "./wrappers/ReportTableWrapper";
 import ReportTableColumnsWrapper from "./wrappers/ReportTableColumnsWrapper";
 import PaginationNav from "../other/PaginationNav";
+import RoutingURLs from "../../constants/routing.constants";
 
 class ReportsPost extends Component {
 
@@ -74,7 +75,7 @@ class ReportsPost extends Component {
                     }
                 </ReportTableWrapper>
 
-                <PaginationNav totalResults={reports.length} resultsPerPage={1} redirectPage={'/post/reports/all'}/>
+                <PaginationNav totalResults={reports.length} resultsPerPage={1} redirectPage={RoutingURLs.POST.REPORT.ALL}/>
             </Fragment>
         );
     }
