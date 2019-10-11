@@ -19,8 +19,6 @@ class NavbarAuthenticatedButton extends Component {
 
                 <Image url={userProfilePictureUrl} defaultUrl={FrontEndResourcesRoutingURLs.USER.AVATAR}
                        className={'img-user_avatar-top_nav_bar'}/>
-
-                <span>⚙</span>
             </button>
         );
     }
