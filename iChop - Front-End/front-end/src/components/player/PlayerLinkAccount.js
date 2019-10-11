@@ -29,16 +29,16 @@ class PlayerLinkAccount extends Component {
                             <span> to your account?</span>
                         </p>
 
-                        <div className="float-left">
-                            <form id="form-confirm_player_link_connection-player_link_account">
-                                <button className="btn btn-warning">Yes</button>
-                            </form>
-                        </div>
-
                         <div className="float-right">
                             <Link to={RoutingURLs.HOME}>
                                 <button className="btn btn-danger">No</button>
                             </Link>
+                        </div>
+
+                        <div className="float-left">
+                            <form id="form-confirm_player_link_connection-player_link_account">
+                                <button className="btn btn-warning">Yes</button>
+                            </form>
                         </div>
 
                     </div>
