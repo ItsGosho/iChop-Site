@@ -15,7 +15,10 @@ class UserOptionsInformation extends Component {
         this.state = {
             statusMessage: 'Hi!',
             birthday: Date.now(),
-            aboutYou: 'Just me :)'
+            aboutYou: 'Just me :)',
+
+            username: '',
+            userAvatarUrl: ''
         };
 
         this.onSaveChanges = this.onSaveChanges.bind(this);
@@ -33,33 +36,37 @@ class UserOptionsInformation extends Component {
     }
 
     onAvatarFileChange(event) {
+
         let file = event.target.files[0];
 
         let type = file.type; /*image/png*/
         let size = file.size;
         let reader = new FileReader();
 
-        if(type === 'image/png'){
+        if (type === 'image/png') {
 
-            if(size > 1048576){
+            if (size > 1048576) {
                 /*TODO: show error*/
                 return;
             }
 
             this.getBase64(file).then(data => {
-                /*TODO: Add base64 to the state*/
+                /*TODO: Without base64*/
+                console.log(':');
+                console.log(data);
             });
 
             reader.readAsDataURL(file);
 
-            reader.onload = function(e){
+
+            reader.onload = function (e) {
+                /*TODO: With base 64*/
                 let content = e.target.result;
+
                 console.log(content);
-
-                /*TODO: add the content as src to the image*/
-
             };
-        }else{
+
+        } else {
             /*TODO: show error*/
         }
     }
@@ -94,11 +101,13 @@ class UserOptionsInformation extends Component {
         console.log(aboutYou);
     }
 
+    componentDidMount() {
+        this.setState({username: 'ItsGosho'})
+        this.setState({userAvatarUrl: ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', this.state.username)})
+    }
+
     render() {
         let onChange = (event) => (this.setState({[event.target.name]: event.target.value}));
-
-        let username = 'ItsGosho';
-        let userAvatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', username);
 
         return (
             <form>
@@ -134,7 +143,7 @@ class UserOptionsInformation extends Component {
                 <div className="row" align="center">
                     <div className="col-lg">
 
-                        <Image url={userAvatarUrl}
+                        <Image url={this.state.userAvatarUrl}
                                defaultUrl={FrontEndResourcesRoutingURLs.USER.AVATAR}
                                className={'user-img'}/>
 
