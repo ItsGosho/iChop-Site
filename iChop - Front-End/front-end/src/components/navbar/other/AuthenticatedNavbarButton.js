@@ -3,6 +3,7 @@ import FrontEndResourcesRoutingURLs from "../../../constants/front-end.resources
 
 class AuthenticatedNavbarButton extends Component {
 
+    /*TODO:----------Да паправя компонент за това нещо ,приемащ avatarUrl defaultUrl-------------*/
     constructor(props) {
         super(props);
 
@@ -24,6 +25,9 @@ class AuthenticatedNavbarButton extends Component {
     onLoad() {
         this.setState({avatarUrl: 'https://staticassets.hypixel.net/news1/5d9ff5758dd99.skyblock%200.7.2.png'})
     }
+
+    /*TODO:-----------Да паправя компонент за това нещо, приемащ avatarUrl defaultUrl------------*/
+    /*https://stackoverflow.com/questions/980855/inputting-a-default-image-in-case-the-src-attribute-of-an-html-img-is-not-vali*/
 
     render() {
 
