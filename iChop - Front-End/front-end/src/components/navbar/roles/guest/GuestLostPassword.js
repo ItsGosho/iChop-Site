@@ -8,10 +8,10 @@ class GuestLostPassword extends Component {
     constructor(props) {
         super(props);
 
-        this.onForggotenPassword = this.onForggotenPassword.bind(this);
+        this.onForgottenPassword = this.onForgottenPassword.bind(this);
     }
 
-    onForggotenPassword() {
+    onForgottenPassword() {
         let {usernameOrEmail} = this.props.formData;
 
         console.log(usernameOrEmail);
@@ -39,7 +39,7 @@ class GuestLostPassword extends Component {
                             className="btn btn-primary btn-sm" onClick={this.props.selectLogin}>Back
                     </button>
                     <button type="button" data-style="zoom-in"
-                            className="btn btn-success btn-sm" onClick={this.onForggotenPassword}>Send
+                            className="btn btn-success btn-sm" onClick={this.onForgottenPassword}>Send
                     </button>
 
                     <div className="dropdown-divider"/>
