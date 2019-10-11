@@ -25,10 +25,12 @@ let NavbarAuthenticatedList = CreateReactClass({
                 {this.props.children}
 
                 <div className="dropdown-divider"/>
+
                 <Link className="dropdown-item" to={RoutingURLs.AUTHENTICATION.LOGOUT}>
                     <small>🚪</small>
                     Logout
                 </Link>
+
             </div>
         );
     }

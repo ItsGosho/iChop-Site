@@ -8,7 +8,10 @@ class LinkIconLi extends Component {
 
         return (
             <li>
-                <LinkIcon url={url} icon={icon} text={text} onClick={onClick}/>
+                <LinkIcon url={url}
+                          icon={icon}
+                          text={text}
+                          onClick={onClick}/>
             </li>
         );
     }

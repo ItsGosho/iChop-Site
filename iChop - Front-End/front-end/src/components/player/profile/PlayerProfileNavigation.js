@@ -12,7 +12,13 @@ class PlayerProfileNavigation extends Component {
         return (
             <Fragment>
                 <div className="col-md-auto">
-                    <Link to={statisticsUrl} className="btn btn-warning btn-statistics" type="button">Statistics</Link>
+
+                    <Link type="button"
+                          to={statisticsUrl}
+                          className="btn btn-warning btn-statistics">
+                        Statistics
+                    </Link>
+
                 </div>
 
                 <div className="col-md-auto">

@@ -31,12 +31,11 @@ class Image extends Component {
         let {className} = this.props;
 
         return (
-            <img
-                src={this.state.avatarUrl}
-                onError={this.onUserAvatarError}
-                onLoad={this.onLoad}
-                alt=''
-                className={className}/>
+            <img src={this.state.avatarUrl}
+                 onError={this.onUserAvatarError}
+                 onLoad={this.onLoad}
+                 alt=''
+                 className={className}/>
         );
     }
 
