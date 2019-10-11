@@ -50,3 +50,19 @@
     color: darkgreen;
     font-size: 13px;
 }
+
+.row-birthdate-title {
+    margin-top: 5px;
+}
+
+.row-birthdate-pick {
+    margin-top: 5px;
+}
+
+.row-choose-avatar {
+    margin-top: 5px;
+}
+
+.dont-display {
+    display: none;
+}

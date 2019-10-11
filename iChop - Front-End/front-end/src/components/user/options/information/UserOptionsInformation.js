@@ -82,31 +82,33 @@ class UserOptionsInformation extends Component {
                     </div>
                 </div>
 
-                <div className="row" align="center" style={{'marginTop': '5px'}}>
+                <div className="row row-choose-avatar" align="center">
                     <div className="col-lg">
-                        <button type="button" className="btn btn-warning btn-sm"
-                                id="button-chooseAvatar-userOptionsProfile">Choose
+
+                        <button type="button"
+                                className="btn btn-warning btn-sm"
+                                id="button-chooseAvatar-userOptionsProfile">
+                            Choose
                         </button>
-                        <input id="input-chooseAvatar-userOptionsProfile" type="file" style={{'display': 'none'}}/>
+
+                        <input className="dont-display" type="file"/>
                         <br/>
-                        <input id="input-avatarData-userOptionsProfile" type="text" name="avatarBinary"
-                               style={{'display': 'none'}}/>
+                        <input type="text" name="avatarBinary" className="dont-display"/>
                         <br/>
-                        <small id="small-errorFileExtensionAvatar-userOptionsProfile"
-                               style={{'display': 'none'}}>msg
-                        </small>
+                        <small className="dont-display">msg</small>
+
                     </div>
                 </div>
 
                 <div className="dropdown-divider"/>
 
-                <div className="row" align="center" style={{'marginTop': '5px'}}>
+                <div className="row row-birthdate-title" align="center">
                     <div className="col-lg">
                         <span>Birthday:</span>
                     </div>
                 </div>
 
-                <div className="row" align="center" style={{'marginTop': '5px'}}>
+                <div className="row row-birthdate-pick" align="center">
                     <div className="col-lg">
                         {/*<input value={this.state.birthday} name="birthDate" data-provide="datepicker" onChange={onChange}
                                className="form-control" style={{'width': '250px'}} data-date-format="yyyy-mm-dd"/>*/}
@@ -131,11 +133,15 @@ class UserOptionsInformation extends Component {
 
                 <div className="row">
                     <div className="col-lg">
+
                         <textarea name="aboutYou"
                                   className="textarea-about-you"
-                                  value={this.state.aboutYou} onChange={onChange}/>
+                                  value={this.state.aboutYou}
+                                  onChange={onChange}/>
+
                     </div>
                 </div>
+
                 <div className="row about-you-title">
                     <div className="col-lg">
                         <small className="about-you-left-chars">250</small>
