@@ -6,7 +6,8 @@ const RoutingURLs = {
             LINK: '/player/account/link' /*User+*/
         },
         PROFILE: {
-            VIEW: '/player/:uuid/profile' /*Everyone*/
+            VIEW: '/player/:uuid/profile', /*Everyone*/
+            STATISTICS: '/player/:uuid/profile/statistics' /*Everyone*/
         }
     },
 
