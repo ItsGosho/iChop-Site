@@ -6,7 +6,7 @@ import Modal from "../../modal/Modal";
 import ModalTitle from "../../modal/ModalTitle";
 import ModalBody from "../../modal/ModalBody";
 import ModalFooter from "../../modal/ModalFooter";
-import ModalCloseButton from "../../modal/ModalCloseButton";
+import ModalClose from "../../modal/ModalClose";
 
 class TextEditorInsertLinkModal extends Component {
 
@@ -43,7 +43,7 @@ class TextEditorInsertLinkModal extends Component {
                 </ModalBody>
 
                 <ModalFooter>
-                    <ModalCloseButton/>
+                    <ModalClose/>
                     <button  type="button" data-dismiss="modal"
                             className="btn btn-primary" onClick={this.proceedInsertLink}>Insert
                     </button>

@@ -4,7 +4,7 @@ import ModalOpen from "../../modal/ModalOpen";
 import ModalTitle from "../../modal/ModalTitle";
 import ModalBody from "../../modal/ModalBody";
 import ModalFooter from "../../modal/ModalFooter";
-import ModalCloseButton from "../../modal/ModalCloseButton";
+import ModalClose from "../../modal/ModalClose";
 
 class ThreadCreateHelpModal extends Component {
 
@@ -22,7 +22,7 @@ class ThreadCreateHelpModal extends Component {
                 </ModalBody>
 
                 <ModalFooter>
-                    <ModalCloseButton/>
+                    <ModalClose/>
                 </ModalFooter>
 
             </Modal>

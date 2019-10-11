@@ -1,7 +1,7 @@
 import CreateReactClass from "create-react-class";
 import React from "react";
 
-let ModalCloseButton = CreateReactClass({
+let ModalClose = CreateReactClass({
 
 
     render() {
@@ -13,4 +13,4 @@ let ModalCloseButton = CreateReactClass({
 
 });
 
-export default ModalCloseButton;
+export default ModalClose;

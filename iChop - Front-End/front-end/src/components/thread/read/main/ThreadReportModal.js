@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import ModalTitle from "../../../modal/ModalTitle";
 import ModalBody from "../../../modal/ModalBody";
 import ModalFooter from "../../../modal/ModalFooter";
-import ModalCloseButton from "../../../modal/ModalCloseButton";
+import ModalClose from "../../../modal/ModalClose";
 import Modal from "../../../modal/Modal";
 
 class ThreadReportModal extends Component {
@@ -25,7 +25,7 @@ class ThreadReportModal extends Component {
                     <button
                         className="btn btn-danger">Report
                     </button>
-                    <ModalCloseButton/>
+                    <ModalClose/>
                 </ModalFooter>
             </Modal>
         );
