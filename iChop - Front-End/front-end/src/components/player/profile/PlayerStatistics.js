@@ -77,7 +77,7 @@ class PlayerStatistics extends Component {
                             <span>️🧟</span>Mobs Killed: <span>{totalMobKills}</span>
                         </div>
                         <div className="row">
-                            <span>👤</span>Player Killed: <span>{totalPlayerKills}</span>
+                            <span>👤</span>Players Killed: <span>{totalPlayerKills}</span>
                         </div>
                         <div className="row">
                             <span>⏰</span>Last Join: <span>{lastJoin}</span>

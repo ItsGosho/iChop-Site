@@ -4,6 +4,7 @@ import ServerRoutingURLs from "../../constants/server.routing.urls";
 import RoutingURLs from "../../constants/routing.constants";
 import {Link} from "react-router-dom";
 import PlayerStatistics from "./profile/PlayerStatistics";
+import PlayerProfileNavigation from "./profile/PlayerProfileNavigation";
 
 class PlayerProfile extends Component {
 
@@ -33,16 +34,7 @@ class PlayerProfile extends Component {
                             <div className="card menu">
                                 <div className="card-body menu">
 
-                                    <div className="col-md-auto">
-                                        <Link to={''} className="btn btn-warning btn-statistics" type="button">Statistics
-                                        </Link>
-                                    </div>
-
-                                    <div className="col-md-auto">
-                                        <div className="row">
-
-                                        </div>
-                                    </div>
+                                    <PlayerProfileNavigation/>
 
                                 </div>
                             </div>
