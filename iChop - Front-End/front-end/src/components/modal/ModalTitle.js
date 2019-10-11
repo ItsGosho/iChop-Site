@@ -9,10 +9,16 @@ let ModalTitle = CreateReactClass({
         return (
 
             <div className="modal-header">
+
                 {this.props.children}
-                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+
+                <button type="button"
+                        className="close"
+                        data-dismiss="modal"
+                        aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
+
             </div>
         );
     }
