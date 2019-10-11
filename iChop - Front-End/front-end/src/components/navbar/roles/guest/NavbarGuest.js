@@ -1,8 +1,8 @@
 import React, {Component, Fragment} from 'react';
 import './NavbarGuest.css';
-import GuestLoginDropdown from "./GuestLoginDropdown";
-import GuestRegisterDropdown from "./GuestRegisterDropdown";
-import GuestForgottenPasswordDropdown from "./GuestForgottenPasswordDropdown";
+import GuestLoginDropdown from "./GuestLogin";
+import GuestRegisterDropdown from "./GuestRegister";
+import GuestForgottenPasswordDropdown from "./GuestLostPassword";
 import navbarGuestReduxHoc from "../../../../redux/hocs/navbar.guest.hoc";
 
 class NavbarGuest extends Component {

@@ -2,7 +2,7 @@ import React, {Component, Fragment} from 'react';
 import navbarGuestReduxHoc from "../../../../redux/hocs/navbar.guest.hoc";
 import FormHoc from "../../../../hocs/form.hoc";
 
-class GuestLoginDropdown extends Component {
+class GuestLogin extends Component {
 
     constructor(props) {
         super(props);
@@ -30,7 +30,7 @@ class GuestLoginDropdown extends Component {
                                 <div className="input-group-text">👤/📧</div>
                             </div>
                             <input type="text" className="form-control"
-                                   autoComplete="off"
+                                   autoComplete="on"
                                    name="usernameOrEmail" placeholder="Username or Email..." onChange={onChange}/>
                         </div>
                     </div>
@@ -41,7 +41,7 @@ class GuestLoginDropdown extends Component {
                                 <div className="input-group-text">🔒</div>
                             </div>
                             <input type="password" className="form-control"
-                                   autoComplete="off"
+                                   autoComplete="on"
                                    name="password" placeholder="Password..." onChange={onChange}/>
                         </div>
                     </div>
@@ -55,9 +55,9 @@ class GuestLoginDropdown extends Component {
                         </label>
                     </div>
 
-                    <input type="hidden"  name="userLocation"/>
-
-                    <button type="button" data-style="zoom-in" className="btn btn-primary" onClick={this.onLogin}>Login</button>
+                    <button type="button" data-style="zoom-in" className="btn btn-primary"
+                            onClick={this.onLogin}>Login
+                    </button>
 
                     <div className="dropdown-divider"/>
                 </form>
@@ -68,7 +68,7 @@ class GuestLoginDropdown extends Component {
                     </button>
                 </a>
 
-                <a  className="dropdown-item">
+                <a className="dropdown-item">
                     <button className="btn btn-warning btn-sm" onClick={this.props.selectForgottenPassword}>Forgotten
                         Password
                     </button>
@@ -79,4 +79,4 @@ class GuestLoginDropdown extends Component {
 
 }
 
-export default FormHoc(navbarGuestReduxHoc(GuestLoginDropdown));
+export default FormHoc(navbarGuestReduxHoc(GuestLogin));

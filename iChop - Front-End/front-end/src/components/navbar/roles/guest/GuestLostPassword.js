@@ -2,7 +2,7 @@ import React, {Component, Fragment} from 'react';
 import navbarGuestReduxHoc from "../../../../redux/hocs/navbar.guest.hoc";
 import FormHoc from "../../../../hocs/form.hoc";
 
-class GuestForgottenPasswordDropdown extends Component {
+class GuestLostPassword extends Component {
 
 
     constructor(props) {
@@ -61,4 +61,4 @@ class GuestForgottenPasswordDropdown extends Component {
 
 }
 
-export default FormHoc(navbarGuestReduxHoc(GuestForgottenPasswordDropdown));
+export default FormHoc(navbarGuestReduxHoc(GuestLostPassword));

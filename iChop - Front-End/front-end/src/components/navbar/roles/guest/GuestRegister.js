@@ -2,7 +2,7 @@ import React, {Component, Fragment} from 'react';
 import navbarGuestReduxHoc from "../../../../redux/hocs/navbar.guest.hoc";
 import FormHoc from "../../../../hocs/form.hoc";
 
-class GuestRegisterDropdown extends Component {
+class GuestRegister extends Component {
 
     constructor(props) {
         super(props);
@@ -100,4 +100,4 @@ class GuestRegisterDropdown extends Component {
 
 }
 
-export default FormHoc(navbarGuestReduxHoc(GuestRegisterDropdown));
+export default FormHoc(navbarGuestReduxHoc(GuestRegister));
