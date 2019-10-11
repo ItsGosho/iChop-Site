@@ -19,10 +19,13 @@ class UserOptionsInformation extends Component {
         };
 
         this.onSaveChanges = this.onSaveChanges.bind(this);
+        this.onDateChange = this.onDateChange.bind(this);
     }
 
-    onDateChange() {
-        
+    onDateChange(date) {
+        this.setState({
+            birthday: date
+        });
     }
 
     onSaveChanges() {
@@ -112,9 +115,7 @@ class UserOptionsInformation extends Component {
                             value={this.state.birthday}
                             selected={this.state.birthday}
                             onChange={date => {
-                                this.setState({
-                                    birthday: date
-                                });
+                                this.onDateChange(date);
                             }}
                         />
                     </div>
