@@ -5,6 +5,7 @@ import dateFormat from 'dateformat';
 import DatePicker from "react-datepicker";
 import './UserOptionsInformation.css'
 import "react-datepicker/dist/react-datepicker.css";
+import Image from "../../../other/Image";
 
 class UserOptionsInformation extends Component {
 
@@ -17,20 +18,14 @@ class UserOptionsInformation extends Component {
             aboutYou: 'Just me :)'
         };
 
-        this.onUserAvatarError = this.onUserAvatarError.bind(this);
         this.onSaveChanges = this.onSaveChanges.bind(this);
     }
 
-    onUserAvatarError(event) {
-        event.target.onerror = null;
-        event.target.src = FrontEndResourcesRoutingURLs.USER.AVATAR;
-    }
-
     onSaveChanges() {
-        let {statusMessage,birthday,aboutYou} = this.state;
+        let {statusMessage, birthday, aboutYou} = this.state;
 
         console.log(statusMessage);
-        console.log(dateFormat(birthday,'dd/mm/yyyy'));
+        console.log(dateFormat(birthday, 'dd/mm/yyyy'));
         console.log(aboutYou);
     }
 
@@ -44,37 +39,21 @@ class UserOptionsInformation extends Component {
             <form>
 
                 <div className="row">
-                    <div className="col-md-auto status-message">
+                    <div className="col-md-auto status">
                         <span>Status Message:</span>
                     </div>
                 </div>
 
                 <div className="row">
                     <div className="col-lg">
-                        <textarea name="statusMessage" id="textarea-statusMessage-userOptions"
-                                  style={{
-                                      'border': '1px solid #ccc',
-                                      'borderRadius': '3px',
-                                      'height': '60px',
-                                      'overflow': 'auto',
-                                      'width': '100%',
-                                      'resize': 'none'
-                                  }} value={this.state.statusMessage} onChange={onChange}/>
+                        <textarea name="statusMessage"
+                                  className="textarea-status"
+                                  value={this.state.statusMessage} onChange={onChange}/>
                     </div>
                 </div>
-                <div className="row" style={{'marginTop': '3px'}}>
+                <div className="row status-left-chars-row">
                     <div className="col-lg">
-                        <small id="small-statusMessageCharactersLeft-userOptions"
-                               style={{
-                                   'float': 'right',
-                                   'display': 'inline-block',
-                                   'borderColor': '#ccc',
-                                   'marginRight': '3px',
-                                   'color': 'darkgreen',
-                                   'fontSize': '13px'
-                               }}>
-                            16
-                        </small>
+                        <small className="status-left-chars">16</small>
                     </div>
                 </div>
 
@@ -88,8 +67,11 @@ class UserOptionsInformation extends Component {
 
                 <div className="row" align="center">
                     <div className="col-lg">
-                        <img id="img-avatar-userOptionsProfile" style={{'width': '50px', 'height': '50px'}}
-                             src={userAvatarUrl} onError={this.onUserAvatarError}/>
+
+                        <Image url={userAvatarUrl}
+                               defaultUrl={FrontEndResourcesRoutingURLs.USER.AVATAR}
+                               className={'user-img'}/>
+
                     </div>
                 </div>
 
