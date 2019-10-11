@@ -22,6 +22,7 @@ class GuestLogin extends Component {
 
         return (
             <Fragment>
+
                 <form className="px-4 py-3">
 
                     <div className="form-group">
@@ -56,13 +57,6 @@ class GuestLogin extends Component {
 
                         </div>
                     </div>
-
-                    {/*      <div className="custom-control custom-checkbox">
-                        <input type="checkbox" name="rememberMe" className="custom-control-input"/>
-                        <label className="custom-control-label" htmlFor="input-rememberMe-loginForm">
-                            Remember me
-                        </label>
-                    </div>*/}
 
                     <button type="button"
                             data-style="zoom-in"

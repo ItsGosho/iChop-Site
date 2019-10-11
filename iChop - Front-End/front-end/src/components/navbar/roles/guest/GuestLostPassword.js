@@ -23,6 +23,7 @@ class GuestLostPassword extends Component {
         return (
             <Fragment>
                 <form className="px-4 py-3">
+
                     <div className="form-group">
                         <div className="input-group mb-2">
 
@@ -42,11 +43,15 @@ class GuestLostPassword extends Component {
 
                     <button type="button"
                             className="btn btn-primary btn-sm"
-                            onClick={this.props.selectLogin}>Back
+                            onClick={this.props.selectLogin}>
+                        Back
                     </button>
 
-                    <button type="button" data-style="zoom-in"
-                            className="btn btn-success btn-sm" onClick={this.onForgottenPassword}>Send
+                    <button type="button"
+                            data-style="zoom-in"
+                            className="btn btn-success btn-sm"
+                            onClick={this.onForgottenPassword}>
+                        Send
                     </button>
 
                     <div className="dropdown-divider"/>
