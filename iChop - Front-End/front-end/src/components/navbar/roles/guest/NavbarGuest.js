@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import './NavbarGuest.css';
 import GuestLoginDropdown from "./GuestLoginDropdown";
 import GuestRegisterDropdown from "./GuestRegisterDropdown";
@@ -22,7 +22,7 @@ class NavbarGuest extends Component {
     render() {
 
         return (
-            <div>
+            <Fragment>
 
                 <button className="btn btn-success btn-sm" onClick={this.showDropdown}>Sign in</button>
 
@@ -52,7 +52,7 @@ class NavbarGuest extends Component {
                         }
                     })()
                 }
-            </div>
+            </Fragment>
         );
     }
 

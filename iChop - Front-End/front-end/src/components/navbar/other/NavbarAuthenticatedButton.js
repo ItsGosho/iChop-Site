@@ -13,16 +13,15 @@ class NavbarAuthenticatedButton extends Component {
         let userProfilePictureUrl = '';
 
         return (
-            <Fragment>
-                <button type="button" className="btn btn-success dropdown-toggle btn-sm"
-                        data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
+            <button type="button" className="btn btn-success dropdown-toggle btn-sm"
+                    data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
 
-                    <Image url={userProfilePictureUrl} defaultUrl={FrontEndResourcesRoutingURLs.USER.AVATAR} className={'img-user_avatar-top_nav_bar'}/>
+                <Image url={userProfilePictureUrl} defaultUrl={FrontEndResourcesRoutingURLs.USER.AVATAR}
+                       className={'img-user_avatar-top_nav_bar'}/>
 
-                    <span>⚙</span>
-                </button>
-            </Fragment>
+                <span>⚙</span>
+            </button>
         );
     }
 };

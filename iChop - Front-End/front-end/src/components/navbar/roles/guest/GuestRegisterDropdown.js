@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import navbarGuestReduxHoc from "../../../../redux/hocs/navbar.guest.hoc";
 import FormHoc from "../../../../hocs/form.hoc";
 
@@ -23,7 +23,7 @@ class GuestRegisterDropdown extends Component {
         let {onChange} = this.props.formMethods;
 
         return (
-            <div>
+            <Fragment>
                 <form className="px-4 py-3">
 
                     <div className="form-group">
@@ -94,7 +94,7 @@ class GuestRegisterDropdown extends Component {
                     </button>
                     <div className="dropdown-divider"/>
                 </form>
-            </div>
+            </Fragment>
         );
     }
 
