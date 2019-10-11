@@ -27,12 +27,6 @@ class GuestRegister extends Component {
                 <form className="px-4 py-3">
 
                     <div className="form-group">
-                        <small id="error-usernameAlreadyExists-registerForm">⚡Username already
-                            exists!
-                        </small>
-                        <small id="error-usernameIsShort-registerForm">⚡Username must be at
-                            least 3 characters long!
-                        </small>
                         <div className="input-group mb-2">
                             <div className="input-group-prepend">
                                 <div className="input-group-text">👤</div>
@@ -61,8 +55,6 @@ class GuestRegister extends Component {
                         </div>
                     </div>
                     <div className="form-group">
-                        <small>⚡Passwords doesn't match!
-                        </small>
                         <div className="input-group mb-2">
                             <div className="input-group-prepend">
                                 <div className="input-group-text">🔒</div>
@@ -73,9 +65,6 @@ class GuestRegister extends Component {
                         </div>
                     </div>
                     <div className="form-group">
-                        <small>⚡Email already
-                            exists!
-                        </small>
                         <div className="input-group mb-2">
                             <div className="input-group-prepend">
                                 <div className="input-group-text">📧</div>

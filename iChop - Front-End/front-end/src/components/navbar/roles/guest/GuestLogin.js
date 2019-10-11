@@ -45,7 +45,7 @@ class GuestLogin extends Component {
                                    name="password" placeholder="Password..." onChange={onChange}/>
                         </div>
                     </div>
-                    
+
                     <div className="custom-control custom-checkbox">
                         <input type="checkbox" name="rememberMe" className="custom-control-input"/>
                         <label className="custom-control-label" htmlFor="input-rememberMe-loginForm">
