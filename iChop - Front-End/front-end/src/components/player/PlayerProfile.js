@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './PlayerProfile.css'
-import PlayerProfileCenter from "./grid/PlayerProfileCenter";
-import PlayerProfileLeft from "./grid/PlayerProfileLeft";
+import PlayerProfileCenter from "./profile/grid/PlayerProfileCenter";
+import PlayerProfileLeft from "./profile/grid/PlayerProfileLeft";
 
 class PlayerProfile extends Component {
 

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import ServerRoutingURLs from "../../../constants/server.routing.urls";
-import PlayerProfileNavigation from "../profile/PlayerProfileNavigation";
-import PlayerLinkedTo from "../profile/PlayerLinkedTo";
+import ServerRoutingURLs from "../../../../constants/server.routing.urls";
+import PlayerProfileNavigation from "../PlayerProfileNavigation";
+import PlayerLinkedTo from "../PlayerLinkedTo";
 
 class PlayerProfileLeft extends Component {
 
