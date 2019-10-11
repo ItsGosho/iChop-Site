@@ -3,7 +3,7 @@ import ServerRoutingURLs from "../../../../constants/server.routing.urls";
 import FrontEndResourcesRoutingURLs from "../../../../constants/front-end.resources.routings";
 import dateFormat from 'dateformat';
 import DatePicker from "react-datepicker";
-
+import './UserOptionsInformation.css'
 import "react-datepicker/dist/react-datepicker.css";
 
 class UserOptionsInformation extends Component {
@@ -44,7 +44,7 @@ class UserOptionsInformation extends Component {
             <form>
 
                 <div className="row">
-                    <div className="col-md-auto" style={{'fontFamily': 'Consolas'}}>
+                    <div className="col-md-auto status-message">
                         <span>Status Message:</span>
                     </div>
                 </div>
