@@ -1,6 +1,5 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 import Modal from "../../modal/Modal";
-import ModalOpen from "../../modal/ModalOpen";
 import ModalTitle from "../../modal/ModalTitle";
 import ModalBody from "../../modal/ModalBody";
 import ModalFooter from "../../modal/ModalFooter";
