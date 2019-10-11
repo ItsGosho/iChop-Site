@@ -1,11 +1,11 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
 
 class Image extends Component {
 
     constructor(props) {
         super(props);
 
-        let {url,defaultUrl} = this.props;
+        let {url, defaultUrl} = this.props;
 
         this.state = {
             url: url,
@@ -28,6 +28,7 @@ class Image extends Component {
     }
 
     render() {
+        let {className} = this.props;
 
         return (
             <img
@@ -35,7 +36,7 @@ class Image extends Component {
                 onError={this.onUserAvatarError}
                 onLoad={this.onLoad}
                 alt=''
-                className="img-user_avatar-top_nav_bar"/>
+                className={className}/>
         );
     }
 
