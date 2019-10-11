@@ -21,6 +21,10 @@ class UserOptionsInformation extends Component {
         this.onSaveChanges = this.onSaveChanges.bind(this);
     }
 
+    onDateChange() {
+        
+    }
+
     onSaveChanges() {
         let {statusMessage, birthday, aboutYou} = this.state;
 
@@ -119,37 +123,21 @@ class UserOptionsInformation extends Component {
                 <div className="dropdown-divider"/>
 
                 <div className="row">
-                    <div className="col-md-auto" style={{'fontFamily': 'Consolas'}}>
+                    <div className="col-md-auto about-you-title">
                         <span>About you:</span>
                     </div>
                 </div>
 
                 <div className="row">
                     <div className="col-lg">
-                        <textarea id="textarea-aboutYou-userOptions" name="aboutYou"
-                                  style={{
-                                      'border': '1px solid',
-                                      'borderColor': '#ccc',
-                                      'borderRadius': '3px',
-                                      'height': '60px',
-                                      'overflow': 'auto',
-                                      'width': '100%',
-                                      'resize': 'none'
-                                  }} value={this.state.aboutYou} onChange={onChange}/>
+                        <textarea name="aboutYou"
+                                  className="textarea-about-you"
+                                  value={this.state.aboutYou} onChange={onChange}/>
                     </div>
                 </div>
-                <div className="row" style={{'marginTop': '3px'}}>
+                <div className="row about-you-title">
                     <div className="col-lg">
-                        <small id="small-aboutYouCharactersLeft-userOptions"
-                               style={{
-                                   'float': 'right',
-                                   'display': 'inline-block',
-                                   'marginRight': '3px',
-                                   'color': 'darkgreen',
-                                   'fontSize': '13px'
-                               }}>
-                            250
-                        </small>
+                        <small className="about-you-left-chars">250</small>
                     </div>
                 </div>
 
@@ -157,9 +145,13 @@ class UserOptionsInformation extends Component {
 
                 <div className="row" align="center">
                     <div className="col-lg">
-                        <button id="button-saveChanges-userOptionsProfile" type="button" onClick={this.onSaveChanges}
-                                className="btn btn-warning btn-sm">Save Changes
+
+                        <button type="button"
+                                onClick={this.onSaveChanges}
+                                className="btn btn-warning btn-sm">
+                            Save Changes
                         </button>
+
                     </div>
                 </div>
             </form>
