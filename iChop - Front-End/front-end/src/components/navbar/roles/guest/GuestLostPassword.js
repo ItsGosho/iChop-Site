@@ -43,17 +43,6 @@ class GuestLostPassword extends Component {
                     </button>
 
                     <div className="dropdown-divider"/>
-                    <div>
-                        <div className="alert alert-danger p-1">
-                            <strong>⚡</strong> No user exists with the provided credentials!
-                        </div>
-                        <div className="alert alert-info p-1">
-                            <strong>🔔</strong> Please wait!
-                        </div>
-                        <div className="alert alert-success p-1">
-                            <strong>✔</strong> Password reset token has been sent to your email!
-                        </div>
-                    </div>
                 </form>
             </Fragment>
         );
