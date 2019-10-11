@@ -2,7 +2,7 @@ import React from "react";
 import CreateReactClass from 'create-react-class';
 import Table from "react-bootstrap/Table";
 
-let ReportTableWrapper = CreateReactClass({
+let ReportTable = CreateReactClass({
     render() {
         let thFirstName = this.props.thFirstName;
 
@@ -31,4 +31,4 @@ let ReportTableWrapper = CreateReactClass({
 });
 
 
-export default ReportTableWrapper;
+export default ReportTable;

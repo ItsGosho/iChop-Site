@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
-import ReportTableWrapper from "./wrappers/ReportTableWrapper";
-import ReportTableColumnsWrapper from "./wrappers/ReportTableColumnsWrapper";
+import ReportTable from "./other/ReportTable";
+import ReportTableColumns from "./other/ReportTableColumns";
 import PaginationNav from "../other/PaginationNav";
 import RoutingURLs from "../../constants/routing.constants";
 
@@ -48,13 +48,13 @@ class ReportsPost extends Component {
 
         return (
             <Fragment>
-                <ReportTableWrapper>
+                <ReportTable>
                     {
                         (() => reports.map((report, index) => {
                             let {content, reason, creatorUsername, reportDate} = report;
 
                             return (
-                                <ReportTableColumnsWrapper
+                                <ReportTableColumns
                                     onDeleteEntity={this.onDeleteEntity}
                                     onDeleteReport={this.onDeleteReport}
                                     entityName={'Post'}
@@ -69,11 +69,11 @@ class ReportsPost extends Component {
                                             'maxHeight': '100px'
                                         }}>{content}</div>
                                     </td>
-                                </ReportTableColumnsWrapper>
+                                </ReportTableColumns>
                             );
                         }))()
                     }
-                </ReportTableWrapper>
+                </ReportTable>
 
                 <PaginationNav totalResults={reports.length} resultsPerPage={1} redirectPage={RoutingURLs.POST.REPORT.ALL}/>
             </Fragment>

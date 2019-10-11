@@ -1,12 +1,12 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import formatDate from "dateformat";
-import ReportActionButtons from "../ReportActionButtons";
+import ReportActionButtons from "./ReportActionButtons";
 import CreateReactClass from "create-react-class";
 import RoutingURLs from "../../../constants/routing.constants";
 
 
-let ReportTableColumnsWrapper = CreateReactClass({
+let ReportTableColumns = CreateReactClass({
 
     render() {
         let {entityName,index,reason, creatorUsername, reportDate,onDeleteEntity,onDeleteReport} = this.props;
@@ -40,4 +40,4 @@ let ReportTableColumnsWrapper = CreateReactClass({
 });
 
 
-export default ReportTableColumnsWrapper;
+export default ReportTableColumns;

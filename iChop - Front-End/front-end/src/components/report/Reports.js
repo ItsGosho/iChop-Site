@@ -4,7 +4,7 @@ import RoutingURLs from "../../constants/routing.constants";
 import ReportsThread from "./ReportsThread";
 import ReportsPost from "./ReportsPost";
 import ReportsComment from "./ReportsComment";
-import ReportNav from "./ReportNav";
+import ReportNav from "./other/ReportNav";
 
 class Reports extends Component {
 

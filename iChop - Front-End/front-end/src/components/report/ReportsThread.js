@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react';
-import ReportTableWrapper from "./wrappers/ReportTableWrapper";
+import ReportTable from "./other/ReportTable";
 import RoutingURLs from "../../constants/routing.constants";
-import ReportTableColumnsWrapper from "./wrappers/ReportTableColumnsWrapper";
+import ReportTableColumns from "./other/ReportTableColumns";
 import {Link} from "react-router-dom";
 import PaginationNav from "../other/PaginationNav";
 
@@ -53,7 +53,7 @@ class ReportsThread extends Component {
 
         return (
             <Fragment>
-                <ReportTableWrapper>
+                <ReportTable>
                     {
                         (() => reports.map((report, index) => {
                             let {threadId, reason, creatorUsername, reportDate} = report;
@@ -61,21 +61,21 @@ class ReportsThread extends Component {
                             let threadReadUrl = RoutingURLs.THREAD.VIEW.replace(':id', threadId);
 
                             return (
-                                <ReportTableColumnsWrapper onDeleteEntity={this.onDeleteEntity}
-                                                           onDeleteReport={this.onDeleteReport}
-                                                           entityName={'Thread'}
-                                                           index={index}
-                                                           reason={reason}
-                                                           creatorUsername={creatorUsername}
-                                                           reportDate={reportDate}>
+                                <ReportTableColumns onDeleteEntity={this.onDeleteEntity}
+                                                    onDeleteReport={this.onDeleteReport}
+                                                    entityName={'Thread'}
+                                                    index={index}
+                                                    reason={reason}
+                                                    creatorUsername={creatorUsername}
+                                                    reportDate={reportDate}>
                                     <th>
                                         <Link to={threadReadUrl}>Link</Link>
                                     </th>
-                                </ReportTableColumnsWrapper>
+                                </ReportTableColumns>
                             );
                         }))()
                     }
-                </ReportTableWrapper>
+                </ReportTable>
 
                 <PaginationNav totalResults={reports.length} resultsPerPage={1} redirectPage={RoutingURLs.THREAD.REPORT.ALL}/>
 
