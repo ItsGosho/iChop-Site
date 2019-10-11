@@ -1,6 +1,5 @@
 import React, {Fragment, Component} from "react";
 import Image from "../../other/Image";
-import ServerRoutingURLs from "../../../constants/server.routing.urls";
 import FrontEndResourcesRoutingURLs from "../../../constants/front-end.resources.routings";
 
 class NavbarAuthenticatedButton extends Component {

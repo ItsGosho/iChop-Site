@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import RoutingURLs from "../../../../constants/routing.constants";
 import {Link} from "react-router-dom";
-import '../AuthenticatedNavbar.css'
+import '../NavbarAuthenticated.css'
 import NavbarAuthenticatedButton from "../../other/NavbarAuthenticatedButton";
 import NavbarAuthenticatedUserListWrapper from "../../wrappers/NavbarAuthenticatedUserListWrapper";
 
@@ -19,17 +19,17 @@ class NavbarAdmin extends Component {
 
                     <Link className="dropdown-item" to={RoutingURLs.THREAD.CREATE}>
                         <small>🚩</small>
-                        Create Thread
+                        <span>Create Thread</span>
                     </Link>
 
                     <Link className="dropdown-item" to={RoutingURLs.USER.ALL}>
                         <small>👥</small>
-                        Users
+                        <span>Users</span>
                     </Link>
 
                     <Link className="dropdown-item" to={RoutingURLs.COMMENT.REPORT.ALL}>
                         <small>⚠</small>
-                        Reports
+                        <span>Reports</span>
                     </Link>
 
                 </NavbarAuthenticatedUserListWrapper>

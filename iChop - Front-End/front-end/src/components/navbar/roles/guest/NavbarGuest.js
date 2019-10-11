@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './Navbarguest.css';
+import './NavbarGuest.css';
 import GuestLoginDropdown from "./GuestLoginDropdown";
 import GuestRegisterDropdown from "./GuestRegisterDropdown";
 import GuestForgottenPasswordDropdown from "./GuestForgottenPasswordDropdown";

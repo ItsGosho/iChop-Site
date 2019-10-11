@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import '../AuthenticatedNavbar.css'
+import '../NavbarAuthenticated.css'
 import NavbarAuthenticatedButton from "../../other/NavbarAuthenticatedButton";
 import NavbarAuthenticatedUserListWrapper from "../../wrappers/NavbarAuthenticatedUserListWrapper";
 
