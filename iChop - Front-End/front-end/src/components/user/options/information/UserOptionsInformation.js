@@ -27,6 +27,7 @@ class UserOptionsInformation extends Component {
         this.getBase64 = this.getBase64.bind(this);
 
         this.inputFileRef = React.createRef();
+        this.userAvatarRef = React.createRef();
     }
 
     onDateChange(date) {
@@ -41,7 +42,6 @@ class UserOptionsInformation extends Component {
 
         let type = file.type; /*image/png*/
         let size = file.size;
-        let reader = new FileReader();
 
         if (type === 'image/png') {
 
@@ -52,19 +52,10 @@ class UserOptionsInformation extends Component {
 
             this.getBase64(file).then(data => {
                 /*TODO: Without base64*/
-                console.log(':');
-                console.log(data);
+                let withBase64Prefix = 'data:image/png;base64,' + data;
+                this.userAvatarRef.current.customImageRef.current.src = withBase64Prefix;
+
             });
-
-            reader.readAsDataURL(file);
-
-
-            reader.onload = function (e) {
-                /*TODO: With base 64*/
-                let content = e.target.result;
-
-                console.log(content);
-            };
 
         } else {
             /*TODO: show error*/
@@ -145,6 +136,7 @@ class UserOptionsInformation extends Component {
 
                         <Image url={this.state.userAvatarUrl}
                                defaultUrl={FrontEndResourcesRoutingURLs.USER.AVATAR}
+                               ref={this.userAvatarRef}
                                className={'user-img'}/>
 
                     </div>

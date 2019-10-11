@@ -16,6 +16,8 @@ class Image extends Component {
 
         this.onUserAvatarError = this.onUserAvatarError.bind(this);
         this.onLoad = this.onLoad.bind(this);
+
+        this.customImageRef = React.createRef();
     }
 
     onUserAvatarError(event) {
@@ -35,6 +37,7 @@ class Image extends Component {
                  onError={this.onUserAvatarError}
                  onLoad={this.onLoad}
                  alt=''
+                 ref={this.customImageRef}
                  className={className}/>
         );
     }
