@@ -17,7 +17,7 @@ function App() {
             <Navbar/>
 
             <div style={{'marginTop': '75px'}}>
-                <PlayerLinkAccount/>
+                <PlayerProfile/>
             </div>
 
             <Footer/>
