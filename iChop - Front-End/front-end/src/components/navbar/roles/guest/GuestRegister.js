@@ -30,7 +30,7 @@ class GuestRegister extends Component {
             confirmPasswordElement.type = 'text';
         }
 
-        this.setState((prevState)=> ({isPasswordsShown: !prevState.isPasswordsShown}))
+        this.setState((prevState) => ({isPasswordsShown: !prevState.isPasswordsShown}))
     }
 
     onRegister() {
@@ -51,61 +51,93 @@ class GuestRegister extends Component {
 
                     <div className="form-group">
                         <div className="input-group mb-2">
+
                             <div className="input-group-prepend">
                                 <div className="input-group-text">👤</div>
                             </div>
-                            <input type="text" className="form-control"
-                                   name="username" placeholder="Username..." autoComplete="off" onChange={onChange}/>
+
+                            <input type="text"
+                                   className="form-control"
+                                   name="username"
+                                   placeholder="Username..."
+                                   autoComplete="off"
+                                   onChange={onChange}/>
+
                         </div>
                     </div>
 
                     <div className="form-group">
                         <div className="input-group mb-2">
+
                             <div className="input-group-prepend">
                                 <div className="input-group-text">🔒</div>
                             </div>
-                            <input type="password" className="form-control"
+
+                            <input type="password"
+                                   className="form-control"
                                    autoComplete="off"
                                    data-trigger="focus"
-                                   name="password" placeholder="Password..." ref={this.passwordRef}
+                                   name="password"
+                                   placeholder="Password..."
+                                   ref={this.passwordRef}
                                    onChange={onChange}/>
+
                             <div className="input-group-append">
-                                <button className="btn btn-outline-success"
-                                        type="button" onClick={this.onShowPasswords}>Show
+                                <button type="button"
+                                        className="btn btn-outline-success"
+                                        onClick={this.onShowPasswords}>
+                                    Show
                                 </button>
                             </div>
+
                         </div>
                     </div>
 
                     <div className="form-group">
                         <div className="input-group mb-2">
+
                             <div className="input-group-prepend">
                                 <div className="input-group-text">🔒</div>
                             </div>
-                            <input type="password" className="form-control"
+
+                            <input type="password"
+                                   className="form-control"
                                    autoComplete="off"
-                                   name="confirmPassword" placeholder="Confirm Password..."
-                                   ref={this.confirmPasswordRef} onChange={onChange}/>
+                                   name="confirmPassword"
+                                   placeholder="Confirm Password..."
+                                   ref={this.confirmPasswordRef}
+                                   onChange={onChange}/>
+
                         </div>
                     </div>
 
                     <div className="form-group">
                         <div className="input-group mb-2">
+
                             <div className="input-group-prepend">
                                 <div className="input-group-text">📧</div>
                             </div>
-                            <input type="email" className="form-control" name="email"
-                                   autoComplete="off"
-                                   placeholder="Email..." onChange={onChange}/>
+
+                            <input
+                                type="email"
+                                className="form-control"
+                                name="email"
+                                autoComplete="off"
+                                placeholder="Email..."
+                                onChange={onChange}/>
+
                         </div>
                     </div>
 
-                    <button type="button" onClick={this.props.selectLogin}
-                            className="btn btn-primary btn-sm">Back
+                    <button type="button"
+                            className="btn btn-primary btn-sm"
+                            onClick={this.props.selectLogin}>
+                        Back
                     </button>
 
                     <button type="button"
-                            className="btn btn-success btn-sm btn-ladda" data-style="zoom-in" onClick={this.onRegister}>
+                            className="btn btn-success btn-sm btn-ladda" data-style="zoom-in"
+                            onClick={this.onRegister}>
                         Register
                     </button>
 
