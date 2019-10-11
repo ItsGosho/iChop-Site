@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import '../NavbarAuthenticated.css'
 import NavbarAuthenticatedButton from "../../other/NavbarAuthenticatedButton";
-import NavbarAuthenticatedUserListWrapper from "../../wrappers/NavbarAuthenticatedUserListWrapper";
+import NavbarAuthenticatedList from "../../other/NavbarAuthenticatedList";
 
 class NavbarUser extends Component {
 
@@ -10,7 +10,7 @@ class NavbarUser extends Component {
         return (
             <div id="userDiv">
                 <NavbarAuthenticatedButton/>
-                <NavbarAuthenticatedUserListWrapper/>
+                <NavbarAuthenticatedList/>
             </div>
         );
     }

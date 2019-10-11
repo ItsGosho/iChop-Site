@@ -3,7 +3,7 @@ import CreateReactClass from 'create-react-class';
 import {Link} from "react-router-dom";
 import RoutingURLs from "../../../constants/routing.constants";
 
-let NavbarAuthenticatedUserListWrapper = CreateReactClass({
+let NavbarAuthenticatedList = CreateReactClass({
     render() {
         let username = '';
         let profileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', username);
@@ -34,4 +34,4 @@ let NavbarAuthenticatedUserListWrapper = CreateReactClass({
 });
 
 
-export default NavbarAuthenticatedUserListWrapper;
+export default NavbarAuthenticatedList;

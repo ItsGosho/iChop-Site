@@ -3,7 +3,7 @@ import RoutingURLs from "../../../../constants/routing.constants";
 import {Link} from "react-router-dom";
 import '../NavbarAuthenticated.css'
 import NavbarAuthenticatedButton from "../../other/NavbarAuthenticatedButton";
-import NavbarAuthenticatedUserListWrapper from "../../wrappers/NavbarAuthenticatedUserListWrapper";
+import NavbarAuthenticatedList from "../../other/NavbarAuthenticatedList";
 
 class NavbarAdmin extends Component {
 
@@ -15,7 +15,7 @@ class NavbarAdmin extends Component {
 
                 <NavbarAuthenticatedButton/>
 
-                <NavbarAuthenticatedUserListWrapper>
+                <NavbarAuthenticatedList>
 
                     <Link className="dropdown-item" to={RoutingURLs.THREAD.CREATE}>
                         <small>🚩</small>
@@ -32,7 +32,7 @@ class NavbarAdmin extends Component {
                         <span>Reports</span>
                     </Link>
 
-                </NavbarAuthenticatedUserListWrapper>
+                </NavbarAuthenticatedList>
 
             </div>
         );
