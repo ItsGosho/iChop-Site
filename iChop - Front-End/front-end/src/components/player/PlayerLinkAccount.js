@@ -6,10 +6,20 @@ import ServerRoutingURLs from "../../constants/server.routing.urls";
 
 class PlayerLinkAccount extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.linkAccount = this.linkAccount.bind(this);
+    }
+
+
+    linkAccount() {
+        /*TODO: Link the account to the current logged in user!*/
+    }
+
 
     render() {
         let name = 'ItsGosho';
-        let uuid = '8ed20904-3262-401a-901a-1946504d2eea';
         let avatarUrl = ServerRoutingURLs.OUTSIDE.MINOTAR.MINECRAFT.HEAD.replace(':accountName', name);
 
         return (
@@ -18,7 +28,7 @@ class PlayerLinkAccount extends Component {
                 <div className="card" id="div-card-player_link_account">
 
                     <div className="card-header">
-                        Link your account:
+                        <span>Link your account:</span>
                     </div>
 
                     <div className="card-body">
@@ -30,15 +40,15 @@ class PlayerLinkAccount extends Component {
                         </p>
 
                         <div className="float-right">
-                            <Link to={RoutingURLs.HOME}>
-                                <button className="btn btn-danger">No</button>
-                            </Link>
+                            <form id="form-confirm_player_link_connection-player_link_account">
+                                <button className="btn btn-warning" onClick={this.linkAccount}>Yes</button>
+                            </form>
                         </div>
 
                         <div className="float-left">
-                            <form id="form-confirm_player_link_connection-player_link_account">
-                                <button className="btn btn-warning">Yes</button>
-                            </form>
+                            <Link to={RoutingURLs.HOME}>
+                                <button className="btn btn-danger">No</button>
+                            </Link>
                         </div>
 
                     </div>
