@@ -33,7 +33,6 @@ class ReportNav extends Component {
                     <Form inline>
                         <FormControl type="text" placeholder="Search by username" className="mr-sm-2" />
                     </Form>
-
                 </Navbar.Collapse>
             </Navbar>
         );

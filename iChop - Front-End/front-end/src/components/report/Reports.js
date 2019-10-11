@@ -20,7 +20,6 @@ class Reports extends Component {
                     <Route exact path={RoutingURLs.COMMENT.REPORT.ALL} component={() => (<ReportsComment/>)}/>
                     <Route exact path={RoutingURLs.POST.REPORT.ALL} component={() => (<ReportsPost/>)}/>
                 </Switch>
-
             </Fragment>
         );
     }

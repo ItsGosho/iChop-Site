@@ -31,7 +31,8 @@ let ReportTableColumns = CreateReactClass({
 
                 <td>{formatDate(reportDate, 'dd mmm,yyyy')}</td>
 
-                <ReportActionButtons entityName={entityName} onDeleteEntity={onDeleteEntity}
+                <ReportActionButtons entityName={entityName}
+                                     onDeleteEntity={onDeleteEntity}
                                      onDeleteReport={onDeleteReport}/>
             </tr>
         );

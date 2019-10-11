@@ -62,6 +62,7 @@ class ReportsPost extends Component {
                                     reason={reason}
                                     creatorUsername={creatorUsername}
                                     reportDate={reportDate}>
+
                                     <td width="300px">
                                         <div style={{
                                             'overflow': 'scroll',
@@ -69,6 +70,7 @@ class ReportsPost extends Component {
                                             'maxHeight': '100px'
                                         }}>{content}</div>
                                     </td>
+
                                 </ReportTableColumns>
                             );
                         }))()
