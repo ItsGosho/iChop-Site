@@ -72,14 +72,18 @@ class UserOptionsInformation extends Component {
                     <span>Status Message:</span>
                 </div>
 
-                <div className="row col-lg">
+                <div className="row">
+                    <div className="col-lg">
                         <textarea name="statusMessage"
                                   className="textarea-status"
                                   value={this.state.statusMessage} onChange={onChange}/>
+                    </div>
                 </div>
 
-                <div className="row col-lg status-left-chars-row">
-                    <small className="status-left-chars">16</small>
+                <div className="row status-left-chars-row">
+                    <div className="col-lg">
+                        <small className="status-left-chars">16</small>
+                    </div>
                 </div>
 
                 <div className="dropdown-divider"/>
@@ -110,21 +114,25 @@ class UserOptionsInformation extends Component {
 
                 <div className="dropdown-divider"/>
 
-                <div className="row col-lg row-birthdate-title" align="center">
-                    <span>Birthday:</span>
+                <div className="row row-birthdate-title" align="center">
+                    <div className="col-lg">
+                        <span>Birthday:</span>
+                    </div>
                 </div>
 
-                <div className="row col-lg row-birthdate-pick" align="center">
-                    {/*<input value={this.state.birthday} name="birthDate" data-provide="datepicker" onChange={onChange}
-                               className="form-control" style={{'width': '250px'}} data-date-format="yyyy-mm-dd"/>*/}
-                    <DatePicker
-                        format='Pp'
-                        value={this.state.birthday}
-                        selected={this.state.birthday}
-                        onChange={date => {
-                            this.onDateChange(date);
-                        }}
-                    />
+                <div className="row row-birthdate-pick" align="center">
+                    <div className="col-lg">
+
+                        <DatePicker
+                            className="form-control"
+                            format='Pp'
+                            value={this.state.birthday}
+                            selected={this.state.birthday}
+                            onChange={date => {
+                                this.onDateChange(date);
+                            }}/>
+
+                    </div>
                 </div>
 
                 <div className="dropdown-divider"/>
