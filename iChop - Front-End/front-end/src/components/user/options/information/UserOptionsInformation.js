@@ -19,10 +19,15 @@ class UserOptionsInformation extends Component {
             aboutYou: 'Just me :)',
 
             username: '',
-            userAvatarUrl: ''
+            userAvatarUrl: '',
+
+            isFormValid: true,
+            maxStatusCharacters: 16,
+            leftStatusCharacters: 16
         };
 
         this.onSaveChanges = this.onSaveChanges.bind(this);
+        this.onStatusChange = this.onStatusChange.bind(this);
         this.onDateChange = this.onDateChange.bind(this);
         this.onBase64Upload = this.onBase64Upload.bind(this);
 
@@ -41,24 +46,36 @@ class UserOptionsInformation extends Component {
         });
     }
 
+    onStatusChange(event) {
+        /*TODO: Според event-а дали е махнал -- ,добавил ++*/
 
-    /*TODO:
-    *  1.Choose avatar
-    *  2.Left characters to work
-    *  3.Restructure
-    *
-    * */
+        console.log(event);
+        let {statusMessage} = this.state;
+
+        if (this.state.leftStatusCharacters <= 0) {
+            this.statusMessageRef.current.style['border-color'] = 'red';
+            //block input
+            //set red
+            return;
+        }
+
+        this.setState((prev) => {
+            return {leftStatusCharacters: prev.leftStatusCharacters - 1}
+        });
+    }
 
     onSaveChanges() {
-        let {statusMessage, birthday, aboutYou} = this.state;
+        let {statusMessage, birthday, aboutYou, isFormValid} = this.state;
 
         console.log(statusMessage);
         console.log(dateFormat(birthday, 'dd/mm/yyyy'));
         console.log(aboutYou);
+
+        console.log(isFormValid);
     }
 
     componentDidMount() {
-        this.setState({username: 'ItsGosho'})
+        this.setState({username: 'ItsGosho'});
         this.setState({userAvatarUrl: ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', this.state.username)})
     }
 
@@ -77,13 +94,17 @@ class UserOptionsInformation extends Component {
                         <textarea name="statusMessage"
                                   className="textarea-status"
                                   ref={this.statusMessageRef}
-                                  value={this.state.statusMessage} onChange={onChange}/>
+                                  value={this.state.statusMessage}
+                                  onChange={(event) => {
+                                      onChange(event);
+                                      this.onStatusChange(event);
+                                  }}/>
                     </div>
                 </div>
 
                 <div className="row status-left-chars-row">
                     <div className="col-lg">
-                        <small className="status-left-chars">16</small>
+                        <small className="status-left-chars">{this.state.leftStatusCharacters}</small>
                     </div>
                 </div>
 
