@@ -24,15 +24,15 @@ class UserOptionsInformation extends Component {
 
         this.onSaveChanges = this.onSaveChanges.bind(this);
         this.onDateChange = this.onDateChange.bind(this);
-        this.onBase64 = this.onBase64.bind(this);
+        this.onBase64Upload = this.onBase64Upload.bind(this);
 
         this.userAvatarRef = React.createRef();
+        this.aboutYouRef = React.createRef();
+        this.statusMessageRef = React.createRef();
     }
 
-    onBase64(data) {
-        let withBase64Prefix = 'data:image/png;base64,' + data;
-
-        this.userAvatarRef.current.customImageRef.current.src = withBase64Prefix;
+    onBase64Upload(data) {
+        this.userAvatarRef.current.customImageRef.current.src = 'data:image/png;base64,' + data;
     }
 
     onDateChange(date) {
@@ -76,6 +76,7 @@ class UserOptionsInformation extends Component {
                     <div className="col-lg">
                         <textarea name="statusMessage"
                                   className="textarea-status"
+                                  ref={this.statusMessageRef}
                                   value={this.state.statusMessage} onChange={onChange}/>
                     </div>
                 </div>
@@ -107,7 +108,7 @@ class UserOptionsInformation extends Component {
                 <div className="row row-choose-avatar" align="center">
                     <div className="col-lg">
 
-                        <UploadBase64Image onUpload={this.onBase64}/>
+                        <UploadBase64Image onUpload={this.onBase64Upload}/>
 
                     </div>
                 </div>
@@ -149,6 +150,7 @@ class UserOptionsInformation extends Component {
                         <textarea name="aboutYou"
                                   className="textarea-about-you"
                                   value={this.state.aboutYou}
+                                  ref={this.aboutYouRef}
                                   onChange={onChange}/>
 
                     </div>
