@@ -6,6 +6,7 @@ import DatePicker from "react-datepicker";
 import './UserOptionsInformation.css'
 import "react-datepicker/dist/react-datepicker.css";
 import Image from "../../../other/Image";
+import UploadBase64Image from "../../../other/UploadBase64Image";
 
 class UserOptionsInformation extends Component {
 
@@ -23,11 +24,15 @@ class UserOptionsInformation extends Component {
 
         this.onSaveChanges = this.onSaveChanges.bind(this);
         this.onDateChange = this.onDateChange.bind(this);
-        this.onAvatarFileChange = this.onAvatarFileChange.bind(this);
-        this.getBase64 = this.getBase64.bind(this);
+        this.onBase64 = this.onBase64.bind(this);
 
-        this.inputFileRef = React.createRef();
         this.userAvatarRef = React.createRef();
+    }
+
+    onBase64(data) {
+        let withBase64Prefix = 'data:image/png;base64,' + data;
+
+        this.userAvatarRef.current.customImageRef.current.src = withBase64Prefix;
     }
 
     onDateChange(date) {
@@ -36,46 +41,6 @@ class UserOptionsInformation extends Component {
         });
     }
 
-    onAvatarFileChange(event) {
-
-        let file = event.target.files[0];
-
-        let type = file.type; /*image/png*/
-        let size = file.size;
-
-        if (type === 'image/png') {
-
-            if (size > 1048576) {
-                /*TODO: show error*/
-                return;
-            }
-
-            this.getBase64(file).then(data => {
-                /*TODO: Without base64*/
-                let withBase64Prefix = 'data:image/png;base64,' + data;
-                this.userAvatarRef.current.customImageRef.current.src = withBase64Prefix;
-
-            });
-
-        } else {
-            /*TODO: show error*/
-        }
-    }
-
-    getBase64(file) {
-        return new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.readAsDataURL(file);
-            reader.onload = () => {
-                let encoded = reader.result.replace(/^data:(.*;base64,)?/, '');
-                if ((encoded.length % 4) > 0) {
-                    encoded += '='.repeat(4 - (encoded.length % 4));
-                }
-                resolve(encoded);
-            };
-            reader.onerror = error => reject(error);
-        });
-    }
 
     /*TODO:
     *  1.Choose avatar
@@ -103,24 +68,18 @@ class UserOptionsInformation extends Component {
         return (
             <form>
 
-                <div className="row">
-                    <div className="col-md-auto status">
-                        <span>Status Message:</span>
-                    </div>
+                <div className="row col-md-auto status">
+                    <span>Status Message:</span>
                 </div>
 
-                <div className="row">
-                    <div className="col-lg">
+                <div className="row col-lg">
                         <textarea name="statusMessage"
                                   className="textarea-status"
                                   value={this.state.statusMessage} onChange={onChange}/>
-                    </div>
                 </div>
 
-                <div className="row status-left-chars-row">
-                    <div className="col-lg">
-                        <small className="status-left-chars">16</small>
-                    </div>
+                <div className="row col-lg status-left-chars-row">
+                    <small className="status-left-chars">16</small>
                 </div>
 
                 <div className="dropdown-divider"/>
@@ -138,56 +97,40 @@ class UserOptionsInformation extends Component {
                                defaultUrl={FrontEndResourcesRoutingURLs.USER.AVATAR}
                                ref={this.userAvatarRef}
                                className={'user-img'}/>
-
                     </div>
                 </div>
 
                 <div className="row row-choose-avatar" align="center">
                     <div className="col-lg">
 
-                        <button type="button"
-                                className="btn btn-warning btn-sm"
-                                onClick={() => {
-                                    this.inputFileRef.current.click()
-                                }}>
-                            Choose
-                        </button>
-
-                        <input type="file"
-                               className="dont-display"
-                               ref={this.inputFileRef}
-                               onChange={this.onAvatarFileChange}/>
+                        <UploadBase64Image onUpload={this.onBase64}/>
 
                     </div>
                 </div>
 
                 <div className="dropdown-divider"/>
 
-                <div className="row row-birthdate-title" align="center">
-                    <div className="col-lg">
-                        <span>Birthday:</span>
-                    </div>
+                <div className="row col-lg row-birthdate-title" align="center">
+                    <span>Birthday:</span>
                 </div>
 
-                <div className="row row-birthdate-pick" align="center">
-                    <div className="col-lg">
-                        {/*<input value={this.state.birthday} name="birthDate" data-provide="datepicker" onChange={onChange}
+                <div className="row col-lg row-birthdate-pick" align="center">
+                    {/*<input value={this.state.birthday} name="birthDate" data-provide="datepicker" onChange={onChange}
                                className="form-control" style={{'width': '250px'}} data-date-format="yyyy-mm-dd"/>*/}
-                        <DatePicker
-                            format='Pp'
-                            value={this.state.birthday}
-                            selected={this.state.birthday}
-                            onChange={date => {
-                                this.onDateChange(date);
-                            }}
-                        />
-                    </div>
+                    <DatePicker
+                        format='Pp'
+                        value={this.state.birthday}
+                        selected={this.state.birthday}
+                        onChange={date => {
+                            this.onDateChange(date);
+                        }}
+                    />
                 </div>
 
                 <div className="dropdown-divider"/>
 
-                <div className="row">
-                    <div className="col-md-auto about-you-title">
+                <div className="row about-you-title">
+                    <div className="col-md-auto">
                         <span>About you:</span>
                     </div>
                 </div>
@@ -211,16 +154,13 @@ class UserOptionsInformation extends Component {
 
                 <div className="dropdown-divider"/>
 
-                <div className="row" align="center">
-                    <div className="col-lg">
+                <div className="row col-lg">
 
-                        <button type="button"
-                                onClick={this.onSaveChanges}
-                                className="btn btn-warning btn-sm">
-                            Save Changes
-                        </button>
-
-                    </div>
+                    <button type="button"
+                            onClick={this.onSaveChanges}
+                            className="btn btn-warning btn-sm">
+                        Save Changes
+                    </button>
                 </div>
 
             </form>
