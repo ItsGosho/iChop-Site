@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Roles from "../../../../constants/roles.constants";
 import UserControlRoleLogs from "./UserControlRoleLogs";
+import './UserControlRole.css'
 
 class UserControlRole extends Component {
 
@@ -16,22 +17,21 @@ class UserControlRole extends Component {
             <div>
                 <div className="row">
                     <div className="col-md-auto">
-                        <span style={{'fontFamily': 'Consolas'}}>Current Role: <b>{role}</b></span>
+                        <span className="current-role">Current Role: <b>{role}</b></span>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-md-auto">
 
                         {role !== Roles.OWNER && previousRole !== null ? (
-                            <button type="button" className="btn btn-warning btn-sm"
-                                    style={{'marginRight': '10px'}}>
-                                <span>👇🏻</span><span>{previousRole}</span>
+                            <button className="btn btn-warning btn-sm change-role-button">
+                                <span>👇🏻</span>
+                                <span>{previousRole}</span>
                             </button>
                         ) : null}
 
                         {role !== Roles.OWNER && nextRole !== null && nextRole !== Roles.OWNER ? (
-                            <button type="button" className="btn btn-warning btn-sm"
-                                    style={{'marginRight': '10px'}}>
+                            <button className="btn btn-warning btn-sm change-role-button">
                                 <span>👆🏻</span>
                                 <span>{nextRole}</span>
                             </button>
@@ -39,6 +39,7 @@ class UserControlRole extends Component {
 
                     </div>
                 </div>
+
                 <div className="row">
                     <UserControlRoleLogs/>
                 </div>
