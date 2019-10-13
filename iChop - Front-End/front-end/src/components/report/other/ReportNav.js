@@ -2,15 +2,14 @@ import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 import RoutingURLs from "../../../constants/routing.constants";
 import {Form, FormControl, Nav, Navbar} from "react-bootstrap";
+import styles from './ReportNav.module.css'
 
 class ReportNav extends Component {
 
 
     render() {
-
         return (
-            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark"
-                    style={{'marginLeft': '40px', 'marginRight': '40px'}}>
+            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className={styles.report_nav}>
 
                 <Navbar.Brand>⚠ Reports</Navbar.Brand>
 
