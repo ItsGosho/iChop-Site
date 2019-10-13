@@ -26,9 +26,9 @@ class UserControl extends Component {
 
                                     <Switch>
                                         <Route exact path={RoutingURLs.USER.CONTROL.INFORMATION}
-                                               component={() => (<UserControlInformation/>)}/>
+                                               component={() => (<UserControlInformation username={username}/>)}/>
                                         <Route exact path={RoutingURLs.USER.CONTROL.ROLE}
-                                               component={() => (<UserControlRole/>)}/>
+                                               component={() => (<UserControlRole username={username}/>)}/>
                                     </Switch>
 
                                 </div>

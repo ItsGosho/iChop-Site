@@ -3,10 +3,16 @@ import dateFormat from 'dateformat';
 
 class UserControlInformation extends Component {
 
+    componentDidMount() {
+        let {username} = this.props;
+
+        /*TODO: fetch data and add her to the state*/
+    }
 
     render() {
-        let id = 'ID';
-        let username = 'username';
+        let {username} = this.props;
+
+        let id = '123';
         let rank = 'rank';
         let email = 'email';
         let registrationDate = dateFormat(Date.now(), "dd/mm/yyyy");

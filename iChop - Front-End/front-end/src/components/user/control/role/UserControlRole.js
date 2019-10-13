@@ -6,6 +6,8 @@ class UserControlRole extends Component {
 
 
     render() {
+        let {username} = this.props;
+
         let previousRole = null;
         let role = Roles.USER;
         let nextRole = Roles.MODERATOR;
