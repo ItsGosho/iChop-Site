@@ -100,14 +100,6 @@ class UserOptionsInformation extends Component {
 
                 <div className="row">
                     <div className="col-lg">
-                        {/*<textarea name="statusMessage"
-                                  className="textarea-status"
-                                  ref={this.statusMessageRef}
-                                  value={this.state.statusMessage}
-                                  onChange={async (event) => {
-                                      await onChange(event);
-                                      this.onStatusChange(event);
-                                  }}/>*/}
 
                         <TextAreaWithCounter name={'statusMessage'}
                                              className={'textarea-status'}

@@ -41,6 +41,7 @@ class TextAreaWithCounter extends Component {
     componentDidMount() {
         this.setState({maxCharacters: this.props.maxCharacters});
         this.setState({leftCharacters: this.props.maxCharacters});
+
         this.setState({[this.props.name]: this.props.value});
         this.setState((prev) => {
             return {leftCharacters: prev.leftCharacters - this.props.value.length}
@@ -48,6 +49,7 @@ class TextAreaWithCounter extends Component {
     }
 
     render() {
+
         let onChange = (event) => {
             this.setState({[event.target.name]: event.target.value}, () => {
                 this.onStatusChange(this.state[name]);
