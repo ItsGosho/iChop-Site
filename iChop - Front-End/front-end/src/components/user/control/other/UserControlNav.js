@@ -9,8 +9,7 @@ import './UserControlNav.css'
 class UserControlNav extends Component {
 
     render() {
-        console.log(this.props);
-        let username = 'ItsGosho';
+        let username = this.props.username;
         let userAvatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', username);
         let profileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', username);
 

@@ -28,8 +28,8 @@ function App() {
             <div style={{'marginTop': '75px'}}>
 
                 <Switch>
-                    <Route exact path={RoutingURLs.USER.CONTROL.INFORMATION} component={()=>(<UserControl/>)}/>
-                    <Route exact path={RoutingURLs.USER.CONTROL.ROLE} component={()=>(<UserControl/>)}/>
+                    <Route exact path={RoutingURLs.USER.CONTROL.INFORMATION} render={({match})=>(<UserControl route={match}/>)}/>
+                    <Route exact path={RoutingURLs.USER.CONTROL.ROLE} render={(match)=>(<UserControl route={match}/>)}/>
                 </Switch>
 
             </div>
