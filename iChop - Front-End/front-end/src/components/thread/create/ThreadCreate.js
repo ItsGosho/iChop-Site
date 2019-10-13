@@ -45,9 +45,12 @@ class ThreadCreate extends Component {
                                     <div className="row">
                                         <div className="col-md-12">
                                             <div className="input-group mb-3">
-                                                <input id="input-title-threadCreate" type="text"
-                                                       className="form-control" aria-label="Title"
-                                                       aria-describedby="basic-addon1" name="title"
+                                                <input id="input-title-threadCreate"
+                                                       type="text"
+                                                       className="form-control"
+                                                       aria-label="Title"
+                                                       aria-describedby="basic-addon1"
+                                                       name="title"
                                                        placeholder="Thread title" ref={this.titleRef}/>
                                             </div>
                                         </div>

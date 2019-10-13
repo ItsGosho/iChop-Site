@@ -16,6 +16,9 @@ class UserControlRole extends Component {
 
         this.isDownAvailable = this.isDownAvailable.bind(this);
         this.isUpAvailable = this.isUpAvailable.bind(this);
+
+        this.onRoleDown = this.onRoleDown.bind(this);
+        this.onRoleUp = this.onRoleUp.bind(this);
     }
 
 
@@ -31,6 +34,14 @@ class UserControlRole extends Component {
         return role !== Roles.OWNER && nextRole !== null && nextRole !== Roles.OWNER;
     }
 
+    onRoleDown() {
+        console.log('Role down!');
+    }
+
+    onRoleUp() {
+        console.log('Role up!');
+    }
+
     render() {
         let {role, previousRole, nextRole} = this.state;
 
@@ -43,8 +54,16 @@ class UserControlRole extends Component {
                 </div>
                 <div className="row">
                     <div className="col-md-auto">
-                        {this.isDownAvailable() ? (<ChangeRoleButton icon={'👇🏻'} role={previousRole}/>) : null}
-                        {this.isUpAvailable() ? (<ChangeRoleButton icon={'👆🏻'} role={nextRole}/>) : null}
+
+                        {this.isDownAvailable() ? (
+                            <ChangeRoleButton icon={'👇🏻'}
+                                              role={previousRole}
+                                              onClick={this.onRoleDown}/>) : null}
+
+                        {this.isUpAvailable() ? (
+                            <ChangeRoleButton icon={'👆🏻'}
+                                              role={nextRole}
+                                              onClick={this.onRoleUp}/>) : null}
                     </div>
                 </div>
 
@@ -58,10 +77,10 @@ class UserControlRole extends Component {
 }
 
 const ChangeRoleButton = (props) => {
-    let {icon, role} = props;
+    let {icon, role, onClick} = props;
 
     return (
-        <button className="btn btn-warning btn-sm change-role-button">
+        <button className="btn btn-warning btn-sm change-role-button" onClick={onClick}>
             <span>{icon}</span>
             <span>{role}</span>
         </button>
