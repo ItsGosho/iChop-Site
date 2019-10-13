@@ -42,20 +42,9 @@ class PlayerStatistics extends Component {
                             <div>
                                 <div className="col-md-auto head player-connection-status">
 
-                                    {
-                                        (() => {
-                                            if (isOnline) {
-                                                return (
-                                                    <span>🔋 <span className="span-online">Online</span></span>
-                                                );
-                                            } else {
-                                                return (
-                                                    <span>🔴 <span className="span-offline">Offline</span>
-                                                    </span>
-                                                );
-                                            }
-                                        })()
-                                    }
+                                    {isOnline ?
+                                        (<span>🔋 <span className="span-online">Online</span></span>) :
+                                        (<span>🔴 <span className="span-offline">Offline</span></span>)}
 
                                 </div>
                             </div>
