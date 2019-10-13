@@ -15,14 +15,14 @@ class UserOptionsInformation extends Component {
         super(props);
 
         this.state = {
-            statusMessage: 'Hi!',
-            birthday: Date.now(),
-            aboutYou: 'Just me :)',
-            uploadedUserAvatar: '',
-
-
             username: '',
+
+            statusMessage: '',
             userAvatarUrl: '',
+            birthday: 0,
+            aboutYou: '',
+
+            uploadedUserAvatar: '',
 
             maxStatusCharacters: 16,
             maxAboutYouCharacters: 250,
@@ -83,11 +83,23 @@ class UserOptionsInformation extends Component {
 
     }
 
-    componentDidMount() {
-        this.setState({username: 'ItsGosho'});
-        this.setState({userAvatarUrl: ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', this.state.username)});
-        this.setState((prev) => ({leftStatusMessageCharacters: prev.leftStatusMessageCharacters - 'Hi!'.length}));
-        this.setState((prev) => ({leftAboutYouCharacters: prev.leftAboutYouCharacters - 'Just me :)'.length}));
+    componentWillMount() {
+        /*REQUIRED DATA*/
+        let username = 'ItsGosho';
+        let avatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', username);
+        let statusMessage = 'Hi!';
+        let birthday = new Date();
+        let aboutYou = 'Just me :)';
+
+        this.setState({username: username});
+        this.setState({statusMessage: statusMessage});
+        this.setState({userAvatarUrl: avatarUrl});
+        this.setState({birthday: birthday});
+        this.setState({aboutYou: aboutYou});
+
+
+        this.setState((prev) => ({leftStatusMessageCharacters: prev.leftStatusMessageCharacters - statusMessage.length}));
+        this.setState((prev) => ({leftAboutYouCharacters: prev.leftAboutYouCharacters - aboutYou.length}));
     }
 
     render() {

@@ -9,9 +9,11 @@ class UserOptionsSidebar extends Component {
         return (
             <div className="col-sm">
                 <div className="card" style={{'width': '15rem'}}>
+
                     <div className="card-header">
                         Options Menu
                     </div>
+
                     <ul className="list-group list-group-flush">
 
                         <Link to={RoutingURLs.USER.OPTIONS.INFORMATION}>
