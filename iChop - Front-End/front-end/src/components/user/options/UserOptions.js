@@ -1,8 +1,10 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import UserOptionsSidebar from "./other/UserOptionsSidebar";
 import UserOptionsMinecraft from "./minecraft/UserOptionsMinecraft";
 import UserOptionsChangePassword from "./password/UserOptionsChangePassword";
 import UserOptionsInformation from "./information/UserOptionsInformation";
+import {Route, Switch} from "react-router-dom";
+import RoutingURLs from "../../../constants/routing.constants";
 
 class UserOptions extends Component {
 
@@ -18,17 +20,13 @@ class UserOptions extends Component {
                     <div className="col-sm">
                         <div className="card">
                             <div className="card-body">
-                                {
-                                    (() => {
-                                        if (isInformationSelected) {
-                                            return (<UserOptionsInformation/>)
-                                        } else if (isChangePasswordSelected) {
-                                            return (<UserOptionsChangePassword/>);
-                                        } else if (isMinecraftSelected) {
-                                            return (<UserOptionsMinecraft/>);
-                                        }
-                                    })()
-                                }
+
+                                <Switch>
+                                    <Route exact path={RoutingURLs.USER.OPTIONS.INFORMATION} component={() => (<UserOptionsInformation/>)}/>
+                                    <Route exact path={RoutingURLs.USER.OPTIONS.PASSWORD} component={() => (<UserOptionsChangePassword/>)}/>
+                                    <Route exact path={RoutingURLs.USER.OPTIONS.MINECRAFT} component={() => (<UserOptionsMinecraft/>)}/>
+                                </Switch>
+
                             </div>
                         </div>
                     </div>

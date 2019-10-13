@@ -1,31 +1,8 @@
 import React, {Component} from 'react';
-import optionsSidebarReduxHoc from "../../../../redux/hocs/options.sidebar.hoc";
+import {Link} from "react-router-dom";
+import RoutingURLs from "../../../../constants/routing.constants";
 
 class UserOptionsSidebar extends Component {
-
-    constructor(props) {
-        super(props);
-
-        this.onInformationClick = this.onInformationClick.bind(this);
-        this.onChangePasswordClick = this.onChangePasswordClick.bind(this);
-        this.onMinecraftClick = this.onMinecraftClick.bind(this);
-    }
-
-
-    onInformationClick(event) {
-        event.preventDefault();
-        this.props.selectInformation();
-    }
-
-    onChangePasswordClick(event) {
-        event.preventDefault();
-        this.props.selectChangePassword();
-    }
-
-    onMinecraftClick(event) {
-        event.preventDefault();
-        this.props.selectMinecraft();
-    }
 
 
     render() {
@@ -36,15 +13,19 @@ class UserOptionsSidebar extends Component {
                         Options Menu
                     </div>
                     <ul className="list-group list-group-flush">
-                        <a href=' ' onClick={this.onInformationClick}>
+
+                        <Link to={RoutingURLs.USER.OPTIONS.INFORMATION}>
                             <li className="list-group-item control-option">Information</li>
-                        </a>
-                        <a href=' ' onClick={this.onChangePasswordClick}>
+                        </Link>
+
+                        <Link to={RoutingURLs.USER.OPTIONS.PASSWORD}>
                             <li className="list-group-item control-option">Change Password</li>
-                        </a>
-                        <a href=' ' onClick={this.onMinecraftClick}>
+                        </Link>
+
+                        <Link to={RoutingURLs.USER.OPTIONS.MINECRAFT}>
                             <li className="list-group-item control-option">Minecraft</li>
-                        </a>
+                        </Link>
+
                     </ul>
                 </div>
             </div>
@@ -53,4 +34,4 @@ class UserOptionsSidebar extends Component {
 
 }
 
-export default optionsSidebarReduxHoc(UserOptionsSidebar);
+export default UserOptionsSidebar;
