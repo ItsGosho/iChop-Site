@@ -7,7 +7,8 @@ class UserOptionsMinecraft extends Component {
 
 
     render() {
-        let isAccountLinked = true;
+        let isAccountLinked = false;
+
         let playerName = 'ItsGosho';
         let uuid = '8ed20904-3262-401a-901a-1946504d2eea';
         let accountProfile = RoutingURLs.PLAYER.PROFILE.VIEW.replace(':uuid', uuid);
@@ -27,13 +28,14 @@ class UserOptionsMinecraft extends Component {
 
                         <div className="dropdown-divider"/>
 
-                        <div className="row" align="center">
+                        <div className="row">
                             <div className="col-lg">
-                                           <span>To link your account you must be logged in the site with the profile that you want to link your account
-                                           ,then in the game type <span><b>/linkaccount</b></span> ,then a <span><b>link</b></span> will be generated ,click
-                                               it and a page <span><b>in the site</b></span> will open
-                                           with confirmation to link your account.Note that if you link your account you cant link another until <span><b>the
-                                           previous is unlinked</b></span>.</span>
+                                <br></br>
+                                <span>I.Type in the server <b>/linkaccount</b>.</span>
+                                <br></br>
+                                <span>II.Open the generated <b>link</b>.</span>
+                                <br></br>
+                                <span>III.Then <b>confirm</b> that you want to link your account.</span>
                             </div>
                         </div>
 
