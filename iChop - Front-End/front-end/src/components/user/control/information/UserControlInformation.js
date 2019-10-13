@@ -11,12 +11,13 @@ class UserControlInformation extends Component {
 
     render() {
         let {username} = this.props;
+        let format = 'dd/mm/yyyy';
 
         let id = '123';
         let rank = 'rank';
         let email = 'email';
-        let registrationDate = dateFormat(Date.now(), "dd/mm/yyyy");
-        let lastOnline = dateFormat(Date.now(), "dd/mm/yyyy");
+        let registrationDate = dateFormat(Date.now(), format);
+        let lastOnline = dateFormat(Date.now(), format);
         let lastAccessedLocation = 'Bulgaria';
         let enabled = true;
         let isAccountExpired = false;
@@ -26,7 +27,7 @@ class UserControlInformation extends Component {
         return (
             <Fragment>
                 <div className="row">
-                    <div className="col-md-auto" style={{'fontFamily': 'Consolas'}}>
+                    <div className="col-md-auto">
                         <span>Core Information:</span>
                     </div>
                 </div>

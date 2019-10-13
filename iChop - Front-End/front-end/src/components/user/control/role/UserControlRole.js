@@ -43,13 +43,8 @@ class UserControlRole extends Component {
                 </div>
                 <div className="row">
                     <div className="col-md-auto">
-
-                        {this.isDownAvailable() ? (
-                            <ChangeRoleButton icon={'👇🏻'} role={previousRole}/>) : null}
-
-                        {this.isUpAvailable() ? (
-                            <ChangeRoleButton icon={'👆🏻'} role={nextRole}/>) : null}
-
+                        {this.isDownAvailable() ? (<ChangeRoleButton icon={'👇🏻'} role={previousRole}/>) : null}
+                        {this.isUpAvailable() ? (<ChangeRoleButton icon={'👆🏻'} role={nextRole}/>) : null}
                     </div>
                 </div>
 
