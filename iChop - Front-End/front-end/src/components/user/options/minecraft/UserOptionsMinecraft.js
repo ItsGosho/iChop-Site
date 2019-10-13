@@ -7,17 +7,16 @@ class UserOptionsMinecraft extends Component {
 
 
     render() {
-        let isAccountLinked = false;
+        let isAccountLinked = true;
 
-        let playerName = 'ItsGosho';
         let uuid = '8ed20904-3262-401a-901a-1946504d2eea';
-        let accountProfile = RoutingURLs.PLAYER.PROFILE.VIEW.replace(':uuid', uuid);
-        let crafatarSkinUrl = ServerRoutingURLs.OUTSIDE.CRAFATAR.MINECRAFT.SKIN.replace(':uuid', uuid);
+        let player = 'ItsGosho';
+        let profileUrl = RoutingURLs.PLAYER.PROFILE.VIEW.replace(':uuid', uuid);
+        let skinUrl = ServerRoutingURLs.OUTSIDE.CRAFATAR.MINECRAFT.SKIN.replace(':uuid', uuid);
 
         return (
             <Fragment>
-                {!isAccountLinked ? (
-                    <Fragment>
+                {!isAccountLinked ? (<Fragment>
                         <div className="dropdown-divider"/>
 
                         <div className="row" align="center">
@@ -40,23 +39,18 @@ class UserOptionsMinecraft extends Component {
                         </div>
 
                         <div className="dropdown-divider"/>
-                    </Fragment>
-                ) : (
-                    <Fragment>
+                    </Fragment>) :
+                    (<Fragment>
                         <div className="row" align="center">
                             <div className="col-lg">
-                                            <span>
-                                                <b>
-                                                    <Link to={accountProfile}>{playerName}</Link>
-                                                </b>
-                                            </span>
+                                <b><Link to={profileUrl}>{player}</Link></b>
                             </div>
                         </div>
 
                         <div className="dropdown-divider"/>
 
                         <div align="center">
-                            <img src={crafatarSkinUrl} style={{'width': '95px', 'height': '200px'}} alt=''/>
+                            <img src={skinUrl} style={{'width': '95px', 'height': '200px'}} alt=''/>
                         </div>
 
                         <div className="dropdown-divider"/>
@@ -64,8 +58,7 @@ class UserOptionsMinecraft extends Component {
                         <div align="center" style={{'marginTop': '10px'}}>
                             <button type="button" className="btn btn-warning">Unlink</button>
                         </div>
-                    </Fragment>
-                )}
+                    </Fragment>)}
             </Fragment>
         );
     }
