@@ -31,13 +31,13 @@ class Navbar extends Component {
                     <button type="button"
                             className="navbar-toggler"
                             data-toggle="collapse"
-                            data-target="#navbar"
+                            data-target="#core-navigation-bar"
                             aria-controls="navbar" aria-expanded="false"
                             aria-label="Toggle Navigation Bar">
                         <span className="navbar-toggler-icon"/>
                     </button>
 
-                    <div className="collapse navbar-collapse">
+                    <div className="collapse navbar-collapse" id="core-navigation-bar">
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item dropdown active">
                                 {
