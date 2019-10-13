@@ -12,6 +12,7 @@ import TextEditorInsertImageModal from "./components/editor/fragments/TextEditor
 import ThreadCreateHelpModal from "./components/thread/create/ThreadCreateHelpModal";
 import UserProfile from "./components/user/profile/UserProfile";
 import UserOptions from "./components/user/options/UserOptions";
+import UserControl from "./components/user/control/UserControl";
 
 function App() {
     return (
@@ -19,7 +20,7 @@ function App() {
             <Navbar/>
 
             <div style={{'marginTop': '75px'}}>
-                <UserOptions/>
+                <UserControl/>
             </div>
 
             <Footer/>

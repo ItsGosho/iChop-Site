@@ -1,0 +1,10 @@
+.user-nav-picture {
+    width: 20px;
+    height: 20px;
+}
+
+.user-username-nav {
+    font-family: Consolas;
+    color: white;
+    margin-left: 5px;
+}

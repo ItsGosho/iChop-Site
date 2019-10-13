@@ -1,8 +1,10 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 import ServerRoutingURLs from "../../../../constants/server.routing.urls";
 import RoutingURLs from "../../../../constants/routing.constants";
 import FrontEndResourcesRoutingURLs from "../../../../constants/front-end.resources.routings";
+import Image from "../../../other/Image";
+import './UserControlNav.css'
 
 class UserControlNav extends Component {
 
@@ -23,13 +25,12 @@ class UserControlNav extends Component {
         let profileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', username);
 
         return (
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <nav className="navbar navbar-expand-lg navbar-light bg-dark justify-content-md-center">
+                <Image url={userAvatarUrl}
+                       className="user-nav-picture"
+                       defaultUrl={FrontEndResourcesRoutingURLs.USER.AVATAR}/>
                 <Link className="navbar-brand" to={profileUrl}>
-                        <span>
-                          <img src={userAvatarUrl} onError={this.onUserAvatarError}
-                               style={{'width': '20px', 'height': '20px'}} alt=''/>
-                        </span>
-                    <span>{username}</span>
+                    <span className="user-username-nav">{username}</span>
                 </Link>
             </nav>
         );
