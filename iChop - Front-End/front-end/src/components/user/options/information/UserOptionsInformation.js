@@ -8,6 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import Image from "../../../other/Image";
 import UploadBase64Image from "../../../other/UploadBase64Image";
 import TextAreaWithCounter from "../../../other/TextAreaWithCounter";
+import {UserValidationConstants} from "../../../../constants/validation.constants";
 
 class UserOptionsInformation extends Component {
 
@@ -24,11 +25,11 @@ class UserOptionsInformation extends Component {
 
             uploadedUserAvatar: '',
 
-            maxStatusCharacters: 16,
-            maxAboutYouCharacters: 250,
+            maxStatusMessageCharacters: 0,
+            maxAboutYouCharacters: 0,
 
-            leftStatusMessageCharacters: 16,
-            leftAboutYouCharacters: 250
+            leftStatusMessageCharacters: 0,
+            leftAboutYouCharacters: 0
         };
 
         this.onSaveChanges = this.onSaveChanges.bind(this);
@@ -100,6 +101,12 @@ class UserOptionsInformation extends Component {
 
         this.setState((prev) => ({leftStatusMessageCharacters: prev.leftStatusMessageCharacters - statusMessage.length}));
         this.setState((prev) => ({leftAboutYouCharacters: prev.leftAboutYouCharacters - aboutYou.length}));
+
+        this.setState({maxStatusMessageCharacters: UserValidationConstants.MAX_STATUS_MESSAGE_CHARACTERS});
+        this.setState({maxAboutYouCharacters: UserValidationConstants.MAX_ABOUT_YOU_CHARACTERS});
+        
+        this.setState({leftStatusMessageCharacters: UserValidationConstants.MAX_STATUS_MESSAGE_CHARACTERS});
+        this.setState({leftAboutYouCharacters: UserValidationConstants.MAX_ABOUT_YOU_CHARACTERS});
     }
 
     render() {
@@ -116,7 +123,7 @@ class UserOptionsInformation extends Component {
 
                         <TextAreaWithCounter name={'statusMessage'}
                                              className={'textarea-status'}
-                                             maxCharacters={this.state.maxStatusCharacters}
+                                             maxCharacters={this.state.maxStatusMessageCharacters}
                                              value={this.state.statusMessage}
                                              onValueChange={this.onStatusMessageChange}
                                              onCounted={this.onStatusMessageCountedCharacters}/>
