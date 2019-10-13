@@ -14,9 +14,11 @@ class UserControlRoleLogs extends Component {
     }
 
     componentDidMount() {
+        let format = 'dd mmmm,yyyy HH:mm';
+
         let logs = [
-            {happenedOn: dateFormat(Date.now(), 'dd mmmm,yyyy HH:mm'), message: ' Changed the role to X'},
-            {happenedOn: dateFormat(Date.now(), 'dd mmmm,yyyy HH:mm'), message: ' Changed the role to X'},
+            {happenedOn: dateFormat(Date.now(), format), message: ' Changed the role to X'},
+            {happenedOn: dateFormat(Date.now(), format), message: ' Changed the role to X'},
         ];
 
         this.setState({logs})
