@@ -1,7 +1,6 @@
 import React from "react";
 import CreateReactClass from 'create-react-class';
 import Table from "react-bootstrap/Table";
-import styles from './ReportTable.module.css'
 
 let ReportTable = CreateReactClass({
     render() {
@@ -9,7 +8,7 @@ let ReportTable = CreateReactClass({
 
         return (
             <div className="table-responsive" align="center">
-                <Table responsive className={styles.report_table}>
+                <Table responsive style={{'width': '85%', 'textAlign': 'center'}}>
 
                     <thead>
                     <tr>

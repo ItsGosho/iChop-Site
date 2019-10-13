@@ -4,7 +4,7 @@ import formatDate from "dateformat";
 import ReportActionButtons from "./ReportActionButtons";
 import CreateReactClass from "create-react-class";
 import RoutingURLs from "../../../constants/routing.constants";
-
+import './ReportTableColumns.css'
 
 let ReportTableColumns = CreateReactClass({
 
@@ -17,12 +17,8 @@ let ReportTableColumns = CreateReactClass({
 
                 {this.props.children}
 
-                <td width="300px">
-                    <div style={{
-                        'overflow': 'scroll',
-                        'width': '100%',
-                        "maxHeight": '100px'
-                    }}>{reason}</div>
+                <td className="reason-td">
+                    <div className="reason-div">{reason}</div>
                 </td>
 
                 <td>
