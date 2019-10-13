@@ -11,33 +11,25 @@ class PlayerLinkedTo extends Component {
 
         return (
             <Fragment>
-                {
-                    (() => {
-                        if (linkedToUsername != null) {
-                            return (
-                                <div className="card site-user-username">
-                                    <div className="card-body site-user-username">
-                                        <div className="col-md-auto">
-                                            <div className="row site-user-title">
+                {linkedToUsername !== null ? (
+                    <div className="card site-user-username">
+                        <div className="card-body site-user-username">
+                            <div className="col-md-auto">
+                                <div className="row site-user-title">
 
-                                                <div className="col-md-auto site-user-title">
-                                                    Site User:
-                                                </div>
+                                    <div className="col-md-auto site-user-title">Site User:</div>
 
-                                                <div className="col-md-auto site-user-username">
-                                                    <span className="site-user-username">
-                                                        <Link to={userProfileUrl}>{linkedToUsername}</Link>
-                                                    </span>
-                                                </div>
-
-                                            </div>
-                                        </div>
+                                    <div className="col-md-auto site-user-username">
+                                        <span className="site-user-username">
+                                            <Link to={userProfileUrl}>{linkedToUsername}</Link>
+                                        </span>
                                     </div>
+
                                 </div>
-                            );
-                        }
-                    })()
-                }
+                            </div>
+                        </div>
+                    </div>
+                ) : null}
             </Fragment>
         );
     }
