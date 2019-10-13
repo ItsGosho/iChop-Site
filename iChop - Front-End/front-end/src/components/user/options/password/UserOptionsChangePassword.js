@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import PassworsForm from "../../../other/PassworsForm";
+import UniversalPasswordsInputs from "../../../other/UniversalPasswordsInputs";
 
 class UserOptionsChangePassword extends Component {
 
@@ -25,7 +25,7 @@ class UserOptionsChangePassword extends Component {
         return (
             <form className="px-4 py-3">
 
-                <PassworsForm onChange={onChange}/>
+                <UniversalPasswordsInputs onChange={onChange}/>
 
                 <div align="center">
 

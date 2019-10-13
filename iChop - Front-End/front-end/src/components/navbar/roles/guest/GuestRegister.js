@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import navbarGuestReduxHoc from "../../../../redux/hocs/navbar.guest.hoc";
 import FormHoc from "../../../../hocs/form.hoc";
-import PassworsForm from "../../../other/PassworsForm";
+import UniversalPasswordsInputs from "../../../other/UniversalPasswordsInputs";
 
 class GuestRegister extends Component {
 
@@ -67,7 +67,7 @@ class GuestRegister extends Component {
                         </div>
                     </div>
 
-                    <PassworsForm onChange={onChange}/>
+                    <UniversalPasswordsInputs onChange={onChange}/>
 
                     <div className="form-group">
                         <div className="input-group mb-2">

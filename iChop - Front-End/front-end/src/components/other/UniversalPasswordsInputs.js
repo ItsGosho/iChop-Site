@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
 
-class PassworsForm extends Component {
+class UniversalPasswordsInputs extends Component {
 
     constructor(props) {
         super(props);
@@ -106,4 +106,4 @@ class PassworsForm extends Component {
 
 }
 
-export default PassworsForm;
+export default UniversalPasswordsInputs;
