@@ -3,33 +3,49 @@ import dateFormat from "dateformat";
 
 class UserControlRoleLogs extends Component {
 
+    constructor(props) {
+        super(props);
 
-    render() {
+        this.state = {
+            logs: []
+        };
+
+        this.iterateLogs = this.iterateLogs.bind(this);
+    }
+
+    componentDidMount() {
         let logs = [
             {happenedOn: dateFormat(Date.now(), 'dd mmmm,yyyy HH:mm'), message: ' Changed the role to X'},
             {happenedOn: dateFormat(Date.now(), 'dd mmmm,yyyy HH:mm'), message: ' Changed the role to X'},
         ];
 
+        this.setState({logs})
+    }
+
+    iterateLogs() {
+        return this.state.logs.map((item, index) => {
+            return (
+                <li key={index}>
+                    <small>
+                        <b>[{item.happenedOn}]</b>
+                        <span>{item.message}</span>.
+                    </small>
+                </li>
+            );
+        });
+    }
+
+    render() {
         return (
             <Fragment>
                 <div className="col-md-auto">
-                    <small><b>Logs:</b></small>
+                    <small>
+                        <b>Logs:</b>
+                    </small>
                 </div>
                 <div className="col-md-auto">
                     <ul>
-
-                        {
-                            logs.map((item, index) => {
-                                return (
-                                    <li key={index}>
-                                        <small>
-                                            <b>[{item.happenedOn}]</b>
-                                            <span>{item.message}</span>.
-                                        </small>
-                                    </li>
-                                );
-                            })
-                        }
+                        {this.iterateLogs()}
                     </ul>
                 </div>
             </Fragment>

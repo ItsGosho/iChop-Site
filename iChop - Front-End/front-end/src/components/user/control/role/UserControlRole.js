@@ -5,13 +5,34 @@ import './UserControlRole.css'
 
 class UserControlRole extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            previousRole: null,
+            role: Roles.USER,
+            nextRole: Roles.MODERATOR,
+        };
+
+        this.isDownAvailable = this.isDownAvailable.bind(this);
+        this.isUpAvailable = this.isUpAvailable.bind(this);
+    }
+
+
+    isDownAvailable() {
+        let {previousRole, role} = this.state;
+
+        return role !== Roles.OWNER && previousRole !== null;
+    }
+
+    isUpAvailable() {
+        let {role, nextRole} = this.state;
+
+        return role !== Roles.OWNER && nextRole !== null && nextRole !== Roles.OWNER;
+    }
 
     render() {
-        let {username} = this.props;
-
-        let previousRole = null;
-        let role = Roles.USER;
-        let nextRole = Roles.MODERATOR;
+        let {role, previousRole, nextRole} = this.state;
 
         return (
             <div>
@@ -23,13 +44,11 @@ class UserControlRole extends Component {
                 <div className="row">
                     <div className="col-md-auto">
 
-                        {role !== Roles.OWNER && previousRole !== null ? (
-                            <ChangeRoleButton icon={'👇🏻'} role={previousRole}/>
-                        ) : null}
+                        {this.isDownAvailable() ? (
+                            <ChangeRoleButton icon={'👇🏻'} role={previousRole}/>) : null}
 
-                        {role !== Roles.OWNER && nextRole !== null && nextRole !== Roles.OWNER ? (
-                            <ChangeRoleButton icon={'👆🏻'} role={nextRole}/>
-                        ) : null}
+                        {this.isUpAvailable() ? (
+                            <ChangeRoleButton icon={'👆🏻'} role={nextRole}/>) : null}
 
                     </div>
                 </div>
@@ -44,7 +63,7 @@ class UserControlRole extends Component {
 }
 
 const ChangeRoleButton = (props) => {
-    let {icon,role} = props;
+    let {icon, role} = props;
 
     return (
         <button className="btn btn-warning btn-sm change-role-button">
