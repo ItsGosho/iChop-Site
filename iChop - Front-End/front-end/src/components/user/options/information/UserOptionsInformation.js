@@ -7,6 +7,7 @@ import './UserOptionsInformation.css'
 import "react-datepicker/dist/react-datepicker.css";
 import Image from "../../../other/Image";
 import UploadBase64Image from "../../../other/UploadBase64Image";
+import TextAreaWithCounter from "../../../other/TextAreaWithCounter";
 
 class UserOptionsInformation extends Component {
 
@@ -27,13 +28,12 @@ class UserOptionsInformation extends Component {
         };
 
         this.onSaveChanges = this.onSaveChanges.bind(this);
-        this.onStatusChange = this.onStatusChange.bind(this);
         this.onDateChange = this.onDateChange.bind(this);
         this.onBase64Upload = this.onBase64Upload.bind(this);
 
         this.userAvatarRef = React.createRef();
         this.aboutYouRef = React.createRef();
-        this.statusMessageRef = React.createRef();
+        this.onStatusCountedCharacters = this.onStatusCountedCharacters.bind(this);
     }
 
     onBase64Upload(data) {
@@ -46,27 +46,8 @@ class UserOptionsInformation extends Component {
         });
     }
 
-    onStatusChange(event) {
-        /*TODO: Според event-а дали е махнал -- ,добавил ++*/
-        let {statusMessage} = this.state;
-
-        console.log(statusMessage);
-
-        if (statusMessage.length > 16) {
-            this.statusMessageRef.current.style['border-color'] = 'red';
-
-            this.setState((prev) => {
-                return {statusMessage: statusMessage.slice(0,prev.maxStatusCharacters)}
-            });
-
-            return;
-        }else{
-            this.statusMessageRef.current.style['border-color'] = '';
-        }
-
-        this.setState((prev) => {
-            return {leftStatusCharacters: prev.maxStatusCharacters - statusMessage.length}
-        });
+    onStatusCountedCharacters(leftChars) {
+        this.setState({leftStatusCharacters: leftChars})
     }
 
     onSaveChanges() {
@@ -83,7 +64,7 @@ class UserOptionsInformation extends Component {
         this.setState({username: 'ItsGosho'});
         this.setState({userAvatarUrl: ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', this.state.username)});
         this.setState((prev) => {
-            return {leftStatusCharacters: prev.leftStatusCharacters - this.statusMessageRef.current.textContent.length}
+            return {leftStatusCharacters: prev.leftStatusCharacters - 'Hi!'.length}
         });
     }
 
@@ -99,14 +80,20 @@ class UserOptionsInformation extends Component {
 
                 <div className="row">
                     <div className="col-lg">
-                        <textarea name="statusMessage"
+                        {/*<textarea name="statusMessage"
                                   className="textarea-status"
                                   ref={this.statusMessageRef}
                                   value={this.state.statusMessage}
                                   onChange={async (event) => {
                                       await onChange(event);
                                       this.onStatusChange(event);
-                                  }}/>
+                                  }}/>*/}
+
+                        <TextAreaWithCounter name={'statusMessage'}
+                                             className={'textarea-status'}
+                                             maxCharacters={16}
+                                             value={this.state.statusMessage}
+                                             onCounted={this.onStatusCountedCharacters}/>
                     </div>
                 </div>
 
