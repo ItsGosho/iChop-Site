@@ -99,14 +99,11 @@ class UserOptionsInformation extends Component {
         this.setState({aboutYou: aboutYou});
 
 
-        this.setState((prev) => ({leftStatusMessageCharacters: prev.leftStatusMessageCharacters - statusMessage.length}));
-        this.setState((prev) => ({leftAboutYouCharacters: prev.leftAboutYouCharacters - aboutYou.length}));
+        this.setState({leftStatusMessageCharacters: UserValidationConstants.MAX_STATUS_MESSAGE_CHARACTERS - statusMessage.length});
+        this.setState({leftAboutYouCharacters: UserValidationConstants.MAX_ABOUT_YOU_CHARACTERS - aboutYou.length});
 
         this.setState({maxStatusMessageCharacters: UserValidationConstants.MAX_STATUS_MESSAGE_CHARACTERS});
         this.setState({maxAboutYouCharacters: UserValidationConstants.MAX_ABOUT_YOU_CHARACTERS});
-        
-        this.setState({leftStatusMessageCharacters: UserValidationConstants.MAX_STATUS_MESSAGE_CHARACTERS});
-        this.setState({leftAboutYouCharacters: UserValidationConstants.MAX_ABOUT_YOU_CHARACTERS});
     }
 
     render() {
