@@ -7,13 +7,11 @@ class PlayerProfileCenter extends Component {
 
 
     render() {
-        let uuid = '8ed20904-3262-401a-901a-1946504d2eea';
-
         return (
             <div className="central-content">
 
                 <Switch>
-                    <Route exact path={RoutingURLs.PLAYER.PROFILE.VIEW.replace(':uuid',uuid)} component={() => (<PlayerStatistics/>)}/>
+                    <Route exact path={RoutingURLs.PLAYER.PROFILE.VIEW} component={() => (<PlayerStatistics/>)}/>
                     <Route exact path={RoutingURLs.PLAYER.PROFILE.STATISTICS} component={() => (<PlayerStatistics/>)}/>
                 </Switch>
 
