@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Dropdown} from "react-bootstrap";
+import styles from './ReportActionButtons.module.css'
 
 class ReportActionButtons extends Component {
 
@@ -9,7 +10,7 @@ class ReportActionButtons extends Component {
         let {onDeleteEntity, onDeleteReport} = this.props;
 
         return (
-            <Dropdown style={{'marginTop':'10px'}}>
+            <Dropdown className={styles.report_buttons}>
                 <Dropdown.Toggle variant={'warning'} size={'sm'}>⚙Take Action!</Dropdown.Toggle>
 
                 <Dropdown.Menu>
