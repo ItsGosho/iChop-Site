@@ -61,7 +61,9 @@ class UserOptionsMinecraft extends Component {
                         <div className="dropdown-divider"/>
 
                         <div align="center">
-                            <img src={skinUrl} className="skin" alt=''/>
+                            <img src={skinUrl}
+                                 className="skin"
+                                 alt=''/>
                         </div>
 
                         <div className="dropdown-divider"/>

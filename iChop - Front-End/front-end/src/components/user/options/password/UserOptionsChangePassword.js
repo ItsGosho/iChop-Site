@@ -6,10 +6,8 @@ class UserOptionsChangePassword extends Component {
     constructor(props) {
         super(props);
 
-
         this.onResetClick = this.onResetClick.bind(this);
     }
-
 
     onResetClick() {
         /*RESET*/

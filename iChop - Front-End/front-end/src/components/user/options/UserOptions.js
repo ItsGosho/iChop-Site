@@ -6,7 +6,6 @@ import UserOptionsInformation from "./information/UserOptionsInformation";
 import {Route, Switch} from "react-router-dom";
 import RoutingURLs from "../../../constants/routing.constants";
 
-
 class UserOptions extends Component {
 
 
