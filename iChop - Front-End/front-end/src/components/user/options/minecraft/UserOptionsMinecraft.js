@@ -2,6 +2,7 @@ import React, {Component, Fragment} from 'react';
 import RoutingURLs from "../../../../constants/routing.constants";
 import {Link} from "react-router-dom";
 import ServerRoutingURLs from "../../../../constants/server.routing.urls";
+import './UserOptionsMinecraft.css'
 
 class UserOptionsMinecraft extends Component {
 
@@ -60,12 +61,12 @@ class UserOptionsMinecraft extends Component {
                         <div className="dropdown-divider"/>
 
                         <div align="center">
-                            <img src={skinUrl} style={{'width': '95px', 'height': '200px'}} alt=''/>
+                            <img src={skinUrl} className="skin" alt=''/>
                         </div>
 
                         <div className="dropdown-divider"/>
 
-                        <div align="center" style={{'marginTop': '10px'}}>
+                        <div align="center" className="unlink-button-holder">
 
                             <button type="button"
                                     className="btn btn-warning"
