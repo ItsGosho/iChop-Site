@@ -60,29 +60,12 @@ class PlayerStatistics extends Component {
 
                         <span>Basic Statistcs:</span>
 
-                        <div className="row">
-                            <span>💀</span>Deaths: <span>{totalDeaths}</span>
-                        </div>
-
-                        <div className="row">
-                            <span>🗡️ </span>Damage Taken: <span>{totalDamageDealt}</span>
-                        </div>
-
-                        <div className="row">
-                            <span>🤕</span>Damage Taken: <span>{totalDamageTaken}</span>
-                        </div>
-
-                        <div className="row">
-                            <span>️🧟</span>Mobs Killed: <span>{totalMobKills}</span>
-                        </div>
-
-                        <div className="row">
-                            <span>👤</span>Players Killed: <span>{totalPlayerKills}</span>
-                        </div>
-
-                        <div className="row">
-                            <span>⏰</span>Last Join: <span>{lastJoin}</span>
-                        </div>
+                        <StatisticsRow icon={'💀'} title={'Deaths'} value={totalDeaths}/>
+                        <StatisticsRow icon={'🗡️'} title={'Damage Taken'} value={totalDamageDealt}/>
+                        <StatisticsRow icon={'🤕'} title={'Last Join'} value={totalDamageTaken}/>
+                        <StatisticsRow icon={'️🧟'} title={'Last Join'} value={totalMobKills}/>
+                        <StatisticsRow icon={'👤'} title={'Last Join'} value={totalPlayerKills}/>
+                        <StatisticsRow icon={'⏰'} title={'Last Join'} value={lastJoin}/>
 
                     </div>
 
@@ -91,7 +74,16 @@ class PlayerStatistics extends Component {
             </Fragment>
         );
     }
-
 }
+
+const StatisticsRow = (props) => {
+    let {icon, title, value} = props;
+
+    return (
+        <div className="row">
+            <span>{icon}</span>{title}: <span>{value}</span>
+        </div>
+    );
+};
 
 export default PlayerStatistics;
