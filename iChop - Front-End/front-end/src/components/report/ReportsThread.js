@@ -10,11 +10,49 @@ class ReportsThread extends Component {
 
     constructor(props) {
         super(props);
-        
+
+        this.state = {
+            reports: []
+        };
 
         this.onDeleteEntity = this.onDeleteEntity.bind(this);
         this.onDeleteReport = this.onDeleteReport.bind(this);
-        this.onPageChange = this.onPageChange.bind(this);
+        this.iterateReports = this.iterateReports.bind(this);
+    }
+
+    componentDidMount() {
+        let reports = [
+            {
+                threadId: 'id1',
+                reason: 'Really bad thread!',
+                creatorUsername: 'itsgosho',
+                reportDate: new Date(2018, 1)
+            }
+        ];
+
+        this.setState({reports});
+    }
+
+    iterateReports() {
+        return this.state.reports.map((report, index) => {
+            let {threadId, reason, creatorUsername, reportDate} = report;
+
+            let threadReadUrl = RoutingURLs.THREAD.VIEW.replace(':id', threadId);
+
+            return (
+                <ReportTableColumns onDeleteEntity={this.onDeleteEntity}
+                                    onDeleteReport={this.onDeleteReport}
+                                    entityName={'Thread'}
+                                    index={index}
+                                    reason={reason}
+                                    creatorUsername={creatorUsername}
+                                    reportDate={reportDate}>
+                    <th>
+                        <Link to={threadReadUrl}>Link</Link>
+                    </th>
+                </ReportTableColumns>
+            );
+        })
     }
 
     onDeleteEntity() {
@@ -25,60 +63,19 @@ class ReportsThread extends Component {
         console.log('Delete Report');
     }
 
-    onPageChange(page) {
-        console.log(page);
-    }
-
     render() {
-        let reports = [
-            {
-                threadId: 'id1',
-                reason: 'Really bad thread!',
-                creatorUsername: 'itsgosho',
-                reportDate: new Date(2018, 1)
-            },
-            {
-                threadId: 'id2',
-                reason: 'Whoop ugly!',
-                creatorUsername: 'penka123',
-                reportDate: new Date(2018, 1)
-            },
-            {
-                threadId: 'id3',
-                reason: 'Meh!',
-                creatorUsername: 'roki49',
-                reportDate: new Date(2018, 1)
-            },
-        ];
+        let {reports} = this.state;
 
 
         return (
             <Fragment>
                 <ReportTable>
-                    {
-                        (() => reports.map((report, index) => {
-                            let {threadId, reason, creatorUsername, reportDate} = report;
-
-                            let threadReadUrl = RoutingURLs.THREAD.VIEW.replace(':id', threadId);
-
-                            return (
-                                <ReportTableColumns onDeleteEntity={this.onDeleteEntity}
-                                                    onDeleteReport={this.onDeleteReport}
-                                                    entityName={'Thread'}
-                                                    index={index}
-                                                    reason={reason}
-                                                    creatorUsername={creatorUsername}
-                                                    reportDate={reportDate}>
-                                    <th>
-                                        <Link to={threadReadUrl}>Link</Link>
-                                    </th>
-                                </ReportTableColumns>
-                            );
-                        }))()
-                    }
+                    {this.iterateReports()}
                 </ReportTable>
 
-                <PaginationNav totalResults={reports.length} resultsPerPage={1} redirectPage={RoutingURLs.THREAD.REPORT.ALL}/>
+                <PaginationNav totalResults={reports.length}
+                               resultsPerPage={1}
+                               redirectPage={RoutingURLs.THREAD.REPORT.ALL}/>
             </Fragment>
         );
     }
