@@ -24,17 +24,11 @@ class UserControlRole extends Component {
                     <div className="col-md-auto">
 
                         {role !== Roles.OWNER && previousRole !== null ? (
-                            <button className="btn btn-warning btn-sm change-role-button">
-                                <span>👇🏻</span>
-                                <span>{previousRole}</span>
-                            </button>
+                            <ChangeRoleButton icon={'👇🏻'} role={previousRole}/>
                         ) : null}
 
                         {role !== Roles.OWNER && nextRole !== null && nextRole !== Roles.OWNER ? (
-                            <button className="btn btn-warning btn-sm change-role-button">
-                                <span>👆🏻</span>
-                                <span>{nextRole}</span>
-                            </button>
+                            <ChangeRoleButton icon={'👆🏻'} role={nextRole}/>
                         ) : null}
 
                     </div>
@@ -48,5 +42,16 @@ class UserControlRole extends Component {
     }
 
 }
+
+const ChangeRoleButton = (props) => {
+    let {icon,role} = props;
+
+    return (
+        <button className="btn btn-warning btn-sm change-role-button">
+            <span>{icon}</span>
+            <span>{role}</span>
+        </button>
+    )
+};
 
 export default UserControlRole;
