@@ -13,6 +13,7 @@ const NotificationHelper = {
             animationIn: ["animated", "fadeIn"],
             animationOut: ["animated", "fadeOut"],
             showIcon: false,
+            width: 250,
             dismiss: {
                 duration: duration,
                 onScreen: true,

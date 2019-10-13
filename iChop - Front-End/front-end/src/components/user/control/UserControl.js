@@ -10,7 +10,7 @@ import NotificationHelper from "../../../helpers/notification.helper";
 class UserControl extends Component {
 
     componentDidMount() {
-        NotificationHelper.showErrorNotification('test');
+        NotificationHelper.showSuccessNotification('test');
     }
 
     render() {
