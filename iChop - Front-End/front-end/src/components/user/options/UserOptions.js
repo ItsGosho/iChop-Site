@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import UserOptionsSidebar from "./other/UserOptionsSidebar";
-import optionsSidebarReduxHoc from "../../../redux/hocs/options.sidebar.hoc";
 import UserOptionsMinecraft from "./minecraft/UserOptionsMinecraft";
 import UserOptionsChangePassword from "./password/UserOptionsChangePassword";
 import UserOptionsInformation from "./information/UserOptionsInformation";
@@ -9,8 +8,6 @@ class UserOptions extends Component {
 
 
     render() {
-
-        let {isInformationSelected, isChangePasswordSelected, isMinecraftSelected} = this.props.redux;
 
         return (
             <div className="container" style={{'marginLeft': '0'}}>
@@ -42,4 +39,4 @@ class UserOptions extends Component {
 
 }
 
-export default optionsSidebarReduxHoc(UserOptions);
+export default UserOptions;
