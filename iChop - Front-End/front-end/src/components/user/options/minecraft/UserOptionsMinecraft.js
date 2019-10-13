@@ -5,6 +5,16 @@ import ServerRoutingURLs from "../../../../constants/server.routing.urls";
 
 class UserOptionsMinecraft extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.onUnlink = this.onUnlink.bind(this);
+    }
+
+    onUnlink() {
+        console.log("Unlinked");
+    }
+
 
     render() {
         let isAccountLinked = true;
@@ -56,7 +66,13 @@ class UserOptionsMinecraft extends Component {
                         <div className="dropdown-divider"/>
 
                         <div align="center" style={{'marginTop': '10px'}}>
-                            <button type="button" className="btn btn-warning">Unlink</button>
+
+                            <button type="button"
+                                    className="btn btn-warning"
+                                    onClick={this.onUnlink}>
+                                Unlink
+                            </button>
+
                         </div>
                     </Fragment>)}
             </Fragment>
