@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 import RoutingURLs from "../../../../constants/routing.constants";
+import './UserOptionsSidebar.css'
 
 class UserOptionsSidebar extends Component {
 
@@ -8,7 +9,7 @@ class UserOptionsSidebar extends Component {
     render() {
         return (
             <div className="col-sm">
-                <div className="card" style={{'width': '15rem'}}>
+                <div className="card">
 
                     <div className="card-header">
                         Options Menu

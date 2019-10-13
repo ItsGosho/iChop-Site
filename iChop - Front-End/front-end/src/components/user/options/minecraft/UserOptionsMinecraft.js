@@ -13,7 +13,7 @@ class UserOptionsMinecraft extends Component {
     }
 
     onUnlink() {
-        console.log("Unlinked");
+        console.log("Unlink Cliked!");
     }
 
 
@@ -75,7 +75,8 @@ class UserOptionsMinecraft extends Component {
                             </button>
 
                         </div>
-                    </Fragment>)}
+                    </Fragment>)
+                }
             </Fragment>
         );
     }
