@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 import RoutingURLs from "../../../../constants/routing.constants";
+import './UserControlSidebar.css'
 
 class UserControlSidebar extends Component {
 
@@ -12,7 +13,7 @@ class UserControlSidebar extends Component {
 
         return (
             <div className="col-sm">
-                <div className="card" style={{'width': '15rem'}}>
+                <div className="card card-holder">
                     <div className="card-header">Options Menu</div>
                     <ul className="list-group list-group-flush">
 

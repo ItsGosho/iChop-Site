@@ -22,42 +22,21 @@ class UserControlRole extends Component {
                 <div className="row">
                     <div className="col-md-auto">
 
-                        {
-                            (() => {
-                                if (role !== Roles.OWNER) {
+                        {role !== Roles.OWNER && previousRole !== null ? (
+                            <button type="button" className="btn btn-warning btn-sm"
+                                    style={{'marginRight': '10px'}}>
+                                <span>👇🏻</span><span>{previousRole}</span>
+                            </button>
+                        ) : null}
 
-                                    if (previousRole !== null) {
-                                        return (
-                                            <button type="button" className="btn btn-warning btn-sm"
-                                                    style={{'marginRight': '10px'}}>
-                                                <span>👇🏻</span><span>{previousRole}</span>
-                                            </button>
-                                        );
-                                    }
-                                }
+                        {role !== Roles.OWNER && nextRole !== null && nextRole !== Roles.OWNER ? (
+                            <button type="button" className="btn btn-warning btn-sm"
+                                    style={{'marginRight': '10px'}}>
+                                <span>👆🏻</span>
+                                <span>{nextRole}</span>
+                            </button>
+                        ) : null}
 
-                                return null;
-                            })()
-                        }
-
-                        {
-                            (() => {
-                                if (role !== Roles.OWNER) {
-
-                                    if (nextRole !== null && nextRole !== Roles.OWNER) {
-                                        return (
-                                            <button type="button" className="btn btn-warning btn-sm"
-                                                    style={{'marginRight': '10px'}}>
-                                                <span>👆🏻</span>
-                                                <span>{nextRole}</span>
-                                            </button>
-                                        );
-                                    }
-                                }
-
-                                return null;
-                            })()
-                        }
                     </div>
                 </div>
                 <div className="row">

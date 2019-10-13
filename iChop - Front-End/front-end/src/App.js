@@ -29,7 +29,7 @@ function App() {
 
                 <Switch>
                     <Route exact path={RoutingURLs.USER.CONTROL.INFORMATION} render={({match})=>(<UserControl route={match}/>)}/>
-                    <Route exact path={RoutingURLs.USER.CONTROL.ROLE} render={(match)=>(<UserControl route={match}/>)}/>
+                    <Route exact path={RoutingURLs.USER.CONTROL.ROLE} render={({match})=>(<UserControl route={match}/>)}/>
                 </Switch>
 
             </div>
