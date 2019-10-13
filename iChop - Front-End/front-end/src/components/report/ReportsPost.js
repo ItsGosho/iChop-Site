@@ -3,14 +3,57 @@ import ReportTable from "./other/ReportTable";
 import ReportTableColumns from "./other/ReportTableColumns";
 import PaginationNav from "../other/PaginationNav";
 import RoutingURLs from "../../constants/routing.constants";
+import './ReportsPost.css'
 
 class ReportsPost extends Component {
 
     constructor(props) {
         super(props);
 
+        this.state = {
+            reports: []
+        };
+
         this.onDeleteEntity = this.onDeleteEntity.bind(this);
         this.onDeleteReport = this.onDeleteReport.bind(this);
+        this.iterateReports = this.iterateReports.bind(this);
+    }
+
+    componentDidMount() {
+        let reports = [
+            {
+                postId: 'id1',
+                reason: 'Really bad post!',
+                content: 'Hi there1!',
+                creatorUsername: 'itsgosho',
+                reportDate: new Date(1993, 1)
+            }
+        ];
+
+        this.setState({reports});
+    }
+
+    iterateReports() {
+        return this.state.reports.map((report, index) => {
+            let {content, reason, creatorUsername, reportDate} = report;
+
+            return (
+                <ReportTableColumns
+                    onDeleteEntity={this.onDeleteEntity}
+                    onDeleteReport={this.onDeleteReport}
+                    entityName={'Post'}
+                    index={index}
+                    reason={reason}
+                    creatorUsername={creatorUsername}
+                    reportDate={reportDate}>
+
+                    <td className="td-content">
+                        <div className="div-content">{content}</div>
+                    </td>
+
+                </ReportTableColumns>
+            );
+        })
     }
 
     onDeleteEntity() {
@@ -22,62 +65,17 @@ class ReportsPost extends Component {
     }
 
     render() {
-        let reports = [
-            {
-                postId: 'id1',
-                reason: 'Really bad post!',
-                content: 'Hi there1!',
-                creatorUsername: 'itsgosho',
-                reportDate: new Date(1993, 1)
-            },
-            {
-                postId: 'id2',
-                reason: 'Whoop ugly!',
-                content: 'Hi there2!',
-                creatorUsername: 'penka123',
-                reportDate: new Date(2007, 8)
-            },
-            {
-                postId: 'id3',
-                reason: 'Meh!',
-                content: 'Hi there3!',
-                creatorUsername: 'roki49',
-                reportDate: new Date(2015, 12)
-            },
-        ];
+        let {reports} = this.state;
 
         return (
             <Fragment>
                 <ReportTable>
-                    {
-                        (() => reports.map((report, index) => {
-                            let {content, reason, creatorUsername, reportDate} = report;
-
-                            return (
-                                <ReportTableColumns
-                                    onDeleteEntity={this.onDeleteEntity}
-                                    onDeleteReport={this.onDeleteReport}
-                                    entityName={'Post'}
-                                    index={index}
-                                    reason={reason}
-                                    creatorUsername={creatorUsername}
-                                    reportDate={reportDate}>
-
-                                    <td width="300px">
-                                        <div style={{
-                                            'overflow': 'scroll',
-                                            'width': '100%',
-                                            'maxHeight': '100px'
-                                        }}>{content}</div>
-                                    </td>
-
-                                </ReportTableColumns>
-                            );
-                        }))()
-                    }
+                    {this.iterateReports()}
                 </ReportTable>
 
-                <PaginationNav totalResults={reports.length} resultsPerPage={1} redirectPage={RoutingURLs.POST.REPORT.ALL}/>
+                <PaginationNav totalResults={reports.length}
+                               resultsPerPage={1}
+                               redirectPage={RoutingURLs.POST.REPORT.ALL}/>
             </Fragment>
         );
     }

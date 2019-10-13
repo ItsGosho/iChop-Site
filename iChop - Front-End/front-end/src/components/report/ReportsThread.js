@@ -10,6 +10,7 @@ class ReportsThread extends Component {
 
     constructor(props) {
         super(props);
+        
 
         this.onDeleteEntity = this.onDeleteEntity.bind(this);
         this.onDeleteReport = this.onDeleteReport.bind(this);
