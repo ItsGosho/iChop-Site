@@ -6,8 +6,8 @@ class TextAreaWithCounter extends Component {
         super(props);
 
         this.state = {
-            maxStatusCharacters: 0,
-            leftStatusCharacters: 0
+            maxCharacters: 0,
+            leftCharacters: 0
         };
 
         this.onStatusChange = this.onStatusChange.bind(this);
@@ -19,11 +19,11 @@ class TextAreaWithCounter extends Component {
     onStatusChange(value) {
         let element = this.textAreaRef.current;
 
-        if (value.length > 16) {
+        if (value.length > this.state.maxCharacters) {
             element.style['border-color'] = 'red';
 
             this.setState((prev) => {
-                return {statusMessage: value.slice(0, prev.maxStatusCharacters)}
+                return {[this.props.name]: value.slice(0, prev.maxCharacters)}
             });
 
             return;
@@ -32,18 +32,18 @@ class TextAreaWithCounter extends Component {
         }
 
         this.setState((prev) => {
-            return {leftStatusCharacters: prev.maxStatusCharacters - value.length}
+            return {leftCharacters: prev.maxCharacters - value.length}
         }, () => {
-            this.props.onCounted(this.state.leftStatusCharacters);
+            this.props.onCounted(this.state.leftCharacters);
         });
     }
 
     componentDidMount() {
-        this.setState({maxStatusCharacters: this.props.maxCharacters});
-        this.setState({leftStatusCharacters: this.props.maxCharacters});
+        this.setState({maxCharacters: this.props.maxCharacters});
+        this.setState({leftCharacters: this.props.maxCharacters});
         this.setState({[this.props.name]: this.props.value});
         this.setState((prev) => {
-            return {leftStatusCharacters: prev.leftStatusCharacters - this.props.value.length}
+            return {leftCharacters: prev.leftCharacters - this.props.value.length}
         });
     }
 

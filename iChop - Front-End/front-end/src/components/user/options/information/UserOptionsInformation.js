@@ -23,15 +23,23 @@ class UserOptionsInformation extends Component {
             userAvatarUrl: '',
 
             isFormValid: true,
+
             maxStatusCharacters: 16,
-            leftStatusCharacters: 16
+            maxAboutYouCharacters: 250,
+
+            leftStatusMessageCharacters: 16,
+            leftAboutYouCharacters: 250
         };
 
         this.onSaveChanges = this.onSaveChanges.bind(this);
         this.onDateChange = this.onDateChange.bind(this);
         this.onBase64Upload = this.onBase64Upload.bind(this);
-        this.onStatusCountedCharacters = this.onStatusCountedCharacters.bind(this);
+
+        this.onStatusMessageCountedCharacters = this.onStatusMessageCountedCharacters.bind(this);
         this.onStatusMessageChange = this.onStatusMessageChange.bind(this);
+
+        this.onAboutYouCountedCharacters = this.onAboutYouCountedCharacters.bind(this);
+        this.onAboutYouChange = this.onAboutYouChange.bind(this);
     }
 
     onBase64Upload(data) {
@@ -48,8 +56,16 @@ class UserOptionsInformation extends Component {
         this.setState({statusMessage: status})
     }
 
-    onStatusCountedCharacters(leftChars) {
-        this.setState({leftStatusCharacters: leftChars})
+    onStatusMessageCountedCharacters(leftChars) {
+        this.setState({leftStatusMessageCharacters: leftChars})
+    }
+
+    onAboutYouChange(status) {
+        this.setState({aboutYou: status})
+    }
+
+    onAboutYouCountedCharacters(leftChars) {
+        this.setState({leftAboutYouCharacters: leftChars})
     }
 
     onSaveChanges() {
@@ -66,7 +82,9 @@ class UserOptionsInformation extends Component {
         this.setState({username: 'ItsGosho'});
         this.setState({userAvatarUrl: ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', this.state.username)});
         this.setState((prev) => {
-            return {leftStatusCharacters: prev.leftStatusCharacters - 'Hi!'.length}
+            return {
+                leftCharacters: prev.leftCharacters - 'Hi!'.length,
+            }
         });
     }
 
@@ -93,16 +111,16 @@ class UserOptionsInformation extends Component {
 
                         <TextAreaWithCounter name={'statusMessage'}
                                              className={'textarea-status'}
-                                             maxCharacters={16}
+                                             maxCharacters={this.state.maxStatusCharacters}
                                              value={this.state.statusMessage}
                                              onValueChange={this.onStatusMessageChange}
-                                             onCounted={this.onStatusCountedCharacters}/>
+                                             onCounted={this.onStatusMessageCountedCharacters}/>
                     </div>
                 </div>
 
                 <div className="row status-left-chars-row">
                     <div className="col-lg">
-                        <small className="status-left-chars">{this.state.leftStatusCharacters}</small>
+                        <small className="status-left-chars">{this.state.leftStatusMessageCharacters}</small>
                     </div>
                 </div>
 
@@ -166,18 +184,19 @@ class UserOptionsInformation extends Component {
                 <div className="row">
                     <div className="col-lg">
 
-                        <textarea name="aboutYou"
-                                  className="textarea-about-you"
-                                  value={this.state.aboutYou}
-                                  ref={this.aboutYouRef}
-                                  onChange={onChange}/>
+                        <TextAreaWithCounter name={'aboutYou'}
+                                             className={'textarea-about-you'}
+                                             maxCharacters={this.state.maxAboutYouCharacters}
+                                             value={this.state.aboutYou}
+                                             onValueChange={this.onAboutYouChange}
+                                             onCounted={this.onAboutYouCountedCharacters}/>
 
                     </div>
                 </div>
 
                 <div className="row about-you-title">
                     <div className="col-lg">
-                        <small className="about-you-left-chars">250</small>
+                        <small className="about-you-left-chars">{this.state.leftAboutYouCharacters}</small>
                     </div>
                 </div>
 
