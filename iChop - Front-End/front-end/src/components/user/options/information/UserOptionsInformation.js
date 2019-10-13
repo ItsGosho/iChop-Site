@@ -18,11 +18,11 @@ class UserOptionsInformation extends Component {
             statusMessage: 'Hi!',
             birthday: Date.now(),
             aboutYou: 'Just me :)',
+            uploadedUserAvatar: '',
+
 
             username: '',
             userAvatarUrl: '',
-
-            isFormValid: true,
 
             maxStatusCharacters: 16,
             maxAboutYouCharacters: 250,
@@ -40,10 +40,15 @@ class UserOptionsInformation extends Component {
 
         this.onAboutYouCountedCharacters = this.onAboutYouCountedCharacters.bind(this);
         this.onAboutYouChange = this.onAboutYouChange.bind(this);
+
+        this.userAvatarRef = React.createRef();
     }
 
     onBase64Upload(data) {
-        this.userAvatarRef.current.customImageRef.current.src = 'data:image/png;base64,' + data;
+        let avatarAsBase64 = 'data:image/png;base64,' + data;
+
+        this.userAvatarRef.current.customImageRef.current.src = avatarAsBase64;
+        this.setState({uploadedUserAvatar: avatarAsBase64})
     }
 
     onDateChange(date) {
@@ -57,7 +62,7 @@ class UserOptionsInformation extends Component {
     }
 
     onStatusMessageCountedCharacters(leftChars) {
-        this.setState({leftStatusMessageCharacters: leftChars})
+        this.setState({leftStatusMessageCharacters: leftChars});
     }
 
     onAboutYouChange(status) {
@@ -69,13 +74,13 @@ class UserOptionsInformation extends Component {
     }
 
     onSaveChanges() {
-        let {statusMessage, birthday, aboutYou, isFormValid} = this.state;
+        let {statusMessage, birthday, aboutYou,uploadedUserAvatar } = this.state;
 
         console.log(statusMessage);
         console.log(dateFormat(birthday, 'dd/mm/yyyy'));
         console.log(aboutYou);
+        console.log(uploadedUserAvatar);
 
-        console.log(isFormValid);
     }
 
     componentDidMount() {
@@ -89,7 +94,6 @@ class UserOptionsInformation extends Component {
     }
 
     render() {
-        let onChange = (event) => (this.setState({[event.target.name]: event.target.value}));
 
         return (
             <form>
