@@ -1,6 +1,7 @@
 import React, {Fragment} from 'react';
 import Footer from "./components/footer/Footer";
 import Navbar from "./components/navbar/Navbar";
+import ReactNotification from "react-notifications-component";
 import TextEditor from "./components/editor/TextEditor";
 import ThreadCreate from "./components/thread/create/ThreadCreate";
 import PlayerLinkAccount from "./components/player/PlayerLinkAccount";
@@ -18,9 +19,11 @@ function App() {
     return (
         <Fragment>
             <Navbar/>
+            <ReactNotification/>
 
             <div style={{'marginTop': '75px'}}>
                 <UserControl/>
+
             </div>
 
             <Footer/>

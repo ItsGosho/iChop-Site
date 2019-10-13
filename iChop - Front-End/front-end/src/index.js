@@ -9,6 +9,7 @@ import thunk from 'redux-thunk'
 import logger from 'redux-logger'
 import Provider from "react-redux/es/components/Provider";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-notifications-component/dist/theme.css'
 
 let store = createStore(
     combineReducers(reducers),
