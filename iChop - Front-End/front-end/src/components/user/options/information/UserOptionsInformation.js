@@ -48,19 +48,24 @@ class UserOptionsInformation extends Component {
 
     onStatusChange(event) {
         /*TODO: Според event-а дали е махнал -- ,добавил ++*/
-
-        console.log(event);
         let {statusMessage} = this.state;
 
-        if (this.state.leftStatusCharacters <= 0) {
+        console.log(statusMessage);
+
+        if (statusMessage.length > 16) {
             this.statusMessageRef.current.style['border-color'] = 'red';
-            //block input
-            //set red
+
+            this.setState((prev) => {
+                return {statusMessage: statusMessage.slice(0,prev.maxStatusCharacters)}
+            });
+
             return;
+        }else{
+            this.statusMessageRef.current.style['border-color'] = '';
         }
 
         this.setState((prev) => {
-            return {leftStatusCharacters: prev.leftStatusCharacters - 1}
+            return {leftStatusCharacters: prev.maxStatusCharacters - statusMessage.length}
         });
     }
 
@@ -76,7 +81,10 @@ class UserOptionsInformation extends Component {
 
     componentDidMount() {
         this.setState({username: 'ItsGosho'});
-        this.setState({userAvatarUrl: ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', this.state.username)})
+        this.setState({userAvatarUrl: ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', this.state.username)});
+        this.setState((prev) => {
+            return {leftStatusCharacters: prev.leftStatusCharacters - this.statusMessageRef.current.textContent.length}
+        });
     }
 
     render() {
@@ -95,8 +103,8 @@ class UserOptionsInformation extends Component {
                                   className="textarea-status"
                                   ref={this.statusMessageRef}
                                   value={this.state.statusMessage}
-                                  onChange={(event) => {
-                                      onChange(event);
+                                  onChange={async (event) => {
+                                      await onChange(event);
                                       this.onStatusChange(event);
                                   }}/>
                     </div>
