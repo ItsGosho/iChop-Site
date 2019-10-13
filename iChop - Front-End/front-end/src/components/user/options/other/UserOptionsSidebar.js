@@ -9,7 +9,7 @@ class UserOptionsSidebar extends Component {
     render() {
         return (
             <div className="col-sm">
-                <div className="card">
+                <div className="card card-navigation">
 
                     <div className="card-header">
                         Options Menu

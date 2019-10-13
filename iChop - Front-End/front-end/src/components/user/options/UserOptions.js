@@ -1,10 +1,11 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 import UserOptionsSidebar from "./other/UserOptionsSidebar";
 import UserOptionsMinecraft from "./minecraft/UserOptionsMinecraft";
 import UserOptionsChangePassword from "./password/UserOptionsChangePassword";
 import UserOptionsInformation from "./information/UserOptionsInformation";
 import {Route, Switch} from "react-router-dom";
 import RoutingURLs from "../../../constants/routing.constants";
+
 
 class UserOptions extends Component {
 
