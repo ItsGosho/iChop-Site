@@ -34,7 +34,7 @@ function App() {
 
             </div>*/}
 
-            <Reports/>
+            <PlayerProfile/>
 
             <Footer/>
         </Fragment>

@@ -1,5 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import formatDate from "dateformat";
+import './PlayerStatistics.css'
 
 class PlayerStatistics extends Component {
 
@@ -45,14 +46,11 @@ class PlayerStatistics extends Component {
                                         (() => {
                                             if (isOnline) {
                                                 return (
-                                                    <span>🔋 <span
-                                                        style={{'color': 'green'}}>Online</span>
-                                                    </span>
+                                                    <span>🔋 <span className="span-online">Online</span></span>
                                                 );
                                             } else {
                                                 return (
-                                                    <span>🔴 <span
-                                                        style={{'color': 'darkred'}}>Offline</span>
+                                                    <span>🔴 <span className="span-offline">Offline</span>
                                                     </span>
                                                 );
                                             }
@@ -69,7 +67,7 @@ class PlayerStatistics extends Component {
 
                     <div className="dropdown-divider"/>
 
-                    <div className="col-md-auto head" style={{'fontSize': '19px', 'fontFamily': 'Consolas'}}>
+                    <div className="col-md-auto head div-statistics-holder">
 
                         <span>Basic Statistcs:</span>
 

@@ -1,0 +1,12 @@
+.span-offline {
+    color: darkred
+}
+
+.span-online {
+    color: green;
+}
+
+.div-statistics-holder {
+    font-size: 19px;
+    font-family: Consolas;
+}

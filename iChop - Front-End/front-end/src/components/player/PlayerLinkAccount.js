@@ -12,11 +12,9 @@ class PlayerLinkAccount extends Component {
         this.linkAccount = this.linkAccount.bind(this);
     }
 
-
     linkAccount() {
         /*TODO: Link the account to the current logged in user!*/
     }
-
 
     render() {
         let name = 'ItsGosho';

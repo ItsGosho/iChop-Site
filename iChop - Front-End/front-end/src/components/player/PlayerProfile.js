@@ -5,9 +5,7 @@ import PlayerProfileLeft from "./profile/grid/PlayerProfileLeft";
 
 class PlayerProfile extends Component {
 
-
     render() {
-
         return (
 
             <div className="container">
