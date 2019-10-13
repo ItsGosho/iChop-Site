@@ -25,14 +25,16 @@ function App() {
 
             <ReactNotification/>
 
-            <div style={{'marginTop': '75px'}}>
+            {/*<div style={{'marginTop': '75px'}}>
 
                 <Switch>
                     <Route exact path={RoutingURLs.USER.CONTROL.INFORMATION} render={({match})=>(<UserControl route={match}/>)}/>
                     <Route exact path={RoutingURLs.USER.CONTROL.ROLE} render={({match})=>(<UserControl route={match}/>)}/>
                 </Switch>
 
-            </div>
+            </div>*/}
+
+            <Reports/>
 
             <Footer/>
         </Fragment>
