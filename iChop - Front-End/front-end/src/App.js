@@ -19,6 +19,7 @@ function App() {
     return (
         <Fragment>
             <Navbar/>
+
             <ReactNotification/>
 
             <div style={{'marginTop': '75px'}}>
