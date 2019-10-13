@@ -1,28 +1,12 @@
-import React,{Component} from 'react';
-import controlSidebarReduxHoc from "../../../../redux/hocs/control.sidebar.hoc";
+import React, {Component} from 'react';
+import {Link} from "react-router-dom";
+import RoutingURLs from "../../../../constants/routing.constants";
 
 class UserControlSidebar extends Component {
 
-    constructor(props) {
-        super(props);
-
-        this.onInformationClick = this.onInformationClick.bind(this);
-        this.onRoleManagementClick = this.onRoleManagementClick.bind(this);
-    }
-
-
-    onInformationClick(event) {
-        event.preventDefault();
-        this.props.selectInformation();
-    }
-
-    onRoleManagementClick(event) {
-        event.preventDefault();
-        this.props.selectRoleManagement();
-    }
-
-
     render() {
+        let username = 'ItsGosho';
+        //let informationUrl = RoutingURLs.USER.CONTROL_PANEL
 
         return (
             <div className="col-sm">
@@ -30,13 +14,13 @@ class UserControlSidebar extends Component {
                     <div className="card-header">Options Menu</div>
                     <ul className="list-group list-group-flush">
 
-                        <a href=' ' onClick={this.onInformationClick}>
+                        <Link to={}>
                             <li className="list-group-item control-option">Information</li>
-                        </a>
+                        </Link>
 
-                        <a href=' ' onClick={this.onRoleManagementClick}>
+                        <Link to={}>
                             <li className="list-group-item control-option">Role Management</li>
-                        </a>
+                        </Link>
 
                     </ul>
                 </div>
@@ -46,4 +30,4 @@ class UserControlSidebar extends Component {
 
 }
 
-export default controlSidebarReduxHoc(UserControlSidebar);
+export default UserControlSidebar;
