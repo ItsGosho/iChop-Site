@@ -30,10 +30,8 @@ class UserOptionsInformation extends Component {
         this.onSaveChanges = this.onSaveChanges.bind(this);
         this.onDateChange = this.onDateChange.bind(this);
         this.onBase64Upload = this.onBase64Upload.bind(this);
-
-        this.userAvatarRef = React.createRef();
-        this.aboutYouRef = React.createRef();
         this.onStatusCountedCharacters = this.onStatusCountedCharacters.bind(this);
+        this.onStatusMessageChange = this.onStatusMessageChange.bind(this);
     }
 
     onBase64Upload(data) {
@@ -44,6 +42,10 @@ class UserOptionsInformation extends Component {
         this.setState({
             birthday: date
         });
+    }
+
+    onStatusMessageChange(status) {
+        this.setState({statusMessage: status})
     }
 
     onStatusCountedCharacters(leftChars) {
@@ -93,6 +95,7 @@ class UserOptionsInformation extends Component {
                                              className={'textarea-status'}
                                              maxCharacters={16}
                                              value={this.state.statusMessage}
+                                             onValueChange={this.onStatusMessageChange}
                                              onCounted={this.onStatusCountedCharacters}/>
                     </div>
                 </div>

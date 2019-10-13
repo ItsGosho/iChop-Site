@@ -50,11 +50,12 @@ class TextAreaWithCounter extends Component {
     render() {
         let onChange = (event) => {
             this.setState({[event.target.name]: event.target.value}, () => {
-                this.onStatusChange(this.state[name])
+                this.onStatusChange(this.state[name]);
+                this.props.onValueChange(this.state[name]);
             });
         };
 
-        let {name, className, onCounted} = this.props;
+        let {name, className} = this.props;
 
         return (
             <textarea name={name}
