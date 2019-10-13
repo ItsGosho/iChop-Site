@@ -25,7 +25,7 @@ class UserOptionsChangePassword extends Component {
         return (
             <form className="px-4 py-3">
 
-                <PassworsForm ref onChange={onChange}/>
+                <PassworsForm onChange={onChange}/>
 
                 <div align="center">
 

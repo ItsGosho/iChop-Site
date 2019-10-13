@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import navbarGuestReduxHoc from "../../../../redux/hocs/navbar.guest.hoc";
 import FormHoc from "../../../../hocs/form.hoc";
+import PassworsForm from "../../../other/PassworsForm";
 
 class GuestRegister extends Component {
 
@@ -66,50 +67,7 @@ class GuestRegister extends Component {
                         </div>
                     </div>
 
-                    <div className="form-group">
-                        <div className="input-group mb-2">
-
-                            <div className="input-group-prepend">
-                                <div className="input-group-text">🔒</div>
-                            </div>
-
-                            <input type="password"
-                                   className="form-control"
-                                   autoComplete="off"
-                                   data-trigger="focus"
-                                   name="password"
-                                   placeholder="Password..."
-                                   ref={this.passwordRef}
-                                   onChange={onChange}/>
-
-                            <div className="input-group-append">
-                                <button type="button"
-                                        className="btn btn-outline-success"
-                                        onClick={this.onShowPasswords}>
-                                    Show
-                                </button>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div className="form-group">
-                        <div className="input-group mb-2">
-
-                            <div className="input-group-prepend">
-                                <div className="input-group-text">🔒</div>
-                            </div>
-
-                            <input type="password"
-                                   className="form-control"
-                                   autoComplete="off"
-                                   name="confirmPassword"
-                                   placeholder="Confirm Password..."
-                                   ref={this.confirmPasswordRef}
-                                   onChange={onChange}/>
-
-                        </div>
-                    </div>
+                    <PassworsForm onChange={onChange}/>
 
                     <div className="form-group">
                         <div className="input-group mb-2">
