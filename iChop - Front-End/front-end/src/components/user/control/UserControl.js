@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import UserControlInformation from "./information/UserControlInformation";
 import UserControlRole from "./role/UserControlRole";
-import controlSidebarReduxHoc from "../../../redux/hocs/control.sidebar.hoc";
 import UserControlNav from "./other/UserControlNav";
 import UserControlSidebar from "./other/UserControlSidebar";
 
@@ -42,4 +41,4 @@ class UserControl extends Component {
 
 }
 
-export default controlSidebarReduxHoc(UserControl);
+export default UserControl;

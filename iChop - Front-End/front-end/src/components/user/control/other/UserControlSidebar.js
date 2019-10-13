@@ -6,7 +6,9 @@ class UserControlSidebar extends Component {
 
     render() {
         let username = 'ItsGosho';
-        //let informationUrl = RoutingURLs.USER.CONTROL_PANEL
+
+        let informationUrl = RoutingURLs.USER.CONTROL.INFORMATION.replace(':username', username);
+        let roleUrl = RoutingURLs.USER.CONTROL.ROLE.replace(':username', username);
 
         return (
             <div className="col-sm">
@@ -14,11 +16,11 @@ class UserControlSidebar extends Component {
                     <div className="card-header">Options Menu</div>
                     <ul className="list-group list-group-flush">
 
-                        <Link to={}>
+                        <Link to={informationUrl}>
                             <li className="list-group-item control-option">Information</li>
                         </Link>
 
-                        <Link to={}>
+                        <Link to={roleUrl}>
                             <li className="list-group-item control-option">Role Management</li>
                         </Link>
 
