@@ -74,7 +74,7 @@ class UserOptionsInformation extends Component {
     }
 
     onSaveChanges() {
-        let {statusMessage, birthday, aboutYou,uploadedUserAvatar } = this.state;
+        let {statusMessage, birthday, aboutYou, uploadedUserAvatar} = this.state;
 
         console.log(statusMessage);
         console.log(dateFormat(birthday, 'dd/mm/yyyy'));
@@ -86,11 +86,8 @@ class UserOptionsInformation extends Component {
     componentDidMount() {
         this.setState({username: 'ItsGosho'});
         this.setState({userAvatarUrl: ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', this.state.username)});
-        this.setState((prev) => {
-            return {
-                leftCharacters: prev.leftCharacters - 'Hi!'.length,
-            }
-        });
+        this.setState((prev) => ({leftStatusMessageCharacters: prev.leftStatusMessageCharacters - 'Hi!'.length}));
+        this.setState((prev) => ({leftAboutYouCharacters: prev.leftAboutYouCharacters - 'Just me :)'.length}));
     }
 
     render() {
