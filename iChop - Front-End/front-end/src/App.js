@@ -14,6 +14,9 @@ import ThreadCreateHelpModal from "./components/thread/create/ThreadCreateHelpMo
 import UserProfile from "./components/user/profile/UserProfile";
 import UserOptions from "./components/user/options/UserOptions";
 import UserControl from "./components/user/control/UserControl";
+import {Switch} from "react-bootstrap";
+import {Route} from "react-router-dom";
+import RoutingURLs from "./constants/routing.constants";
 
 function App() {
     return (
@@ -23,7 +26,11 @@ function App() {
             <ReactNotification/>
 
             <div style={{'marginTop': '75px'}}>
-                <UserControl/>
+
+                <Switch>
+                    <Route exact path={RoutingURLs.USER.CONTROL.INFORMATION} component={()=>(<UserControl/>)}/>
+                    <Route exact path={RoutingURLs.USER.CONTROL.ROLE} component={()=>(<UserControl/>)}/>
+                </Switch>
 
             </div>
 

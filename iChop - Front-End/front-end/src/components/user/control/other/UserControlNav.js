@@ -8,17 +8,6 @@ import './UserControlNav.css'
 
 class UserControlNav extends Component {
 
-    constructor(props) {
-        super(props);
-
-        this.onUserAvatarError = this.onUserAvatarError.bind(this);
-    }
-
-    onUserAvatarError(event) {
-        event.target.onerror = null;
-        event.target.src = FrontEndResourcesRoutingURLs.USER.AVATAR;
-    }
-
     render() {
         console.log(this.props);
         let username = 'ItsGosho';

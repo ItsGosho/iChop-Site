@@ -5,13 +5,8 @@ import UserControlNav from "./other/UserControlNav";
 import UserControlSidebar from "./other/UserControlSidebar";
 import {Route, Switch} from "react-router-dom";
 import RoutingURLs from "../../../constants/routing.constants";
-import NotificationHelper from "../../../helpers/notification.helper";
 
 class UserControl extends Component {
-
-    componentDidMount() {
-        NotificationHelper.showSuccessNotification('test');
-    }
 
     render() {
 
