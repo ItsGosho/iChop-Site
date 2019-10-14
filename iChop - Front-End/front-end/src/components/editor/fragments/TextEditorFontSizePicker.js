@@ -5,64 +5,52 @@ import MaterialIcons from "../../../constants/material.icons.types.constants";
 
 class TextEditorFontSizePicker extends Component {
 
-    constructor(props) {
-        super(props);
-
-        this.autoFontSizeProceed = this.autoFontSizeProceed.bind(this);
-    }
-
-
-    autoFontSizeProceed(event) {
-        let element = event.target;
-        let size = element.getAttribute('data-content');
-        document.execCommand(TextEditorCommands.SET_FONT_SIZE, false, Number(size));
-    }
-
     render() {
         let {preventDefault} = this.props;
 
         return (
             <span>
-                <a href="#" className="dropdown-toggle"
-                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                   title="Font Size" onClick={preventDefault}>
+                <a href="#"
+                   className="dropdown-toggle"
+                   data-toggle="dropdown"
+                   aria-haspopup="true"
+                   aria-expanded="false"
+                   title="Font Size"
+                   onClick={preventDefault}>
                     <i className="material-icons">{MaterialIcons.FORMAT_SIZE}</i>
                 </a>
 
                 <ul className="dropdown-menu scrollable-menu" role="menu">
 
-                    <a href="#" onClick={this.autoFontSizeProceed}>
-                        <li data-content="1" style={{'fontSize': '9px'}}>1</li>
-                    </a>
-
-                    <a href="#" onClick={this.autoFontSizeProceed}>
-                        <li data-content="2" style={{'fontSize': '10px'}}>2</li>
-                    </a>
-
-                    <a href="#" onClick={this.autoFontSizeProceed}>
-                        <li data-content="3" style={{'fontSize': '12px'}}>3</li>
-                    </a>
-
-                    <a href="#" onClick={this.autoFontSizeProceed}>
-                        <li data-content="4" style={{'fontSize': '15px'}}>4</li>
-                    </a>
-
-                    <a href="#" onClick={this.autoFontSizeProceed}>
-                        <li data-content="5" style={{'fontSize': '18px'}}>5</li>
-                    </a>
-
-                    <a href="#" onClick={this.autoFontSizeProceed}>
-                        <li data-content="6" style={{'fontSize': '22px'}}>6</li>
-                    </a>
-
-                    <a href="#" onClick={this.autoFontSizeProceed}>
-                        <li data-content="7" style={{'fontSize': '26px'}}>7</li>
-                    </a>
+                    <Size i={1} size={9}/>
+                    <Size i={2} size={10}/>
+                    <Size i={3} size={12}/>
+                    <Size i={4} size={15}/>
+                    <Size i={5} size={18}/>
+                    <Size i={6} size={22}/>
+                    <Size i={7} size={26}/>
 
                 </ul>
             </span>
         );
     }
 }
+
+const Size = (props) => {
+    let {i, size} = props;
+
+    return (
+        <a href='#'>
+            <li data-content={i}
+                style={{'fontSize': `${size}px`}}
+                onClick={() => {
+                    document.execCommand(TextEditorCommands.SET_FONT_SIZE, false, Number(i))
+                }}>
+                {i}
+            </li>
+        </a>
+
+    );
+};
 
 export default CommandExecutorHoc(TextEditorFontSizePicker);
