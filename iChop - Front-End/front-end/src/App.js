@@ -34,7 +34,7 @@ function App() {
 
             </div>*/}
 
-            <PlayerProfile/>
+            <ThreadRead/>
 
             <Footer/>
         </Fragment>
