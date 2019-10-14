@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import navbarGuestReduxHoc from "../../../../redux/hocs/navbar.guest.hoc";
 import FormHoc from "../../../../hocs/form.hoc";
-import InputGroupWithIcon from "../../other/InputGroupWithIcon";
+import InputGroupIcon from "../../other/InputGroupIcon";
 
 class GuestLogin extends Component {
 
@@ -26,19 +26,19 @@ class GuestLogin extends Component {
 
                 <form className="px-4 py-3">
 
-                    <InputGroupWithIcon icon={'👤/📧'}
-                                        type={'text'}
-                                        autoComplete={'on'}
-                                        name={'usernameOrEmail'}
-                                        placeholder={'Username or Email...'}
-                                        onChange={onChange}/>
+                    <InputGroupIcon icon={'👤/📧'}
+                                    type={'text'}
+                                    autoComplete={'on'}
+                                    name={'usernameOrEmail'}
+                                    placeholder={'Username or Email...'}
+                                    onChange={onChange}/>
 
-                    <InputGroupWithIcon icon={'🔒'}
-                                        type={'password'}
-                                        autoComplete={'on'}
-                                        name={'password'}
-                                        placeholder={'Password...'}
-                                        onChange={onChange}/>
+                    <InputGroupIcon icon={'🔒'}
+                                    type={'password'}
+                                    autoComplete={'on'}
+                                    name={'password'}
+                                    placeholder={'Password...'}
+                                    onChange={onChange}/>
 
                     <button type="button"
                             data-style="zoom-in"

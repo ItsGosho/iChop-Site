@@ -1,4 +1,5 @@
 import React, {Component, Fragment} from 'react';
+import InputGroupIcon from "../navbar/other/InputGroupIcon";
 
 class UniversalPasswordsInputs extends Component {
 
@@ -80,26 +81,18 @@ class UniversalPasswordsInputs extends Component {
                     </div>
                 </div>
 
-                <div className="form-group">
-                    <div className="input-group mb-2">
 
-                        <div className="input-group-prepend">
-                            <div className="input-group-text">🔒</div>
-                        </div>
+                <InputGroupIcon icon={'🔒'}
+                                type={'password'}
+                                autoComplete={'off'}
+                                name={'confirmPassword'}
+                                placeholder={'Confirm Password...'}
+                                reference={this.confirmPasswordRef}
+                                onChange={(event) => {
+                                        onChange(event);
+                                        this.onChange(event);
+                                    }}/>
 
-                        <input type="password"
-                               className="form-control"
-                               autoComplete="off"
-                               name="confirmPassword"
-                               placeholder="Confirm Password..."
-                               ref={this.confirmPasswordRef}
-                               onChange={(event) => {
-                                   onChange(event);
-                                   this.onChange(event);
-                               }}/>
-
-                    </div>
-                </div>
             </Fragment>
         );
     }

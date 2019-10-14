@@ -1,10 +1,11 @@
 import React, {Component} from "react";
 
-class InputGroupWithIcon extends Component {
+class InputGroupIcon extends Component {
 
     render() {
-        let {icon, type, autoComplete, name, placeholder, onChange} = this.props;
+        let {icon, type, autoComplete,reference, name, placeholder, onChange} = this.props;
 
+        console.log(reference);
         return (
             <div className="form-group">
                 <div className="input-group mb-2">
@@ -17,6 +18,7 @@ class InputGroupWithIcon extends Component {
                            className="form-control"
                            autoComplete={autoComplete}
                            name={name}
+                           ref={reference}
                            placeholder={placeholder}
                            onChange={onChange}/>
                 </div>
@@ -27,4 +29,4 @@ class InputGroupWithIcon extends Component {
 
 };
 
-export default InputGroupWithIcon;
+export default InputGroupIcon;
