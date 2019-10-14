@@ -1,0 +1,33 @@
+.div-first-head {
+    line-height: 20px;
+}
+
+.div-first-content {
+    font-size: 25px;
+}
+
+.user-information-navigation {
+    margin-top: 50px;
+}
+
+.status-message {
+    font-size: 13px;
+    font-family: Georgia;
+    font-style: italic;
+}
+
+.status-div {
+    line-height: 20px;
+}
+
+.follow-controls {
+    font-size: 13px;
+    float: right;
+    display: none;
+}
+
+.is-followed-you {
+    font-size: 11px;
+    float: right;
+    display: inline-block;
+}

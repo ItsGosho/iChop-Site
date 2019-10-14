@@ -1,31 +1,33 @@
 import React, {Component, Fragment} from 'react';
+import './UserProfileCentralContent.css'
+import Roles from "../../../constants/roles.constants";
 
 class UserProfileCentralContent extends Component {
 
 
     render() {
-        let username = '';
-        let role = '';
-        let statusMessage = '';
+        let username = 'ItsGosho';
+        let role = Roles.ADMIN;
+        let statusMessage = 'Hello!';
         let isAuthenticated = true;
 
         return (
             <Fragment>
-                <div className="central-content" style={{'marginLeft': '5px'}}>
+                <div className="central-content">
 
                     <div className="col-md-auto username_and_rank_follow_unfollow">
-                        <div style={{'lineHeight': '20px'}}>
+                        <div className="div-first-head">
                             <div className="row">
                                 <div>
                                     <div className="col-md-auto head">
-                                        <span style={{'fontSize': '25px'}}>{username}</span>
+                                        <span className="div-first-content">{username}</span>
                                     </div>
                                 </div>
                             </div>
                             <div className="row">
                                 <div>
                                     <div className="col-md-auto head">
-                                        <span style={{'fontSize': '25px'}}>{role}</span>
+                                        <span className="div-first-content">{role}</span>
                                     </div>
                                 </div>
                             </div>
@@ -42,33 +44,17 @@ class UserProfileCentralContent extends Component {
                                                        onClick={(event) => {
                                                            event.preventDefault();
                                                        }}
-                                                       id="a-follow_user-userProfile"
-                                                       style={{
-                                                           'fontSize': '13px',
-                                                           'float': 'right',
-                                                           'display': 'none'
-                                                       }}>Follow</a>
-                                                    <a href=' '
-                                                       onClick={(event) => {
-                                                           event.preventDefault();
-                                                       }}
-                                                       id="a-unfollow_user-userProfile"
-                                                       style={{
-                                                           'fontSize': '13px',
-                                                           'float': 'right',
-                                                           'display': 'none'
-                                                       }}>Unfollow</a>
+                                                       className="follow-controls">Follow</a>
+                                                    <a href=' ' onClick={(event) => {
+                                                        event.preventDefault();
+                                                    }}
+                                                       className="follow-controls">Unfollow</a>
 
                                                 </div>
                                             </div>
                                             <div className="row">
                                                 <div className="col-md-12 head">
-                                                    <small id="a-is_he_followed_you-userProfile"
-                                                           style={{
-                                                               'fontSize': '11px',
-                                                               'float': 'right',
-                                                               'display': 'inlineBlock'
-                                                           }}/>
+                                                    <small className="is-followed-you"/>
                                                 </div>
                                             </div>
                                         </Fragment>
@@ -81,7 +67,7 @@ class UserProfileCentralContent extends Component {
                     </div>
 
                     <div className="col-md-auto status">
-                        <div style={{'lineHeight': '20px'}}>
+                        <div className="status-div">
                             <div className="row">
                                 <div>
                                     {
@@ -89,13 +75,7 @@ class UserProfileCentralContent extends Component {
                                             if (statusMessage != null) {
                                                 return (
                                                     <div className="col-md-auto head">
-                                                        <span
-                                                            style={{
-                                                                'fontSize': '13px',
-                                                                'fontFamily': 'Georgia',
-                                                                'fontStyle': 'italic'
-                                                            }}>{statusMessage}
-                                                        </span>
+                                                        <span className="status-message">{statusMessage}</span>
                                                     </div>
                                                 );
                                             }
@@ -107,7 +87,7 @@ class UserProfileCentralContent extends Component {
                     </div>
                 </div>
 
-                <div className="col-md-auto user-information-navigation" style={{'marginTop': '50px'}}>
+                <div className="col-md-auto user-information-navigation">
 
                     <div className="navigation">
                         <ul className="nav nav-tabs">
