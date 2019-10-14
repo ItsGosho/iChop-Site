@@ -50,21 +50,21 @@ class GuestLogin extends Component {
                     <div className="dropdown-divider"/>
                 </form>
 
-                <a className="dropdown-item">
+                <div className="dropdown-item">
                     <button type="button"
                             onClick={this.props.selectRegister}
                             className="btn btn-success btn-sm">
                         Register
                     </button>
-                </a>
+                </div>
 
-                <a className="dropdown-item">
+                <div className="dropdown-item">
                     <button type="button"
                             className="btn btn-warning btn-sm"
                             onClick={this.props.selectForgottenPassword}>
                         Forgotten Password
                     </button>
-                </a>
+                </div>
             </Fragment>
         );
     }
