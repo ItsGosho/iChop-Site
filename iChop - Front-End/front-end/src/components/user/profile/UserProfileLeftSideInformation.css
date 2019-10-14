@@ -1,0 +1,29 @@
+.reactions-given {
+    margin-top: 10px;
+}
+
+.reactions-given-body {
+    line-height: 13px;
+    font-family: Consolas;
+    margin-left: -20px;
+}
+
+.following-card {
+    margin-top: 10px;
+}
+
+.followers-card {
+    margin-top: 10px;
+}
+
+.user-location-card {
+    margin-top: 10px;
+}
+
+.user-location-body {
+    line-height: 13px;
+    font-family: Consolas;
+    margin-left: -20px;
+    margin-bottom: -15px;
+    margin-top: -15px;
+}

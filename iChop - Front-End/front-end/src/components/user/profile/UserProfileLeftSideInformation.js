@@ -9,6 +9,7 @@ import SideInformationLocation from "./side/SideInformationLocation";
 import FrontEndResourcesRoutingURLs from "../../../constants/front-end.resources.routings";
 import SideInformationFollowings from "./side/SideInformationFollowings";
 import SideInformationFollowers from "./side/SideInformationFollowers";
+import './UserProfileLeftSideInformation.css'
 
 class UserProfileLeftSideInformation extends Component {
 
@@ -52,9 +53,8 @@ class UserProfileLeftSideInformation extends Component {
                     </div>
 
 
-                    <div className="card reactions-given" style={{'marginTop': '10px'}}>
-                        <div className="card-body"
-                             style={{'lineHeight': '13px', 'fontFamily': 'Consolas', 'marginLeft': '-20px'}}>
+                    <div className="card reactions-given">
+                        <div className="card-body reactions-given-body">
 
                             <SideInformationTotalLikes/>
                             <SideInformationTotalDislikes/>
@@ -62,7 +62,7 @@ class UserProfileLeftSideInformation extends Component {
                         </div>
                     </div>
 
-                    <div className="card following" style={{'marginTop': '10px'}}>
+                    <div className="card following-card">
                         <div align="center">
                             <span>Following: {totalFollowings}</span>
                         </div>
@@ -86,7 +86,7 @@ class UserProfileLeftSideInformation extends Component {
 
                     </div>
 
-                    <div className="card followers" style={{'marginTop': '10px'}}>
+                    <div className="card followers-card">
                         <div align="center">
                             <span>Followers: {totalFollowers}</span>
                         </div>
@@ -110,15 +110,8 @@ class UserProfileLeftSideInformation extends Component {
 
                     </div>
 
-                    <div className="card user-location" style={{'marginTop': '10px'}}>
-                        <div className="card-body"
-                             style={{
-                                 'lineHeight': '13px',
-                                 'fontFamily': 'Consolas',
-                                 'marginLeft': '-20px',
-                                 'marginBottom': '-15px',
-                                 'marginTop': ' -15px'
-                             }}>
+                    <div className="card user-location-card">
+                        <div className="card-body user-location-body">
 
                             <SideInformationLocation/>
 
