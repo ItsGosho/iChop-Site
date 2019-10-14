@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 
-class InputGroupIcon extends Component {
+class InputGroupPrepend extends Component {
 
     render() {
         let {icon, type, autoComplete,reference, name, placeholder, onChange} = this.props;
@@ -29,4 +29,4 @@ class InputGroupIcon extends Component {
 
 };
 
-export default InputGroupIcon;
+export default InputGroupPrepend;

@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import navbarGuestReduxHoc from "../../../../redux/hocs/navbar.guest.hoc";
 import FormHoc from "../../../../hocs/form.hoc";
-import InputGroupIcon from "../../other/InputGroupIcon";
+import InputGroupPrepend from "../../other/InputGroupPrepend";
 
 class GuestLostPassword extends Component {
 
@@ -25,12 +25,12 @@ class GuestLostPassword extends Component {
             <Fragment>
                 <form className="px-4 py-3">
 
-                    <InputGroupIcon icon={'👤/📧'}
-                                    type={'text'}
-                                    autoComplete={'on'}
-                                    name={'usernameOrEmail'}
-                                    placeholder={'Username or Email...'}
-                                    onChange={onChange}/>
+                    <InputGroupPrepend icon={'👤/📧'}
+                                       type={'text'}
+                                       autoComplete={'on'}
+                                       name={'usernameOrEmail'}
+                                       placeholder={'Username or Email...'}
+                                       onChange={onChange}/>
 
                     <button type="button"
                             className="btn btn-primary btn-sm"
