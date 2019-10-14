@@ -3,6 +3,21 @@ import Roles from "../../../constants/roles.constants";
 
 class UserProfileCentralHead extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.onFollow = this.onFollow.bind(this);
+        this.onUnfollow = this.onUnfollow.bind(this);
+    }
+
+
+    onFollow() {
+        console.log("Follow");
+    }
+
+    onUnfollow() {
+        console.log("Unfollow");
+    }
 
     render() {
         let username = 'ItsGosho';
@@ -10,11 +25,14 @@ class UserProfileCentralHead extends Component {
         let statusMessage = 'Hello!';
         let isAuthenticated = true;
 
+        let isFollowedMe = true;
+
         return (
             <div className="central-content">
 
                 <div className="col-md-auto username_and_rank_follow_unfollow">
                     <div className="div-first-head">
+
                         <div className="row">
                             <div>
                                 <div className="col-md-auto head">
@@ -22,6 +40,7 @@ class UserProfileCentralHead extends Component {
                                 </div>
                             </div>
                         </div>
+
                         <div className="row">
                             <div>
                                 <div className="col-md-auto head">
@@ -35,21 +54,13 @@ class UserProfileCentralHead extends Component {
                         <Fragment>
                             <div className="row">
                                 <div className="col-md-12 head">
-                                    <a href=' '
-                                       onClick={(event) => {
-                                           event.preventDefault();
-                                       }}
-                                       className="follow-controls">Follow</a>
-                                    <a href=' ' onClick={(event) => {
-                                        event.preventDefault();
-                                    }}
-                                       className="follow-controls">Unfollow</a>
-
+                                    <a href=' ' onClick={this.onFollow} className="follow-controls">Follow</a>
+                                    <a href=' ' onClick={this.onUnfollow} className="follow-controls">Unfollow</a>
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-md-12 head">
-                                    <small className="is-followed-you"/>
+                                    <small className="is-followed-you">This user is following you ✋</small>
                                 </div>
                             </div>
                         </Fragment>
