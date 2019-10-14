@@ -10,19 +10,10 @@ import FrontEndResourcesRoutingURLs from "../../../constants/front-end.resources
 import SideInformationFollowings from "./side/SideInformationFollowings";
 import SideInformationFollowers from "./side/SideInformationFollowers";
 import './UserProfileLeftSideInformation.css'
+import Image from "../../other/Image";
 
 class UserProfileLeftSideInformation extends Component {
 
-    constructor(props) {
-        super(props);
-
-        this.onUserAvatarError = this.onUserAvatarError.bind(this);
-    }
-
-    onUserAvatarError(event) {
-        event.target.onerror = null;
-        event.target.src = FrontEndResourcesRoutingURLs.USER.AVATAR;
-    }
 
     render() {
         let username = 'ItsGosho';
@@ -35,10 +26,9 @@ class UserProfileLeftSideInformation extends Component {
                 <div className="col-md-sm user-info">
 
                     <div align="center">
-                        <img src={userAvatarUrl}
-                             onError={this.onUserAvatarError}
-                             alt=''
-                             className="img-user-avatar"/>
+                        <Image url={userAvatarUrl}
+                               defaultUrl={FrontEndResourcesRoutingURLs.USER.AVATAR}
+                               className="img-user-avatar"/>
                     </div>
 
 
@@ -63,60 +53,46 @@ class UserProfileLeftSideInformation extends Component {
                     </div>
 
                     <div className="card following-card">
+
                         <div align="center">
                             <span>Following: {totalFollowings}</span>
                         </div>
+
                         <div>
-
                             <SideInformationFollowings/>
-
                         </div>
 
-                        {
-                            (() => {
-                                if (totalFollowings > 4) {
-                                    return (
-                                        <a href="#" className="d-flex justify-content-center align-items-center"
-                                           data-toggle="modal"
-                                           data-target=".modal-all-following">See all</a>
-                                    );
-                                }
-                            })()
-                        }
+
+                        {totalFollowings > 4 ? (
+                            <a href="#" className="d-flex justify-content-center align-items-center"
+                               data-toggle="modal"
+                               data-target=".modal-all-following">See all</a>
+                        ) : null}
 
                     </div>
 
                     <div className="card followers-card">
+
                         <div align="center">
                             <span>Followers: {totalFollowers}</span>
                         </div>
+
                         <div>
-
                             <SideInformationFollowers/>
-
                         </div>
 
-                        {
-                            (() => {
-                                if (totalFollowers > 4) {
-                                    return (
-                                        <a href="#" className="d-flex justify-content-center align-items-center"
-                                           data-toggle="modal"
-                                           data-target=".modal-all-followers">See all</a>
-                                    );
-                                }
-                            })()
-                        }
+                        {totalFollowers > 4 ? (
+                            <a href="#" className="d-flex justify-content-center align-items-center"
+                               data-toggle="modal"
+                               data-target=".modal-all-followers">See all</a>
+                        ) : null}
 
                     </div>
 
                     <div className="card user-location-card">
                         <div className="card-body user-location-body">
-
                             <SideInformationLocation/>
-
                         </div>
-
                     </div>
                 </div>
             </div>
