@@ -2,6 +2,7 @@ import React, {Component, Fragment} from 'react';
 import navbarGuestReduxHoc from "../../../../redux/hocs/navbar.guest.hoc";
 import FormHoc from "../../../../hocs/form.hoc";
 import UniversalPasswordsInputs from "../../../other/UniversalPasswordsInputs";
+import InputGroupIcon from "../../other/InputGroupIcon";
 
 class GuestRegister extends Component {
 
@@ -50,42 +51,21 @@ class GuestRegister extends Component {
             <Fragment>
                 <form className="px-4 py-3">
 
-                    <div className="form-group">
-                        <div className="input-group mb-2">
-
-                            <div className="input-group-prepend">
-                                <div className="input-group-text">👤</div>
-                            </div>
-
-                            <input type="text"
-                                   className="form-control"
-                                   name="username"
-                                   placeholder="Username..."
-                                   autoComplete="off"
-                                   onChange={onChange}/>
-
-                        </div>
-                    </div>
+                    <InputGroupIcon icon={'👤'}
+                                    type={'text'}
+                                    autoComplete={'on'}
+                                    name={'username'}
+                                    placeholder={'Username...'}
+                                    onChange={onChange}/>
 
                     <UniversalPasswordsInputs onChange={onChange}/>
 
-                    <div className="form-group">
-                        <div className="input-group mb-2">
-
-                            <div className="input-group-prepend">
-                                <div className="input-group-text">📧</div>
-                            </div>
-
-                            <input
-                                type="email"
-                                className="form-control"
-                                name="email"
-                                autoComplete="off"
-                                placeholder="Email..."
-                                onChange={onChange}/>
-
-                        </div>
-                    </div>
+                    <InputGroupIcon icon={'📧'}
+                                    type={'email'}
+                                    autoComplete={'on'}
+                                    name={'email'}
+                                    placeholder={'Email...'}
+                                    onChange={onChange}/>
 
                     <button type="button"
                             className="btn btn-primary btn-sm"
