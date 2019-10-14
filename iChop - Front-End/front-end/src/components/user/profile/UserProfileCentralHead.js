@@ -26,6 +26,7 @@ class UserProfileCentralHead extends Component {
         let isAuthenticated = true;
 
         let isFollowedMe = true;
+        let isImFollowedHim = false;
 
         return (
             <Fragment>
@@ -53,8 +54,15 @@ class UserProfileCentralHead extends Component {
                         <Fragment>
                             <div className="row">
                                 <div className="col-md-12 head">
-                                    <a href=' ' onClick={this.onFollow} className="follow-control">Follow</a>
-                                    <a href=' ' onClick={this.onUnfollow} className="unfollow-control">Unfollow</a>
+
+                                    {isImFollowedHim ?
+                                        (<a href=' '
+                                            onClick={this.onUnfollow}
+                                            className="unfollow-control">Unfollow</a>) : (
+                                            <a href=' '
+                                               onClick={this.onFollow}
+                                               className="follow-control">Follow</a>)}
+
                                 </div>
                             </div>
                             <div className="row">
