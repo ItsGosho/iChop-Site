@@ -7,29 +7,36 @@ class TextEditorAlignPicker extends Component {
 
 
     render() {
-        let {execCommand,preventDefault} = this.props;
-
         return (
             <span>
-                <a href="#"  className="dropdown-toggle"
-                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                   title="Text Align" onClick={preventDefault}>
+
+                <a href="#"
+                   className="dropdown-toggle"
+                   data-toggle="dropdown"
+                   aria-haspopup="true"
+                   aria-expanded="false"
+                   title="Text Align" onClick={(event => {
+                    event.preventDefault()
+                })}>
                     <i className="material-icons">{MaterialIcons.FORMAT_ALIGN_JUSTIFY}</i>
                 </a>
 
                 <ul className="dropdown-menu scrollable-menu" role="menu">
 
-                    <a href="#" onClick={execCommand(TextEditorCommands.ALIGN_LEFT)}>
-                        <li><i className="material-icons">{MaterialIcons.FORMAT_ALIGN_LEFT}</i>Align Left</li>
-                    </a>
+                    <Option title="Left"
+                            command={TextEditorCommands.ALIGN_LEFT}
+                            type={MaterialIcons.FORMAT_ALIGN_LEFT}
+                            text="Align Left"/>
 
-                    <a href="#" onClick={execCommand(TextEditorCommands.ALIGN_CENTER)}>
-                        <li><i className="material-icons">{MaterialIcons.FORMAT_ALIGN_CENTER}</i>Align Center</li>
-                    </a>
+                    <Option title="Center"
+                            command={TextEditorCommands.ALIGN_CENTER}
+                            type={MaterialIcons.FORMAT_ALIGN_CENTER}
+                            text="Align Center"/>
 
-                    <a href="#" onClick={execCommand(TextEditorCommands.ALIGN_RIGHT)}>
-                        <li><i className="material-icons">{MaterialIcons.FORMAT_ALIGN_RIGHT}</i>Align Right</li>
-                    </a>
+                    <Option title="Right"
+                            command={TextEditorCommands.ALIGN_RIGHT}
+                            type={MaterialIcons.FORMAT_ALIGN_RIGHT}
+                            text="Align Right"/>
 
                 </ul>
 
@@ -38,4 +45,14 @@ class TextEditorAlignPicker extends Component {
     }
 }
 
-export default CommandExecutorHoc(TextEditorAlignPicker);
+const Option = CommandExecutorHoc((props) => {
+    let {title, command, type, text, execCommand} = props;
+
+    return (
+        <a href=' ' title={title} onClick={execCommand(command)}>
+            <li><i className="material-icons">{type}</i>{text}</li>
+        </a>
+    );
+});
+
+export default TextEditorAlignPicker;
