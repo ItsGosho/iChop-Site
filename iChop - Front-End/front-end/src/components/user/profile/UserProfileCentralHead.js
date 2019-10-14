@@ -56,12 +56,8 @@ class UserProfileCentralHead extends Component {
                                 <div className="col-md-12 head">
 
                                     {isImFollowedHim ?
-                                        (<a href=' '
-                                            onClick={this.onUnfollow}
-                                            className="unfollow-control">Unfollow</a>) : (
-                                            <a href=' '
-                                               onClick={this.onFollow}
-                                               className="follow-control">Follow</a>)}
+                                        (<FollowControlButton onClick={this.onUnfollow} text="Unfollow"/>) :
+                                        (<FollowControlButton onClick={this.onFollow} text="Follow"/>)}
 
                                 </div>
                             </div>
@@ -98,5 +94,17 @@ class UserProfileCentralHead extends Component {
     }
 
 }
+
+const FollowControlButton = (props) => {
+    let {onClick, text} = props;
+
+    return (
+        <a href='#'
+           onClick={onClick}
+           className="follow-control">
+            <span>{text}</span>
+        </a>
+    )
+};
 
 export default UserProfileCentralHead;
