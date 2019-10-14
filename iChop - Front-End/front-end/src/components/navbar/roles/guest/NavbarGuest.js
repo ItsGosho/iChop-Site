@@ -11,12 +11,27 @@ class NavbarGuest extends Component {
         super(props);
 
         this.showDropdown = this.showDropdown.bind(this);
+        this.getDropdown = this.getDropdown.bind(this);
     }
 
     showDropdown() {
         let toShow = !this.props.redux.showDropdown;
 
         this.props.showDropdown(toShow);
+    }
+
+    getDropdown() {
+        if (this.props.redux.isLoginSelected) {
+            return (<GuestLoginDropdown/>);
+        }
+
+        if (this.props.redux.isRegisterSelected) {
+            return (<GuestRegisterDropdown/>);
+        }
+
+        if (this.props.redux.isForgottenPasswordSelected) {
+            return (<GuestForgottenPasswordDropdown/>);
+        }
     }
 
     render() {
@@ -30,32 +45,13 @@ class NavbarGuest extends Component {
                     Sign In
                 </button>
 
-                {
-                    (() => {
-                        if (this.props.redux.showDropdown) {
-                            return (
-                                <div
-                                    className={"dropdown-menu dropdown-menu-right guest-navbar-form " + (this.props.showDropdown ? 'show' : '')}>
-                                    {
-                                        (() => {
-                                            if (this.props.redux.isLoginSelected) {
-                                                return (<GuestLoginDropdown/>);
-                                            }
+                {this.props.redux.showDropdown ? (
+                    <div
+                        className={`dropdown-menu dropdown-menu-right guest-navbar-form ${this.props.showDropdown ? 'show' : ''}`}>
+                        {this.getDropdown()}
+                    </div>
+                ) : null}
 
-                                            if (this.props.redux.isRegisterSelected) {
-                                                return (<GuestRegisterDropdown/>);
-                                            }
-
-                                            if (this.props.redux.isForgottenPasswordSelected) {
-                                                return (<GuestForgottenPasswordDropdown/>);
-                                            }
-                                        })()
-                                    }
-                                </div>
-                            );
-                        }
-                    })()
-                }
             </Fragment>
         );
     }
