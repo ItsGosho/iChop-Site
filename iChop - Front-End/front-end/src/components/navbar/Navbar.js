@@ -14,11 +14,22 @@ class Navbar extends Component {
     constructor(props) {
         super(props);
 
-
+        this.getNavbar = this.getNavbar.bind(this);
     }
 
     getNavbar(role) {
-
+        switch (role) {
+            case Roles.USER:
+                return (<NavbarUser/>);
+            case Roles.MODERATOR:
+                return (<NavbarModerator/>);
+            case Roles.ADMIN:
+                return (<NavbarAdmin/>);
+            case Roles.OWNER:
+                return (<NavbarOwner/>);
+            default:
+                return (<GuestNavbar/>);
+        }
     }
 
     render() {
@@ -49,22 +60,7 @@ class Navbar extends Component {
                     <div className="collapse navbar-collapse" id="core-navigation-bar">
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item dropdown active">
-                                {
-                                    (() => {
-                                        switch (role) {
-                                            case Roles.USER:
-                                                return (<NavbarUser/>);
-                                            case Roles.MODERATOR:
-                                                return (<NavbarModerator/>);
-                                            case Roles.ADMIN:
-                                                return (<NavbarAdmin/>);
-                                            case Roles.OWNER:
-                                                return (<NavbarOwner/>);
-                                            default:
-                                                return (<GuestNavbar/>);
-                                        }
-                                    })()
-                                }
+                                {this.getNavbar(role)}
                             </li>
                         </ul>
                     </div>
