@@ -35,7 +35,6 @@ class Navbar extends Component {
     render() {
         let role = '';
 
-
         return (
             <div className="container">
                 <nav className="navbar navbar-expand-lg navbar-light bg-light rounded">

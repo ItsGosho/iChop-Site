@@ -13,7 +13,6 @@ class NavbarModerator extends Component {
 
         return (
             <Fragment>
-
                 <NavbarAuthenticatedButton/>
 
                 <NavbarAuthenticatedList>
@@ -22,7 +21,6 @@ class NavbarModerator extends Component {
                     <DropdownIconLink to={RoutingURLs.COMMENT.REPORT.ALL} icon={'⚠'} text={'Reports'}/>
 
                 </NavbarAuthenticatedList>
-
             </Fragment>
         );
     }

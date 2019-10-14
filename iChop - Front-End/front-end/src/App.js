@@ -34,7 +34,7 @@ function App() {
 
             </div>*/}
 
-            <ThreadRead/>
+            <ThreadCreate/>
 
             <Footer/>
         </Fragment>

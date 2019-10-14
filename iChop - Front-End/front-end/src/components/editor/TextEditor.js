@@ -14,30 +14,18 @@ import ModalOpen from "../modal/ModalOpen";
 class TextEditor extends Component {
 
     render() {
-        let {execCommand} = this.props;
 
         return (
             <div className="col-md-8">
 
-                <a href="#" title="Bold"
-                   onClick={execCommand(TextEditorCommands.FORMAT_BOLD)}>
-                    <i className="material-icons">{MaterialIcons.FORMAT_BOLD}</i>
-                </a>
 
-                <a href="#" title="Italic"
-                   onClick={execCommand(TextEditorCommands.FORMAT_ITALIC)}>
-                    <i className="material-icons">{MaterialIcons.FORMAT_ITALIC}</i>
-                </a>
-
-                <a href="#" title="Underline"
-                   onClick={execCommand(TextEditorCommands.FORMAT_UNDERLINE)}>
-                    <i className="material-icons">{MaterialIcons.FORMAT_UNDERLINE}</i>
-                </a>
+                <Option title="Bold" command={TextEditorCommands.FORMAT_BOLD} type={MaterialIcons.FORMAT_BOLD}/>
+                <Option title="Italic" command={TextEditorCommands.FORMAT_ITALIC} type={MaterialIcons.FORMAT_ITALIC}/>
+                <Option title="Underline" command={TextEditorCommands.FORMAT_UNDERLINE}
+                        type={MaterialIcons.FORMAT_UNDERLINE}/>
 
                 <TextEditorColorPicker/>
-
                 <TextEditorFontSizePicker/>
-
                 <TextEditorFontPicker/>
 
 
@@ -54,19 +42,9 @@ class TextEditor extends Component {
 
                 <TextEditorInsertImageModal/>
 
-
-                <a href="#" title="Undo" onClick={execCommand(TextEditorCommands.UNDO)}>
-                    <i className="material-icons">{MaterialIcons.UNDO}</i>
-                </a>
-
-                <a href="#" title="Redo" onClick={execCommand(TextEditorCommands.REDO)}>
-                    <i className="material-icons">{MaterialIcons.REDO}</i>
-                </a>
-
-                <a href="#" title="Remove Formatting"
-                   onClick={execCommand(TextEditorCommands.REMOVE_FORMAT)}>
-                    <i className="material-icons">{MaterialIcons.FORMAT_CLEAR}</i>
-                </a>
+                <Option title="Undo" command={TextEditorCommands.UNDO} type={MaterialIcons.UNDO}/>
+                <Option title="Redo" command={TextEditorCommands.REDO} type={MaterialIcons.REDO}/>
+                <Option title="Remove" command={TextEditorCommands.REMOVE_FORMAT} type={MaterialIcons.REMOVE_FORMAT}/>
 
                 <TextEditorAlignPicker/>
             </div>
@@ -74,4 +52,14 @@ class TextEditor extends Component {
     }
 }
 
-export default CommandExecutorHoc(TextEditor);
+const Option = CommandExecutorHoc((props) => {
+    let {title, command, type, execCommand} = props;
+
+    return (
+        <a href=' ' title={title} onClick={execCommand(command)}>
+            <i className="material-icons">{type}</i>
+        </a>
+    );
+});
+
+export default TextEditor;

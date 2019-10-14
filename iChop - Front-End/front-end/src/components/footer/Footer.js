@@ -14,10 +14,10 @@ class Footer extends Component {
     constructor(props) {
         super(props);
 
-        this.getFooterByRole = this.getFooterByRole.bind(this);
+        this.getFooter = this.getFooter.bind(this);
     }
 
-    getFooterByRole(role) {
+    getFooter(role) {
         switch (role) {
             case Roles.USER:
                 return (<UserFooter/>);
@@ -44,7 +44,7 @@ class Footer extends Component {
                             <FooterHeader/>
                         </div>
 
-                        {this.getFooterByRole(role)}
+                        {this.getFooter(role)}
 
                     </div>
 
