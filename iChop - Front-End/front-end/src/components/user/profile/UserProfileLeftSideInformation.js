@@ -11,6 +11,7 @@ import SideInformationFollowings from "./side/SideInformationFollowings";
 import SideInformationFollowers from "./side/SideInformationFollowers";
 import './UserProfileLeftSideInformation.css'
 import Image from "../../other/Image";
+import UserFollowingsModal from "./modals/UserFollowingsModal";
 
 class UserProfileLeftSideInformation extends Component {
 
@@ -68,6 +69,8 @@ class UserProfileLeftSideInformation extends Component {
                                data-toggle="modal"
                                data-target=".modal-all-following">See all</a>
                         ) : null}
+
+                        <UserFollowingsModal/>
 
                     </div>
 
