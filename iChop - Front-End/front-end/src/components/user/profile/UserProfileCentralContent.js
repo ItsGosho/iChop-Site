@@ -33,35 +33,29 @@ class UserProfileCentralContent extends Component {
                             </div>
                         </div>
 
-                        {
-                            (() => {
-                                if (isAuthenticated) {
-                                    return (
-                                        <Fragment>
-                                            <div className="row">
-                                                <div className="col-md-12 head">
-                                                    <a href=' '
-                                                       onClick={(event) => {
-                                                           event.preventDefault();
-                                                       }}
-                                                       className="follow-controls">Follow</a>
-                                                    <a href=' ' onClick={(event) => {
-                                                        event.preventDefault();
-                                                    }}
-                                                       className="follow-controls">Unfollow</a>
+                        {isAuthenticated ? (
+                            <Fragment>
+                                <div className="row">
+                                    <div className="col-md-12 head">
+                                        <a href=' '
+                                           onClick={(event) => {
+                                               event.preventDefault();
+                                           }}
+                                           className="follow-controls">Follow</a>
+                                        <a href=' ' onClick={(event) => {
+                                            event.preventDefault();
+                                        }}
+                                           className="follow-controls">Unfollow</a>
 
-                                                </div>
-                                            </div>
-                                            <div className="row">
-                                                <div className="col-md-12 head">
-                                                    <small className="is-followed-you"/>
-                                                </div>
-                                            </div>
-                                        </Fragment>
-                                    )
-                                }
-                            })()
-                        }
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <div className="col-md-12 head">
+                                        <small className="is-followed-you"/>
+                                    </div>
+                                </div>
+                            </Fragment>
+                        ) : null}
 
                         <div className="dropdown-divider"/>
                     </div>
@@ -70,17 +64,13 @@ class UserProfileCentralContent extends Component {
                         <div className="status-div">
                             <div className="row">
                                 <div>
-                                    {
-                                        (() => {
-                                            if (statusMessage != null) {
-                                                return (
-                                                    <div className="col-md-auto head">
-                                                        <span className="status-message">{statusMessage}</span>
-                                                    </div>
-                                                );
-                                            }
-                                        })()
-                                    }
+
+                                    {statusMessage != null ? (
+                                        <div className="col-md-auto head">
+                                            <span className="status-message">{statusMessage}</span>
+                                        </div>
+                                    ) : null}
+
                                 </div>
                             </div>
                         </div>
