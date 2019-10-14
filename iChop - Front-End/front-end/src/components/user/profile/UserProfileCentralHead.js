@@ -60,7 +60,9 @@ class UserProfileCentralHead extends Component {
                             </div>
                             <div className="row">
                                 <div className="col-md-12 head">
-                                    <small className="is-followed-you">This user is following you ✋</small>
+                                    {isFollowedMe ?
+                                        (<small className="is-followed-you">This user is following you ✋</small>)
+                                        : null}
                                 </div>
                             </div>
                         </Fragment>
