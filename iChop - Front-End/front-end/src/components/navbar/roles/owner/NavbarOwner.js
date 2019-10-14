@@ -7,37 +7,34 @@ import NavbarAuthenticatedList from "../../other/NavbarAuthenticatedList";
 
 class NavbarOwner extends Component {
 
-
     render() {
 
         return (
             <Fragment>
-
                 <NavbarAuthenticatedButton/>
 
                 <NavbarAuthenticatedList>
 
-                    <Link className="dropdown-item" to={RoutingURLs.THREAD.CREATE}>
-                        <small>🚩</small>
-                        <span>Create Thread</span>
-                    </Link>
-
-                    <Link className="dropdown-item" to={RoutingURLs.USER.ALL}>
-                        <small>👥</small>
-                        <span>All Users</span>
-                    </Link>
-
-                    <Link className="dropdown-item" to={RoutingURLs.COMMENT.REPORT.ALL}>
-                        <small>⚠</small>
-                        <span>Reports</span>
-                    </Link>
+                    <DropDownLink to={RoutingURLs.THREAD.CREATE} icon={'🚩'} text={'Create Thread'}/>
+                    <DropDownLink to={RoutingURLs.USER.ALL} icon={'👥'} text={'Users'}/>
+                    <DropDownLink to={RoutingURLs.COMMENT.REPORT.ALL} icon={'⚠'} text={'Reports'}/>
 
                 </NavbarAuthenticatedList>
-
             </Fragment>
         );
     }
 
 }
+
+const DropDownLink = (props) => {
+    let {to, icon, text} = props;
+
+    return (
+        <Link className="dropdown-item" to={to}>
+            <small>{icon}</small>
+            {text}
+        </Link>
+    );
+};
 
 export default NavbarOwner;

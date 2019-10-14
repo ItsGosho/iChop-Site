@@ -10,8 +10,7 @@ import RoutingURLs from "../../constants/routing.constants";
 import FrontEndResourcesRoutingURLs from "../../constants/front-end.resources.routings";
 
 class Navbar extends Component {
-
-
+    
     render() {
         let role = Roles.ADMIN;
 

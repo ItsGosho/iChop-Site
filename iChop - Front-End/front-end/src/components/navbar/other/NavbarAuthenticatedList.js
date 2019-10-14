@@ -29,8 +29,6 @@ let NavbarAuthenticatedList = CreateReactClass({
 
 });
 
-/*TODO: Да продължа със разбиването:*/
-
 const DropDownLink = (props) => {
     let {to, icon, text} = props;
 
