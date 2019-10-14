@@ -28,8 +28,7 @@ class UserProfileCentralHead extends Component {
         let isFollowedMe = true;
 
         return (
-            <div className="central-content">
-
+            <Fragment>
                 <div className="col-md-auto username_and_rank_follow_unfollow">
                     <div className="div-first-head">
 
@@ -54,8 +53,8 @@ class UserProfileCentralHead extends Component {
                         <Fragment>
                             <div className="row">
                                 <div className="col-md-12 head">
-                                    <a href=' ' onClick={this.onFollow} className="follow-controls">Follow</a>
-                                    <a href=' ' onClick={this.onUnfollow} className="follow-controls">Unfollow</a>
+                                    <a href=' ' onClick={this.onFollow} className="follow-control">Follow</a>
+                                    <a href=' ' onClick={this.onUnfollow} className="unfollow-control">Unfollow</a>
                                 </div>
                             </div>
                             <div className="row">
@@ -86,7 +85,7 @@ class UserProfileCentralHead extends Component {
                         </div>
                     </div>
                 </div>
-            </div>
+            </Fragment>
         );
     }
 
