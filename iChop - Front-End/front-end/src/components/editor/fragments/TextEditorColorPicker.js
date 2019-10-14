@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import TextEditorCommands from "../text.editor.commands.constants";
-import CommandExecutorHoc from "../command.executor.hoc";
 import MaterialIcons from "../../../constants/material.icons.types.constants";
 
 class TextEditorColorPicker extends Component {
@@ -49,7 +48,7 @@ class TextEditorColorPicker extends Component {
                    <Color title="Indian Red" color="indianred"/>
                    <Color title="Green" color="green"/>
                    <Color title="Dark Green" color="darkgreen"/>
-                   
+
                    <Color title="Yellow Green" color="greenyellow"/>
                    <Color title="Blue" color="blue"/>
                    <Color title="Dark Blue" color="darkblue"/>

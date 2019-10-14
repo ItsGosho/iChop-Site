@@ -1,13 +1,8 @@
 import React, {Component, Fragment} from 'react';
 import dateFormat from 'dateformat'
-import RoutingURLs from "../../../constants/routing.constants";
-import FrontEndResourcesRoutingURLs from "../../../constants/front-end.resources.routings";
-import ServerRoutingURLs from "../../../constants/server.routing.urls";
-import {Link} from "react-router-dom";
 import Interweave from "interweave";
 import CommentInformation from "./comments/CommentInformation";
 import CommentCreatorInformation from "./comments/CommentCreatorInformation";
-import CommentReportModal from "./comments/CommentReportModal";
 import CommentOptionsDropdown from "./comments/CommentOptionsDropdown";
 import CommentReportButton from "./comments/CommentReportButton";
 import CommentReactDropdown from "./comments/CommentReactDropdown";

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import qs from 'qs';
-import {Link, Redirect} from "react-router-dom";
+import {Link} from "react-router-dom";
 import Pagination from "react-bootstrap/Pagination";
 
 class PaginationNav extends Component {
