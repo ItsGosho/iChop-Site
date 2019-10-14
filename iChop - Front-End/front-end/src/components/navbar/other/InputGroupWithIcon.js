@@ -3,7 +3,7 @@ import React, {Component} from "react";
 class InputGroupWithIcon extends Component {
 
     render() {
-        let {icon, type, autoComplete, name, placeHolder, onChange} = this.props;
+        let {icon, type, autoComplete, name, placeholder, onChange} = this.props;
 
         return (
             <div className="form-group">
@@ -17,7 +17,7 @@ class InputGroupWithIcon extends Component {
                            className="form-control"
                            autoComplete={autoComplete}
                            name={name}
-                           placeholder={placeHolder}
+                           placeholder={placeholder}
                            onChange={onChange}/>
                 </div>
             </div>

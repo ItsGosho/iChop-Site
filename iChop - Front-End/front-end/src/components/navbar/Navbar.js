@@ -12,7 +12,7 @@ import FrontEndResourcesRoutingURLs from "../../constants/front-end.resources.ro
 class Navbar extends Component {
     
     render() {
-        let role = Roles.ADMIN;
+        let role = '';
 
 
         return (

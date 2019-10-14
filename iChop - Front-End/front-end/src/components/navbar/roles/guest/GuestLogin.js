@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import navbarGuestReduxHoc from "../../../../redux/hocs/navbar.guest.hoc";
 import FormHoc from "../../../../hocs/form.hoc";
+import InputGroupWithIcon from "../../other/InputGroupWithIcon";
 
 class GuestLogin extends Component {
 
@@ -25,38 +26,19 @@ class GuestLogin extends Component {
 
                 <form className="px-4 py-3">
 
-                    <div className="form-group">
-                        <div className="input-group mb-2">
+                    <InputGroupWithIcon icon={'👤/📧'}
+                                        type={'text'}
+                                        autoComplete={'on'}
+                                        name={'usernameOrEmail'}
+                                        placeholder={'Username or Email...'}
+                                        onChange={onChange}/>
 
-                            <div className="input-group-prepend">
-                                <div className="input-group-text">👤/📧</div>
-                            </div>
-
-                            <input type="text"
-                                   className="form-control"
-                                   autoComplete="on"
-                                   name="usernameOrEmail"
-                                   placeholder="Username or Email..."
-                                   onChange={onChange}/>
-                        </div>
-                    </div>
-
-                    <div className="form-group">
-                        <div className="input-group mb-2">
-
-                            <div className="input-group-prepend">
-                                <div className="input-group-text">🔒</div>
-                            </div>
-
-                            <input type="password"
-                                   className="form-control"
-                                   autoComplete="on"
-                                   name="password"
-                                   placeholder="Password..."
-                                   onChange={onChange}/>
-
-                        </div>
-                    </div>
+                    <InputGroupWithIcon icon={'🔒'}
+                                        type={'password'}
+                                        autoComplete={'on'}
+                                        name={'password'}
+                                        placeholder={'Password...'}
+                                        onChange={onChange}/>
 
                     <button type="button"
                             data-style="zoom-in"
