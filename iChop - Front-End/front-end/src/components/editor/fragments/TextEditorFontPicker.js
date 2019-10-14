@@ -15,8 +15,7 @@ class TextEditorFontPicker extends Component {
                     <i className="material-icons">{MaterialIcons.FONT_DOWNLOAD}</i>
                 </a>
 
-                <ul className="dropdown-menu scrollable-menu" role="menu"
-                    style={{'minHeight': '100px', 'maxHeight': '100px', 'overflow': 'auto'}}>
+                <ul className="dropdown-menu scrollable-menu" role="menu">
 
                     <Font type="Arial"/>
                     <Font type="Book Antiqua"/>

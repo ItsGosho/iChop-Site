@@ -7,3 +7,9 @@
     max-height: 25vw;
     overflow: auto;
 }
+
+.scrollable-menu {
+    overflow: auto;
+    min-height: 100px;
+    max-height: 100px;
+}

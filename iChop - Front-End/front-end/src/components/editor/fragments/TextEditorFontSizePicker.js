@@ -29,8 +29,7 @@ class TextEditorFontSizePicker extends Component {
                     <i className="material-icons">{MaterialIcons.FORMAT_SIZE}</i>
                 </a>
 
-                <ul className="dropdown-menu scrollable-menu" role="menu"
-                    style={{'minHeight': '100px', 'maxHeight': '100px', 'overflow': 'auto'}}>
+                <ul className="dropdown-menu scrollable-menu" role="menu">
 
                     <a href="#" onClick={this.autoFontSizeProceed}>
                         <li data-content="1" style={{'fontSize': '9px'}}>1</li>
