@@ -11,6 +11,26 @@ import FooterHeader from "./etc/FooterHeader";
 
 class Footer extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.getFooterByRole = this.getFooterByRole.bind(this);
+    }
+
+    getFooterByRole(role) {
+        switch (role) {
+            case Roles.USER:
+                return (<UserFooter/>);
+            case Roles.MODERATOR:
+                return (<ModeratorFooter/>);
+            case Roles.ADMIN:
+                return (<AdminFooter/>);
+            case Roles.OWNER:
+                return (<OwnerFooter/>);
+            default:
+                return (<GuestFooter/>);
+        }
+    }
 
     render() {
         let role = Roles.ADMIN;
@@ -24,22 +44,8 @@ class Footer extends Component {
                             <FooterHeader/>
                         </div>
 
-                            {
-                                (() => {
-                                    switch (role) {
-                                        case Roles.USER:
-                                            return (<UserFooter/>);
-                                        case Roles.MODERATOR:
-                                            return (<ModeratorFooter/>);
-                                        case Roles.ADMIN:
-                                            return (<AdminFooter/>);
-                                        case Roles.OWNER:
-                                            return (<OwnerFooter/>);
-                                        default:
-                                            return (<GuestFooter/>);
-                                    }
-                                })()
-                            }
+                        {this.getFooterByRole(role)}
+                        
                     </div>
 
                 </div>
