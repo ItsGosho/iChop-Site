@@ -23,20 +23,20 @@ class TextEditorAlignPicker extends Component {
 
                 <ul className="dropdown-menu scrollable-menu" role="menu">
 
-                    <Option title="Left"
-                            command={TextEditorCommands.ALIGN_LEFT}
-                            type={MaterialIcons.FORMAT_ALIGN_LEFT}
-                            text="Align Left"/>
+                    <Align title="Left"
+                           command={TextEditorCommands.ALIGN_LEFT}
+                           type={MaterialIcons.FORMAT_ALIGN_LEFT}
+                           text="Align Left"/>
 
-                    <Option title="Center"
-                            command={TextEditorCommands.ALIGN_CENTER}
-                            type={MaterialIcons.FORMAT_ALIGN_CENTER}
-                            text="Align Center"/>
+                    <Align title="Center"
+                           command={TextEditorCommands.ALIGN_CENTER}
+                           type={MaterialIcons.FORMAT_ALIGN_CENTER}
+                           text="Align Center"/>
 
-                    <Option title="Right"
-                            command={TextEditorCommands.ALIGN_RIGHT}
-                            type={MaterialIcons.FORMAT_ALIGN_RIGHT}
-                            text="Align Right"/>
+                    <Align title="Right"
+                           command={TextEditorCommands.ALIGN_RIGHT}
+                           type={MaterialIcons.FORMAT_ALIGN_RIGHT}
+                           text="Align Right"/>
 
                 </ul>
 
@@ -45,11 +45,11 @@ class TextEditorAlignPicker extends Component {
     }
 }
 
-const Option = CommandExecutorHoc((props) => {
+const Align = CommandExecutorHoc((props) => {
     let {title, command, type, text, execCommand} = props;
 
     return (
-        <a href=' ' title={title} onClick={execCommand(command)}>
+        <a href='#' title={title} onClick={execCommand(command)}>
             <li><i className="material-icons">{type}</i>{text}</li>
         </a>
     );
