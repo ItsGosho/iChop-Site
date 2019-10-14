@@ -11,10 +11,7 @@ class UserProfileCentralContent extends Component {
             <Fragment>
                 <div className="central-content">
 
-
-                    <div className="row">
-                        <UserProfileCentralHead/>
-                    </div>
+                    <UserProfileCentralHead/>
 
                     <div className="col-md-auto user-information-navigation">
 
