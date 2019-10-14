@@ -45,7 +45,7 @@ class Footer extends Component {
                         </div>
 
                         {this.getFooterByRole(role)}
-                        
+
                     </div>
 
                 </div>

@@ -2,6 +2,7 @@ import React from "react";
 import CreateReactClass from 'create-react-class';
 import {Link} from "react-router-dom";
 import RoutingURLs from "../../../constants/routing.constants";
+import DropdownIconLink from "../../other/DropdownIconLink";
 
 let NavbarAuthenticatedList = CreateReactClass({
 
@@ -15,29 +16,18 @@ let NavbarAuthenticatedList = CreateReactClass({
         return (
             <div className="dropdown-menu dropdown-menu-right">
 
-                <DropDownLink to={profileUrl} icon={'👤'} text={'Profile'}/>
-                <DropDownLink to={informationUrl} icon={'⚙'} text={'Options'}/>
+                <DropdownIconLink to={profileUrl} icon={'👤'} text={'Profile'}/>
+                <DropdownIconLink to={informationUrl} icon={'⚙'} text={'Options'}/>
 
                 {this.props.children}
 
                 <div className="dropdown-divider"/>
 
-                <DropDownLink to={logoutUrl} icon={'🚪'} text={'Logout'}/>
+                <DropdownIconLink to={logoutUrl} icon={'🚪'} text={'Logout'}/>
             </div>
         );
     }
 
 });
-
-const DropDownLink = (props) => {
-    let {to, icon, text} = props;
-
-    return (
-        <Link className="dropdown-item" to={to}>
-            <small>{icon}</small>
-            {text}
-        </Link>
-    );
-};
 
 export default NavbarAuthenticatedList;

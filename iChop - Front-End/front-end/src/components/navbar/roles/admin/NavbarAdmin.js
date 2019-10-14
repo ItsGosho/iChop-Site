@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 import '../NavbarAuthenticated.css'
 import NavbarAuthenticatedButton from "../../other/NavbarAuthenticatedButton";
 import NavbarAuthenticatedList from "../../other/NavbarAuthenticatedList";
+import DropdownIconLink from "../../../other/DropdownIconLink";
 
 class NavbarAdmin extends Component {
 
@@ -17,9 +18,9 @@ class NavbarAdmin extends Component {
 
                 <NavbarAuthenticatedList>
 
-                    <DropDownLink to={RoutingURLs.THREAD.CREATE} icon={'🚩'} text={'Create Thread'}/>
-                    <DropDownLink to={RoutingURLs.USER.ALL} icon={'👥'} text={'Users'}/>
-                    <DropDownLink to={RoutingURLs.COMMENT.REPORT.ALL} icon={'⚠'} text={'Reports'}/>
+                    <DropdownIconLink to={RoutingURLs.THREAD.CREATE} icon={'🚩'} text={'Create Thread'}/>
+                    <DropdownIconLink to={RoutingURLs.USER.ALL} icon={'👥'} text={'Users'}/>
+                    <DropdownIconLink to={RoutingURLs.COMMENT.REPORT.ALL} icon={'⚠'} text={'Reports'}/>
 
                 </NavbarAuthenticatedList>
 
@@ -28,16 +29,5 @@ class NavbarAdmin extends Component {
     }
 
 }
-
-const DropDownLink = (props) => {
-    let {to, icon, text} = props;
-
-    return (
-        <Link className="dropdown-item" to={to}>
-            <small>{icon}</small>
-            {text}
-        </Link>
-    );
-};
 
 export default NavbarAdmin;
