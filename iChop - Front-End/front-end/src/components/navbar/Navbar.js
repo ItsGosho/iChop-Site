@@ -13,7 +13,7 @@ class Navbar extends Component {
 
 
     render() {
-        let role = /*Roles.ADMIN*/'';
+        let role = Roles.ADMIN;
 
 
         return (

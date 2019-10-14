@@ -7,35 +7,39 @@ let NavbarAuthenticatedList = CreateReactClass({
 
     render() {
         let username = '';
+
         let profileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', username);
+        let informationUrl = RoutingURLs.USER.OPTIONS.INFORMATION;
+        let logoutUrl = RoutingURLs.AUTHENTICATION.LOGOUT;
 
         return (
             <div className="dropdown-menu dropdown-menu-right">
 
-                <Link className="dropdown-item" to={profileUrl}>
-                    <small>👤</small>
-                    <span>Profile</span>
-                </Link>
-
-                <Link className="dropdown-item" to={RoutingURLs.USER.OPTIONS.INFORMATION}>
-                    <small>⚙</small>
-                    <span>Options</span>
-                </Link>
+                <DropDownLink to={profileUrl} icon={'👤'} text={'Profile'}/>
+                <DropDownLink to={informationUrl} icon={'⚙'} text={'Options'}/>
 
                 {this.props.children}
 
                 <div className="dropdown-divider"/>
 
-                <Link className="dropdown-item" to={RoutingURLs.AUTHENTICATION.LOGOUT}>
-                    <small>🚪</small>
-                    Logout
-                </Link>
-
+                <DropDownLink to={logoutUrl} icon={'🚪'} text={'Logout'}/>
             </div>
         );
     }
 
 });
 
+/*TODO: Да продължа със разбиването:*/
+
+const DropDownLink = (props) => {
+    let {to, icon, text} = props;
+
+    return (
+        <Link className="dropdown-item" to={to}>
+            <small>{icon}</small>
+            {text}
+        </Link>
+    );
+};
 
 export default NavbarAuthenticatedList;
