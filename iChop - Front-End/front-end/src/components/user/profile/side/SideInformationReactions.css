@@ -12,14 +12,12 @@
 
 
 
-.total-reactions-like {
+.total-reactions {
     display: inline-block;
     float: right;
-    color: darkgreen;
 }
 
-.total-reactions-dislike {
+.total-reactions {
     display: inline-block;
     float: right;
-    color: indianred;
 }
