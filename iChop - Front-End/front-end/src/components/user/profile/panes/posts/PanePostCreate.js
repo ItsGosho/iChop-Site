@@ -2,20 +2,9 @@ import React, {Component} from 'react';
 import ServerRoutingURLs from "../../../../../constants/server.routing.urls";
 import FrontEndResourcesRoutingURLs from "../../../../../constants/front-end.resources.routings";
 import './PanePostCreate.css';
+import Image from "../../../../other/Image";
 
 class PanePostCreate extends Component {
-
-    constructor(props) {
-        super(props);
-
-        this.onUserAvatarError = this.onUserAvatarError.bind(this);
-    }
-
-
-    onUserAvatarError(event) {
-        event.target.onerror = null;
-        event.target.src = FrontEndResourcesRoutingURLs.USER.AVATAR;
-    }
 
     render() {
         let username = 'ItsGosho';
@@ -26,13 +15,9 @@ class PanePostCreate extends Component {
                 <div className="row">
 
                     <div className="col-md-1">
-                        <object
-                            data={userAvatarUrl}
-                            type="image/png"
-                            className="img-user-avatar" style={{'width': '30px', 'height': '30px'}}>
-                            <img onError={this.onUserAvatarError} alt=' ' className="img-user-avatar"
-                                 style={{'width': '30px', 'height': '30px'}}/>
-                        </object>
+                        <Image url={userAvatarUrl}
+                               defaultUrl={FrontEndResourcesRoutingURLs.USER.AVATAR}
+                               className="pane-post-create-avatar"/>
                     </div>
 
                     <div className="col-lg">
