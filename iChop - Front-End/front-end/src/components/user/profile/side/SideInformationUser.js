@@ -1,5 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import dateFormat from "dateformat";
+import './SideInformationUser.css'
 
 class SideInformationUser extends Component {
 

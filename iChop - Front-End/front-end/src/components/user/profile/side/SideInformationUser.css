@@ -1,0 +1,31 @@
+.user-base-info-row {
+    font-size: 11px;
+}
+
+.user-base-info {
+    margin-top: 10px;font-size: 13px;
+}
+
+.user-base-info-body {
+    line-height: 13px;font-family: Consolas;margin-left: -20px;
+}
+
+.user-base-info-last-online-title{
+    column-width: 75px;
+}
+
+.user-base-info-last-online-content {
+    column-width: 100px;
+}
+
+.user-base-info-last-online-content span {
+    display: inline-block;float: right;
+}
+
+.user-base-info-registration_date-title {
+    font-size: 11px
+}
+
+.user-base-info-registration_date-title div {
+    column-width: 75px;
+}
