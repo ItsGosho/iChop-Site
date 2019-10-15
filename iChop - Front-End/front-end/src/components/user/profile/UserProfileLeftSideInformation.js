@@ -67,9 +67,9 @@ class UserProfileLeftSideInformation extends Component {
 
 
                         {totalFollowings > 4 ? (
-                            <a href="#" className="d-flex justify-content-center align-items-center"
-                               data-toggle="modal"
-                               data-target=".modal-all-following">See all</a>
+                            <ModalOpen relationTo="all-followings">
+                                <a href='#'>See all</a>
+                            </ModalOpen>
                         ) : null}
 
                         <UserFollowingsModal/>
