@@ -15,43 +15,33 @@ class SideInformationUser extends Component {
         return (
             <Fragment>
 
-                <div className="col-md-auto">
-                    <div className="row info-row">
-                        <div className="col-md">
-                            Last online:
-                        </div>
-                        <div className="col-md">
-                            <span className="info-content">{lastOnline}</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col-md-auto">
-                    <div className="row info-row">
-                        <div className="col-md">
-                            Joined on:
-                        </div>
-                        <div className="col-md">
-                            <span className="info-content">{registrationDate}</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col-md-auto">
-                    <div className="row info-row">
-                        <div className="col-md">
-                            Messages:
-                        </div>
-                        <div className="col-md">
-                               <span className="info-content">{totalMessages}</span>
-                        </div>
-                    </div>
-                </div>
+                <Info title="Last Online" content={lastOnline}/>
+                <Info title="Joined On" content={registrationDate}/>
+                <Info title="Messages" content={totalMessages}/>
 
             </Fragment>
         );
     }
-
 }
 
 export default SideInformationUser;
+
+const Info = (props) => {
+    let {title, content} = props;
+
+    return (
+        <div className="col-md-auto">
+            <div className="row info-row">
+
+                <div className="col-md">
+                    {title}:
+                </div>
+
+                <div className="col-md">
+                    <span className="info-content">{content}</span>
+                </div>
+
+            </div>
+        </div>
+    )
+};
