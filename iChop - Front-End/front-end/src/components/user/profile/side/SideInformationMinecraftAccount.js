@@ -21,13 +21,13 @@ class SideInformationMinecraftAccount extends Component {
                                     src={headAvatarUrl}
                                     alt=''
                                     style={{
-                                        'width': '30px',
-                                        'height': '30px',
+                                        'width': '25px',
+                                        'height': '25px',
                                         'marginLeft': '5px',
                                         'marginTop': '2px',
                                         'marginBottom': '2px'
                                     }}/>
-                                <Link to={accountProfileUrl}>
+                                <Link to={accountProfileUrl} style={{'marginLeft':'5px'}}>
                                     {accountName}
                                 </Link>
                             </div>

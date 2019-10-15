@@ -9,6 +9,7 @@ import './UserProfileLeftSideInformation.css'
 import Image from "../../other/Image";
 import SideInformationFollow from "./side/SideInformationFollow";
 import SideInformationReactions from "./side/SideInformationReactions";
+import SideInformationMinecraftAccount from "./side/SideInformationMinecraftAccount";
 
 class UserProfileLeftSideInformation extends Component {
 
@@ -27,7 +28,6 @@ class UserProfileLeftSideInformation extends Component {
                                className="img-user-avatar"/>
                     </div>
 
-
                     <div className="card user-base-info">
                         <div className="card-body user-base-info-body">
 
@@ -38,11 +38,12 @@ class UserProfileLeftSideInformation extends Component {
                         </div>
                     </div>
 
+                    <SideInformationMinecraftAccount/>
 
                     <div className="card reactions-given">
                         <div className="card-body reactions-given-body">
 
-                          <SideInformationReactions/>
+                            <SideInformationReactions/>
 
                         </div>
                     </div>
