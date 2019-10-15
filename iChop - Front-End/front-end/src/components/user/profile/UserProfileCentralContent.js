@@ -14,7 +14,13 @@ class UserProfileCentralContent extends Component {
             isSoonTabSelected: false,
             isInGameActivitySelected: false,
             isInformationSelected: false,
-        }
+        };
+
+        this.allTabsSelectionToFalse = this.allTabsSelectionToFalse.bind(this);
+        this.selectPostsTab = this.selectPostsTab.bind(this);
+        this.selectSoonTab = this.selectSoonTab.bind(this);
+        this.selectInGameActivityTab = this.selectInGameActivityTab.bind(this);
+        this.selectInformationTab = this.selectInformationTab.bind(this);
     }
 
     allTabsSelectionToFalse() {
@@ -54,25 +60,16 @@ class UserProfileCentralContent extends Component {
 
                     <UserProfileCentralHead/>
 
-                    <Link to={'/test'}>test</Link>
-
                     <div className="col-md-auto user-information-navigation">
 
                         <div className="navigation">
                             <ul className="nav nav-tabs">
-                                <li className="nav-item">
-                                    <a className="nav-link active" data-toggle='tab' href='#'>Profile posts</a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link" data-toggle='tab' href='#'>Soon</a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link" data-toggle='tab' href='#'>Latest In-Game
-                                        Activity</a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link" data-toggle='tab' href='#'>Information</a>
-                                </li>
+
+                                <Tab text="Profile posts" onClick={this.selectPostsTab}/>
+                                <Tab text="Soon" onClick={this.selectSoonTab}/>
+                                <Tab text="In-Game Activity" onClick={this.selectInGameActivityTab}/>
+                                <Tab text="Information" onClick={this.selectInformationTab}/>
+
                             </ul>
                         </div>
 
@@ -93,5 +90,15 @@ class UserProfileCentralContent extends Component {
     }
 
 }
+
+const Tab = (props) => {
+    let {text,onClick} = props;
+
+    return (
+        <li className="nav-item">
+            <a className="nav-link" data-toggle='tab' href='#' onClick={onClick}>{text}</a>
+        </li>
+    )
+};
 
 export default UserProfileCentralContent;
