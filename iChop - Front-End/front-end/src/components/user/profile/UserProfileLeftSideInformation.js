@@ -3,13 +3,12 @@ import ServerRoutingURLs from "../../../constants/server.routing.urls";
 import SideInformationLastOnline from "./side/SideInformationLastOnline";
 import SideInformationJoinedOn from "./side/SideInformationJoinedOn";
 import SideInformationMessages from "./side/SideInformationMessages";
-import SideInformationTotalLikes from "./side/SideInformationTotalLikes";
-import SideInformationTotalDislikes from "./side/SideInformationTotalDislikes";
 import SideInformationLocation from "./side/SideInformationLocation";
 import FrontEndResourcesRoutingURLs from "../../../constants/front-end.resources.routings";
 import './UserProfileLeftSideInformation.css'
 import Image from "../../other/Image";
 import SideInformationFollow from "./side/SideInformationFollow";
+import SideInformationReactions from "./side/SideInformationReactions";
 
 class UserProfileLeftSideInformation extends Component {
 
@@ -43,8 +42,7 @@ class UserProfileLeftSideInformation extends Component {
                     <div className="card reactions-given">
                         <div className="card-body reactions-given-body">
 
-                            <SideInformationTotalLikes/>
-                            <SideInformationTotalDislikes/>
+                          <SideInformationReactions/>
 
                         </div>
                     </div>
