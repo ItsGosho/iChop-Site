@@ -1,6 +1,11 @@
 import React, {Component, Fragment} from 'react';
 import './UserProfileCentralContent.css'
 import UserProfileCentralHead from "./UserProfileCentralHead";
+import {Link, Route, Switch} from "react-router-dom";
+import RoutingURLs from "../../../constants/routing.constants";
+import ReportsThread from "../../report/ReportsThread";
+import ReportsComment from "../../report/ReportsComment";
+import ReportsPost from "../../report/ReportsPost";
 
 class UserProfileCentralContent extends Component {
 
@@ -14,24 +19,23 @@ class UserProfileCentralContent extends Component {
 
                     <UserProfileCentralHead/>
 
+                    <Link to={'/test'}>test</Link>
+
                     <div className="col-md-auto user-information-navigation">
 
                         <div className="navigation">
                             <ul className="nav nav-tabs">
                                 <li className="nav-item">
-                                    <a className="nav-link active" data-toggle="tab" href="#posts">Profile posts</a>
+                                    <Link className="nav-link" to={'/posts'}>Profile posts</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" data-toggle="tab" href="#latest-activity">Latest Site
-                                        Activity</a>
+                                    <Link className="nav-link" to={'/soon'}>Soon</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" data-toggle="tab" href="#latest-in-game-activity">Lates
-                                        In-Game
-                                        Activity</a>
+                                    <Link className="nav-link" to={'/latest-in-game-activity'}>Latest In-Game Activity</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" data-toggle="tab" href="#information">Information</a>
+                                    <Link className="nav-link" to={'/information'}>Information</Link>
                                 </li>
                             </ul>
                         </div>
@@ -39,17 +43,16 @@ class UserProfileCentralContent extends Component {
 
                         <div className="tab-content">
 
-                            <div className="tab-pane container active" id="posts">
-                                {/* <th:block th:insert="user/profile/panes/user-profile-pane-posts"></th:block>*/}
-                            </div>
+                            <div className="tab-pane container active">Posts</div>
+                            <div className="tab-pane container fade">Latest activity</div>
+                            <div className="tab-pane container fade">Latest in-game activity</div>
+                            <div className="tab-pane container fade">Information</div>
 
-                            <div className="tab-pane container fade" id="latest-activity">Latest activity</div>
-                            <div className="tab-pane container fade" id="latest-in-game-activity">Latest in-game
-                                activity
-                            </div>
-                            <div className="tab-pane container fade" id="information">
-                                {/*<th:block th:insert="user/profile/panes/user-profile-pane-information"></th:block>*/}
-                            </div>
+                            {/*<Switch>
+                                <Route exact path={RoutingURLs.THREAD.REPORT.ALL} component={() => (<ReportsThread/>)}/>
+                                <Route exact path={RoutingURLs.COMMENT.REPORT.ALL} component={() => (<ReportsComment/>)}/>
+                                <Route exact path={RoutingURLs.POST.REPORT.ALL} component={() => (<ReportsPost/>)}/>
+                            </Switch>*/}
                         </div>
 
                     </div>
