@@ -6,8 +6,10 @@ class SideInformationUser extends Component {
 
 
     render() {
-        let lastOnline = new Date();
-        let registrationDate = new Date();
+        let datePattern = "dd mmm,yyyy";
+
+        let lastOnline = dateFormat(new Date(), datePattern);
+        let registrationDate = dateFormat(new Date(), datePattern);
         let totalMessages = 32;
 
         return (
@@ -19,10 +21,7 @@ class SideInformationUser extends Component {
                             Last online:
                         </div>
                         <div className="col-md">
-                                <span className="info-content"
-                                    title={dateFormat(lastOnline, 'HH:mm')}>
-                                    {dateFormat(lastOnline, 'dd mmm,yyyy')}
-                                </span>
+                            <span className="info-content">{lastOnline}</span>
                         </div>
                     </div>
                 </div>
@@ -33,10 +32,7 @@ class SideInformationUser extends Component {
                             Joined on:
                         </div>
                         <div className="col-md">
-                               <span className="info-content"
-                                     title={dateFormat(registrationDate, 'HH:mm')}>
-                                   {dateFormat(registrationDate, 'dd mmm,yyyy')}
-                               </span>
+                            <span className="info-content">{registrationDate}</span>
                         </div>
                     </div>
                 </div>
@@ -47,9 +43,7 @@ class SideInformationUser extends Component {
                             Messages:
                         </div>
                         <div className="col-md">
-                               <span className="info-content">
-                                   {totalMessages}
-                               </span>
+                               <span className="info-content">{totalMessages}</span>
                         </div>
                     </div>
                 </div>
