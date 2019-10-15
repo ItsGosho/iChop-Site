@@ -2,6 +2,7 @@ import React, {Component, Fragment} from 'react';
 import ServerRoutingURLs from "../../../../constants/server.routing.urls";
 import RoutingURLs from "../../../../constants/routing.constants";
 import {Link} from "react-router-dom";
+import './SideInformationMinecraftAccount.css'
 
 class SideInformationMinecraftAccount extends Component {
 
@@ -14,19 +15,13 @@ class SideInformationMinecraftAccount extends Component {
         return (
             <Fragment>
                 {accountName != null ? (
-                    <div className="card minecraft-user-link" style={{'marginTop': '10px'}}>
+                    <div className="card card-minecraft-holder">
                         <div>
                             <img
                                 src={headAvatarUrl}
                                 alt=''
-                                style={{
-                                    'width': '25px',
-                                    'height': '25px',
-                                    'marginLeft': '5px',
-                                    'marginTop': '2px',
-                                    'marginBottom': '2px'
-                                }}/>
-                            <Link to={accountProfileUrl} style={{'marginLeft': '5px'}}>
+                                className="avatar-minecraft-player"/>
+                            <Link to={accountProfileUrl} className="username-minecraf-player">
                                 {accountName}
                             </Link>
                         </div>
