@@ -2,10 +2,6 @@ import React, {Component, Fragment} from 'react';
 import './UserProfileCentralContent.css'
 import UserProfileCentralHead from "./UserProfileCentralHead";
 import {Link, Route, Switch} from "react-router-dom";
-import RoutingURLs from "../../../constants/routing.constants";
-import ReportsThread from "../../report/ReportsThread";
-import ReportsComment from "../../report/ReportsComment";
-import ReportsPost from "../../report/ReportsPost";
 
 class UserProfileCentralContent extends Component {
 
