@@ -14,6 +14,7 @@ import Image from "../../other/Image";
 import UserFollowingsModal from "./modals/UserFollowingsModal";
 import UserFollowersModal from "./modals/UserFollowersModal";
 import ModalOpen from "../../modal/ModalOpen";
+import SideInformationFollow from "./side/SideInformationFollow";
 
 class UserProfileLeftSideInformation extends Component {
 
@@ -21,8 +22,6 @@ class UserProfileLeftSideInformation extends Component {
     render() {
         let username = 'ItsGosho';
         let userAvatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', username);
-        let totalFollowings = 7;
-        let totalFollowers = 5;
 
         return (
             <div className="col-md-auto">
@@ -55,46 +54,7 @@ class UserProfileLeftSideInformation extends Component {
                         </div>
                     </div>
 
-                    <div className="card following-card">
-
-                        <div align="center">
-                            <span>Following: {totalFollowings}</span>
-                        </div>
-
-                        <div>
-                            <SideInformationFollowings/>
-                        </div>
-
-
-                        {totalFollowings > 4 ? (
-                            <ModalOpen relationTo="all-followings">
-                                <a href='#'>See all</a>
-                            </ModalOpen>
-                        ) : null}
-
-                        <UserFollowingsModal/>
-
-                    </div>
-
-                    <div className="card followers-card">
-
-                        <div align="center">
-                            <span>Followers: {totalFollowers}</span>
-                        </div>
-
-                        <div>
-                            <SideInformationFollowers/>
-                        </div>
-
-                        {totalFollowers > 4 ? (
-                            <ModalOpen relationTo="all-followers">
-                                <a href='#'>See all</a>
-                            </ModalOpen>
-                        ) : null}
-
-                        <UserFollowersModal/>
-
-                    </div>
+                    <SideInformationFollow/>
 
                     <div className="card user-location-card">
                         <div className="card-body user-location-body">
