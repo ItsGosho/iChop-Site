@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import PanePostsCreate from "./posts/PanePostsCreate";
 import PaneAllPosts from "./posts/PaneAllPosts";
+import './PanePosts.css'
 
 class PanePosts extends Component {
 
@@ -25,7 +26,7 @@ class PanePosts extends Component {
 
                 <div className="dropdown-divider"/>
 
-                <div className="all-posts" style={{'marginTop': '10px'}}>
+                <div className="all-posts top-10px">
 
                     <PaneAllPosts/>
 
