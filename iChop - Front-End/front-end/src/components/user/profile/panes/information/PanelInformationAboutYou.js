@@ -1,24 +1,17 @@
 import React, {Component, Fragment} from 'react';
+import './PanelInformationAboutYou.css'
 
 class PanelInformationAboutYou extends Component {
 
     render() {
-        let aboutYou = '';
+        let aboutYou = 'Coding!';
 
         return (
             <Fragment>
-                <span style={{'fontFamily': 'Consolas', 'fontSize': '20px'}}>
+                <span className="about-you-info-title">
                     <small>🖊️</small>About:
                 </span>
-                <textarea readOnly name="content"
-                          style={{
-                              'border': '0px solid #ccc',
-                              'borderRadius': '3px',
-                              'width': '100%',
-                              'resize': 'none',
-                              'overflow': 'hidden',
-                              'fontFamily': 'Consolas'
-                          }}>{aboutYou}</textarea>
+                <textarea readOnly name="content" className="about-you-info-content">{aboutYou}</textarea>
             </Fragment>
         );
     }

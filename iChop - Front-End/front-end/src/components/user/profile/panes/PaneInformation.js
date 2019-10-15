@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 import dateFormat from 'dateformat'
 import PanelInformationBirthday from "./information/PanelInformationBirthday";
 import PanelInformationAboutYou from "./information/PanelInformationAboutYou";
@@ -24,7 +24,6 @@ class PaneInformation extends Component {
                     {aboutYou != null ? (<PanelInformationAboutYou/>) : null}
 
                     {aboutYou == null && birthday == null ? (<span>User has not any information!</span>) : null}
-
                 </div>
             </div>
         )

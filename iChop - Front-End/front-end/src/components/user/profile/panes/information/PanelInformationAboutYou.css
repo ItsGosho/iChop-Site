@@ -1,0 +1,13 @@
+.about-you-info-title {
+    font-family: Consolas;
+    font-size: 20px;
+}
+
+.about-you-info-content {
+    border: 0px solid #ccc;
+    border-radius: 3px;
+    width: 100%;
+    resize: none;
+    overflow: hidden;
+    font-family: Consolas;
+}
