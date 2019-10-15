@@ -1,22 +1,17 @@
 import React, {Component} from 'react';
 import dateFormat from "dateformat";
+import './PanelInformationBirthday.css'
 
 class PanelInformationBirthday extends Component {
 
     render() {
-        let birthday = dateFormat(Date.now());
+        let formatPattern = 'dd/MM/yyyy';
+        let birthday = dateFormat(Date.now(), formatPattern);
 
         return (
-            <span
-                style={{
-                    'fontFamily': 'Consolas',
-                    'fontSize': '20px'
-                }}>
+            <span className="birthday-title">
                 <small>🎂</small>Birthday:
-                <span
-                    style={{'fontFamily': 'Tahoma'}}>
-                    {dateFormat(birthday, 'dd/MM/yyyy')}
-                </span>
+                <span className="birthday-content">{birthday}</span>
             </span>
         );
     }
