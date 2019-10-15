@@ -1,8 +1,4 @@
 import React, {Component} from 'react';
-import Image from "../../../other/Image";
-import FrontEndResourcesRoutingURLs from "../../../../constants/front-end.resources.routings";
-import RoutingURLs from "../../../../constants/routing.constants";
-import {Link} from "react-router-dom";
 import './FollowModal.css'
 import Modal from "../../../modal/Modal";
 import ModalTitle from "../../../modal/ModalTitle";
