@@ -30,13 +30,14 @@ class Image extends Component {
     }
 
     render() {
-        let {className,style} = this.props;
+        let {className,style,title} = this.props;
 
         return (
             <img src={this.state.avatarUrl}
                  onError={this.onUserAvatarError}
                  onLoad={this.onLoad}
                  alt=''
+                 title={title}
                  style={style}
                  ref={this.customImageRef}
                  className={className}/>
