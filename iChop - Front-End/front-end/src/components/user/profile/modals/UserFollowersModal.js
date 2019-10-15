@@ -3,6 +3,7 @@ import Image from "../../../other/Image";
 import FrontEndResourcesRoutingURLs from "../../../../constants/front-end.resources.routings";
 import RoutingURLs from "../../../../constants/routing.constants";
 import {Link} from "react-router-dom";
+import './FollowModal.css'
 
 class UserFollowersModal extends Component {
 
@@ -26,13 +27,13 @@ class UserFollowersModal extends Component {
             let profileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', username);
 
             return (
-                <div className="w-100" style={{'marginTop': '10px'}}>
+                <div className="w-100 div-follow-holder">
 
                     <Image url={'/'}
                            defaultUrl={FrontEndResourcesRoutingURLs.USER.AVATAR}
-                           style={{'width': '50px', 'height': '50px', 'marginLeft': '15px'}}/>
+                           className="div-follow-image"/>
 
-                    <span style={{'marginLeft': '15px'}}>
+                    <span className="span-follow-username">
                         <b>
                             <Link to={profileUrl}>{username}</Link>
                         </b>
@@ -55,8 +56,7 @@ class UserFollowersModal extends Component {
                             </button>
                         </div>
 
-                        <div className="modal-body"
-                             style={{'overflow': 'auto', 'maxHeight': '400px'}}>
+                        <div className="modal-body modal-body-follow">
 
                             <div className="row">
 
