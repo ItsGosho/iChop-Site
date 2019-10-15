@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import PanePostsCreate from "./posts/PanePostsCreate";
+import PanePostCreate from "./posts/PanePostCreate";
 import PaneAllPosts from "./posts/PaneAllPosts";
 import './PanePosts.css'
 
@@ -13,7 +13,7 @@ class PanePosts extends Component {
                 <div className="dropdown-divider"/>
 
                 <div className="create-post">
-                    {isAuthenticated ? (<PanePostsCreate/>) : null}
+                    {isAuthenticated ? (<PanePostCreate/>) : null}
                 </div>
 
                 <div className="dropdown-divider"/>

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import ServerRoutingURLs from "../../../../../constants/server.routing.urls";
 import FrontEndResourcesRoutingURLs from "../../../../../constants/front-end.resources.routings";
 
-class PanePostsCreate extends Component {
+class PanePostCreate extends Component {
 
     constructor(props) {
         super(props);
@@ -69,4 +69,4 @@ class PanePostsCreate extends Component {
     }
 }
 
-export default PanePostsCreate;
+export default PanePostCreate;
