@@ -1,7 +1,3 @@
-.user-base-info-row {
-    font-size: 11px;
-}
-
 .user-base-info {
     margin-top: 10px;font-size: 13px;
 }
@@ -10,22 +6,27 @@
     line-height: 13px;font-family: Consolas;margin-left: -20px;
 }
 
-.user-base-info-last-online-title{
-    column-width: 75px;
-}
-
-.user-base-info-last-online-content {
-    column-width: 100px;
-}
-
 .user-base-info-last-online-content span {
     display: inline-block;float: right;
 }
 
-.user-base-info-registration_date-title {
+.info-row {
     font-size: 11px
 }
 
-.user-base-info-registration_date-title div {
+.info-content {
+    display: inline-block;
+    float: right;
+}
+
+.width-col-100 {
+    column-width: 100px;
+}
+
+.width-col-75 {
     column-width: 75px;
+}
+
+.div-reg-holder {
+    column-width: 100px;
 }

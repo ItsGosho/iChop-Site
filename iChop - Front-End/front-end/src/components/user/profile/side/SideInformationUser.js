@@ -14,39 +14,40 @@ class SideInformationUser extends Component {
             <Fragment>
 
                 <div className="col-md-auto">
-                    <div className="row user-base-info-row">
-                        <div className="col-md-auto user-base-info-last-online-title">
+                    <div className="row info-row">
+                        <div className="col-md">
                             Last online:
                         </div>
-                        <div className="col-md-auto user-base-info-last-online-content">
-                                <span title={dateFormat(lastOnline, 'HH:mm')}>
-                                    {dateFormat(lastOnline, 'MMM dd,yyyy')}
+                        <div className="col-md">
+                                <span className="info-content"
+                                    title={dateFormat(lastOnline, 'HH:mm')}>
+                                    {dateFormat(lastOnline, 'dd mmm,yyyy')}
                                 </span>
                         </div>
                     </div>
                 </div>
 
                 <div className="col-md-auto">
-                    <div className="row user-base-info-registration_date-title">
-                        <div className="col-md-auto">
+                    <div className="row info-row">
+                        <div className="col-md">
                             Joined on:
                         </div>
-                        <div className="col-md-auto" style={{'columnWidth': '100px'}}>
-                               <span style={{'display': 'inlineBlock', 'float': 'right'}}
+                        <div className="col-md">
+                               <span className="info-content"
                                      title={dateFormat(registrationDate, 'HH:mm')}>
-                                   {dateFormat(registrationDate, 'MMM dd,yyyy')}
+                                   {dateFormat(registrationDate, 'dd mmm,yyyy')}
                                </span>
                         </div>
                     </div>
                 </div>
 
                 <div className="col-md-auto">
-                    <div className="row" style={{'fontSize': '11px'}}>
-                        <div className="col-md-auto" style={{'columnWidth': '75px'}}>
+                    <div className="row info-row">
+                        <div className="col-md">
                             Messages:
                         </div>
-                        <div className="col-md-auto" style={{'columnWidth': '100px'}}>
-                               <span style={{'display': 'inlineBlock','float': 'right'}}>
+                        <div className="col-md">
+                               <span className="info-content">
                                    {totalMessages}
                                </span>
                         </div>
