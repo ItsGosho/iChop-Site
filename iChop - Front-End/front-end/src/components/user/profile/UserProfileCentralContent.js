@@ -3,6 +3,7 @@ import './UserProfileCentralContent.css'
 import UserProfileCentralHead from "./UserProfileCentralHead";
 import PanePosts from "./panes/PanePosts";
 import PaneInformation from "./panes/PaneInformation";
+import CreateReactClass from "create-react-class";
 
 class UserProfileCentralContent extends Component {
 
@@ -62,16 +63,12 @@ class UserProfileCentralContent extends Component {
 
                     <div className="col-md-auto user-information-navigation">
 
-                        <div className="navigation">
-                            <ul className="nav nav-tabs">
-
-                                <Tab text="Profile posts" onClick={this.selectPostsTab}/>
-                                <Tab text="Soon"/>
-                                <Tab text="In-Game Activity"/>
-                                <Tab text="Information" onClick={this.selectInformationTab}/>
-
-                            </ul>
-                        </div>
+                        <NavTabs>
+                            <Tab text="Profile posts" onClick={this.selectPostsTab}/>
+                            <Tab text="Soon"/>
+                            <Tab text="In-Game Activity"/>
+                            <Tab text="Information" onClick={this.selectInformationTab}/>
+                        </NavTabs>
 
 
                         <div className="tab-content">
@@ -87,6 +84,18 @@ class UserProfileCentralContent extends Component {
     }
 
 }
+
+const NavTabs = CreateReactClass({
+    render() {
+        return (
+            <div className="navigation">
+                <ul className="nav nav-tabs">
+                    {this.props.children}
+                </ul>
+            </div>
+        )
+    }
+});
 
 const Tab = (props) => {
     let {text, onClick} = props;
