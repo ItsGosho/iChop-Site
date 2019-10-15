@@ -1,8 +1,8 @@
 import React, {Component, Fragment} from 'react';
 import './UserProfileCentralContent.css'
 import UserProfileCentralHead from "./UserProfileCentralHead";
-import {Link, Route, Switch} from "react-router-dom";
-import RoutingURLs from "../../../constants/routing.constants";
+import PanePosts from "./panes/PanePosts";
+import PaneInformation from "./panes/PaneInformation";
 
 class UserProfileCentralContent extends Component {
 
@@ -11,23 +11,18 @@ class UserProfileCentralContent extends Component {
 
         this.state = {
             isPostsTabSelected: true,
-            isSoonTabSelected: false,
-            isInGameActivitySelected: false,
             isInformationSelected: false,
         };
 
         this.allTabsSelectionToFalse = this.allTabsSelectionToFalse.bind(this);
         this.selectPostsTab = this.selectPostsTab.bind(this);
-        this.selectSoonTab = this.selectSoonTab.bind(this);
-        this.selectInGameActivityTab = this.selectInGameActivityTab.bind(this);
         this.selectInformationTab = this.selectInformationTab.bind(this);
+        this.getTab = this.getTab.bind(this);
     }
 
     allTabsSelectionToFalse() {
         this.setState({
             isPostsTabSelected: false,
-            isSoonTabSelected: false,
-            isInGameActivitySelected: false,
             isInformationSelected: false,
         })
     }
@@ -37,19 +32,24 @@ class UserProfileCentralContent extends Component {
         this.setState({isPostsTabSelected: true})
     }
 
-    selectSoonTab() {
-        this.allTabsSelectionToFalse();
-        this.setState({isSoonTabSelected: true})
-    }
-
-    selectInGameActivityTab() {
-        this.allTabsSelectionToFalse();
-        this.setState({isInGameActivitySelected: true})
-    }
-
     selectInformationTab() {
         this.allTabsSelectionToFalse();
         this.setState({isInformationSelected: true})
+    }
+
+    getTab() {
+        let {
+            isPostsTabSelected,
+            isInformationSelected,
+        } = this.state;
+
+        if (isPostsTabSelected) {
+            return (<PanePosts/>)
+        }
+
+        if (isInformationSelected) {
+            return (<PaneInformation/>)
+        }
     }
 
     render() {
@@ -66,8 +66,8 @@ class UserProfileCentralContent extends Component {
                             <ul className="nav nav-tabs">
 
                                 <Tab text="Profile posts" onClick={this.selectPostsTab}/>
-                                <Tab text="Soon" onClick={this.selectSoonTab}/>
-                                <Tab text="In-Game Activity" onClick={this.selectInGameActivityTab}/>
+                                <Tab text="Soon"/>
+                                <Tab text="In-Game Activity"/>
                                 <Tab text="Information" onClick={this.selectInformationTab}/>
 
                             </ul>
@@ -75,12 +75,9 @@ class UserProfileCentralContent extends Component {
 
 
                         <div className="tab-content">
-
-                            <div className="tab-pane container active">Posts</div>
-                            <div className="tab-pane container fade">Latest activity</div>
-                            <div className="tab-pane container fade">Latest in-game activity</div>
-                            <div className="tab-pane container fade">Information</div>
-
+                            <div className="tab-pane container active">
+                                {this.getTab()}
+                            </div>
                         </div>
 
                     </div>
@@ -92,7 +89,7 @@ class UserProfileCentralContent extends Component {
 }
 
 const Tab = (props) => {
-    let {text,onClick} = props;
+    let {text, onClick} = props;
 
     return (
         <li className="nav-item">
