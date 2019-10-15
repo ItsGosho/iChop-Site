@@ -12,12 +12,12 @@ class SideInformationReactions extends Component {
         return (
             <Fragment>
                 <div className="col-md-auto">
-                    <div className="row" style={{'fontSize': '15px'}}>
-                        <div className="col-md-auto" style={{'fontSize': '16px'}}>
+                    <div className="row row-holder">
+                        <div className="col-md-auto div-icon">
                             👍
                         </div>
-                        <div className="col-md-auto" style={{'columnWidth': '150px'}}>
-                               <span style={{'display': 'inlineBlock', 'float': 'right', 'color': 'green'}}>
+                        <div className="col-md-auto div-total">
+                               <span className="total-reactions-like">
                                     {totaLikes}
                                </span>
                         </div>
@@ -27,12 +27,12 @@ class SideInformationReactions extends Component {
 
 
                 <div className="col-md-auto">
-                    <div className="row" style={{'fontSize': '15px'}}>
-                        <div className="col-md-auto" style={{'fontSize': '16px'}}>
+                    <div className="row row-holder">
+                        <div className="col-md-auto div-icon">
                             👎
                         </div>
-                        <div className="col-md-auto" style={{'columnWidth': '150px'}}>
-                               <span style={{'display': 'inlineBlock', 'float': 'right', 'color': 'indianred'}}>
+                        <div className="col-md-auto div-total">
+                               <span className="total-reactions-dislike">
                                     {totalDislikes}
                                </span>
                         </div>

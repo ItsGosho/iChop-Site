@@ -1,0 +1,25 @@
+.row-holder {
+    font-size: 15px;
+}
+
+.div-icon {
+    font-size: 16px;
+}
+
+.div-total {
+    column-width: 150px;
+}
+
+
+
+.total-reactions-like {
+    display: inline-block;
+    float: right;
+    color: darkgreen;
+}
+
+.total-reactions-dislike {
+    display: inline-block;
+    float: right;
+    color: indianred;
+}
