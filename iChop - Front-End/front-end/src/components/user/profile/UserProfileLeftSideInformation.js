@@ -7,13 +7,8 @@ import SideInformationTotalLikes from "./side/SideInformationTotalLikes";
 import SideInformationTotalDislikes from "./side/SideInformationTotalDislikes";
 import SideInformationLocation from "./side/SideInformationLocation";
 import FrontEndResourcesRoutingURLs from "../../../constants/front-end.resources.routings";
-import SideInformationFollowings from "./side/SideInformationFollowings";
-import SideInformationFollowers from "./side/SideInformationFollowers";
 import './UserProfileLeftSideInformation.css'
 import Image from "../../other/Image";
-import UserFollowingsModal from "./modals/UserFollowingsModal";
-import UserFollowersModal from "./modals/UserFollowersModal";
-import ModalOpen from "../../modal/ModalOpen";
 import SideInformationFollow from "./side/SideInformationFollow";
 
 class UserProfileLeftSideInformation extends Component {

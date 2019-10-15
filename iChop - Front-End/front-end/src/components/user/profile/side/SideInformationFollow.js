@@ -123,4 +123,6 @@ class SideInformationFollow extends Component {
 
 }
 
+
+
 export default SideInformationFollow;
