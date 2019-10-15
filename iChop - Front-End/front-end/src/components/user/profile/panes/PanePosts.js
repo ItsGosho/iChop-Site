@@ -12,17 +12,9 @@ class PanePosts extends Component {
             <Fragment>
                 <div className="dropdown-divider"/>
 
-                {
-                    (() => {
-                        if (isAuthenticated) {
-                            return (
-                                <div className="create-post">
-                                    <PanePostsCreate/>
-                                </div>
-                            )
-                        }
-                    })()
-                }
+                <div className="create-post">
+                    {isAuthenticated ? (<PanePostsCreate/>) : null}
+                </div>
 
                 <div className="dropdown-divider"/>
 
