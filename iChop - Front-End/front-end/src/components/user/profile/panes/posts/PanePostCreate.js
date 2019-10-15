@@ -10,6 +10,7 @@ class PanePostCreate extends Component {
         let username = 'ItsGosho';
         let userAvatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', username);
 
+        /*TODO: count left chars like in the profile edit and add method for the post button*/
         return (
             <form>
                 <div className="row">
