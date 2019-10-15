@@ -1,9 +1,10 @@
 import React, {Component, Fragment} from 'react';
-import SideInformationFollowings from "./SideInformationFollowings";
 import ModalOpen from "../../../modal/ModalOpen";
 import UserFollowingsModal from "../modals/UserFollowingsModal";
-import SideInformationFollowers from "./SideInformationFollowers";
 import UserFollowersModal from "../modals/UserFollowersModal";
+import RoutingURLs from "../../../../constants/routing.constants";
+import ServerRoutingURLs from "../../../../constants/server.routing.urls";
+import {Link} from "react-router-dom";
 
 class SideInformationFollow extends Component {
 
@@ -11,6 +12,8 @@ class SideInformationFollow extends Component {
     render() {
         let totalFollowings = 7;
         let totalFollowers = 5;
+        let followings = [].slice(0, 4);
+        let followers = [].slice(0, 4);
 
         return (
             <Fragment>
@@ -21,7 +24,37 @@ class SideInformationFollow extends Component {
                     </div>
 
                     <div>
-                        <SideInformationFollowings/>
+                        <div className="row d-flex justify-content-center align-items-center"
+                             style={{'width': '100%', 'marginLeft': '0px'}}>
+
+                            {
+                                (() => {
+                                    followings.map((following, index) => {
+                                        let {username} = following;
+                                        let profileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', username);
+                                        let avatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', username);
+
+                                        return (
+                                            <Link to={profileUrl}>
+                                                <img key={index}
+                                                     src={avatarUrl}
+                                                     className="img-user-avatar"
+                                                     title={username}
+                                                     onError={this.onUserAvatarError}
+                                                     alt=''
+                                                     style={{
+                                                         'width': '30px',
+                                                         'height': '30px',
+                                                         'marginLeft': '5px',
+                                                         'marginTop': '2px',
+                                                         'marginBottom': '2px'
+                                                     }}/>
+                                            </Link>
+                                        );
+                                    })
+                                })()
+                            }
+                        </div>
                     </div>
 
 
@@ -42,7 +75,37 @@ class SideInformationFollow extends Component {
                     </div>
 
                     <div>
-                        <SideInformationFollowers/>
+                        <div className="row d-flex justify-content-center align-items-center"
+                             style={{'width': '100%', 'marginLeft': '0px'}}>
+
+                            {
+                                (() => {
+                                    followers.map((follower, index) => {
+                                        let {username} = follower;
+                                        let profileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', username);
+                                        let avatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', username);
+
+                                        return (
+                                            <Link to={profileUrl}>
+                                                <img key={index}
+                                                     src={avatarUrl}
+                                                     className="img-user-avatar"
+                                                     title={username}
+                                                     onError={this.onUserAvatarError}
+                                                     alt=''
+                                                     style={{
+                                                         'width': '30px',
+                                                         'height': '30px',
+                                                         'marginLeft': '5px',
+                                                         'marginTop': '2px',
+                                                         'marginBottom': '2px'
+                                                     }}/>
+                                            </Link>
+                                        );
+                                    })
+                                })()
+                            }
+                        </div>
                     </div>
 
                     {totalFollowers > 4 ? (
