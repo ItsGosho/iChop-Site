@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ServerRoutingURLs from "../../../../../constants/server.routing.urls";
 import FrontEndResourcesRoutingURLs from "../../../../../constants/front-end.resources.routings";
+import './PanePostCreate.css';
 
 class PanePostCreate extends Component {
 
@@ -35,33 +36,15 @@ class PanePostCreate extends Component {
                     </div>
 
                     <div className="col-lg">
-                <textarea name="content" id="textarea-createPost-userProfile"
-                          style={{
-                              'border': '1px solid #ccc',
-                              'borderRadius': '3px',
-                              'height': '60px',
-                              'overflow': 'auto',
-                              'width': '100%',
-                              'resize': 'none'
-                          }}/>
+                        <textarea name="content" className="pane-post-create-post"/>
                     </div>
 
                 </div>
 
-                <div className="row" style={{'marginTop': '3px'}}>
+                <div className="row">
                     <div className="col-lg">
-                        <button type="button" id="button-createPost-userProfile" className="btn btn-info btn-sm"
-                                style={{'float': 'right', 'display': 'inlineBlock'}}>Post
-                        </button>
-                        <small id="small-leftPostCreationCharacters-userProfile"
-                               style={{
-                                   'float': 'right',
-                                   'display': 'inlineBlock',
-                                   'marginRight': '3px',
-                                   'color': 'darkgreen',
-                                   'fontSize': '13px'
-                               }}>150
-                        </small>
+                        <button type="button" className="btn btn-info btn-sm pane-post-button">Post</button>
+                        <small className="pane-post-left-chars">150</small>
                     </div>
                 </div>
             </form>

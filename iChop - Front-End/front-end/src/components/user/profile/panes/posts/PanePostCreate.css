@@ -1,0 +1,26 @@
+.pane-post-create-avatar {
+    width: 30px;
+    height: 30px;
+}
+
+.pane-post-create-post {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    height: 60px;
+    overflow: auto;
+    width: 100%;
+    resize: none;
+}
+
+.pane-post-button {
+    float: right;
+    display: inline-block;
+}
+
+.pane-post-left-chars {
+    float: right;
+    display: inline-block;
+    margin-right: 3px;
+    color: darkgreen;
+    font-size: 13px;
+}

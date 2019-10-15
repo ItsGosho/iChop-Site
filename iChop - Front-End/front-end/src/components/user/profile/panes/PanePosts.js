@@ -19,9 +19,7 @@ class PanePosts extends Component {
                 <div className="dropdown-divider"/>
 
                 <div className="all-posts top-10px">
-
                     <PaneAllPosts/>
-
                 </div>
             </Fragment>);
     }
