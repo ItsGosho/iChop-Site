@@ -11,10 +11,8 @@ class SideInformationReactions extends Component {
 
         return (
             <Fragment>
-
                 <Total icon="👍" color="darkgreen" total={totaLikes}/>
                 <Total icon="👎" color="indianred" total={totalDislikes}/>
-
             </Fragment>
         );
     }

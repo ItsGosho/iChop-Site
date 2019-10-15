@@ -1,8 +1,5 @@
 import React, {Component} from 'react';
 import ServerRoutingURLs from "../../../constants/server.routing.urls";
-import SideInformationLastOnline from "./side/SideInformationLastOnline";
-import SideInformationJoinedOn from "./side/SideInformationJoinedOn";
-import SideInformationMessages from "./side/SideInformationMessages";
 import SideInformationLocation from "./side/SideInformationLocation";
 import FrontEndResourcesRoutingURLs from "../../../constants/front-end.resources.routings";
 import './UserProfileLeftSideInformation.css'
@@ -10,6 +7,7 @@ import Image from "../../other/Image";
 import SideInformationFollow from "./side/SideInformationFollow";
 import SideInformationReactions from "./side/SideInformationReactions";
 import SideInformationMinecraftAccount from "./side/SideInformationMinecraftAccount";
+import SideInformationUser from "./side/SideInformationUser";
 
 class UserProfileLeftSideInformation extends Component {
 
@@ -31,9 +29,7 @@ class UserProfileLeftSideInformation extends Component {
                     <div className="card user-base-info">
                         <div className="card-body user-base-info-body">
 
-                            <SideInformationLastOnline/>
-                            <SideInformationJoinedOn/>
-                            <SideInformationMessages/>
+                            <SideInformationUser/>
 
                         </div>
                     </div>

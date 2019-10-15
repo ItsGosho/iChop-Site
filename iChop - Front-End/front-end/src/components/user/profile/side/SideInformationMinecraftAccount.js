@@ -17,13 +17,8 @@ class SideInformationMinecraftAccount extends Component {
                 {accountName != null ? (
                     <div className="card card-minecraft-holder">
                         <div>
-                            <img
-                                src={headAvatarUrl}
-                                alt=''
-                                className="avatar-minecraft-player"/>
-                            <Link to={accountProfileUrl} className="username-minecraf-player">
-                                {accountName}
-                            </Link>
+                            <img src={headAvatarUrl} alt='' className="avatar-minecraft-player"/>
+                            <Link to={accountProfileUrl} className="username-minecraf-player">{accountName}</Link>
                         </div>
                     </div>
                 ) : null}
