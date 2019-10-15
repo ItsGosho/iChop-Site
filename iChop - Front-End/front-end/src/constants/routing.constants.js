@@ -21,7 +21,7 @@ const RoutingURLs = {
     USER: {
 
         PROFILE: {
-            VIEW: '/user/:username/profile' /*Everyone*/
+            VIEW: '/user/:username/profile', /*Everyone*/
         },
 
         ALL: '/users/all', /*Admin+*/

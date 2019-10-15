@@ -2,11 +2,50 @@ import React, {Component, Fragment} from 'react';
 import './UserProfileCentralContent.css'
 import UserProfileCentralHead from "./UserProfileCentralHead";
 import {Link, Route, Switch} from "react-router-dom";
+import RoutingURLs from "../../../constants/routing.constants";
 
 class UserProfileCentralContent extends Component {
 
+    constructor(props) {
+        super(props);
 
-    /*TODO: Със Link ...*/
+        this.state = {
+            isPostsTabSelected: true,
+            isSoonTabSelected: false,
+            isInGameActivitySelected: false,
+            isInformationSelected: false,
+        }
+    }
+
+    allTabsSelectionToFalse() {
+        this.setState({
+            isPostsTabSelected: false,
+            isSoonTabSelected: false,
+            isInGameActivitySelected: false,
+            isInformationSelected: false,
+        })
+    }
+
+    selectPostsTab() {
+        this.allTabsSelectionToFalse();
+        this.setState({isPostsTabSelected: true})
+    }
+
+    selectSoonTab() {
+        this.allTabsSelectionToFalse();
+        this.setState({isSoonTabSelected: true})
+    }
+
+    selectInGameActivityTab() {
+        this.allTabsSelectionToFalse();
+        this.setState({isInGameActivitySelected: true})
+    }
+
+    selectInformationTab() {
+        this.allTabsSelectionToFalse();
+        this.setState({isInformationSelected: true})
+    }
+
     render() {
 
         return (
@@ -22,16 +61,17 @@ class UserProfileCentralContent extends Component {
                         <div className="navigation">
                             <ul className="nav nav-tabs">
                                 <li className="nav-item">
-                                    <Link className="nav-link" to={'/posts'}>Profile posts</Link>
+                                    <a className="nav-link active" data-toggle='tab' href='#'>Profile posts</a>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to={'/soon'}>Soon</Link>
+                                    <a className="nav-link" data-toggle='tab' href='#'>Soon</a>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to={'/latest-in-game-activity'}>Latest In-Game Activity</Link>
+                                    <a className="nav-link" data-toggle='tab' href='#'>Latest In-Game
+                                        Activity</a>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to={'/information'}>Information</Link>
+                                    <a className="nav-link" data-toggle='tab' href='#'>Information</a>
                                 </li>
                             </ul>
                         </div>
@@ -44,11 +84,6 @@ class UserProfileCentralContent extends Component {
                             <div className="tab-pane container fade">Latest in-game activity</div>
                             <div className="tab-pane container fade">Information</div>
 
-                            {/*<Switch>
-                                <Route exact path={RoutingURLs.THREAD.REPORT.ALL} component={() => (<ReportsThread/>)}/>
-                                <Route exact path={RoutingURLs.COMMENT.REPORT.ALL} component={() => (<ReportsComment/>)}/>
-                                <Route exact path={RoutingURLs.POST.REPORT.ALL} component={() => (<ReportsPost/>)}/>
-                            </Switch>*/}
                         </div>
 
                     </div>
