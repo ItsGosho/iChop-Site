@@ -4,6 +4,9 @@ import FrontEndResourcesRoutingURLs from "../../../../constants/front-end.resour
 import RoutingURLs from "../../../../constants/routing.constants";
 import {Link} from "react-router-dom";
 import './FollowModal.css'
+import Modal from "../../../modal/Modal";
+import ModalTitle from "../../../modal/ModalTitle";
+import ModalBody from "../../../modal/ModalBody";
 
 class UserFollowersModal extends Component {
 
@@ -46,28 +49,19 @@ class UserFollowersModal extends Component {
     render() {
 
         return (
-            <div className="modal modal-all-followers" tabIndex="-1" role="dialog">
-                <div className="modal-dialog" role="document">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title">All users that are following <span><b>ItsGosho</b></span>:</h5>
-                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
+            <Modal relationTo="all-followers">
+                
+                <ModalTitle>
+                    <h5 className="modal-title">All users that are following <span><b>ItsGosho</b></span>:</h5>
+                </ModalTitle>
 
-                        <div className="modal-body modal-body-follow">
-
-                            <div className="row">
-
-                                {this.iterFollowers()}
-
-                            </div>
-
-                        </div>
+                <ModalBody>
+                    <div className="row">
+                        {this.iterFollowers()}
                     </div>
-                </div>
-            </div>
+                </ModalBody>
+
+            </Modal>
         );
     }
 }

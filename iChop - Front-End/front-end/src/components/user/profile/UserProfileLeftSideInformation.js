@@ -13,6 +13,7 @@ import './UserProfileLeftSideInformation.css'
 import Image from "../../other/Image";
 import UserFollowingsModal from "./modals/UserFollowingsModal";
 import UserFollowersModal from "./modals/UserFollowersModal";
+import ModalOpen from "../../modal/ModalOpen";
 
 class UserProfileLeftSideInformation extends Component {
 
@@ -86,9 +87,9 @@ class UserProfileLeftSideInformation extends Component {
                         </div>
 
                         {totalFollowers > 4 ? (
-                            <a href="#" className="d-flex justify-content-center align-items-center"
-                               data-toggle="modal"
-                               data-target=".modal-all-followers">See all</a>
+                            <ModalOpen relationTo="all-followers">
+                                <a href='#'>See all</a>
+                            </ModalOpen>
                         ) : null}
 
                         <UserFollowersModal/>
