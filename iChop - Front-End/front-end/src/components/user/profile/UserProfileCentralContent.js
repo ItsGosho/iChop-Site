@@ -71,11 +71,9 @@ class UserProfileCentralContent extends Component {
                         </NavTabs>
 
 
-                        <div className="tab-content">
-                            <div className="tab-pane container active">
-                                {this.getTab()}
-                            </div>
-                        </div>
+                       <NavContent>
+                           {this.getTab()}
+                       </NavContent>
 
                     </div>
                 </div>
@@ -84,6 +82,21 @@ class UserProfileCentralContent extends Component {
     }
 
 }
+
+export default UserProfileCentralContent;
+
+
+const NavContent = CreateReactClass({
+    render() {
+        return (
+            <div className="tab-content">
+                <div className="tab-pane container active">
+                    {this.props.children}
+                </div>
+            </div>
+        )
+    }
+});
 
 const NavTabs = CreateReactClass({
     render() {
@@ -106,5 +119,3 @@ const Tab = (props) => {
         </li>
     )
 };
-
-export default UserProfileCentralContent;
