@@ -7,6 +7,7 @@ import ServerRoutingURLs from "../../../../constants/server.routing.urls";
 import {Link} from "react-router-dom";
 import Image from "../../../other/Image";
 import FrontEndResourcesRoutingURLs from "../../../../constants/front-end.resources.routings";
+import './SideInformationFollow.css'
 
 class SideInformationFollow extends Component {
 
@@ -14,8 +15,10 @@ class SideInformationFollow extends Component {
     render() {
         let totalFollowings = 7;
         let totalFollowers = 5;
-        let followings = [{username: 'ItsGosho'}, {username: 'Roshko'}].slice(0, 4);
-        let followers = [{username: 'Qncho'}].slice(0, 4);
+
+        let maxFollowShow = 4;
+        let followings = [{username: 'ItsGosho'}, {username: 'Roshko'}].slice(0, maxFollowShow);
+        let followers = [{username: 'Qncho'}].slice(0, maxFollowShow);
 
         return (
             <Fragment>
@@ -27,7 +30,7 @@ class SideInformationFollow extends Component {
 
                     <FollowInformation users={followings}/>
 
-                    {totalFollowings > 4 ? (
+                    {totalFollowings > maxFollowShow ? (
                         <ModalOpen relationTo="all-followings">
                             <a href='#'>See all</a>
                         </ModalOpen>
@@ -45,7 +48,7 @@ class SideInformationFollow extends Component {
 
                     <FollowInformation users={followers}/>
 
-                    {totalFollowers > 4 ? (
+                    {totalFollowers > maxFollowShow ? (
                         <ModalOpen relationTo="all-followers">
                             <a href='#'>See all</a>
                         </ModalOpen>
@@ -81,13 +84,7 @@ const FollowInformation = (props) => {
                         <Image url={avatarUrl}
                                defaultUrl={FrontEndResourcesRoutingURLs.USER.AVATAR}
                                title={username}
-                               style={{
-                                   'width': '30px',
-                                   'height': '30px',
-                                   'marginLeft': '5px',
-                                   'marginTop': '2px',
-                                   'marginBottom': '2px'
-                               }}/>
+                               className="follow-image"/>
                     </Link>
                 );
             })}
