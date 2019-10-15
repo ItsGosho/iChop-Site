@@ -1,4 +1,5 @@
 import React, {Component, Fragment} from 'react';
+import './SideInformationReactions.css';
 
 
 class SideInformationReactions extends Component {
@@ -21,7 +22,7 @@ class SideInformationReactions extends Component {
                                </span>
                         </div>
                     </div>
-                    <div className="dropdown-divider" style={{'width': '100%'}}/>
+                    <div className="dropdown-divider"/>
                 </div>
 
 
@@ -36,7 +37,7 @@ class SideInformationReactions extends Component {
                                </span>
                         </div>
                     </div>
-                    <div className="dropdown-divider" style={{'width': '100%'}}/>
+                    <div className="dropdown-divider"/>
                 </div>
 
             </Fragment>
