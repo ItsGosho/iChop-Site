@@ -14,7 +14,7 @@ class SideInformationFollow extends Component {
     render() {
         let totalFollowings = 7;
         let totalFollowers = 5;
-        let followings = [{username: 'ItsGosho'},{username: 'Roshko'}].slice(0, 4);
+        let followings = [{username: 'ItsGosho'}, {username: 'Roshko'}].slice(0, 4);
         let followers = [].slice(0, 4);
 
         return (
@@ -25,10 +25,7 @@ class SideInformationFollow extends Component {
                         <span>Following: {totalFollowings}</span>
                     </div>
 
-                    <div>
-                      <FollowInformation users={followings}/>
-                    </div>
-
+                    <FollowInformation users={followings}/>
 
                     {totalFollowings > 4 ? (
                         <ModalOpen relationTo="all-followings">
@@ -46,9 +43,7 @@ class SideInformationFollow extends Component {
                         <span>Followers: {totalFollowers}</span>
                     </div>
 
-                    <div>
-                        <FollowInformation users={followers}/>
-                    </div>
+                    <FollowInformation users={followers}/>
 
                     {totalFollowers > 4 ? (
                         <ModalOpen relationTo="all-followers">
@@ -84,16 +79,16 @@ const FollowInformation = (props) => {
                 return (
                     <Link to={profileUrl}>
 
-                             <Image url={avatarUrl}
-                                    defaultUrl={FrontEndResourcesRoutingURLs.USER.AVATAR}
-                                    title={username}
-                                    style={{
-                                        'width': '30px',
-                                        'height': '30px',
-                                        'marginLeft': '5px',
-                                        'marginTop': '2px',
-                                        'marginBottom': '2px'
-                                    }}/>
+                        <Image url={avatarUrl}
+                               defaultUrl={FrontEndResourcesRoutingURLs.USER.AVATAR}
+                               title={username}
+                               style={{
+                                   'width': '30px',
+                                   'height': '30px',
+                                   'marginLeft': '5px',
+                                   'marginTop': '2px',
+                                   'marginBottom': '2px'
+                               }}/>
                     </Link>
                 );
             })}
