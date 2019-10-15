@@ -11,7 +11,7 @@ class PanelInformationAboutYou extends Component {
                 <span className="about-you-info-title">
                     <small>🖊️</small>About:
                 </span>
-                <textarea readOnly name="content" className="about-you-info-content">{aboutYou}</textarea>
+                <textarea readOnly className="about-you-info-content">{aboutYou}</textarea>
             </Fragment>
         );
     }

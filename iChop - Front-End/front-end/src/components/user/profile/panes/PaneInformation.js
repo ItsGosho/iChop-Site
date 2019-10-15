@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import dateFormat from 'dateformat'
 import PanelInformationBirthday from "./information/PanelInformationBirthday";
 import PanelInformationAboutYou from "./information/PanelInformationAboutYou";
+import './PaneInformation.css';
 
 class PaneInformation extends Component {
 
@@ -15,7 +16,7 @@ class PaneInformation extends Component {
 
         return (
             <div className="row">
-                <div className="w-100" style={{'marginTop': '10px'}}>
+                <div className="w-100 top-10px">
 
                     {birthday != null ? (<PanelInformationBirthday/>) : null}
 
