@@ -4,28 +4,23 @@ import FrontEndResourcesRoutingURLs from "../../../../constants/front-end.resour
 import RoutingURLs from "../../../../constants/routing.constants";
 import {Link} from "react-router-dom";
 
-class UserFollowingsModal extends Component {
+class UserFollowersModal extends Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
             followings: [
-                {username: 'Ivan'},
-                {username: 'Qncho'},
+                {username: 'Jancho'},
+                {username: 'Karancho'},
             ]
         };
 
-        this.unFollow = this.unFollow.bind(this);
-        this.iterFollowings = this.iterFollowings.bind(this);
-    }
-
-    unFollow(username) {
-        console.log(`Unfollow: ${username}`);
+        this.iterFollowers = this.iterFollowers.bind(this);
     }
 
 
-    iterFollowings() {
+    iterFollowers() {
         return this.state.followings.map((following, index) => {
             let {username} = following;
             let profileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', username);
@@ -42,18 +37,6 @@ class UserFollowingsModal extends Component {
                             <Link to={profileUrl}>{username}</Link>
                         </b>
                     </span>
-
-                    <button className="btn btn-warning btn-sm float-right"
-                            style={{
-                                'fontFamily': 'Consolas',
-                                'marginTop': '15px',
-                                'marginRight': '15px'
-                            }}
-                            onClick={() => {
-                                this.unFollow(username)
-                            }}>
-                        Unfollow
-                    </button>
                 </div>
             )
         })
@@ -62,12 +45,11 @@ class UserFollowingsModal extends Component {
     render() {
 
         return (
-            <div className="modal modal-all-following" tabIndex="-1" role="dialog">
+            <div className="modal modal-all-followers" tabIndex="-1" role="dialog">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title">All users that <span><b>ItsGosho</b></span> is
-                                following:</h5>
+                            <h5 className="modal-title">All users that are following <span><b>ItsGosho</b></span>:</h5>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -78,7 +60,7 @@ class UserFollowingsModal extends Component {
 
                             <div className="row">
 
-                                {this.iterFollowings()}
+                                {this.iterFollowers()}
 
                             </div>
 
@@ -90,4 +72,4 @@ class UserFollowingsModal extends Component {
     }
 }
 
-export default UserFollowingsModal;
+export default UserFollowersModal;
