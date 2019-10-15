@@ -15,7 +15,7 @@ class SideInformationFollow extends Component {
         let totalFollowings = 7;
         let totalFollowers = 5;
         let followings = [{username: 'ItsGosho'}, {username: 'Roshko'}].slice(0, 4);
-        let followers = [].slice(0, 4);
+        let followers = [{username: 'Qncho'}].slice(0, 4);
 
         return (
             <Fragment>
@@ -69,8 +69,7 @@ const FollowInformation = (props) => {
     let usersSliced = users.slice(0, 4);
 
     return (
-        <div className="row d-flex justify-content-center align-items-center"
-             style={{'width': '100%', 'marginLeft': '0px'}}>
+        <div className="row d-flex justify-content-center align-items-center">
             {usersSliced.map((user, index) => {
                 let {username} = user;
                 let profileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', username);
