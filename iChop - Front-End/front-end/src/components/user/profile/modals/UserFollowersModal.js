@@ -7,6 +7,7 @@ import './FollowModal.css'
 import Modal from "../../../modal/Modal";
 import ModalTitle from "../../../modal/ModalTitle";
 import ModalBody from "../../../modal/ModalBody";
+import UserFollowModalBaseRow from "./UserFollowModalBaseRow";
 
 class UserFollowersModal extends Component {
 
@@ -27,21 +28,9 @@ class UserFollowersModal extends Component {
     iterFollowers() {
         return this.state.followings.map((following, index) => {
             let {username} = following;
-            let profileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', username);
 
             return (
-                <div className="w-100 div-follow-holder">
-
-                    <Image url={'/'}
-                           defaultUrl={FrontEndResourcesRoutingURLs.USER.AVATAR}
-                           className="div-follow-image"/>
-
-                    <span className="span-follow-username">
-                        <b>
-                            <Link to={profileUrl}>{username}</Link>
-                        </b>
-                    </span>
-                </div>
+                <UserFollowModalBaseRow username={username}/>
             )
         })
     }
@@ -67,3 +56,4 @@ class UserFollowersModal extends Component {
 }
 
 export default UserFollowersModal;
+
