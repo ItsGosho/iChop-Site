@@ -14,45 +14,19 @@ class PaneInformation extends Component {
         let {birthday, aboutYou} = information;
 
         return (
-            <Fragment>
-                {
-                    (() => {
-                        if (information != null) {
-                            return (
-                                <div className="row">
-                                    <div className="w-100" style={{'marginTop': '10px'}}>
-                                        {
-                                            (() => {
-                                                if (birthday != null) {
-                                                    return (
-                                                        <PanelInformationBirthday/>
-                                                    );
-                                                }
-                                            })()
-                                        }
+            <div className="row">
+                <div className="w-100" style={{'marginTop': '10px'}}>
 
-                                        <div className="dropdown-divider"/>
+                    {birthday != null ? (<PanelInformationBirthday/>) : null}
 
-                                        {
-                                            (() => {
-                                                if (aboutYou != null) {
-                                                    return (
-                                                       <PanelInformationAboutYou/>
-                                                    );
-                                                }
-                                            })()
-                                        }
+                    <div className="dropdown-divider"/>
 
-                                        <div className="dropdown-divider"/>
-                                    </div>
-                                </div>
-                            )
-                        } else {
-                            return (<span>User has not any information!</span>);
-                        }
-                    })()
-                }
-            </Fragment>
+                    {aboutYou != null ? (<PanelInformationAboutYou/>) : null}
+
+                    {aboutYou == null && birthday == null ? (<span>User has not any information!</span>) : null}
+
+                </div>
+            </div>
         )
     }
 }
