@@ -7,6 +7,7 @@ import ThreadsAllInformation from "./ThreadsAllInformation";
 import Interweave from "interweave";
 import ThreadsAllOptionsDropdown from "./ThreadsAllOptionsDropdown";
 import {Link} from "react-router-dom";
+import CreateReactClass from "create-react-class";
 
 class ThreadsAll extends Component {
 
@@ -116,31 +117,43 @@ class ThreadsAll extends Component {
         let {threads} = this.state;
 
         return (
-            <div className="d-flex justify-content-center">
-                <div className="col-md-auto" style={{'width': '75%'}}>
-                    <div id="threads" className="col-xs-6">
-                        <div className="card">
-                            <div className="card-header">
-                                <small>📰</small>
-                                News:
-                            </div>
+            <Threads>
 
-                            {this.iterateThreads()}
-
-                            {threads.length === 0 ? (<span>There are no news!</span>) : null}
-
-                            <div className="dropdown-divider"/>
-
-                            <PaginationNav totalResults={threads.length} resultsPerPage={10}
-                                           redirectPage={RoutingURLs.HOME}/>
-
-                        </div>
-                    </div>
+                <div className="card-header">
+                    <small>📰</small>
+                    <span>News:</span>
                 </div>
-            </div>
+
+                {this.iterateThreads()}
+
+                {threads.length === 0 ? (<span>There are no news!</span>) : null}
+
+                <div className="dropdown-divider"/>
+
+                <PaginationNav totalResults={threads.length}
+                               resultsPerPage={10}
+                               redirectPage={RoutingURLs.HOME}/>
+
+            </Threads>
         );
     }
 
 }
 
 export default ThreadsAll;
+
+const Threads = CreateReactClass({
+    render() {
+        return (
+            <div className="d-flex justify-content-center">
+                <div className="col-md-auto" style={{'width': '75%'}}>
+                    <div className="col-xs-6">
+                        <div className="card">
+                            {this.props.children}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+});
