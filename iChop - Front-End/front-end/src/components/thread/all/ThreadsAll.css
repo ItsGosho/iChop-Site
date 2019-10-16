@@ -14,3 +14,7 @@
     display: inline-block;
     float: right;
 }
+
+.width-75-percent {
+    width: 75%;
+}

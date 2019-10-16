@@ -114,7 +114,7 @@ const Threads = CreateReactClass({
     render() {
         return (
             <div className="d-flex justify-content-center">
-                <div className="col-md-auto" style={{'width': '75%'}}>
+                <div className="col-md-auto width-75-percent">
                     <div className="col-xs-6">
                         <div className="card">
                             {this.props.children}
