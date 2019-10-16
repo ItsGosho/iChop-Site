@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
-import './ThreadAll.css';
+import './ThreadsAll.css';
 import formatDate from 'dateformat'
 import PaginationNav from "../../other/PaginationNav";
 import RoutingURLs from "../../../constants/routing.constants";
-import ThreadAllInformation from "./ThreadAllInformation";
+import ThreadsAllInformation from "./ThreadsAllInformation";
 import Interweave from "interweave";
-import ThreadAllOptionsDropdown from "./ThreadAllOptionsDropdown";
+import ThreadsAllOptionsDropdown from "./ThreadsAllOptionsDropdown";
 import {Link} from "react-router-dom";
 
-class ThreadAll extends Component {
+class ThreadsAll extends Component {
 
 
     render() {
@@ -66,14 +66,14 @@ class ThreadAll extends Component {
 
                                     return (
                                         <div className="card-body">
-                                            <ThreadAllInformation id={id}
-                                                                  title={title}
-                                                                  createdOn={createdOn}
-                                                                  username={creatorUsername}
-                                                                  postTime={postTime}
-                                                                  totalViews={totalViews}
-                                                                  totalReactions={totalReactions}
-                                                                  totalComments={totalComments}/>
+                                            <ThreadsAllInformation id={id}
+                                                                   title={title}
+                                                                   createdOn={createdOn}
+                                                                   username={creatorUsername}
+                                                                   postTime={postTime}
+                                                                   totalViews={totalViews}
+                                                                   totalReactions={totalReactions}
+                                                                   totalComments={totalComments}/>
 
                                             <div className="dropdown-divider"/>
 
@@ -89,7 +89,7 @@ class ThreadAll extends Component {
                                             <div className="row">
                                                 <div className="col-md-8">
                                                     <div className="btn-group">
-                                                        <ThreadAllOptionsDropdown/>
+                                                        <ThreadsAllOptionsDropdown/>
                                                     </div>
                                                 </div>
                                                 <div className="col-md-4">
@@ -133,4 +133,4 @@ class ThreadAll extends Component {
 
 }
 
-export default ThreadAll;
+export default ThreadsAll;

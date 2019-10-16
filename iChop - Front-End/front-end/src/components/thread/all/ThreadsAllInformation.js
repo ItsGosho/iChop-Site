@@ -2,7 +2,7 @@ import React, {Component, Fragment} from 'react';
 import RoutingURLs from "../../../constants/routing.constants";
 import {Link} from "react-router-dom";
 
-class ThreadAllInformation extends Component {
+class ThreadsAllInformation extends Component {
 
 
     render() {
@@ -42,4 +42,4 @@ class ThreadAllInformation extends Component {
 
 }
 
-export default ThreadAllInformation;
+export default ThreadsAllInformation;

@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
 
-class ThreadAllOptionsDropdown extends Component {
+class ThreadsAllOptionsDropdown extends Component {
 
 
     render() {
@@ -39,4 +39,4 @@ class ThreadAllOptionsDropdown extends Component {
 
 }
 
-export default ThreadAllOptionsDropdown;
+export default ThreadsAllOptionsDropdown;
