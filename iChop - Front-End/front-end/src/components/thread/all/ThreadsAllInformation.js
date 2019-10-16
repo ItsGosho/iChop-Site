@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import RoutingURLs from "../../../constants/routing.constants";
 import {Link} from "react-router-dom";
+import CreateReactClass from "create-react-class";
 
 class ThreadsAllInformation extends Component {
 
@@ -25,21 +26,21 @@ class ThreadsAllInformation extends Component {
                 </div>
                 <div className="row">
                     <div className="col-md-8">
-                        <small>by
-                            <Link
-                                to={userProfileUrl}>👤 {username}</Link> at <span>{postTime} ({totalViews}👀/{totalReactions} 👍</span>
+                        <small>
+                            <span>by </span>
+                            <Link to={userProfileUrl}>👤 {username}</Link>
+                            <span> at {postTime} ({totalViews}👀/{totalReactions} 👍</span>
                         </small>
                     </div>
                     <div className="col-md-4">
                         <small className="totalComments">
-                            <Link to={threadReadUrl}>{totalComments}</Link><span>💬</span>
+                            <Link to={threadReadUrl}>{totalComments}💬</Link>
                         </small>
                     </div>
                 </div>
             </Fragment>
         );
     }
-
 }
 
 export default ThreadsAllInformation;
