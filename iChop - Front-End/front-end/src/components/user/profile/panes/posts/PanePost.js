@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import './PanePost.css'
 import PanePostActions from "./PanePostActions";
 import ServerRoutingURLs from "../../../../../constants/server.routing.urls";
+import Image from "../../../../other/Image";
+import FrontEndResourcesRoutingURLs from "../../../../../constants/front-end.resources.routings";
 
 class PanePost extends Component {
 
@@ -16,11 +18,11 @@ class PanePost extends Component {
 
                     <div className="row top--15px">
                         <div className="col-md-1">
-                            <img
-                                src={creatorAvatarUrl}
-                                alt=''
-                                onError={this.onUserAvatarError}
-                                className="post-user-avatar"/>
+
+                            <Image url={creatorAvatarUrl}
+                                   defaultUrl={FrontEndResourcesRoutingURLs.USER.AVATAR}
+                                   className="post-user-avatar"/>
+                                   
                         </div>
                         <div className="col-lg post-col-holder">
                             <a href=' ' className="col-post-creator-holder">
