@@ -3,6 +3,7 @@ import TextEditor from "../../editor/TextEditor";
 import './ThreadCreate.css'
 import ThreadCreateHelpModal from "./ThreadCreateHelpModal";
 import ModalOpen from "../../modal/ModalOpen";
+import CreateReactClass from "create-react-class";
 
 class ThreadCreate extends Component {
 
@@ -28,72 +29,65 @@ class ThreadCreate extends Component {
     render() {
 
         return (
-            <div id="createThread-page" className="container d-flex justify-content-center align-items-center">
-                <div className="row">
-
-                    <div id="news" className="col-xs-6">
-                        <div className="card">
-
-                            <div className="card-header">
-                                <small>🆕</small>
-                                <span>Create a new thread:</span>
-                            </div>
-
-                            <div className="card-body">
-                                <form>
-
-                                    <div className="row">
-                                        <div className="col-md-12">
-                                            <div className="input-group mb-3">
-                                                <input id="input-title-threadCreate"
-                                                       type="text"
-                                                       className="form-control"
-                                                       aria-label="Title"
-                                                       aria-describedby="basic-addon1"
-                                                       name="title"
-                                                       placeholder="Thread title" ref={this.titleRef}/>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="dropdown-divider"/>
-
-                                    <TextEditor/>
-
-                                    <div id="textarea-content" contentEditable="true" ref={this.contentRef}/>
-
-                                    <div className="dropdown-divider"/>
-
-                                    <div className="col-md-13">
-
-                                        <ModalOpen relationTo={'help'} title={'Help'}>
-                                            <span>❓</span>
-                                        </ModalOpen>
-
-                                        <ThreadCreateHelpModal/>
-
-                                    </div>
-
-                                    <div className="dropdown-divider"/>
-
-                                    <div className="row">
-                                        <button id="button-proceedCreateThread-createThread" type="button"
-                                                className="btn btn-success btn-lg btn-block"
-                                                onClick={this.onCreate}>Create
-                                        </button>
-                                    </div>
-
-                                </form>
-                            </div>
-
-                            <div className="dropdown-divider"/>
-                        </div>
-                    </div>
-
+            <CreateCard>
+                <div className="card-header">
+                    <small>🆕</small>
+                    <span>Create a new thread:</span>
                 </div>
-            </div>
+
+                <div className="card-body">
+                    <form>
+
+                        <div className="input-group mb-3">
+                            <input id="input-title-threadCreate"
+                                   className="form-control"
+                                   name="title"
+                                   placeholder="Thread title" ref={this.titleRef}/>
+                        </div>
+
+                        <div className="dropdown-divider"/>
+
+                        <TextEditor/>
+
+                        <div id="textarea-content" contentEditable="true" ref={this.contentRef}/>
+
+                        <ModalOpen relationTo={'help'} title={'Help'}>
+                            <span>❓</span>
+                        </ModalOpen>
+
+                        <ThreadCreateHelpModal/>
+
+                        <div className="dropdown-divider"/>
+
+                        <div className="row">
+                            <button type="button"
+                                    className="btn btn-warning btn-lg btn-block"
+                                    onClick={this.onCreate}>Create
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </CreateCard>
         );
     }
 }
 
 export default ThreadCreate;
+
+
+const CreateCard = CreateReactClass({
+    render() {
+        return (
+            <div className="container d-flex justify-content-center align-items-center">
+                <div className="row">
+                    <div className="col-xs-6">
+                        <div className="card">
+                            {this.props.children}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+});

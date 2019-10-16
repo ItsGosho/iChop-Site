@@ -34,7 +34,7 @@ function App() {
 
             </div>*/}
 
-            <UserProfile/>
+            <ThreadCreate/>
 
             <Footer/>
         </Fragment>
