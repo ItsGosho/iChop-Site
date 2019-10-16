@@ -30,17 +30,11 @@ class PanePost extends Component {
                         </div>
                     </div>
 
-                    {
-                        (() => {
-                            if (isAuthenticated) {
-                                return (
-                                    <div className="row">
-                                        <PanePostActions/>
-                                    </div>
-                                );
-                            }
-                        })()
-                    }
+                    {isAuthenticated ? (
+                        <div className="row">
+                            <PanePostActions/>
+                        </div>
+                    ) : null}
 
                 </div>
             </div>
