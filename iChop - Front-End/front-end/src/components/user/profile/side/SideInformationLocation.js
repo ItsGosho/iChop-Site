@@ -1,4 +1,4 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
 import './SideInformationLocation.css'
 
 class SideInformationLocation extends Component {
@@ -13,8 +13,7 @@ class SideInformationLocation extends Component {
                         Location:
                     </div>
                     <div className="col-md-auto col-width-100">
-                                    <span className="location-information-holder">{location}</span>
-
+                        <span className="location-information-holder">{location}</span>
                     </div>
                 </div>
             </div>

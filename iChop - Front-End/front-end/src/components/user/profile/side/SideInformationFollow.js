@@ -65,7 +65,6 @@ class SideInformationFollow extends Component {
 
 export default SideInformationFollow;
 
-
 const FollowInformation = (props) => {
     let {users} = props;
 

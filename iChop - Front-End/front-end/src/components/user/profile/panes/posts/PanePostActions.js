@@ -5,6 +5,21 @@ import './PanePostActions.css'
 
 class PanePostActions extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.onDelete = this.onDelete.bind(this);
+        this.onReport = this.onReport.bind(this);
+    }
+
+
+    onDelete(post) {
+        console.log('Delete!');
+    }
+
+    onReport(post) {
+        console.log('Report!');
+    }
 
     render() {
         let createdOn = dateFormat(new Date(), 'dd mmm, yyyy');
@@ -13,6 +28,8 @@ class PanePostActions extends Component {
         let postUserUsername = 'Roki';
         let postCreatorUsername = 'Joni';
         let role = Roles.MODERATOR;
+        
+        let post = null;
 
         return (
             <div className="col-md-12">
@@ -26,13 +43,13 @@ class PanePostActions extends Component {
 
                         if (isPostCreator || isPostOnHisProfile || isModerator) {
                             return (
-                                <button className="control-button">❌Delete</button>
+                                <button className="control-button" onClick={this.onDelete(post)}>❌Delete</button>
                             );
                         }
                     })()
                 }
 
-                <button className="control-button">🎌Report</button>
+                <button className="control-button" onClick={this.onReport(post)}>🎌Report</button>
 
             </div>
         );
