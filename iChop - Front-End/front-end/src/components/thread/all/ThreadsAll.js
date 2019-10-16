@@ -113,7 +113,7 @@ class ThreadsAll extends Component {
     }
 
     render() {
-
+        let {threads} = this.state;
 
         return (
             <div className="d-flex justify-content-center">
@@ -127,18 +127,11 @@ class ThreadsAll extends Component {
 
                             {this.iterateThreads()}
 
-
-                            {
-                                (() => {
-                                    if (this.state.threads.length === 0) {
-                                        return (<span>There are no news!</span>);
-                                    }
-                                })()
-                            }
+                            {threads.length === 0 ? (<span>There are no news!</span>) : null}
 
                             <div className="dropdown-divider"/>
 
-                            <PaginationNav totalResults={this.state.threads.length} resultsPerPage={10}
+                            <PaginationNav totalResults={threads.length} resultsPerPage={10}
                                            redirectPage={RoutingURLs.HOME}/>
 
                         </div>
