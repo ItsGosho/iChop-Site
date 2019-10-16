@@ -3,19 +3,9 @@ import {Link} from "react-router-dom";
 import ServerRoutingURLs from "../../../../constants/server.routing.urls";
 import RoutingURLs from "../../../../constants/routing.constants";
 import FrontEndResourcesRoutingURLs from "../../../../constants/front-end.resources.routings";
+import Image from "../../../other/Image";
 
 class ThreadCreatorInformation extends Component {
-
-    constructor(props) {
-        super(props);
-
-        this.onUserAvatarError = this.onUserAvatarError.bind(this);
-    }
-
-    onUserAvatarError(event) {
-        event.target.onerror = null;
-        event.target.src = FrontEndResourcesRoutingURLs.USER.AVATAR;
-    }
 
 
     render() {
@@ -35,12 +25,11 @@ class ThreadCreatorInformation extends Component {
                         </small>
                     </div>
                     <div align="center">
-                        <img
-                            src={userAvatarUrl}
-                            onError={this.onUserAvatarError}
-                            alt=''
-                            style={{'width': '50px', 'height': '50px'}}
-                            className="card-img-top thread-creator-avatar"/>
+
+                        <Image url={userAvatarUrl}
+                               defaultUrl={FrontEndResourcesRoutingURLs.USER.AVATAR}
+                               style={{'width': '50px', 'height': '50px'}}/>
+
                     </div>
                     <div align="center">
                         <small>

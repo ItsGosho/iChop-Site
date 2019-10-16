@@ -62,7 +62,7 @@ class ThreadReadComments extends Component {
                         } = comment;
 
                         return (
-                            <div className="card thread-comments" style={{'borderColor': 'black'}}>
+                            <div className="card thread-comments">
 
                                 <div>
                                     <CommentInformation createdOn={createdOn}

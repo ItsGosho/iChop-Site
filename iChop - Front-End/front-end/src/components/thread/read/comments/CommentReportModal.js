@@ -22,9 +22,7 @@ class CommentReportModal extends Component {
                 </ModalBody>
 
                 <ModalFooter>
-                    <button
-                        className="btn btn-danger">Report
-                    </button>
+                    <button className="btn btn-danger">Report</button>
                     <ModalClose/>
                 </ModalFooter>
             </Modal>
