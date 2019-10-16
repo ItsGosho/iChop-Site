@@ -1,4 +1,4 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
 import ThreadsAllInformation from "./ThreadsAllInformation";
 import Interweave from "interweave";
 import ThreadsAllOptionsDropdown from "./ThreadsAllOptionsDropdown";
@@ -41,13 +41,10 @@ class ThreadsAllThread extends Component {
                         </div>
                     </div>
                     <div className="col-md-4">
-                        <Link className="dropdown-item"
+                        <Link className="btn btn-primary btn-sm btn-brand btn-reddit continueReading"
                               to={threadReadUrl}>
-                            <button type="button"
-                                    className="btn btn-primary btn-sm btn-brand btn-reddit continueReading">
-                                <small>📖</small>
-                                <span>Continue reading...</span>
-                            </button>
+                            <small>📖</small>
+                            <span>Continue reading...</span>
                         </Link>
                     </div>
 

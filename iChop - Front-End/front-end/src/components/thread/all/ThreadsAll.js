@@ -26,7 +26,6 @@ class ThreadsAll extends Component {
         }
 
         return threads.map((thread, index) => {
-
             let {id, title, createdOn, creatorUsername, postTime, totalViews, totalReactions, totalComments, content} = thread;
 
             return (
@@ -109,6 +108,7 @@ class ThreadsAll extends Component {
 }
 
 export default ThreadsAll;
+
 
 const Threads = CreateReactClass({
     render() {
