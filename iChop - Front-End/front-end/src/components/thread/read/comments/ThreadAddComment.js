@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react';
-import TextEditor from "../../editor/TextEditor";
+import TextEditor from "../../../editor/TextEditor";
 
-class ThreadReadAddComment extends Component {
+class ThreadAddComment extends Component {
 
 
     render() {
@@ -46,4 +46,4 @@ class ThreadReadAddComment extends Component {
 
 }
 
-export default ThreadReadAddComment;
+export default ThreadAddComment;

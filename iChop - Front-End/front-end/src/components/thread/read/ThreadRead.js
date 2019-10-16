@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import ThreadReadMainContent from "./ThreadReadMainContent";
-import ThreadReadComments from "./ThreadReadComments";
+import ThreadMainContent from "./main/ThreadMainContent";
+import ThreadComments from "./comments/ThreadComments";
 import './ThreadRead.css'
 
 class ThreadRead extends Component {
@@ -13,9 +13,9 @@ class ThreadRead extends Component {
                 <div className="row">
                     <div className="col-xs-6">
 
-                        <ThreadReadMainContent/>
+                        <ThreadMainContent/>
                         {/*<ThreadReadAddComment/>*/}
-                        <ThreadReadComments/>
+                        <ThreadComments/>
 
                     </div>
                 </div>

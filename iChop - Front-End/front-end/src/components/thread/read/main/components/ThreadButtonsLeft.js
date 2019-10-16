@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import ThreadReportModal from "./ThreadReportModal";
-import ModalOpen from "../../../modal/ModalOpen";
+import ModalOpen from "../../../../modal/ModalOpen";
 
 class ThreadButtonsLeft extends Component {
 

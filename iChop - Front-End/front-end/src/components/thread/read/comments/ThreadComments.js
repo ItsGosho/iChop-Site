@@ -1,13 +1,13 @@
 import React, {Component, Fragment} from 'react';
 import dateFormat from 'dateformat'
 import Interweave from "interweave";
-import CommentInformation from "./comments/CommentInformation";
-import CommentCreatorInformation from "./comments/CommentCreatorInformation";
-import CommentOptionsDropdown from "./comments/CommentOptionsDropdown";
-import CommentReportButton from "./comments/CommentReportButton";
-import CommentReactDropdown from "./comments/CommentReactDropdown";
+import CommentInformation from "./components/CommentInformation";
+import CommentCreatorInformation from "./components/CommentCreatorInformation";
+import CommentOptionsDropdown from "./components/CommentOptionsDropdown";
+import CommentReportButton from "./components/CommentReportButton";
+import CommentReactDropdown from "./components/CommentReactDropdown";
 
-class ThreadReadComments extends Component {
+class ThreadComments extends Component {
 
 
     render() {
@@ -112,4 +112,4 @@ class ThreadReadComments extends Component {
     }
 }
 
-export default ThreadReadComments;
+export default ThreadComments;

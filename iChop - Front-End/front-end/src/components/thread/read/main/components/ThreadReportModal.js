@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import ModalTitle from "../../../modal/ModalTitle";
-import ModalBody from "../../../modal/ModalBody";
-import ModalFooter from "../../../modal/ModalFooter";
-import ModalClose from "../../../modal/ModalClose";
-import Modal from "../../../modal/Modal";
+import ModalTitle from "../../../../modal/ModalTitle";
+import ModalBody from "../../../../modal/ModalBody";
+import ModalFooter from "../../../../modal/ModalFooter";
+import ModalClose from "../../../../modal/ModalClose";
+import Modal from "../../../../modal/Modal";
 
 class ThreadReportModal extends Component {
 

@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import Modal from "../../../modal/Modal";
-import ModalTitle from "../../../modal/ModalTitle";
-import ModalBody from "../../../modal/ModalBody";
-import ModalFooter from "../../../modal/ModalFooter";
-import ModalClose from "../../../modal/ModalClose";
+import Modal from "../../../../modal/Modal";
+import ModalTitle from "../../../../modal/ModalTitle";
+import ModalBody from "../../../../modal/ModalBody";
+import ModalFooter from "../../../../modal/ModalFooter";
+import ModalClose from "../../../../modal/ModalClose";
 
 class CommentReportModal extends Component {
 

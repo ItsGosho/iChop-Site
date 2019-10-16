@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import CommentReportModal from "./CommentReportModal";
-import ModalOpen from "../../../modal/ModalOpen";
+import ModalOpen from "../../../../modal/ModalOpen";
 
 class CommentReportButton extends Component {
 

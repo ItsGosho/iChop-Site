@@ -8,7 +8,7 @@ import PlayerLinkAccount from "./components/player/PlayerLinkAccount";
 import PlayerProfile from "./components/player/PlayerProfile";
 import Reports from "./components/report/Reports";
 import ThreadRead from "./components/thread/read/ThreadRead";
-import ThreadAll from "./components/thread/read/all/ThreadAll";
+import ThreadAll from "./components/thread/all/ThreadAll";
 import TextEditorInsertImageModal from "./components/editor/fragments/TextEditorInsertImageModal";
 import ThreadCreateHelpModal from "./components/thread/create/ThreadCreateHelpModal";
 import UserProfile from "./components/user/profile/UserProfile";
@@ -34,7 +34,7 @@ function App() {
 
             </div>*/}
 
-            <ThreadRead/>
+            <ThreadAll/>
 
             <Footer/>
         </Fragment>

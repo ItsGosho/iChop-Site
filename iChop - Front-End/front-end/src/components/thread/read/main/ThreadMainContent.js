@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import formatDate from 'dateformat';
 import Interweave from "interweave";
-import ThreadCreatorInformation from "./main/ThreadCreatorInformation";
-import ThreadInformation from "./main/ThreadInformation";
-import ThreadButtonsLeft from "./main/ThreadButtonsLeft";
-import ThreadButtonsRight from "./main/ThreadButtonsRight";
+import ThreadCreatorInformation from "./components/ThreadCreatorInformation";
+import ThreadInformation from "./components/ThreadInformation";
+import ThreadButtonsLeft from "./components/ThreadButtonsLeft";
+import ThreadButtonsRight from "./components/ThreadButtonsRight";
 
-class ThreadReadMainContent extends Component {
+class ThreadMainContent extends Component {
 
     render() {
         let threadId = 'threadId123';
@@ -64,11 +64,11 @@ class ThreadReadMainContent extends Component {
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         );
     }
 }
 
-export default ThreadReadMainContent;
+export default ThreadMainContent;
