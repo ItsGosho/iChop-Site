@@ -1,7 +1,4 @@
 import React, {Component, Fragment} from 'react';
-import PanePostActions from "./PanePostActions";
-import ServerRoutingURLs from "../../../../../constants/server.routing.urls";
-import FrontEndResourcesRoutingURLs from "../../../../../constants/front-end.resources.routings";
 import PanePost from "./PanePost";
 
 class PanePostsAll extends Component {
@@ -9,17 +6,22 @@ class PanePostsAll extends Component {
     constructor(props) {
         super(props);
 
-        this.onUserAvatarError = this.onUserAvatarError.bind(this);
+        this.iteratePosts = this.iteratePosts.bind(this);
     }
 
+    iteratePosts(posts) {
+        let isAuthenticated = true;
 
-    onUserAvatarError(event) {
-        event.target.onerror = null;
-        event.target.src = FrontEndResourcesRoutingURLs.USER.AVATAR;
+        return posts.map((post, index) => {
+            let {creatorUsername, content} = post;
+
+            return (<PanePost creatorUsername={creatorUsername}
+                              isAuthenticated={isAuthenticated}
+                              content={content}/>);
+        })
     }
 
     render() {
-        let isAuthenticated = true;
         let posts = [
             {
                 creatorUsername: 'Salamcho',
@@ -33,13 +35,7 @@ class PanePostsAll extends Component {
 
         return (
             <Fragment>
-                {posts.map((post, index) => {
-                    let {creatorUsername, content} = post;
-
-                    return (<PanePost creatorUsername={creatorUsername}
-                                      isAuthenticated={true}
-                                      content={content}/>);
-                })}
+                {this.iteratePosts(posts)}
             </Fragment>
         );
     }
