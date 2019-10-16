@@ -86,22 +86,24 @@ class ThreadReadComments extends Component {
 
                                     <div>
 
-                                        <div>
-                                            <div className="btn-group thread-comments-buttons">
-                                                <div className="thread-comments-button_options">
+                                    </div>
+                                </div>
 
-                                                    <Fragment>
-                                                        <CommentOptionsDropdown/>
+                                <div>
+                                    <div className="btn-group thread-comments-buttons">
+                                        <div className="thread-comments-button_options">
 
-                                                        <CommentReportButton/>
+                                            <Fragment>
+                                                <CommentOptionsDropdown/>
 
-                                                        <CommentReactDropdown/>
-                                                    </Fragment>
-                                                </div>
-                                            </div>
+                                                <CommentReportButton/>
+
+                                                <CommentReactDropdown/>
+                                            </Fragment>
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
                         )
                     }))()
