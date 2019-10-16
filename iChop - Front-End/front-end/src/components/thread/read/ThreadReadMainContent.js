@@ -52,21 +52,19 @@ class ThreadReadMainContent extends Component {
                         </p>
                     </div>
 
-
-                    <div className="row">
-                        <div className="col-md-8 thread-random_separation"/>
-
-                        <div className="row">
-                            <div className="col-md-12">
-                                <div className="btn-group thread-left_side_buttons">
-                                    <ThreadButtonsLeft/>
-                                </div>
-                                <div className="btn-group thread-right_side_buttons">
-                                    <ThreadButtonsRight/>
-                                </div>
+                    <div className="row thread-random_separation">
+                        <div className="col">
+                            <div className="btn-group thread-left_side_buttons">
+                                <ThreadButtonsLeft/>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="btn-group thread-right_side_buttons">
+                                <ThreadButtonsRight/>
                             </div>
                         </div>
                     </div>
+                    
                 </div>
             </div>
         );
