@@ -10,8 +10,20 @@ import {Link} from "react-router-dom";
 
 class ThreadsAll extends Component {
 
+    constructor(props) {
+        super(props);
 
-    render() {
+        this.state = {
+            threads: []
+        }
+
+    }
+
+    iterateThreads() {
+
+    }
+
+    componentDidMount() {
         let threads = [
             {
                 id: 'id1',
@@ -48,6 +60,12 @@ class ThreadsAll extends Component {
             }
         ];
 
+        this.setState({threads})
+    }
+
+    render() {
+
+
         return (
             <div className="d-flex justify-content-center">
                 <div className="col-md-auto" style={{'width': '75%'}}>
@@ -59,7 +77,7 @@ class ThreadsAll extends Component {
                             </div>
 
                             {
-                                (() => threads.map((thread, index) => {
+                                (() => this.state.threads.map((thread, index) => {
 
                                     let {id, title, createdOn, creatorUsername, postTime, totalViews, totalReactions, totalComments, content} = thread;
                                     let threadReadUrl = RoutingURLs.THREAD.VIEW.replace(':id', id);
@@ -113,7 +131,7 @@ class ThreadsAll extends Component {
 
                             {
                                 (() => {
-                                    if (threads.length === 0) {
+                                    if (this.state.threads.length === 0) {
                                         return (<span>There are no news!</span>);
                                     }
                                 })()
@@ -121,7 +139,7 @@ class ThreadsAll extends Component {
 
                             <div className="dropdown-divider"/>
 
-                            <PaginationNav totalResults={threads.length} resultsPerPage={10}
+                            <PaginationNav totalResults={this.state.threads.length} resultsPerPage={10}
                                            redirectPage={RoutingURLs.HOME}/>
 
                         </div>
