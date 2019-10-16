@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import ThreadsAllInformation from "./ThreadsAllInformation";
+import ThreadsAllThreadInformation from "./ThreadsAllThreadInformation";
 import Interweave from "interweave";
-import ThreadsAllOptionsDropdown from "./ThreadsAllOptionsDropdown";
+import ThreadsAllThreadOptionsDropdown from "./ThreadsAllThreadOptionsDropdown";
 import {Link} from "react-router-dom";
 import RoutingURLs from "../../../constants/routing.constants";
 
@@ -14,14 +14,14 @@ class ThreadsAllThread extends Component {
 
         return (
             <div className="card-body">
-                <ThreadsAllInformation id={id}
-                                       title={title}
-                                       createdOn={createdOn}
-                                       username={creatorUsername}
-                                       postTime={postTime}
-                                       totalViews={totalViews}
-                                       totalReactions={totalReactions}
-                                       totalComments={totalComments}/>
+                <ThreadsAllThreadInformation id={id}
+                                             title={title}
+                                             createdOn={createdOn}
+                                             username={creatorUsername}
+                                             postTime={postTime}
+                                             totalViews={totalViews}
+                                             totalReactions={totalReactions}
+                                             totalComments={totalComments}/>
 
                 <div className="dropdown-divider"/>
 
@@ -37,7 +37,7 @@ class ThreadsAllThread extends Component {
 
                     <div className="col-md-8">
                         <div className="btn-group">
-                            <ThreadsAllOptionsDropdown id={id}/>
+                            <ThreadsAllThreadOptionsDropdown id={id}/>
                         </div>
                     </div>
 
