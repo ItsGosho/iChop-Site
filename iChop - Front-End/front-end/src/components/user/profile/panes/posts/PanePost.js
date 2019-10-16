@@ -11,21 +11,22 @@ class PanePost extends Component {
         let creatorAvatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', creatorUsername);
 
         return (
-            <div className="card post" style={{'marginTop': '10px'}}>
-                <div className="card-body" style={{'marginBottom': '-15px'}}>
+            <div className="card top-10px">
+                <div className="card-body bottom--15px">
 
-                    <div className="row" style={{'marginTop': '-15px'}}>
-                        <div className="col-md-1" style={{'marginTop': '9px'}}>
+                    <div className="row top--15px">
+                        <div className="col-md-1">
                             <img
                                 src={creatorAvatarUrl}
                                 alt=''
                                 onError={this.onUserAvatarError}
-                                style={{'width': '30px', 'height': '30px'}}/>
+                                className="post-user-avatar"/>
                         </div>
-                        <div className="col-lg" style={{'width': '150px'}}>
-                            <a href=' ' style={{'color': '#775322', 'fontSize': '13px'}}>
-                                <b>{creatorUsername}</b> </a>
-                            <small>{content}</small>
+                        <div className="col-lg post-col-holder">
+                            <a href=' ' className="col-post-creator-holder">
+                                <b>{creatorUsername}</b>
+                            </a>
+                            <small className="left-5px">{content}</small>
                         </div>
                     </div>
 
