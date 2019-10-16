@@ -28,7 +28,7 @@ class PanePostActions extends Component {
         let postUserUsername = 'Roki';
         let postCreatorUsername = 'Joni';
         let role = Roles.MODERATOR;
-        
+
         let post = null;
 
         return (
@@ -43,13 +43,18 @@ class PanePostActions extends Component {
 
                         if (isPostCreator || isPostOnHisProfile || isModerator) {
                             return (
-                                <button className="control-button" onClick={this.onDelete(post)}>❌Delete</button>
+                                <button className="control-button" onClick={() => {
+                                    this.onDelete(post)
+                                }}>❌Delete</button>
                             );
                         }
                     })()
                 }
 
-                <button className="control-button" onClick={this.onReport(post)}>🎌Report</button>
+                <button className="control-button" onClick={() => {
+                    this.onReport(post)
+                }}>🎌Report
+                </button>
 
             </div>
         );
