@@ -9,11 +9,13 @@ class ThreadsAllOptionsDropdown extends Component {
     }
 
 
-    onDelete() {
-        console.log('Delete');
+    onDelete(id) {
+        console.log('Delete -> ' + id);
     }
 
     render() {
+        let {id} = this.props;
+
         let isAuthenticated = true;
         let hasAtLeastModeratorRole = true;
 
@@ -34,7 +36,7 @@ class ThreadsAllOptionsDropdown extends Component {
                             <button type="button"
                                     className="btn btn-light btn-sm thread-delete_button"
                                     onClick={() => {
-                                        this.onDelete();
+                                        this.onDelete(id);
                                     }}>
                                 <small>❌</small>
                                 <span>Delete</span>

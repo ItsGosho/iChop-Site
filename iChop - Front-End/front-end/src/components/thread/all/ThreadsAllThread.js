@@ -31,15 +31,16 @@ class ThreadsAllThread extends Component {
                     </p>
                 </div>
 
-
                 <div className="dropdown-divider"/>
 
                 <div className="row">
+
                     <div className="col-md-8">
                         <div className="btn-group">
-                            <ThreadsAllOptionsDropdown/>
+                            <ThreadsAllOptionsDropdown id={id}/>
                         </div>
                     </div>
+
                     <div className="col-md-4">
                         <Link className="btn btn-primary btn-sm btn-brand btn-reddit continueReading"
                               to={threadReadUrl}>
