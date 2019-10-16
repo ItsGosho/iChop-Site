@@ -2,6 +2,16 @@ import React, {Component, Fragment} from 'react';
 
 class ThreadsAllOptionsDropdown extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.onDelete = this.onDelete.bind(this);
+    }
+
+
+    onDelete() {
+        console.log('Delete');
+    }
 
     render() {
         let isAuthenticated = true;
@@ -11,20 +21,26 @@ class ThreadsAllOptionsDropdown extends Component {
             <Fragment>
                 {isAuthenticated && hasAtLeastModeratorRole ? (
                     <Fragment>
-                        <button className="btn btn-secondary btn-sm dropdown-toggle"
+
+                        <button className="btn btn-warning btn-sm dropdown-toggle"
                                 type="button"
                                 data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
                             <small>⚙</small>
                             <span>Options</span>
                         </button>
+
                         <div className="dropdown-menu">
-                            <button type="submit"
-                                    className="btn btn-light btn-sm thread-delete_button">
+                            <button type="button"
+                                    className="btn btn-light btn-sm thread-delete_button"
+                                    onClick={() => {
+                                        this.onDelete();
+                                    }}>
                                 <small>❌</small>
                                 <span>Delete</span>
                             </button>
                         </div>
+
                     </Fragment>
                 ) : null}
             </Fragment>

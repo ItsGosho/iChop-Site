@@ -28,7 +28,7 @@ class ThreadsAllInformation extends Component {
                         <small>
                             <span>by </span>
                             <Link to={userProfileUrl}>👤 {username}</Link>
-                            <span> at {postTime} ({totalViews}👀/{totalReactions} 👍</span>
+                            <span> at {postTime} ({totalViews}👀/{totalReactions} 👍)</span>
                         </small>
                     </div>
                     <div className="col-md-4">
