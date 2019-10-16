@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+import './SideInformationLocation.css'
 
 class SideInformationLocation extends Component {
 
@@ -7,14 +8,12 @@ class SideInformationLocation extends Component {
 
         return (
             <div className="col-md-auto">
-                <div className="row" style={{'fontSize': '11px'}}>
-                    <div className="col-md-auto" style={{'columnWidth': '75px'}}>
+                <div className="row font-size-11px">
+                    <div className="col-md-auto col-width-75">
                         Location:
                     </div>
-                    <div className="col-md-auto" style={{'columnWidth': '100px'}}>
-                                    <span style={{'display': 'inlineBlock','float': 'right'}}>
-                                        {location}
-                                    </span>
+                    <div className="col-md-auto col-width-100">
+                                    <span className="location-information-holder">{location}</span>
 
                     </div>
                 </div>

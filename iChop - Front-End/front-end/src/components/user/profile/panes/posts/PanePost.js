@@ -22,11 +22,9 @@ class PanePost extends Component {
                     <div className="row top--15px">
 
                         <div className="col-md-1">
-
                             <Image url={creatorAvatarUrl}
                                    defaultUrl={FrontEndResourcesRoutingURLs.USER.AVATAR}
                                    className="post-user-avatar"/>
-
                         </div>
 
                         <div className="col-lg post-col-holder">

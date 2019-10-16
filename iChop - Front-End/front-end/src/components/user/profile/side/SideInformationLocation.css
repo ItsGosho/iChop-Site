@@ -1,0 +1,16 @@
+.font-size-11px {
+    font-size: 11px;
+}
+
+.col-width-75 {
+    column-width: 75px;
+}
+
+.col-width-100 {
+    column-width: 100px;
+}
+
+.location-information-holder {
+    display: inline-block;
+    float: right;
+}
