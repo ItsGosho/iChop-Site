@@ -3,11 +3,8 @@ import './ThreadsAll.css';
 import formatDate from 'dateformat'
 import PaginationNav from "../../other/PaginationNav";
 import RoutingURLs from "../../../constants/routing.constants";
-import ThreadsAllInformation from "./ThreadsAllInformation";
-import Interweave from "interweave";
-import ThreadsAllOptionsDropdown from "./ThreadsAllOptionsDropdown";
-import {Link} from "react-router-dom";
 import CreateReactClass from "create-react-class";
+import ThreadsAllThread from "./ThreadsAllThread";
 
 class ThreadsAll extends Component {
 
@@ -22,53 +19,26 @@ class ThreadsAll extends Component {
     }
 
     iterateThreads() {
-        return this.state.threads.map((thread, index) => {
+        let {threads} = this.state;
+
+        if (threads.length === 0) {
+            return (<span>There are no news!</span>);
+        }
+
+        return threads.map((thread, index) => {
 
             let {id, title, createdOn, creatorUsername, postTime, totalViews, totalReactions, totalComments, content} = thread;
-            let threadReadUrl = RoutingURLs.THREAD.VIEW.replace(':id', id);
 
             return (
-                <div className="card-body">
-                    <ThreadsAllInformation id={id}
-                                           title={title}
-                                           createdOn={createdOn}
-                                           username={creatorUsername}
-                                           postTime={postTime}
-                                           totalViews={totalViews}
-                                           totalReactions={totalReactions}
-                                           totalComments={totalComments}/>
-
-                    <div className="dropdown-divider"/>
-
-                    <div className="content thread-content">
-                        <p className="card-text">
-                            <Interweave content={content}/>
-                        </p>
-                    </div>
-
-
-                    <div className="dropdown-divider"/>
-
-                    <div className="row">
-                        <div className="col-md-8">
-                            <div className="btn-group">
-                                <ThreadsAllOptionsDropdown/>
-                            </div>
-                        </div>
-                        <div className="col-md-4">
-                            <Link className="dropdown-item"
-                                  to={threadReadUrl}>
-                                <button type="button"
-                                        className="btn btn-primary btn-sm btn-brand btn-reddit continueReading">
-                                    <small>📖</small>
-                                    <span>Continue reading...</span>
-                                </button>
-                            </Link>
-                        </div>
-
-                    </div>
-                    <div className="dropdown-divider"/>
-                </div>
+                <ThreadsAllThread id={id}
+                                  title={title}
+                                  createdOn={createdOn}
+                                  creatorUsername={creatorUsername}
+                                  postTime={postTime}
+                                  totalViews={totalViews}
+                                  totalReactions={totalReactions}
+                                  totalComments={totalComments}
+                                  content={content}/>
             )
         });
     }
@@ -125,8 +95,6 @@ class ThreadsAll extends Component {
                 </div>
 
                 {this.iterateThreads()}
-
-                {threads.length === 0 ? (<span>There are no news!</span>) : null}
 
                 <div className="dropdown-divider"/>
 
