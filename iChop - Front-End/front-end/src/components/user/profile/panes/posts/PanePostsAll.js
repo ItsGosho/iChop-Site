@@ -3,7 +3,7 @@ import PanePostActions from "./PanePostActions";
 import ServerRoutingURLs from "../../../../../constants/server.routing.urls";
 import FrontEndResourcesRoutingURLs from "../../../../../constants/front-end.resources.routings";
 
-class PaneAllPosts extends Component {
+class PanePostsAll extends Component {
 
     constructor(props) {
         super(props);
@@ -72,4 +72,4 @@ class PaneAllPosts extends Component {
     }
 }
 
-export default PaneAllPosts;
+export default PanePostsAll;
