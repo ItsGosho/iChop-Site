@@ -4,6 +4,8 @@ import PanePostActions from "./PanePostActions";
 import ServerRoutingURLs from "../../../../../constants/server.routing.urls";
 import Image from "../../../../other/Image";
 import FrontEndResourcesRoutingURLs from "../../../../../constants/front-end.resources.routings";
+import {Link} from "react-router-dom";
+import RoutingURLs from "../../../../../constants/routing.constants";
 
 class PanePost extends Component {
 
@@ -11,12 +13,14 @@ class PanePost extends Component {
     render() {
         let {creatorUsername, isAuthenticated, content} = this.props;
         let creatorAvatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', creatorUsername);
+        let creatorProfileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', creatorUsername);
 
         return (
             <div className="card top-10px">
                 <div className="card-body bottom--15px">
 
                     <div className="row top--15px">
+
                         <div className="col-md-1">
 
                             <Image url={creatorAvatarUrl}
@@ -24,10 +28,11 @@ class PanePost extends Component {
                                    className="post-user-avatar"/>
 
                         </div>
+
                         <div className="col-lg post-col-holder">
-                            <a href=' ' className="col-post-creator-holder">
+                            <Link to={creatorProfileUrl} className="col-post-creator-holder">
                                 <b>{creatorUsername}</b>
-                            </a>
+                            </Link>
                             <small className="left-5px">{content}</small>
                         </div>
                     </div>
