@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import dateFormat from 'dateformat';
 import Roles from "../../../../../constants/roles.constants";
+import './PanePostActions.css'
 
 class PanePostActions extends Component {
 
@@ -14,7 +15,7 @@ class PanePostActions extends Component {
 
         return (
             <div className="col-md-12">
-                <span style={{'color': '#7f7f7f', 'fontSize': '10px'}}>{createdOn}</span>
+                <span className="post-createdOn">{createdOn}</span>
 
                 {
                     (() => {
@@ -24,17 +25,13 @@ class PanePostActions extends Component {
 
                         if (isPostCreator || isPostOnHisProfile || isModerator) {
                             return (
-                                <button type="button" style={{all: 'initial', 'cursor': 'pointer'}}>
-                                    <span style={{'fontSize': '10px', 'color': '#007bff'}}>❌Delete</span>
-                                </button>
+                                <button className="control-button">❌Delete</button>
                             );
                         }
                     })()
                 }
 
-                <button type="button" style={{all: 'initial', 'cursor': 'pointer'}}>
-                    <span style={{'fontSize': '10px', 'color': '#007bff'}}>🎌Report</span>
-                </button>
+                <button className="control-button">🎌Report</button>
 
             </div>
         );

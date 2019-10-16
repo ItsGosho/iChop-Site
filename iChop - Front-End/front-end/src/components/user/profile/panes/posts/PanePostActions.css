@@ -1,0 +1,12 @@
+.post-createdOn {
+    font-size: 10px;
+    color: #7f7f7f;
+}
+
+.control-button {
+    all: initial;
+    cursor: pointer;
+    font-size: 10px;
+    color: #007bff;
+    margin-left: 5px;
+}
