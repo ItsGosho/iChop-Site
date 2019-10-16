@@ -2,6 +2,7 @@ import React, {Component, Fragment} from 'react';
 import PanePostActions from "./PanePostActions";
 import ServerRoutingURLs from "../../../../../constants/server.routing.urls";
 import FrontEndResourcesRoutingURLs from "../../../../../constants/front-end.resources.routings";
+import PanePost from "./PanePost";
 
 class PanePostsAll extends Component {
 
@@ -33,43 +34,11 @@ class PanePostsAll extends Component {
         return (
             <Fragment>
                 {posts.map((post, index) => {
-                    let {creatorUsername,content} = post;
-                    let creatorAvatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', creatorUsername);
+                    let {creatorUsername, content} = post;
 
-                    return (
-                        <div className="card post" style={{'marginTop': '10px'}}>
-                            <div className="card-body" style={{'marginBottom': '-15px'}}>
-
-                                <div className="row" style={{'marginTop': '-15px'}}>
-                                    <div className="col-md-1" style={{'marginTop': '9px'}}>
-                                        <img
-                                            src={creatorAvatarUrl}
-                                            alt=''
-                                            onError={this.onUserAvatarError}
-                                            style={{'width': '30px', 'height': '30px'}}/>
-                                    </div>
-                                    <div className="col-lg" style={{'width': '150px'}}>
-                                        <a href=' ' style={{'color': '#775322', 'fontSize': '13px'}}>
-                                            <b>{creatorUsername}</b> </a>
-                                        <small>{content}</small>
-                                    </div>
-                                </div>
-
-                                {
-                                    (() => {
-                                        if (isAuthenticated) {
-                                            return (
-                                                <div className="row">
-                                                    <PanePostActions/>
-                                                </div>
-                                            );
-                                        }
-                                    })()
-                                }
-
-                            </div>
-                        </div>
-                    );
+                    return (<PanePost creatorUsername={creatorUsername}
+                                      isAuthenticated={true}
+                                      content={content}/>);
                 })}
             </Fragment>
         );
