@@ -1,0 +1,27 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<link rel="stylesheet" href="/res/css/player/player-link-account.css">
+
+
+<div class="container d-flex justify-content-center align-items-center" id="div-container-player_link_account">
+    <div class="card" id="div-card-player_link_account">
+        <div class="card-header">
+            Link your account:
+        </div>
+        <div class="card-body">
+            <p class="card-text">Are you sure that you want to link <img id="img-player_head-player_link_account"
+                                                                         th:src="@{https://minotar.net/avatar/{uuid}(uuid=${uuid})}">
+                <b id="b-minecraft_name-player_link_account" th:text="${name}">ItsGosho</b> to your account?</p>
+            <div class="float-left">
+                <form id="form-confirm_player_link_connection-player_link_account" method="post" action="#">
+                    <button class="btn btn-warning">Yes</button>
+                </form>
+            </div>
+            <div class="float-right">
+                <a href="/"><button class="btn btn-danger">No</button></a>
+            </div>
+        </div>
+    </div>
+</div>

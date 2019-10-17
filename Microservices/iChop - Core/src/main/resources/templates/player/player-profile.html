@@ -1,0 +1,122 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<link rel="stylesheet" href="/res/css/player/player-profile.css">
+
+<!--/*@thymesVar id="player" type="com.ichop.core.areas.player.domain.models.view.PlayerProfileViewModel"*/-->
+<th:block th:object="${player}">
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-auto">
+            <div class="col-md-sm">
+
+                <div align="center">
+                    <img th:src="@{https://crafatar.com/renders/body/{uuid}(uuid=*{uuid})}" class="img-player_body-player_profile"/>
+                </div>
+
+
+                <div class="card menu">
+                    <div class="card-body menu">
+
+                        <div class="col-md-auto">
+                            <button class="btn btn-warning btn-statistics" type="button">Statistics</button>
+                        </div>
+
+                        <div class="col-md-auto">
+                            <div class="row">
+                                <!--reserved-->
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <th:block th:if="*{siteUserUsername != null}">
+                <div class="card site-user-username">
+                    <div class="card-body site-user-username">
+
+                        <div class="col-md-auto">
+                            <div class="row site-user-title">
+                                <div class="col-md-auto site-user-title">
+                                    Site User:
+                                </div>
+                                <div class="col-md-auto site-user-username">
+                               <span class="site-user-username">
+                                   <a th:href="@{/user/{username}/profile(username=*{siteUserUsername})}" th:text="*{siteUserUsername}"></a>
+                               </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </th:block>
+
+            </div>
+        </div>
+
+        <div class="central-content">
+
+            <div class="col-md-auto">
+                <div class="player-name-div">
+                    <div class="row">
+                        <div>
+                            <div class="col-md-auto head">
+                                    <span class="player-name" th:text="*{name}"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dropdown-divider"></div>
+            </div>
+
+            <div class="col-md-auto status">
+                <div class="player-connection-status">
+                    <div class="row">
+                        <div>
+                            <div class="col-md-auto head player-connection-status">
+
+                                <th:block th:if="*{getIsOnline()}">
+                                    <span>🔋<span style="color: green">Online</span></span>
+                                </th:block>
+
+                                <th:block th:if="*{!getIsOnline()}">
+                                    <span>🔴<span style="color: darkred">Offline</span></span>
+                                </th:block>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-auto">
+                <div class="dropdown-divider"></div>
+                <div class="col-md-auto head" style="font-size: 19px;font-family: Consolas">
+                    <span>Basic Statistcs:</span>
+                    <div class="row">
+                        <span>💀</span>Deaths: <span th:text="*{totalDeaths}"></span>
+                    </div>
+                    <div class="row">
+                        <span>🗡️ </span>Damage Taken: <span th:text="*{totalDamageDealt}"></span>
+                    </div>
+                    <div class="row">
+                        <span>🤕</span>Damage Taken: <span th:text="*{totalDamageTaken}"></span>
+                    </div>
+                    <div class="row">
+                        <span>️🧟</span>Mobs Killed: <span th:text="*{totalMobKills}"></span>
+                    </div>
+                    <div class="row">
+                        <span>👤</span>Player Killed: <span th:text="*{totalPlayerKills}"></span>
+                    </div>
+                    <div class="row">
+                        <span>⏰</span>Last Join: <span th:text="*{#temporals.format(lastJoin, 'dd/MM/yyyy HH:mm')}"></span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+</th:block>

@@ -1,0 +1,145 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<link rel="stylesheet" href="/res/css/thread/threads-all-home.css">
+
+<div id="threads" class="col-xs-6">
+    <div class="card">
+        <div class="card-header">
+            <small>📰</small>
+            News:
+        </div>
+        <th:block th:if="${!#lists.isEmpty(threads)}">
+
+            <!--/*@thymesVar id="threads" type="com.ichop.core.areas.thread.domain.models.view.thread_homepage.ThreadHomepageViewModel"*/-->
+            <!--/*@thymesVar id="thread" type="com.ichop.core.areas.thread.domain.models.view.thread_homepage.ThreadHomepageViewModel"*/-->
+            <th:block th:each="thread : ${threads}" th:object="${thread}">
+                <div th:id="*{id}" class="card-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h3 class="title" th:text="*{title}">...</h3>
+                        </div>
+                        <div class="col-md-4">
+                            <small class="date">
+                                <small class="dateIcon">📅</small>
+                                <small th:text="*{#temporals.format(createdOn, 'dd MMM,yyyy')}">1 Jan,1970</small>
+                            </small>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <small>by <a th:href="@{/user/{username}/profile(username=*{creatorUsername})}">👤<span class="user" th:text="*{creatorUsername}"></span></a> at
+                                <span
+                                        class="postTime" th:text="*{#temporals.format(createdOn, 'HH:mm')}"></span>
+                                    (<span class="totalViews" th:text="*{totalViews}">0</span>👀 / <span class="totalLikes" th:text="*{totalReactions}">0</span>👍)
+                            </small>
+                        </div>
+                        <div class="col-md-4">
+                            <small class="totalComments">
+                                <small>💬</small>
+                                <a th:href="@{/thread/{id}/read#section-thread_read_comments(id=*{id})}"><span th:text="*{totalComments}"></span></a> Comments
+                            </small>
+                        </div>
+                    </div>
+                    <div class="dropdown-divider"></div>
+
+                    <div class="content thread-content" th:id="'content' + ${thread.getId()}">
+                        <p class="card-text" th:utext="${thread.getContent()}">
+
+                        </p>
+                    </div>
+
+
+                    <div class="dropdown-divider"></div>
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="btn-group">
+                                        <button sec:authorize="isAuthenticated() && hasAuthority('MODERATOR')" class="btn btn-secondary btn-sm dropdown-toggle" type="button"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <small>⚙</small>
+                                            Options
+                                        </button>
+                                        <div class="dropdown-menu">
+                                                <form class="dropdown-item" th:action="@{/thread/{id}/delete(id=*{id})}" method="post">
+                                                    <button sec:authorize="isAuthenticated() && hasAuthority('MODERATOR')" type="submit" class="btn btn-light btn-sm thread-delete_button">
+                                                        <small>❌</small>
+                                                        Delete
+                                                    </button>
+                                                </form>
+                                        </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <a class="dropdown-item" th:href="@{/thread/{id}/read(id=*{id})}">
+                                <button type="button"
+                                        class="btn btn-primary btn-sm btn-brand btn-reddit continueReading">
+                                    <small>📖</small>
+                                    Continue reading...
+                                </button>
+                            </a>
+                        </div>
+
+                    </div>
+                    <div class="dropdown-divider"></div>
+                </div>
+            </th:block>
+
+            <nav aria-label="Page navigation example" class="d-flex justify-content-center align-items-center">
+                <ul class="pagination">
+
+                    <th:block th:if="${#request.getParameter('page')} != null">
+
+                        <th:block th:if="${(#conversions.convert(#request.getParameter('page'), 'Integer')) - 1} >= 0">
+                            <li class="page-item"><a class="page-link"
+                                                     th:href="@{/(page=${(#conversions.convert(#request.getParameter('page'), 'Integer')) - 1})}">Previous</a>
+                            </li>
+                        </th:block>
+
+                    </th:block>
+
+                    <th:block th:each="i: ${#numbers.sequence(1,totalPages)}">
+                        <li class="page-item"><a class="page-link" th:text="${i}"
+                                                 th:href="@{/?page={pId}(pId=${i-1})}"></a></li>
+                    </th:block>
+
+
+                    <th:block th:if="${#request.getParameter('page')} != null">
+
+                        <th:block
+                                th:if="${(#conversions.convert(#request.getParameter('page'), 'Integer')) + 1 <= totalPages-1}">
+                            <li class="page-item"><a class="page-link"
+                                                     th:href="@{/(page=${(#conversions.convert(#request.getParameter('page'), 'Integer')) + 1})}">Next</a>
+                            </li>
+                        </th:block>
+
+                    </th:block>
+
+
+                </ul>
+            </nav>
+
+
+            <div class="dropdown-divider"></div>
+
+        </th:block>
+
+        <th:block th:if="${#lists.isEmpty(threads)}">
+            There are no news!
+        </th:block>
+
+    </div>
+</div>
+
+
+<script>
+        $(`<script/>`, {type: 'text/javascript', src: '/res/js/thread/thread-substringer.js'}).appendTo('head');
+        substringHtmlClassContentToKeyWord('.thread-content','SHOW_TO_NOW');
+</script>
+
+<script>
+    $(document).ready(function () {
+        $(`<script/>`, {type: 'text/javascript', src: '/res/js/utils/imageFitter.js'}).appendTo('head');
+    });
+</script>

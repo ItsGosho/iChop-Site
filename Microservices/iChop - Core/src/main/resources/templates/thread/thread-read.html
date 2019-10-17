@@ -1,0 +1,43 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<link rel="stylesheet" href="/res/css/thread/thread-read.css">
+<script src="/res/js/thread/thread-read.js"></script>
+
+<div id="thread-view" class="container d-flex justify-content-center align-items-center">
+    <div class="row">
+
+        <!--/*@thymesVar id="thread" type="com.ichop.core.areas.thread.domain.models.view.thread_read.ThreadReadViewModel"*/-->
+        <th:block th:object="${thread}">
+            <div class="col-xs-6">
+
+
+                <!--Thread section-->
+                <th:block th:insert="thread/partials/read/thread-main-content"></th:block>
+                <!--Add comment section-->
+
+                <th:block th:insert="thread/partials/read/add-comment-section"></th:block>
+
+                <!--List all comments related to this thread section -->
+                <th:block th:insert="thread/partials/read/thread-all-comments"></th:block>
+
+
+            </div>
+        </th:block>
+
+    </div>
+</div>
+
+
+<script>
+    $(`<script/>`, {type: 'text/javascript', src: '/res/js/thread/thread-substringer.js'}).appendTo('head');
+    removeHtmlClassContentKyWord('.content', 'SHOW_TO_NOW');
+</script>
+
+<script>
+    $(document).ready(function () {
+        $(`<script/>`, {type: 'text/javascript', src: '/res/js/utils/imageFitter.js'}).appendTo('head');
+    });
+</script>
+
