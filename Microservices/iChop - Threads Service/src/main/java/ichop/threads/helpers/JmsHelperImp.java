@@ -36,7 +36,7 @@ public class JmsHelperImp implements JmsHelper {
     }
 
     @Override
-    public <S extends BaseReplyModel, R extends BaseRequestModel> R sendAndReceive(String destination, S model, Class<R> clazz) {
+    public <S extends BaseReplyModel, R extends BaseRequestModel> S sendAndReceive(String destination, R model, Class<S> clazz) {
         LOG.info(String.format(SEND_AND_RECEIVED_STARTED, destination));
 
         MessageCreator message = this.createMessage(model);
@@ -46,7 +46,7 @@ public class JmsHelperImp implements JmsHelper {
     }
 
     @Override
-    public <S extends BaseReplyModel> void send(String destination, S model) {
+    public <S extends BaseRequestModel> void send(String destination, S model) {
         LOG.info(String.format(SEND_STARTED, destination));
 
         MessageCreator message = this.createMessage(model);
@@ -64,7 +64,7 @@ public class JmsHelperImp implements JmsHelper {
     }
 
     @Override
-    public <R extends BaseRequestModel> R getResultModel(Message message, Class<R> clazz) {
+    public <R> R getResultModel(Message message, Class<R> clazz) {
 
         try {
             String body = message.getBody(String.class);
@@ -97,11 +97,11 @@ public class JmsHelperImp implements JmsHelper {
         this.jmsTemplate.send(destination, message);
     }
 
-    private <S extends BaseReplyModel> MessageCreator createMessage(S model) {
+    private MessageCreator createMessage (Object model) {
         return this.createMessage(model, this.randomId());
     }
 
-    private <S extends BaseReplyModel> MessageCreator createMessage(S model, String correlationId) {
+    private MessageCreator createMessage(Object model, String correlationId) {
         return session -> {
             try {
                 Message message = session.createTextMessage(this.objectMapper.writeValueAsString(model));

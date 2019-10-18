@@ -1,7 +1,7 @@
 package ichop.threads.listener;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ichop.threads.aop.PassModel;
+import ichop.threads.aop.ValidateModel;
 import ichop.threads.domain.models.jms.create.ThreadCreateRequestModel;
 import ichop.threads.domain.models.jms.create.ThreadCreateReplyModel;
 import ichop.threads.domain.models.jms.delete.ThreadDeleteByIdReplyModel;
@@ -41,12 +41,13 @@ public class ThreadJmsListenerImp implements ThreadJmsListener {
         this.threadServices = threadServices;
     }
 
-    @PassModel(model = ThreadCreateRequestModel.class)
+    @ValidateModel(model = ThreadCreateRequestModel.class)
     @JmsListener(destination = "${artemis.queue.thread.create}", containerFactory = "queueFactory")
-    private void createThread(Message message, ThreadCreateRequestModel requestModel) {
+    public void createThread(Message message) {
+        ThreadCreateRequestModel requestModel = this.jmsHelper.getResultModel(message, ThreadCreateRequestModel.class);
 
         ThreadServiceModel thread = this.objectMapper.convertValue(requestModel, ThreadServiceModel.class);
-        this.threadServices.save(thread);
+        thread = this.threadServices.save(thread);
 
         ThreadCreateReplyModel replyModel = this.objectMapper.convertValue(thread, ThreadCreateReplyModel.class);
         replyModel.setMessage(THREAD_CREATED_SUCCESSFUL);
@@ -55,7 +56,7 @@ public class ThreadJmsListenerImp implements ThreadJmsListener {
     }
 
     @JmsListener(destination = "${artemis.queue.thread.get_by_id}", containerFactory = "queueFactory")
-    private void getById(Message message) {
+    public void getById(Message message) {
 
         ThreadGetByIdRequestModel requestModel = this.jmsHelper.getResultModel(message, ThreadGetByIdRequestModel.class);
 
@@ -73,7 +74,7 @@ public class ThreadJmsListenerImp implements ThreadJmsListener {
     }
 
     @JmsListener(destination = "${artemis.queue.thread.increase_views}", containerFactory = "queueFactory")
-    private void increaseViews(Message message) {
+    public void increaseViews(Message message) {
 
         ThreadIncreaseViewsRequestModel requestModel = this.jmsHelper.getResultModel(message, ThreadIncreaseViewsRequestModel.class);
 
@@ -91,7 +92,7 @@ public class ThreadJmsListenerImp implements ThreadJmsListener {
     }
 
     @JmsListener(destination = "${artemis.queue.thread.delete_by_id}", containerFactory = "queueFactory")
-    private void deleteById(Message message) {
+    public void deleteById(Message message) {
 
         ThreadDeleteByIdRequestModel requestModel = this.jmsHelper.getResultModel(message, ThreadDeleteByIdRequestModel.class);
 

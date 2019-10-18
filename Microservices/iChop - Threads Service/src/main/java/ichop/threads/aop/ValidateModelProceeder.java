@@ -1,8 +1,8 @@
 package ichop.threads.aop;
 
 import ichop.threads.domain.models.jms.BaseRequestModel;
-import ichop.threads.domain.models.jms.retrieve.ThreadGetByIdRequestModel;
 import ichop.threads.helpers.JmsHelper;
+import ichop.threads.helpers.ValidationHelper;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -10,30 +10,35 @@ import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.jms.Message;
 import java.lang.reflect.Method;
 
 @Aspect
 @Component
-public class PassModelAroundProceeder {
+@SuppressWarnings("all")
+public class ValidateModelProceeder {
 
+    private final ValidationHelper validationHelper;
     private final JmsHelper jmsHelper;
 
     @Autowired
-    public PassModelAroundProceeder(JmsHelper jmsHelper) {
+    public ValidateModelProceeder(ValidationHelper validationHelper, JmsHelper jmsHelper) {
+        this.validationHelper = validationHelper;
         this.jmsHelper = jmsHelper;
     }
 
-    @Around("@annotation(ichop.threads.aop.PassModel)")
-    public Object skipOnNull(ProceedingJoinPoint joinPoint) throws Throwable {
+    @Around("@annotation(ichop.threads.aop.ValidateModel)")
+    public <R extends BaseRequestModel> Object validateModel(ProceedingJoinPoint joinPoint) throws Throwable {
         Class clazz = this.getModelClass(joinPoint);
+        Message message = (Message) joinPoint.getArgs()[0];
 
-       /* ThreadGetByIdRequestModel requestModel = this.jmsHelper.getResultModel(message, ThreadGetByIdRequestModel.class);
+        R requestModel = (R) this.jmsHelper.getResultModel(message, clazz);
 
         if (!this.validationHelper.isValid(requestModel)) {
             this.jmsHelper.replyValidationError(message, requestModel);
-            return;
+            return null;
         }
-*/
+
         return joinPoint.proceed();
     }
 
@@ -41,9 +46,9 @@ public class PassModelAroundProceeder {
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         Method method = signature.getMethod();
 
-        PassModel passModelAnnotation = method.getAnnotation(PassModel.class);
+        ValidateModel validateModelAnnotation = method.getAnnotation(ValidateModel.class);
 
-        return passModelAnnotation.model();
+        return validateModelAnnotation.model();
     }
 
 }
