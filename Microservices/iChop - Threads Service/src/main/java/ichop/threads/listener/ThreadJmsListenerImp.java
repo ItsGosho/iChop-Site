@@ -1,10 +1,10 @@
 package ichop.threads.listener;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ichop.threads.domain.models.jms.ThreadCreateRequestModel;
-import ichop.threads.domain.models.jms.ThreadCreateReplyModel;
-import ichop.threads.domain.models.jms.ThreadGetByIdReplyModel;
-import ichop.threads.domain.models.jms.ThreadGetByIdRequestModel;
+import ichop.threads.domain.models.jms.create.ThreadCreateRequestModel;
+import ichop.threads.domain.models.jms.create.ThreadCreateReplyModel;
+import ichop.threads.domain.models.jms.retrieve.ThreadGetByIdReplyModel;
+import ichop.threads.domain.models.jms.retrieve.ThreadGetByIdRequestModel;
 import ichop.threads.domain.models.service.ThreadServiceModel;
 import ichop.threads.helpers.JmsHelper;
 import ichop.threads.helpers.ValidationHelper;
@@ -70,6 +70,11 @@ public class ThreadJmsListenerImp implements ThreadJmsListener {
         replyModel.setMessage(THREAD_RETRIEVED_SUCCESSFUL);
 
         this.jmsHelper.replySuccessful(message, replyModel);
+    }
+
+    @JmsListener(destination = "${artemis.queue.thread.increase_views}", containerFactory = "queueFactory")
+    private void increaseViews(Message message) {
+
     }
 
 }
