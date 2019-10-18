@@ -1,9 +1,9 @@
 package ichop.threads.domain.entities;
 
+import ichop.threads.common.domain.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
 
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;

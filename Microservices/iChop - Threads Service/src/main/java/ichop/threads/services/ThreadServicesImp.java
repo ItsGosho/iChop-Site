@@ -1,6 +1,7 @@
 package ichop.threads.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import ichop.threads.common.service.AbstractBaseService;
 import ichop.threads.domain.entities.Thread;
 import ichop.threads.domain.models.service.ThreadServiceModel;
 import ichop.threads.repositories.ThreadRepository;

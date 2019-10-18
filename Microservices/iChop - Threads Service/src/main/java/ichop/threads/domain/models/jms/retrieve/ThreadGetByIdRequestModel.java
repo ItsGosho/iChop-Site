@@ -1,7 +1,7 @@
 package ichop.threads.domain.models.jms.retrieve;
 
 
-import ichop.common.jms.models.BaseRequestModel;
+import ichop.threads.common.domain.BaseRequestModel;
 import ichop.threads.validators.ExistsById;
 import lombok.Getter;
 import lombok.Setter;

@@ -1,6 +1,6 @@
 package ichop.threads.domain.models.jms.create;
 
-import ichop.common.jms.models.BaseRequestModel;
+import ichop.threads.common.domain.BaseRequestModel;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;

@@ -1,8 +1,8 @@
 package ichop.threads.listener;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ichop.common.jms.aop.JmsAfterReturn;
-import ichop.common.jms.aop.JmsValidate;
+import ichop.threads.common.aop.JmsAfterReturn;
+import ichop.threads.common.aop.JmsValidate;
 import ichop.threads.domain.models.jms.create.ThreadCreateRequestModel;
 import ichop.threads.domain.models.jms.create.ThreadCreateReplyModel;
 import ichop.threads.domain.models.jms.delete.ThreadDeleteByIdReplyModel;
@@ -12,7 +12,7 @@ import ichop.threads.domain.models.jms.increase.ThreadIncreaseViewsRequestModel;
 import ichop.threads.domain.models.jms.retrieve.ThreadGetByIdReplyModel;
 import ichop.threads.domain.models.jms.retrieve.ThreadGetByIdRequestModel;
 import ichop.threads.domain.models.service.ThreadServiceModel;
-import ichop.common.jms.helpers.JmsHelper;
+import ichop.threads.common.helpers.JmsHelper;
 import ichop.threads.services.ThreadServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
@@ -20,13 +20,10 @@ import org.springframework.stereotype.Component;
 
 import javax.jms.Message;
 
+import static ichop.threads.constants.ThreadReplyConstants.*;
+
 @Component
 public class ThreadJmsListenerImp implements ThreadJmsListener {
-
-    private static final String THREAD_CREATED_SUCCESSFUL = "Thread created successful!";
-    private static final String THREAD_RETRIEVED_SUCCESSFUL = "Thread retrieved successful!";
-    private static final String THREAD_VIEW_INCREASED_SUCCESSFUL = "Thread views increased successful!";
-    private static final String THREAD_DELETED_SUCCESSFUL = "Thread deleted successful!";
 
     private final JmsHelper jmsHelper;
     private final ObjectMapper objectMapper;

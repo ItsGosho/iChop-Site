@@ -2,7 +2,7 @@ package ichop.threads;
 
 import ichop.threads.domain.models.jms.create.ThreadCreateReplyModel;
 import ichop.threads.domain.models.jms.create.ThreadCreateRequestModel;
-import ichop.common.jms.helpers.JmsHelper;
+import ichop.threads.common.helpers.JmsHelper;
 import ichop.threads.listener.ThreadJmsListenerImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

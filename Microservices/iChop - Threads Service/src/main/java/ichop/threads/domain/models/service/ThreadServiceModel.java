@@ -1,5 +1,6 @@
 package ichop.threads.domain.models.service;
 
+import ichop.threads.common.domain.BaseServiceModel;
 import lombok.Getter;
 import lombok.Setter;
 
