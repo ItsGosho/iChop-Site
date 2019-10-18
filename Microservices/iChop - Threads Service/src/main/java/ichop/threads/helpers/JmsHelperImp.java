@@ -42,21 +42,24 @@ public class JmsHelperImp<S extends BaseSendModel, R extends BaseReceiveModel> i
         return this.getResultModel(result, clazz);
     }
 
-    public void send(String destination, S model) {
+    @Override
+    public <S> void send(String destination, S model) {
         LOG.info(String.format(SEND_STARTED, destination));
 
         MessageCreator message = this.createMessage(model);
         this.jmsTemplate.send(destination, message);
     }
 
-    public void replyTo(String destination, String correlationId, S model) {
+    @Override
+    public <S> void replyTo(String destination, String correlationId, S model) {
         LOG.info(String.format(REPLY_TO_STARTED, destination));
 
         MessageCreator message = this.createMessage(model, correlationId);
         this.jmsTemplate.send(destination, message);
     }
 
-    private <R> R getResultModel(Message message, Class<R> clazz) {
+    @Override
+    public <R> R getResultModel(Message message, Class<R> clazz) {
 
         try {
             String body = message.getBody(String.class);
