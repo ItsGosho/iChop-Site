@@ -70,7 +70,6 @@ public class ThreadJmsListenerImp implements ThreadJmsListener {
         replyModel.setMessage(THREAD_RETRIEVED_SUCCESSFUL);
 
         this.jmsHelper.replySuccessful(message, replyModel);
-
     }
 
 }
