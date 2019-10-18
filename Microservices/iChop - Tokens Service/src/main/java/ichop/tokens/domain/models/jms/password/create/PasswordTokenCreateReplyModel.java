@@ -13,6 +13,6 @@ public class PasswordTokenCreateReplyModel extends BaseReplyModel {
     private String id;
     private String userId;
     private String token;
-    private LocalDateTime expirationDate;
+    private LocalDateTime creationDate;
 
 }

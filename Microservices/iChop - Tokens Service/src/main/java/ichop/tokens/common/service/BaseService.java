@@ -6,11 +6,11 @@ import java.util.List;
 
 public interface BaseService<S extends BaseServiceModel> {
 
-    S findById(String id, Class<S> serviceModel);
+    <M> M findById(String id, Class<M> serviceModel);
 
     S findById(String id);
 
-    S save(S serviceModel, Class<S> returnModel);
+    <M> M save(S serviceModel, Class<M> returnModel);
 
     S save(S serviceModel);
 
@@ -18,7 +18,7 @@ public interface BaseService<S extends BaseServiceModel> {
 
     void deleteById(String id);
 
-    List<S> findAll(Class<S> returnModelClass);
+    <M> List<M> findAll(Class<M> returnModelClass);
 
     boolean existsById(String id);
 }

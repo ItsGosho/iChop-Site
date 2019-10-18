@@ -12,7 +12,9 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @SuppressWarnings("all")
-public abstract class AbstractBaseService<E extends BaseEntity, S extends BaseServiceModel, R extends MongoRepository<E, String>> implements BaseService<S> {
+public abstract class AbstractBaseService
+        <E extends BaseEntity, S extends BaseServiceModel, R extends MongoRepository<E, String>>
+        implements BaseService<S> {
 
     protected ObjectMapper objectMapper;
     protected R repository;
@@ -29,7 +31,7 @@ public abstract class AbstractBaseService<E extends BaseEntity, S extends BaseSe
     }
 
     @Override
-    public S findById(String id, Class<S> serviceModel) {
+    public <M> M findById(String id, Class<M> serviceModel) {
         E entity = this.repository.findById(id).orElse(null);
 
         return this.toModel(entity, serviceModel);
@@ -43,7 +45,7 @@ public abstract class AbstractBaseService<E extends BaseEntity, S extends BaseSe
     }
 
     @Override
-    public S save(S serviceModel, Class<S> returnModel) {
+    public <M> M save(S serviceModel, Class<M> returnModel) {
         E entity = this.objectMapper.convertValue(serviceModel, this.entityClass);
         this.repository.save(entity);
 
@@ -76,7 +78,7 @@ public abstract class AbstractBaseService<E extends BaseEntity, S extends BaseSe
     }
 
     @Override
-    public List<S> findAll(Class<S> returnModelClass) {
+    public <M> List<M> findAll(Class<M> returnModelClass) {
         return this.repository
                 .findAll()
                 .stream()
@@ -89,8 +91,8 @@ public abstract class AbstractBaseService<E extends BaseEntity, S extends BaseSe
         return this.repository.existsById(id);
     }
 
-    protected Set<S> mapToSet(Collection collection) {
-        Set<S> result = (Set<S>) collection
+    protected <M> Set<M> mapToSet(Collection collection) {
+        Set<M> result = (Set<M>) collection
                 .stream()
                 .map(x -> this.toServiceModel((E) x))
                 .collect(Collectors.toSet());

@@ -12,6 +12,6 @@ public abstract class TokenServiceModel extends BaseServiceModel {
 
     private String userId;
     private String token;
-    private LocalDateTime expirationDate;
+    private LocalDateTime creationDate = LocalDateTime.now();
 
 }

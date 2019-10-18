@@ -12,7 +12,4 @@ public interface TokenRepository<E extends BaseEntity> extends MongoRepository<E
     E findByUserId(String userId);
 
     E findByToken(String token);
-
-    E findByExpirationDateBefore(LocalDateTime date);
-
 }

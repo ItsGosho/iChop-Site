@@ -18,5 +18,5 @@ public abstract class Token extends BaseEntity {
     private String token;
 
     @NotNull
-    private LocalDateTime expirationDate;
+    private LocalDateTime creationDate = LocalDateTime.now();
 }

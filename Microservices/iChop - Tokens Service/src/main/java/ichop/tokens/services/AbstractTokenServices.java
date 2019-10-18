@@ -6,7 +6,6 @@ import ichop.tokens.domain.entities.Token;
 import ichop.tokens.domain.models.service.TokenServiceModel;
 import ichop.tokens.repositories.TokenRepository;
 
-import java.time.LocalDateTime;
 
 public abstract class AbstractTokenServices
         <E extends Token, S extends TokenServiceModel, R extends TokenRepository<E>>
@@ -27,11 +26,6 @@ public abstract class AbstractTokenServices
 
     protected S findByToken(String tokeen) {
         E token = super.repository.findByToken(tokeen);
-        return super.toServiceModel(token);
-    }
-
-    protected S findByExpirationDateBefore(LocalDateTime date) {
-        E token = super.repository.findByExpirationDateBefore(date);
         return super.toServiceModel(token);
     }
 }
