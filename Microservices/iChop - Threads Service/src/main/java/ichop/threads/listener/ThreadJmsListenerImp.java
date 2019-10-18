@@ -2,6 +2,7 @@ package ichop.threads.listener;
 
 import ichop.threads.domain.models.jms.ErrorSendModel;
 import ichop.threads.domain.models.jms.ThreadCreateSendModel;
+import ichop.threads.domain.models.service.ThreadServiceModel;
 import ichop.threads.helpers.JmsHelper;
 import ichop.threads.helpers.ValidationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,15 +26,16 @@ public class ThreadJmsListenerImp implements ThreadJmsListener {
 
 
     @JmsListener(destination = "${artemis.queue.thread.create}", containerFactory = "queueFactory")
-    private void TODO(Message message) throws JMSException {
+    private void TODO(Message message) {
 
         ThreadCreateSendModel receiveModel = this.jmsHelper.getResultModel(message, ThreadCreateSendModel.class);
 
         if (!this.validationHelper.isValid(receiveModel)) {
             this.jmsHelper.replyValidationError(message,receiveModel);
-
             return;
         }
+
+        ThreadServiceModel thread = this.obj
 
         /*TODO:
          *  1.Validate the model via the validation helper

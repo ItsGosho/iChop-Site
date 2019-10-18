@@ -77,7 +77,9 @@ public class JmsHelperImp implements JmsHelper {
 
     @Override
     public <R extends BaseReceiveModel> void replyValidationError(Message message, R receiveModel) {
+
         try {
+            LOG.info(String.format(VALIDATION_ERROR_REPLY_WILL_START, message.getJMSReplyTo()));
             String error = this.validationHelper.getValidationError(receiveModel);
             ErrorSendModel errorSendModel = new ErrorSendModel(error);
 
