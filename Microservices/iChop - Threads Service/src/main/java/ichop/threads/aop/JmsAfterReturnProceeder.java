@@ -22,33 +22,19 @@ import java.lang.reflect.Method;
 @Aspect
 @Component
 @SuppressWarnings("all")
-public class AfterReturnTestProceeder {
-
-    private final ValidationHelper validationHelper;
-    private final JmsHelper jmsHelper;
+public class JmsAfterReturnProceeder extends AbstractJmsProceeder {
 
     @Autowired
-    public AfterReturnTestProceeder(ValidationHelper validationHelper, JmsHelper jmsHelper) {
-        this.validationHelper = validationHelper;
-        this.jmsHelper = jmsHelper;
+    protected JmsAfterReturnProceeder(JmsHelper jmsHelper) {
+        super(jmsHelper);
     }
 
-    @Around(value = "@annotation(ichop.threads.aop.AfterReturnTest)")
+    @Around(value = "@annotation(ichop.threads.aop.JmsAfterReturn)")
     public <S extends BaseReplyModel> void test(ProceedingJoinPoint joinPoint) throws Throwable {
-        Message message = this.getMessage(joinPoint);
+        Message message = super.getMessage(joinPoint);
 
         S object = (S) joinPoint.proceed();
-        this.jmsHelper.replySuccessful(message, object);
-    }
-
-    private Message getMessage(ProceedingJoinPoint joinPoint) {
-        for (Object arg : joinPoint.getArgs()) {
-            if (arg instanceof ActiveMQMessage) {
-                return (Message) arg;
-            }
-        }
-
-        return null;
+        super.jmsHelper.replySuccessful(message, object);
     }
 
 }

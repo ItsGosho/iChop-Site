@@ -3,6 +3,7 @@ package ichop.threads.aop;
 import ichop.threads.domain.models.jms.BaseRequestModel;
 import ichop.threads.helpers.JmsHelper;
 import ichop.threads.helpers.ValidationHelper;
+import org.apache.activemq.artemis.jms.client.ActiveMQMessage;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -16,26 +17,26 @@ import java.lang.reflect.Method;
 @Aspect
 @Component
 @SuppressWarnings("all")
-public class JmsValidateModelProceeder {
+public class JmsValidateProceeder extends AbstractJmsProceeder {
 
     private final ValidationHelper validationHelper;
-    private final JmsHelper jmsHelper;
 
     @Autowired
-    public JmsValidateModelProceeder(ValidationHelper validationHelper, JmsHelper jmsHelper) {
+    protected JmsValidateProceeder(JmsHelper jmsHelper, ValidationHelper validationHelper) {
+        super(jmsHelper);
         this.validationHelper = validationHelper;
-        this.jmsHelper = jmsHelper;
     }
 
-    @Around("@annotation(ichop.threads.aop.JmsValidateModel)")
+
+    @Around("@annotation(ichop.threads.aop.JmsValidate)")
     public <R extends BaseRequestModel> Object validateModel(ProceedingJoinPoint joinPoint) throws Throwable {
         Class clazz = this.getModelClass(joinPoint);
-        Message message = (Message) joinPoint.getArgs()[0];
+        Message message = super.getMessage(joinPoint);
 
         R requestModel = (R) this.jmsHelper.getResultModel(message, clazz);
 
         if (!this.validationHelper.isValid(requestModel)) {
-            this.jmsHelper.replyValidationError(message, requestModel);
+            super.jmsHelper.replyValidationError(message, requestModel);
             return null;
         }
 
@@ -46,9 +47,9 @@ public class JmsValidateModelProceeder {
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         Method method = signature.getMethod();
 
-        JmsValidateModel jmsValidateModelAnnotation = method.getAnnotation(JmsValidateModel.class);
+        JmsValidate jmsValidateAnnotation = method.getAnnotation(JmsValidate.class);
 
-        return jmsValidateModelAnnotation.model();
+        return jmsValidateAnnotation.model();
     }
 
 }

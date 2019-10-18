@@ -1,8 +1,8 @@
 package ichop.threads.listener;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ichop.threads.aop.AfterReturnTest;
-import ichop.threads.aop.JmsValidateModel;
+import ichop.threads.aop.JmsAfterReturn;
+import ichop.threads.aop.JmsValidate;
 import ichop.threads.domain.models.jms.create.ThreadCreateRequestModel;
 import ichop.threads.domain.models.jms.create.ThreadCreateReplyModel;
 import ichop.threads.domain.models.jms.delete.ThreadDeleteByIdReplyModel;
@@ -40,8 +40,8 @@ public class ThreadJmsListenerImp implements ThreadJmsListener {
     }
 
     @Override
-    @JmsValidateModel(model = ThreadCreateRequestModel.class)
-    @AfterReturnTest
+    @JmsValidate(model = ThreadCreateRequestModel.class)
+    @JmsAfterReturn
     @JmsListener(destination = "${artemis.queue.thread.create}", containerFactory = "queueFactory")
     public ThreadCreateReplyModel createThread(Message message) {
         ThreadCreateRequestModel requestModel = this.jmsHelper.getResultModel(message, ThreadCreateRequestModel.class);
@@ -56,7 +56,7 @@ public class ThreadJmsListenerImp implements ThreadJmsListener {
     }
 
     @Override
-    @JmsValidateModel(model = ThreadGetByIdRequestModel.class)
+    @JmsValidate(model = ThreadGetByIdRequestModel.class)
     @JmsListener(destination = "${artemis.queue.thread.get_by_id}", containerFactory = "queueFactory")
     public ThreadGetByIdReplyModel getById(Message message) {
         ThreadGetByIdRequestModel requestModel = this.jmsHelper.getResultModel(message, ThreadGetByIdRequestModel.class);
@@ -70,7 +70,7 @@ public class ThreadJmsListenerImp implements ThreadJmsListener {
     }
 
     @Override
-    @JmsValidateModel(model = ThreadIncreaseViewsRequestModel.class)
+    @JmsValidate(model = ThreadIncreaseViewsRequestModel.class)
     @JmsListener(destination = "${artemis.queue.thread.increase_views}", containerFactory = "queueFactory")
     public ThreadIncreaseViewsReplyModel increaseViews(Message message) {
         ThreadIncreaseViewsRequestModel requestModel = this.jmsHelper.getResultModel(message, ThreadIncreaseViewsRequestModel.class);
@@ -84,7 +84,7 @@ public class ThreadJmsListenerImp implements ThreadJmsListener {
     }
 
     @Override
-    @JmsValidateModel(model = ThreadDeleteByIdRequestModel.class)
+    @JmsValidate(model = ThreadDeleteByIdRequestModel.class)
     @JmsListener(destination = "${artemis.queue.thread.delete_by_id}", containerFactory = "queueFactory")
     public ThreadDeleteByIdReplyModel deleteById(Message message) {
         ThreadDeleteByIdRequestModel requestModel = this.jmsHelper.getResultModel(message, ThreadDeleteByIdRequestModel.class);

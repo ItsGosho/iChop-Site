@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface JmsValidateModel {
+public @interface JmsValidate {
 
     Class<? extends BaseRequestModel> model();
 
