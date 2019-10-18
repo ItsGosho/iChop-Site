@@ -31,17 +31,15 @@ public abstract class AbstractBaseService<E extends BaseEntity, S extends BaseSe
     @Override
     public S findById(String id, Class<S> serviceModel) {
         E entity = this.repository.findById(id).orElse(null);
-        S result = entity != null ? this.objectMapper.convertValue(entity, serviceModel) : null;
 
-        return result;
+        return this.toModel(entity, serviceModel);
     }
 
     @Override
     public S findById(String id) {
         E entity = this.repository.findById(id).orElse(null);
-        S result = entity != null ? this.objectMapper.convertValue(entity, this.serviceModelClass) : null;
 
-        return result;
+        return this.toServiceModel(entity);
     }
 
     @Override
@@ -49,7 +47,7 @@ public abstract class AbstractBaseService<E extends BaseEntity, S extends BaseSe
         E entity = this.objectMapper.convertValue(serviceModel, this.entityClass);
         this.repository.save(entity);
 
-        return this.objectMapper.convertValue(entity, returnModel);
+        return this.toModel(entity, returnModel);
     }
 
     @Override
@@ -62,7 +60,7 @@ public abstract class AbstractBaseService<E extends BaseEntity, S extends BaseSe
             return null;
         }
 
-        return this.objectMapper.convertValue(entity, this.serviceModelClass);
+        return this.toServiceModel(entity);
     }
 
     @Override
@@ -79,7 +77,11 @@ public abstract class AbstractBaseService<E extends BaseEntity, S extends BaseSe
 
     @Override
     public List<S> findAll(Class<S> returnModelClass) {
-        return this.repository.findAll().stream().map(x -> this.objectMapper.convertValue(x, returnModelClass)).collect(Collectors.toList());
+        return this.repository
+                .findAll()
+                .stream()
+                .map(x -> this.toModel(x, returnModelClass))
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -90,7 +92,7 @@ public abstract class AbstractBaseService<E extends BaseEntity, S extends BaseSe
     protected Set<S> mapToSet(Collection collection) {
         Set<S> result = (Set<S>) collection
                 .stream()
-                .map(x -> this.objectMapper.convertValue(x, this.serviceModelClass))
+                .map(x -> this.toServiceModel((E) x))
                 .collect(Collectors.toSet());
 
         return result;
@@ -99,7 +101,7 @@ public abstract class AbstractBaseService<E extends BaseEntity, S extends BaseSe
     protected List<S> mapToList(Collection collection) {
         List<S> result = (List<S>) collection
                 .stream()
-                .map(x -> this.objectMapper.convertValue(x, this.serviceModelClass))
+                .map(x -> this.toServiceModel((E) x))
                 .collect(Collectors.toList());
 
         return result;
@@ -107,6 +109,10 @@ public abstract class AbstractBaseService<E extends BaseEntity, S extends BaseSe
 
     protected S toServiceModel(E e) {
         return e != null ? this.objectMapper.convertValue(e, this.serviceModelClass) : null;
+    }
+
+    protected <M> M toModel(E e, Class<M> m) {
+        return e != null ? this.objectMapper.convertValue(e, m) : null;
     }
 
     private Class<?> getGenericClass(Integer position) {
