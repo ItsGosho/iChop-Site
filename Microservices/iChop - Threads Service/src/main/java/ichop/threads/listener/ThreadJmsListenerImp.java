@@ -18,7 +18,7 @@ public class ThreadJmsListenerImp implements ThreadJmsListener {
     }
 
 
-    @JmsListener(destination = "${TODO}", containerFactory = "taskExecutorCustom")
+    @JmsListener(destination = "${artemis.queue.thread.create}", containerFactory = "queueFactory")
     private void TODO(Message message) {
 
     }

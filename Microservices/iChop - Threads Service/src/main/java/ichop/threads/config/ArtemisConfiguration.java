@@ -33,8 +33,8 @@ public class ArtemisConfiguration {
     }
 
     @Bean
-    public JmsListenerContainerFactory listenerContainerFactory(
-            @Qualifier("taskExecutorCustom") ExecutorService executorService,
+    public JmsListenerContainerFactory queueFactory(
+            @Qualifier("jmsQueueExecutor") ExecutorService executorService,
             ActiveMQConnectionFactory connectionFactory) {
         DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
         factory.setCacheLevel(DefaultMessageListenerContainer.CACHE_NONE);

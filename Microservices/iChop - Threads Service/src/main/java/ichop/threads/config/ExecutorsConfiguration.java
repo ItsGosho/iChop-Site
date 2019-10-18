@@ -13,7 +13,7 @@ import java.util.concurrent.Executors;
 @Profile("!test")
 public class ExecutorsConfiguration {
 
-    @Bean(name = "taskExecutorCustom")
+    @Bean(name = "jmsQueueExecutor")
     public ExecutorService getThreadPoolTaskExecutor() {
         return Executors.newCachedThreadPool();
     }
