@@ -1,6 +1,7 @@
 package ichop.threads.listener;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import ichop.threads.aop.AfterReturnTest;
 import ichop.threads.aop.ValidateModel;
 import ichop.threads.domain.models.jms.create.ThreadCreateRequestModel;
 import ichop.threads.domain.models.jms.create.ThreadCreateReplyModel;
@@ -41,8 +42,9 @@ public class ThreadJmsListenerImp implements ThreadJmsListener {
 
     @Override
     @ValidateModel(model = ThreadCreateRequestModel.class)
+    @AfterReturnTest
     @JmsListener(destination = "${artemis.queue.thread.create}", containerFactory = "queueFactory")
-    public void createThread(Message message) {
+    public ThreadCreateReplyModel createThread(Message message) {
         ThreadCreateRequestModel requestModel = this.jmsHelper.getResultModel(message, ThreadCreateRequestModel.class);
 
         ThreadServiceModel thread = this.objectMapper.convertValue(requestModel, ThreadServiceModel.class);
@@ -51,7 +53,8 @@ public class ThreadJmsListenerImp implements ThreadJmsListener {
         ThreadCreateReplyModel replyModel = this.objectMapper.convertValue(thread, ThreadCreateReplyModel.class);
         replyModel.setMessage(THREAD_CREATED_SUCCESSFUL);
 
-        this.jmsHelper.replySuccessful(message, replyModel);
+        return replyModel;
+        //this.jmsHelper.replySuccessful(message, replyModel);
     }
 
     @Override

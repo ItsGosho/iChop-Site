@@ -3,15 +3,10 @@ package ichop.threads;
 import ichop.threads.domain.models.jms.create.ThreadCreateReplyModel;
 import ichop.threads.domain.models.jms.create.ThreadCreateRequestModel;
 import ichop.threads.helpers.JmsHelper;
-import ichop.threads.listener.ThreadJmsListener;
 import ichop.threads.listener.ThreadJmsListenerImp;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import sun.security.krb5.internal.TGSReq;
-
-import javax.jms.Message;
 
 @Component
 public class CLR implements CommandLineRunner {
