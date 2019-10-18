@@ -54,13 +54,12 @@ public class ThreadJmsListenerImp implements ThreadJmsListener {
         replyModel.setMessage(THREAD_CREATED_SUCCESSFUL);
 
         return replyModel;
-        //this.jmsHelper.replySuccessful(message, replyModel);
     }
 
     @Override
     @ValidateModel(model = ThreadGetByIdRequestModel.class)
     @JmsListener(destination = "${artemis.queue.thread.get_by_id}", containerFactory = "queueFactory")
-    public void getById(Message message) {
+    public ThreadGetByIdReplyModel getById(Message message) {
         ThreadGetByIdRequestModel requestModel = this.jmsHelper.getResultModel(message, ThreadGetByIdRequestModel.class);
 
         ThreadServiceModel thread = this.threadServices.findById(requestModel.getId());
@@ -68,13 +67,13 @@ public class ThreadJmsListenerImp implements ThreadJmsListener {
         ThreadGetByIdReplyModel replyModel = this.objectMapper.convertValue(thread, ThreadGetByIdReplyModel.class);
         replyModel.setMessage(THREAD_RETRIEVED_SUCCESSFUL);
 
-        this.jmsHelper.replySuccessful(message, replyModel);
+        return replyModel;
     }
 
     @Override
     @ValidateModel(model = ThreadIncreaseViewsRequestModel.class)
     @JmsListener(destination = "${artemis.queue.thread.increase_views}", containerFactory = "queueFactory")
-    public void increaseViews(Message message) {
+    public ThreadIncreaseViewsReplyModel increaseViews(Message message) {
         ThreadIncreaseViewsRequestModel requestModel = this.jmsHelper.getResultModel(message, ThreadIncreaseViewsRequestModel.class);
 
         this.threadServices.increaseViews(requestModel.getId());
@@ -82,13 +81,13 @@ public class ThreadJmsListenerImp implements ThreadJmsListener {
         ThreadIncreaseViewsReplyModel replyModel = new ThreadIncreaseViewsReplyModel();
         replyModel.setMessage(THREAD_VIEW_INCREASED_SUCCESSFUL);
 
-        this.jmsHelper.replySuccessful(message, replyModel);
+        return replyModel;
     }
 
     @Override
     @ValidateModel(model = ThreadDeleteByIdRequestModel.class)
     @JmsListener(destination = "${artemis.queue.thread.delete_by_id}", containerFactory = "queueFactory")
-    public void deleteById(Message message) {
+    public ThreadDeleteByIdReplyModel deleteById(Message message) {
         ThreadDeleteByIdRequestModel requestModel = this.jmsHelper.getResultModel(message, ThreadDeleteByIdRequestModel.class);
 
         this.threadServices.deleteById(requestModel.getId());
@@ -96,7 +95,7 @@ public class ThreadJmsListenerImp implements ThreadJmsListener {
         ThreadDeleteByIdReplyModel replyModel = new ThreadDeleteByIdReplyModel();
         replyModel.setMessage(THREAD_DELETED_SUCCESSFUL);
 
-        this.jmsHelper.replySuccessful(message, replyModel);
+        return replyModel;
     }
 
 }
