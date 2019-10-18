@@ -5,5 +5,5 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public abstract class BaseReceiveModel {
+public abstract class BaseRequestModel {
 }

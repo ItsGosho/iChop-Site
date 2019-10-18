@@ -2,7 +2,7 @@ package ichop.threads.helpers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ichop.threads.domain.models.jms.BaseReceiveModel;
+import ichop.threads.domain.models.jms.BaseRequestModel;
 import ichop.threads.domain.models.jms.BaseReplyModel;
 import ichop.threads.domain.models.jms.ErrorReplyModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +36,7 @@ public class JmsHelperImp implements JmsHelper {
     }
 
     @Override
-    public <S extends BaseReplyModel, R extends BaseReceiveModel> R sendAndReceive(String destination, S model, Class<R> clazz) {
+    public <S extends BaseReplyModel, R extends BaseRequestModel> R sendAndReceive(String destination, S model, Class<R> clazz) {
         LOG.info(String.format(SEND_AND_RECEIVED_STARTED, destination));
 
         MessageCreator message = this.createMessage(model);
@@ -64,7 +64,7 @@ public class JmsHelperImp implements JmsHelper {
     }
 
     @Override
-    public <R extends BaseReceiveModel> R getResultModel(Message message, Class<R> clazz) {
+    public <R extends BaseRequestModel> R getResultModel(Message message, Class<R> clazz) {
 
         try {
             String body = message.getBody(String.class);
@@ -77,7 +77,7 @@ public class JmsHelperImp implements JmsHelper {
     }
 
     @Override
-    public <R extends BaseReceiveModel> void replyValidationError(Message message, R receiveModel) {
+    public <R extends BaseRequestModel> void replyValidationError(Message message, R receiveModel) {
 
         try {
             LOG.info(String.format(VALIDATION_ERROR_REPLY_WILL_START, message.getJMSReplyTo()));

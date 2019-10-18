@@ -1,8 +1,10 @@
 package ichop.threads.listener;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ichop.threads.domain.models.jms.ThreadCreateReceiveModel;
+import ichop.threads.domain.models.jms.ThreadCreateRequestModel;
 import ichop.threads.domain.models.jms.ThreadCreateReplyModel;
+import ichop.threads.domain.models.jms.ThreadGetByIdReplyModel;
+import ichop.threads.domain.models.jms.ThreadGetByIdRequestModel;
 import ichop.threads.domain.models.service.ThreadServiceModel;
 import ichop.threads.helpers.JmsHelper;
 import ichop.threads.helpers.ValidationHelper;
@@ -17,6 +19,7 @@ import javax.jms.Message;
 public class ThreadJmsListenerImp implements ThreadJmsListener {
 
     private static final String THREAD_CREATED_SUCCESSFUL = "Thread created successful!";
+    private static final String THREAD_RETRIEVED_SUCCESSFUL = "Thread retrieved successful!";
 
     private final JmsHelper jmsHelper;
     private final ValidationHelper validationHelper;
@@ -35,20 +38,39 @@ public class ThreadJmsListenerImp implements ThreadJmsListener {
     @JmsListener(destination = "${artemis.queue.thread.create}", containerFactory = "queueFactory")
     private void createThread(Message message) {
 
-        ThreadCreateReceiveModel receiveModel = this.jmsHelper.getResultModel(message, ThreadCreateReceiveModel.class);
+        ThreadCreateRequestModel requestModel = this.jmsHelper.getResultModel(message, ThreadCreateRequestModel.class);
 
-        if (!this.validationHelper.isValid(receiveModel)) {
-            this.jmsHelper.replyValidationError(message, receiveModel);
+        if (!this.validationHelper.isValid(requestModel)) {
+            this.jmsHelper.replyValidationError(message, requestModel);
             return;
         }
 
-        ThreadServiceModel thread = this.objectMapper.convertValue(receiveModel, ThreadServiceModel.class);
+        ThreadServiceModel thread = this.objectMapper.convertValue(requestModel, ThreadServiceModel.class);
         this.threadServices.save(thread);
 
         ThreadCreateReplyModel replyModel = this.objectMapper.convertValue(thread, ThreadCreateReplyModel.class);
         replyModel.setMessage(THREAD_CREATED_SUCCESSFUL);
 
         this.jmsHelper.replySuccessful(message, replyModel);
+    }
+
+    @JmsListener(destination = "${artemis.queue.thread.get_by_id}", containerFactory = "queueFactory")
+    private void getById(Message message) {
+
+        ThreadGetByIdRequestModel requestModel = this.jmsHelper.getResultModel(message, ThreadGetByIdRequestModel.class);
+
+        if (!this.validationHelper.isValid(requestModel)) {
+            this.jmsHelper.replyValidationError(message, requestModel);
+            return;
+        }
+
+        ThreadServiceModel thread = this.threadServices.findById(requestModel.getId());
+
+        ThreadGetByIdReplyModel replyModel = this.objectMapper.convertValue(thread, ThreadGetByIdReplyModel.class);
+        replyModel.setMessage(THREAD_RETRIEVED_SUCCESSFUL);
+
+        this.jmsHelper.replySuccessful(message, replyModel);
+
     }
 
 }
