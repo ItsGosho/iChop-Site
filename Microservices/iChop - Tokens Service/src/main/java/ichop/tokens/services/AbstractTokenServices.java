@@ -19,13 +19,20 @@ public abstract class AbstractTokenServices
 
     }
 
-    protected S findByUserId(String userId) {
+    @Override
+    public S findByUserId(String userId) {
         E token = super.repository.findByUserId(userId);
         return super.toServiceModel(token);
     }
 
-    protected S findByToken(String tokeen) {
+    @Override
+    public S findByToken(String tokeen) {
         E token = super.repository.findByToken(tokeen);
         return super.toServiceModel(token);
+    }
+
+    @Override
+    public boolean existsByToken(String tokeen) {
+        return super.repository.existsByToken(tokeen);
     }
 }
