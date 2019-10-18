@@ -1,4 +1,4 @@
-package ichop.threads.domain.models.jms;
+package ichop.threads.jms.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

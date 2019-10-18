@@ -1,4 +1,4 @@
-package ichop.threads.aop;
+package ichop.threads.jms.aop;
 
 import ichop.threads.helpers.JmsHelper;
 import org.apache.activemq.artemis.jms.client.ActiveMQMessage;

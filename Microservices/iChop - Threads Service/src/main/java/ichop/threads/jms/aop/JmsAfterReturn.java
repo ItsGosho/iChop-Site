@@ -1,6 +1,4 @@
-package ichop.threads.aop;
-
-import ichop.threads.domain.models.jms.BaseRequestModel;
+package ichop.threads.jms.aop;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -10,8 +8,7 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface JmsValidate {
+public @interface JmsAfterReturn {
 
-    Class<? extends BaseRequestModel> model();
 
 }

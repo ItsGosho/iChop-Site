@@ -1,8 +1,8 @@
 package ichop.threads.listener;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ichop.threads.aop.JmsAfterReturn;
-import ichop.threads.aop.JmsValidate;
+import ichop.threads.jms.aop.JmsAfterReturn;
+import ichop.threads.jms.aop.JmsValidate;
 import ichop.threads.domain.models.jms.create.ThreadCreateRequestModel;
 import ichop.threads.domain.models.jms.create.ThreadCreateReplyModel;
 import ichop.threads.domain.models.jms.delete.ThreadDeleteByIdReplyModel;

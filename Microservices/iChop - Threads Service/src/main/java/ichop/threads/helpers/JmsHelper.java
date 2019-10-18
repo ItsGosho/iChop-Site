@@ -1,7 +1,7 @@
 package ichop.threads.helpers;
 
-import ichop.threads.domain.models.jms.BaseRequestModel;
-import ichop.threads.domain.models.jms.BaseReplyModel;
+import ichop.threads.jms.models.BaseRequestModel;
+import ichop.threads.jms.models.BaseReplyModel;
 
 import javax.jms.Message;
 

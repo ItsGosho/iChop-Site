@@ -1,6 +1,6 @@
 package ichop.threads.domain.models.jms.increase;
 
-import ichop.threads.domain.models.jms.BaseReplyModel;
+import ichop.threads.jms.models.BaseReplyModel;
 import lombok.Getter;
 import lombok.Setter;
 

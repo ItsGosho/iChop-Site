@@ -1,4 +1,4 @@
-package ichop.threads.config;
+package ichop.threads.jms.config;
 
 import org.apache.activemq.artemis.jms.client.ActiveMQConnectionFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
