@@ -3,6 +3,8 @@ package ichop.threads.listener;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.threads.domain.models.jms.create.ThreadCreateRequestModel;
 import ichop.threads.domain.models.jms.create.ThreadCreateReplyModel;
+import ichop.threads.domain.models.jms.increase.ThreadIncreaseViewsReplyModel;
+import ichop.threads.domain.models.jms.increase.ThreadIncreaseViewsRequestModel;
 import ichop.threads.domain.models.jms.retrieve.ThreadGetByIdReplyModel;
 import ichop.threads.domain.models.jms.retrieve.ThreadGetByIdRequestModel;
 import ichop.threads.domain.models.service.ThreadServiceModel;
@@ -20,6 +22,7 @@ public class ThreadJmsListenerImp implements ThreadJmsListener {
 
     private static final String THREAD_CREATED_SUCCESSFUL = "Thread created successful!";
     private static final String THREAD_RETRIEVED_SUCCESSFUL = "Thread retrieved successful!";
+    private static final String THREAD_VIEW_INCREASED_SUCCESSFUL = "Thread views increased successful!";
 
     private final JmsHelper jmsHelper;
     private final ValidationHelper validationHelper;
@@ -75,6 +78,19 @@ public class ThreadJmsListenerImp implements ThreadJmsListener {
     @JmsListener(destination = "${artemis.queue.thread.increase_views}", containerFactory = "queueFactory")
     private void increaseViews(Message message) {
 
+        ThreadIncreaseViewsRequestModel requestModel = this.jmsHelper.getResultModel(message, ThreadIncreaseViewsRequestModel.class);
+
+        if (!this.validationHelper.isValid(requestModel)) {
+            this.jmsHelper.replyValidationError(message, requestModel);
+            return;
+        }
+
+        this.threadServices.increaseViews(requestModel.getId());
+
+        ThreadIncreaseViewsReplyModel replyModel = new ThreadIncreaseViewsReplyModel();
+        replyModel.setMessage(THREAD_VIEW_INCREASED_SUCCESSFUL);
+
+        this.jmsHelper.replySuccessful(message, replyModel);
     }
 
 }

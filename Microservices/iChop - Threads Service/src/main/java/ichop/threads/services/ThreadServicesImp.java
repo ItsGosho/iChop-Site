@@ -14,4 +14,12 @@ public class ThreadServicesImp extends AbstractBaseService<Thread, ThreadService
     public ThreadServicesImp(ObjectMapper objectMapper, ThreadRepository repository) {
         super(objectMapper, repository);
     }
+
+    @Override
+    public void increaseViews(String id) {
+        ThreadServiceModel thread = super.findById(id);
+        thread.setViews(thread.getViews() + 1);
+
+        super.save(thread);
+    }
 }
