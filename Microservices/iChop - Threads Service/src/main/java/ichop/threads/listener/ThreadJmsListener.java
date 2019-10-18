@@ -43,9 +43,8 @@ public class ThreadJmsListener {
         ThreadCreateRequestModel requestModel = this.jmsHelper.getResultModel(message, ThreadCreateRequestModel.class);
 
         ThreadServiceModel thread = this.objectMapper.convertValue(requestModel, ThreadServiceModel.class);
-        thread = this.threadServices.save(thread);
 
-        ThreadCreateReplyModel replyModel = this.objectMapper.convertValue(thread, ThreadCreateReplyModel.class);
+        ThreadCreateReplyModel replyModel = this.threadServices.save(thread, ThreadCreateReplyModel.class);
         replyModel.setMessage(THREAD_CREATED_SUCCESSFUL);
 
         return replyModel;
@@ -56,9 +55,7 @@ public class ThreadJmsListener {
     public ThreadGetByIdReplyModel getById(Message message) {
         ThreadGetByIdRequestModel requestModel = this.jmsHelper.getResultModel(message, ThreadGetByIdRequestModel.class);
 
-        ThreadServiceModel thread = this.threadServices.findById(requestModel.getId());
-
-        ThreadGetByIdReplyModel replyModel = this.objectMapper.convertValue(thread, ThreadGetByIdReplyModel.class);
+        ThreadGetByIdReplyModel replyModel = this.threadServices.findById(requestModel.getId(), ThreadGetByIdReplyModel.class);
         replyModel.setMessage(THREAD_RETRIEVED_SUCCESSFUL);
 
         return replyModel;
