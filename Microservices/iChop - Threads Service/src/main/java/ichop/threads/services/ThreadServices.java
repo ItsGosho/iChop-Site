@@ -1,4 +1,6 @@
 package ichop.threads.services;
 
-public interface ThreadServices {
+import ichop.threads.domain.models.service.ThreadServiceModel;
+
+public interface ThreadServices extends BaseService<ThreadServiceModel> {
 }

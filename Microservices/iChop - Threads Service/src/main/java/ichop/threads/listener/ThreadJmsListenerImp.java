@@ -1,49 +1,54 @@
 package ichop.threads.listener;
 
-import ichop.threads.domain.models.jms.ErrorSendModel;
-import ichop.threads.domain.models.jms.ThreadCreateSendModel;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import ichop.threads.domain.models.jms.ThreadCreateReceiveModel;
+import ichop.threads.domain.models.jms.ThreadCreateReplyModel;
 import ichop.threads.domain.models.service.ThreadServiceModel;
 import ichop.threads.helpers.JmsHelper;
 import ichop.threads.helpers.ValidationHelper;
+import ichop.threads.services.ThreadServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 
-import javax.jms.JMSException;
 import javax.jms.Message;
 
 @Component
 public class ThreadJmsListenerImp implements ThreadJmsListener {
 
+    private static final String THREAD_CREATED_SUCCESSFUL = "Thread created successful!";
+
     private final JmsHelper jmsHelper;
     private final ValidationHelper validationHelper;
+    private final ObjectMapper objectMapper;
+    private final ThreadServices threadServices;
 
     @Autowired
-    public ThreadJmsListenerImp(JmsHelper jmsHelper, ValidationHelper validationHelper) {
+    public ThreadJmsListenerImp(JmsHelper jmsHelper, ValidationHelper validationHelper, ObjectMapper objectMapper, ThreadServices threadServices) {
         this.jmsHelper = jmsHelper;
         this.validationHelper = validationHelper;
+        this.objectMapper = objectMapper;
+        this.threadServices = threadServices;
     }
 
 
     @JmsListener(destination = "${artemis.queue.thread.create}", containerFactory = "queueFactory")
-    private void TODO(Message message) {
+    private void createThread(Message message) {
 
-        ThreadCreateSendModel receiveModel = this.jmsHelper.getResultModel(message, ThreadCreateSendModel.class);
+        ThreadCreateReceiveModel receiveModel = this.jmsHelper.getResultModel(message, ThreadCreateReceiveModel.class);
 
         if (!this.validationHelper.isValid(receiveModel)) {
-            this.jmsHelper.replyValidationError(message,receiveModel);
+            this.jmsHelper.replyValidationError(message, receiveModel);
             return;
         }
 
-        ThreadServiceModel thread = this.obj
+        ThreadServiceModel thread = this.objectMapper.convertValue(receiveModel, ThreadServiceModel.class);
+        this.threadServices.save(thread);
 
-        /*TODO:
-         *  1.Validate the model via the validation helper
-         *  2.if error to think of better return model
-         *  3.if not to create it
-         *  4.then to return the created thread and that is successful
-         *
-         * */
+        ThreadCreateReplyModel replyModel = this.objectMapper.convertValue(thread, ThreadCreateReplyModel.class);
+        replyModel.setMessage(THREAD_CREATED_SUCCESSFUL);
+
+        this.jmsHelper.replySuccessful(message, replyModel);
     }
 
 }

@@ -2,10 +2,9 @@ package ichop.threads.helpers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ichop.threads.domain.entities.Thread;
 import ichop.threads.domain.models.jms.BaseReceiveModel;
-import ichop.threads.domain.models.jms.BaseSendModel;
-import ichop.threads.domain.models.jms.ErrorSendModel;
+import ichop.threads.domain.models.jms.BaseReplyModel;
+import ichop.threads.domain.models.jms.ErrorReplyModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
@@ -37,7 +36,7 @@ public class JmsHelperImp implements JmsHelper {
     }
 
     @Override
-    public <S extends BaseSendModel, R extends BaseReceiveModel> R sendAndReceive(String destination, S model, Class<R> clazz) {
+    public <S extends BaseReplyModel, R extends BaseReceiveModel> R sendAndReceive(String destination, S model, Class<R> clazz) {
         LOG.info(String.format(SEND_AND_RECEIVED_STARTED, destination));
 
         MessageCreator message = this.createMessage(model);
@@ -47,7 +46,7 @@ public class JmsHelperImp implements JmsHelper {
     }
 
     @Override
-    public <S extends BaseSendModel> void send(String destination, S model) {
+    public <S extends BaseReplyModel> void send(String destination, S model) {
         LOG.info(String.format(SEND_STARTED, destination));
 
         MessageCreator message = this.createMessage(model);
@@ -55,11 +54,13 @@ public class JmsHelperImp implements JmsHelper {
     }
 
     @Override
-    public <S extends BaseSendModel> void replyTo(String destination, String correlationId, S model) {
-        LOG.info(String.format(REPLY_TO_STARTED, destination));
-
-        MessageCreator message = this.createMessage(model, correlationId);
-        this.jmsTemplate.send(destination, message);
+    public <S extends BaseReplyModel> void replySuccessful(Message message, S model) {
+        try {
+            model.setSuccessful(true);
+            this.replyTo(message.getJMSReplyTo().toString(), message.getJMSCorrelationID(), model);
+        } catch (JMSException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -81,7 +82,7 @@ public class JmsHelperImp implements JmsHelper {
         try {
             LOG.info(String.format(VALIDATION_ERROR_REPLY_WILL_START, message.getJMSReplyTo()));
             String error = this.validationHelper.getValidationError(receiveModel);
-            ErrorSendModel errorSendModel = new ErrorSendModel(error);
+            ErrorReplyModel errorSendModel = new ErrorReplyModel(error);
 
             this.replyTo(message.getJMSReplyTo().toString(), message.getJMSCorrelationID(), errorSendModel);
         } catch (JMSException e) {
@@ -89,11 +90,18 @@ public class JmsHelperImp implements JmsHelper {
         }
     }
 
-    private <S extends BaseSendModel> MessageCreator createMessage(S model) {
+    private <S extends BaseReplyModel> void replyTo(String destination, String correlationId, S model) {
+        LOG.info(String.format(REPLY_TO_STARTED, destination));
+
+        MessageCreator message = this.createMessage(model, correlationId);
+        this.jmsTemplate.send(destination, message);
+    }
+
+    private <S extends BaseReplyModel> MessageCreator createMessage(S model) {
         return this.createMessage(model, this.randomId());
     }
 
-    private <S extends BaseSendModel> MessageCreator createMessage(S model, String correlationId) {
+    private <S extends BaseReplyModel> MessageCreator createMessage(S model, String correlationId) {
         return session -> {
             try {
                 Message message = session.createTextMessage(this.objectMapper.writeValueAsString(model));

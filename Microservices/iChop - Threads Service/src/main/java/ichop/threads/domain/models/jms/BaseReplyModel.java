@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public abstract class BaseSendModel {
+public abstract class BaseReplyModel {
 
     private boolean isSuccessful;
     private String message;
