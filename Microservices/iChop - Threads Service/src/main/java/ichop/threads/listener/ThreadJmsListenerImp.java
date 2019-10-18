@@ -55,15 +55,10 @@ public class ThreadJmsListenerImp implements ThreadJmsListener {
         this.jmsHelper.replySuccessful(message, replyModel);
     }
 
+    @ValidateModel(model = ThreadGetByIdRequestModel.class)
     @JmsListener(destination = "${artemis.queue.thread.get_by_id}", containerFactory = "queueFactory")
     public void getById(Message message) {
-
         ThreadGetByIdRequestModel requestModel = this.jmsHelper.getResultModel(message, ThreadGetByIdRequestModel.class);
-
-        if (!this.validationHelper.isValid(requestModel)) {
-            this.jmsHelper.replyValidationError(message, requestModel);
-            return;
-        }
 
         ThreadServiceModel thread = this.threadServices.findById(requestModel.getId());
 
@@ -73,15 +68,10 @@ public class ThreadJmsListenerImp implements ThreadJmsListener {
         this.jmsHelper.replySuccessful(message, replyModel);
     }
 
+    @ValidateModel(model = ThreadIncreaseViewsRequestModel.class)
     @JmsListener(destination = "${artemis.queue.thread.increase_views}", containerFactory = "queueFactory")
     public void increaseViews(Message message) {
-
         ThreadIncreaseViewsRequestModel requestModel = this.jmsHelper.getResultModel(message, ThreadIncreaseViewsRequestModel.class);
-
-        if (!this.validationHelper.isValid(requestModel)) {
-            this.jmsHelper.replyValidationError(message, requestModel);
-            return;
-        }
 
         this.threadServices.increaseViews(requestModel.getId());
 
@@ -91,15 +81,10 @@ public class ThreadJmsListenerImp implements ThreadJmsListener {
         this.jmsHelper.replySuccessful(message, replyModel);
     }
 
+    @ValidateModel(model = ThreadDeleteByIdRequestModel.class)
     @JmsListener(destination = "${artemis.queue.thread.delete_by_id}", containerFactory = "queueFactory")
     public void deleteById(Message message) {
-
         ThreadDeleteByIdRequestModel requestModel = this.jmsHelper.getResultModel(message, ThreadDeleteByIdRequestModel.class);
-
-        if (!this.validationHelper.isValid(requestModel)) {
-            this.jmsHelper.replyValidationError(message, requestModel);
-            return;
-        }
 
         this.threadServices.deleteById(requestModel.getId());
 
