@@ -3,6 +3,8 @@ package ichop.threads.listener;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.threads.domain.models.jms.create.ThreadCreateRequestModel;
 import ichop.threads.domain.models.jms.create.ThreadCreateReplyModel;
+import ichop.threads.domain.models.jms.delete.ThreadDeleteByIdReplyModel;
+import ichop.threads.domain.models.jms.delete.ThreadDeleteByIdRequestModel;
 import ichop.threads.domain.models.jms.increase.ThreadIncreaseViewsReplyModel;
 import ichop.threads.domain.models.jms.increase.ThreadIncreaseViewsRequestModel;
 import ichop.threads.domain.models.jms.retrieve.ThreadGetByIdReplyModel;
@@ -23,6 +25,7 @@ public class ThreadJmsListenerImp implements ThreadJmsListener {
     private static final String THREAD_CREATED_SUCCESSFUL = "Thread created successful!";
     private static final String THREAD_RETRIEVED_SUCCESSFUL = "Thread retrieved successful!";
     private static final String THREAD_VIEW_INCREASED_SUCCESSFUL = "Thread views increased successful!";
+    private static final String THREAD_DELETED_SUCCESSFUL = "Thread deleted successful!";
 
     private final JmsHelper jmsHelper;
     private final ValidationHelper validationHelper;
@@ -89,6 +92,24 @@ public class ThreadJmsListenerImp implements ThreadJmsListener {
 
         ThreadIncreaseViewsReplyModel replyModel = new ThreadIncreaseViewsReplyModel();
         replyModel.setMessage(THREAD_VIEW_INCREASED_SUCCESSFUL);
+
+        this.jmsHelper.replySuccessful(message, replyModel);
+    }
+
+    @JmsListener(destination = "${artemis.queue.thread.delete_by_id}", containerFactory = "queueFactory")
+    private void deleteById(Message message) {
+
+        ThreadDeleteByIdRequestModel requestModel = this.jmsHelper.getResultModel(message, ThreadDeleteByIdRequestModel.class);
+
+        if (!this.validationHelper.isValid(requestModel)) {
+            this.jmsHelper.replyValidationError(message, requestModel);
+            return;
+        }
+
+        this.threadServices.deleteById(requestModel.getId());
+
+        ThreadDeleteByIdReplyModel replyModel = new ThreadDeleteByIdReplyModel();
+        replyModel.setMessage(THREAD_DELETED_SUCCESSFUL);
 
         this.jmsHelper.replySuccessful(message, replyModel);
     }
