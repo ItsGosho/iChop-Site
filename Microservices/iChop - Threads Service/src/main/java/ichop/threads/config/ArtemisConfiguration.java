@@ -7,21 +7,10 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
-import org.springframework.jms.annotation.JmsListenerConfigurer;
 import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
 import org.springframework.jms.config.JmsListenerContainerFactory;
-import org.springframework.jms.config.JmsListenerEndpointRegistrar;
 import org.springframework.jms.listener.DefaultMessageListenerContainer;
-import org.springframework.jms.support.converter.MessageConversionException;
-import org.springframework.jms.support.converter.MessageConverter;
-import org.springframework.messaging.handler.annotation.support.MessageHandlerMethodFactory;
-import org.springframework.messaging.handler.invocation.HandlerMethodArgumentResolverComposite;
-import org.springframework.messaging.handler.invocation.InvocableHandlerMethod;
 
-import javax.jms.JMSException;
-import javax.jms.Message;
-import javax.jms.Session;
-import java.lang.reflect.Method;
 import java.util.concurrent.ExecutorService;
 
 import static ichop.threads.constants.ConditionalConstants.ARTEMIS_CONFIGURATION;
@@ -45,12 +34,14 @@ public class ArtemisConfiguration {
 
     @Bean
     public JmsListenerContainerFactory queueFactory(@Qualifier("jmsQueueExecutor") ExecutorService executorService, ActiveMQConnectionFactory connectionFactory) {
+
         DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
         factory.setCacheLevel(DefaultMessageListenerContainer.CACHE_NONE);
         factory.setConnectionFactory(connectionFactory);
         factory.setTaskExecutor(executorService);
         factory.setConcurrency("1-50");
         factory.setSessionTransacted(false);
+
         return factory;
     }
 }

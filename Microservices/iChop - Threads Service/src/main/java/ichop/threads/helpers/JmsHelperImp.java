@@ -10,6 +10,7 @@ import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Component;
 
+import javax.jms.Destination;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import java.io.IOException;
@@ -57,7 +58,7 @@ public class JmsHelperImp implements JmsHelper {
     public <S extends BaseReplyModel> void replySuccessful(Message message, S model) {
         try {
             model.setSuccessful(true);
-            this.replyTo(message.getJMSReplyTo().toString(), message.getJMSCorrelationID(), model);
+            this.replyTo(message.getJMSReplyTo(), message.getJMSCorrelationID(), model);
         } catch (JMSException e) {
             e.printStackTrace();
         }
@@ -84,13 +85,13 @@ public class JmsHelperImp implements JmsHelper {
             String error = this.validationHelper.getValidationError(receiveModel);
             ErrorReplyModel errorSendModel = new ErrorReplyModel(error);
 
-            this.replyTo(message.getJMSReplyTo().toString(), message.getJMSCorrelationID(), errorSendModel);
+            this.replyTo(message.getJMSReplyTo(), message.getJMSCorrelationID(), errorSendModel);
         } catch (JMSException e) {
             e.printStackTrace();
         }
     }
 
-    private <S extends BaseReplyModel> void replyTo(String destination, String correlationId, S model) {
+    private <S extends BaseReplyModel> void replyTo(Destination destination, String correlationId, S model) {
         LOG.info(String.format(REPLY_TO_STARTED, destination));
 
         MessageCreator message = this.createMessage(model, correlationId);

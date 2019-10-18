@@ -29,18 +29,17 @@ public class ThreadJmsListenerImp implements ThreadJmsListener {
     private static final String THREAD_DELETED_SUCCESSFUL = "Thread deleted successful!";
 
     private final JmsHelper jmsHelper;
-    private final ValidationHelper validationHelper;
     private final ObjectMapper objectMapper;
     private final ThreadServices threadServices;
 
     @Autowired
-    public ThreadJmsListenerImp(JmsHelper jmsHelper, ValidationHelper validationHelper, ObjectMapper objectMapper, ThreadServices threadServices) {
+    public ThreadJmsListenerImp(JmsHelper jmsHelper, ObjectMapper objectMapper, ThreadServices threadServices) {
         this.jmsHelper = jmsHelper;
-        this.validationHelper = validationHelper;
         this.objectMapper = objectMapper;
         this.threadServices = threadServices;
     }
 
+    @Override
     @ValidateModel(model = ThreadCreateRequestModel.class)
     @JmsListener(destination = "${artemis.queue.thread.create}", containerFactory = "queueFactory")
     public void createThread(Message message) {
@@ -55,6 +54,7 @@ public class ThreadJmsListenerImp implements ThreadJmsListener {
         this.jmsHelper.replySuccessful(message, replyModel);
     }
 
+    @Override
     @ValidateModel(model = ThreadGetByIdRequestModel.class)
     @JmsListener(destination = "${artemis.queue.thread.get_by_id}", containerFactory = "queueFactory")
     public void getById(Message message) {
@@ -68,6 +68,7 @@ public class ThreadJmsListenerImp implements ThreadJmsListener {
         this.jmsHelper.replySuccessful(message, replyModel);
     }
 
+    @Override
     @ValidateModel(model = ThreadIncreaseViewsRequestModel.class)
     @JmsListener(destination = "${artemis.queue.thread.increase_views}", containerFactory = "queueFactory")
     public void increaseViews(Message message) {
@@ -81,6 +82,7 @@ public class ThreadJmsListenerImp implements ThreadJmsListener {
         this.jmsHelper.replySuccessful(message, replyModel);
     }
 
+    @Override
     @ValidateModel(model = ThreadDeleteByIdRequestModel.class)
     @JmsListener(destination = "${artemis.queue.thread.delete_by_id}", containerFactory = "queueFactory")
     public void deleteById(Message message) {

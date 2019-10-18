@@ -28,10 +28,12 @@ public class CLR implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         ThreadCreateRequestModel requestModel = new ThreadCreateRequestModel();
-        requestModel.setTitle("1");
+        requestModel.setTitle("123");
         requestModel.setContent("<h1>test</h1>");
         requestModel.setUserId("123");
 
-        this.jmsHelper.sendAndReceive("thread_services.create", requestModel, ThreadCreateReplyModel.class);
+        ThreadCreateReplyModel result = this.jmsHelper.sendAndReceive("thread_services.create", requestModel, ThreadCreateReplyModel.class);
+        System.out.println(result.getTitle());
+        System.out.println(result.getViews());
     }
 }
