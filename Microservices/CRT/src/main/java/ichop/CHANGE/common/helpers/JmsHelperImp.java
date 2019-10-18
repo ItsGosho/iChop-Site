@@ -1,11 +1,11 @@
-package ichop.common.jms.helpers;
+package ichop.CHANGE.common.helpers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ichop.common.jms.models.BaseReplyModel;
-import ichop.common.jms.models.BaseRequestModel;
-import ichop.common.jms.models.ErrorReplyModel;
-import ichop.common.validation.ValidationHelper;
+import ichop.threads.common.domain.BaseReplyModel;
+import ichop.threads.common.domain.BaseRequestModel;
+import ichop.threads.common.domain.ErrorReplyModel;
+import ichop.threads.common.validation.ValidationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.util.UUID;
 import java.util.logging.Logger;
 
-import static ichop.threads.constants.JmsLoggingConstants.*;
+import static ichop.threads.common.constants.JmsLoggingConstants.*;
 
 @Component
 @SuppressWarnings("all")

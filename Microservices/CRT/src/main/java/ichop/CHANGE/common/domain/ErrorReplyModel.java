@@ -1,4 +1,4 @@
-package ichop.common.jms.models;
+package ichop.CHANGE.common.domain;
 
 import lombok.NoArgsConstructor;
 

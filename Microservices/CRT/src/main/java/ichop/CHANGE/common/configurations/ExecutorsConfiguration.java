@@ -1,4 +1,4 @@
-package ichop.common.configurations;
+package ichop.CHANGE.common.configurations;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

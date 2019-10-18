@@ -1,4 +1,4 @@
-package ichop.common.validation;
+package ichop.CHANGE.common.validation;
 
 import org.springframework.stereotype.Component;
 

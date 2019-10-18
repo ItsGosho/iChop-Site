@@ -1,4 +1,4 @@
-package ichop.common.domain;
+package ichop.CHANGE.common.domain;
 
 import lombok.Getter;
 import lombok.Setter;

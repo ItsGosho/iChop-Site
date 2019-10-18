@@ -1,4 +1,4 @@
-package ichop.common.jms.config;
+package ichop.CHANGE.common.configurations;
 
 import org.apache.activemq.artemis.jms.client.ActiveMQConnectionFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -13,7 +13,7 @@ import org.springframework.jms.listener.DefaultMessageListenerContainer;
 
 import java.util.concurrent.ExecutorService;
 
-import static ichop.threads.constants.ConditionalConstants.ARTEMIS_CONFIGURATION;
+import static ichop.CHANGE.constants.ConditionalConstants.ARTEMIS_CONFIGURATION;
 
 @Configuration
 @ConditionalOnProperty(

@@ -1,7 +1,7 @@
-package ichop.common.jms.helpers;
+package ichop.CHANGE.common.helpers;
 
-import ichop.common.jms.models.BaseReplyModel;
-import ichop.common.jms.models.BaseRequestModel;
+import ichop.threads.common.domain.BaseReplyModel;
+import ichop.threads.common.domain.BaseRequestModel;
 
 import javax.jms.Message;
 
