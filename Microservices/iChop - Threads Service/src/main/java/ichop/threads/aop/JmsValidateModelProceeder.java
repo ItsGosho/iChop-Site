@@ -16,18 +16,18 @@ import java.lang.reflect.Method;
 @Aspect
 @Component
 @SuppressWarnings("all")
-public class ValidateModelProceeder {
+public class JmsValidateModelProceeder {
 
     private final ValidationHelper validationHelper;
     private final JmsHelper jmsHelper;
 
     @Autowired
-    public ValidateModelProceeder(ValidationHelper validationHelper, JmsHelper jmsHelper) {
+    public JmsValidateModelProceeder(ValidationHelper validationHelper, JmsHelper jmsHelper) {
         this.validationHelper = validationHelper;
         this.jmsHelper = jmsHelper;
     }
 
-    @Around("@annotation(ichop.threads.aop.ValidateModel)")
+    @Around("@annotation(ichop.threads.aop.JmsValidateModel)")
     public <R extends BaseRequestModel> Object validateModel(ProceedingJoinPoint joinPoint) throws Throwable {
         Class clazz = this.getModelClass(joinPoint);
         Message message = (Message) joinPoint.getArgs()[0];
@@ -46,9 +46,9 @@ public class ValidateModelProceeder {
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         Method method = signature.getMethod();
 
-        ValidateModel validateModelAnnotation = method.getAnnotation(ValidateModel.class);
+        JmsValidateModel jmsValidateModelAnnotation = method.getAnnotation(JmsValidateModel.class);
 
-        return validateModelAnnotation.model();
+        return jmsValidateModelAnnotation.model();
     }
 
 }
