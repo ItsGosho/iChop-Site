@@ -1,6 +1,6 @@
 package ichop.threads.domain.models.jms.delete;
 
-import ichop.threads.jms.models.BaseRequestModel;
+import ichop.common.jms.models.BaseRequestModel;
 import ichop.threads.validators.ExistsById;
 import lombok.Getter;
 import lombok.Setter;

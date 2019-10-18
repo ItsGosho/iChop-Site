@@ -1,10 +1,11 @@
-package ichop.threads.helpers;
+package ichop.common.jms.helpers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ichop.threads.jms.models.BaseRequestModel;
-import ichop.threads.jms.models.BaseReplyModel;
-import ichop.threads.jms.models.ErrorReplyModel;
+import ichop.common.jms.models.BaseReplyModel;
+import ichop.common.jms.models.BaseRequestModel;
+import ichop.common.validation.ValidationHelper;
+import ichop.common.jms.models.ErrorReplyModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;

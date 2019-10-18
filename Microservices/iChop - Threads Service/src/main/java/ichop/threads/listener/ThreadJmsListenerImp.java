@@ -1,8 +1,8 @@
 package ichop.threads.listener;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ichop.threads.jms.aop.JmsAfterReturn;
-import ichop.threads.jms.aop.JmsValidate;
+import ichop.common.jms.aop.JmsAfterReturn;
+import ichop.common.jms.aop.JmsValidate;
 import ichop.threads.domain.models.jms.create.ThreadCreateRequestModel;
 import ichop.threads.domain.models.jms.create.ThreadCreateReplyModel;
 import ichop.threads.domain.models.jms.delete.ThreadDeleteByIdReplyModel;
@@ -12,7 +12,7 @@ import ichop.threads.domain.models.jms.increase.ThreadIncreaseViewsRequestModel;
 import ichop.threads.domain.models.jms.retrieve.ThreadGetByIdReplyModel;
 import ichop.threads.domain.models.jms.retrieve.ThreadGetByIdRequestModel;
 import ichop.threads.domain.models.service.ThreadServiceModel;
-import ichop.threads.helpers.JmsHelper;
+import ichop.common.jms.helpers.JmsHelper;
 import ichop.threads.services.ThreadServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;

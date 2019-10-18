@@ -1,6 +1,6 @@
-package ichop.threads.jms.aop;
+package ichop.common.jms.aop;
 
-import ichop.threads.helpers.JmsHelper;
+import ichop.common.jms.helpers.JmsHelper;
 import org.apache.activemq.artemis.jms.client.ActiveMQMessage;
 import org.aspectj.lang.ProceedingJoinPoint;
 

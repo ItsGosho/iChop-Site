@@ -1,7 +1,7 @@
 package ichop.threads.domain.models.jms.retrieve;
 
 
-import ichop.threads.jms.models.BaseReplyModel;
+import ichop.common.jms.models.BaseReplyModel;
 import lombok.Getter;
 import lombok.Setter;
 

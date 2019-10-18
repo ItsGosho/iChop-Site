@@ -1,6 +1,6 @@
-package ichop.threads.jms.aop;
+package ichop.common.jms.aop;
 
-import ichop.threads.jms.models.BaseRequestModel;
+import ichop.common.jms.models.BaseRequestModel;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

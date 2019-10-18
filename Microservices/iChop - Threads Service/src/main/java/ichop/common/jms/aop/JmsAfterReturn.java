@@ -1,4 +1,4 @@
-package ichop.threads.jms.aop;
+package ichop.common.jms.aop;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

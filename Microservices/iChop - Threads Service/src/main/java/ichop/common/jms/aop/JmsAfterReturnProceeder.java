@@ -1,7 +1,7 @@
-package ichop.threads.jms.aop;
+package ichop.common.jms.aop;
 
-import ichop.threads.jms.models.BaseReplyModel;
-import ichop.threads.helpers.JmsHelper;
+import ichop.common.jms.models.BaseReplyModel;
+import ichop.common.jms.helpers.JmsHelper;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -20,7 +20,7 @@ public class JmsAfterReturnProceeder extends AbstractJmsProceeder {
         super(jmsHelper);
     }
 
-    @Around(value = "@annotation(ichop.threads.jms.aop.JmsAfterReturn)")
+    @Around(value = "@annotation(ichop.common.jms.aop.JmsAfterReturn)")
     public <S extends BaseReplyModel> void test(ProceedingJoinPoint joinPoint) throws Throwable {
         Message message = super.getMessage(joinPoint);
 
