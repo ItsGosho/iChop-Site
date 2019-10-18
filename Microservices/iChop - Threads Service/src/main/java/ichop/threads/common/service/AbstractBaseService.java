@@ -12,7 +12,9 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @SuppressWarnings("all")
-public abstract class AbstractBaseService<E extends BaseEntity, S extends BaseServiceModel, R extends MongoRepository<E, String>> implements BaseService<S> {
+public abstract class AbstractBaseService
+        <E extends BaseEntity, S extends BaseServiceModel, R extends MongoRepository<E, String>>
+        implements BaseService<S> {
 
     protected ObjectMapper objectMapper;
     protected R repository;
@@ -29,27 +31,25 @@ public abstract class AbstractBaseService<E extends BaseEntity, S extends BaseSe
     }
 
     @Override
-    public S findById(String id, Class<S> serviceModel) {
+    public <M> M findById(String id, Class<M> serviceModel) {
         E entity = this.repository.findById(id).orElse(null);
-        S result = entity != null ? this.objectMapper.convertValue(entity, serviceModel) : null;
 
-        return result;
+        return this.toModel(entity, serviceModel);
     }
 
     @Override
     public S findById(String id) {
         E entity = this.repository.findById(id).orElse(null);
-        S result = entity != null ? this.objectMapper.convertValue(entity, this.serviceModelClass) : null;
 
-        return result;
+        return this.toServiceModel(entity);
     }
 
     @Override
-    public S save(S serviceModel, Class<S> returnModel) {
+    public <M> M save(S serviceModel, Class<M> returnModel) {
         E entity = this.objectMapper.convertValue(serviceModel, this.entityClass);
         this.repository.save(entity);
 
-        return this.objectMapper.convertValue(entity, returnModel);
+        return this.toModel(entity, returnModel);
     }
 
     @Override
@@ -62,7 +62,7 @@ public abstract class AbstractBaseService<E extends BaseEntity, S extends BaseSe
             return null;
         }
 
-        return this.objectMapper.convertValue(entity, this.serviceModelClass);
+        return this.toServiceModel(entity);
     }
 
     @Override
@@ -78,8 +78,12 @@ public abstract class AbstractBaseService<E extends BaseEntity, S extends BaseSe
     }
 
     @Override
-    public List<S> findAll(Class<S> returnModelClass) {
-        return this.repository.findAll().stream().map(x -> this.objectMapper.convertValue(x, returnModelClass)).collect(Collectors.toList());
+    public <M> List<M> findAll(Class<M> returnModelClass) {
+        return this.repository
+                .findAll()
+                .stream()
+                .map(x -> this.toModel(x, returnModelClass))
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -87,10 +91,10 @@ public abstract class AbstractBaseService<E extends BaseEntity, S extends BaseSe
         return this.repository.existsById(id);
     }
 
-    protected Set<S> mapToSet(Collection collection) {
-        Set<S> result = (Set<S>) collection
+    protected <M> Set<M> mapToSet(Collection collection) {
+        Set<M> result = (Set<M>) collection
                 .stream()
-                .map(x -> this.objectMapper.convertValue(x, this.serviceModelClass))
+                .map(x -> this.toServiceModel((E) x))
                 .collect(Collectors.toSet());
 
         return result;
@@ -99,12 +103,19 @@ public abstract class AbstractBaseService<E extends BaseEntity, S extends BaseSe
     protected List<S> mapToList(Collection collection) {
         List<S> result = (List<S>) collection
                 .stream()
-                .map(x -> this.objectMapper.convertValue(x, this.serviceModelClass))
+                .map(x -> this.toServiceModel((E) x))
                 .collect(Collectors.toList());
 
         return result;
     }
 
+    protected S toServiceModel(E e) {
+        return e != null ? this.objectMapper.convertValue(e, this.serviceModelClass) : null;
+    }
+
+    protected <M> M toModel(E e, Class<M> m) {
+        return e != null ? this.objectMapper.convertValue(e, m) : null;
+    }
 
     private Class<?> getGenericClass(Integer position) {
         return (Class<?>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[position];
