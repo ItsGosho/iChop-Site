@@ -22,20 +22,16 @@ public abstract class AbstractTokenServices
 
     protected S findByUserId(String userId) {
         E token = super.repository.findByUserId(userId);
-        return this.toServiceModel(token);
+        return super.toServiceModel(token);
     }
 
     protected S findByToken(String tokeen) {
         E token = super.repository.findByToken(tokeen);
-        return this.toServiceModel(token);
+        return super.toServiceModel(token);
     }
 
     protected S findByExpirationDateBefore(LocalDateTime date) {
         E token = super.repository.findByExpirationDateBefore(date);
-        return this.toServiceModel(token);
-    }
-
-    private S toServiceModel(E e) {
-        return e != null ? super.objectMapper.convertValue(e, super.serviceModelClass) : null;
+        return super.toServiceModel(token);
     }
 }

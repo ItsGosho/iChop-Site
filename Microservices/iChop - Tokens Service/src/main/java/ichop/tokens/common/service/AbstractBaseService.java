@@ -105,6 +105,9 @@ public abstract class AbstractBaseService<E extends BaseEntity, S extends BaseSe
         return result;
     }
 
+    protected S toServiceModel(E e) {
+        return e != null ? this.objectMapper.convertValue(e, this.serviceModelClass) : null;
+    }
 
     private Class<?> getGenericClass(Integer position) {
         return (Class<?>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[position];
