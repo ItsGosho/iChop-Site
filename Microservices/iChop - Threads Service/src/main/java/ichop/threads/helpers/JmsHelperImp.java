@@ -2,8 +2,10 @@ package ichop.threads.helpers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import ichop.threads.domain.entities.Thread;
 import ichop.threads.domain.models.jms.BaseReceiveModel;
 import ichop.threads.domain.models.jms.BaseSendModel;
+import ichop.threads.domain.models.jms.ErrorSendModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
@@ -19,21 +21,23 @@ import static ichop.threads.constants.JmsLoggingConstants.*;
 
 @Component
 @SuppressWarnings("all")
-public class JmsHelperImp<S extends BaseSendModel, R extends BaseReceiveModel> implements JmsHelper {
+public class JmsHelperImp implements JmsHelper {
 
     private final Logger LOG = Logger.getLogger(this.getClass().getName());
 
     private final JmsTemplate jmsTemplate;
+    private final ValidationHelper validationHelper;
     private final ObjectMapper objectMapper;
 
     @Autowired
-    public JmsHelperImp(JmsTemplate jmsTemplate, ObjectMapper objectMapper) {
+    public JmsHelperImp(JmsTemplate jmsTemplate, ValidationHelper validationHelper, ObjectMapper objectMapper) {
         this.jmsTemplate = jmsTemplate;
+        this.validationHelper = validationHelper;
         this.objectMapper = objectMapper;
     }
 
     @Override
-    public <S,R> R sendAndReceive(String destination, S model, Class<R> clazz) {
+    public <S extends BaseSendModel, R extends BaseReceiveModel> R sendAndReceive(String destination, S model, Class<R> clazz) {
         LOG.info(String.format(SEND_AND_RECEIVED_STARTED, destination));
 
         MessageCreator message = this.createMessage(model);
@@ -43,7 +47,7 @@ public class JmsHelperImp<S extends BaseSendModel, R extends BaseReceiveModel> i
     }
 
     @Override
-    public <S> void send(String destination, S model) {
+    public <S extends BaseSendModel> void send(String destination, S model) {
         LOG.info(String.format(SEND_STARTED, destination));
 
         MessageCreator message = this.createMessage(model);
@@ -51,7 +55,7 @@ public class JmsHelperImp<S extends BaseSendModel, R extends BaseReceiveModel> i
     }
 
     @Override
-    public <S> void replyTo(String destination, String correlationId, S model) {
+    public <S extends BaseSendModel> void replyTo(String destination, String correlationId, S model) {
         LOG.info(String.format(REPLY_TO_STARTED, destination));
 
         MessageCreator message = this.createMessage(model, correlationId);
@@ -59,7 +63,7 @@ public class JmsHelperImp<S extends BaseSendModel, R extends BaseReceiveModel> i
     }
 
     @Override
-    public <R> R getResultModel(Message message, Class<R> clazz) {
+    public <R extends BaseReceiveModel> R getResultModel(Message message, Class<R> clazz) {
 
         try {
             String body = message.getBody(String.class);
@@ -71,11 +75,23 @@ public class JmsHelperImp<S extends BaseSendModel, R extends BaseReceiveModel> i
         return null;
     }
 
-    private <S> MessageCreator createMessage(S model) {
+    @Override
+    public <R extends BaseReceiveModel> void replyValidationError(Message message, R receiveModel) {
+        try {
+            String error = this.validationHelper.getValidationError(receiveModel);
+            ErrorSendModel errorSendModel = new ErrorSendModel(error);
+
+            this.replyTo(message.getJMSReplyTo().toString(), message.getJMSCorrelationID(), errorSendModel);
+        } catch (JMSException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private <S extends BaseSendModel> MessageCreator createMessage(S model) {
         return this.createMessage(model, this.randomId());
     }
 
-    private <S> MessageCreator createMessage(S model, String correlationId) {
+    private <S extends BaseSendModel> MessageCreator createMessage(S model, String correlationId) {
         return session -> {
             try {
                 Message message = session.createTextMessage(this.objectMapper.writeValueAsString(model));
