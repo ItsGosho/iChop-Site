@@ -23,7 +23,13 @@ public class ThreadJmsListenerImp implements ThreadJmsListener {
     private void TODO(Message message) {
         ThreadCreateReceiveModel receiveModel = this.jmsHelper.getResultModel(message, ThreadCreateReceiveModel.class);
 
-
+        /*TODO:
+        *  1.Validate the model via the validation helper
+        *  2.if error to think of better return model
+        *  3.if not to create it
+        *  4.then to return the created thread and that is successful
+        *
+        * */
     }
 
 }
