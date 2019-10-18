@@ -1,8 +1,8 @@
 package ichop.CHANGE.common.aop;
 
-import ichop.threads.common.domain.BaseRequestModel;
-import ichop.threads.common.helpers.JmsHelper;
-import ichop.threads.common.validation.ValidationHelper;
+import ichop.CHANGE.common.domain.BaseRequestModel;
+import ichop.CHANGE.common.helpers.JmsHelper;
+import ichop.CHANGE.common.validation.ValidationHelper;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -27,7 +27,7 @@ public class JmsValidateProceeder extends AbstractJmsProceeder {
     }
 
 
-    @Around("@annotation(ichop.threads.common.aop.JmsValidate)")
+    @Around("@annotation(ichop.CHANGE.common.aop.JmsValidate)")
     public <R extends BaseRequestModel> Object validateModel(ProceedingJoinPoint joinPoint) throws Throwable {
         Class clazz = this.getModelClass(joinPoint);
         Message message = super.getMessage(joinPoint);

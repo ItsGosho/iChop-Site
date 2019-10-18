@@ -1,6 +1,6 @@
 package ichop.CHANGE.common.aop;
 
-import ichop.threads.common.domain.BaseRequestModel;
+import ichop.CHANGE.common.domain.BaseRequestModel;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -1,8 +1,8 @@
 package ichop.CHANGE.common.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ichop.threads.common.domain.BaseEntity;
-import ichop.threads.common.domain.BaseServiceModel;
+import ichop.CHANGE.common.domain.BaseEntity;
+import ichop.CHANGE.common.domain.BaseServiceModel;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.lang.reflect.ParameterizedType;

@@ -1,6 +1,6 @@
 package ichop.CHANGE.common.service;
 
-import ichop.threads.common.domain.BaseServiceModel;
+import ichop.CHANGE.common.domain.BaseServiceModel;
 
 import java.util.List;
 

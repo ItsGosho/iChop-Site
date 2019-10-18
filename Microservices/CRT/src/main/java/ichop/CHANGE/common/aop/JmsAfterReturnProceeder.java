@@ -21,7 +21,7 @@ public class JmsAfterReturnProceeder extends AbstractJmsProceeder {
         super(jmsHelper);
     }
 
-    @Around(value = "@annotation(ichop.threads.common.aop.JmsAfterReturn)")
+    @Around(value = "@annotation(ichop.CHANGE.common.aop.JmsAfterReturn)")
     public <S extends BaseReplyModel> void test(ProceedingJoinPoint joinPoint) throws Throwable {
         Message message = super.getMessage(joinPoint);
 
