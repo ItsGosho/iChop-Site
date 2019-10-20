@@ -1,11 +1,21 @@
 package ichop.comments.listeners;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import ichop.comments.common.aop.JmsAfterReturn;
+import ichop.comments.common.aop.JmsValidate;
 import ichop.comments.common.helpers.JmsHelper;
+import ichop.comments.domain.models.jms.thread.ThreadCommentCreateReplyModel;
+import ichop.comments.domain.models.jms.thread.ThreadCommentCreateRequestModel;
+import ichop.comments.domain.models.service.ThreadCommentServiceModel;
 import ichop.comments.services.ThreadCommentServices;
 import ichop.comments.services.UserProfileCommentServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
+
+import javax.jms.Message;
+
+import static ichop.comments.constants.CommentReplyConstants.COMMENT_CREATED_SUCCESSFUL;
 
 @Component
 public class ThreadListeners {
@@ -22,18 +32,18 @@ public class ThreadListeners {
     }
 
 
-    /*@JmsValidate(model = PasswordTokenCreateRequestModel.class)
+    @JmsValidate(model = ThreadCommentCreateRequestModel.class)
     @JmsAfterReturn
     @JmsListener(destination = "${artemis.queue.token.password.create}", containerFactory = "queueFactory")
-    public PasswordTokenCreateReplyModel create(Message message) {
-        PasswordTokenCreateRequestModel requestModel = this.jmsHelper.getResultModel(message, PasswordTokenCreateRequestModel.class);
+    public ThreadCommentCreateReplyModel create(Message message) {
+        ThreadCommentCreateRequestModel requestModel = this.jmsHelper.getResultModel(message, ThreadCommentCreateRequestModel.class);
 
-        PasswordTokenServiceModel passwordToken = this.objectMapper.convertValue(requestModel, PasswordTokenServiceModel.class);
+        ThreadCommentServiceModel threadComment = this.objectMapper.convertValue(requestModel, ThreadCommentServiceModel.class);
 
-        PasswordTokenCreateReplyModel replyModel = this.passwordTokenServices.save(passwordToken, PasswordTokenCreateReplyModel.class);
-        replyModel.setMessage(TOKEN_CREATED_SUCCESSFUL);
+        ThreadCommentCreateReplyModel replyModel = this.threadCommentServices.save(threadComment, ThreadCommentCreateReplyModel.class);
+        replyModel.setMessage(COMMENT_CREATED_SUCCESSFUL);
 
         return replyModel;
-    }*/
+    }
 
 }
