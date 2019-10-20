@@ -1,4 +1,4 @@
-package ichop.comments.domain.entities;
+package ichop.comments.domain.models.service;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -7,9 +7,8 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-public class UserProfileComment extends Comment {
+public class UserProfileCommentServiceModel extends CommentServiceModel {
 
-    @NotNull
     private String userProfileId;
 
 }
