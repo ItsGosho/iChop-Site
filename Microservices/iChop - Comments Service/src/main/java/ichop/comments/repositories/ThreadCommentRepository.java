@@ -7,5 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ThreadCommentRepository extends CommentRepository<ThreadComment> {
 
+    boolean existsByThreadId(String threadId);
 
 }

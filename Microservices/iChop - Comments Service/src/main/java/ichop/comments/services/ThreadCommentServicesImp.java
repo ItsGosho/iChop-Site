@@ -16,5 +16,8 @@ public class ThreadCommentServicesImp extends AbstractCommentServices<ThreadComm
     }
 
 
-
+    @Override
+    public boolean existsByThreadId(String threadId) {
+        return super.repository.existsByThreadId(threadId);
+    }
 }

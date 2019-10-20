@@ -1,6 +1,8 @@
 package ichop.comments.domain.models.jms.profile;
 
 import ichop.comments.common.domain.BaseRequestModel;
+import ichop.comments.domain.enums.Type;
+import ichop.comments.validators.ExistsBy;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,5 +15,4 @@ public class UserProfileCommentsByUserProfileIdRequestModel extends BaseRequestM
     @NotNull
     private String userProfileId;
 
-    /*TODO: validate that exists by userProfileId*/
 }

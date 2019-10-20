@@ -7,13 +7,14 @@ import javax.validation.Payload;
 import java.lang.annotation.*;
 
 @Documented
-@Constraint(validatedBy = ExistsByTokenValidator.class)
+@Constraint(validatedBy = ExistsByValidator.class)
 @Target( { ElementType.METHOD, ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ExistsById {
+public @interface ExistsBy {
 
     Type type();
-    String message() default "Comment doesn't exist!";
+    String field();
+    String message() default "Whoops doesn't exists!";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }
