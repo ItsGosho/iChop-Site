@@ -1,6 +1,6 @@
 package ichop.tokens.domain.enums;
 
-public enum TokenType {
+public enum Type {
 
     PASSWORD
 
