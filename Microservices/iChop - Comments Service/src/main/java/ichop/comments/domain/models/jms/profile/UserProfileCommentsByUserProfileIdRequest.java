@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-public class UserProfileCommentsByUserProfileIdRequestModel extends BaseRequestModel {
+public class UserProfileCommentsByUserProfileIdRequest extends BaseRequestModel {
 
     @NotNull
     private String userProfileId;

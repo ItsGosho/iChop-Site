@@ -4,11 +4,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.comments.common.aop.JmsAfterReturn;
 import ichop.comments.common.aop.JmsValidate;
 import ichop.comments.common.helpers.JmsHelper;
-import ichop.comments.domain.models.jms.thread.ThreadCommentCreateReplyModel;
-import ichop.comments.domain.models.jms.thread.ThreadCommentCreateRequestModel;
+import ichop.comments.domain.models.jms.thread.ThreadCommentCreateReply;
+import ichop.comments.domain.models.jms.thread.ThreadCommentCreateRequest;
+import ichop.comments.domain.models.jms.thread.ThreadCommentDeleteByIdRequest;
 import ichop.comments.domain.models.service.ThreadCommentServiceModel;
 import ichop.comments.services.ThreadCommentServices;
-import ichop.comments.services.UserProfileCommentServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
@@ -32,15 +32,29 @@ public class ThreadListeners {
     }
 
 
-    @JmsValidate(model = ThreadCommentCreateRequestModel.class)
+    @JmsValidate(model = ThreadCommentCreateRequest.class)
     @JmsAfterReturn
-    @JmsListener(destination = "${artemis.queue.token.password.create}", containerFactory = "queueFactory")
-    public ThreadCommentCreateReplyModel create(Message message) {
-        ThreadCommentCreateRequestModel requestModel = this.jmsHelper.getResultModel(message, ThreadCommentCreateRequestModel.class);
+    @JmsListener(destination = "${artemis.queue.comment.thread.create}", containerFactory = "queueFactory")
+    public ThreadCommentCreateReply create(Message message) {
+        ThreadCommentCreateRequest requestModel = this.jmsHelper.getResultModel(message, ThreadCommentCreateRequest.class);
 
         ThreadCommentServiceModel threadComment = this.objectMapper.convertValue(requestModel, ThreadCommentServiceModel.class);
 
-        ThreadCommentCreateReplyModel replyModel = this.threadCommentServices.save(threadComment, ThreadCommentCreateReplyModel.class);
+        ThreadCommentCreateReply replyModel = this.threadCommentServices.save(threadComment, ThreadCommentCreateReply.class);
+        replyModel.setMessage(COMMENT_CREATED_SUCCESSFUL);
+
+        return replyModel;
+    }
+
+    @JmsValidate(model = ThreadCommentDeleteByIdRequest.class)
+    @JmsAfterReturn
+    @JmsListener(destination = "${artemis.queue.comment.thread.delete_by_id}", containerFactory = "queueFactory")
+    public ThreadCommentCreateReply deleteById(Message message) {
+        ThreadCommentDeleteByIdRequest requestModel = this.jmsHelper.getResultModel(message, ThreadCommentDeleteByIdRequest.class);
+
+        ThreadCommentServiceModel threadComment = this.objectMapper.convertValue(requestModel, ThreadCommentServiceModel.class);
+
+        ThreadCommentCreateReply replyModel = this.threadCommentServices.save(threadComment, ThreadCommentCreateReply.class);
         replyModel.setMessage(COMMENT_CREATED_SUCCESSFUL);
 
         return replyModel;

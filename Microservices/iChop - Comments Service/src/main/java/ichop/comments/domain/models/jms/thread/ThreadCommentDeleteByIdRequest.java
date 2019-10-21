@@ -10,10 +10,12 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-public class ThreadCommentsByThreadIdRequestModel extends BaseRequestModel {
+public class ThreadCommentDeleteByIdRequest extends BaseRequestModel {
 
     @NotNull
-    private String threadId;
+    @ExistsBy(type = Type.THREAD, field = "_id", message = "Comments doesn't exist!")
+    private String id;
 
-    /*TODO: validate that exists by threadId*/
+    /*TODO: Where to validate the three cases MODERATOR or creator ?*/
+
 }

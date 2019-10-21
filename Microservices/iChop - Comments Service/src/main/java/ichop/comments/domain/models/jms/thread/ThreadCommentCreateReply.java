@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-public class ThreadCommentsByThreadIdReplyModel extends BaseReplyModel {
+public class ThreadCommentCreateReply extends BaseReplyModel {
 
 
     private String id;

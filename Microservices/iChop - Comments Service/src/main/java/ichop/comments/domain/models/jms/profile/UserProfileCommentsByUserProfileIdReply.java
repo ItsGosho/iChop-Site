@@ -11,8 +11,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-public class UserProfileCommentCreateReplyModel extends BaseReplyModel {
-
+public class UserProfileCommentsByUserProfileIdReply extends BaseReplyModel {
 
     private String id;
     private String content;

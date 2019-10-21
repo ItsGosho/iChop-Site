@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ThreadCommentDeleteByIdReplyModel extends BaseReplyModel {
+public class ThreadCommentDeleteByIdReply extends BaseReplyModel {
 
 
 }

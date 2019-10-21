@@ -1,4 +1,4 @@
-package ichop.comments.domain.models.jms.profile;
+package ichop.comments.domain.models.jms.thread;
 
 import ichop.comments.common.domain.BaseRequestModel;
 import lombok.Getter;
@@ -10,15 +10,15 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-public class UserProfileCommentCreateRequestModel extends BaseRequestModel {
+public class ThreadCommentCreateRequest extends BaseRequestModel {
 
     @NotNull
-    @Length(min = 3,max = 150)
+    @NotEmpty
     private String content;
 
     @NotNull
     private String creatorId;
 
     @NotNull
-    private String userProfileId;
+    private String threadId;
 }

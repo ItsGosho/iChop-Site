@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-public class UserProfileCommentDeleteByIdRequestModel extends BaseRequestModel {
+public class UserProfileCommentDeleteByIdRequest extends BaseRequestModel {
 
     @NotNull
     @ExistsBy(type = Type.USER_PROFILE,field = "_id",message = "Comment doesn't exist!")
