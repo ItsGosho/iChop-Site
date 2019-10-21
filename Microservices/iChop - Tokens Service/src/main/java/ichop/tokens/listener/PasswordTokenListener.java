@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
 
 import javax.jms.Message;
 
+import static ichop.tokens.common.constants.JmsFactories.QUEUE;
 import static ichop.tokens.constants.TokenReplyConstants.TOKEN_CREATED_SUCCESSFUL;
 import static ichop.tokens.constants.TokenReplyConstants.TOKEN_RETRIEVED_SUCCESSFUL;
 
@@ -36,7 +37,7 @@ public class PasswordTokenListener {
 
     @JmsValidate(model = PasswordTokenCreateRequestModel.class)
     @JmsAfterReturn
-    @JmsListener(destination = "${artemis.queue.token.password.create}", containerFactory = "queueFactory")
+    @JmsListener(destination = "${artemis.queue.token.password.create}", containerFactory = QUEUE)
     public PasswordTokenCreateReplyModel create(Message message) {
         PasswordTokenCreateRequestModel requestModel = this.jmsHelper.getResultModel(message, PasswordTokenCreateRequestModel.class);
 
@@ -50,7 +51,7 @@ public class PasswordTokenListener {
 
     @JmsValidate(model = PasswordTokenIsValidRequestModel.class)
     @JmsAfterReturn
-    @JmsListener(destination = "${artemis.queue.token.password.is_valid}", containerFactory = "queueFactory")
+    @JmsListener(destination = "${artemis.queue.token.password.is_valid}", containerFactory = QUEUE)
     public PasswordTokenIsValidReplyModel isValid(Message message) {
         PasswordTokenIsValidRequestModel requestModel = this.jmsHelper.getResultModel(message, PasswordTokenIsValidRequestModel.class);
 
