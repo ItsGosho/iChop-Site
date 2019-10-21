@@ -6,6 +6,7 @@ import ichop.comments.common.aop.JmsValidate;
 import ichop.comments.common.helpers.JmsHelper;
 import ichop.comments.domain.models.jms.thread.ThreadCommentCreateReply;
 import ichop.comments.domain.models.jms.thread.ThreadCommentCreateRequest;
+import ichop.comments.domain.models.jms.thread.ThreadCommentDeleteByIdReply;
 import ichop.comments.domain.models.jms.thread.ThreadCommentDeleteByIdRequest;
 import ichop.comments.domain.models.service.ThreadCommentServiceModel;
 import ichop.comments.services.ThreadCommentServices;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Component;
 import javax.jms.Message;
 
 import static ichop.comments.constants.CommentReplyConstants.COMMENT_CREATED_SUCCESSFUL;
+import static ichop.comments.constants.CommentReplyConstants.COMMENT_DELETE_SUCCESSFUL;
 
 @Component
 public class ThreadListeners {
@@ -49,15 +51,12 @@ public class ThreadListeners {
     @JmsValidate(model = ThreadCommentDeleteByIdRequest.class)
     @JmsAfterReturn
     @JmsListener(destination = "${artemis.queue.comment.thread.delete_by_id}", containerFactory = "queueFactory")
-    public ThreadCommentCreateReply deleteById(Message message) {
+    public ThreadCommentDeleteByIdReply deleteById(Message message) {
         ThreadCommentDeleteByIdRequest requestModel = this.jmsHelper.getResultModel(message, ThreadCommentDeleteByIdRequest.class);
 
-        ThreadCommentServiceModel threadComment = this.objectMapper.convertValue(requestModel, ThreadCommentServiceModel.class);
+        this.threadCommentServices.deleteById(requestModel.getId());
 
-        ThreadCommentCreateReply replyModel = this.threadCommentServices.save(threadComment, ThreadCommentCreateReply.class);
-        replyModel.setMessage(COMMENT_CREATED_SUCCESSFUL);
-
-        return replyModel;
+        return new ThreadCommentDeleteByIdReply(COMMENT_DELETE_SUCCESSFUL);
     }
 
 }

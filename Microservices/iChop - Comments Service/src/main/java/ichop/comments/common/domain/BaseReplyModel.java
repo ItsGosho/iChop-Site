@@ -14,4 +14,8 @@ public abstract class BaseReplyModel {
     private boolean isSuccessful;
     private String message;
 
+
+    public BaseReplyModel(String message) {
+        this.message = message;
+    }
 }
