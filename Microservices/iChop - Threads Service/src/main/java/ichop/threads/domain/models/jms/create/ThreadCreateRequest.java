@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-public class ThreadCreateRequestModel extends BaseRequestModel {
+public class ThreadCreateRequest extends BaseRequestModel {
 
     @NotNull
     @NotEmpty

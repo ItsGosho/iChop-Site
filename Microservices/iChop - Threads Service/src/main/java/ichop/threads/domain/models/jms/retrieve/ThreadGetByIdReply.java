@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-public class ThreadGetByIdReplyModel extends BaseReplyModel {
+public class ThreadGetByIdReply extends BaseReplyModel {
 
     private String id;
     private String userId;

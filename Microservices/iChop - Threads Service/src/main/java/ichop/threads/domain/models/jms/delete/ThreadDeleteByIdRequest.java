@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-public class ThreadDeleteByIdRequestModel extends BaseRequestModel {
+public class ThreadDeleteByIdRequest extends BaseRequestModel {
 
     @NotNull
     @ExistsById

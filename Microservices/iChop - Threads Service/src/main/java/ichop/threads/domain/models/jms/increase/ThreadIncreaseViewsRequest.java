@@ -1,5 +1,4 @@
-package ichop.threads.domain.models.jms.retrieve;
-
+package ichop.threads.domain.models.jms.increase;
 
 import ichop.threads.common.domain.BaseRequestModel;
 import ichop.threads.validators.ExistsById;
@@ -10,7 +9,7 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-public class ThreadGetByIdRequestModel extends BaseRequestModel {
+public class ThreadIncreaseViewsRequest extends BaseRequestModel {
 
     @NotNull
     @ExistsById
