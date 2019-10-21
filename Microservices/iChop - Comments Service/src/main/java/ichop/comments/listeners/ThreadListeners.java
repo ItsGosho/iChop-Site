@@ -5,10 +5,8 @@ import ichop.comments.common.aop.JmsAfterReturn;
 import ichop.comments.common.aop.JmsValidate;
 import ichop.comments.common.constants.JmsFactories;
 import ichop.comments.common.helpers.JmsHelper;
-import ichop.comments.domain.models.jms.thread.ThreadCommentCreateReply;
-import ichop.comments.domain.models.jms.thread.ThreadCommentCreateRequest;
-import ichop.comments.domain.models.jms.thread.ThreadCommentDeleteByIdReply;
-import ichop.comments.domain.models.jms.thread.ThreadCommentDeleteByIdRequest;
+import ichop.comments.domain.models.jms.thread.*;
+import ichop.comments.domain.models.service.CommentServiceModel;
 import ichop.comments.domain.models.service.ThreadCommentServiceModel;
 import ichop.comments.services.ThreadCommentServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +15,10 @@ import org.springframework.stereotype.Component;
 
 import javax.jms.Message;
 
+import java.util.List;
+
 import static ichop.comments.common.constants.JmsFactories.QUEUE;
-import static ichop.comments.constants.CommentReplyConstants.COMMENT_CREATED_SUCCESSFUL;
-import static ichop.comments.constants.CommentReplyConstants.COMMENT_DELETE_SUCCESSFUL;
+import static ichop.comments.constants.CommentReplyConstants.*;
 
 @Component
 public class ThreadListeners {
@@ -59,6 +58,17 @@ public class ThreadListeners {
         this.threadCommentServices.deleteById(requestModel.getId());
 
         return new ThreadCommentDeleteByIdReply(COMMENT_DELETE_SUCCESSFUL);
+    }
+
+    @JmsValidate(model = ThreadCommentsByThreadIdRequest.class)
+    @JmsAfterReturn
+    @JmsListener(destination = "${artemis.queue.comment.thread.all_by_threadId}", containerFactory = QUEUE)
+    public ThreadCommentsByThreadIdReply allByThreadId(Message message) {
+        ThreadCommentDeleteByIdRequest requestModel = this.jmsHelper.getResultModel(message, ThreadCommentDeleteByIdRequest.class);
+
+        List<ThreadCommentServiceModel> comments = this.threadCommentServices.findAllByThreadId(requestModel.getId());
+
+        return new ThreadCommentsByThreadIdReply(COMMENT_DELETE_SUCCESSFUL, comments);
     }
 
 }
