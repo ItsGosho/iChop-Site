@@ -10,6 +10,8 @@ import ichop.comments.repositories.UserProfileCommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserProfileCommentServicesImp extends AbstractCommentServices<UserProfileComment, UserProfileCommentServiceModel, UserProfileCommentRepository> implements UserProfileCommentServices {
 
@@ -18,5 +20,11 @@ public class UserProfileCommentServicesImp extends AbstractCommentServices<UserP
         super(objectMapper, repository);
     }
 
+    @Override
+    public List<UserProfileCommentServiceModel> findAllByUserProfileId(String userProfileId) {
+        List<UserProfileComment> comments = super.repository.findByUserProfileId(userProfileId);
+
+        return super.mapToList(comments,UserProfileCommentServiceModel.class);
+    }
 
 }

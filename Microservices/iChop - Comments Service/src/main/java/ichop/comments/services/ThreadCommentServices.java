@@ -9,6 +9,6 @@ public interface ThreadCommentServices extends CommentServices<ThreadCommentServ
 
     boolean existsByThreadId(String threadId);
 
-     List<ThreadCommentServiceModel> findAllByThreadId(String threadId);
+    List<ThreadCommentServiceModel> findAllByThreadId(String threadId);
 
 }
