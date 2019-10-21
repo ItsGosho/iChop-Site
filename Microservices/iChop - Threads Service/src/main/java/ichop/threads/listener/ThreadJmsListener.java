@@ -20,6 +20,7 @@ import org.springframework.stereotype.Component;
 
 import javax.jms.Message;
 
+import static ichop.threads.common.configurations.JmsFactories.QUEUE;
 import static ichop.threads.constants.ThreadReplyConstants.*;
 
 @Component
@@ -38,7 +39,7 @@ public class ThreadJmsListener {
 
     @JmsValidate(model = ThreadCreateRequestModel.class)
     @JmsAfterReturn
-    @JmsListener(destination = "${artemis.queue.thread.create}", containerFactory = "queueFactory")
+    @JmsListener(destination = "${artemis.queue.thread.create}", containerFactory = QUEUE)
     public ThreadCreateReplyModel createThread(Message message) {
         ThreadCreateRequestModel requestModel = this.jmsHelper.getResultModel(message, ThreadCreateRequestModel.class);
 
@@ -51,7 +52,7 @@ public class ThreadJmsListener {
     }
 
     @JmsValidate(model = ThreadGetByIdRequestModel.class)
-    @JmsListener(destination = "${artemis.queue.thread.get_by_id}", containerFactory = "queueFactory")
+    @JmsListener(destination = "${artemis.queue.thread.get_by_id}", containerFactory = QUEUE)
     public ThreadGetByIdReplyModel getById(Message message) {
         ThreadGetByIdRequestModel requestModel = this.jmsHelper.getResultModel(message, ThreadGetByIdRequestModel.class);
 

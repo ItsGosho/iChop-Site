@@ -91,19 +91,19 @@ public abstract class AbstractBaseService
         return this.repository.existsById(id);
     }
 
-    protected <M> Set<M> mapToSet(Collection collection) {
+    protected <M> Set<M> mapToSet(Collection collection,Class<M> clazz) {
         Set<M> result = (Set<M>) collection
                 .stream()
-                .map(x -> this.toServiceModel((E) x))
+                .map(x -> this.toModel((E) x,clazz))
                 .collect(Collectors.toSet());
 
         return result;
     }
 
-    protected List<S> mapToList(Collection collection) {
-        List<S> result = (List<S>) collection
+    protected <M> List<M> mapToList(Collection collection,Class<M> clazz) {
+        List<M> result = (List<M>) collection
                 .stream()
-                .map(x -> this.toServiceModel((E) x))
+                .map(x -> this.toModel((E) x,clazz))
                 .collect(Collectors.toList());
 
         return result;
