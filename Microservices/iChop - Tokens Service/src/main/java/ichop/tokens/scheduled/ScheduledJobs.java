@@ -20,11 +20,11 @@ public class ScheduledJobs {
 
     //12h
     @Scheduled(cron = "0 0 */12 ? * *")
-    public void clearExpiredTokens(){
-        List<PasswordTokenServiceModel> result = this.passwordResetTokenServices.findAllExpired();
+    public void clearExpiredTokens() {
+        List<PasswordTokenServiceModel> result = this.passwordResetTokenServices.findExpired();
 
         for (PasswordTokenServiceModel token : result) {
-            this.passwordResetTokenServices.deleteTokenById(token.getId());
+            this.passwordResetTokenServices.deleteById(token.getId());
         }
     }
 
