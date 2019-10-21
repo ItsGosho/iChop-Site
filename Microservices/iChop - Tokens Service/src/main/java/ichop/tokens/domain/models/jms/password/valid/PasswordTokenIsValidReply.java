@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-public class PasswordTokenIsValidReplyModel extends BaseReplyModel {
+public class PasswordTokenIsValidReply extends BaseReplyModel {
 
     private boolean isValid;
 

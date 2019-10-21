@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-public class PasswordTokenIsValidRequestModel extends BaseRequestModel {
+public class PasswordTokenIsValidRequest extends BaseRequestModel {
 
     @NotNull
     @ExistsByToken(type = TokenType.PASSWORD)

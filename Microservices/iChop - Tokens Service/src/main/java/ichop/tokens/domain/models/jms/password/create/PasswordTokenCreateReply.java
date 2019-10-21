@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-public class PasswordTokenCreateReplyModel extends BaseReplyModel {
+public class PasswordTokenCreateReply extends BaseReplyModel {
 
     private String id;
     private String userId;

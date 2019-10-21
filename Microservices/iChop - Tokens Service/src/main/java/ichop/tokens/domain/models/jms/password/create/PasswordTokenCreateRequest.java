@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-public class PasswordTokenCreateRequestModel extends BaseRequestModel {
+public class PasswordTokenCreateRequest extends BaseRequestModel {
 
     @NotNull
     private String userId;

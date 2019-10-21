@@ -4,10 +4,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.tokens.common.aop.JmsAfterReturn;
 import ichop.tokens.common.aop.JmsValidate;
 import ichop.tokens.common.helpers.JmsHelper;
-import ichop.tokens.domain.models.jms.password.create.PasswordTokenCreateReplyModel;
-import ichop.tokens.domain.models.jms.password.create.PasswordTokenCreateRequestModel;
-import ichop.tokens.domain.models.jms.password.valid.PasswordTokenIsValidReplyModel;
-import ichop.tokens.domain.models.jms.password.valid.PasswordTokenIsValidRequestModel;
+import ichop.tokens.domain.models.jms.password.create.PasswordTokenCreateReply;
+import ichop.tokens.domain.models.jms.password.create.PasswordTokenCreateRequest;
+import ichop.tokens.domain.models.jms.password.valid.PasswordTokenIsValidReply;
+import ichop.tokens.domain.models.jms.password.valid.PasswordTokenIsValidRequest;
 import ichop.tokens.domain.models.service.PasswordTokenServiceModel;
 import ichop.tokens.services.PasswordTokenServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,29 +35,29 @@ public class PasswordTokenListener {
     }
 
 
-    @JmsValidate(model = PasswordTokenCreateRequestModel.class)
+    @JmsValidate(model = PasswordTokenCreateRequest.class)
     @JmsAfterReturn
     @JmsListener(destination = "${artemis.queue.token.password.create}", containerFactory = QUEUE)
-    public PasswordTokenCreateReplyModel create(Message message) {
-        PasswordTokenCreateRequestModel requestModel = this.jmsHelper.getResultModel(message, PasswordTokenCreateRequestModel.class);
+    public PasswordTokenCreateReply create(Message message) {
+        PasswordTokenCreateRequest requestModel = this.jmsHelper.getResultModel(message, PasswordTokenCreateRequest.class);
 
         PasswordTokenServiceModel passwordToken = this.objectMapper.convertValue(requestModel, PasswordTokenServiceModel.class);
 
-        PasswordTokenCreateReplyModel replyModel = this.passwordTokenServices.save(passwordToken, PasswordTokenCreateReplyModel.class);
+        PasswordTokenCreateReply replyModel = this.passwordTokenServices.save(passwordToken, PasswordTokenCreateReply.class);
         replyModel.setMessage(TOKEN_CREATED_SUCCESSFUL);
 
         return replyModel;
     }
 
-    @JmsValidate(model = PasswordTokenIsValidRequestModel.class)
+    @JmsValidate(model = PasswordTokenIsValidRequest.class)
     @JmsAfterReturn
     @JmsListener(destination = "${artemis.queue.token.password.is_valid}", containerFactory = QUEUE)
-    public PasswordTokenIsValidReplyModel isValid(Message message) {
-        PasswordTokenIsValidRequestModel requestModel = this.jmsHelper.getResultModel(message, PasswordTokenIsValidRequestModel.class);
+    public PasswordTokenIsValidReply isValid(Message message) {
+        PasswordTokenIsValidRequest requestModel = this.jmsHelper.getResultModel(message, PasswordTokenIsValidRequest.class);
 
         boolean isValid = this.passwordTokenServices.isValid(requestModel.getToken());
 
-        PasswordTokenIsValidReplyModel replyModel = new PasswordTokenIsValidReplyModel();
+        PasswordTokenIsValidReply replyModel = new PasswordTokenIsValidReply();
         replyModel.setValid(isValid);
         replyModel.setMessage(TOKEN_RETRIEVED_SUCCESSFUL);
 
