@@ -42,8 +42,6 @@ public class ExistsByValidator implements ConstraintValidator<ExistsBy, String> 
             case THREAD:
                 return this.mongoTemplate.exists(query, ThreadReport.class);
             case THREAD_COMMENT:
-                query.addCriteria(Criteria.where("type").is(type));
-                return this.mongoTemplate.exists(query, CommentReport.class);
             case USER_PROFILE_COMMENT:
                 query.addCriteria(Criteria.where("type").is(type));
                 return this.mongoTemplate.exists(query, CommentReport.class);
