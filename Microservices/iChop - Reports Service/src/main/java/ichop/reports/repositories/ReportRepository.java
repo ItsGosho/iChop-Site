@@ -7,4 +7,6 @@ import org.springframework.data.repository.NoRepositoryBean;
 @NoRepositoryBean
 public interface ReportRepository<E extends BaseEntity> extends MongoRepository<E,String> {
 
+
+
 }
