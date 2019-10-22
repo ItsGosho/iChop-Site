@@ -18,6 +18,6 @@ public abstract class Report extends BaseEntity {
     private String reason;
 
     @NotNull
-    private LocalDateTime reportedOn;
+    private LocalDateTime reportedOn = LocalDateTime.now();
 
 }
