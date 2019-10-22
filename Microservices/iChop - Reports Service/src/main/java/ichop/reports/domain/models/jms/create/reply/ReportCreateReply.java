@@ -1,4 +1,4 @@
-package ichop.reports.domain.models.jms.create;
+package ichop.reports.domain.models.jms.create.reply;
 
 import ichop.reports.common.domain.BaseReplyModel;
 import ichop.reports.common.domain.BaseRequestModel;
@@ -17,5 +17,5 @@ public abstract class ReportCreateReply extends BaseReplyModel {
     private String userId;
     private String reason;
     private String reportedOn;
-    
+
 }
