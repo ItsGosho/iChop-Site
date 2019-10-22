@@ -1,6 +1,9 @@
 package ichop.reports.validators;
 
 
+import ichop.reports.domain.entities.ThreadCommentReport;
+import ichop.reports.domain.entities.ThreadReport;
+import ichop.reports.domain.entities.UserProfileCommentReport;
 import ichop.reports.domain.enums.Type;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -37,11 +40,11 @@ public class ExistsByValidator implements ConstraintValidator<ExistsBy, String> 
 
         switch (type) {
             case THREAD:
-                return this.mongoTemplate.exists(query, PasswordToken.class);
+                return this.mongoTemplate.exists(query, ThreadReport.class);
             case THREAD_COMMENT:
-                return this.mongoTemplate.exists(query, PasswordToken.class);
+                return this.mongoTemplate.exists(query, ThreadCommentReport.class);
             case USER_PROFILE_COMMENT:
-                return this.mongoTemplate.exists(query, PasswordToken.class);
+                return this.mongoTemplate.exists(query, UserProfileCommentReport.class);
             default:
                 return false;
         }
