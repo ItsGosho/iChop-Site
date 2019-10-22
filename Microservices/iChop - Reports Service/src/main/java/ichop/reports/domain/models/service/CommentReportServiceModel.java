@@ -1,6 +1,5 @@
-package ichop.reports.domain.models;
+package ichop.reports.domain.models.service;
 
-import ichop.reports.domain.entities.Report;
 import ichop.reports.domain.enums.Type;
 import lombok.Getter;
 import lombok.Setter;

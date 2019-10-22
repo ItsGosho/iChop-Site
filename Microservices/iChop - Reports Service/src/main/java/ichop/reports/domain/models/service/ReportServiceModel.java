@@ -1,4 +1,4 @@
-package ichop.reports.domain.models;
+package ichop.reports.domain.models.service;
 
 import ichop.reports.common.domain.BaseEntity;
 import ichop.reports.common.domain.BaseServiceModel;
