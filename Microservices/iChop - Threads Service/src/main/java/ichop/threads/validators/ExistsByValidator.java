@@ -27,11 +27,12 @@ public class ExistsByValidator implements ConstraintValidator<ExistsBy, String> 
     }
 
     @Override
-    public boolean isValid(String id, ConstraintValidatorContext constraintValidatorContext) {
+    public boolean isValid(String value, ConstraintValidatorContext constraintValidatorContext) {
         String fieldName = this.annotation.field();
 
         Query query = new Query();
         query.addCriteria(Criteria.where(fieldName).exists(true));
+        query.addCriteria(Criteria.where(fieldName).is(value));
 
         return this.mongoTemplate.exists(query, Thread.class);
     }
