@@ -29,12 +29,13 @@ public class ExistsByValidator implements ConstraintValidator<ExistsBy, String> 
     }
 
     @Override
-    public boolean isValid(String id, ConstraintValidatorContext constraintValidatorContext) {
+    public boolean isValid(String value, ConstraintValidatorContext constraintValidatorContext) {
         Type type = this.annotation.type();
         String fieldName = this.annotation.field();
 
         Query query = new Query();
         query.addCriteria(Criteria.where(fieldName).exists(true));
+        query.addCriteria(Criteria.where(fieldName).is(value));
 
         switch (type) {
             case THREAD:
