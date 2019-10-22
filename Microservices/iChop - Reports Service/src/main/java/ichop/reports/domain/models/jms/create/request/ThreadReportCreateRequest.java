@@ -1,4 +1,4 @@
-package ichop.reports.domain.models.jms.create;
+package ichop.reports.domain.models.jms.create.request;
 
 import lombok.Getter;
 import lombok.Setter;
