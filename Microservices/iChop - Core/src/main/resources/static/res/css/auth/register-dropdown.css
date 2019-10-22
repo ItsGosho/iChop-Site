@@ -1,0 +1,19 @@
+#div-register-dropdown {
+    display: none;
+}
+
+#error-usernameAlreadyExists-registerForm {
+    display: none;
+}
+
+#error-usernameIsShort-registerForm {
+    display: none;
+}
+
+#error-passwordsDoesntMatch-registerForm {
+    display: none;
+}
+
+#error-emailAlreadyExists-registerForm {
+    display:none;
+}

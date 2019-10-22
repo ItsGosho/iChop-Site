@@ -1,0 +1,39 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<script src="/res/js/user/options/user-options-base.js"></script>
+
+<div class="container" style="margin-left: 0">
+    <div class="row">
+        <div class="col-sm">
+            <div class="card" style="width: 15rem;">
+                <div class="card-header">
+                    Options Menu
+                </div>
+                <ul class="list-group list-group-flush">
+                    <a href="/user/my-profile/options/information">
+                        <li class="list-group-item control-option">Information</li>
+                    </a>
+                    <a href="/user/my-profile/options/change-password">
+                        <li class="list-group-item control-option">Change Password</li>
+                    </a>
+                    <a href="/user/my-profile/options/minecraft">
+                        <li class="list-group-item control-option">Minecraft</li>
+                    </a>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="card">
+                <div class="card-body">
+                    <th:block th:insert="${optionsPage}"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    runMenuSelectColorizer();
+</script>

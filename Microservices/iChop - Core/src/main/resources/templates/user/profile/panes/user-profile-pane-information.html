@@ -1,0 +1,31 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+
+<th:block th:if="*{information != null}" th:object="${user.information}">
+    <div class="row">
+        <div class="w-100" style="margin-top: 10px">
+
+        <span th:if="*{birthDate != null}" style="font-family: Consolas;font-size: 20px"><small>🎂</small>Birthday: <span
+                style="font-family: Tahoma"
+                th:text="*{#temporals.format(birthDate, 'dd/MM/yyyy')}"></span></span>
+
+            <div class="dropdown-divider"></div>
+            <th:block th:if="*{aboutYou != null}">
+
+                <span style="font-family: Consolas;font-size: 20px"><small>🖊️</small>About:</span>
+
+                <textarea readonly name="content"
+                          style="border:0px solid #ccc;border-radius: 3px;width: 100%;resize: none;overflow: hidden;font-family: Consolas"
+                          th:text="*{aboutYou}"></textarea>
+
+            </th:block>
+            <div class="dropdown-divider"></div>
+        </div>
+    </div>
+</th:block>
+
+<th:block th:if="${user.information == null}">
+    User has not any information!
+</th:block>

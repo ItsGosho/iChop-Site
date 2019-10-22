@@ -1,0 +1,69 @@
+<link rel="stylesheet" href="/res/css/auth/login-dropdown.css">
+
+<div id="div-login-dropdown">
+   <!-- <a class="dropdown-item" href="#">
+        <form method="post" action="/signin/facebook">
+            <input type="hidden" name="scope" value="public_profile" />
+            <button type="submit" class="btn btn-block btn-social btn-facebook"><i
+                    class="fa fa-facebook"></i>Login with Facebook
+            </button>
+        </form>
+    </a>-->
+    <form class="px-4 py-3" method="post" action="/login">
+        <div class="form-group" id="formGroup-usernameOrEmail-loginForm">
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">👤/📧</div>
+                </div>
+                <input type="text" class="form-control" id="input-usernameOrEmail-loginForm"
+                       autocomplete="off"
+                       name="usernameOrEmail" placeholder="Username or Email...">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">🔒</div>
+                </div>
+                <input type="password" class="form-control" id="input-password-loginForm"
+                       autocomplete="off"
+                       name="password" placeholder="Password...">
+            </div>
+        </div>
+        <small id="error-invalidCredentials-loginForm">⚡Invalid credentials :/
+        </small>
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" name="rememberMe" class="custom-control-input"
+                   id="input-rememberMe-loginForm">
+            <label class="custom-control-label" for="input-rememberMe-loginForm">
+                Remember me
+            </label>
+        </div>
+
+        <input type="hidden" id="input-user_location-loginDropdown" name="userLocation">
+
+        <button type="submit" data-style="zoom-in" class="btn btn-primary">Login</button>
+        <div class="dropdown-divider"></div>
+    </form>
+    <a id="button-goToRegister-loginForm" class="dropdown-item">
+        <button type="button" class="btn btn-success btn-sm">Register</button>
+    </a>
+    <a id="button-goToForgottenPassword-loginForm" class="dropdown-item">
+        <button class="btn btn-warning btn-sm">Forgotten Password</button>
+    </a>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $.ajax({
+            method: "GET",
+            type: "application/json",
+            url: "http://ip-api.com/json",
+            success: function (result) {
+                $(`#input-user_location-loginDropdown`).val(result.country);
+            }
+        })
+    });
+
+</script>
