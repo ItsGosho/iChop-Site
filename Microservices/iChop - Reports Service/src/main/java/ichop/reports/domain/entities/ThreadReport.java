@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 @Getter
 @Setter
 @Document("thread_reports")
-public class ThreadReport extends BaseReport {
+public class ThreadReport extends Report {
 
     @NotNull
     private String threadId;

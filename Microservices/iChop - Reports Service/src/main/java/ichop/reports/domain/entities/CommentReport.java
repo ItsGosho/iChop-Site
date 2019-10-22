@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public abstract class CommentReport extends BaseReport {
+public abstract class CommentReport extends Report {
 
     private String commentId;
 

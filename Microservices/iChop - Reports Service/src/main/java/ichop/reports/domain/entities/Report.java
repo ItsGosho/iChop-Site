@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-public abstract class BaseReport extends BaseEntity {
+public abstract class Report extends BaseEntity {
 
     @NotNull
     private String userId;
