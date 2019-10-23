@@ -1,19 +1,16 @@
 package ichop.reports.domain.models.jms.all.pageable.request;
 
-import ichop.reports.common.domain.BaseRequestModel;
+import ichop.reports.domain.enums.Type;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.domain.Pageable;
 
 import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-public class CommentReportsAllPageableRequest extends BaseRequestModel {
+public class CommentReportsAllPageableRequest extends ReportAllPageableRequest {
 
     @NotNull
-    private Pageable pageable;
+    private Type type;
 
-    @NotNull
-    private String type;
 }
