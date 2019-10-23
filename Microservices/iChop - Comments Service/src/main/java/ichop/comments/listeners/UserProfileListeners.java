@@ -3,6 +3,7 @@ package ichop.comments.listeners;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.comments.common.aop.JmsAfterReturn;
 import ichop.comments.common.aop.JmsValidate;
+import ichop.comments.common.helpers.BaseListener;
 import ichop.comments.common.helpers.JmsHelper;
 import ichop.comments.domain.models.jms.all.UserProfileCommentsByUserProfileIdReply;
 import ichop.comments.domain.models.jms.all.UserProfileCommentsByUserProfileIdRequest;
@@ -25,16 +26,13 @@ import static ichop.comments.constants.CommentReplyConstants.COMMENT_CREATED_SUC
 import static ichop.comments.constants.CommentReplyConstants.COMMENT_DELETE_SUCCESSFUL;
 
 @Component
-public class UserProfileListeners {
+public class UserProfileListeners extends BaseListener {
 
-    private final JmsHelper jmsHelper;
-    private final ObjectMapper objectMapper;
     private final UserProfileCommentServices userProfileCommentServices;
 
     @Autowired
-    public UserProfileListeners(JmsHelper jmsHelper, ObjectMapper objectMapper, UserProfileCommentServices userProfileCommentServices) {
-        this.jmsHelper = jmsHelper;
-        this.objectMapper = objectMapper;
+    protected UserProfileListeners(JmsHelper jmsHelper, ObjectMapper objectMapper, UserProfileCommentServices userProfileCommentServices) {
+        super(jmsHelper, objectMapper);
         this.userProfileCommentServices = userProfileCommentServices;
     }
 

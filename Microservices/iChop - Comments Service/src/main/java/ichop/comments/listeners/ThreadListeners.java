@@ -3,12 +3,11 @@ package ichop.comments.listeners;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.comments.common.aop.JmsAfterReturn;
 import ichop.comments.common.aop.JmsValidate;
+import ichop.comments.common.helpers.BaseListener;
 import ichop.comments.common.helpers.JmsHelper;
-import ichop.comments.domain.models.jms.all.ThreadCommentsByThreadIdReply;
 import ichop.comments.domain.models.jms.all.ThreadCommentsByThreadIdRequest;
 import ichop.comments.domain.models.jms.create.ThreadCommentCreateReply;
 import ichop.comments.domain.models.jms.create.ThreadCommentCreateRequest;
-import ichop.comments.domain.models.jms.delete.ThreadCommentDeleteByIdReply;
 import ichop.comments.domain.models.jms.delete.ThreadCommentDeleteByIdRequest;
 import ichop.comments.domain.models.service.ThreadCommentServiceModel;
 import ichop.comments.services.ThreadCommentServices;
@@ -24,16 +23,14 @@ import static ichop.comments.common.constants.JmsFactories.QUEUE;
 import static ichop.comments.constants.CommentReplyConstants.*;
 
 @Component
-public class ThreadListeners {
+public class ThreadListeners extends BaseListener {
 
-    private final JmsHelper jmsHelper;
-    private final ObjectMapper objectMapper;
+
     private final ThreadCommentServices threadCommentServices;
 
     @Autowired
-    public ThreadListeners(JmsHelper jmsHelper, ObjectMapper objectMapper, ThreadCommentServices threadCommentServices) {
-        this.jmsHelper = jmsHelper;
-        this.objectMapper = objectMapper;
+    protected ThreadListeners(JmsHelper jmsHelper, ObjectMapper objectMapper, ThreadCommentServices threadCommentServices) {
+        super(jmsHelper, objectMapper);
         this.threadCommentServices = threadCommentServices;
     }
 
