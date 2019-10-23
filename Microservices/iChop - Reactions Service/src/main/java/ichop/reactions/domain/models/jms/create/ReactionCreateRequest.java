@@ -25,6 +25,4 @@ public class ReactionCreateRequest extends BaseRequestModel {
 
     @NotNull
     private ReactionType reactionType;
-
-    /*TODO: reaction of userId,entityType and entityId to not exist!*/
 }
