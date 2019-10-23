@@ -8,9 +8,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class CommentReportDeleteByIdReply extends BaseReplyModel {
+public class ReportDeleteByIdReply extends BaseReplyModel {
 
-    public CommentReportDeleteByIdReply(String message) {
+    public ReportDeleteByIdReply(String message) {
         super(message);
     }
 }
