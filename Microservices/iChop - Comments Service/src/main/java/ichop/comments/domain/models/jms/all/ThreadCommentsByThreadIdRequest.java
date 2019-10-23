@@ -13,6 +13,5 @@ import javax.validation.constraints.NotNull;
 public class ThreadCommentsByThreadIdRequest extends BaseRequestModel {
 
     @NotNull
-    @ExistsBy(type = Type.THREAD,field = "threadId",message = "Thread wasn't found!")
     private String threadId;
 }

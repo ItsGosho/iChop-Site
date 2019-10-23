@@ -1,23 +1,23 @@
 package ichop.comments.domain.models.jms.all;
 
 import ichop.comments.common.domain.BaseReplyModel;
+import ichop.comments.domain.models.service.CommentServiceModel;
 import ichop.comments.domain.models.service.ThreadCommentServiceModel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
-public class ThreadCommentsByThreadIdReply extends BaseReplyModel {
+public class CommentsAllReplyModel<S extends CommentServiceModel> extends BaseReplyModel {
 
-    private List<ThreadCommentServiceModel> comments;
+    private List<S> comments;
 
-    public ThreadCommentsByThreadIdReply(String message, List<ThreadCommentServiceModel> comments) {
-        super(message);
+    public CommentsAllReplyModel(List<S> comments) {
         this.comments = comments;
     }
+
 }
