@@ -1,5 +1,6 @@
 package ichop.comments.common.aop;
 
+
 import ichop.comments.common.domain.BaseRequestModel;
 
 import java.lang.annotation.ElementType;

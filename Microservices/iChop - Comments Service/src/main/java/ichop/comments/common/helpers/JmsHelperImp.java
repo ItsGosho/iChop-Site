@@ -2,10 +2,10 @@ package ichop.comments.common.helpers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ichop.comments.common.domain.BaseReplyModel;
-import ichop.comments.common.domain.BaseRequestModel;
-import ichop.comments.common.domain.ErrorReplyModel;
-import ichop.comments.common.validation.ValidationHelper;
+import ichop.reports.common.domain.BaseReplyModel;
+import ichop.reports.common.domain.BaseRequestModel;
+import ichop.reports.common.domain.ErrorReplyModel;
+import ichop.reports.common.validation.ValidationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.util.UUID;
 import java.util.logging.Logger;
 
-import static ichop.comments.common.constants.JmsLoggingConstants.*;
+import static ichop.reports.common.constants.JmsLoggingConstants.*;
 
 @Component
 @SuppressWarnings("all")
@@ -56,9 +56,11 @@ public class JmsHelperImp implements JmsHelper {
     }
 
     @Override
-    public <S extends BaseReplyModel> void replySuccessful(Message message, S model) {
+    public <S extends BaseReplyModel> void replySuccessful(Message message, S model,String msg) {
         try {
             model.setSuccessful(true);
+            model.setMessage(msg);
+
             this.replyTo(message.getJMSReplyTo(), message.getJMSCorrelationID(), model);
         } catch (JMSException e) {
             e.printStackTrace();
