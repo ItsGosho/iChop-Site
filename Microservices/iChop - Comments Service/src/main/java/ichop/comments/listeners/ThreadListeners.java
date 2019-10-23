@@ -39,7 +39,7 @@ public class ThreadListeners extends BaseListener {
 
     @JmsValidate(model = ThreadCommentCreateRequest.class)
     @JmsAfterReturn(message = COMMENT_CREATED_SUCCESSFUL)
-    @JmsListener(destination = "${artemis.queue.comment.thread.create}", containerFactory = QUEUE)
+    @JmsListener(destination = "${artemis.queue.comments.thread.create}", containerFactory = QUEUE)
     public ThreadCommentCreateReply create(Message message) {
         ThreadCommentCreateRequest requestModel = this.jmsHelper.getResultModel(message, ThreadCommentCreateRequest.class);
 
@@ -50,7 +50,7 @@ public class ThreadListeners extends BaseListener {
 
     @JmsValidate(model = ThreadCommentDeleteByIdRequest.class)
     @JmsAfterReturn(message = COMMENT_DELETE_SUCCESSFUL)
-    @JmsListener(destination = "${artemis.queue.comment.thread.delete_by_id}", containerFactory = QUEUE)
+    @JmsListener(destination = "${artemis.queue.comments.thread.delete_by_id}", containerFactory = QUEUE)
     public CommentDeleteByIdReply deleteById(Message message) {
         ThreadCommentDeleteByIdRequest requestModel = this.jmsHelper.getResultModel(message, ThreadCommentDeleteByIdRequest.class);
 
@@ -61,7 +61,7 @@ public class ThreadListeners extends BaseListener {
 
     @JmsValidate(model = ThreadCommentsByThreadIdRequest.class)
     @JmsAfterReturn(message = COMMENTS_FETCHED_SUCCESSFUL)
-    @JmsListener(destination = "${artemis.queue.comment.thread.all_by_threadId}", containerFactory = QUEUE)
+    @JmsListener(destination = "${artemis.queue.comments.thread.all_by_threadId}", containerFactory = QUEUE)
     public CommentsAllReply<ThreadCommentServiceModel> allByThreadId(Message message) {
         ThreadCommentDeleteByIdRequest requestModel = this.jmsHelper.getResultModel(message, ThreadCommentDeleteByIdRequest.class);
 
