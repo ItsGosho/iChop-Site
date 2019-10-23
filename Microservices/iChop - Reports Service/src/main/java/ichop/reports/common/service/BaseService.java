@@ -21,6 +21,8 @@ public interface BaseService<S extends BaseServiceModel> {
 
     <M> List<M> findAll(Class<M> returnModelClass);
 
+    List<S> findAll(Pageable pageable);
+
     <M> List<M> findAll(Pageable pageable, Class<M> returnModelClass);
 
     boolean existsById(String id);

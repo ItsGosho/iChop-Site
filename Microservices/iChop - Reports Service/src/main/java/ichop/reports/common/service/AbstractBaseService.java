@@ -86,6 +86,15 @@ public abstract class AbstractBaseService<E extends BaseEntity, S extends BaseSe
     }
 
     @Override
+    public List<S> findAll(Pageable pageable) {
+        return this.repository
+                .findAll(pageable)
+                .stream()
+                .map(x -> this.toServiceModel(x))
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public <M> List<M> findAll(Pageable pageable, Class<M> returnModelClass) {
         return this.repository
                 .findAll(pageable)

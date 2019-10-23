@@ -50,7 +50,7 @@ public class ThreadReportListeners extends BaseListener {
     @JmsValidate(model = ThreadReportDeleteByIdRequest.class)
     @JmsAfterReturn(message = REPORT_DELETED_SUCCESSFUL)
     @JmsListener(destination = "${artemis.queue.reports.thread.delete_by_id}", containerFactory = QUEUE)
-    public ReportDeleteByIdReply delteById(Message message) {
+    public ReportDeleteByIdReply deleteByThreadId(Message message) {
         ThreadReportDeleteByIdRequest requestModel = this.jmsHelper.getResultModel(message, ThreadReportDeleteByIdRequest.class);
 
         this.threadReportServices.deleteByThreadId(requestModel.getThreadId());
