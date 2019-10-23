@@ -33,17 +33,14 @@ public class ThreadReportListeners {
 
 
     @JmsValidate(model = ThreadReportCreateRequest.class)
-    @JmsAfterReturn
+    @JmsAfterReturn(message = REPORT_CREATED_SUCCESSFUL)
     @JmsListener(destination = "${artemis.queue.reports.thread.create}", containerFactory = QUEUE)
     public ThreadReportCreateReply create(Message message) {
         ThreadReportCreateRequest requestModel = this.jmsHelper.getResultModel(message, ThreadReportCreateRequest.class);
 
         ThreadReportServiceModel threadReport = this.objectMapper.convertValue(requestModel, ThreadReportServiceModel.class);
 
-        ThreadReportCreateReply replyModel = this.threadReportServices.save(threadReport, ThreadReportCreateReply.class);
-        replyModel.setMessage(REPORT_CREATED_SUCCESSFUL);
-
-        return replyModel;
+        return this.threadReportServices.save(threadReport, ThreadReportCreateReply.class);
     }
 
 }
