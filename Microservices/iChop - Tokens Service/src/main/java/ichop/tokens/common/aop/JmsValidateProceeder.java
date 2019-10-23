@@ -28,7 +28,7 @@ public class JmsValidateProceeder extends AbstractJmsProceeder {
     }
 
 
-    @Around("@annotation(ichop.reports.common.aop.JmsValidate)")
+    @Around("@annotation(ichop.tokens.common.aop.JmsValidate)")
     public <R extends BaseRequestModel> Object validateModel(ProceedingJoinPoint joinPoint) throws Throwable {
         Class clazz = this.getModelClass(joinPoint);
         Message message = super.getMessage(joinPoint);
