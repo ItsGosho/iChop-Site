@@ -12,11 +12,11 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-public class CommentsAllReplyModel<S extends CommentServiceModel> extends BaseReplyModel {
+public class CommentsAllReply<S extends CommentServiceModel> extends BaseReplyModel {
 
     private List<S> comments;
 
-    public CommentsAllReplyModel(List<S> comments) {
+    public CommentsAllReply(List<S> comments) {
         this.comments = comments;
     }
 
