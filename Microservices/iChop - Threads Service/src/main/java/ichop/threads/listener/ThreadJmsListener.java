@@ -3,6 +3,7 @@ package ichop.threads.listener;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.threads.common.aop.JmsAfterReturn;
 import ichop.threads.common.aop.JmsValidate;
+import ichop.threads.common.helpers.BaseListener;
 import ichop.threads.domain.models.jms.create.ThreadCreateRequest;
 import ichop.threads.domain.models.jms.create.ThreadCreateReply;
 import ichop.threads.domain.models.jms.delete.ThreadDeleteByIdReply;
@@ -24,68 +25,57 @@ import static ichop.threads.common.constants.JmsFactories.QUEUE;
 import static ichop.threads.constants.ThreadReplyConstants.*;
 
 @Component
-public class ThreadJmsListener {
+public class ThreadJmsListener extends BaseListener {
 
-    private final JmsHelper jmsHelper;
-    private final ObjectMapper objectMapper;
     private final ThreadServices threadServices;
 
     @Autowired
-    public ThreadJmsListener(JmsHelper jmsHelper, ObjectMapper objectMapper, ThreadServices threadServices) {
-        this.jmsHelper = jmsHelper;
-        this.objectMapper = objectMapper;
+    protected ThreadJmsListener(JmsHelper jmsHelper, ObjectMapper objectMapper, ThreadServices threadServices) {
+        super(jmsHelper, objectMapper);
         this.threadServices = threadServices;
     }
 
+
     @JmsValidate(model = ThreadCreateRequest.class)
-    @JmsAfterReturn
+    @JmsAfterReturn(message = THREAD_CREATED_SUCCESSFUL)
     @JmsListener(destination = "${artemis.queue.threads.create}", containerFactory = QUEUE)
     public ThreadCreateReply createThread(Message message) {
         ThreadCreateRequest requestModel = this.jmsHelper.getResultModel(message, ThreadCreateRequest.class);
 
         ThreadServiceModel thread = this.objectMapper.convertValue(requestModel, ThreadServiceModel.class);
 
-        ThreadCreateReply replyModel = this.threadServices.save(thread, ThreadCreateReply.class);
-        replyModel.setMessage(THREAD_CREATED_SUCCESSFUL);
-
-        return replyModel;
+        return this.threadServices.save(thread, ThreadCreateReply.class);
     }
 
     @JmsValidate(model = ThreadGetByIdRequest.class)
+    @JmsAfterReturn(message = THREAD_RETRIEVED_SUCCESSFUL)
     @JmsListener(destination = "${artemis.queue.threads.get_by_id}", containerFactory = QUEUE)
     public ThreadGetByIdReply getById(Message message) {
         ThreadGetByIdRequest requestModel = this.jmsHelper.getResultModel(message, ThreadGetByIdRequest.class);
 
-        ThreadGetByIdReply replyModel = this.threadServices.findById(requestModel.getId(), ThreadGetByIdReply.class);
-        replyModel.setMessage(THREAD_RETRIEVED_SUCCESSFUL);
-
-        return replyModel;
+        return this.threadServices.findById(requestModel.getId(), ThreadGetByIdReply.class);
     }
 
     @JmsValidate(model = ThreadIncreaseViewsRequest.class)
-    @JmsListener(destination = "${artemis.queue.threads.increase_views}", containerFactory = "queueFactory")
+    @JmsAfterReturn(message = THREAD_VIEW_INCREASED_SUCCESSFUL)
+    @JmsListener(destination = "${artemis.queue.threads.increase_views}", containerFactory = QUEUE)
     public ThreadIncreaseViewsReply increaseViews(Message message) {
         ThreadIncreaseViewsRequest requestModel = this.jmsHelper.getResultModel(message, ThreadIncreaseViewsRequest.class);
 
         this.threadServices.increaseViews(requestModel.getId());
 
-        ThreadIncreaseViewsReply replyModel = new ThreadIncreaseViewsReply();
-        replyModel.setMessage(THREAD_VIEW_INCREASED_SUCCESSFUL);
-
-        return replyModel;
+        return new ThreadIncreaseViewsReply();
     }
 
     @JmsValidate(model = ThreadDeleteByIdRequest.class)
-    @JmsListener(destination = "${artemis.queue.threads.delete_by_id}", containerFactory = "queueFactory")
+    @JmsAfterReturn(message = THREAD_DELETED_SUCCESSFUL)
+    @JmsListener(destination = "${artemis.queue.threads.delete_by_id}", containerFactory = QUEUE)
     public ThreadDeleteByIdReply deleteById(Message message) {
         ThreadDeleteByIdRequest requestModel = this.jmsHelper.getResultModel(message, ThreadDeleteByIdRequest.class);
 
         this.threadServices.deleteById(requestModel.getId());
 
-        ThreadDeleteByIdReply replyModel = new ThreadDeleteByIdReply();
-        replyModel.setMessage(THREAD_DELETED_SUCCESSFUL);
-
-        return replyModel;
+        return new ThreadDeleteByIdReply();
     }
 
 }
