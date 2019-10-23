@@ -13,4 +13,7 @@ public class ReportsAllPageableReply<R extends ReportServiceModel> extends BaseR
 
     private List<R> reports;
 
+    public ReportsAllPageableReply(List<R> reports) {
+        this.reports = reports;
+    }
 }

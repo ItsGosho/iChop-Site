@@ -3,6 +3,7 @@ package ichop.reports.common.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.reports.common.domain.BaseEntity;
 import ichop.reports.common.domain.BaseServiceModel;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.lang.reflect.ParameterizedType;
@@ -79,6 +80,15 @@ public abstract class AbstractBaseService<E extends BaseEntity, S extends BaseSe
     public <M> List<M> findAll(Class<M> returnModelClass) {
         return this.repository
                 .findAll()
+                .stream()
+                .map(x -> this.toModel(x, returnModelClass))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public <M> List<M> findAll(Pageable pageable, Class<M> returnModelClass) {
+        return this.repository
+                .findAll(pageable)
                 .stream()
                 .map(x -> this.toModel(x, returnModelClass))
                 .collect(Collectors.toList());

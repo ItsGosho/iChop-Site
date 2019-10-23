@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.reports.common.aop.JmsAfterReturn;
 import ichop.reports.common.aop.JmsValidate;
 import ichop.reports.common.helpers.JmsHelper;
-import ichop.reports.domain.models.jms.all.pageable.reply.ThreadReportsAllPageableReply;
+import ichop.reports.domain.models.jms.all.pageable.reply.ReportsAllPageableReply;
 import ichop.reports.domain.models.jms.all.pageable.request.ThreadReportsAllPageableRequest;
 import ichop.reports.domain.models.jms.create.reply.ThreadReportCreateReply;
 import ichop.reports.domain.models.jms.create.request.ThreadReportCreateRequest;
@@ -17,6 +17,7 @@ import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 
 import javax.jms.Message;
+import java.util.List;
 
 import static ichop.reports.common.constants.JmsFactories.QUEUE;
 import static ichop.reports.constants.ReportReplyConstants.*;
@@ -61,12 +62,12 @@ public class ThreadReportListeners {
     @JmsValidate(model = ThreadReportsAllPageableRequest.class)
     @JmsAfterReturn(message = REPORTS_FETCHED_SUCCESSFUL)
     @JmsListener(destination = "${artemis.queue.reports.thread.all_pageable}", containerFactory = QUEUE)
-    public ThreadReportsAllPageableReply allPageable(Message message) {
-        ThreadReportCreateRequest requestModel = this.jmsHelper.getResultModel(message, ThreadReportCreateRequest.class);
+    public ReportsAllPageableReply<ThreadReportServiceModel> allPageable(Message message) {
+        ThreadReportsAllPageableRequest requestModel = this.jmsHelper.getResultModel(message, ThreadReportsAllPageableRequest.class);
 
-        ThreadReportServiceModel threadReport = this.objectMapper.convertValue(requestModel, ThreadReportServiceModel.class);
+        List<ThreadReportServiceModel> reports = this.threadReportServices.findAll(requestModel.getPageable(), ThreadReportServiceModel.class);
 
-        return this.threadReportServices.save(threadReport, ThreadReportCreateReply.class);
+        return new ReportsAllPageableReply<>(reports);
     }
 
 }
