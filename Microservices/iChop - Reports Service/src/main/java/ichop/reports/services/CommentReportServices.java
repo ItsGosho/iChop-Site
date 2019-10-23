@@ -6,5 +6,6 @@ import ichop.reports.domain.models.service.CommentReportServiceModel;
 public interface CommentReportServices extends ReportServices<CommentReportServiceModel> {
 
     boolean hasReported(String userId, String commentId, Type type);
+    boolean exists(String commentId, Type type);
 
 }

@@ -24,4 +24,9 @@ public class CommentReportServicesImp
     public boolean hasReported(String userId, String commentId, Type type) {
         return super.repository.existsByUserIdAndCommentIdAndType(userId, commentId, type);
     }
+
+    @Override
+    public boolean exists(String commentId, Type type) {
+        return super.repository.existsByCommentIdAndType(commentId,type);
+    }
 }

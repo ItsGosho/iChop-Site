@@ -10,4 +10,6 @@ public interface CommentReportRepository extends ReportRepository<CommentReport>
 
     boolean existsByUserIdAndCommentIdAndType(String userId, String commentId, Type type);
 
+    boolean existsByCommentIdAndType(String commentId, Type type);
+
 }
