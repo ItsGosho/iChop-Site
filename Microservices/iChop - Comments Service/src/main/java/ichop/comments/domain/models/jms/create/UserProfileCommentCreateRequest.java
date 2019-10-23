@@ -1,4 +1,4 @@
-package ichop.comments.domain.models.jms.profile;
+package ichop.comments.domain.models.jms.create;
 
 import ichop.comments.common.domain.BaseRequestModel;
 import lombok.Getter;

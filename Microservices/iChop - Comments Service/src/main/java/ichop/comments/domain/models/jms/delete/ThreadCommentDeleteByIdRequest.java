@@ -1,4 +1,4 @@
-package ichop.comments.domain.models.jms.thread;
+package ichop.comments.domain.models.jms.delete;
 
 import ichop.comments.common.domain.BaseRequestModel;
 import ichop.comments.domain.enums.Type;

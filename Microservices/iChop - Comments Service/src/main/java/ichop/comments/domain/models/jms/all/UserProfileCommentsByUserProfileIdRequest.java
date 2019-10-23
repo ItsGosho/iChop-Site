@@ -1,4 +1,4 @@
-package ichop.comments.domain.models.jms.thread;
+package ichop.comments.domain.models.jms.all;
 
 import ichop.comments.common.domain.BaseRequestModel;
 import ichop.comments.domain.enums.Type;
@@ -10,10 +10,9 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-public class ThreadCommentsByThreadIdRequest extends BaseRequestModel {
+public class UserProfileCommentsByUserProfileIdRequest extends BaseRequestModel {
 
     @NotNull
-    private String threadId;
+    private String userProfileId;
 
-    /*TODO: validate that exists by threadId*/
 }

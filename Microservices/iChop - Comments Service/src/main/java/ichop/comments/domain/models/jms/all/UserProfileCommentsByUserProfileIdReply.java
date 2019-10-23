@@ -1,4 +1,4 @@
-package ichop.comments.domain.models.jms.profile;
+package ichop.comments.domain.models.jms.all;
 
 import ichop.comments.common.domain.BaseReplyModel;
 import ichop.comments.common.domain.BaseRequestModel;

@@ -1,4 +1,4 @@
-package ichop.comments.domain.models.jms.profile;
+package ichop.comments.domain.models.jms.all;
 
 import ichop.comments.common.domain.BaseRequestModel;
 import ichop.comments.domain.enums.Type;
@@ -10,9 +10,9 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-public class UserProfileCommentsByUserProfileIdRequest extends BaseRequestModel {
+public class ThreadCommentsByThreadIdRequest extends BaseRequestModel {
 
     @NotNull
-    private String userProfileId;
-
+    @ExistsBy(type = Type.THREAD,field = "threadId",message = "Thread wasn't found!")
+    private String threadId;
 }
