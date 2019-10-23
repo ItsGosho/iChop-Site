@@ -1,4 +1,4 @@
-package ichop.reports.validators;
+package ichop.reports.common.validators;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;

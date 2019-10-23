@@ -1,4 +1,4 @@
-package ichop.reports.validators;
+package ichop.reports.common.validators;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;

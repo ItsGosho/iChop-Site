@@ -2,7 +2,7 @@ package ichop.reports.domain.models.jms.delete.request;
 
 import ichop.reports.common.domain.BaseRequestModel;
 import ichop.reports.domain.enums.Type;
-import ichop.reports.validators.SpELValidation;
+import ichop.reports.common.validators.SpELValidation;
 import lombok.Getter;
 import lombok.Setter;
 
