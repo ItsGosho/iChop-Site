@@ -1,5 +1,6 @@
 package ichop.tokens.common.aop;
 
+
 import ichop.tokens.common.domain.BaseRequestModel;
 import ichop.tokens.common.helpers.JmsHelper;
 import ichop.tokens.common.validation.ValidationHelper;
@@ -27,7 +28,7 @@ public class JmsValidateProceeder extends AbstractJmsProceeder {
     }
 
 
-    @Around("@annotation(ichop.tokens.common.aop.JmsValidate)")
+    @Around("@annotation(ichop.reports.common.aop.JmsValidate)")
     public <R extends BaseRequestModel> Object validateModel(ProceedingJoinPoint joinPoint) throws Throwable {
         Class clazz = this.getModelClass(joinPoint);
         Message message = super.getMessage(joinPoint);

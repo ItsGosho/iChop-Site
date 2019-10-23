@@ -15,6 +15,7 @@ import java.util.concurrent.ExecutorService;
 
 import static ichop.tokens.constants.ConditionalConstants.ARTEMIS_CONFIGURATION;
 
+
 @Configuration
 @ConditionalOnProperty(
         name = ARTEMIS_CONFIGURATION,
