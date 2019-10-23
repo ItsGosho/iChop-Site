@@ -35,7 +35,7 @@ public class PasswordTokenListener extends BaseListener {
 
     @JmsValidate(model = PasswordTokenCreateRequest.class)
     @JmsAfterReturn(message = TOKEN_CREATED_SUCCESSFUL)
-    @JmsListener(destination = "${artemis.queue.token.password.create}", containerFactory = QUEUE)
+    @JmsListener(destination = "${artemis.queue.tokens.password.create}", containerFactory = QUEUE)
     public PasswordTokenCreateReply create(Message message) {
         PasswordTokenCreateRequest requestModel = this.jmsHelper.getResultModel(message, PasswordTokenCreateRequest.class);
 
@@ -46,7 +46,7 @@ public class PasswordTokenListener extends BaseListener {
 
     @JmsValidate(model = PasswordTokenIsValidRequest.class)
     @JmsAfterReturn(message = TOKEN_RETRIEVED_SUCCESSFUL)
-    @JmsListener(destination = "${artemis.queue.token.password.is_valid}", containerFactory = QUEUE)
+    @JmsListener(destination = "${artemis.queue.tokens.password.is_valid}", containerFactory = QUEUE)
     public PasswordTokenIsValidReply isValid(Message message) {
         PasswordTokenIsValidRequest requestModel = this.jmsHelper.getResultModel(message, PasswordTokenIsValidRequest.class);
 
