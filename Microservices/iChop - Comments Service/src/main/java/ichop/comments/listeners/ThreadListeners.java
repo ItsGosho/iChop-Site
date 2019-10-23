@@ -5,9 +5,11 @@ import ichop.comments.common.aop.JmsAfterReturn;
 import ichop.comments.common.aop.JmsValidate;
 import ichop.comments.common.helpers.BaseListener;
 import ichop.comments.common.helpers.JmsHelper;
+import ichop.comments.domain.models.jms.all.CommentsAllReply;
 import ichop.comments.domain.models.jms.all.ThreadCommentsByThreadIdRequest;
 import ichop.comments.domain.models.jms.create.ThreadCommentCreateReply;
 import ichop.comments.domain.models.jms.create.ThreadCommentCreateRequest;
+import ichop.comments.domain.models.jms.delete.CommentDeleteByIdReply;
 import ichop.comments.domain.models.jms.delete.ThreadCommentDeleteByIdRequest;
 import ichop.comments.domain.models.service.ThreadCommentServiceModel;
 import ichop.comments.services.ThreadCommentServices;
@@ -36,39 +38,36 @@ public class ThreadListeners extends BaseListener {
 
 
     @JmsValidate(model = ThreadCommentCreateRequest.class)
-    @JmsAfterReturn
+    @JmsAfterReturn(message = COMMENT_CREATED_SUCCESSFUL)
     @JmsListener(destination = "${artemis.queue.comment.thread.create}", containerFactory = QUEUE)
     public ThreadCommentCreateReply create(Message message) {
         ThreadCommentCreateRequest requestModel = this.jmsHelper.getResultModel(message, ThreadCommentCreateRequest.class);
 
         ThreadCommentServiceModel threadComment = this.objectMapper.convertValue(requestModel, ThreadCommentServiceModel.class);
 
-        ThreadCommentCreateReply replyModel = this.threadCommentServices.save(threadComment, ThreadCommentCreateReply.class);
-        replyModel.setMessage(COMMENT_CREATED_SUCCESSFUL);
-
-        return replyModel;
+        return this.threadCommentServices.save(threadComment, ThreadCommentCreateReply.class);
     }
 
     @JmsValidate(model = ThreadCommentDeleteByIdRequest.class)
-    @JmsAfterReturn
+    @JmsAfterReturn(message = COMMENT_DELETE_SUCCESSFUL)
     @JmsListener(destination = "${artemis.queue.comment.thread.delete_by_id}", containerFactory = QUEUE)
-    public ThreadCommentDeleteByIdReply deleteById(Message message) {
+    public CommentDeleteByIdReply deleteById(Message message) {
         ThreadCommentDeleteByIdRequest requestModel = this.jmsHelper.getResultModel(message, ThreadCommentDeleteByIdRequest.class);
 
         this.threadCommentServices.deleteById(requestModel.getId());
 
-        return new ThreadCommentDeleteByIdReply(COMMENT_DELETE_SUCCESSFUL);
+        return new CommentDeleteByIdReply();
     }
 
     @JmsValidate(model = ThreadCommentsByThreadIdRequest.class)
-    @JmsAfterReturn
+    @JmsAfterReturn(message = COMMENTS_FETCHED_SUCCESSFUL)
     @JmsListener(destination = "${artemis.queue.comment.thread.all_by_threadId}", containerFactory = QUEUE)
-    public ThreadCommentsByThreadIdReply allByThreadId(Message message) {
+    public CommentsAllReply<ThreadCommentServiceModel> allByThreadId(Message message) {
         ThreadCommentDeleteByIdRequest requestModel = this.jmsHelper.getResultModel(message, ThreadCommentDeleteByIdRequest.class);
 
         List<ThreadCommentServiceModel> comments = this.threadCommentServices.findAllByThreadId(requestModel.getId());
 
-        return new ThreadCommentsByThreadIdReply(COMMENT_DELETE_SUCCESSFUL, comments);
+        return new CommentsAllReply<>(comments);
     }
 
 }
