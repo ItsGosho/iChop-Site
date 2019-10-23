@@ -13,4 +13,8 @@ public class PasswordTokenIsValidReply extends BaseReplyModel {
 
     private boolean isValid;
 
+
+    public PasswordTokenIsValidReply(boolean isValid) {
+        this.isValid = isValid;
+    }
 }
