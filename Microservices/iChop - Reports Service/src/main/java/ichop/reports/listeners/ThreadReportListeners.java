@@ -11,11 +11,11 @@ import ichop.reports.services.ThreadReportServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
-import static ichop.reports.common.constants.JmsFactories.QUEUE;
-
 
 import javax.jms.Message;
-import java.util.concurrent.Executors;
+
+import static ichop.reports.common.constants.JmsFactories.QUEUE;
+import static ichop.reports.constants.ReportReplyConstants.REPORT_CREATED_SUCCESSFUL;
 
 @Component
 public class ThreadReportListeners {
@@ -40,8 +40,8 @@ public class ThreadReportListeners {
 
         ThreadReportServiceModel threadReport = this.objectMapper.convertValue(requestModel, ThreadReportServiceModel.class);
 
-        ThreadCommentCreateReply replyModel = this.threadCommentServices.save(threadComment, ThreadCommentCreateReply.class);
-        replyModel.setMessage(COMMENT_CREATED_SUCCESSFUL);
+        ThreadReportCreateReply replyModel = this.threadReportServices.save(threadReport, ThreadReportCreateReply.class);
+        replyModel.setMessage(REPORT_CREATED_SUCCESSFUL);
 
         return replyModel;
     }
