@@ -1,5 +1,6 @@
 package ichop.threads.common.constants;
 
+
 import static ichop.threads.common.constants.ColorCodesConstants.*;
 
 public final class JmsLoggingConstants {

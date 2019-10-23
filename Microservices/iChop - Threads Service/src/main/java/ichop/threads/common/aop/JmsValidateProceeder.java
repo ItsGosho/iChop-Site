@@ -1,7 +1,7 @@
 package ichop.threads.common.aop;
 
-import ichop.threads.common.helpers.JmsHelper;
 import ichop.threads.common.domain.BaseRequestModel;
+import ichop.threads.common.helpers.JmsHelper;
 import ichop.threads.common.validation.ValidationHelper;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;

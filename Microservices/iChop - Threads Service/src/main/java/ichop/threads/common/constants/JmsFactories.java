@@ -1,4 +1,4 @@
-package ichop.threads.common.configurations;
+package ichop.threads.common.constants;
 
 public final class JmsFactories {
 

@@ -4,8 +4,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.threads.common.domain.BaseReplyModel;
 import ichop.threads.common.domain.BaseRequestModel;
-import ichop.threads.common.validation.ValidationHelper;
 import ichop.threads.common.domain.ErrorReplyModel;
+import ichop.threads.common.validation.ValidationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
@@ -56,9 +56,11 @@ public class JmsHelperImp implements JmsHelper {
     }
 
     @Override
-    public <S extends BaseReplyModel> void replySuccessful(Message message, S model) {
+    public <S extends BaseReplyModel> void replySuccessful(Message message, S model,String msg) {
         try {
             model.setSuccessful(true);
+            model.setMessage(msg);
+
             this.replyTo(message.getJMSReplyTo(), message.getJMSCorrelationID(), model);
         } catch (JMSException e) {
             e.printStackTrace();

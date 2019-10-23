@@ -1,21 +1,22 @@
 package ichop.threads.common.validation;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
 import java.util.Set;
 
 @Component
 public class ValidationHelperImp implements ValidationHelper {
 
-    private final Validator validator;
+    private final LocalValidatorFactoryBean validator;
 
-
-    public ValidationHelperImp() {
-        this.validator = Validation.buildDefaultValidatorFactory().getValidator();
+    @Autowired
+    public ValidationHelperImp(LocalValidatorFactoryBean validator) {
+        this.validator = validator;
     }
+
 
     @Override
     public boolean isValid(Object object) {

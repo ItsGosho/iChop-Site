@@ -3,6 +3,7 @@ package ichop.threads.common.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.threads.common.domain.BaseEntity;
 import ichop.threads.common.domain.BaseServiceModel;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.lang.reflect.ParameterizedType;
@@ -12,9 +13,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @SuppressWarnings("all")
-public abstract class AbstractBaseService
-        <E extends BaseEntity, S extends BaseServiceModel, R extends MongoRepository<E, String>>
-        implements BaseService<S> {
+public abstract class AbstractBaseService<E extends BaseEntity, S extends BaseServiceModel, R extends MongoRepository<E, String>> implements BaseService<S> {
 
     protected ObjectMapper objectMapper;
     protected R repository;
@@ -87,23 +86,50 @@ public abstract class AbstractBaseService
     }
 
     @Override
+    public List<S> findAll(Pageable pageable) {
+        return this.repository
+                .findAll(pageable)
+                .stream()
+                .map(x -> this.toServiceModel(x))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public <M> List<M> findAll(Pageable pageable, Class<M> returnModelClass) {
+        return this.repository
+                .findAll(pageable)
+                .stream()
+                .map(x -> this.toModel(x, returnModelClass))
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public boolean existsById(String id) {
         return this.repository.existsById(id);
     }
 
-    protected <M> Set<M> mapToSet(Collection collection,Class<M> clazz) {
+    protected <M> Set<M> mapToSet(Collection collection) {
         Set<M> result = (Set<M>) collection
                 .stream()
-                .map(x -> this.toModel((E) x,clazz))
+                .map(x -> this.toServiceModel((E) x))
                 .collect(Collectors.toSet());
 
         return result;
     }
 
-    protected <M> List<M> mapToList(Collection collection,Class<M> clazz) {
-        List<M> result = (List<M>) collection
+    protected List<S> mapToList(Collection collection) {
+        List<S> result = (List<S>) collection
                 .stream()
-                .map(x -> this.toModel((E) x,clazz))
+                .map(x -> this.toServiceModel((E) x))
+                .collect(Collectors.toList());
+
+        return result;
+    }
+
+    protected <M> List<S> mapToList(Collection collection, Class<M> clazz) {
+        List<S> result = (List<S>) collection
+                .stream()
+                .map(x -> this.toModel((E) x, clazz))
                 .collect(Collectors.toList());
 
         return result;

@@ -11,7 +11,7 @@ public interface JmsHelper {
 
     <S extends BaseRequestModel> void send(String destination, S model);
 
-    <S extends BaseReplyModel> void replySuccessful(Message message, S model);
+    <S extends BaseReplyModel> void replySuccessful(Message message, S model, String msg);
 
     <R> R getResultModel(Message message, Class<R> clazz);
 

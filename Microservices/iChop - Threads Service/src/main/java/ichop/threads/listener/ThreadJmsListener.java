@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
 
 import javax.jms.Message;
 
-import static ichop.threads.common.configurations.JmsFactories.QUEUE;
+import static ichop.threads.common.constants.JmsFactories.QUEUE;
 import static ichop.threads.constants.ThreadReplyConstants.*;
 
 @Component
@@ -39,7 +39,7 @@ public class ThreadJmsListener {
 
     @JmsValidate(model = ThreadCreateRequest.class)
     @JmsAfterReturn
-    @JmsListener(destination = "${artemis.queue.thread.create}", containerFactory = QUEUE)
+    @JmsListener(destination = "${artemis.queue.threads.create}", containerFactory = QUEUE)
     public ThreadCreateReply createThread(Message message) {
         ThreadCreateRequest requestModel = this.jmsHelper.getResultModel(message, ThreadCreateRequest.class);
 
@@ -52,7 +52,7 @@ public class ThreadJmsListener {
     }
 
     @JmsValidate(model = ThreadGetByIdRequest.class)
-    @JmsListener(destination = "${artemis.queue.thread.get_by_id}", containerFactory = QUEUE)
+    @JmsListener(destination = "${artemis.queue.threads.get_by_id}", containerFactory = QUEUE)
     public ThreadGetByIdReply getById(Message message) {
         ThreadGetByIdRequest requestModel = this.jmsHelper.getResultModel(message, ThreadGetByIdRequest.class);
 
@@ -63,7 +63,7 @@ public class ThreadJmsListener {
     }
 
     @JmsValidate(model = ThreadIncreaseViewsRequest.class)
-    @JmsListener(destination = "${artemis.queue.thread.increase_views}", containerFactory = "queueFactory")
+    @JmsListener(destination = "${artemis.queue.threads.increase_views}", containerFactory = "queueFactory")
     public ThreadIncreaseViewsReply increaseViews(Message message) {
         ThreadIncreaseViewsRequest requestModel = this.jmsHelper.getResultModel(message, ThreadIncreaseViewsRequest.class);
 
@@ -76,7 +76,7 @@ public class ThreadJmsListener {
     }
 
     @JmsValidate(model = ThreadDeleteByIdRequest.class)
-    @JmsListener(destination = "${artemis.queue.thread.delete_by_id}", containerFactory = "queueFactory")
+    @JmsListener(destination = "${artemis.queue.threads.delete_by_id}", containerFactory = "queueFactory")
     public ThreadDeleteByIdReply deleteById(Message message) {
         ThreadDeleteByIdRequest requestModel = this.jmsHelper.getResultModel(message, ThreadDeleteByIdRequest.class);
 
