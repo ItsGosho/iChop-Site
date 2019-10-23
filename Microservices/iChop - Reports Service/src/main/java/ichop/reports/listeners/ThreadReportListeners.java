@@ -6,12 +6,16 @@ import ichop.reports.common.aop.JmsValidate;
 import ichop.reports.common.helpers.JmsHelper;
 import ichop.reports.domain.models.jms.create.reply.ThreadReportCreateReply;
 import ichop.reports.domain.models.jms.create.request.ThreadReportCreateRequest;
+import ichop.reports.domain.models.service.ThreadReportServiceModel;
 import ichop.reports.services.ThreadReportServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
+import static ichop.reports.common.constants.JmsFactories.QUEUE;
+
 
 import javax.jms.Message;
+import java.util.concurrent.Executors;
 
 @Component
 public class ThreadReportListeners {
@@ -34,7 +38,7 @@ public class ThreadReportListeners {
     public ThreadReportCreateReply create(Message message) {
         ThreadReportCreateRequest requestModel = this.jmsHelper.getResultModel(message, ThreadReportCreateRequest.class);
 
-        ThreadCommentServiceModel threadComment = this.objectMapper.convertValue(requestModel, ThreadCommentServiceModel.class);
+        ThreadReportServiceModel threadReport = this.objectMapper.convertValue(requestModel, ThreadReportServiceModel.class);
 
         ThreadCommentCreateReply replyModel = this.threadCommentServices.save(threadComment, ThreadCommentCreateReply.class);
         replyModel.setMessage(COMMENT_CREATED_SUCCESSFUL);
