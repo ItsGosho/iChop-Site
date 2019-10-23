@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-public abstract class ReportAllPageableRequest extends BaseRequestModel {
+public abstract class ReportsAllPageableRequest extends BaseRequestModel {
 
     @NotNull
     private Pageable pageable;

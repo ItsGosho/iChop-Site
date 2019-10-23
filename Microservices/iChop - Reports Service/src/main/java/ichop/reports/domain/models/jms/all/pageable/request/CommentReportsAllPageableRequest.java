@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-public class CommentReportsAllPageableRequest extends ReportAllPageableRequest {
+public class CommentReportsAllPageableRequest extends ReportsAllPageableRequest {
 
     @NotNull
     private Type type;
