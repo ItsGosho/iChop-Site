@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-@SpELAssert(value = "@commentReportServicesImp.findById(#this.commentId)")
+@SpELAssert(value = "@commentReportServicesImp.hasReported(#this.userId,#this.commentId,#this.type) == false",message = "You have already reported that comment!")
 public class CommentReportCreateRequest extends ReportCreateRequest {
 
     @NotNull

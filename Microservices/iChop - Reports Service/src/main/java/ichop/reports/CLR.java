@@ -24,7 +24,8 @@ public class CLR implements CommandLineRunner {
         commentReportCreateRequest.setUserId("joreto");
         commentReportCreateRequest.setType(Type.THREAD_COMMENT);
 
-        if (this.validationHelper.isValid(commentReportCreateRequest)) {
+        if (!this.validationHelper.isValid(commentReportCreateRequest)) {
+            String message = this.validationHelper.getValidationError(commentReportCreateRequest);
             System.out.println();
         }
     }
