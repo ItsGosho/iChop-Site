@@ -1,4 +1,4 @@
-package ichop.tokens.domain.models.jms.password.create;
+package ichop.tokens.domain.models.jms.create.password;
 
 import ichop.tokens.common.domain.BaseRequestModel;
 import lombok.Getter;

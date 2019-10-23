@@ -1,4 +1,4 @@
-package ichop.tokens.domain.models.jms.password.valid;
+package ichop.tokens.domain.models.jms.valid.password;
 
 import ichop.tokens.common.domain.BaseRequestModel;
 import ichop.tokens.domain.enums.Type;
