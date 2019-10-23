@@ -3,6 +3,7 @@ package ichop.reports.listeners;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.reports.common.aop.JmsAfterReturn;
 import ichop.reports.common.aop.JmsValidate;
+import ichop.reports.common.helpers.BaseListener;
 import ichop.reports.common.helpers.JmsHelper;
 import ichop.reports.domain.models.jms.all.pageable.reply.ReportsAllPageableReply;
 import ichop.reports.domain.models.jms.all.pageable.request.ThreadReportsAllPageableRequest;
@@ -23,16 +24,14 @@ import static ichop.reports.common.constants.JmsFactories.QUEUE;
 import static ichop.reports.constants.ReportReplyConstants.*;
 
 @Component
-public class ThreadReportListeners {
+public class ThreadReportListeners extends BaseListener {
 
-    private final JmsHelper jmsHelper;
-    private final ObjectMapper objectMapper;
+
     private final ThreadReportServices threadReportServices;
 
     @Autowired
-    public ThreadReportListeners(JmsHelper jmsHelper, ObjectMapper objectMapper, ThreadReportServices threadReportServices) {
-        this.jmsHelper = jmsHelper;
-        this.objectMapper = objectMapper;
+    protected ThreadReportListeners(JmsHelper jmsHelper, ObjectMapper objectMapper, ThreadReportServices threadReportServices) {
+        super(jmsHelper, objectMapper);
         this.threadReportServices = threadReportServices;
     }
 
