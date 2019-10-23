@@ -3,6 +3,7 @@ package ichop.CHANGE.common.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.CHANGE.common.domain.BaseEntity;
 import ichop.CHANGE.common.domain.BaseServiceModel;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.lang.reflect.ParameterizedType;
@@ -85,6 +86,24 @@ public abstract class AbstractBaseService<E extends BaseEntity, S extends BaseSe
     }
 
     @Override
+    public List<S> findAll(Pageable pageable) {
+        return this.repository
+                .findAll(pageable)
+                .stream()
+                .map(x -> this.toServiceModel(x))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public <M> List<M> findAll(Pageable pageable, Class<M> returnModelClass) {
+        return this.repository
+                .findAll(pageable)
+                .stream()
+                .map(x -> this.toModel(x, returnModelClass))
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public boolean existsById(String id) {
         return this.repository.existsById(id);
     }
@@ -102,6 +121,15 @@ public abstract class AbstractBaseService<E extends BaseEntity, S extends BaseSe
         List<S> result = (List<S>) collection
                 .stream()
                 .map(x -> this.toServiceModel((E) x))
+                .collect(Collectors.toList());
+
+        return result;
+    }
+
+    protected <M> List<S> mapToList(Collection collection, Class<M> clazz) {
+        List<S> result = (List<S>) collection
+                .stream()
+                .map(x -> this.toModel((E) x, clazz))
                 .collect(Collectors.toList());
 
         return result;

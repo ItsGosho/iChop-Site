@@ -56,9 +56,11 @@ public class JmsHelperImp implements JmsHelper {
     }
 
     @Override
-    public <S extends BaseReplyModel> void replySuccessful(Message message, S model) {
+    public <S extends BaseReplyModel> void replySuccessful(Message message, S model,String msg) {
         try {
             model.setSuccessful(true);
+            model.setMessage(msg);
+
             this.replyTo(message.getJMSReplyTo(), message.getJMSCorrelationID(), model);
         } catch (JMSException e) {
             e.printStackTrace();
