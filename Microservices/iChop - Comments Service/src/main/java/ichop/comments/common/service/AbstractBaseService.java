@@ -126,6 +126,15 @@ public abstract class AbstractBaseService<E extends BaseEntity, S extends BaseSe
         return result;
     }
 
+    protected <M> List<S> mapToList(Collection collection, Class<M> clazz) {
+        List<S> result = (List<S>) collection
+                .stream()
+                .map(x -> this.toModel((E) x, clazz))
+                .collect(Collectors.toList());
+
+        return result;
+    }
+
     protected S toServiceModel(E e) {
         return e != null ? this.objectMapper.convertValue(e, this.serviceModelClass) : null;
     }
