@@ -23,4 +23,9 @@ public class ThreadReportServicesImp
     public boolean hasReported(String userId, String threadId) {
         return super.repository.existsByUserIdAndThreadId(userId, threadId);
     }
+
+    @Override
+    public boolean deleteByThreadId(String threadId) {
+        return super.repository.deleteByThreadId(threadId);
+    }
 }

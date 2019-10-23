@@ -7,5 +7,6 @@ import org.springframework.stereotype.Repository;
 public interface ThreadReportRepository extends ReportRepository<ThreadReport> {
 
     boolean existsByUserIdAndThreadId(String userId,String threadId);
+    boolean deleteByThreadId(String threadId);
 
 }

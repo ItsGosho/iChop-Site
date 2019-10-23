@@ -10,7 +10,4 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ReportDeleteByIdReply extends BaseReplyModel {
 
-    public ReportDeleteByIdReply(String message) {
-        super(message);
-    }
 }
