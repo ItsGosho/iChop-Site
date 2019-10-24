@@ -14,13 +14,8 @@ public interface DropboxServices {
 
     CreateFolderResult createFolder(String folderPath);
 
-    ListFolderResult listFolder(String folderPath, boolean recursiveListing, long limit);
-
-    ListFolderResult listFolderContinue(String cursor);
-
     void deleteFile(String filePath);
 
-    void deleteFolder(String folderPath);
 
 
 }

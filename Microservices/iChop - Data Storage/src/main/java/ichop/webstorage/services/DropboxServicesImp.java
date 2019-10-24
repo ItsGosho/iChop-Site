@@ -1,14 +1,23 @@
 package ichop.webstorage.services;
 
+import com.dropbox.core.DbxDownloader;
+import com.dropbox.core.DbxException;
 import com.dropbox.core.v2.DbxClientV2;
 import com.dropbox.core.v2.files.*;
+import ichop.webstorage.constants.DropboxLoggingConstants;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.InputStream;
 
+import static ichop.webstorage.constants.DropboxLoggingConstants.*;
+
 @Service
 public class DropboxServicesImp implements DropboxServices {
+
+    private final Logger LOG = LogManager.getLogger(DropboxServicesImp.class);
 
     private final DbxClientV2 client;
 
@@ -19,51 +28,58 @@ public class DropboxServicesImp implements DropboxServices {
 
     @Override
     public InputStream downloadFile(String filePath) {
-        return handleDropboxAction(() -> client.files().download(filePath).getInputStream(),
-                String.format("Error downloading file: %s", filePath));
+
+        return handleDropboxAction(() -> {
+            InputStream inputStream = this.client
+                    .files()
+                    .download(filePath)
+                    .getInputStream();
+
+            LOG.error(String.format(DOWNLOAD_SUCCESSFUL, filePath));
+            return inputStream;
+        }, filePath);
     }
 
     @Override
     public FileMetadata uploadFile(String filePath, InputStream fileStream) {
-        return handleDropboxAction(() -> client.files().uploadBuilder(filePath).uploadAndFinish(fileStream),
-                String.format("Error uploading file: %s", filePath));
+
+        return handleDropboxAction(() -> {
+            FileMetadata fileMetadata = this.client
+                    .files()
+                    .uploadBuilder(filePath)
+                    .uploadAndFinish(fileStream);
+
+            LOG.error(String.format(UPLOAD_SUCCESSFUL, filePath));
+            return fileMetadata;
+        }, filePath);
     }
 
     @Override
     public CreateFolderResult createFolder(String folderPath) {
-        return handleDropboxAction(() -> client.files().createFolderV2(folderPath), "Error creating folder");
-    }
+        return handleDropboxAction(() -> {
+            CreateFolderResult creationResult = this.client.files().createFolderV2(folderPath);
 
-    @Override
-    public ListFolderResult listFolder(String folderPath, boolean recursiveListing, long limit) {
-        ListFolderBuilder listFolderBuilder = client.files().listFolderBuilder(folderPath);
-        listFolderBuilder.withRecursive(recursiveListing);
-        listFolderBuilder.withLimit(limit);
-
-        return handleDropboxAction(listFolderBuilder::start, String.format("Error listing folder: %s", folderPath));
-    }
-
-    @Override
-    public ListFolderResult listFolderContinue(String cursor) {
-        return handleDropboxAction(() -> client.files().listFolderContinue(cursor), "Error listing folder");
+            LOG.error(String.format(FOLDER_CREATION_SUCCESSFUL, folderPath));
+            return creationResult;
+        }, folderPath);
     }
 
     @Override
     public void deleteFile(String filePath) {
-        handleDropboxAction(() -> client.files().deleteV2(filePath), String.format("Error deleting file: %s", filePath));
+        handleDropboxAction(() -> {
+            this.client.files().deleteV2(filePath);
+
+            LOG.error(String.format(FILE_DELETE_SUCCESSFUL, filePath));
+            return null;
+        }, filePath);
     }
 
-    @Override
-    public void deleteFolder(String folderPath) {
-        handleDropboxAction(() -> client.files().deleteV2(folderPath), String.format("Error deleting folder: %s", folderPath));
-    }
 
-    private <T> T handleDropboxAction(DropboxActionResolver<T> action, String exceptionMessage) {
+    private <T> T handleDropboxAction(DropboxActionResolver<T> action, String path) {
         try {
             return action.perform();
         } catch (Exception e) {
-            String messageWithCause = String.format("%s with cause: %s", exceptionMessage, e.getMessage());
-            System.out.println(messageWithCause);
+            LOG.error(String.format("Error executing operation for path %s due to %s", path, e.getMessage()));
         }
         return null;
     }

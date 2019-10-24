@@ -28,8 +28,7 @@ public class Base64SizeValidator implements ConstraintValidator<Base64Size,Strin
 
     private Double getSizeInMB(String base64){
         int y = base64.endsWith("==") ? 2 : 1;
-        double size =(((base64.length() * 3) / 4 - y) /1024.00)/1024.00 ;
-        return size;
+        return (((base64.length() * 3) / 4 - y) /1024.00)/1024.00;
     }
 
 }

@@ -23,8 +23,7 @@ public class Base64Validator implements ConstraintValidator<Base64,String> {
 
         Pattern pattern = Pattern.compile(BASE_64_PATTERN,Pattern.MULTILINE);
         Matcher matcher = pattern.matcher(value);
-        boolean isFound = matcher.find();
 
-        return isFound;
+        return matcher.find();
     }
 }

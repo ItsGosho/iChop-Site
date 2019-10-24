@@ -18,10 +18,9 @@ public class DataRestController {
         this.userDataServices = userDataServices;
     }
 
-    @GetMapping(value = URLConstants.GET_AVATAR,produces = "image/png")
+    @GetMapping(value = URLConstants.GET_AVATAR, produces = "image/png")
     @ResponseBody
     public byte[] getAvatar(@PathVariable String username) {
-        byte[] result = this.userDataServices.getAvatarAsBase64Array(username);
-        return result;
+        return this.userDataServices.getAvatarAsBase64Array(username);
     }
 }
