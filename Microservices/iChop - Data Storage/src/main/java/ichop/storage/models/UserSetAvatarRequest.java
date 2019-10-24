@@ -14,7 +14,7 @@ import static ichop.storage.constants.ValidationMessages.*;
 
 @Getter
 @Setter
-public class UserSetAvatarRequestModel extends BaseRequestModel {
+public class UserSetAvatarRequest extends BaseRequestModel {
 
     @NotNull
     @NotEmpty

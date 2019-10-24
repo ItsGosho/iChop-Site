@@ -15,6 +15,4 @@ public interface DropboxHelper {
 
     void deleteFile(String filePath);
 
-
-
 }

@@ -4,8 +4,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.storage.common.aop.JmsValidate;
 import ichop.storage.common.helpers.BaseListener;
 import ichop.storage.common.helpers.JmsHelper;
-import ichop.storage.models.UserSetAvatarRequestModel;
-import ichop.storage.services.UserDataServices;
+import ichop.storage.models.UserSetAvatarRequest;
+import ichop.storage.helpers.UserDataHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
@@ -17,20 +17,20 @@ import static ichop.storage.common.constants.JmsFactories.QUEUE;
 @Component
 public class UserDataListener extends BaseListener {
 
-    private final UserDataServices userDataServices;
+    private final UserDataHelper userDataHelper;
 
     @Autowired
-    protected UserDataListener(JmsHelper jmsHelper, ObjectMapper objectMapper, UserDataServices userDataServices) {
+    protected UserDataListener(JmsHelper jmsHelper, ObjectMapper objectMapper, UserDataHelper userDataHelper) {
         super(jmsHelper, objectMapper);
-        this.userDataServices = userDataServices;
+        this.userDataHelper = userDataHelper;
     }
 
-    @JmsValidate(model = UserSetAvatarRequestModel.class)
+    @JmsValidate(model = UserSetAvatarRequest.class)
     @JmsListener(destination = "${artemis.queue.data_storage.set_user_avatar}", containerFactory = QUEUE)
     public void setUserAvatar(Message message) {
-        UserSetAvatarRequestModel requestModel = this.jmsHelper.getResultModel(message, UserSetAvatarRequestModel.class);
+        UserSetAvatarRequest requestModel = this.jmsHelper.getResultModel(message, UserSetAvatarRequest.class);
 
-        this.userDataServices.updateAvatar(requestModel.getUsername(), requestModel.getAvatar());
+        this.userDataHelper.updateAvatar(requestModel.getUsername(), requestModel.getAvatar());
     }
 
 

@@ -1,6 +1,5 @@
-package ichop.storage.services;
+package ichop.storage.helpers;
 
-import ichop.storage.helpers.DropboxHelper;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
@@ -18,13 +17,13 @@ import java.io.InputStream;
 
 @Service
 @CacheConfig(cacheNames = "users")
-public class UserDataServicesImp implements UserDataServices {
+public class UserDataHelperImp implements UserDataHelper {
 
     public static final String USER_AVATAR_FILE_PATH_PATTERN = "/%s/avatar-%s.png";
     private final DropboxHelper dropboxHelper;
 
     @Autowired
-    public UserDataServicesImp(DropboxHelper dropboxHelper) {
+    public UserDataHelperImp(DropboxHelper dropboxHelper) {
         this.dropboxHelper = dropboxHelper;
     }
 

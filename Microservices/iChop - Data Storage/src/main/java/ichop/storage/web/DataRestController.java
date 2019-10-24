@@ -1,6 +1,6 @@
-package ichop.storage.controllers;
+package ichop.storage.web;
 
-import ichop.storage.services.UserDataServices;
+import ichop.storage.helpers.UserDataHelper;
 import ichop.storage.constants.URLConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,16 +11,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class DataRestController {
 
-    private final UserDataServices userDataServices;
+    private final UserDataHelper userDataHelper;
 
     @Autowired
-    public DataRestController(UserDataServices userDataServices) {
-        this.userDataServices = userDataServices;
+    public DataRestController(UserDataHelper userDataHelper) {
+        this.userDataHelper = userDataHelper;
     }
 
     @GetMapping(value = URLConstants.GET_AVATAR, produces = "image/png")
     @ResponseBody
     public byte[] getAvatar(@PathVariable String username) {
-        return this.userDataServices.getAvatarAsBase64Array(username);
+        return this.userDataHelper.getAvatarAsBase64Array(username);
     }
 }
