@@ -2,20 +2,14 @@ package com.ichop.webstorage.listeners;
 
 import com.ichop.webstorage.components.JmsServices;
 import com.ichop.webstorage.components.ValidationUtil;
-import com.ichop.webstorage.domain.models.jms.UserUpdateAvatarJmsReceiveModel;
+import com.ichop.webstorage.models.UserUpdateAvatarJmsReceiveModel;
 import com.ichop.webstorage.listeners.anotations.SetUserAvatarListener;
 import com.ichop.webstorage.services.UserDataServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.imageio.ImageIO;
 import javax.jms.JMSException;
 import javax.jms.Message;
-import javax.xml.bind.DatatypeConverter;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.util.HashMap;
 
 @Component
 public class UserDataJMSListener {

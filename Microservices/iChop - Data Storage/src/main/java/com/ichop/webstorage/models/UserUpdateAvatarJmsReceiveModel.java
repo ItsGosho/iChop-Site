@@ -1,4 +1,4 @@
-package com.ichop.webstorage.domain.models.jms;
+package com.ichop.webstorage.models;
 
 import com.ichop.webstorage.validators.Base64;
 import com.ichop.webstorage.validators.Base64Image;

@@ -7,14 +7,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
-public class DataController {
+@RestController
+public class DataRestController {
 
     private final UserDataServices userDataServices;
 
     @Autowired
-    public DataController(UserDataServices userDataServices) {
+    public DataRestController(UserDataServices userDataServices) {
         this.userDataServices = userDataServices;
     }
 

@@ -1,4 +1,4 @@
-package com.ichop.webstorage.components.dropbox;
+package com.ichop.webstorage.services;
 
 @FunctionalInterface
 interface DropboxActionResolver<T> {

@@ -2,27 +2,10 @@ package com.ichop.webstorage;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ichop.webstorage.components.JmsServices;
-import com.ichop.webstorage.domain.models.jms.UserUpdateAvatarJmsReceiveModel;
 import com.ichop.webstorage.listeners.UserDataJMSListener;
-import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.awt.image.DataBuffer;
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.HashMap;
-import java.util.Map;
-
-import static com.ichop.webstorage.constants.JmsConstants.RECEIVE_MODEL_PARAMETER_NAME;
 
 @Component
 public class CLR implements CommandLineRunner {
