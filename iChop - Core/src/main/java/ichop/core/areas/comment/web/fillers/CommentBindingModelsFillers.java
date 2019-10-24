@@ -1,6 +1,6 @@
 package ichop.core.areas.comment.web.fillers;
 
-import ichop.core.areas.comment.models.CommentCreateBindingModel;
+import ichop.core.areas.comment.models.binding.CommentCreateBindingModel;
 import ichop.core.areas.comment.web.controllers.CommentController;
 import ichop.core.areas.thread.domain.models.service.ThreadServiceModel;
 import ichop.core.areas.thread.services.ThreadServices;

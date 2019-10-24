@@ -1,6 +1,5 @@
-package ichop.core.areas.comment.models;
+package ichop.core.areas.comment.models.binding;
 
-import ichop.core.areas.thread.domain.models.service.ThreadServiceModel;
 import ichop.core.areas.user.domain.models.service.UserServiceModel;
 import lombok.Getter;
 import lombok.Setter;

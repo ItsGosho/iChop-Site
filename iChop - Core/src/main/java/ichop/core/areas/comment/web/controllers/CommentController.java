@@ -1,7 +1,7 @@
 package ichop.core.areas.comment.web.controllers;
 
 import com.google.gson.Gson;
-import ichop.core.areas.comment.models.CommentCreateBindingModel;
+import ichop.core.areas.comment.models.binding.CommentCreateBindingModel;
 import ichop.core.areas.comment.domain.models.service.CommentServiceModel;
 import ichop.core.areas.comment.services.CommentServices;
 import ichop.core.areas.thread.services.ThreadServices;
