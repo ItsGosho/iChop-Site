@@ -1,4 +1,4 @@
-package ichop.core.areas.comment.domain.models.binding;
+package ichop.core.areas.comment.models;
 
 import ichop.core.areas.thread.domain.models.service.ThreadServiceModel;
 import ichop.core.areas.user.domain.models.service.UserServiceModel;
