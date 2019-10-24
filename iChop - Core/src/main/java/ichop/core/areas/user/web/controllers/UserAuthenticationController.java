@@ -25,7 +25,7 @@ public class UserAuthenticationController {
     }
 
 
-    @PostMapping(URLConstants.USER_REGISTER_POST)
+    @PostMapping(URLConstants.USER_REGISTER)
     public ResponseEntity proceedRegistration(UserRegisterBindingModel userRegisterBindingModel) {
 
         if (!this.validationHelper.isValid(userRegisterBindingModel)) {

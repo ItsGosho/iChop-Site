@@ -26,6 +26,7 @@
         <lombok.version>1.18.10</lombok.version>
         <hibernate-validator.version>6.0.17.Final</hibernate-validator.version>
         <mockito-core.version>3.1.0</mockito-core.version>
+        <java-jwt.version>3.8.3</java-jwt.version>
     </properties>
 
     <dependencies>
@@ -86,10 +87,11 @@
             <artifactId>mockito-core</artifactId>
             <version>${mockito-core.version}</version>
         </dependency>
+
         <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-core</artifactId>
-            <version>5.1.6.RELEASE</version>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+            <version>${java-jwt.version}</version>
         </dependency>
 
 
