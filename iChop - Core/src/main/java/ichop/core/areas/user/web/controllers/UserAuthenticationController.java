@@ -1,83 +1,40 @@
 package ichop.core.areas.user.web.controllers;
 
 import ichop.core.areas.user.domain.models.binding.UserRegisterBindingModel;
-import ichop.core.areas.user.domain.models.binding.UserResetPasswordBindingModelByToken;
-import ichop.core.areas.user.services.UserWebStorageJmsServices;
-import ichop.core.constants.URLConstants;
-import ichop.core.areas.token.exceptions.TokenNotValidException;
-import ichop.core.areas.user.exceptions.UserPasswordNotValidException;
-import ichop.core.areas.token.services.PasswordResetTokenServices;
 import ichop.core.areas.user.services.UserServices;
-import ichop.core.base.BaseController;
+import ichop.core.constants.URLConstants;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 
 @Controller
 @PreAuthorize("isAnonymous()")
-public class UserAuthenticationController extends BaseController {
+public class UserAuthenticationController {
 
     private final UserServices userServices;
-    private final PasswordResetTokenServices passwordResetTokenServices;
-    private final UserWebStorageJmsServices userWebStorageJmsServices;
 
     @Autowired
-    public UserAuthenticationController(UserServices userServices, PasswordResetTokenServices passwordResetTokenServices, UserWebStorageJmsServices userWebStorageJmsServices) {
+    public UserAuthenticationController(UserServices userServices) {
         this.userServices = userServices;
-        this.passwordResetTokenServices = passwordResetTokenServices;
-        this.userWebStorageJmsServices = userWebStorageJmsServices;
     }
 
+
     @PostMapping(URLConstants.USER_REGISTER_POST)
-    public String proceedRegistration(@Valid UserRegisterBindingModel userRegisterBindingModel, BindingResult bindingResult) {
+    public ResponseEntity proceedRegistration(@Valid UserRegisterBindingModel userRegisterBindingModel, BindingResult bindingResult) {
 
         if(bindingResult.hasErrors()) {
-            return this.redirectToRegisterDropdown();
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
 
         this.userServices.register(userRegisterBindingModel);
-        this.userWebStorageJmsServices.sendUpdateAvatarRequestWithInitialImage(userRegisterBindingModel.getUsername());
-        return this.redirectToLoginDropdown();
-    }
-
-    @GetMapping(URLConstants.USER_LOGIN_GET)
-    public String redirectToLoginDropdown(){
-        return super.redirect("/?login=require");
-    }
-
-    @GetMapping(URLConstants.USER_REGISTER_GET)
-    public String redirectToRegisterDropdown(){
-        return super.redirect("/?register=require");
-    }
-
-    @GetMapping(URLConstants.USER_RESET_PASSWORD_GET)
-    public ModelAndView getPasswordReset(@RequestParam(required = true) String token){
-
-        if(!this.passwordResetTokenServices.isValid(token)){
-            throw new TokenNotValidException();
-        }
-
-        return super.page("auth/reset_password-form","Reset Password");
-    }
-
-    @PostMapping(URLConstants.USER_RESET_PASSWORD_POST)
-    public ModelAndView proceedPasswordReset(@RequestParam(required = true) String token, @Valid @ModelAttribute UserResetPasswordBindingModelByToken bindingModel, BindingResult bindingResult){
-
-        if(bindingResult.hasErrors()){
-            throw new UserPasswordNotValidException();
-        }
-
-        this.userServices.resetPassword(bindingModel);
-
-        return super.viewWithMessage("notification/info","Successful resetted password!","Your password been reset successfully!");
+        //this.userWebStorageJmsServices.sendUpdateAvatarRequestWithInitialImage(userRegisterBindingModel.getUsername());
+        return new ResponseEntity<>("",HttpStatus.OK);
     }
 
 }
