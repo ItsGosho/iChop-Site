@@ -4,7 +4,7 @@ import ichop.core.areas.role.domain.entities.UserRoles;
 import ichop.core.areas.role.domain.models.service.UserRoleServiceModel;
 import ichop.core.areas.role.exceptions.RoleNotFoundException;
 import ichop.core.areas.role.services.UserRoleServices;
-import ichop.core.areas.token.domain.models.binding.PasswordResetTokenCreateBindingModel;
+import ichop.core.areas.token.models.PasswordResetTokenCreateBindingModel;
 import ichop.core.areas.token.domain.models.service.PasswordResetTokenServiceModel;
 import ichop.core.areas.token.exceptions.TokenNotValidException;
 import ichop.core.areas.token.services.PasswordResetTokenServices;
