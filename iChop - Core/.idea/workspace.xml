@@ -2,21 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1984862c-2f8c-4410-af36-a1dcaaa3ddaf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/helpers/view/user_all/UsersAllViewHelper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/helpers/view/user_control/UserControlHomeViewHelper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/helpers/view/user_control/UserRoleManagementHistoryUserControlViewHelper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/helpers/view/user_control/UserRoleManagementUserControlViewHelper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/helpers/view/user_follow_all/UserFollowAllViewHelper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/helpers/view/user_options/UserProfileOptionsInformationViewHelper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/helpers/view/user_profile/PostsUserProfileViewHelper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/helpers/view/user_profile/UserInformationProfileViewHelper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/helpers/view/user_profile/UserProfileViewHelper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/services/UserServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/services/UserServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/services/UserServicesImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/services/UserServicesImp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/web/controllers/UserAuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/web/controllers/UserAuthenticationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/web/fillers/UserBindingModelsFillers.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-dev.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -380,7 +368,7 @@
       <workItem from="1571342925472" duration="641000" />
       <workItem from="1571924303821" duration="12000" />
       <workItem from="1571929534281" duration="5056000" />
-      <workItem from="1571946455921" duration="1042000" />
+      <workItem from="1571946455921" duration="1206000" />
     </task>
     <servers />
   </component>
