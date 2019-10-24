@@ -6,6 +6,7 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import com.auth0.jwt.interfaces.JWTVerifier;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
@@ -14,6 +15,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.logging.Logger;
 
 import static ichop.core.constants.SecurityConstants.*;
@@ -41,15 +43,20 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
     }
 
     private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request) {
-        String token = request.getHeader(JWT_HEADER);
+        try {
+            String token = request.getHeader(JWT_HEADER);
 
-        JWTVerifier verifier = JWT.require(Algorithm.HMAC512(JWT_SECRET))
-                .withIssuer(JWT_ISSUER)
-                .build(); //Reusable verifier instance
-        DecodedJWT jwt = verifier.verify(token);
+            JWTVerifier verifier = JWT.require(Algorithm.HMAC512(JWT_SECRET))
+                    .withIssuer(JWT_ISSUER)
+                    .build();
+            DecodedJWT jwt = verifier.verify(token);
 
+            String username = jwt.getClaim(USERNAME_CLAIM).asString();
+            GrantedAuthority[] roles = jwt.getClaim(ROLES_CLAIM).asArray(GrantedAuthority.class);
 
-
-        return new UsernamePasswordAuthenticationToken(username, null, authorities);
+            return new UsernamePasswordAuthenticationToken(username, null, Arrays.asList(roles));
+        } catch (Exception ex) {
+            return null;
+        }
     }
 }

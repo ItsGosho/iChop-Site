@@ -1,6 +1,7 @@
 package ichop.core.config;
 
 import ichop.core.areas.role.services.UserRoleServices;
+import ichop.core.areas.user.services.UserServices;
 import ichop.core.filters.JwtAuthenticationFilter;
 import ichop.core.filters.JwtAuthorizationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +23,12 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private final UserRoleServices userRoleServices;
+    private final UserServices userServices;
 
     @Autowired
-    public SecurityConfiguration(UserRoleServices userRoleServices) {
+    public SecurityConfiguration(UserRoleServices userRoleServices, UserServices userServices) {
         this.userRoleServices = userRoleServices;
+        this.userServices = userServices;
     }
 
     @Override
@@ -43,10 +46,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("user")
-                .password(passwordEncoder().encode("password"))
-                .authorities("ROLE_USER");
+        auth.userDetailsService(this.userServices)
+                .passwordEncoder(passwordEncoder());
     }
 
     @Bean
