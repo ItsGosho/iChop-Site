@@ -10,4 +10,7 @@ public class ReactionIsReactedReply extends BaseReplyModel {
 
     private Boolean isReacted;
 
+    public ReactionIsReactedReply(Boolean isReacted) {
+        this.isReacted = isReacted;
+    }
 }

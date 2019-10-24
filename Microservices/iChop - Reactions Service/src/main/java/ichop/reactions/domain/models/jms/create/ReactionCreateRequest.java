@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-@SpELValidation(value = "@reactionServicesImp.hasReacted(#this.userId,#this.entityId,#this.entityType) == false", message = "Already reacted!")
+@SpELValidation(value = "@reactionServicesImp.isReacted(#this.userId,#this.entityId,#this.entityType) == false", message = "Already reacted!")
 public class ReactionCreateRequest extends BaseRequestModel {
 
     @NotNull
