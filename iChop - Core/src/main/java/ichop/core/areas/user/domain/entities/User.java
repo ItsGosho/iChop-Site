@@ -44,13 +44,10 @@ public class User extends BaseEntity implements UserDetails {
     @DBRef
     private Set<UserRole> authorities;
 
-    @NotNull
     private LocalDateTime registrationDate = LocalDateTime.now();
 
-    @NotNull
     private LocalDateTime lastOnline = LocalDateTime.now();
 
-    @NotNull
     private String location;
 
     public User() {
