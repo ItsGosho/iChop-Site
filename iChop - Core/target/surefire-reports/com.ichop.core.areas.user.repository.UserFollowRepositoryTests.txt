@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.ichop.core.areas.user.repository.UserFollowRepositoryTests
--------------------------------------------------------------------------------
-Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.068 s - in com.ichop.core.areas.user.repository.UserFollowRepositoryTests

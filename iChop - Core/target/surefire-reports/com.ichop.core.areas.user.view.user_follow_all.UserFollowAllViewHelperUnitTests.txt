@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.ichop.core.areas.user.view.user_follow_all.UserFollowAllViewHelperUnitTests
--------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s - in com.ichop.core.areas.user.view.user_follow_all.UserFollowAllViewHelperUnitTests
