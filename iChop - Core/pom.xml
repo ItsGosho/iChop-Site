@@ -3,13 +3,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.ichop</groupId>
+    <groupId>ichop</groupId>
     <artifactId>core</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0-Beta</version>
     <packaging>jar</packaging>
 
-    <name>iChop WebSite</name>
-    <description>Made for my upcoming Spring Exam</description>
+    <name>iChop - Core</name>
+    <description>The brain of the whole application ,which connects all microservices</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
