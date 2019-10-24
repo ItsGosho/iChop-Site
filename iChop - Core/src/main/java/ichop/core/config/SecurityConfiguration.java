@@ -1,71 +1,65 @@
 package ichop.core.config;
 
-import ichop.core.areas.user.handlers.UserAuthenticationSuccessfulHandler;
-import ichop.core.areas.user.handlers.UserLogoutHandler;
-import ichop.core.areas.user.services.UserServices;
+import ichop.core.areas.role.services.UserRoleServices;
+import ichop.core.filters.JwtAuthenticationFilter;
+import ichop.core.filters.JwtAuthorizationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-@Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true,proxyTargetClass = true)
+@EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    private final UserServices userServices;
-    private final UserAuthenticationSuccessfulHandler userAuthenticationSuccessfulHandler;
-    private final UserLogoutHandler userLogoutHandler;
+    private final UserRoleServices userRoleServices;
 
     @Autowired
-    public SecurityConfiguration(UserServices userServices, UserAuthenticationSuccessfulHandler userAuthenticationSuccessfulHandler, UserLogoutHandler userLogoutHandler) {
-        this.userServices = userServices;
-        this.userAuthenticationSuccessfulHandler = userAuthenticationSuccessfulHandler;
-        this.userLogoutHandler = userLogoutHandler;
+    public SecurityConfiguration(UserRoleServices userRoleServices) {
+        this.userRoleServices = userRoleServices;
     }
-
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.
-                cors().disable()
+        http.cors().and()
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/login", "/register").anonymous()
-                .antMatchers("/**").permitAll()
-//                .antMatchers("/css/**", "/js/**","/img/**").permitAll()
-//                .antMatchers("/api/user/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin()
-                .failureUrl("/?login=error")
-                .loginPage("/login")
-                .successHandler(this.userAuthenticationSuccessfulHandler)
-                .usernameParameter("usernameOrEmail")
-                .passwordParameter("password")
-                .and()
-                .logout()
-                .addLogoutHandler(this.userLogoutHandler)
-                .logoutSuccessUrl("/")
-                .and()
-                .rememberMe()
-                .userDetailsService(this.userServices)
-                .rememberMeParameter("rememberMe")
-                .rememberMeCookieName("_nf")
-                .tokenValiditySeconds(20000)
-                .and()
-                .exceptionHandling()
-                .accessDeniedPage("/unauthorized");
+                .addFilter(new JwtAuthenticationFilter(authenticationManager(),this.userRoleServices))
+                .addFilter(new JwtAuthorizationFilter(authenticationManager()))
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
 
+    @Override
+    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.inMemoryAuthentication()
+                .withUser("user")
+                .password(passwordEncoder().encode("password"))
+                .authorities("ROLE_USER");
+    }
 
-//        private CsrfTokenRepository csrfTokenRepository() {
-//        HttpSessionCsrfTokenRepository repository = new HttpSessionCsrfTokenRepository();
-//
-//        repository.setSessionAttributeName("_csrf");
-//
-//        return repository;
-//    }
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
+
+        return source;
+    }
 }
+
