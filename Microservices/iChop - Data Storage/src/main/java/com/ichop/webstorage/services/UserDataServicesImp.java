@@ -42,40 +42,41 @@ public class UserDataServicesImp implements UserDataServices {
         }
         InputStream inputStream = this.convertBufferedImageToInputStream(bufferedImage);
 
-        if(this.getSizeInMB(avatarAsBase64) > 1.00){
+        if (this.getSizeInMB(avatarAsBase64) > 1.00) {
             return;
         }
 
-        if(bufferedImage.getWidth() > 200 || bufferedImage.getHeight() > 200){
+        if (bufferedImage.getWidth() > 200 || bufferedImage.getHeight() > 200) {
             return;
         }
 
-        String filePath = String.format(USER_AVATAR_FILE_PATH_PATTERN,username,username);
+        String filePath = String.format(USER_AVATAR_FILE_PATH_PATTERN, username, username);
 
         this.dropboxServices.deleteFile(filePath);
         this.dropboxServices.createFolder(username.toLowerCase());
-        this.dropboxServices.uploadFile(filePath,inputStream);
+        this.dropboxServices.uploadFile(filePath, inputStream);
     }
 
     @Cacheable
     public byte[] getAvatarAsBase64Array(String username) {
 
-        InputStream inputStream = this.dropboxServices.downloadFile(String.format(USER_AVATAR_FILE_PATH_PATTERN,username,username));
+        InputStream inputStream = this.dropboxServices.downloadFile(String.format(USER_AVATAR_FILE_PATH_PATTERN, username, username));
 
         return this.inputStreamToBase64String(inputStream);
     }
 
-    private byte[] inputStreamToBase64String(InputStream inputStream){
+    private byte[] inputStreamToBase64String(InputStream inputStream) {
 
         try {
             byte[] bytes = IOUtils.toByteArray(inputStream);
             return bytes;
-        } catch (Exception ignored) { }
+        } catch (Exception ignored) {
+        }
 
         return new byte[0];
     }
 
-    private InputStream convertBufferedImageToInputStream(BufferedImage image){
+    private InputStream convertBufferedImageToInputStream(BufferedImage image) {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         try {
             ImageIO.write(image, "png", byteArrayOutputStream);
@@ -85,9 +86,9 @@ public class UserDataServicesImp implements UserDataServices {
         return new ByteArrayInputStream(byteArrayOutputStream.toByteArray());
     }
 
-    private Double getSizeInMB(String base64){
+    private Double getSizeInMB(String base64) {
         int y = base64.endsWith("==") ? 2 : 1;
-        double size =(((base64.length() * 3) / 4 - y) /1024.00)/1024.00 ;
+        double size = (((base64.length() * 3) / 4 - y) / 1024.00) / 1024.00;
         return size;
     }
 
