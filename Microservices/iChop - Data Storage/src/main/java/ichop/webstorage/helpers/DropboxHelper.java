@@ -1,4 +1,4 @@
-package ichop.webstorage.services;
+package ichop.webstorage.helpers;
 
 import com.dropbox.core.v2.files.CreateFolderResult;
 import com.dropbox.core.v2.files.FileMetadata;
@@ -6,7 +6,7 @@ import com.dropbox.core.v2.files.ListFolderResult;
 
 import java.io.InputStream;
 
-public interface DropboxServices {
+public interface DropboxHelper {
 
     InputStream downloadFile(String filePath);
 

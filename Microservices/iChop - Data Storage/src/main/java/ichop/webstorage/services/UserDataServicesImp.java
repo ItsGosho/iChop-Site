@@ -1,5 +1,6 @@
 package ichop.webstorage.services;
 
+import ichop.webstorage.helpers.DropboxHelper;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
@@ -20,11 +21,11 @@ import java.io.InputStream;
 public class UserDataServicesImp implements UserDataServices {
 
     public static final String USER_AVATAR_FILE_PATH_PATTERN = "/%s/avatar-%s.png";
-    private final DropboxServices dropboxServices;
+    private final DropboxHelper dropboxHelper;
 
     @Autowired
-    public UserDataServicesImp(DropboxServices dropboxServices) {
-        this.dropboxServices = dropboxServices;
+    public UserDataServicesImp(DropboxHelper dropboxHelper) {
+        this.dropboxHelper = dropboxHelper;
     }
 
 
@@ -51,15 +52,15 @@ public class UserDataServicesImp implements UserDataServices {
 
         String filePath = String.format(USER_AVATAR_FILE_PATH_PATTERN, username, username);
 
-        this.dropboxServices.deleteFile(filePath);
-        this.dropboxServices.createFolder(username.toLowerCase());
-        this.dropboxServices.uploadFile(filePath, inputStream);
+        this.dropboxHelper.deleteFile(filePath);
+        this.dropboxHelper.createFolder(username.toLowerCase());
+        this.dropboxHelper.uploadFile(filePath, inputStream);
     }
 
     @Cacheable
     public byte[] getAvatarAsBase64Array(String username) {
 
-        InputStream inputStream = this.dropboxServices.downloadFile(String.format(USER_AVATAR_FILE_PATH_PATTERN, username, username));
+        InputStream inputStream = this.dropboxHelper.downloadFile(String.format(USER_AVATAR_FILE_PATH_PATTERN, username, username));
 
         return this.inputStreamToBase64String(inputStream);
     }

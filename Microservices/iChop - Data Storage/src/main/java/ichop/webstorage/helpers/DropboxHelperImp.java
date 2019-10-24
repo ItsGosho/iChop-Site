@@ -1,10 +1,7 @@
-package ichop.webstorage.services;
+package ichop.webstorage.helpers;
 
-import com.dropbox.core.DbxDownloader;
-import com.dropbox.core.DbxException;
 import com.dropbox.core.v2.DbxClientV2;
 import com.dropbox.core.v2.files.*;
-import ichop.webstorage.constants.DropboxLoggingConstants;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,14 +12,14 @@ import java.io.InputStream;
 import static ichop.webstorage.constants.DropboxLoggingConstants.*;
 
 @Service
-public class DropboxServicesImp implements DropboxServices {
+public class DropboxHelperImp implements DropboxHelper {
 
-    private final Logger LOG = LogManager.getLogger(DropboxServicesImp.class);
+    private final Logger LOG = LogManager.getLogger(DropboxHelperImp.class);
 
     private final DbxClientV2 client;
 
     @Autowired
-    public DropboxServicesImp(DbxClientV2 client) {
+    public DropboxHelperImp(DbxClientV2 client) {
         this.client = client;
     }
 
@@ -82,6 +79,13 @@ public class DropboxServicesImp implements DropboxServices {
             LOG.error(String.format("Error executing operation for path %s due to %s", path, e.getMessage()));
         }
         return null;
+    }
+
+    @FunctionalInterface
+    private interface DropboxActionResolver<T> {
+
+        T perform() throws Exception;
+
     }
 
 }
