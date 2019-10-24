@@ -19,7 +19,8 @@ import java.io.InputStream;
 @CacheConfig(cacheNames = "users")
 public class UserDataHelperImp implements UserDataHelper {
 
-    public static final String USER_AVATAR_FILE_PATH_PATTERN = "/%s/avatar-%s.png";
+    private static final String USER_AVATAR_FILE_PATH_PATTERN = "/%s/avatar-%s.png";
+
     private final DropboxHelper dropboxHelper;
 
     @Autowired
@@ -41,14 +42,6 @@ public class UserDataHelperImp implements UserDataHelper {
         }
         InputStream inputStream = this.convertBufferedImageToInputStream(bufferedImage);
 
-        if (this.getSizeInMB(avatarAsBase64) > 1.00) {
-            return;
-        }
-
-        if (bufferedImage.getWidth() > 200 || bufferedImage.getHeight() > 200) {
-            return;
-        }
-
         String filePath = String.format(USER_AVATAR_FILE_PATH_PATTERN, username, username);
 
         this.dropboxHelper.deleteFile(filePath);
@@ -67,8 +60,7 @@ public class UserDataHelperImp implements UserDataHelper {
     private byte[] inputStreamToBase64String(InputStream inputStream) {
 
         try {
-            byte[] bytes = IOUtils.toByteArray(inputStream);
-            return bytes;
+            return IOUtils.toByteArray(inputStream);
         } catch (Exception ignored) {
         }
 
@@ -79,17 +71,10 @@ public class UserDataHelperImp implements UserDataHelper {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         try {
             ImageIO.write(image, "png", byteArrayOutputStream);
-        } catch (Exception e) {
+        } catch (Exception ignored) {
 
         }
         return new ByteArrayInputStream(byteArrayOutputStream.toByteArray());
     }
-
-    private Double getSizeInMB(String base64) {
-        int y = base64.endsWith("==") ? 2 : 1;
-        double size = (((base64.length() * 3) / 4 - y) / 1024.00) / 1024.00;
-        return size;
-    }
-
 
 }
