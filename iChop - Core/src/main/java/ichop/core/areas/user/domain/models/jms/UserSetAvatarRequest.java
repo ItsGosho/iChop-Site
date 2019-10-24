@@ -1,12 +1,12 @@
 package ichop.core.areas.user.domain.models.jms;
 
-import ichop.core.base.BaseJMSSendModel;
+import ichop.core.common.domain.BaseRequestModel;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class UserUpdateAvatarJmsSendModel extends BaseJMSSendModel {
+public class UserSetAvatarRequest extends BaseRequestModel {
 
     private String username;
     private String avatar;

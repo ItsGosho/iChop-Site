@@ -1,17 +1,17 @@
 package ichop.core.areas.user.domain.entities;
 
-import ichop.core.areas.log.domain.entities.UserLog;
 import ichop.core.areas.role.domain.entities.UserRole;
-import ichop.core.base.BaseEntity;
+import ichop.core.common.domain.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -19,44 +19,39 @@ import java.util.Set;
 @Document("users")
 public class User extends BaseEntity implements UserDetails {
 
-    @Column(name = "username", unique = true, nullable = false, updatable = false)
+    @NotNull
+    @Indexed(unique = true)
     private String username;
 
-    @Column(name = "password", nullable = false)
+    @NotNull
     private String password;
 
-    @Column(name = "email", unique = true, nullable = false)
+    @Indexed(unique = true)
     private String email;
 
-    @Column(name = "is_account_non_expired", nullable = false)
+    @NotNull
     private boolean isAccountNonExpired;
 
-    @Column(name = "is_account_non_locked", nullable = false)
+    @NotNull
     private boolean isAccountNonLocked;
 
-    @Column(name = "is_credentials_non_expired", nullable = false)
+    @NotNull
     private boolean isCredentialsNonExpired;
 
-    @Column(name = "is_enable", nullable = false)
+    @NotNull
     private boolean isEnabled;
 
-    @ManyToMany(fetch = FetchType.EAGER, targetEntity = UserRole.class)
+    @DBRef
     private Set<UserRole> authorities;
 
-    @Column(name = "registration_date", nullable = false, updatable = false)
-    private LocalDateTime registrationDate;
+    @NotNull
+    private LocalDateTime registrationDate = LocalDateTime.now();
 
-    @Column(name = "last_online")
-    private LocalDateTime lastOnline;
+    @NotNull
+    private LocalDateTime lastOnline = LocalDateTime.now();
 
-    @OneToMany(mappedBy = "user", targetEntity = UserLog.class)
-    private List<UserLog> logs;
-
-    @Column(name = "location")
+    @NotNull
     private String location;
-
-    @OneToOne(mappedBy = "user", targetEntity = UserInformation.class)
-    private UserInformation userInformation;
 
     public User() {
         this.setAuthorities(new HashSet<>());

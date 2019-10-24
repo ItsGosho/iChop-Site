@@ -1,10 +1,10 @@
 package ichop.core.areas.user.handlers;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.core.areas.role.services.UserRoleServices;
 import ichop.core.areas.user.domain.models.service.UserServiceModel;
 import ichop.core.areas.user.services.UserServices;
 import ichop.core.constants.URLConstants;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.DefaultRedirectStrategy;
@@ -24,20 +24,20 @@ public class UserAuthenticationSuccessfulHandler implements AuthenticationSucces
 
     private final UserServices userServices;
     private final UserRoleServices userRoleServices;
-    private final ModelMapper modelMapper;
+    private final ObjectMapper objectMapper;
 
     @Autowired
-    public UserAuthenticationSuccessfulHandler(UserServices userServices, UserRoleServices userRoleServices, ModelMapper modelMapper) {
+    public UserAuthenticationSuccessfulHandler(UserServices userServices, UserRoleServices userRoleServices, ObjectMapper objectMapper) {
         this.userServices = userServices;
         this.userRoleServices = userRoleServices;
-        this.modelMapper = modelMapper;
+        this.objectMapper = objectMapper;
     }
 
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
 
-        UserServiceModel userServiceModel = this.modelMapper.map(authentication.getPrincipal(), UserServiceModel.class);
+        UserServiceModel userServiceModel = this.objectMapper.convertValue(authentication.getPrincipal(), UserServiceModel.class);
         this.userServices.updateLastOnline(userServiceModel, LocalDateTime.now());
         this.userServices.updateUserLocation(userServiceModel,request.getParameter("userLocation"));
 
