@@ -2,8 +2,326 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1984862c-2f8c-4410-af36-a1dcaaa3ddaf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reactions Service/src/main/resources/application-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Reactions Service/src/main/resources/application-dev.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-database.properties" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/log/domain/entities/UserLogType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/domain/entities/ReactionType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/domain/models/binding/CommentReactionCreateBindingModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/domain/models/service/CommentReactionServiceModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/web/controllers/ReactionExceptionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/CLR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/CLR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/comment/constants/CommentExceptionsMessages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/constants/CommentExceptionsMessages.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/comment/domain/entities/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/domain/entities/Comment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/comment/domain/models/binding/CommentCreateBindingModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/domain/models/binding/CommentCreateBindingModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/comment/domain/models/service/CommentServiceModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/domain/models/service/CommentServiceModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/comment/exceptions/CommentNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/exceptions/CommentNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/comment/repositories/CommentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/repositories/CommentRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/comment/services/CommentServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/services/CommentServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/comment/services/CommentServicesImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/services/CommentServicesImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/comment/web/controllers/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/web/controllers/CommentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/comment/web/controllers/CommentExceptionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/web/controllers/CommentExceptionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/comment/web/fillers/CommentBindingModelsFillers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/web/fillers/CommentBindingModelsFillers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/email/domain/models/ReportsStatisticsDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/email/domain/models/ReportsStatisticsDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/email/services/EmailServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/email/services/EmailServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/email/services/EmailServicesImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/email/services/EmailServicesImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/jms/constants/JMSConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/jms/constants/JMSConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/jms/exception/JmsServerIsDownException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/jms/exception/JmsServerIsDownException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/jms/handlers/JmsExceptionsHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/jms/handlers/JmsExceptionsHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/jms/services/JmsServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/jms/services/JmsServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/jms/services/JmsServicesImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/jms/services/JmsServicesImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/log/domain/entities/BaseLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/log/domain/entities/BaseLog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/log/domain/entities/UserLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/log/domain/entities/UserLog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/log/domain/entities/UserLogType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/log/domain/models/binding/UserLogCreateBindingModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/log/domain/models/binding/UserLogCreateBindingModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/log/domain/models/service/LogServiceModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/log/domain/models/service/LogServiceModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/log/domain/models/service/UserLogServiceModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/log/domain/models/service/UserLogServiceModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/log/repositories/LogRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/log/repositories/LogRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/log/repositories/UserLogRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/log/repositories/UserLogRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/log/services/UserLogServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/log/services/UserLogServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/log/services/UserLogServicesImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/log/services/UserLogServicesImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/player/aspects/IsPlayerAccountLinked.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/player/aspects/IsPlayerAccountLinked.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/player/aspects/IsPlayerAccountLinkedAroundProceeder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/player/aspects/IsPlayerAccountLinkedAroundProceeder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/player/constants/BasicStatisticsJMSConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/player/constants/BasicStatisticsJMSConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/player/constants/LinkAccountJMSConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/player/constants/LinkAccountJMSConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/player/constants/PlayerExceptionMessages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/player/constants/PlayerExceptionMessages.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/player/domain/jms/key/receive/PlayerDataByKeyJMSReceiveModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/player/domain/jms/key/receive/PlayerDataByKeyJMSReceiveModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/player/domain/jms/key/receive/PlayerDataBySiteUserJMSReceiveModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/player/domain/jms/key/receive/PlayerDataBySiteUserJMSReceiveModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/player/domain/jms/key/send/PlayerDataByKeyJMSSendModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/player/domain/jms/key/send/PlayerDataByKeyJMSSendModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/player/domain/jms/key/send/PlayerDataBySiteUserJMSSendModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/player/domain/jms/key/send/PlayerDataBySiteUserJMSSendModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/player/domain/jms/player/basicstatistics/receive/GetPlayerBasicStatisticsByUUIDJMSReceiveModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/player/domain/jms/player/basicstatistics/receive/GetPlayerBasicStatisticsByUUIDJMSReceiveModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/player/domain/jms/player/basicstatistics/send/GetPlayerBasicStatisticsByUUIDJMSSendModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/player/domain/jms/player/basicstatistics/send/GetPlayerBasicStatisticsByUUIDJMSSendModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/player/domain/jms/player/link/receive/GetPlayerDataByPlayerUUIDJMSReceiveModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/player/domain/jms/player/link/receive/GetPlayerDataByPlayerUUIDJMSReceiveModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/player/domain/jms/player/link/receive/IsPlayerLinkedAccountByUUIDJMSReceiveModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/player/domain/jms/player/link/receive/IsPlayerLinkedAccountByUUIDJMSReceiveModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/player/domain/jms/player/link/receive/LinkPlayerAccountJMSReceiveModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/player/domain/jms/player/link/receive/LinkPlayerAccountJMSReceiveModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/player/domain/jms/player/link/receive/UnlinkPlayerAccountJMSReceiveModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/player/domain/jms/player/link/receive/UnlinkPlayerAccountJMSReceiveModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/player/domain/jms/player/link/send/GetPlayerDataByPlayerUUIDJMSSendModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/player/domain/jms/player/link/send/GetPlayerDataByPlayerUUIDJMSSendModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/player/domain/jms/player/link/send/IsPlayerLinkedAccountByUUIDJMSSendModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/player/domain/jms/player/link/send/IsPlayerLinkedAccountByUUIDJMSSendModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/player/domain/jms/player/link/send/LinkPlayerAccountJMSSendModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/player/domain/jms/player/link/send/LinkPlayerAccountJMSSendModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/player/domain/jms/player/link/send/UnlinkPlayerAccountJMSSendModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/player/domain/jms/player/link/send/UnlinkPlayerAccountJMSSendModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/player/domain/json/IsPlayerAccountLinkedJSONModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/player/domain/json/IsPlayerAccountLinkedJSONModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/player/domain/models/view/PlayerProfileViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/player/domain/models/view/PlayerProfileViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/player/exceptions/AccountAlreadyLinkedException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/player/exceptions/AccountAlreadyLinkedException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/player/helpers/player_profile/PlayerProfileViewHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/player/helpers/player_profile/PlayerProfileViewHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/player/services/PlayerBasicStatisticJmsServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/player/services/PlayerBasicStatisticJmsServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/player/services/PlayerBasicStatisticsJmsServicesImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/player/services/PlayerBasicStatisticsJmsServicesImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/player/services/PlayerLinkJmsServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/player/services/PlayerLinkJmsServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/player/services/PlayerLinkJmsServicesImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/player/services/PlayerLinkJmsServicesImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/player/web/controllers/PlayerApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/player/web/controllers/PlayerApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/player/web/controllers/PlayerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/player/web/controllers/PlayerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/player/web/controllers/PlayerExceptionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/player/web/controllers/PlayerExceptionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/post/constants/PostExceptionConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/post/constants/PostExceptionConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/post/domain/entities/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/post/domain/entities/Post.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/post/domain/models/binding/PostCreateBindingModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/post/domain/models/binding/PostCreateBindingModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/post/domain/models/service/PostServiceModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/post/domain/models/service/PostServiceModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/post/exceptions/PostNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/post/exceptions/PostNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/post/repositories/PostRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/post/repositories/PostRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/post/services/PostServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/post/services/PostServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/post/services/PostServicesImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/post/services/PostServicesImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/post/web/controllers/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/post/web/controllers/PostController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/post/web/controllers/PostExceptionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/post/web/controllers/PostExceptionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/post/web/fillers/PostBindingModelsFillers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/post/web/fillers/PostBindingModelsFillers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/constants/ReactionExceptionsMessages.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/constants/ReactionExceptionsMessages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/constants/ReactionExceptionsMessages.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/domain/entities/BaseReaction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/domain/entities/BaseReaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/domain/entities/BaseReaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/domain/entities/CommentReaction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/domain/entities/CommentReaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/domain/entities/CommentReaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/domain/entities/ReactionType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/domain/entities/ThreadReaction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/domain/entities/ThreadReaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/domain/entities/ThreadReaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/domain/models/binding/CommentReactionCreateBindingModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/domain/models/binding/ThreadReactionCreateBindingModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/domain/models/binding/ThreadReactionCreateBindingModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/domain/models/service/CommentReactionServiceModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/domain/models/service/ThreadReactionServiceModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/domain/models/service/ThreadReactionServiceModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/domain/models/service/ThreadReactionServiceModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/exceptions/CantReactException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/exceptions/CantReactException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/exceptions/CantReactException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/exceptions/ReactionNotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/exceptions/ReactionNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/exceptions/ReactionNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/repositories/CommentReactionRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/repositories/CommentReactionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/repositories/CommentReactionRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/repositories/ReactionRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/repositories/ReactionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/repositories/ReactionRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/repositories/ThreadReactionRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/repositories/ThreadReactionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/repositories/ThreadReactionRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/services/BaseReactionServices.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/services/BaseReactionServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/services/BaseReactionServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/services/CommentReactionServices.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/services/CommentReactionServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/services/CommentReactionServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/services/CommentReactionServicesImp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/services/CommentReactionServicesImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/services/CommentReactionServicesImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/services/ThreadReactionServices.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/services/ThreadReactionServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/services/ThreadReactionServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/services/ThreadReactionServicesImp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/services/ThreadReactionServicesImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/services/ThreadReactionServicesImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/web/controllers/ReactionApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/web/controllers/ReactionApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/web/controllers/ReactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/web/controllers/ReactionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/web/controllers/ReactionExceptionController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/reaction/web/fillers/ReactionBindingModelsFillers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/web/fillers/ReactionBindingModelsFillers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/constants/ReportExceptionMessages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/constants/ReportExceptionMessages.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/domain/entities/BaseReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/domain/entities/BaseReport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/domain/entities/CommentReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/domain/entities/CommentReport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/domain/entities/PostReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/domain/entities/PostReport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/domain/entities/ThreadReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/domain/entities/ThreadReport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/domain/models/binding/BaseReportCreateBindingModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/domain/models/binding/BaseReportCreateBindingModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/domain/models/binding/CommentReportCreateBindingModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/domain/models/binding/CommentReportCreateBindingModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/domain/models/binding/PostReportCreateBindingModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/domain/models/binding/PostReportCreateBindingModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/domain/models/binding/ThreadReportCreateBindingModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/domain/models/binding/ThreadReportCreateBindingModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/domain/models/service/BaseReportServiceModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/domain/models/service/BaseReportServiceModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/domain/models/service/CommentReportServiceModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/domain/models/service/CommentReportServiceModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/domain/models/service/PostReportServiceModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/domain/models/service/PostReportServiceModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/domain/models/service/ThreadReportServiceModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/domain/models/service/ThreadReportServiceModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/domain/models/view/CommentAllReportsViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/domain/models/view/CommentAllReportsViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/domain/models/view/PostAllReportsViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/domain/models/view/PostAllReportsViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/domain/models/view/ThreadAllReportsViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/domain/models/view/ThreadAllReportsViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/exceptions/ReportAlreadyMadeException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/exceptions/ReportAlreadyMadeException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/exceptions/ReportNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/exceptions/ReportNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/helpers/CommentAllReportsViewHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/helpers/CommentAllReportsViewHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/helpers/PostAllReportsViewHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/helpers/PostAllReportsViewHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/helpers/ThreadAllReportsViewHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/helpers/ThreadAllReportsViewHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/repositories/CommentReportRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/repositories/CommentReportRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/repositories/PostReportRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/repositories/PostReportRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/repositories/ReportRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/repositories/ReportRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/repositories/ThreadReportRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/repositories/ThreadReportRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/scheduled/ReportsEmailSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/scheduled/ReportsEmailSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/services/BaseReportServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/services/BaseReportServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/services/CommentReportServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/services/CommentReportServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/services/CommentReportServicesImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/services/CommentReportServicesImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/services/PostReportServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/services/PostReportServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/services/PostReportServicesImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/services/PostReportServicesImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/services/ThreadReportServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/services/ThreadReportServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/services/ThreadReportServicesImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/services/ThreadReportServicesImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/web/controllers/CommentReportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/web/controllers/CommentReportController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/web/controllers/PostReportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/web/controllers/PostReportController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/web/controllers/ReportExceptionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/web/controllers/ReportExceptionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/web/controllers/ThreadReportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/web/controllers/ThreadReportController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/web/controllers/api/CommentReportApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/web/controllers/api/CommentReportApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/web/controllers/api/PostReportApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/web/controllers/api/PostReportApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/web/controllers/api/ThreadReportApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/web/controllers/api/ThreadReportApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/report/web/fillers/ReportBindingModelsFillers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/web/fillers/ReportBindingModelsFillers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/role/constants/RoleExceptionMessages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/role/constants/RoleExceptionMessages.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/role/domain/entities/UserRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/role/domain/entities/UserRole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/role/domain/entities/UserRoles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/role/domain/entities/UserRoles.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/role/domain/models/service/UserRoleServiceModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/role/domain/models/service/UserRoleServiceModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/role/exceptions/RoleNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/role/exceptions/RoleNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/role/repositories/UserRoleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/role/repositories/UserRoleRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/role/services/UserRoleServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/role/services/UserRoleServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/role/services/UserRoleServicesImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/role/services/UserRoleServicesImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/role/web/controllers/RoleExceptionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/role/web/controllers/RoleExceptionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/thread/constants/ThreadExceptionMessages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/thread/constants/ThreadExceptionMessages.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/thread/domain/entities/Thread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/thread/domain/entities/Thread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/thread/domain/models/binding/ThreadCreateBindingModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/thread/domain/models/binding/ThreadCreateBindingModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/thread/domain/models/service/ThreadServiceModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/thread/domain/models/service/ThreadServiceModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/thread/domain/models/view/thread_homepage/ThreadHomepageViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/thread/domain/models/view/thread_homepage/ThreadHomepageViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/thread/domain/models/view/thread_read/CommentCreatorThreadReadViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/thread/domain/models/view/thread_read/CommentCreatorThreadReadViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/thread/domain/models/view/thread_read/CommentThreadReadViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/thread/domain/models/view/thread_read/CommentThreadReadViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/thread/domain/models/view/thread_read/ThreadCreatorThreadReadViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/thread/domain/models/view/thread_read/ThreadCreatorThreadReadViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/thread/domain/models/view/thread_read/ThreadReadViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/thread/domain/models/view/thread_read/ThreadReadViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/thread/exceptions/ThreadNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/thread/exceptions/ThreadNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/thread/helpers/view/thread_homepage/ThreadHomepageViewHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/thread/helpers/view/thread_homepage/ThreadHomepageViewHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/thread/helpers/view/thread_read/CommentCreatorThreadReadViewHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/thread/helpers/view/thread_read/CommentCreatorThreadReadViewHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/thread/helpers/view/thread_read/CommentThreadReadViewHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/thread/helpers/view/thread_read/CommentThreadReadViewHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/thread/helpers/view/thread_read/ThreadCreatorThreadReadViewHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/thread/helpers/view/thread_read/ThreadCreatorThreadReadViewHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/thread/helpers/view/thread_read/ThreadReadViewHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/thread/helpers/view/thread_read/ThreadReadViewHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/thread/repositories/ThreadRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/thread/repositories/ThreadRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/thread/services/ThreadServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/thread/services/ThreadServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/thread/services/ThreadServicesImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/thread/services/ThreadServicesImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/thread/web/controllers/ThreadApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/thread/web/controllers/ThreadApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/thread/web/controllers/ThreadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/thread/web/controllers/ThreadController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/thread/web/controllers/ThreadExceptionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/thread/web/controllers/ThreadExceptionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/thread/web/fillers/ThreadBindingModelsFillers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/thread/web/fillers/ThreadBindingModelsFillers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/token/constants/TokenExceptionMessages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/token/constants/TokenExceptionMessages.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/token/domain/entities/BaseToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/token/domain/entities/BaseToken.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/token/domain/entities/PasswordResetToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/token/domain/entities/PasswordResetToken.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/token/domain/models/binding/PasswordResetTokenCreateBindingModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/token/domain/models/binding/PasswordResetTokenCreateBindingModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/token/domain/models/service/PasswordResetTokenServiceModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/token/domain/models/service/PasswordResetTokenServiceModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/token/exceptions/TokenNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/token/exceptions/TokenNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/token/exceptions/TokenNotValidException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/token/exceptions/TokenNotValidException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/token/repositories/PasswordResetTokenRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/token/repositories/PasswordResetTokenRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/token/repositories/TokenRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/token/repositories/TokenRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/token/scheduled/ExpiredPasswordResetTokenCleaner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/token/scheduled/ExpiredPasswordResetTokenCleaner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/token/services/BaseTokenServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/token/services/BaseTokenServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/token/services/PasswordResetTokenServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/token/services/PasswordResetTokenServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/token/services/PasswordResetTokenServicesImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/token/services/PasswordResetTokenServicesImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/token/web/controllers/TokenExceptionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/token/web/controllers/TokenExceptionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/constants/UserExceptionMessages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/constants/UserExceptionMessages.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/constants/UserValidationConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/constants/UserValidationConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/constants/UserWebStorageJmsConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/constants/UserWebStorageJmsConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/domain/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/domain/entities/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/domain/entities/UserFollow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/domain/entities/UserFollow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/domain/entities/UserInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/domain/entities/UserInformation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/domain/models/binding/UserForgottenPasswordBindingModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/domain/models/binding/UserForgottenPasswordBindingModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/domain/models/binding/UserRegisterBindingModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/domain/models/binding/UserRegisterBindingModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/domain/models/binding/UserResetPasswordBindingModelByToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/domain/models/binding/UserResetPasswordBindingModelByToken.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/domain/models/binding/UserResetPasswordBindingModelByUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/domain/models/binding/UserResetPasswordBindingModelByUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/domain/models/binding/UserUpdateProfileInformationBindingModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/domain/models/binding/UserUpdateProfileInformationBindingModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/domain/models/jms/UserUpdateAvatarJmsSendModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/domain/models/jms/UserUpdateAvatarJmsSendModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/domain/models/service/UserFollowServiceModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/domain/models/service/UserFollowServiceModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/domain/models/service/UserInformationServiceModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/domain/models/service/UserInformationServiceModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/domain/models/service/UserServiceModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/domain/models/service/UserServiceModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/domain/models/view/user_all/UsersAllViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/domain/models/view/user_all/UsersAllViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/domain/models/view/user_control/UserControlBaseViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/domain/models/view/user_control/UserControlBaseViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/domain/models/view/user_control/UserControlHomeViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/domain/models/view/user_control/UserControlHomeViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/domain/models/view/user_control/UserRoleManagementHistoryUserControlViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/domain/models/view/user_control/UserRoleManagementHistoryUserControlViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/domain/models/view/user_control/UserRoleManagementUserControlViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/domain/models/view/user_control/UserRoleManagementUserControlViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/domain/models/view/user_follow_all/UserFollowAllViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/domain/models/view/user_follow_all/UserFollowAllViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/domain/models/view/user_options/UserProfileOptionsInformationViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/domain/models/view/user_options/UserProfileOptionsInformationViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/domain/models/view/user_profile/PostsUserProfileViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/domain/models/view/user_profile/PostsUserProfileViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/domain/models/view/user_profile/UserInformationProfileViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/domain/models/view/user_profile/UserInformationProfileViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/domain/models/view/user_profile/UserProfileViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/domain/models/view/user_profile/UserProfileViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/events/UserRoleChangeEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/events/UserRoleChangeEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/events/UserRoleChangeEventListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/events/UserRoleChangeEventListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/exceptions/UserAlreadyExistsException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/exceptions/UserAlreadyExistsException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/exceptions/UserAlreadyFollowingHimException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/exceptions/UserAlreadyFollowingHimException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/exceptions/UserAlreadyReacted.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/exceptions/UserAlreadyReacted.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/exceptions/UserCannotFollowException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/exceptions/UserCannotFollowException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/exceptions/UserNotAuthorizedException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/exceptions/UserNotAuthorizedException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/exceptions/UserNotFollowingHimException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/exceptions/UserNotFollowingHimException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/exceptions/UserNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/exceptions/UserNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/exceptions/UserPasswordNotValidException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/exceptions/UserPasswordNotValidException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/handlers/UserAuthenticationSuccessfulHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/handlers/UserAuthenticationSuccessfulHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/handlers/UserLogoutHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/handlers/UserLogoutHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/helpers/view/user_all/UsersAllViewHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/helpers/view/user_all/UsersAllViewHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/helpers/view/user_control/UserControlHomeViewHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/helpers/view/user_control/UserControlHomeViewHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/helpers/view/user_control/UserRoleManagementHistoryUserControlViewHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/helpers/view/user_control/UserRoleManagementHistoryUserControlViewHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/helpers/view/user_control/UserRoleManagementUserControlViewHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/helpers/view/user_control/UserRoleManagementUserControlViewHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/helpers/view/user_follow_all/UserFollowAllViewHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/helpers/view/user_follow_all/UserFollowAllViewHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/helpers/view/user_options/UserProfileOptionsInformationViewHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/helpers/view/user_options/UserProfileOptionsInformationViewHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/helpers/view/user_profile/PostsUserProfileViewHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/helpers/view/user_profile/PostsUserProfileViewHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/helpers/view/user_profile/UserInformationProfileViewHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/helpers/view/user_profile/UserInformationProfileViewHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/helpers/view/user_profile/UserProfileViewHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/helpers/view/user_profile/UserProfileViewHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/repositories/UserFollowRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/repositories/UserFollowRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/repositories/UserInformationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/repositories/UserInformationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/repositories/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/services/UserFollowServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/services/UserFollowServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/services/UserFollowServicesImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/services/UserFollowServicesImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/services/UserInformationServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/services/UserInformationServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/services/UserInformationServicesImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/services/UserInformationServicesImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/services/UserServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/services/UserServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/services/UserServicesImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/services/UserServicesImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/services/UserWebStorageJmsServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/services/UserWebStorageJmsServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/services/UserWebStorageJmsServicesImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/services/UserWebStorageJmsServicesImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/web/controllers/UserApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/web/controllers/UserApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/web/controllers/UserAuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/web/controllers/UserAuthenticationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/web/controllers/UserAuthorizatonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/web/controllers/UserAuthorizatonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/web/controllers/UserControlController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/web/controllers/UserControlController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/web/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/web/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/web/controllers/UserExceptionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/web/controllers/UserExceptionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/web/controllers/UserFollowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/web/controllers/UserFollowController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/web/controllers/UserProfileOptionsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/web/controllers/UserProfileOptionsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/web/fillers/UserBindingModelsFillers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/web/fillers/UserBindingModelsFillers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/areas/user/web/interceptors/PrincipalIdBugInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/web/interceptors/PrincipalIdBugInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/base/BaseController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/base/BaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/base/BaseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/base/BaseEntity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/base/BaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/base/BaseEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/base/BaseExceptionController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/base/BaseExceptionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/base/BaseExceptionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/base/BaseJMSReceiveModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/base/BaseJMSReceiveModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/base/BaseJMSSendModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/base/BaseJMSSendModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/base/BaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/base/BaseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/base/BaseServiceModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/base/BaseServiceModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/base/BaseServiceModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/base/BaseViewCreator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/base/BaseViewCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/base/BaseViewCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/config/BeansConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/config/BeansConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/config/BeansConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/config/DataSourceConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/config/DataSourceConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/config/DataSourceConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/config/EmailConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/config/EmailConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/config/EmailConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/config/InterceptorsConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/config/InterceptorsConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/config/InterceptorsConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/config/JMSConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/config/JMSConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/config/JMSConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/config/PropertyConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/config/PropertyConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/config/PropertyConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/config/SecurityConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/config/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/config/SecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/constants/ServerConstants.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/constants/ServerConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/constants/ServerConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/constants/URLConstants.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/constants/URLConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/constants/URLConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/utils/CustomTemplateEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/utils/CustomTemplateEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/validators/aspects/SkipOnNull.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/validators/aspects/SkipOnNull.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/validators/aspects/SkipOnNull.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/validators/aspects/SkipOnNullAroundProceeder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/validators/aspects/SkipOnNullAroundProceeder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/validators/aspects/SkipOnNullAroundProceeder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/validators/constraint/Base64.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/validators/constraint/Base64.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/validators/constraint/Base64.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/validators/constraint/Base64Image.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/validators/constraint/Base64Image.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/validators/constraint/Base64ImageValidator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/validators/constraint/Base64ImageValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/validators/constraint/Base64ImageValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/validators/constraint/Base64Size.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/validators/constraint/Base64Size.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/validators/constraint/Base64Size.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/validators/constraint/Base64SizeValidator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/validators/constraint/Base64SizeValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/validators/constraint/Base64SizeValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/validators/constraint/Base64Validator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/validators/constraint/Base64Validator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/validators/constraint/Base64Validator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/web/controllers/GlobalExceptionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/web/controllers/GlobalExceptionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/web/controllers/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/web/controllers/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/web/interceptors/FaviconInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/web/interceptors/FaviconInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/core/web/interceptors/TitleInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/web/interceptors/TitleInterceptor.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -112,31 +430,7 @@
     <option name="delegatedBuild" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="27" column="39" selection-start-line="27" selection-start-column="39" selection-end-line="27" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/application-email.properties">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/application-dev.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="56">
-              <caret line="4" column="33" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -201,6 +495,7 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/application-test.properties" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/src/main/resources/application-email.properties" />
         <option value="$PROJECT_DIR$/src/main/resources/application-dev.properties" />
       </list>
     </option>
@@ -257,6 +552,21 @@
               <item name="iChop - Core" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iChop-Core" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iChop - Core" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iChop-Core" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iChop - Core" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ichop" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="iChop-Core" type="b2602c69:ProjectViewProjectNode" />
@@ -589,7 +899,7 @@
       <workItem from="1555145997724" duration="20535000" />
       <workItem from="1571342925472" duration="641000" />
       <workItem from="1571924303821" duration="12000" />
-      <workItem from="1571929534281" duration="1287000" />
+      <workItem from="1571929534281" duration="1515000" />
     </task>
     <servers />
   </component>
@@ -626,7 +936,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1299000" />
+    <option name="totallyTimeSpent" value="1527000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -639,7 +949,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -649,23 +958,23 @@
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info id="Web" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Tail" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Spring" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Statistic" order="11" />
-      <window_info anchor="bottom" id="Problems" order="12" />
-      <window_info anchor="bottom" id="Java Enterprise" order="13" />
-      <window_info anchor="bottom" id="Database Changes" order="14" />
-      <window_info anchor="bottom" id="Version Control" order="15" />
+      <window_info anchor="bottom" id="Tail" order="0" />
+      <window_info anchor="bottom" id="Message" order="1" />
+      <window_info anchor="bottom" id="Find" order="2" />
+      <window_info anchor="bottom" id="Run" order="3" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="7" />
+      <window_info anchor="bottom" id="Spring" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Statistic" order="12" />
+      <window_info anchor="bottom" id="Problems" order="13" />
+      <window_info anchor="bottom" id="Java Enterprise" order="14" />
+      <window_info anchor="bottom" id="Database Changes" order="15" />
+      <window_info anchor="bottom" id="Version Control" order="16" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -730,12 +1039,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/res/img/avatar-user.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application-jms.properties">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application-test.properties">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="658">
@@ -792,23 +1095,78 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="27" column="39" selection-start-line="27" selection-start-column="39" selection-end-line="27" selection-end-column="39" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/resources/application-dev.properties">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/application-email.properties">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/resources/application-dev.properties">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application-jms.properties">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/application-dev.properties">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application-test.properties">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="15" column="36" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/core/constants/ServerConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/core/constants/URLConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/core/validators/constraint/Base64Image.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="15" column="18" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/core/validators/constraint/Base64ImageValidator.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="56">
-          <caret line="4" column="33" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/core/validators/constraint/Base64SizeValidator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/core/validators/constraint/Base64Validator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/core/validators/constraint/Base64.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="15" column="18" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
         </state>
       </provider>
     </entry>

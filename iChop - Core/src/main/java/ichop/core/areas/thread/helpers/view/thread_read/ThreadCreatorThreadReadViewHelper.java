@@ -1,0 +1,47 @@
+package ichop.core.areas.thread.helpers.view.thread_read;
+
+import ichop.core.areas.comment.services.CommentServices;
+import ichop.core.areas.player.domain.jms.key.receive.PlayerDataBySiteUserJMSReceiveModel;
+import ichop.core.areas.player.services.PlayerLinkJmsServices;
+import ichop.core.areas.thread.domain.models.service.ThreadServiceModel;
+import ichop.core.areas.thread.domain.models.view.thread_read.ThreadCreatorThreadReadViewModel;
+import ichop.core.areas.thread.services.ThreadServices;
+import ichop.core.base.BaseViewCreator;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
+public class ThreadCreatorThreadReadViewHelper extends BaseViewCreator {
+
+    private final ThreadServices threadServices;
+    private final CommentServices commentServices;
+    private final PlayerLinkJmsServices playerLinkJmsServices;
+
+    @Autowired
+    public ThreadCreatorThreadReadViewHelper(ModelMapper modelMapper, ThreadServices threadServices, CommentServices commentServices, PlayerLinkJmsServices playerLinkJmsServices) {
+        super(modelMapper);
+        this.threadServices = threadServices;
+        this.commentServices = commentServices;
+        this.playerLinkJmsServices = playerLinkJmsServices;
+    }
+
+
+    public ThreadCreatorThreadReadViewModel create(String threadId) {
+        ThreadServiceModel thread = this.threadServices.findById(threadId);
+
+        PlayerDataBySiteUserJMSReceiveModel playerData = this.playerLinkJmsServices.getPlayerDataBySiteUser(thread.getCreator().getUsername());
+
+        String minecraftAccountName = playerData!= null ? playerData.getPlayerName() : null;
+        String minecraftAccountUUID = playerData!= null ? playerData.getPlayerUUID() : null;
+        int totalComments = this.commentServices.getTotalOfUser(thread.getCreator());
+
+        ThreadCreatorThreadReadViewModel result = super.modelMapper.map(thread.getCreator(),ThreadCreatorThreadReadViewModel.class);
+        result.setMinecraftAccountName(minecraftAccountName);
+        result.setMinecraftAccountUUID(minecraftAccountUUID);
+        result.setTotalComments(totalComments);
+
+        return result;
+    }
+
+}
