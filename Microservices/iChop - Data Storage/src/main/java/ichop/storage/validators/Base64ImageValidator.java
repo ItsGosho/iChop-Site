@@ -10,8 +10,8 @@ import java.io.IOException;
 
 public class Base64ImageValidator implements ConstraintValidator<Base64Image,String> {
 
-    private int maxHeight;
-    private int maxWidth;
+    private Integer maxHeight;
+    private Integer maxWidth;
 
     @Override
     public void initialize(Base64Image constraintAnnotation) {
