@@ -37,7 +37,6 @@ public class UserAuthenticationController {
         }
 
         this.userServices.register(userRegisterBindingModel);
-        //this.userWebStorageJmsServices.sendUpdateAvatarRequestWithInitialImage(userRegisterBindingModel.getUsername());
         return this.responseHelpers.respondSuccessful(REGISTRATION_SUCCESSFUL);
     }
 
