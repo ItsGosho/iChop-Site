@@ -42,11 +42,6 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 
         UsernamePasswordAuthenticationToken authentication = getAuthentication(request);
 
-        if (authentication == null) {
-            filterChain.doFilter(request, response);
-            return;
-        }
-
         SecurityContextHolder.getContext().setAuthentication(authentication);
         filterChain.doFilter(request, response);
     }
