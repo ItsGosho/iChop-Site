@@ -13,6 +13,8 @@ public interface JmsHelper {
 
     <S extends BaseReplyModel> void replySuccessful(Message message, S model, String msg);
 
+    <S extends BaseReplyModel> void replyFailed(Message message, S model, String msg);
+
     <R> R getResultModel(Message message, Class<R> clazz);
 
     <S extends BaseRequestModel> void replyValidationError(Message message, S receiveModel);

@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 public class EmailResetPasswordView {
 
-    private String expireDate;
+    private String expirationDate;
     private String passwordResetUrl;
 
 }
