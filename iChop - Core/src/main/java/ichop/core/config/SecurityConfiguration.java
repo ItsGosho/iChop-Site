@@ -1,5 +1,6 @@
 package ichop.core.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.core.areas.role.services.UserRoleServices;
 import ichop.core.areas.user.services.UserServices;
 import ichop.core.filters.JwtAuthenticationFilter;
@@ -21,16 +22,18 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import javax.servlet.http.HttpServletResponse;
 
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(securedEnabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private final UserRoleServices userRoleServices;
     private final UserServices userServices;
+    private final ObjectMapper objectMapper;
 
     @Autowired
-    public SecurityConfiguration(UserRoleServices userRoleServices, UserServices userServices) {
+    public SecurityConfiguration(UserRoleServices userRoleServices, UserServices userServices, ObjectMapper objectMapper) {
         this.userRoleServices = userRoleServices;
         this.userServices = userServices;
+        this.objectMapper = objectMapper;
     }
 
     @Override
@@ -41,8 +44,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .addFilter(new JwtAuthenticationFilter(authenticationManager(), this.userRoleServices))
-                .addFilter(new JwtAuthorizationFilter(authenticationManager()))
+                .addFilter(new JwtAuthenticationFilter(authenticationManager(), this.userRoleServices,this.objectMapper))
+                .addFilter(new JwtAuthorizationFilter(authenticationManager(),this.objectMapper))
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
