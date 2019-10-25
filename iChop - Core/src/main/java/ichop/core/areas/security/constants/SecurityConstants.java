@@ -2,7 +2,7 @@ package ichop.core.areas.security.constants;
 
 public final class SecurityConstants {
 
-    public static final String JWT_HEADER = "JWT";
+    public static final String JWT_COOKIE_NAME = "JWT";
 
     public static final String JWT_ISSUER = "iChop";
     public static final String EMAIL_CLAIM = "email";

@@ -44,7 +44,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 
     private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request) {
         try {
-            String token = Arrays.stream(request.getCookies()).filter(x->x.getName().equals(JWT_HEADER)).findFirst().orElse(null).getValue();
+            String token = Arrays.stream(request.getCookies()).filter(x->x.getName().equals(JWT_COOKIE_NAME)).findFirst().orElse(null).getValue();
 
             JWTVerifier verifier = JWT.require(Algorithm.HMAC512(JWT_SECRET))
                     .withIssuer(JWT_ISSUER)
