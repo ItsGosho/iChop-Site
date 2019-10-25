@@ -23,71 +23,61 @@ public class ResponseHelpersImp implements ResponseHelpers {
 
     @Override
     public ResponseEntity respondError(String error) {
-        ResponseError response = new ResponseError();
-        response.setError(error);
+        ResponseError response = new ResponseError(error);
 
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 
     @Override
     public String respondErrorJson(String error) throws JsonProcessingException {
-        ResponseError response = new ResponseError();
-        response.setError(error);
+        ResponseError response = new ResponseError(error);
 
         return this.objectMapper.writeValueAsString(response);
     }
 
     @Override
     public ResponseEntity respondSuccessful(String message) {
-        ResponseSuccessful response = new ResponseSuccessful();
-        response.setMessage(message);
+        ResponseSuccessful response = new ResponseSuccessful(message);
 
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @Override
     public String respondSuccessfulJson(String message) throws JsonProcessingException {
-        ResponseSuccessful response = new ResponseSuccessful();
-        response.setMessage(message);
+        ResponseSuccessful response = new ResponseSuccessful(message);
 
         return this.objectMapper.writeValueAsString(response);
     }
 
     @Override
     public void respondSuccessful(HttpServletResponse httpServletResponse, String message) {
-        ResponseSuccessful response = new ResponseSuccessful();
-        response.setMessage(message);
+        ResponseSuccessful response = new ResponseSuccessful(message);
 
-        try {
-            httpServletResponse.setContentType("application/json");
-            httpServletResponse.getWriter().write(this.objectMapper.writeValueAsString(response));
-            httpServletResponse.getWriter().close();
-        } catch (Exception ex) {
-
-        }
+        this.writeToResponse(httpServletResponse, response);
     }
 
     @Override
     public void respondError(HttpServletResponse httpServletResponse, String error) {
-        ResponseError response = new ResponseError();
-        response.setError(error);
+        ResponseError response = new ResponseError(error);
 
-        try {
-            httpServletResponse.setContentType("application/json");
-            httpServletResponse.getWriter().write(this.objectMapper.writeValueAsString(response));
-            httpServletResponse.getWriter().close();
-        } catch (Exception ex) {
-
-        }
+        this.writeToResponse(httpServletResponse, error);
     }
 
     @Override
     public ResponseEntity respondSuccessful(String message, Object data) {
-        ResponseSuccessful response = new ResponseSuccessful();
-        response.setMessage(message);
-        response.setData(data);
+        ResponseSuccessful response = new ResponseSuccessful(message, data);
 
         return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    private void writeToResponse(HttpServletResponse response, Object object) {
+        try {
+            response.setContentType("application/json");
+            response.getWriter().write(this.objectMapper.writeValueAsString(response));
+            response.getWriter().close();
+        } catch (Exception ignored) {
+
+        }
     }
 
 }
