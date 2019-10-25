@@ -56,7 +56,7 @@ public class UserServicesImp extends AbstractBaseService<User, UserServiceModel,
             return super.objectMapper.convertValue(foundedUser, User.class);
         }
 
-        throw new UsernameNotFoundException("Proba");
+        throw new UsernameNotFoundException("");
     }
 
     @Override
