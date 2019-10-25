@@ -2,9 +2,10 @@ package ichop.core.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.core.areas.role.services.UserRoleServices;
-import ichop.core.areas.user.services.UserServices;
 import ichop.core.areas.security.filters.JwtAuthenticationFilter;
 import ichop.core.areas.security.filters.JwtAuthorizationFilter;
+import ichop.core.areas.user.services.UserServices;
+import ichop.core.helpers.ResponseHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -27,25 +28,33 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private final UserRoleServices userRoleServices;
     private final UserServices userServices;
+    private final ResponseHelpers responseHelpers;
     private final ObjectMapper objectMapper;
 
+    private JwtAuthenticationFilter jwtAuthenticationFilter;
+    private JwtAuthorizationFilter jwtAuthorizationFilter;
+
     @Autowired
-    public SecurityConfiguration(UserRoleServices userRoleServices, UserServices userServices, ObjectMapper objectMapper) {
+    public SecurityConfiguration(UserRoleServices userRoleServices, UserServices userServices, ResponseHelpers responseHelpers, ObjectMapper objectMapper) throws Exception {
         this.userRoleServices = userRoleServices;
         this.userServices = userServices;
+        this.responseHelpers = responseHelpers;
         this.objectMapper = objectMapper;
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        this.jwtAuthenticationFilter = new JwtAuthenticationFilter(authenticationManager(), this.userRoleServices,this.responseHelpers,this.objectMapper);
+        this.jwtAuthorizationFilter = new JwtAuthorizationFilter(authenticationManager(),this.objectMapper);
+
         http.cors().and()
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .addFilter(new JwtAuthenticationFilter(authenticationManager(), this.userRoleServices,this.objectMapper))
-                .addFilter(new JwtAuthorizationFilter(authenticationManager(),this.objectMapper))
+                .addFilter(this.jwtAuthenticationFilter)
+                .addFilter(this.jwtAuthorizationFilter)
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
