@@ -59,6 +59,7 @@ public class ResponseHelpersImp implements ResponseHelpers {
         response.setMessage(message);
 
         try {
+            httpServletResponse.setContentType("application/json");
             httpServletResponse.getWriter().write(this.objectMapper.writeValueAsString(response));
         } catch (Exception ex) {
 
@@ -71,6 +72,7 @@ public class ResponseHelpersImp implements ResponseHelpers {
         response.setError(error);
 
         try {
+            httpServletResponse.setContentType("application/json");
             httpServletResponse.getWriter().write(this.objectMapper.writeValueAsString(response));
         } catch (Exception ex) {
 

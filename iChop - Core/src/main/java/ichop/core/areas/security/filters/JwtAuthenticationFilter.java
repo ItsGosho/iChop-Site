@@ -52,12 +52,9 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
         String email = request.getParameter(EMAIL_FIELD);
         String password = request.getParameter(PASSWORD_FIELD);
-        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(email, password);
-
-        response.setContentType("application/json");
 
         try {
-            Authentication authentication = this.authenticationManager.authenticate(authenticationToken);
+            Authentication authentication = this.authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));
 
             this.responseHelpers.respondSuccessful(response, LOGIN_SUCCESSFUL);
             return authentication;
