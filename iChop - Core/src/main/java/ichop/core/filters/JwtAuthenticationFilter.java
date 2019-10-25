@@ -2,12 +2,8 @@ package ichop.core.filters;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import ichop.core.areas.role.domain.entities.UserRoles;
-import ichop.core.areas.role.domain.models.service.UserRoleServiceModel;
 import ichop.core.areas.role.services.UserRoleServices;
 import ichop.core.areas.user.domain.entities.User;
-import ichop.core.areas.user.domain.models.service.UserServiceModel;
 import ichop.core.constants.URLConstants;
 import ichop.core.utils.DateUtils;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -51,13 +47,13 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
         /*TODO: da opravq shibanite roli*/
         User user = ((User) authentication.getPrincipal());
-        UserRoleServiceModel role = this.userRoleServices.findHighestOfUser(user);
+        //UserRoleServiceModel role = this.userRoleServices.findHighestOfUser(user);
         String[] roles = (String[]) user.getAuthorities().toArray();
 
         String jwt = JWT.create()
                 .withExpiresAt(DateUtils.asDate(LocalDateTime.now().plusHours(24)))
                 .withClaim(USERNAME_CLAIM, user.getUsername())
-                .withClaim(ROLE_CLAIM, role.getAuthority())
+                //.withClaim(ROLE_CLAIM, role.getAuthority())
                 .withArrayClaim(ROLES_CLAIM, roles)
                 .withIssuer(JWT_ISSUER)
                 .sign(Algorithm.HMAC512(JWT_SECRET));
