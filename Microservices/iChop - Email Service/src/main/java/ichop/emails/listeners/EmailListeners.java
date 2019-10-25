@@ -36,11 +36,10 @@ public class EmailListeners extends BaseListener {
     @JmsValidate(model = EmailResetPasswordRequest.class)
     @JmsListener(destination = "${artemis.queue.emails.reset_password}", containerFactory = QUEUE)
     public void create(Message message) {
+        EmailResetPasswordRequest requestModel = this.jmsHelper.getResultModel(message, EmailResetPasswordRequest.class);
 
         try {
-            EmailResetPasswordRequest requestModel = this.jmsHelper.getResultModel(message, EmailResetPasswordRequest.class);
             String html = this.freemakerHelper.prepareResetPasswordView(requestModel.getExpirationDate(), requestModel.getTo());
-
             this.javaMailHelper.send(requestModel.getTo(), SubjectConstants.RESET_PASSWORD, html);
 
             this.jmsHelper.replySuccessful(message, new EmailReply(), EMAIL_SENT_SUCCESSFUL);
