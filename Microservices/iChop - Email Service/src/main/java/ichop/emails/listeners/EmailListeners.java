@@ -30,8 +30,6 @@ public class EmailListeners extends BaseListener {
     @Value("${url.password_reset_token}")
     private String tokenResetUrl;
 
-    @Value("${email.sending_email}")
-    private String sendingEmail;
 
     @Autowired
     protected EmailListeners(JmsHelper jmsHelper, ObjectMapper objectMapper, FreemakerHelper freemakerHelper, JavaMailHelper javaMailHelper) {
@@ -49,13 +47,7 @@ public class EmailListeners extends BaseListener {
             EmailResetPasswordRequest requestModel = this.jmsHelper.getResultModel(message, EmailResetPasswordRequest.class);
             String html = this.prepareResetPasswordView(requestModel);
 
-            JavaMailModel javaMailModel = new JavaMailModel();
-            javaMailModel.setTo(requestModel.getTo());
-            javaMailModel.setFrom(this.sendingEmail);
-            javaMailModel.setSubject("Reset your password!");
-            javaMailModel.setHtmlContent(html);
-
-            this.javaMailHelper.send(javaMailModel);
+            this.javaMailHelper.send(requestModel.getTo(),"Reset your password!",html);
             this.jmsHelper.replySuccessful(message, new EmailReply(), EMAIL_SENT_SUCCESSFUL);
         } catch (Exception e) {
             this.jmsHelper.replyFailed(message, new EmailReply(), e.getMessage());

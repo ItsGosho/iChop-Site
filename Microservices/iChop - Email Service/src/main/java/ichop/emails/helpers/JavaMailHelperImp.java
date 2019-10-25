@@ -1,7 +1,7 @@
 package ichop.emails.helpers;
 
-import ichop.emails.domain.models.JavaMailModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
@@ -14,6 +14,10 @@ public class JavaMailHelperImp implements JavaMailHelper {
 
     private final JavaMailSender javaMailSender;
 
+
+    @Value("${email.sending_email}")
+    private String sendingEmail;
+
     @Autowired
     public JavaMailHelperImp(JavaMailSender javaMailSender) {
         this.javaMailSender = javaMailSender;
@@ -21,14 +25,14 @@ public class JavaMailHelperImp implements JavaMailHelper {
 
 
     @Override
-    public void send(JavaMailModel javaMailModel) throws MessagingException {
+    public void send(String to,String subject,String htmlContent) throws MessagingException {
         MimeMessage message = this.javaMailSender.createMimeMessage();
 
         MimeMessageHelper helper = new MimeMessageHelper(message, true);
-        helper.setTo(javaMailModel.getTo());
-        helper.setFrom(javaMailModel.getFrom());
-        helper.setSubject(javaMailModel.getSubject());
-        helper.setText(javaMailModel.getHtmlContent(), true);
+        helper.setTo(to);
+        helper.setFrom(this.sendingEmail);
+        helper.setSubject(subject);
+        helper.setText(htmlContent, true);
 
         this.javaMailSender.send(message);
     }

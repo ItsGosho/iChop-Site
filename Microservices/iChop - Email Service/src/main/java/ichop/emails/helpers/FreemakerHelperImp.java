@@ -36,4 +36,9 @@ public class FreemakerHelperImp implements FreemakerHelper {
         return out.toString();
     }
 
+    @Override
+    public String proceedPasswordReset() throws Exception {
+        return null;
+    }
+
 }
