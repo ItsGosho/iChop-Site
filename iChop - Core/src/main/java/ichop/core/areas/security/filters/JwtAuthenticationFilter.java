@@ -1,4 +1,4 @@
-package ichop.core.filters;
+package ichop.core.areas.security.filters;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -22,8 +22,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.time.LocalDateTime;
 
-import static ichop.core.constants.SecurityConstants.*;
-import static ichop.core.constants.SecurityLogConstants.*;
+import static ichop.core.areas.security.constants.SecurityConstants.*;
+import static ichop.core.areas.security.constants.SecurityLogConstants.*;
 
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 

@@ -1,4 +1,4 @@
-package ichop.core.filters;
+package ichop.core.areas.security.filters;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -20,7 +20,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Set;
 
-import static ichop.core.constants.SecurityConstants.*;
+import static ichop.core.areas.security.constants.SecurityConstants.*;
 
 public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 

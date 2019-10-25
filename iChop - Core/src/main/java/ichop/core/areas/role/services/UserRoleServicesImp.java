@@ -8,7 +8,7 @@ import ichop.core.areas.role.domain.models.service.UserRoleServiceModel;
 import ichop.core.areas.role.repositories.UserRoleRepository;
 import ichop.core.areas.user.domain.models.service.UserServiceModel;
 import ichop.core.common.service.AbstractBaseService;
-import ichop.core.filters.JwtAuthorizationFilter;
+import ichop.core.areas.security.filters.JwtAuthorizationFilter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -14,6 +14,7 @@ import javax.validation.constraints.NotNull;
 @Setter
 @SpELValidation(value = "@userServicesImp.isUserExistsByUsername(#this.username) == false",message = "Username is already present!")
 @SpELValidation(value = "@userServicesImp.isUserExistsByEmail(#this.email) == false",message = "Email is already present!")
+@SpELValidation(value = "#this.password == #this.confirmPassword",message = "Passwords doesn't match!")
 public class UserRegisterBindingModel {
 
     @NotNull
@@ -33,7 +34,7 @@ public class UserRegisterBindingModel {
 
     @NotNull
     @NotEmpty
-    @Email(regexp = UserValidationConstants.EMAIL_PATTERN)
+    @Email(regexp = UserValidationConstants.EMAIL_PATTERN,message = "Invalid email format!")
     @Length(max = UserValidationConstants.EMAIL_MAX_LENGTH)
 	private String email;
 
