@@ -43,11 +43,11 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) {
-        LOG.info(String.format(AUTHENTICATION_STARTED,request.getParameter(USERNAME_FIELD)));
+        LOG.info(String.format(AUTHENTICATION_STARTED,request.getParameter(EMAIL_FIELD)));
 
-        String username = request.getParameter(USERNAME_FIELD);
+        String email = request.getParameter(EMAIL_FIELD);
         String password = request.getParameter(PASSWORD_FIELD);
-        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username, password);
+        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(email, password);
 
         return this.authenticationManager.authenticate(authenticationToken);
     }
@@ -58,15 +58,16 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                                             FilterChain filterChain,
                                             Authentication authentication) throws JsonProcessingException {
 
-        LOG.info(String.format(AUTHENTICATION_SUCCESSFUL,authentication.getName()));
-
         UserServiceModel user = this.objectMapper.convertValue(authentication.getPrincipal(), UserServiceModel.class);
+
+        LOG.info(String.format(AUTHENTICATION_SUCCESSFUL,user.getEmail()));
+
         UserRoleServiceModel role = this.userRoleServices.findHighestOfUser(user);
         String roles = this.objectMapper.writeValueAsString(user.getAuthorities());
 
         String jwt = JWT.create()
                 .withExpiresAt(DateUtils.asDate(LocalDateTime.now().plusHours(JWT_EXPIRATION_HOURS)))
-                .withClaim(USERNAME_CLAIM, user.getUsername())
+                .withClaim(EMAIL_CLAIM, user.getEmail())
                 .withClaim(ROLE_CLAIM, role.getAuthority())
                 .withClaim(ROLES_CLAIM, roles)
                 .withIssuer(JWT_ISSUER)
@@ -75,7 +76,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
         response.addCookie(new Cookie(JWT_HEADER, jwt));
 
-        LOG.info(String.format(JWT_GENERATION_SUCCESSFUL,authentication.getName()));
+        LOG.info(String.format(JWT_GENERATION_SUCCESSFUL,user.getEmail()));
     }
 }
 

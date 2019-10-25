@@ -1,16 +1,16 @@
-package ichop.core.areas.role.domain.entities;
+package ichop.core.areas.role.domain.enums;
 
 public enum UserRoles {
 
     USER(0),MODERATOR(1),ADMIN(2),OWNER(3);
 
-    private int position;
+    private Integer position;
 
-    UserRoles(int position) {
+    UserRoles(Integer position) {
         this.position = position;
     }
 
-    public int getPosition() {
+    public Integer getPosition() {
         return position;
     }
 }

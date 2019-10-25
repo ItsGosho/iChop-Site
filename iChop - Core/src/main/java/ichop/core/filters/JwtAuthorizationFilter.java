@@ -7,8 +7,6 @@ import com.auth0.jwt.interfaces.JWTVerifier;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.core.areas.role.domain.entities.UserRole;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -25,9 +23,7 @@ import java.util.Set;
 import static ichop.core.constants.SecurityConstants.*;
 
 public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
-
-    private static final Logger LOG = LogManager.getLogger(JwtAuthorizationFilter.class);
-
+    
     private final ObjectMapper objectMapper;
 
     public JwtAuthorizationFilter(AuthenticationManager authenticationManager, ObjectMapper objectMapper) {
@@ -55,11 +51,11 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
                     .build();
             DecodedJWT jwt = verifier.verify(token);
 
-            String username = jwt.getClaim(USERNAME_CLAIM).asString();
+            String email = jwt.getClaim(EMAIL_CLAIM).asString();
             Set<UserRole> roles = this.objectMapper.readValue(jwt.getClaim(ROLES_CLAIM).asString(), new TypeReference<Set<UserRole>>() {
             });
 
-            return new UsernamePasswordAuthenticationToken(username, null, roles);
+            return new UsernamePasswordAuthenticationToken(email, null, roles);
         } catch (Exception ex) {
             return null;
         }

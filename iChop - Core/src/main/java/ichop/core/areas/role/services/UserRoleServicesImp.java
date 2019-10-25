@@ -3,16 +3,23 @@ package ichop.core.areas.role.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.core.areas.role.domain.entities.UserRole;
-import ichop.core.areas.role.domain.entities.UserRoles;
+import ichop.core.areas.role.domain.enums.UserRoles;
 import ichop.core.areas.role.domain.models.service.UserRoleServiceModel;
 import ichop.core.areas.role.repositories.UserRoleRepository;
 import ichop.core.areas.user.domain.models.service.UserServiceModel;
 import ichop.core.common.service.AbstractBaseService;
+import ichop.core.filters.JwtAuthorizationFilter;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import static ichop.core.areas.role.constants.RoleLogConstants.ROLE_CREATED;
+
 @Service
 public class UserRoleServicesImp extends AbstractBaseService<UserRole,UserRoleServiceModel, UserRoleRepository> implements UserRoleServices {
+
+    private static final Logger LOG = LogManager.getLogger(JwtAuthorizationFilter.class);
 
     @Autowired
     public UserRoleServicesImp(ObjectMapper objectMapper, UserRoleRepository repository) {
@@ -34,6 +41,7 @@ public class UserRoleServicesImp extends AbstractBaseService<UserRole,UserRoleSe
 
         UserRoleServiceModel result = super.save(userRole, UserRoleServiceModel.class);
 
+        LOG.info(String.format(ROLE_CREATED,result.getAuthority()));
         return result;
     }
 

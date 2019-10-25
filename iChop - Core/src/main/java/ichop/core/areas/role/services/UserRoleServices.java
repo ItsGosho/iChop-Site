@@ -1,6 +1,6 @@
 package ichop.core.areas.role.services;
 
-import ichop.core.areas.role.domain.entities.UserRoles;
+import ichop.core.areas.role.domain.enums.UserRoles;
 import ichop.core.areas.role.domain.models.service.UserRoleServiceModel;
 import ichop.core.areas.user.domain.models.service.UserServiceModel;
 import ichop.core.common.service.BaseService;

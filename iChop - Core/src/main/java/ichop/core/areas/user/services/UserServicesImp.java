@@ -1,7 +1,7 @@
 package ichop.core.areas.user.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ichop.core.areas.role.domain.entities.UserRoles;
+import ichop.core.areas.role.domain.enums.UserRoles;
 import ichop.core.areas.role.domain.models.service.UserRoleServiceModel;
 import ichop.core.areas.role.services.UserRoleServices;
 import ichop.core.areas.user.constants.UserValidationConstants;
@@ -49,17 +49,9 @@ public class UserServicesImp extends AbstractBaseService<User, UserServiceModel,
             if (foundedUser != null) {
                 return super.objectMapper.convertValue(foundedUser, User.class);
             }
-
-            throw new UsernameNotFoundException("");
         }
 
-        UserServiceModel foundedUser = this.findUserByUsername(usernameOrEmail);
-
-        if (foundedUser != null) {
-            return super.objectMapper.convertValue(foundedUser, User.class);
-        }
-
-        throw new UsernameNotFoundException("");
+        throw new UsernameNotFoundException("Proba");
     }
 
     @Override
