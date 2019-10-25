@@ -10,6 +10,9 @@ import ichop.core.areas.user.domain.models.binding.UserRegisterBindingModel;
 import ichop.core.areas.user.domain.models.service.UserServiceModel;
 import ichop.core.areas.user.repositories.UserRepository;
 import ichop.core.common.service.AbstractBaseService;
+import ichop.core.filters.JwtAuthorizationFilter;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -22,8 +25,13 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static ichop.core.areas.user.constants.UserLogConstants.REGISTRATION_SUCCESSFUL;
+
 @Service
 public class UserServicesImp extends AbstractBaseService<User, UserServiceModel, UserRepository> implements UserServices {
+
+    private static final Logger LOG = LogManager.getLogger(JwtAuthorizationFilter.class);
+
 
     private final BCryptPasswordEncoder passwordEncoder;
     private final UserRoleServices userRoleServices;
@@ -40,15 +48,12 @@ public class UserServicesImp extends AbstractBaseService<User, UserServiceModel,
 
 
     @Override
-    public UserDetails loadUserByUsername(String usernameOrEmail) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
-        if (this.isEmail(usernameOrEmail)) {
+        UserServiceModel foundedUser = this.findUserByEmail(email);
 
-            UserServiceModel foundedUser = this.findUserByEmail(usernameOrEmail);
-
-            if (foundedUser != null) {
-                return super.objectMapper.convertValue(foundedUser, User.class);
-            }
+        if (foundedUser != null) {
+            return super.objectMapper.convertValue(foundedUser, User.class);
         }
 
         throw new UsernameNotFoundException("Proba");
@@ -66,7 +71,10 @@ public class UserServicesImp extends AbstractBaseService<User, UserServiceModel,
         registeredUser.setCredentialsNonExpired(true);
         registeredUser.setEnabled(true);
 
-        return this.save(registeredUser, UserServiceModel.class);
+        registeredUser = this.save(registeredUser, UserServiceModel.class);
+
+        LOG.info(REGISTRATION_SUCCESSFUL, registeredUser.getEmail());
+        return registeredUser;
     }
 
     @Override

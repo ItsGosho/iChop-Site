@@ -23,7 +23,7 @@ import java.util.Set;
 import static ichop.core.constants.SecurityConstants.*;
 
 public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
-    
+
     private final ObjectMapper objectMapper;
 
     public JwtAuthorizationFilter(AuthenticationManager authenticationManager, ObjectMapper objectMapper) {

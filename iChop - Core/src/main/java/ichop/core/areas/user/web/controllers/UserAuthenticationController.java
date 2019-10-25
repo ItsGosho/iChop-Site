@@ -4,9 +4,6 @@ import ichop.core.areas.user.domain.models.binding.UserRegisterBindingModel;
 import ichop.core.areas.user.services.UserServices;
 import ichop.core.common.validation.ValidationHelper;
 import ichop.core.constants.URLConstants;
-import ichop.core.filters.JwtAuthorizationFilter;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,8 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @PreAuthorize("isAnonymous()")
 public class UserAuthenticationController {
-
-    private static final Logger LOG = LogManager.getLogger(JwtAuthorizationFilter.class);
 
     private final UserServices userServices;
     private final ValidationHelper validationHelper;
