@@ -34,7 +34,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     private final AuthenticationManager authenticationManager;
     private final UserRoleServices userRoleServices;
-    private final ResponseHelpers responseHelpers;
+    private volatile ResponseHelpers responseHelpers;
     private final ObjectMapper objectMapper;
 
     public JwtAuthenticationFilter(AuthenticationManager authenticationManager, UserRoleServices userRoleServices, ResponseHelpers responseHelpers, ObjectMapper objectMapper) {

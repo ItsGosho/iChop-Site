@@ -60,7 +60,7 @@ public class ResponseHelpersImp implements ResponseHelpers {
     public void respondError(HttpServletResponse httpServletResponse, String error) {
         ResponseError response = new ResponseError(error);
 
-        this.writeToResponse(httpServletResponse, error);
+        this.writeToResponse(httpServletResponse, response);
     }
 
     @Override
@@ -73,10 +73,10 @@ public class ResponseHelpersImp implements ResponseHelpers {
     private void writeToResponse(HttpServletResponse response, Object object) {
         try {
             response.setContentType("application/json");
-            response.getWriter().write(this.objectMapper.writeValueAsString(response));
+            response.getWriter().write(this.objectMapper.writeValueAsString(object));
             response.getWriter().close();
-        } catch (Exception ignored) {
-
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
         }
     }
 
