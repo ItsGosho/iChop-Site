@@ -1,9 +1,11 @@
-package ichop.core.config;
+package ichop.users.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ichop.core.filters.JwtAuthenticationFilter;
-import ichop.core.filters.JwtAuthorizationFilter;
-import ichop.core.helpers.ResponseHelpers;
+import ichop.users.services.UserRoleServices;
+import ichop.users.filters.JwtAuthenticationFilter;
+import ichop.users.filters.JwtAuthorizationFilter;
+import ichop.users.services.UserServices;
+import ichop.users.helpers.ResponseHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -24,6 +26,8 @@ import javax.servlet.http.HttpServletResponse;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
+    private final UserRoleServices userRoleServices;
+    private final UserServices userServices;
     private final ResponseHelpers responseHelpers;
     private final ObjectMapper objectMapper;
 
@@ -31,15 +35,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private JwtAuthorizationFilter jwtAuthorizationFilter;
 
     @Autowired
-    public SecurityConfiguration(ResponseHelpers responseHelpers, ObjectMapper objectMapper) throws Exception {
+    public SecurityConfiguration(UserRoleServices userRoleServices, UserServices userServices, ResponseHelpers responseHelpers, ObjectMapper objectMapper) throws Exception {
+        this.userRoleServices = userRoleServices;
+        this.userServices = userServices;
         this.responseHelpers = responseHelpers;
         this.objectMapper = objectMapper;
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        this.jwtAuthenticationFilter = new JwtAuthenticationFilter(authenticationManager(), this.responseHelpers, this.objectMapper);
-        this.jwtAuthorizationFilter = new JwtAuthorizationFilter(authenticationManager(), this.objectMapper, this.responseHelpers);
+        this.jwtAuthenticationFilter = new JwtAuthenticationFilter(authenticationManager(), this.userRoleServices,this.responseHelpers,this.objectMapper);
+        this.jwtAuthorizationFilter = new JwtAuthorizationFilter(authenticationManager(),this.objectMapper,this.responseHelpers);
 
         http.cors().and()
                 .csrf().disable()
@@ -67,7 +73,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(this.userServices)
                 .passwordEncoder(passwordEncoder());
     }
-
 
     @Bean
     public PasswordEncoder passwordEncoder() {
