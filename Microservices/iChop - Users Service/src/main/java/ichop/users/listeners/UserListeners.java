@@ -1,7 +1,6 @@
 package ichop.users.listeners;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sun.xml.internal.ws.api.FeatureConstructor;
 import ichop.users.common.aop.JmsAfterReturn;
 import ichop.users.common.aop.JmsValidate;
 import ichop.users.common.helpers.BaseListener;
@@ -13,6 +12,7 @@ import ichop.users.domain.models.jms.retrieve.UserFindByEmailRequest;
 import ichop.users.domain.models.service.UserServiceModel;
 import ichop.users.services.UserRoleServices;
 import ichop.users.services.UserServices;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 
@@ -28,7 +28,7 @@ public class UserListeners extends BaseListener {
     private final UserServices userServices;
     private final UserRoleServices userRoleServices;
 
-    @FeatureConstructor
+    @Autowired
     protected UserListeners(JmsHelper jmsHelper,
                             ObjectMapper objectMapper,
                             UserServices userServices,
