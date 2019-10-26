@@ -28,7 +28,8 @@ public class UserAuthenticationController {
     @PostMapping(URLConstants.USER_REGISTER)
     public ResponseEntity proceedRegistration(UserRegisterRequest request) {
         UserRegisterReply reply = this.userRequester.register(request);
-        return null;
+
+        return this.responseHelpers.respondGeneric(reply);
     }
 
 }

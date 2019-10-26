@@ -1,9 +1,9 @@
 package ichop.core.areas.user.models.jms.retrieve;
 
+import ichop.core.areas.security.config.UserRoleSecurity;
 import ichop.core.common.domain.BaseReplyModel;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDateTime;
@@ -21,7 +21,7 @@ public class UserFindByEmailReply extends BaseReplyModel implements UserDetails 
     private boolean isAccountNonLocked;
     private boolean isCredentialsNonExpired;
     private boolean isEnabled;
-    private Set<? extends GrantedAuthority> authorities;
+    private Set<UserRoleSecurity> authorities;
     private LocalDateTime registrationDate;
     private LocalDateTime lastOnline;
     private String location;
