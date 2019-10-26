@@ -3,14 +3,11 @@ package ichop.core.areas.security.filters;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ichop.core.areas.role.domain.models.service.UserRoleServiceModel;
-import ichop.core.areas.role.services.UserRoleServices;
-import ichop.core.areas.user.domain.models.service.UserServiceModel;
+import ichop.core.areas.other.utils.DateUtils;
+import ichop.core.areas.rest.helpers.ResponseHelpers;
 import ichop.core.areas.user.models.jms.retrieve.UserFindByEmailReply;
 import ichop.core.areas.user.requester.UserRequester;
 import ichop.core.constants.URLConstants;
-import ichop.core.areas.rest.helpers.ResponseHelpers;
-import ichop.core.areas.other.utils.DateUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -27,8 +24,6 @@ import java.time.LocalDateTime;
 
 import static ichop.core.areas.security.constants.SecurityConstants.*;
 import static ichop.core.areas.security.constants.SecurityLogConstants.*;
-import static ichop.core.areas.user.constants.UserResponseConstants.BAD_CREDENTIALS;
-import static ichop.core.areas.user.constants.UserResponseConstants.LOGIN_SUCCESSFUL;
 
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
@@ -77,13 +72,12 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
         LOG.info(String.format(AUTHENTICATION_SUCCESSFUL, user.getEmail()));
 
-        UserRoleServiceModel role = this.userRoleServices.findHighestOfUser(user);
         String roles = this.objectMapper.writeValueAsString(user.getAuthorities());
 
         String jwt = JWT.create()
                 .withExpiresAt(DateUtils.asDate(LocalDateTime.now().plusHours(JWT_EXPIRATION_HOURS)))
                 .withClaim(EMAIL_CLAIM, user.getEmail())
-                .withClaim(ROLE_CLAIM, role.getAuthority())
+                .withClaim(ROLE_CLAIM, user.getAuthority())
                 .withClaim(ROLES_CLAIM, roles)
                 .withIssuer(JWT_ISSUER)
                 .sign(Algorithm.HMAC512(JWT_SECRET));
@@ -92,7 +86,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         response.addCookie(new Cookie(JWT_COOKIE_NAME, jwt));
 
         LOG.info(String.format(JWT_GENERATION_SUCCESSFUL, user.getEmail()));
-        this.responseHelpers.respondSuccessful(response, LOGIN_SUCCESSFUL);
+        this.responseHelpers.respondSuccessful(response, "Login successful!");
 
     }
 }
