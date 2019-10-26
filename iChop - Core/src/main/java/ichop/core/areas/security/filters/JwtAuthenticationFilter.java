@@ -34,7 +34,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     private final AuthenticationManager authenticationManager;
     private final UserRoleServices userRoleServices;
-    private volatile ResponseHelpers responseHelpers;
+    private final ResponseHelpers responseHelpers;
     private final ObjectMapper objectMapper;
 
     public JwtAuthenticationFilter(AuthenticationManager authenticationManager, UserRoleServices userRoleServices, ResponseHelpers responseHelpers, ObjectMapper objectMapper) {
@@ -54,10 +54,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         String password = request.getParameter(PASSWORD_FIELD);
 
         try {
-            Authentication authentication = this.authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));
-
-            this.responseHelpers.respondSuccessful(response, LOGIN_SUCCESSFUL);
-            return authentication;
+            return this.authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));
         } catch (Exception ex) {
             this.responseHelpers.respondError(response, BAD_CREDENTIALS);
             return null;
@@ -88,8 +85,8 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         response.addCookie(new Cookie(JWT_COOKIE_NAME, jwt));
 
         LOG.info(String.format(JWT_GENERATION_SUCCESSFUL, user.getEmail()));
+        this.responseHelpers.respondSuccessful(response, LOGIN_SUCCESSFUL);
+
     }
-
-
 }
 
