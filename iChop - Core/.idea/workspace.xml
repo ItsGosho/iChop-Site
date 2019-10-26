@@ -2,33 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1984862c-2f8c-4410-af36-a1dcaaa3ddaf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/role/constants/RoleLogConstants.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/role/domain/entities/UserRole.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/role/domain/enums/UserRoles.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/role/domain/models/service/UserRoleServiceModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/role/repositories/UserRoleRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/role/services/UserRoleServices.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/role/services/UserRoleServicesImp.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/security/constants/SecurityConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/constants/SecurityConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/security/constants/SecurityLogConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/constants/SecurityLogConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/security/controllers/UserAuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/controllers/UserAuthenticationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/security/filters/JwtAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/filters/JwtAuthenticationFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/security/filters/JwtAuthorizationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/filters/JwtAuthorizationFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/constants/UserLogConstants.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/constants/UserResponseConstants.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/constants/UserValidationConstants.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/controllers/UserController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/domain/entities/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/domain/models/binding/UserForgottenPasswordBinding.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/domain/models/binding/UserRegisterBinding.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/domain/models/binding/UserResetPasswordBinding.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/domain/models/binding/UserResetPasswordByTokenBinding.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/domain/models/service/UserServiceModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/repositories/UserRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/services/UserServices.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/services/UserServicesImp.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/config/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/config/SecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/java/ichop/users/config/BeansConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/java/ichop/users/config/SecurityConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/java/ichop/users/constants/SecurityConstants.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/java/ichop/users/constants/SecurityLogConstants.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/java/ichop/users/constants/URLConstants.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/java/ichop/users/constants/UserResponseConstants.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/java/ichop/users/controllers/UserAuthenticationController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/java/ichop/users/controllers/UserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/java/ichop/users/domain/models/binding/UserForgottenPasswordBinding.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/java/ichop/users/domain/models/binding/UserRegisterBinding.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/java/ichop/users/domain/models/binding/UserResetPasswordBinding.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/java/ichop/users/domain/models/binding/UserResetPasswordByTokenBinding.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/java/ichop/users/filters/JwtAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/java/ichop/users/filters/JwtAuthenticationFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/java/ichop/users/helpers/ResponseHelpers.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/java/ichop/users/helpers/ResponseHelpersImp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/java/ichop/users/utils/DateUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/resources/application-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/resources/application-dev.properties" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -398,7 +388,7 @@
       <workItem from="1571946455921" duration="5830000" />
       <workItem from="1571988227397" duration="4312000" />
       <workItem from="1571997482377" duration="13234000" />
-      <workItem from="1572118025904" duration="748000" />
+      <workItem from="1572118025904" duration="1052000" />
     </task>
     <servers />
   </component>

@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.users.domain.models.service.UserRoleServiceModel;
 import ichop.users.services.UserRoleServices;
 import ichop.users.domain.models.service.UserServiceModel;
-import ichop.users.constants.URLConstants;
 import ichop.users.helpers.ResponseHelpers;
 import ichop.users.utils.DateUtils;
 import org.apache.logging.log4j.LogManager;
