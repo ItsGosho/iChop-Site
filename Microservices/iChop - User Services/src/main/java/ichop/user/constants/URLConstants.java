@@ -1,4 +1,4 @@
-package ichop.core.constants;
+package ichop.user.constants;
 
 
 public final class URLConstants {

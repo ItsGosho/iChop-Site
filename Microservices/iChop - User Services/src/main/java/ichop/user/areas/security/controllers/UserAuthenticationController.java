@@ -1,17 +1,17 @@
-package ichop.core.areas.security.controllers;
+package ichop.user.areas.security.controllers;
 
-import ichop.core.areas.user.domain.models.binding.UserRegisterBinding;
-import ichop.core.areas.user.services.UserServices;
-import ichop.core.common.validation.ValidationHelper;
-import ichop.core.constants.URLConstants;
-import ichop.core.helpers.ResponseHelpers;
+import ichop.user.areas.user.domain.models.binding.UserRegisterBinding;
+import ichop.user.areas.user.services.UserServices;
+import ichop.user.common.validation.ValidationHelper;
+import ichop.user.constants.URLConstants;
+import ichop.user.helpers.ResponseHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import static ichop.core.areas.user.constants.UserResponseConstants.REGISTRATION_SUCCESSFUL;
+import static ichop.user.areas.user.constants.UserResponseConstants.REGISTRATION_SUCCESSFUL;
 
 @RestController
 @PreAuthorize("isAnonymous()")

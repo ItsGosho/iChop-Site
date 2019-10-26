@@ -1,9 +1,9 @@
-package ichop.core.areas.user.services;
+package ichop.user.areas.user.services;
 
-import ichop.core.areas.role.domain.models.service.UserRoleServiceModel;
-import ichop.core.areas.user.domain.models.binding.UserRegisterBinding;
-import ichop.core.areas.user.domain.models.service.UserServiceModel;
-import ichop.core.common.service.BaseService;
+import ichop.user.areas.role.domain.models.service.UserRoleServiceModel;
+import ichop.user.areas.user.domain.models.binding.UserRegisterBinding;
+import ichop.user.areas.user.domain.models.service.UserServiceModel;
+import ichop.user.common.service.BaseService;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.time.LocalDateTime;

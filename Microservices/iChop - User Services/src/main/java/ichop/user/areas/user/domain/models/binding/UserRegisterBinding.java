@@ -1,6 +1,6 @@
-package ichop.core.areas.user.domain.models.binding;
+package ichop.user.areas.user.domain.models.binding;
 
-import ichop.core.common.validators.SpELValidation;
+import ichop.user.common.validators.SpELValidation;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
@@ -12,7 +12,7 @@ import javax.validation.constraints.Email;
 @SpELValidation(value = "@userServicesImp.isUserExistsByUsername(#this.username) == false", message = "Username is already present!")
 @SpELValidation(value = "@userServicesImp.isUserExistsByEmail(#this.email) == false", message = "Email is already present!")
 @SpELValidation(value = "#this.password == #this.confirmPassword", message = "Passwords doesn't match!")
-public class UserRegisterBindingModel {
+public class UserRegisterBinding {
 
     @Length(min = 3,message = "Username must be at least 3 characters!")
     @Length(max = 25,message = "Username must be max 25 characters!")

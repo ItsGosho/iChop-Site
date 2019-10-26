@@ -8,10 +8,10 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-public class UserForgottenPasswordBindingModel {
+public class UserForgottenPasswordBinding {
 
     @NotNull
     @NotEmpty
-    private String usernameOrEmail;
+    private String email;
 
 }

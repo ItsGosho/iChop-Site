@@ -1,7 +1,6 @@
 package ichop.core.areas.user.domain.models.binding;
 
 import ichop.core.areas.user.constants.UserValidationConstants;
-import ichop.core.areas.user.domain.models.service.UserServiceModel;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
@@ -11,7 +10,7 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-public class UserResetPasswordBindingModelByUser {
+public class UserResetPasswordByTokenBinding {
 
     @NotNull
     @NotEmpty
@@ -23,6 +22,7 @@ public class UserResetPasswordBindingModelByUser {
     private String confirmPassword;
 
     @NotNull
-    private UserServiceModel user;
+    @NotEmpty
+    private String token;
 
 }

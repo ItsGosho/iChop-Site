@@ -1,16 +1,16 @@
-package ichop.core.areas.user.services;
+package ichop.user.areas.user.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ichop.core.areas.role.domain.enums.UserRoles;
-import ichop.core.areas.role.domain.models.service.UserRoleServiceModel;
-import ichop.core.areas.role.services.UserRoleServices;
-import ichop.core.areas.user.constants.UserValidationConstants;
-import ichop.core.areas.user.domain.entities.User;
-import ichop.core.areas.user.domain.models.binding.UserRegisterBinding;
-import ichop.core.areas.user.domain.models.service.UserServiceModel;
-import ichop.core.areas.user.repositories.UserRepository;
-import ichop.core.common.service.AbstractBaseService;
-import ichop.core.areas.security.filters.JwtAuthorizationFilter;
+import ichop.user.areas.role.domain.enums.UserRoles;
+import ichop.user.areas.role.domain.models.service.UserRoleServiceModel;
+import ichop.user.areas.role.services.UserRoleServices;
+import ichop.user.areas.user.constants.UserValidationConstants;
+import ichop.user.areas.user.domain.entities.User;
+import ichop.user.areas.user.domain.models.binding.UserRegisterBinding;
+import ichop.user.areas.user.domain.models.service.UserServiceModel;
+import ichop.user.areas.user.repositories.UserRepository;
+import ichop.user.common.service.AbstractBaseService;
+import ichop.user.areas.security.filters.JwtAuthorizationFilter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static ichop.core.areas.user.constants.UserLogConstants.REGISTRATION_SUCCESSFUL;
+import static ichop.user.areas.user.constants.UserLogConstants.REGISTRATION_SUCCESSFUL;
 
 @Service
 public class UserServicesImp extends AbstractBaseService<User, UserServiceModel, UserRepository> implements UserServices {
