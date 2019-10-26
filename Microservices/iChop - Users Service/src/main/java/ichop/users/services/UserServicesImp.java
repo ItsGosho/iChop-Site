@@ -1,15 +1,14 @@
 package ichop.users.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ichop.users.domain.enums.UserRoles;
-import ichop.users.domain.models.service.UserRoleServiceModel;
+import ichop.users.common.service.AbstractBaseService;
 import ichop.users.constants.UserValidationConstants;
 import ichop.users.domain.entities.User;
-import ichop.users.domain.models.binding.UserRegisterBinding;
+import ichop.users.domain.enums.UserRoles;
+import ichop.users.domain.models.jms.register.UserRegisterRequest;
+import ichop.users.domain.models.service.UserRoleServiceModel;
 import ichop.users.domain.models.service.UserServiceModel;
 import ichop.users.repositories.UserRepository;
-import ichop.users.common.service.AbstractBaseService;
-import ichop.users.filters.JwtAuthorizationFilter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +28,7 @@ import static ichop.users.constants.UserLogConstants.REGISTRATION_SUCCESSFUL;
 @Service
 public class UserServicesImp extends AbstractBaseService<User, UserServiceModel, UserRepository> implements UserServices {
 
-    private static final Logger LOG = LogManager.getLogger(JwtAuthorizationFilter.class);
+    private static final Logger LOG = LogManager.getLogger(UserServicesImp.class);
 
 
     private final BCryptPasswordEncoder passwordEncoder;
@@ -59,10 +58,10 @@ public class UserServicesImp extends AbstractBaseService<User, UserServiceModel,
     }
 
     @Override
-    public UserServiceModel register(UserRegisterBinding userRegisterBinding) {
+    public UserServiceModel register(UserRegisterRequest userRegisterRequest) {
 
-        UserServiceModel registeredUser = super.objectMapper.convertValue(userRegisterBinding, UserServiceModel.class);
-        registeredUser.setPassword(this.passwordEncoder.encode(userRegisterBinding.getPassword()));
+        UserServiceModel registeredUser = super.objectMapper.convertValue(userRegisterRequest, UserServiceModel.class);
+        registeredUser.setPassword(this.passwordEncoder.encode(userRegisterRequest.getPassword()));
         registeredUser.setRegistrationDate(LocalDateTime.now());
         registeredUser.setAuthorities(this.getInitialAuthorities());
         registeredUser.setAccountNonExpired(true);

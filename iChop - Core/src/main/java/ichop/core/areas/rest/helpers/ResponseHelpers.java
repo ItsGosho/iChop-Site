@@ -1,4 +1,4 @@
-package ichop.core.helpers;
+package ichop.core.areas.rest.helpers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.http.ResponseEntity;

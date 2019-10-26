@@ -1,4 +1,4 @@
-package ichop.core.models;
+package ichop.core.areas.rest.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

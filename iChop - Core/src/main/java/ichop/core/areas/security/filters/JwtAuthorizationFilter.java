@@ -1,4 +1,4 @@
-package ichop.core.filters;
+package ichop.core.areas.security.filters;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -7,7 +7,7 @@ import com.auth0.jwt.interfaces.JWTVerifier;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.core.areas.role.domain.entities.UserRole;
-import ichop.core.helpers.ResponseHelpers;
+import ichop.core.areas.rest.helpers.ResponseHelpers;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Set;
 
-import static ichop.core.constants.SecurityConstants.*;
+import static ichop.core.areas.security.constants.SecurityConstants.*;
 
 public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 

@@ -1,4 +1,4 @@
-package ichop.core.utils;
+package ichop.core.areas.other.utils;
 
 import java.time.Instant;
 import java.time.LocalDate;

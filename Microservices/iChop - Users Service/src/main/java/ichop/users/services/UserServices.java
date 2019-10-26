@@ -1,9 +1,9 @@
 package ichop.users.services;
 
-import ichop.users.domain.models.service.UserRoleServiceModel;
-import ichop.users.domain.models.binding.UserRegisterBinding;
-import ichop.users.domain.models.service.UserServiceModel;
 import ichop.users.common.service.BaseService;
+import ichop.users.domain.models.jms.register.UserRegisterRequest;
+import ichop.users.domain.models.service.UserRoleServiceModel;
+import ichop.users.domain.models.service.UserServiceModel;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.time.LocalDateTime;
@@ -12,7 +12,7 @@ import java.util.Set;
 public interface UserServices extends UserDetailsService, BaseService<UserServiceModel> {
 
 
-    UserServiceModel register(UserRegisterBinding userRegisterBinding);
+    UserServiceModel register(UserRegisterRequest userRegisterRequest);
 
     Set<UserRoleServiceModel> getInitialAuthorities();
 

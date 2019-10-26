@@ -1,4 +1,4 @@
-package ichop.core.constants;
+package ichop.core.areas.security.constants;
 
 import static ichop.core.common.constants.ColorCodesConstants.*;
 

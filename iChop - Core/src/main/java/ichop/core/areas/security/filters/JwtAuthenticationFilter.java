@@ -1,4 +1,4 @@
-package ichop.core.filters;
+package ichop.core.areas.security.filters;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -7,8 +7,8 @@ import ichop.core.areas.role.domain.models.service.UserRoleServiceModel;
 import ichop.core.areas.role.services.UserRoleServices;
 import ichop.core.areas.user.domain.models.service.UserServiceModel;
 import ichop.core.constants.URLConstants;
-import ichop.core.helpers.ResponseHelpers;
-import ichop.core.utils.DateUtils;
+import ichop.core.areas.rest.helpers.ResponseHelpers;
+import ichop.core.areas.other.utils.DateUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -23,8 +23,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDateTime;
 
-import static ichop.core.constants.SecurityConstants.*;
-import static ichop.core.constants.SecurityLogConstants.*;
+import static ichop.core.areas.security.constants.SecurityConstants.*;
+import static ichop.core.areas.security.constants.SecurityLogConstants.*;
 import static ichop.core.areas.user.constants.UserResponseConstants.BAD_CREDENTIALS;
 import static ichop.core.areas.user.constants.UserResponseConstants.LOGIN_SUCCESSFUL;
 

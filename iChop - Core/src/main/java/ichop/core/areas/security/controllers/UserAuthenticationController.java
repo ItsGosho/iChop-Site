@@ -1,8 +1,8 @@
-package ichop.core.controllers;
+package ichop.core.areas.security.controllers;
 
 import ichop.core.common.validation.ValidationHelper;
 import ichop.core.constants.URLConstants;
-import ichop.core.helpers.ResponseHelpers;
+import ichop.core.areas.rest.helpers.ResponseHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;

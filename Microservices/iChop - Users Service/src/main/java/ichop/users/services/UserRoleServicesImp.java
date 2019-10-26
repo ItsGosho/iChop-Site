@@ -8,7 +8,6 @@ import ichop.users.domain.models.service.UserRoleServiceModel;
 import ichop.users.repositories.UserRoleRepository;
 import ichop.users.domain.models.service.UserServiceModel;
 import ichop.users.common.service.AbstractBaseService;
-import ichop.users.filters.JwtAuthorizationFilter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,7 @@ import static ichop.users.constants.RoleLogConstants.ROLE_CREATED;
 @Service
 public class UserRoleServicesImp extends AbstractBaseService<UserRole,UserRoleServiceModel, UserRoleRepository> implements UserRoleServices {
 
-    private static final Logger LOG = LogManager.getLogger(JwtAuthorizationFilter.class);
+    private static final Logger LOG = LogManager.getLogger(UserRoleServicesImp.class);
 
     @Autowired
     public UserRoleServicesImp(ObjectMapper objectMapper, UserRoleRepository repository) {

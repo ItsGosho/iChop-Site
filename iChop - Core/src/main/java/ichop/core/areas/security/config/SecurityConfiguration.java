@@ -1,9 +1,9 @@
-package ichop.core.config;
+package ichop.core.areas.security.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ichop.core.filters.JwtAuthenticationFilter;
-import ichop.core.filters.JwtAuthorizationFilter;
-import ichop.core.helpers.ResponseHelpers;
+import ichop.core.areas.security.filters.JwtAuthenticationFilter;
+import ichop.core.areas.security.filters.JwtAuthorizationFilter;
+import ichop.core.areas.rest.helpers.ResponseHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -80,6 +80,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
 
         return source;
+    }
+
+    @Bean
+    public BCryptPasswordEncoder getBCryptPasswordEncoder(){
+        return new BCryptPasswordEncoder();
     }
 }
 
