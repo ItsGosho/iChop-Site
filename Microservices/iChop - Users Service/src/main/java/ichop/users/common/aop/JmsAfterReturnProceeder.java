@@ -30,7 +30,9 @@ public class JmsAfterReturnProceeder extends AbstractJmsProceeder {
 
         S object = (S) joinPoint.proceed();
 
-        super.jmsHelper.replySuccessful(message, object, msg);
+        if(object != null){
+            super.jmsHelper.replySuccessful(message, object, msg);
+        }
     }
 
     private String getMsg(ProceedingJoinPoint joinPoint) {
