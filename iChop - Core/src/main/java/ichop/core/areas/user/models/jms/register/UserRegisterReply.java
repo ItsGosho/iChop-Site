@@ -1,5 +1,6 @@
 package ichop.core.areas.user.models.jms.register;
 
+import ichop.core.common.domain.BaseReplyModel;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
@@ -9,7 +10,7 @@ import java.util.Set;
 
 @Getter
 @Setter
-public class UserRegisterReply {
+public class UserRegisterReply extends BaseReplyModel {
 
     private String id;
     private String username;

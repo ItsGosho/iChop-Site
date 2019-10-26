@@ -1,18 +1,18 @@
 package ichop.core.areas.user.models.jms.retrieve;
 
-import ichop.users.common.domain.BaseRequestModel;
-import ichop.users.common.validators.SpELValidation;
-import lombok.Getter;
-import lombok.Setter;
 
-import javax.validation.constraints.NotNull;
+import ichop.core.common.domain.BaseRequestModel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter
-@SpELValidation(value = "@userServicesImp.isUserExistsByEmail(#this.email) == true",message = "User not found!")
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserFindByEmailRequest extends BaseRequestModel {
 
-    @NotNull
     private String email;
 
 }
