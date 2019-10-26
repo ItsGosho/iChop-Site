@@ -371,7 +371,7 @@
       <workItem from="1571988227397" duration="4312000" />
       <workItem from="1571997482377" duration="13234000" />
       <workItem from="1572118025904" duration="1533000" />
-      <workItem from="1572120397744" duration="3933000" />
+      <workItem from="1572120397744" duration="4226000" />
     </task>
     <servers />
   </component>
@@ -467,7 +467,7 @@
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ichop/core/areas/security/filters/JwtAuthenticationFilter.java</url>
           <line>69</line>
-          <option name="timeStamp" value="24" />
+          <option name="timeStamp" value="26" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

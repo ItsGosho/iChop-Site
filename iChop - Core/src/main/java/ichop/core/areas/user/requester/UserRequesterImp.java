@@ -1,5 +1,7 @@
 package ichop.core.areas.user.requester;
 
+import ichop.core.areas.user.models.jms.register.UserRegisterReply;
+import ichop.core.areas.user.models.jms.register.UserRegisterRequest;
 import ichop.core.areas.user.models.jms.retrieve.UserFindByEmailReply;
 import ichop.core.areas.user.models.jms.retrieve.UserFindByEmailRequest;
 import ichop.core.common.helpers.JmsHelper;
@@ -30,6 +32,11 @@ public class UserRequesterImp implements UserRequester {
         UserFindByEmailRequest request = new UserFindByEmailRequest(email);
 
         return this.jmsHelper.sendAndReceive(this.findByEmailDestination, request, UserFindByEmailReply.class);
+    }
+
+    @Override
+    public UserRegisterReply register(UserRegisterRequest request) {
+        return this.jmsHelper.sendAndReceive(this.registerDestination, request, UserRegisterReply.class);
     }
 
 }
