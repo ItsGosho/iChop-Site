@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.core.areas.security.filters.JwtAuthenticationFilter;
 import ichop.core.areas.security.filters.JwtAuthorizationFilter;
 import ichop.core.areas.rest.helpers.ResponseHelpers;
+import ichop.core.areas.user.requester.UserRequester;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -12,8 +13,12 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -26,14 +31,21 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private final ResponseHelpers responseHelpers;
     private final ObjectMapper objectMapper;
+    private final UserRequester userRequester;
+    private final UserSecurityService userSecurityService;
 
     private JwtAuthenticationFilter jwtAuthenticationFilter;
     private JwtAuthorizationFilter jwtAuthorizationFilter;
 
     @Autowired
-    public SecurityConfiguration(ResponseHelpers responseHelpers, ObjectMapper objectMapper) throws Exception {
+    public SecurityConfiguration(ResponseHelpers responseHelpers,
+                                 ObjectMapper objectMapper,
+                                 UserRequester userRequester,
+                                 UserSecurityService userSecurityService) {
         this.responseHelpers = responseHelpers;
         this.objectMapper = objectMapper;
+        this.userRequester = userRequester;
+        this.userSecurityService = userSecurityService;
     }
 
     @Override
@@ -64,7 +76,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(this.userServices)
+        auth.userDetailsService(this.userSecurityService)
                 .passwordEncoder(passwordEncoder());
     }
 
@@ -83,8 +95,24 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public BCryptPasswordEncoder getBCryptPasswordEncoder(){
+    public BCryptPasswordEncoder getBCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Component
+    public class UserSecurityService implements UserDetailsService {
+
+        private final UserRequester userRequester;
+
+        @Autowired
+        private UserSecurityService(UserRequester userRequester) {
+            this.userRequester = userRequester;
+        }
+
+        @Override
+        public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+            return this.userRequester.findByEmail(username);
+        }
     }
 }
 

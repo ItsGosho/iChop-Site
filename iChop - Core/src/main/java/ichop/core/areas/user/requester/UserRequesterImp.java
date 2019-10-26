@@ -25,6 +25,7 @@ public class UserRequesterImp implements UserRequester {
         this.registerDestination = registerDestination;
     }
 
+    @Override
     public UserFindByEmailReply findByEmail(String email) {
         UserFindByEmailRequest request = new UserFindByEmailRequest(email);
 
