@@ -1,9 +1,9 @@
 package ichop.core.areas.security.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import ichop.core.areas.rest.helpers.ResponseHelpers;
 import ichop.core.areas.security.filters.JwtAuthenticationFilter;
 import ichop.core.areas.security.filters.JwtAuthorizationFilter;
-import ichop.core.areas.rest.helpers.ResponseHelpers;
 import ichop.core.areas.user.requester.UserRequester;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -13,12 +13,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Component;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -97,22 +93,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Bean
     public BCryptPasswordEncoder getBCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
-    }
-
-    @Component
-    public class UserSecurityService implements UserDetailsService {
-
-        private final UserRequester userRequester;
-
-        @Autowired
-        private UserSecurityService(UserRequester userRequester) {
-            this.userRequester = userRequester;
-        }
-
-        @Override
-        public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-            return this.userRequester.findByEmail(username);
-        }
     }
 }
 
