@@ -6,6 +6,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.core.areas.role.domain.models.service.UserRoleServiceModel;
 import ichop.core.areas.role.services.UserRoleServices;
 import ichop.core.areas.user.domain.models.service.UserServiceModel;
+import ichop.core.areas.user.models.jms.retrieve.UserFindByEmailReply;
+import ichop.core.areas.user.requester.UserRequester;
 import ichop.core.constants.URLConstants;
 import ichop.core.areas.rest.helpers.ResponseHelpers;
 import ichop.core.areas.other.utils.DateUtils;
@@ -35,11 +37,16 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     private final AuthenticationManager authenticationManager;
     private final ResponseHelpers responseHelpers;
     private final ObjectMapper objectMapper;
+    private final UserRequester userRequester;
 
-    public JwtAuthenticationFilter(AuthenticationManager authenticationManager, ResponseHelpers responseHelpers, ObjectMapper objectMapper) {
+    public JwtAuthenticationFilter(AuthenticationManager authenticationManager,
+                                   ResponseHelpers responseHelpers,
+                                   ObjectMapper objectMapper,
+                                   UserRequester userRequester) {
         this.authenticationManager = authenticationManager;
         this.responseHelpers = responseHelpers;
         this.objectMapper = objectMapper;
+        this.userRequester = userRequester;
 
         super.setFilterProcessesUrl(URLConstants.USER_LOGIN);
     }
@@ -64,7 +71,9 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                                             HttpServletResponse response,
                                             FilterChain filterChain,
                                             Authentication authentication) throws IOException {
-        UserServiceModel user = this.objectMapper.convertValue(authentication.getPrincipal(), UserServiceModel.class);
+
+        String email = authentication.getName();
+        UserFindByEmailReply user = this.userRequester.findByEmail(email);
 
         LOG.info(String.format(AUTHENTICATION_SUCCESSFUL, user.getEmail()));
 

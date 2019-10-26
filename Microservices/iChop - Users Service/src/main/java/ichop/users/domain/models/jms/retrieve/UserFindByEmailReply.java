@@ -25,4 +25,6 @@ public class UserFindByEmailReply extends BaseReplyModel {
     private LocalDateTime lastOnline;
     private String location;
 
+    private String authority;
+
 }

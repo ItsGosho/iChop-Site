@@ -50,8 +50,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        this.jwtAuthenticationFilter = new JwtAuthenticationFilter(authenticationManager(), this.responseHelpers, this.objectMapper);
-        this.jwtAuthorizationFilter = new JwtAuthorizationFilter(authenticationManager(), this.objectMapper, this.responseHelpers);
+        this.jwtAuthenticationFilter = new JwtAuthenticationFilter(authenticationManager(), this.responseHelpers, this.objectMapper,this.userRequester);
+        this.jwtAuthorizationFilter = new JwtAuthorizationFilter(authenticationManager(), this.objectMapper, this.responseHelpers,this.userRequester);
 
         http.cors().and()
                 .csrf().disable()

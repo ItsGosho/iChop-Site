@@ -6,10 +6,11 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import com.auth0.jwt.interfaces.JWTVerifier;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ichop.core.areas.role.domain.entities.UserRole;
 import ichop.core.areas.rest.helpers.ResponseHelpers;
+import ichop.core.areas.user.requester.UserRequester;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
@@ -27,11 +28,17 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 
     private final ObjectMapper objectMapper;
     private final ResponseHelpers responseHelpers;
+    private final UserRequester userRequester;
 
-    public JwtAuthorizationFilter(AuthenticationManager authenticationManager, ObjectMapper objectMapper, ResponseHelpers responseHelpers) {
+    public JwtAuthorizationFilter(AuthenticationManager authenticationManager,
+                                  ObjectMapper objectMapper,
+                                  ResponseHelpers responseHelpers,
+                                  UserRequester userRequester) {
+
         super(authenticationManager);
         this.objectMapper = objectMapper;
         this.responseHelpers = responseHelpers;
+        this.userRequester = userRequester;
     }
 
     @Override
@@ -53,7 +60,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
             DecodedJWT jwt = verifier.verify(token);
 
             String email = jwt.getClaim(EMAIL_CLAIM).asString();
-            Set<UserRole> roles = this.objectMapper.readValue(jwt.getClaim(ROLES_CLAIM).asString(), new TypeReference<Set<UserRole>>() {
+            Set<? extends GrantedAuthority> roles = this.objectMapper.readValue(jwt.getClaim(ROLES_CLAIM).asString(), new TypeReference<Set<? extends GrantedAuthority>>() {
             });
 
             return new UsernamePasswordAuthenticationToken(email, null, roles);
