@@ -5,6 +5,12 @@ import ichop.users.common.aop.JmsAfterReturn;
 import ichop.users.common.aop.JmsValidate;
 import ichop.users.common.helpers.BaseListener;
 import ichop.users.common.helpers.JmsHelper;
+import ichop.users.domain.models.jms.password.change.UserChangePasswordByTokenReply;
+import ichop.users.domain.models.jms.password.change.UserChangePasswordByTokenRequest;
+import ichop.users.domain.models.jms.password.change.UserChangePasswordReply;
+import ichop.users.domain.models.jms.password.change.UserChangePasswordRequest;
+import ichop.users.domain.models.jms.password.forgotten.UserForgottenPasswordReply;
+import ichop.users.domain.models.jms.password.forgotten.UserForgottenPasswordRequest;
 import ichop.users.domain.models.jms.register.UserRegisterReply;
 import ichop.users.domain.models.jms.register.UserRegisterRequest;
 import ichop.users.domain.models.jms.retrieve.UserFindByEmailReply;
@@ -19,8 +25,7 @@ import org.springframework.stereotype.Component;
 import javax.jms.Message;
 
 import static ichop.users.common.constants.JmsFactories.QUEUE;
-import static ichop.users.constants.UserReplyConstants.USER_FETCHED_SUCCESSFUL;
-import static ichop.users.constants.UserReplyConstants.USER_REGISTER_SUCCESSFUL;
+import static ichop.users.constants.UserReplyConstants.*;
 
 @Component
 public class UserListeners extends BaseListener {
@@ -63,5 +68,31 @@ public class UserListeners extends BaseListener {
         return reply;
     }
 
+    @JmsValidate(model = UserChangePasswordRequest.class)
+    @JmsAfterReturn(message = USER_PASSWORD_CHANGED_SUCCESSFUL)
+    @JmsListener(destination = "${artemis.queue.users.password.change}", containerFactory = QUEUE)
+    public UserChangePasswordReply changePassword(Message message) {
+        UserChangePasswordRequest requestModel = this.jmsHelper.getResultModel(message, UserChangePasswordRequest.class);
+
+        return null;
+    }
+
+    @JmsValidate(model = UserChangePasswordByTokenRequest.class)
+    @JmsAfterReturn(message = USER_PASSWORD_CHANGED_SUCCESSFUL)
+    @JmsListener(destination = "${artemis.queue.users.password.change.by.token}", containerFactory = QUEUE)
+    public UserChangePasswordByTokenReply changePasswordByToken(Message message) {
+        UserChangePasswordByTokenRequest requestModel = this.jmsHelper.getResultModel(message, UserChangePasswordByTokenRequest.class);
+
+        return null;
+    }
+
+    @JmsValidate(model = UserForgottenPasswordRequest.class)
+    @JmsAfterReturn(message = USER_PASSWORD_TOKEN_SENT_SUCCESSFUL)
+    @JmsListener(destination = "${artemis.queue.users.forgotten.password}", containerFactory = QUEUE)
+    public UserForgottenPasswordReply forgottenPassword(Message message) {
+        UserForgottenPasswordRequest requestModel = this.jmsHelper.getResultModel(message, UserForgottenPasswordRequest.class);
+
+        return null;
+    }
 
 }
