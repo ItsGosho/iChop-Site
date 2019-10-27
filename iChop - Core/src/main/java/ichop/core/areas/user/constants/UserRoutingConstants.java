@@ -10,10 +10,9 @@ public final class UserRoutingConstants {
     public static final String CHANGE_PASSWORD_BY_TOKEN = "/user/change/password/by/token"; /*GUEST++*/
 
     public static final String IS_FOLLOWING = "/user/is/following"; /*EVERYONE*/
+    public static final String EXISTS = "/user/exists"; /*EVERYONE*/
 
     /*TODO:*/
-    public static final String USER_EXISTS = "/api/user/exists"; /*EVERYONE*/
-    public static final String IS_USER_FOLLOWING_USER = "/api/user/is-following"; /*EVERYONE*/
 
     //UserController ------------------------------------------------------------------------------------------
 
