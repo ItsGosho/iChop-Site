@@ -8,6 +8,7 @@ import lombok.Setter;
 @Setter
 public class UserChangePasswordRequest extends BaseRequestModel {
 
+    private String email;
     private String password;
     private String confirmPassword;
 
