@@ -1,10 +1,10 @@
 package ichop.core.areas.security.controllers;
 
 import ichop.core.areas.rest.helpers.ResponseHelpers;
+import ichop.core.areas.user.constants.UserRoutingConstants;
 import ichop.core.areas.user.models.jms.register.UserRegisterReply;
 import ichop.core.areas.user.models.jms.register.UserRegisterRequest;
 import ichop.core.areas.user.requester.UserRequester;
-import ichop.core.constants.URLConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -25,7 +25,7 @@ public class UserAuthenticationController {
     }
 
 
-    @PostMapping(URLConstants.USER_REGISTER)
+    @PostMapping(UserRoutingConstants.REGISTER)
     public ResponseEntity proceedRegistration(UserRegisterRequest request) {
         UserRegisterReply reply = this.userRequester.register(request);
 

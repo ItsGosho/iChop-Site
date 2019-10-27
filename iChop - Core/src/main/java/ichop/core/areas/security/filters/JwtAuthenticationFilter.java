@@ -5,9 +5,9 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.core.areas.other.utils.DateUtils;
 import ichop.core.areas.rest.helpers.ResponseHelpers;
+import ichop.core.areas.user.constants.UserRoutingConstants;
 import ichop.core.areas.user.models.jms.retrieve.UserFindByEmailReply;
 import ichop.core.areas.user.requester.UserRequester;
-import ichop.core.constants.URLConstants;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -43,7 +43,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         this.objectMapper = objectMapper;
         this.userRequester = userRequester;
 
-        super.setFilterProcessesUrl(URLConstants.USER_LOGIN);
+        super.setFilterProcessesUrl(UserRoutingConstants.LOGIN);
     }
 
     @Override
