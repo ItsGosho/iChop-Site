@@ -29,6 +29,11 @@ public class PasswordTokenServicesImp
 
 
     @Override
+    public boolean deleteAllByUser(String userId) {
+        return super.repository.deleteAllByUserId(userId);
+    }
+
+    @Override
     public boolean isValid(String tokeen) {
         TokenServiceModel token = super.findByToken(tokeen);
 
