@@ -10,7 +10,7 @@ import ichop.users.domain.models.jms.register.UserRegisterRequest;
 import ichop.users.domain.models.jms.retrieve.UserFindByEmailReply;
 import ichop.users.domain.models.jms.retrieve.UserFindByEmailRequest;
 import ichop.users.domain.models.service.UserServiceModel;
-import ichop.users.services.UserRoleServices;
+import ichop.users.services.RoleServices;
 import ichop.users.services.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
@@ -26,16 +26,16 @@ import static ichop.users.constants.UserReplyConstants.USER_REGISTER_SUCCESSFUL;
 public class UserListeners extends BaseListener {
 
     private final UserServices userServices;
-    private final UserRoleServices userRoleServices;
+    private final RoleServices roleServices;
 
     @Autowired
     protected UserListeners(JmsHelper jmsHelper,
                             ObjectMapper objectMapper,
                             UserServices userServices,
-                            UserRoleServices userRoleServices) {
+                            RoleServices roleServices) {
         super(jmsHelper, objectMapper);
         this.userServices = userServices;
-        this.userRoleServices = userRoleServices;
+        this.roleServices = roleServices;
     }
 
 
@@ -59,7 +59,7 @@ public class UserListeners extends BaseListener {
         UserServiceModel user = this.userServices.findUserByEmail(requestModel.getEmail());
 
         UserFindByEmailReply reply = super.objectMapper.convertValue(user, UserFindByEmailReply.class);
-        reply.setAuthority(this.userRoleServices.findHighestOfUser(user).getAuthority());
+        reply.setAuthority(this.roleServices.findHighestOfUser(user).getAuthority());
         return reply;
     }
 

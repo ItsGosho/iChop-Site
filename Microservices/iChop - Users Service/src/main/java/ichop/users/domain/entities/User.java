@@ -41,7 +41,7 @@ public class User extends BaseEntity implements UserDetails {
     private boolean isEnabled;
 
     @DBRef
-    private Set<UserRole> authorities;
+    private Set<Role> authorities;
 
     private LocalDateTime registrationDate = LocalDateTime.now();
 

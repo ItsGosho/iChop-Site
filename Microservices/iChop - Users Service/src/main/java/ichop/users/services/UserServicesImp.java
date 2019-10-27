@@ -4,9 +4,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.users.common.service.AbstractBaseService;
 import ichop.users.constants.UserValidationConstants;
 import ichop.users.domain.entities.User;
-import ichop.users.domain.enums.UserRoles;
+import ichop.users.domain.enums.Roles;
 import ichop.users.domain.models.jms.register.UserRegisterRequest;
-import ichop.users.domain.models.service.UserRoleServiceModel;
+import ichop.users.domain.models.service.RoleServiceModel;
 import ichop.users.domain.models.service.UserServiceModel;
 import ichop.users.repositories.UserRepository;
 import org.apache.logging.log4j.LogManager;
@@ -32,16 +32,16 @@ public class UserServicesImp extends AbstractBaseService<User, UserServiceModel,
 
 
     private final BCryptPasswordEncoder passwordEncoder;
-    private final UserRoleServices userRoleServices;
+    private final RoleServices roleServices;
 
     @Autowired
     public UserServicesImp(ObjectMapper objectMapper,
                            UserRepository repository,
                            BCryptPasswordEncoder passwordEncoder,
-                           UserRoleServices userRoleServices) {
+                           RoleServices roleServices) {
         super(objectMapper, repository);
         this.passwordEncoder = passwordEncoder;
-        this.userRoleServices = userRoleServices;
+        this.roleServices = roleServices;
     }
 
 
@@ -76,16 +76,16 @@ public class UserServicesImp extends AbstractBaseService<User, UserServiceModel,
     }
 
     @Override
-    public Set<UserRoleServiceModel> getInitialAuthorities() {
-        Set<UserRoleServiceModel> roles = new HashSet<>();
+    public Set<RoleServiceModel> getInitialAuthorities() {
+        Set<RoleServiceModel> roles = new HashSet<>();
 
         if (this.findTotalUsers() == 0) {
-            roles.add(this.userRoleServices.create(UserRoles.OWNER));
-            roles.add(this.userRoleServices.create(UserRoles.ADMIN));
-            roles.add(this.userRoleServices.create(UserRoles.MODERATOR));
-            roles.add(this.userRoleServices.create(UserRoles.USER));
+            roles.add(this.roleServices.create(Roles.OWNER));
+            roles.add(this.roleServices.create(Roles.ADMIN));
+            roles.add(this.roleServices.create(Roles.MODERATOR));
+            roles.add(this.roleServices.create(Roles.USER));
         } else {
-            roles.add(this.userRoleServices.create(UserRoles.USER));
+            roles.add(this.roleServices.create(Roles.USER));
         }
         return roles;
     }

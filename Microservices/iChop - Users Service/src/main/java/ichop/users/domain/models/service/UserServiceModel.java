@@ -19,7 +19,7 @@ public class UserServiceModel extends BaseServiceModel implements Serializable {
     private boolean isAccountNonLocked;
     private boolean isCredentialsNonExpired;
     private boolean isEnabled;
-    private Set<UserRoleServiceModel> authorities;
+    private Set<RoleServiceModel> authorities;
     private LocalDateTime registrationDate;
     private LocalDateTime lastOnline;
     private String location;

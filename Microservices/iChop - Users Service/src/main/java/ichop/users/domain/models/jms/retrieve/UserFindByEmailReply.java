@@ -1,7 +1,7 @@
 package ichop.users.domain.models.jms.retrieve;
 
 import ichop.users.common.domain.BaseReplyModel;
-import ichop.users.domain.models.service.UserRoleServiceModel;
+import ichop.users.domain.models.service.RoleServiceModel;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,7 +20,7 @@ public class UserFindByEmailReply extends BaseReplyModel {
     private boolean isAccountNonLocked;
     private boolean isCredentialsNonExpired;
     private boolean isEnabled;
-    private Set<UserRoleServiceModel> authorities;
+    private Set<RoleServiceModel> authorities;
     private LocalDateTime registrationDate;
     private LocalDateTime lastOnline;
     private String location;

@@ -2,7 +2,7 @@ package ichop.users.services;
 
 import ichop.users.common.service.BaseService;
 import ichop.users.domain.models.jms.register.UserRegisterRequest;
-import ichop.users.domain.models.service.UserRoleServiceModel;
+import ichop.users.domain.models.service.RoleServiceModel;
 import ichop.users.domain.models.service.UserServiceModel;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
@@ -14,7 +14,7 @@ public interface UserServices extends UserDetailsService, BaseService<UserServic
 
     UserServiceModel register(UserRegisterRequest userRegisterRequest);
 
-    Set<UserRoleServiceModel> getInitialAuthorities();
+    Set<RoleServiceModel> getInitialAuthorities();
 
     UserServiceModel findUserByUsername(String username);
 
