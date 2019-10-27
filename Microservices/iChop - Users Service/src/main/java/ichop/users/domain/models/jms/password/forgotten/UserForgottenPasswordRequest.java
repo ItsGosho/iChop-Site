@@ -8,6 +8,7 @@ import lombok.Setter;
 @Setter
 public class UserForgottenPasswordRequest extends BaseRequestModel {
 
+    /*TODO: validations*/
     private String email;
 
 }

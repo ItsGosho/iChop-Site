@@ -8,6 +8,7 @@ import lombok.Setter;
 @Setter
 public class UserChangePasswordByTokenRequest extends BaseRequestModel {
 
+    /*TODO: validations*/
     private String password;
     private String confirmPassword;
     private String token;
