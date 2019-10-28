@@ -14,6 +14,9 @@ public interface PasswordTokenRequester {
 
     PasswordTokenCreateReply create(PasswordTokenCreateRequest request);
     PasswordTokenIsValidReply isValid(PasswordTokenIsValidRequest request);
+
+    boolean isValid(String token);
+
     PasswordTokenFindByTokenReply findByToken(PasswordTokenFindByTokenRequest request);
     PasswordTokenDeleteByTokenReply deleteByToken(PasswordTokenDeleteByTokenRequest request);
 

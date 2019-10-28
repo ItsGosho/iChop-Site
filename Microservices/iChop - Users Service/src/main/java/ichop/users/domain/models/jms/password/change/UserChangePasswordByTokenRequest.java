@@ -7,10 +7,10 @@ import lombok.Setter;
 
 @Getter
 @Setter
+@SpELValidation(value = "@passwordTokenRequesterImp.isValid(#this.token)", message = "Token is invalid!")
 @SpELValidation(value = "#this.password == #this.confirmPassword", message = "Passwords are not equal!")
 public class UserChangePasswordByTokenRequest extends BaseRequestModel {
 
-    /*TODO: validations*/
     private String password;
     private String confirmPassword;
     private String token;

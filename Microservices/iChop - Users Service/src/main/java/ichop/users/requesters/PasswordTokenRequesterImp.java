@@ -49,6 +49,13 @@ public class PasswordTokenRequesterImp implements PasswordTokenRequester {
     }
 
     @Override
+    public boolean isValid(String token) {
+        return this.jmsHelper.sendAndReceive(this.isValidDestination,
+                new PasswordTokenIsValidRequest(token),
+                PasswordTokenIsValidReply.class).isValid();
+    }
+
+    @Override
     public PasswordTokenFindByTokenReply findByToken(PasswordTokenFindByTokenRequest request) {
         return this.jmsHelper.sendAndReceive(this.findByTokenDestination, request, PasswordTokenFindByTokenReply.class);
     }
