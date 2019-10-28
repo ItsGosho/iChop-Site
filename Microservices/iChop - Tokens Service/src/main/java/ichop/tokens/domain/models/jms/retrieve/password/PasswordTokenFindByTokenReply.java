@@ -6,10 +6,15 @@ import ichop.tokens.common.validators.SpELValidation;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
-public class PasswordTokenGetUserByTokenReply extends BaseReplyModel {
+public class PasswordTokenFindByTokenReply extends BaseReplyModel {
 
+    private String id;
     private String userId;
+    private String token;
+    private LocalDateTime creationDate;
 
 }

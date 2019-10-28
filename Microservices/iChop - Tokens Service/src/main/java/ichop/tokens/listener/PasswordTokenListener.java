@@ -7,6 +7,10 @@ import ichop.tokens.common.helpers.BaseListener;
 import ichop.tokens.common.helpers.JmsHelper;
 import ichop.tokens.domain.models.jms.create.password.PasswordTokenCreateReply;
 import ichop.tokens.domain.models.jms.create.password.PasswordTokenCreateRequest;
+import ichop.tokens.domain.models.jms.delete.password.PasswordTokenDeleteByTokenReply;
+import ichop.tokens.domain.models.jms.delete.password.PasswordTokenDeleteByTokenRequest;
+import ichop.tokens.domain.models.jms.retrieve.password.PasswordTokenFindByTokenReply;
+import ichop.tokens.domain.models.jms.retrieve.password.PasswordTokenFindByTokenRequest;
 import ichop.tokens.domain.models.jms.valid.password.PasswordTokenIsValidReply;
 import ichop.tokens.domain.models.jms.valid.password.PasswordTokenIsValidRequest;
 import ichop.tokens.domain.models.service.PasswordTokenServiceModel;
@@ -18,8 +22,7 @@ import org.springframework.stereotype.Component;
 import javax.jms.Message;
 
 import static ichop.tokens.common.constants.JmsFactories.QUEUE;
-import static ichop.tokens.constants.TokenReplyConstants.TOKEN_CREATED_SUCCESSFUL;
-import static ichop.tokens.constants.TokenReplyConstants.TOKEN_RETRIEVED_SUCCESSFUL;
+import static ichop.tokens.constants.TokenReplyConstants.*;
 
 @Component
 public class PasswordTokenListener extends BaseListener {
@@ -57,4 +60,27 @@ public class PasswordTokenListener extends BaseListener {
 
         return new PasswordTokenIsValidReply(isValid);
     }
+
+    @JmsValidate(model = PasswordTokenFindByTokenRequest.class)
+    @JmsAfterReturn(message = TOKEN_RETRIEVED_SUCCESSFUL)
+    @JmsListener(destination = "${artemis.queue.tokens.password.find.by.token}", containerFactory = QUEUE)
+    public PasswordTokenFindByTokenReply findByToken(Message message) {
+        PasswordTokenFindByTokenRequest requestModel = this.jmsHelper.getResultModel(message, PasswordTokenFindByTokenRequest.class);
+
+        PasswordTokenServiceModel token = this.passwordTokenServices.findByToken(requestModel.getToken());
+
+        return this.objectMapper.convertValue(token, PasswordTokenFindByTokenReply.class);
+    }
+
+    @JmsValidate(model = PasswordTokenDeleteByTokenRequest.class)
+    @JmsAfterReturn(message = TOKEN_DELETED_SUCCESSFUL)
+    @JmsListener(destination = "${artemis.queue.tokens.password.delete.by.token}", containerFactory = QUEUE)
+    public PasswordTokenDeleteByTokenReply deleteByToken(Message message) {
+        PasswordTokenDeleteByTokenRequest requestModel = this.jmsHelper.getResultModel(message, PasswordTokenDeleteByTokenRequest.class);
+
+        this.passwordTokenServices.deleteByToken(requestModel.getToken());
+
+        return new PasswordTokenDeleteByTokenReply();
+    }
+
 }

@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @SpELValidation(value = "@passwordTokenServicesImp.existsByToken(#this.token) == true",message = "Token doesn't exist!")
-public class PasswordTokenGetUserByTokenRequest extends BaseRequestModel {
+public class PasswordTokenFindByTokenRequest extends BaseRequestModel {
 
     private String token;
 

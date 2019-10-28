@@ -9,4 +9,6 @@ public interface TokenServices<S extends TokenServiceModel> extends BaseService<
     S findByToken(String tokeen);
 
     boolean existsByToken(String tokeen);
+
+    Long deleteByToken(String tokeen);
 }

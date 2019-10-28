@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1984862c-2f8c-4410-af36-a1dcaaa3ddaf" name="Default Changelist" comment="" />
+    <list default="true" id="1984862c-2f8c-4410-af36-a1dcaaa3ddaf" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/constants/TokenReplyConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/constants/TokenReplyConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/domain/models/jms/retrieve/password/PasswordTokenGetUserByTokenReply.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/domain/models/jms/retrieve/password/PasswordTokenFindByTokenReply.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/domain/models/jms/retrieve/password/PasswordTokenGetUserByTokenRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/domain/models/jms/retrieve/password/PasswordTokenFindByTokenRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/listener/PasswordTokenListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/listener/PasswordTokenListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/repositories/PasswordTokenRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/repositories/PasswordTokenRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/repositories/TokenRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/repositories/TokenRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/services/AbstractTokenServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/services/AbstractTokenServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/services/TokenServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/services/TokenServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

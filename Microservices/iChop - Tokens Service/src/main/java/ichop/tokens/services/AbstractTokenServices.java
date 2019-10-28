@@ -35,4 +35,9 @@ public abstract class AbstractTokenServices
     public boolean existsByToken(String tokeen) {
         return super.repository.existsByToken(tokeen);
     }
+
+    @Override
+    public Long deleteByToken(String tokeen) {
+        return super.repository.deleteByToken(tokeen);
+    }
 }

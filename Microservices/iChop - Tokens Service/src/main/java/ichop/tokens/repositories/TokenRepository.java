@@ -14,4 +14,6 @@ public interface TokenRepository<E extends BaseEntity> extends MongoRepository<E
     E findByToken(String token);
 
     boolean existsByToken(String token);
+
+    Long deleteByToken(String token);
 }
