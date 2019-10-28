@@ -8,6 +8,6 @@ import java.util.List;
 @Repository
 public interface PasswordTokenRepository extends TokenRepository<PasswordToken> {
 
-    boolean deleteAllByUserId(String userId);
+    Long deleteAllByUserId(String userId);
 
 }

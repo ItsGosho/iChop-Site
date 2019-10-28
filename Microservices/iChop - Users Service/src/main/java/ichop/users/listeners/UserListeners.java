@@ -5,6 +5,7 @@ import ichop.users.common.aop.JmsAfterReturn;
 import ichop.users.common.aop.JmsValidate;
 import ichop.users.common.helpers.BaseListener;
 import ichop.users.common.helpers.JmsHelper;
+import ichop.users.domain.models.jms.email.EmailResetPasswordRequest;
 import ichop.users.domain.models.jms.password.change.UserChangePasswordByTokenReply;
 import ichop.users.domain.models.jms.password.change.UserChangePasswordByTokenRequest;
 import ichop.users.domain.models.jms.password.change.UserChangePasswordReply;
@@ -15,7 +16,11 @@ import ichop.users.domain.models.jms.register.UserRegisterReply;
 import ichop.users.domain.models.jms.register.UserRegisterRequest;
 import ichop.users.domain.models.jms.retrieve.UserFindByEmailReply;
 import ichop.users.domain.models.jms.retrieve.UserFindByEmailRequest;
+import ichop.users.domain.models.jms.token.create.password.PasswordTokenCreateReply;
+import ichop.users.domain.models.jms.token.create.password.PasswordTokenCreateRequest;
 import ichop.users.domain.models.service.UserServiceModel;
+import ichop.users.requesters.EmailRequester;
+import ichop.users.requesters.PasswordTokenRequester;
 import ichop.users.services.RoleServices;
 import ichop.users.services.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,15 +37,21 @@ public class UserListeners extends BaseListener {
 
     private final UserServices userServices;
     private final RoleServices roleServices;
+    private final EmailRequester emailRequester;
+    private final PasswordTokenRequester passwordTokenRequester;
 
     @Autowired
     protected UserListeners(JmsHelper jmsHelper,
                             ObjectMapper objectMapper,
                             UserServices userServices,
-                            RoleServices roleServices) {
+                            RoleServices roleServices,
+                            EmailRequester emailRequester,
+                            PasswordTokenRequester passwordTokenRequester) {
         super(jmsHelper, objectMapper);
         this.userServices = userServices;
         this.roleServices = roleServices;
+        this.emailRequester = emailRequester;
+        this.passwordTokenRequester = passwordTokenRequester;
     }
 
 
@@ -74,7 +85,7 @@ public class UserListeners extends BaseListener {
     public UserChangePasswordReply changePassword(Message message) {
         UserChangePasswordRequest requestModel = this.jmsHelper.getResultModel(message, UserChangePasswordRequest.class);
 
-        this.userServices.changePassword(requestModel.getEmail(),requestModel.getPassword());
+        this.userServices.changePassword(requestModel.getEmail(), requestModel.getPassword());
 
         return new UserChangePasswordReply();
     }
@@ -94,7 +105,19 @@ public class UserListeners extends BaseListener {
     public UserForgottenPasswordReply forgottenPassword(Message message) {
         UserForgottenPasswordRequest requestModel = this.jmsHelper.getResultModel(message, UserForgottenPasswordRequest.class);
 
-        return null;
+        UserServiceModel user = this.userServices.findByEmail(requestModel.getEmail());
+
+        PasswordTokenCreateRequest passwordTokenCreateRequest = new PasswordTokenCreateRequest(user.getId());
+        PasswordTokenCreateReply passwordTokenCreateReply = this.passwordTokenRequester.create(passwordTokenCreateRequest);
+
+        EmailResetPasswordRequest emailResetPasswordRequest = new EmailResetPasswordRequest();
+        emailResetPasswordRequest.setTo(user.getEmail());
+        emailResetPasswordRequest.setToken(passwordTokenCreateReply.getToken());
+        emailResetPasswordRequest.setExpirationDate(passwordTokenCreateReply.getCreationDate().plusHours(24));
+
+        this.emailRequester.sendPasswordReset(emailResetPasswordRequest);
+
+        return new UserForgottenPasswordReply();
     }
 
 }

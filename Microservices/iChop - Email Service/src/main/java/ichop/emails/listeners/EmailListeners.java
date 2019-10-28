@@ -39,7 +39,7 @@ public class EmailListeners extends BaseListener {
         EmailResetPasswordRequest requestModel = this.jmsHelper.getResultModel(message, EmailResetPasswordRequest.class);
 
         try {
-            String html = this.freemakerHelper.prepareResetPasswordView(requestModel.getExpirationDate(), requestModel.getTo());
+            String html = this.freemakerHelper.prepareResetPasswordView(requestModel.getExpirationDate(), requestModel.getToken());
             this.javaMailHelper.send(requestModel.getTo(), SubjectConstants.RESET_PASSWORD, html);
 
             this.jmsHelper.replySuccessful(message, new EmailReply(), EMAIL_SENT_SUCCESSFUL);

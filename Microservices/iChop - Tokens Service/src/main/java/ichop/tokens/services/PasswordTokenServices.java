@@ -6,8 +6,9 @@ import java.util.List;
 
 public interface PasswordTokenServices extends TokenServices<PasswordTokenServiceModel> {
 
-    boolean deleteAllByUser(String userId);
+    Long deleteAllByUser(String userId);
     boolean isValid(String token);
     List<PasswordTokenServiceModel> findExpired();
 
+    String generateToken();
 }

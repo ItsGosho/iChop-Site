@@ -6,12 +6,15 @@ import ichop.tokens.domain.entities.PasswordToken;
 import ichop.tokens.domain.models.service.PasswordTokenServiceModel;
 import ichop.tokens.domain.models.service.TokenServiceModel;
 import ichop.tokens.repositories.PasswordTokenRepository;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.nio.charset.Charset;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 @Service
@@ -29,7 +32,7 @@ public class PasswordTokenServicesImp
 
 
     @Override
-    public boolean deleteAllByUser(String userId) {
+    public Long deleteAllByUser(String userId) {
         return super.repository.deleteAllByUserId(userId);
     }
 
@@ -48,6 +51,11 @@ public class PasswordTokenServicesImp
                 .filter(x -> this.isExpired(x.getCreationDate()))
                 .map(x -> super.objectMapper.convertValue(x, PasswordTokenServiceModel.class))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public String generateToken() {
+        return RandomStringUtils.randomAlphabetic(10);
     }
 
     private boolean isExpired(LocalDateTime dateTime) {

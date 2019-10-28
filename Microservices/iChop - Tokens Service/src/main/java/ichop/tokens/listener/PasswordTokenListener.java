@@ -40,9 +40,11 @@ public class PasswordTokenListener extends BaseListener {
         PasswordTokenCreateRequest requestModel = this.jmsHelper.getResultModel(message, PasswordTokenCreateRequest.class);
 
         PasswordTokenServiceModel passwordToken = this.objectMapper.convertValue(requestModel, PasswordTokenServiceModel.class);
+        passwordToken.setToken(this.passwordTokenServices.generateToken());
 
         this.passwordTokenServices.deleteAllByUser(passwordToken.getUserId());
-        return this.passwordTokenServices.save(passwordToken, PasswordTokenCreateReply.class);
+        PasswordTokenCreateReply reply = this.passwordTokenServices.save(passwordToken, PasswordTokenCreateReply.class);
+        return reply;
     }
 
     @JmsValidate(model = PasswordTokenIsValidRequest.class)
