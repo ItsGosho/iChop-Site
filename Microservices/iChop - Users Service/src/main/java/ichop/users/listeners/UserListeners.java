@@ -96,6 +96,8 @@ public class UserListeners extends BaseListener {
     public UserChangePasswordByTokenReply changePasswordByToken(Message message) {
         UserChangePasswordByTokenRequest requestModel = this.jmsHelper.getResultModel(message, UserChangePasswordByTokenRequest.class);
 
+
+
         return null;
     }
 
