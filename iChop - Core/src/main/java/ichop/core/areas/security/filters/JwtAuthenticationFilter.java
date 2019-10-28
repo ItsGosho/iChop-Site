@@ -67,8 +67,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                                             FilterChain filterChain,
                                             Authentication authentication) throws IOException {
 
-        String email = authentication.getName();
-        UserFindByEmailReply user = this.userRequester.findByEmail(email);
+        UserFindByEmailReply user = (UserFindByEmailReply) authentication.getPrincipal();
 
         LOG.info(String.format(AUTHENTICATION_SUCCESSFUL, user.getEmail()));
 

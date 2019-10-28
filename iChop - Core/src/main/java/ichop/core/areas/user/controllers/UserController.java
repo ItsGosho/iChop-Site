@@ -31,7 +31,7 @@ public class UserController {
 
     @PreAuthorize("isAuthenticated()")
     @PostMapping(UserRoutingConstants.CHANGE_PASSWORD)
-    private ResponseEntity changePassword(UserChangePasswordRequest changePasswordRequest, Principal principal) {
+    public ResponseEntity changePassword(UserChangePasswordRequest changePasswordRequest, Principal principal) {
         changePasswordRequest.setEmail(principal.getName());
 
         UserChangePasswordReply reply = this.userRequester.changePassword(changePasswordRequest);
@@ -41,7 +41,7 @@ public class UserController {
 
     @PreAuthorize("isAnonymous()")
     @PostMapping(UserRoutingConstants.FORGOTTEN_PASSWORD)
-    private ResponseEntity forgottenPassword(UserForgottenPasswordRequest forgottenPasswordRequest) {
+    public ResponseEntity forgottenPassword(UserForgottenPasswordRequest forgottenPasswordRequest) {
         UserForgottenPasswordReply reply = this.userRequester.forgottenPassword(forgottenPasswordRequest);
 
         return this.responseHelpers.respondGeneric(reply);
@@ -49,7 +49,7 @@ public class UserController {
 
     @PreAuthorize("isAuthenticated()")
     @PostMapping(UserRoutingConstants.CHANGE_PASSWORD_BY_TOKEN)
-    private ResponseEntity changePasswordByToken(UserChangePasswordByTokenRequest changePasswordByTokenRequest) {
+    public ResponseEntity changePasswordByToken(UserChangePasswordByTokenRequest changePasswordByTokenRequest) {
         UserChangePasswordByTokenReply reply = this.userRequester.changePasswordByToken(changePasswordByTokenRequest);
 
         return this.responseHelpers.respondGeneric(reply);

@@ -8,8 +8,8 @@ import org.hibernate.validator.constraints.Length;
 
 @Getter
 @Setter
-@SpELValidation(value = "@userServicesImp.existsByEmail(#this.email) == false", message = "User not found!")
-@SpELValidation(value = "#this.password != #this.confirmPassword", message = "Passwords are not equal!")
+@SpELValidation(value = "@userServicesImp.existsByEmail(#this.email) == true", message = "User not found!")
+@SpELValidation(value = "#this.password == #this.confirmPassword", message = "Passwords are not equal!")
 public class UserChangePasswordRequest extends BaseRequestModel {
 
     private String email;

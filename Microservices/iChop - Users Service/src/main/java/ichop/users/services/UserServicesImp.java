@@ -119,10 +119,12 @@ public class UserServicesImp extends AbstractBaseService<User, UserServiceModel,
         return matcher.find();
     }
 
+    @Override
     public boolean existsByUsername(String username) {
         return this.repository.findUserByUsername(username) != null;
     }
 
+    @Override
     public boolean existsByEmail(String email) {
         return this.repository.findUserByEmail(email) != null;
     }
@@ -138,13 +140,19 @@ public class UserServicesImp extends AbstractBaseService<User, UserServiceModel,
         //this.repository.updateLastOnline(entityUser, dateTime);
     }
 
+    @Override
     public void updateLocation(UserServiceModel user, String userLocation) {
         User entityUser = super.objectMapper.convertValue(user, User.class);
         //this.repository.updateLocation(entityUser, userLocation);
     }
 
     @Override
-    public void changePassword(String email, String password, String confirmPassword) {
-        User user = this.findByEmail()
+    public void changePassword(String email, String password) {
+        String encodedPassword = this.passwordEncoder.encode(password);
+
+        UserServiceModel user = this.findByEmail(email);
+        user.setPassword(encodedPassword);
+
+        this.save(user);
     }
 }

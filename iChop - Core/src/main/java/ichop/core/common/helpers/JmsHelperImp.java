@@ -6,6 +6,8 @@ import ichop.core.common.domain.BaseReplyModel;
 import ichop.core.common.domain.BaseRequestModel;
 import ichop.core.common.domain.ErrorReplyModel;
 import ichop.core.common.validation.ValidationHelper;
+import org.apache.activemq.artemis.jms.client.ActiveMQQueue;
+import org.apache.activemq.artemis.jms.client.ActiveMQTopic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
@@ -41,6 +43,7 @@ public class JmsHelperImp implements JmsHelper {
     public <S extends BaseReplyModel, R extends BaseRequestModel> S sendAndReceive(String destination, R model, Class<S> clazz) {
         LOG.info(String.format(SEND_AND_RECEIVED_STARTED, destination));
 
+        this.initDestination(destination,false);
         MessageCreator message = this.createMessage(model);
         Message result = this.jmsTemplate.sendAndReceive(destination, message);
 
@@ -51,6 +54,7 @@ public class JmsHelperImp implements JmsHelper {
     public <S extends BaseRequestModel> void send(String destination, S model) {
         LOG.info(String.format(SEND_STARTED, destination));
 
+        this.initDestination(destination,false);
         MessageCreator message = this.createMessage(model);
         this.jmsTemplate.send(destination, message);
     }
@@ -99,6 +103,14 @@ public class JmsHelperImp implements JmsHelper {
 
         MessageCreator message = this.createMessage(model, correlationId);
         this.jmsTemplate.send(destination, message);
+    }
+
+    private Destination initDestination(String destination, boolean isTopic) {
+        if (!isTopic) {
+            return new ActiveMQQueue(destination);
+        } else {
+            return new ActiveMQTopic(destination);
+        }
     }
 
     private MessageCreator createMessage (Object model) {

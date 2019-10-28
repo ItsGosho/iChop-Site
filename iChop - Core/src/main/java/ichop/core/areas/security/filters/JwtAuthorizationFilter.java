@@ -7,10 +7,10 @@ import com.auth0.jwt.interfaces.JWTVerifier;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.core.areas.rest.helpers.ResponseHelpers;
+import ichop.core.areas.security.config.UserRoleSecurity;
 import ichop.core.areas.user.requester.UserRequester;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
@@ -60,7 +60,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
             DecodedJWT jwt = verifier.verify(token);
 
             String email = jwt.getClaim(EMAIL_CLAIM).asString();
-            Set<? extends GrantedAuthority> roles = this.objectMapper.readValue(jwt.getClaim(ROLES_CLAIM).asString(), new TypeReference<Set<? extends GrantedAuthority>>() {
+            Set<UserRoleSecurity> roles = this.objectMapper.readValue(jwt.getClaim(ROLES_CLAIM).asString(), new TypeReference<Set<UserRoleSecurity>>() {
             });
 
             return new UsernamePasswordAuthenticationToken(email, null, roles);

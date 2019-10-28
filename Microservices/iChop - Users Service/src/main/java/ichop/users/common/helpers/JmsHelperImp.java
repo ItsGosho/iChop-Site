@@ -6,6 +6,8 @@ import ichop.users.common.domain.BaseReplyModel;
 import ichop.users.common.domain.BaseRequestModel;
 import ichop.users.common.domain.ErrorReplyModel;
 import ichop.users.common.validation.ValidationHelper;
+import org.apache.activemq.artemis.jms.client.ActiveMQQueue;
+import org.apache.activemq.artemis.jms.client.ActiveMQTopic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
@@ -41,6 +43,7 @@ public class JmsHelperImp implements JmsHelper {
     public <S extends BaseReplyModel, R extends BaseRequestModel> S sendAndReceive(String destination, R model, Class<S> clazz) {
         LOG.info(String.format(SEND_AND_RECEIVED_STARTED, destination));
 
+        this.initDestination(destination, false);
         MessageCreator message = this.createMessage(model);
         Message result = this.jmsTemplate.sendAndReceive(destination, message);
 
@@ -51,12 +54,13 @@ public class JmsHelperImp implements JmsHelper {
     public <S extends BaseRequestModel> void send(String destination, S model) {
         LOG.info(String.format(SEND_STARTED, destination));
 
+        this.initDestination(destination, false);
         MessageCreator message = this.createMessage(model);
         this.jmsTemplate.send(destination, message);
     }
 
     @Override
-    public <S extends BaseReplyModel> void replySuccessful(Message message, S model,String msg) {
+    public <S extends BaseReplyModel> void replySuccessful(Message message, S model, String msg) {
         try {
             model.setSuccessful(true);
             model.setMessage(msg);
@@ -101,7 +105,16 @@ public class JmsHelperImp implements JmsHelper {
         this.jmsTemplate.send(destination, message);
     }
 
-    private MessageCreator createMessage (Object model) {
+    private Destination initDestination(String destination, boolean isTopic) {
+        if (!isTopic) {
+            return new ActiveMQQueue(destination);
+        } else {
+            return new ActiveMQTopic(destination);
+        }
+    }
+
+
+    private MessageCreator createMessage(Object model) {
         return this.createMessage(model, this.randomId());
     }
 

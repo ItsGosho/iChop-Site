@@ -22,15 +22,15 @@ public interface UserServices extends UserDetailsService, BaseService<UserServic
 
     boolean isEmail(String value);
 
-    boolean isUserExistsByUsername(String username);
+    boolean existsByUsername(String username);
 
-    boolean isUserExistsByEmail(String email);
+    boolean existsByEmail(String email);
 
     long findTotalUsers();
 
     void updateLastOnline(UserServiceModel user, LocalDateTime lastOnline);
 
-    void updateUserLocation(UserServiceModel user, String userLocation);
+    void changePassword(String email, String password);
 
-    void changePassword(String email, String password, String confirmPassword);
+    void updateLocation(UserServiceModel user, String userLocation);
 }
