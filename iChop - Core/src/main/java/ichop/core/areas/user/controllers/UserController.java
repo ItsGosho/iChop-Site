@@ -1,8 +1,12 @@
 package ichop.core.areas.user.controllers;
 
+import ichop.core.areas.rest.helpers.ResponseHelpers;
 import ichop.core.areas.user.constants.UserRoutingConstants;
+import ichop.core.areas.user.models.jms.password.change.UserChangePasswordByTokenReply;
 import ichop.core.areas.user.models.jms.password.change.UserChangePasswordByTokenRequest;
+import ichop.core.areas.user.models.jms.password.change.UserChangePasswordReply;
 import ichop.core.areas.user.models.jms.password.change.UserChangePasswordRequest;
+import ichop.core.areas.user.models.jms.password.forgotten.UserForgottenPasswordReply;
 import ichop.core.areas.user.models.jms.password.forgotten.UserForgottenPasswordRequest;
 import ichop.core.areas.user.requester.UserRequester;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +21,12 @@ import java.security.Principal;
 public class UserController {
 
     private final UserRequester userRequester;
+    private final ResponseHelpers responseHelpers;
 
     @Autowired
-    public UserController(UserRequester userRequester) {
+    public UserController(UserRequester userRequester, ResponseHelpers responseHelpers) {
         this.userRequester = userRequester;
+        this.responseHelpers = responseHelpers;
     }
 
     @PreAuthorize("isAuthenticated()")
@@ -28,20 +34,24 @@ public class UserController {
     private ResponseEntity changePassword(UserChangePasswordRequest changePasswordRequest, Principal principal) {
         changePasswordRequest.setEmail(principal.getName());
 
-        return null;
+        UserChangePasswordReply reply = this.userRequester.changePassword(changePasswordRequest);
+
+        return this.responseHelpers.respondGeneric(reply);
     }
 
     @PreAuthorize("isAnonymous()")
     @PostMapping(UserRoutingConstants.FORGOTTEN_PASSWORD)
     private ResponseEntity forgottenPassword(UserForgottenPasswordRequest forgottenPasswordRequest) {
+        UserForgottenPasswordReply reply = this.userRequester.forgottenPassword(forgottenPasswordRequest);
 
-        return null;
+        return this.responseHelpers.respondGeneric(reply);
     }
 
     @PreAuthorize("isAuthenticated()")
     @PostMapping(UserRoutingConstants.CHANGE_PASSWORD_BY_TOKEN)
     private ResponseEntity changePasswordByToken(UserChangePasswordByTokenRequest changePasswordByTokenRequest) {
+        UserChangePasswordByTokenReply reply = this.userRequester.changePasswordByToken(changePasswordByTokenRequest);
 
-        return null;
+        return this.responseHelpers.respondGeneric(reply);
     }
 }
