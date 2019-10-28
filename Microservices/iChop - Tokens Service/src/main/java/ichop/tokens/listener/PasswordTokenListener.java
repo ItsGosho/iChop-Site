@@ -1,7 +1,6 @@
 package ichop.tokens.listener;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sun.xml.internal.ws.api.FeatureConstructor;
 import ichop.tokens.common.aop.JmsAfterReturn;
 import ichop.tokens.common.aop.JmsValidate;
 import ichop.tokens.common.helpers.BaseListener;
@@ -12,6 +11,7 @@ import ichop.tokens.domain.models.jms.valid.password.PasswordTokenIsValidReply;
 import ichop.tokens.domain.models.jms.valid.password.PasswordTokenIsValidRequest;
 import ichop.tokens.domain.models.service.PasswordTokenServiceModel;
 import ichop.tokens.services.PasswordTokenServices;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 
@@ -26,7 +26,7 @@ public class PasswordTokenListener extends BaseListener {
 
     private final PasswordTokenServices passwordTokenServices;
 
-    @FeatureConstructor
+    @Autowired
     protected PasswordTokenListener(JmsHelper jmsHelper, ObjectMapper objectMapper, PasswordTokenServices passwordTokenServices) {
         super(jmsHelper, objectMapper);
         this.passwordTokenServices = passwordTokenServices;
@@ -40,8 +40,11 @@ public class PasswordTokenListener extends BaseListener {
         PasswordTokenCreateRequest requestModel = this.jmsHelper.getResultModel(message, PasswordTokenCreateRequest.class);
 
         PasswordTokenServiceModel passwordToken = this.objectMapper.convertValue(requestModel, PasswordTokenServiceModel.class);
+        passwordToken.setToken(this.passwordTokenServices.generateToken());
 
-        return this.passwordTokenServices.save(passwordToken, PasswordTokenCreateReply.class);
+        this.passwordTokenServices.deleteAllByUser(passwordToken.getUserId());
+        PasswordTokenCreateReply reply = this.passwordTokenServices.save(passwordToken, PasswordTokenCreateReply.class);
+        return reply;
     }
 
     @JmsValidate(model = PasswordTokenIsValidRequest.class)

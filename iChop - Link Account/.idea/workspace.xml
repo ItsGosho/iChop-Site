@@ -1,7 +1,265 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5d2d5b5e-6b8e-4bd8-a776-52756776b32e" name="Default Changelist" comment="" />
+    <list default="true" id="5d2d5b5e-6b8e-4bd8-a776-52756776b32e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/artifacts/itsgosho_war.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/artifacts/itsgosho_war_exploded.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__antlr_antlr_2_7_7.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_2_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__ch_qos_logback_logback_core_1_2_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__com_fasterxml_classmate_1_4_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_9_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_9_7.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_9_7.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jdk8_2_9_7.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_9_7.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__com_google_code_findbugs_jsr305_3_0_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__com_google_errorprone_error_prone_annotations_2_2_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__com_google_guava_failureaccess_1_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__com_google_guava_guava_27_1_jre.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__com_google_guava_listenablefuture_9999_0_empty_to_avoid_conflict_with_guava.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__com_google_j2objc_j2objc_annotations_1_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__com_h2database_h2_1_4_198.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__com_jayway_jsonpath_json_path_2_4_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__com_vaadin_external_google_android_json_0_0_20131108_vaadin1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__com_zaxxer_HikariCP_3_2_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__commons_io_commons_io_2_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__javax_activation_javax_activation_api_1_2_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__javax_annotation_javax_annotation_api_1_3_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__javax_jms_javax_jms_api_2_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__javax_persistence_javax_persistence_api_2_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__javax_transaction_javax_transaction_api_1_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__javax_validation_validation_api_2_0_1_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__javax_xml_bind_jaxb_api_2_3_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__junit_junit_4_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__mysql_mysql_connector_java_8_0_13.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_9_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__net_bytebuddy_byte_buddy_agent_1_9_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__net_minidev_accessors_smart_1_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__net_minidev_json_smart_2_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_apache_activemq_activemq_broker_5_15_7.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_apache_activemq_activemq_client_5_15_7.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_apache_activemq_activemq_openwire_legacy_5_15_7.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_8_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_apache_geronimo_specs_geronimo_j2ee_management_1_1_spec_1_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_apache_logging_log4j_log4j_api_2_11_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_apache_logging_log4j_log4j_to_slf4j_2_11_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_9_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_assertj_assertj_core_3_11_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_checkerframework_checker_qual_2_5_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_codehaus_mojo_animal_sniffer_annotations_1_17.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_dom4j_dom4j_2_1_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_fusesource_hawtbuf_hawtbuf_1_11.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_hamcrest_hamcrest_library_1_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_hibernate_common_hibernate_commons_annotations_5_0_4_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_hibernate_hibernate_core_5_3_7_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_hibernate_validator_hibernate_validator_6_0_13_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_javassist_javassist_3_23_1_GA.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_jboss_jandex_2_0_5_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_3_2_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_mockito_mockito_core_2_23_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_modelmapper_modelmapper_2_3_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_objenesis_objenesis_2_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_ow2_asm_asm_5_0_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_projectlombok_lombok_1_18_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_skyscreamer_jsonassert_1_5_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_slf4j_jul_to_slf4j_1_7_25.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_25.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_springframework_boot_spring_boot_2_1_0_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_2_1_0_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_2_1_0_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_activemq_2_1_3_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_aop_2_1_0_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_data_jpa_2_1_0_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_jdbc_2_1_0_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_2_1_0_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_test_2_1_0_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_2_1_0_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_autoconfigure_2_1_0_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_springframework_data_spring_data_commons_2_1_2_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_springframework_data_spring_data_jpa_2_1_2_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_springframework_spring_aop_5_1_2_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_springframework_spring_aspects_5_1_2_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_springframework_spring_beans_5_1_2_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_springframework_spring_context_5_1_2_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_springframework_spring_core_5_1_2_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_springframework_spring_expression_5_1_2_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_springframework_spring_jcl_5_1_2_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_springframework_spring_jdbc_5_1_2_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_springframework_spring_jms_5_1_2_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_springframework_spring_messaging_5_1_2_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_springframework_spring_orm_5_1_2_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_springframework_spring_test_5_1_2_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_springframework_spring_tx_5_1_2_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_xmlunit_xmlunit_core_2_6_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/libraries/Maven__org_yaml_snakeyaml_1_23.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/linkaccount.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/Application.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/CLR.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/components/JmsServices.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/components/JmsServicesImp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/components/ValidationUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/components/ValidationUtilImp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/config/BeanConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/config/DataSourceConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/config/JMSConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/config/PropertyConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/constants/JmsConstants.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/constants/KeyJMSConstants.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/constants/PlayerLinkJMSConstants.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/constants/ValidationConstants.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/constants/ValidationMessages.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/domain/entities/Key.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/domain/entities/KeyConstants.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/domain/entities/PlayerLink.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/domain/models/binding/PlayerLinkCreateBindingModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/domain/models/binding/PlayerUnlinkBindingModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/domain/models/jms/BaseJMSReturnModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/domain/models/jms/key/receive/GetPlayerDataByKeyJMSReceiveModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/domain/models/jms/key/receive/GetPlayerDataBySiteUserJMSReceiveModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/domain/models/jms/key/receive/IsPlayerLinkKeyValidJMSReceiveModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/domain/models/jms/key/returnn/GetPlayerDataByKeyJMSReturnModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/domain/models/jms/key/returnn/GetPlayerDataBySiteUserJMSReturnModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/domain/models/jms/key/returnn/IsPlayerLinkKeyValidJMSReturnModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/domain/models/jms/playerlink/receive/GetPlayerDataByPlayerUUIDJMSReceiveModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/domain/models/jms/playerlink/receive/IsPlayerLinkedAccountBySiteUserJMSReceiveModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/domain/models/jms/playerlink/receive/IsPlayerLinkedAccountByUUIDJMSReceiveModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/domain/models/jms/playerlink/receive/LinkPlayerAccountJMSReceiveModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/domain/models/jms/playerlink/receive/UnlinkPlayerAccountJMSReceiveModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/domain/models/jms/playerlink/returnn/GetPlayerDataByPlayerUUIDJMSReturnModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/domain/models/jms/playerlink/returnn/IsPlayerLinkedAccountBySiteUserJMSReturnModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/domain/models/jms/playerlink/returnn/IsPlayerLinkedAccountByUUIDJMSReturnModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/domain/models/jms/playerlink/returnn/LinkPlayerAccountJMSReturnModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/domain/models/jms/playerlink/returnn/UnlinkPlayerAccountJMSReturnModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/domain/models/service/BaseServiceModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/domain/models/service/KeyServiceModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/domain/models/service/PlayerLinkServiceModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/handlers/JmsErrorHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/listeners/BaseJmsListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/listeners/KeyJmsListeners.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/listeners/PlayerLinkJmsListeners.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/listeners/annotations/key/GetPlayerDataByKeyListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/listeners/annotations/playerlink/GetPlayerDataBySiteUserListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/listeners/annotations/playerlink/GetPlayerDataByUUIDListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/listeners/annotations/playerlink/IsPlayerLinkedAccountByUUIDListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/listeners/annotations/playerlink/LinkPlayerAccountListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/listeners/annotations/playerlink/UnlinkPlayerAccountListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/repositories/KeyRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/repositories/PlayerLinkRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/services/BaseService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/services/KeyServices.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/services/KeyServicesImp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/services/PlayerLinkServices.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/services/PlayerLinkServicesImp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/validators/ExistingSiteUserUsername.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/validators/ExistingSiteUserUsernameValidator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/validators/ExistingUUID.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/validators/ExistingUUIDValidator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/validators/NotLinkedBySiteUser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/validators/NotLinkedBySiteUserValidator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/validators/NotLinkedByUUIDKey.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/validators/NotLinkedByUUIDKeyValidator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/validators/ValidKey.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/java/com/ichop/linkaccount/validators/ValidKeyValidator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/resources/application-database.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/resources/application-jms.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/test/java/com/ichop/linkaccount/services/KeyServicesUnitTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/src/test/java/com/ichop/linkaccount/services/PlayerLinkServicesUnitTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/application-database.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/application-jms.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/Application.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/CLR.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/components/JmsServices.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/components/JmsServicesImp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/components/ValidationUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/components/ValidationUtilImp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/config/BeanConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/config/DataSourceConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/config/JMSConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/config/PropertyConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/constants/JmsConstants.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/constants/KeyJMSConstants.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/constants/PlayerLinkJMSConstants.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/constants/ValidationConstants.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/constants/ValidationMessages.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/domain/entities/Key.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/domain/entities/KeyConstants.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/domain/entities/PlayerLink.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/domain/models/binding/PlayerLinkCreateBindingModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/domain/models/binding/PlayerUnlinkBindingModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/domain/models/jms/BaseJMSReturnModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/domain/models/jms/key/receive/GetPlayerDataByKeyJMSReceiveModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/domain/models/jms/key/receive/GetPlayerDataBySiteUserJMSReceiveModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/domain/models/jms/key/receive/IsPlayerLinkKeyValidJMSReceiveModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/domain/models/jms/key/returnn/GetPlayerDataByKeyJMSReturnModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/domain/models/jms/key/returnn/GetPlayerDataBySiteUserJMSReturnModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/domain/models/jms/key/returnn/IsPlayerLinkKeyValidJMSReturnModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/domain/models/jms/playerlink/receive/GetPlayerDataByPlayerUUIDJMSReceiveModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/domain/models/jms/playerlink/receive/IsPlayerLinkedAccountBySiteUserJMSReceiveModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/domain/models/jms/playerlink/receive/IsPlayerLinkedAccountByUUIDJMSReceiveModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/domain/models/jms/playerlink/receive/LinkPlayerAccountJMSReceiveModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/domain/models/jms/playerlink/receive/UnlinkPlayerAccountJMSReceiveModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/domain/models/jms/playerlink/returnn/GetPlayerDataByPlayerUUIDJMSReturnModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/domain/models/jms/playerlink/returnn/IsPlayerLinkedAccountBySiteUserJMSReturnModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/domain/models/jms/playerlink/returnn/IsPlayerLinkedAccountByUUIDJMSReturnModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/domain/models/jms/playerlink/returnn/LinkPlayerAccountJMSReturnModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/domain/models/jms/playerlink/returnn/UnlinkPlayerAccountJMSReturnModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/domain/models/service/BaseServiceModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/domain/models/service/KeyServiceModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/domain/models/service/PlayerLinkServiceModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/handlers/JmsErrorHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/listeners/BaseJmsListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/listeners/KeyJmsListeners.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/listeners/PlayerLinkJmsListeners.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/listeners/annotations/key/GetPlayerDataByKeyListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/listeners/annotations/playerlink/GetPlayerDataBySiteUserListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/listeners/annotations/playerlink/GetPlayerDataByUUIDListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/listeners/annotations/playerlink/IsPlayerLinkedAccountByUUIDListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/listeners/annotations/playerlink/LinkPlayerAccountListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/listeners/annotations/playerlink/UnlinkPlayerAccountListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/repositories/KeyRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/repositories/PlayerLinkRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/services/BaseService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/services/KeyServices.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/services/KeyServicesImp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/services/PlayerLinkServices.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/services/PlayerLinkServicesImp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/validators/ExistingSiteUserUsername.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/validators/ExistingSiteUserUsernameValidator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/validators/ExistingUUID.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/validators/ExistingUUIDValidator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/validators/NotLinkedBySiteUser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/validators/NotLinkedBySiteUserValidator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/validators/NotLinkedByUUIDKey.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/validators/NotLinkedByUUIDKeyValidator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/validators/ValidKey.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/classes/com/ichop/linkaccount/validators/ValidKeyValidator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/linkaccount-0.0.1-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/linkaccount-0.0.1-SNAPSHOT.jar.original" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/surefire-reports/TEST-com.ichop.linkaccount.services.KeyServicesUnitTests.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/surefire-reports/TEST-com.ichop.linkaccount.services.PlayerLinkServicesUnitTests.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/surefire-reports/com.ichop.linkaccount.services.KeyServicesUnitTests.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/surefire-reports/com.ichop.linkaccount.services.PlayerLinkServicesUnitTests.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/test-classes/com/ichop/linkaccount/services/KeyServicesUnitTests.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Link Account/target/test-classes/com/ichop/linkaccount/services/PlayerLinkServicesUnitTests.class" beforeDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -52,7 +310,7 @@
     </findStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -134,10 +392,11 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-8" />
-    <option name="width" value="1940" />
-    <option name="height" value="1050" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="1912" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1066" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -145,7 +404,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -203,6 +461,17 @@
               <item name="iChop - Link Account" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="ichop" type="462c0819:PsiDirectoryNode" />
+              <item name="linkaccount" type="462c0819:PsiDirectoryNode" />
+              <item name="domain" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iChop-Link Account" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iChop - Link Account" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -210,6 +479,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -217,10 +487,11 @@
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555057588275" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../iChop - Player Basic Statistics" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -416,6 +687,7 @@
       <workItem from="1555058912774" duration="148000" />
       <workItem from="1555080587463" duration="2000" />
       <workItem from="1555171392807" duration="2757000" />
+      <workItem from="1571929338846" duration="110000" />
     </task>
     <servers />
   </component>
@@ -452,12 +724,12 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="105293000" />
+    <option name="totallyTimeSpent" value="105403000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="7" />
+    <frame x="1912" y="-8" width="1936" height="1066" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49919486" visible="true" weight="0.30181542" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49919486" visible="true" weight="0.30597016" />
       <window_info id="Structure" order="1" sideWeight="0.50080514" side_tool="true" weight="0.26172465" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -465,6 +737,7 @@
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info id="Web" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Statistic" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32583067" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3129689" />
@@ -498,26 +771,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/linkaccount/domain/models/jms/BaseJMSReturnModel.java" />
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/ichop/linkaccount/services/UserLogServicesUnitTests.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application-jms.properties">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/linkaccount/services/KeyServicesImp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="752">
-          <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/ichop/linkaccount/services/KeyServicesUnitTests.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application-database.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="7" column="76" selection-start-line="7" selection-start-column="76" selection-end-line="7" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/linkaccount/listeners/annotations/playerlink/LinkPlayerAccountListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
@@ -588,13 +841,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/linkaccount/domain/models/binding/PlayerLinkCreateBindingModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/linkaccount/constants/PlayerLinkJMSConstants.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
@@ -613,13 +859,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="232">
           <caret line="77" column="4" selection-start-line="77" selection-start-column="4" selection-end-line="77" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/linkaccount/repositories/PlayerLinkRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
         </state>
       </provider>
     </entry>
@@ -746,25 +985,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/linkaccount/components/JmsServicesImp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="98" column="19" selection-start-line="98" selection-start-column="19" selection-end-line="98" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/linkaccount/constants/JmsConstants.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="64">
           <caret line="4" column="32" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/linkaccount/handlers/JmsErrorHandler.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/linkaccount/components/JmsServices.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -795,6 +1019,83 @@
           <folding>
             <element signature="e#310#311#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/linkaccount/repositories/PlayerLinkRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/linkaccount/repositories/KeyRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/linkaccount/handlers/JmsErrorHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/linkaccount/components/JmsServices.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/linkaccount/components/JmsServicesImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1162">
+          <caret line="98" column="19" selection-start-line="98" selection-start-column="19" selection-end-line="98" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/linkaccount/components/ValidationUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/linkaccount/components/ValidationUtilImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/linkaccount/domain/entities/Key.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/linkaccount/domain/entities/KeyConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="28">
+          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/linkaccount/domain/models/binding/PlayerLinkCreateBindingModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ichop/linkaccount/domain/entities/PlayerLink.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="14" column="7" lean-forward="true" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
         </state>
       </provider>
     </entry>
