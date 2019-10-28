@@ -40,7 +40,7 @@ public class PasswordTokenServicesImp
     public boolean isValid(String tokeen) {
         TokenServiceModel token = super.findByToken(tokeen);
 
-        return this.isExpired(token.getCreationDate());
+        return token != null && this.isExpired(token.getCreationDate());
     }
 
     @Override

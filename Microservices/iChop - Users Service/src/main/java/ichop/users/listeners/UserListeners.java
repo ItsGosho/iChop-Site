@@ -18,6 +18,7 @@ import ichop.users.domain.models.jms.retrieve.UserFindByEmailReply;
 import ichop.users.domain.models.jms.retrieve.UserFindByEmailRequest;
 import ichop.users.domain.models.jms.token.create.password.PasswordTokenCreateReply;
 import ichop.users.domain.models.jms.token.create.password.PasswordTokenCreateRequest;
+import ichop.users.domain.models.jms.token.retrieve.password.PasswordTokenFindByTokenRequest;
 import ichop.users.domain.models.service.UserServiceModel;
 import ichop.users.requesters.EmailRequester;
 import ichop.users.requesters.PasswordTokenRequester;
@@ -96,9 +97,12 @@ public class UserListeners extends BaseListener {
     public UserChangePasswordByTokenReply changePasswordByToken(Message message) {
         UserChangePasswordByTokenRequest requestModel = this.jmsHelper.getResultModel(message, UserChangePasswordByTokenRequest.class);
 
+        String userId = this.passwordTokenRequester.findByToken(new PasswordTokenFindByTokenRequest(requestModel.getToken())).getUserId();
+        UserServiceModel user = this.userServices.findById(userId);
 
+        this.userServices.changePassword(user.getEmail(), requestModel.getPassword());
 
-        return null;
+        return new UserChangePasswordByTokenReply();
     }
 
     @JmsValidate(model = UserForgottenPasswordRequest.class)

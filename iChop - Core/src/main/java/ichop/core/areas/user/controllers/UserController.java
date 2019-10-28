@@ -47,7 +47,7 @@ public class UserController {
         return this.responseHelpers.respondGeneric(reply);
     }
 
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("isAnonymous()")
     @PostMapping(UserRoutingConstants.CHANGE_PASSWORD_BY_TOKEN)
     public ResponseEntity changePasswordByToken(UserChangePasswordByTokenRequest changePasswordByTokenRequest) {
         UserChangePasswordByTokenReply reply = this.userRequester.changePasswordByToken(changePasswordByTokenRequest);
