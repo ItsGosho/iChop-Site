@@ -12,7 +12,7 @@ import javax.validation.constraints.Email;
 @Setter
 @SpELValidation(value = "@userServicesImp.isUserExistsByUsername(#this.username) == false", message = "Username is already present!")
 @SpELValidation(value = "@userServicesImp.isUserExistsByEmail(#this.email) == false", message = "Email is already present!")
-@SpELValidation(value = "#this.password == #this.confirmPassword", message = "Passwords doesn't match!")
+@SpELValidation(value = "#this.password == #this.confirmPassword", message = "Passwords are not equal!")
 public class UserRegisterRequest extends BaseRequestModel {
 
     @Length(min = 3,message = "Username must be at least 3 characters!")
