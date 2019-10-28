@@ -10,8 +10,8 @@ import javax.validation.constraints.Email;
 
 @Getter
 @Setter
-@SpELValidation(value = "@userServicesImp.isUserExistsByUsername(#this.username) == false", message = "Username is already present!")
-@SpELValidation(value = "@userServicesImp.isUserExistsByEmail(#this.email) == false", message = "Email is already present!")
+@SpELValidation(value = "@userServicesImp.existsByUsername(#this.username) == false", message = "Username is already present!")
+@SpELValidation(value = "@userServicesImp.existsByEmail(#this.email) == false", message = "Email is already present!")
 @SpELValidation(value = "#this.password == #this.confirmPassword", message = "Passwords are not equal!")
 public class UserRegisterRequest extends BaseRequestModel {
 

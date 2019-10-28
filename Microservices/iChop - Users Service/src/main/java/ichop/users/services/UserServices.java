@@ -16,9 +16,9 @@ public interface UserServices extends UserDetailsService, BaseService<UserServic
 
     Set<RoleServiceModel> getInitialAuthorities();
 
-    UserServiceModel findUserByUsername(String username);
+    UserServiceModel findByUsername(String username);
 
-    UserServiceModel findUserByEmail(String email);
+    UserServiceModel findByEmail(String email);
 
     boolean isEmail(String value);
 
@@ -28,9 +28,9 @@ public interface UserServices extends UserDetailsService, BaseService<UserServic
 
     long findTotalUsers();
 
-    UserServiceModel findUserById(String id);
-
     void updateLastOnline(UserServiceModel user, LocalDateTime lastOnline);
 
     void updateUserLocation(UserServiceModel user, String userLocation);
+
+    void changePassword(String email, String password, String confirmPassword);
 }

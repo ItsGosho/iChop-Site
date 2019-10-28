@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1984862c-2f8c-4410-af36-a1dcaaa3ddaf" name="Default Changelist" comment="" />
+    <list default="true" id="1984862c-2f8c-4410-af36-a1dcaaa3ddaf" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/java/ichop/users/domain/models/jms/password/change/UserChangePasswordRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/java/ichop/users/domain/models/jms/password/change/UserChangePasswordRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/java/ichop/users/domain/models/jms/register/UserRegisterRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/java/ichop/users/domain/models/jms/register/UserRegisterRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/java/ichop/users/domain/models/jms/retrieve/UserFindByEmailRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/java/ichop/users/domain/models/jms/retrieve/UserFindByEmailRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/java/ichop/users/listeners/UserListeners.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/java/ichop/users/listeners/UserListeners.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/java/ichop/users/services/UserServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/java/ichop/users/services/UserServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/java/ichop/users/services/UserServicesImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/java/ichop/users/services/UserServicesImp.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +119,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/ichop/core/areas/user/controllers/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="448">
-              <caret line="47" column="5" lean-forward="true" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
+              <caret line="47" column="5" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -130,7 +137,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/ichop/core/areas/user/models/jms/password/change/UserChangePasswordRequest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="140">
-              <caret line="12" column="35" lean-forward="true" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
+              <caret line="12" column="35" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -139,7 +146,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/ichop/core/areas/user/constants/UserRoutingConstants.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="126">
-              <caret line="9" column="48" lean-forward="true" selection-start-line="9" selection-start-column="48" selection-end-line="9" selection-end-column="48" />
+              <caret line="9" column="48" selection-start-line="9" selection-start-column="48" selection-end-line="9" selection-end-column="48" />
             </state>
           </provider>
         </entry>
@@ -516,7 +523,7 @@
       <workItem from="1572167514326" duration="243000" />
       <workItem from="1572168364057" duration="7095000" />
       <workItem from="1572246003971" duration="434000" />
-      <workItem from="1572277175556" duration="923000" />
+      <workItem from="1572277175556" duration="1348000" />
     </task>
     <servers />
   </component>
@@ -553,7 +560,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="923000" />
+    <option name="totallyTimeSpent" value="1348000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -662,7 +669,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/ichop/core/areas/user/models/jms/password/change/UserChangePasswordRequest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
-          <caret line="12" column="35" lean-forward="true" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
+          <caret line="12" column="35" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
         </state>
       </provider>
     </entry>
@@ -676,7 +683,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/ichop/core/areas/user/constants/UserRoutingConstants.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
-          <caret line="9" column="48" lean-forward="true" selection-start-line="9" selection-start-column="48" selection-end-line="9" selection-end-column="48" />
+          <caret line="9" column="48" selection-start-line="9" selection-start-column="48" selection-end-line="9" selection-end-column="48" />
         </state>
       </provider>
     </entry>
@@ -690,7 +697,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/ichop/core/areas/user/controllers/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="448">
-          <caret line="47" column="5" lean-forward="true" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
+          <caret line="47" column="5" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
         </state>
       </provider>
     </entry>

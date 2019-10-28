@@ -48,7 +48,7 @@ public class UserServicesImp extends AbstractBaseService<User, UserServiceModel,
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
-        UserServiceModel foundedUser = this.findUserByEmail(email);
+        UserServiceModel foundedUser = this.findByEmail(email);
 
         if (foundedUser != null) {
             return super.objectMapper.convertValue(foundedUser, User.class);
@@ -92,9 +92,9 @@ public class UserServicesImp extends AbstractBaseService<User, UserServiceModel,
 
 
     @Override
-    public UserServiceModel findUserByUsername(String username) {
+    public UserServiceModel findByUsername(String username) {
 
-        if (this.isUserExistsByUsername(username)) {
+        if (this.existsByUsername(username)) {
             User entityUser = this.repository.findUserByUsername(username);
             return super.objectMapper.convertValue(entityUser, UserServiceModel.class);
         }
@@ -103,8 +103,8 @@ public class UserServicesImp extends AbstractBaseService<User, UserServiceModel,
     }
 
     @Override
-    public UserServiceModel findUserByEmail(String email) {
-        if (this.isUserExistsByEmail(email)) {
+    public UserServiceModel findByEmail(String email) {
+        if (this.existsByEmail(email)) {
             User entityUser = this.repository.findUserByEmail(email);
             return super.objectMapper.convertValue(entityUser, UserServiceModel.class);
         }
@@ -119,13 +119,11 @@ public class UserServicesImp extends AbstractBaseService<User, UserServiceModel,
         return matcher.find();
     }
 
-    @Override
-    public boolean isUserExistsByUsername(String username) {
+    public boolean existsByUsername(String username) {
         return this.repository.findUserByUsername(username) != null;
     }
 
-    @Override
-    public boolean isUserExistsByEmail(String email) {
+    public boolean existsByEmail(String email) {
         return this.repository.findUserByEmail(email) != null;
     }
 
@@ -135,19 +133,18 @@ public class UserServicesImp extends AbstractBaseService<User, UserServiceModel,
     }
 
     @Override
-    public UserServiceModel findUserById(String id) {
-        return this.findById(id, UserServiceModel.class);
-    }
-
-    @Override
     public void updateLastOnline(UserServiceModel user, LocalDateTime dateTime) {
         User entityUser = super.objectMapper.convertValue(user, User.class);
         //this.repository.updateLastOnline(entityUser, dateTime);
     }
 
-    @Override
-    public void updateUserLocation(UserServiceModel user, String userLocation) {
+    public void updateLocation(UserServiceModel user, String userLocation) {
         User entityUser = super.objectMapper.convertValue(user, User.class);
         //this.repository.updateLocation(entityUser, userLocation);
+    }
+
+    @Override
+    public void changePassword(String email, String password, String confirmPassword) {
+        User user = this.findByEmail()
     }
 }

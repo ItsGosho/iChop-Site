@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-@SpELValidation(value = "@userServicesImp.isUserExistsByEmail(#this.email) == true",message = "User not found!")
+@SpELValidation(value = "@userServicesImp.existsByEmail(#this.email) == true",message = "User not found!")
 public class UserFindByEmailRequest extends BaseRequestModel {
 
     @NotNull
