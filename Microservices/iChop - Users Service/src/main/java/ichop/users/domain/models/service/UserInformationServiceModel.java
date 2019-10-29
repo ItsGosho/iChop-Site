@@ -11,7 +11,6 @@ import java.time.LocalDate;
 public class UserInformationServiceModel extends BaseServiceModel {
 
     private String statusMessage;
-    private String avatarPath;
     private LocalDate birthDate;
     private String aboutYou;
     private UserServiceModel user;

@@ -2,8 +2,10 @@ package ichop.users.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.users.common.service.AbstractBaseService;
+import ichop.users.domain.entities.User;
 import ichop.users.domain.entities.UserInformation;
 import ichop.users.domain.models.service.UserInformationServiceModel;
+import ichop.users.domain.models.service.UserServiceModel;
 import ichop.users.repositories.UserInformationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,7 +48,7 @@ public class UserInformationServicesImp
     @Override
     public void createFirstTime(UserServiceModel user) {
 
-        if (!this.isUserInformationExistsByUser(user)) {
+        if (!this.hasInformation(user)) {
             UserInformationServiceModel userInformation = new UserInformationServiceModel();
             userInformation.setUser(user);
             userInformation.setStatusMessage("");
@@ -59,10 +61,9 @@ public class UserInformationServicesImp
     }
 
     @Override
-    public boolean isUserInformationExistsByUser(UserServiceModel user) {
-        User entityUser = this.modelMapper.map(user, User.class);
-        UserInformation foundedInfo = this.repository.findByUser(entityUser);
-        return foundedInfo != null;
+    public boolean hasInformation(UserServiceModel user) {
+        User entityUser = super.objectMapper.convertValue(user, User.class);
+        return super.repository.existsByUser(entityUser);
     }
 
 
