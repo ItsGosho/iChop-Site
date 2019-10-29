@@ -46,7 +46,7 @@ public class UserInformationServicesImp
     }
 
     @Override
-    public void createFirstTime(UserServiceModel user) {
+    public void createIfNotPresent(UserServiceModel user) {
 
         if (!this.hasInformation(user)) {
             UserInformationServiceModel userInformation = new UserInformationServiceModel();
