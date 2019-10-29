@@ -11,11 +11,11 @@ public interface UserFollowServices {
 
     void unfollow(UserServiceModel user, UserServiceModel userToUnfollow);
 
-    boolean isUserAlreadyFollowedUser(UserServiceModel user, UserServiceModel followedUser);
+    boolean isAlreadyFollowedUser(UserServiceModel user, UserServiceModel followedUser);
 
-    Long findUserTotalFollowings(UserServiceModel user);
+    Long findTotalFollowings(UserServiceModel user);
 
-    Long findUserTotalFollowers(UserServiceModel user);
+    Long findTotalFollowers(UserServiceModel user);
 
     List<UserServiceModel> getFollowers(UserServiceModel user);
 

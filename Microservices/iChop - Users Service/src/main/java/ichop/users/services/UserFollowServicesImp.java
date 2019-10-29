@@ -48,7 +48,7 @@ public class UserFollowServicesImp
 
 
     @Override
-    public boolean isUserAlreadyFollowedUser(UserServiceModel user, UserServiceModel followedUser) {
+    public boolean isAlreadyFollowedUser(UserServiceModel user, UserServiceModel followedUser) {
 
         User entityUser = super.objectMapper.convertValue(user,User.class);
         User entityFollowedUser = super.objectMapper.convertValue(followedUser,User.class);
@@ -56,13 +56,13 @@ public class UserFollowServicesImp
     }
 
     @Override
-    public Long findUserTotalFollowings(UserServiceModel user) {
+    public Long findTotalFollowings(UserServiceModel user) {
         User entityUser = super.objectMapper.convertValue(user,User.class);
         return this.repository.countByFollower(entityUser);
     }
 
     @Override
-    public Long findUserTotalFollowers(UserServiceModel user) {
+    public Long findTotalFollowers(UserServiceModel user) {
         User entityUser = super.objectMapper.convertValue(user,User.class);
         return this.repository.countByUser(entityUser);
     }
