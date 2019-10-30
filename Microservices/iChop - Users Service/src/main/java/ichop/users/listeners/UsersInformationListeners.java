@@ -57,6 +57,9 @@ public class UsersInformationListeners extends BaseListener {
     public UserInformationRetrieveReply retrieve(Message message) {
         UserInformationRetrieveRequest requestModel = this.jmsHelper.getResultModel(message, UserInformationRetrieveRequest.class);
 
+        UserServiceModel user = this.userServices.findById()
+
+        this.userInformationServices.getByUser()
 
         return null;
     }
