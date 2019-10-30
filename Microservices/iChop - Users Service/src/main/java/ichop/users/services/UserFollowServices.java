@@ -13,6 +13,8 @@ public interface UserFollowServices {
 
     boolean isFollowed(UserServiceModel user, UserServiceModel follow);
 
+    boolean isFollowed(String username, String followUsername);
+
     Long findTotalFollowings(UserServiceModel user);
 
     Long findTotalFollowers(UserServiceModel user);
