@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @SpELValidation(value = "@userServicesImp.existsByUsername(#this.username) == true", message = "User not found!")
 @SpELValidation(value = "@userServicesImp.existsByUsername(#this.unfollowUsername) == true", message = "User to unfollow not found!")
-@SpELValidation(value = "@userFollowServicesImp.isFollowed(#this.username,#this.followUsername) == true", message = "Not following!")
+@SpELValidation(value = "@userFollowServicesImp.isFollowed(#this.username,#this.unfollowUsername) == true", message = "Not following!")
 public class UserUnfollowRequest extends BaseRequestModel {
 
     private String username;
