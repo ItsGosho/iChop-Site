@@ -5,6 +5,10 @@ import ichop.users.common.aop.JmsAfterReturn;
 import ichop.users.common.aop.JmsValidate;
 import ichop.users.common.helpers.BaseListener;
 import ichop.users.common.helpers.JmsHelper;
+import ichop.users.domain.models.jms.information.UserInformationRetrieveReply;
+import ichop.users.domain.models.jms.information.UserInformationRetrieveRequest;
+import ichop.users.domain.models.jms.information.UserInformationUpdateReply;
+import ichop.users.domain.models.jms.information.UserInformationUpdateRequest;
 import ichop.users.domain.models.jms.register.UserRegisterReply;
 import ichop.users.domain.models.jms.register.UserRegisterRequest;
 import ichop.users.domain.models.service.UserServiceModel;
@@ -17,6 +21,7 @@ import org.springframework.stereotype.Component;
 import javax.jms.Message;
 
 import static ichop.users.common.constants.JmsFactories.QUEUE;
+import static ichop.users.constants.UserReplyConstants.*;
 
 @Component
 public class UsersInformationListeners extends BaseListener {
@@ -35,14 +40,24 @@ public class UsersInformationListeners extends BaseListener {
     }
 
 
-    @JmsValidate(model = UserRegisterRequest.class)
-    @JmsAfterReturn(message = USER_REGISTER_SUCCESSFUL)
+    @JmsValidate(model = UserInformationUpdateRequest.class)
+    @JmsAfterReturn(message = INFORMATION_UPDATED_SUCCESSFUL)
     @JmsListener(destination = "${artemis.queue.users.information.update}", containerFactory = QUEUE)
-    public UserRegisterReply register(Message message) {
-        UserRegisterRequest requestModel = this.jmsHelper.getResultModel(message, UserRegisterRequest.class);
+    public UserInformationUpdateReply update(Message message) {
+        UserInformationUpdateRequest requestModel = this.jmsHelper.getResultModel(message, UserInformationUpdateRequest.class);
 
-        UserServiceModel user = this.userServices.register(requestModel);
 
-        return super.objectMapper.convertValue(user, UserRegisterReply.class);
+        return null;
     }
+
+    @JmsValidate(model = UserInformationRetrieveRequest.class)
+    @JmsAfterReturn(message = FETCHED_SUCCESSFUL)
+    @JmsListener(destination = "${artemis.queue.users.information.retrieve}", containerFactory = QUEUE)
+    public UserInformationRetrieveReply retrieve(Message message) {
+        UserInformationRetrieveRequest requestModel = this.jmsHelper.getResultModel(message, UserInformationRetrieveRequest.class);
+
+
+        return null;
+    }
+
 }
