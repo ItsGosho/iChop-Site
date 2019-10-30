@@ -9,15 +9,9 @@ public final class UserRoutingConstants {
     public static final String FORGOTTEN_PASSWORD = "/user/forgotten/password"; /*USER++*/
     public static final String CHANGE_PASSWORD_BY_TOKEN = "/user/change/password/by/token"; /*GUEST++*/
 
-    public static final String IS_FOLLOWING = "/user/is/following"; /*EVERYONE*/
-    public static final String EXISTS = "/user/exists"; /*EVERYONE*/
     public static final String ALL = "/users/all"; /*ADMIN++*/
 
     /*TODO:*/
-
-    //UserController ------------------------------------------------------------------------------------------
-
-    public static final String PROFILE = "/user/{username}/profile"; /*EVERYONE*/
 
     //UserFollowController ------------------------------------------------------------------------------------
 
@@ -25,6 +19,7 @@ public final class UserRoutingConstants {
     public static final String UNFOLLOW = "/user/{username}/unfollow"; /*USER++*/
     public static final String ALL_FOLLOWERS = "/user/{username}/all/followers"; /*EVERYONE*/
     public static final String ALL_FOLLOWINGS = "/user/{username}/all/followings"; /*EVERYONE*/
+    public static final String IS_FOLLOWING = "/user/{username}/is/following"; /*EVERYONE*/
 
     //UserControlController -----------------------------------------------------------------------------------
 

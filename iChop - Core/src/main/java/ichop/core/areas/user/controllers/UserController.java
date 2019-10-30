@@ -10,8 +10,10 @@ import ichop.core.areas.user.models.jms.password.forgotten.UserForgottenPassword
 import ichop.core.areas.user.models.jms.password.forgotten.UserForgottenPasswordRequest;
 import ichop.core.areas.user.requester.UserRequester;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -54,4 +56,13 @@ public class UserController {
 
         return this.responseHelpers.respondGeneric(reply);
     }
+
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @GetMapping(UserRoutingConstants.ALL)
+    public ResponseEntity all(Pageable pageable) {
+        /*TODO:*/
+
+        return this.responseHelpers.respondGeneric(null);
+    }
+
 }
