@@ -10,13 +10,13 @@ import ichop.users.repositories.UserInformationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
+import java.io.IOException;
 
 @Service
 public class UserInformationServicesImp
         extends AbstractBaseService<UserInformation, UserInformationServiceModel, UserInformationRepository>
         implements UserInformationServices {
+
 
     @Autowired
     public UserInformationServicesImp(ObjectMapper objectMapper, UserInformationRepository repository) {
@@ -25,39 +25,38 @@ public class UserInformationServicesImp
 
 
     @Override
-    public UserInformationServiceModel update(UserUpdateProfileInformationBindingModel bindingModel) {
+    public UserInformationServiceModel update(UserInformationServiceModel model) {
 
-        User user = this.modelMapper.map(bindingModel.getUser(), User.class);
-        UserInformationServiceModel userInformationServiceModel = this.modelMapper.map(bindingModel, UserInformationServiceModel.class);
-        userInformationServiceModel.setId(this.repository.findByUser(user).getId());
+        UserInformationServiceModel information = this.createIfNotPresent(model.getUser());
+
         try {
-            userInformationServiceModel.setBirthDate(LocalDate.parse(bindingModel.getBirthDate()));
-        } catch (DateTimeParseException ex) {
+            information = super.objectMapper.readerForUpdating(information).readValue(super.objectMapper.writeValueAsString(model));
+            super.save(information);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
-        return this.save(userInformationServiceModel, UserInformationServiceModel.class);
+        return information;
     }
 
     @Override
     public UserInformationServiceModel getByUser(UserServiceModel user) {
-        User entityUser = this.modelMapper.map(user, User.class);
+        User entityUser = this.objectMapper.convertValue(user, User.class);
         UserInformation userInformation = this.repository.findByUser(entityUser);
-        return userInformation != null ? this.modelMapper.map(userInformation, UserInformationServiceModel.class) : null;
+        return userInformation != null ? this.objectMapper.convertValue(userInformation, UserInformationServiceModel.class) : null;
     }
 
     @Override
-    public void createIfNotPresent(UserServiceModel user) {
+    public UserInformationServiceModel createIfNotPresent(UserServiceModel user) {
 
         if (!this.hasInformation(user)) {
             UserInformationServiceModel userInformation = new UserInformationServiceModel();
             userInformation.setUser(user);
-            userInformation.setStatusMessage("");
-            userInformation.setAboutYou("");
-            userInformation.setAvatarPath("");
 
-            this.save(userInformation, UserInformationServiceModel.class);
+            return this.save(userInformation, UserInformationServiceModel.class);
         }
 
+        return this.getByUser(user);
     }
 
     @Override

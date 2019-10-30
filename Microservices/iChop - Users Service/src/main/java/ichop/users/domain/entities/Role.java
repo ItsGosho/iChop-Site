@@ -9,7 +9,7 @@ import org.springframework.security.core.GrantedAuthority;
 
 @Getter
 @Setter
-@Document("roles")
+@Entity("roles")
 public class Role extends BaseEntity implements GrantedAuthority {
 
     @Indexed(unique = true)
