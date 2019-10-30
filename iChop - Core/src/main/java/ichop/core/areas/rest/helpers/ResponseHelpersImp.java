@@ -57,18 +57,12 @@ public class ResponseHelpersImp implements ResponseHelpers {
         this.writeToResponse(httpServletResponse, response);
     }
 
+
     @Override
     public void respondError(HttpServletResponse httpServletResponse, String error) {
         ResponseError response = new ResponseError(error);
 
         this.writeToResponse(httpServletResponse, response);
-    }
-
-    @Override
-    public ResponseEntity respondSuccessful(String message, Object data) {
-        ResponseSuccessful response = new ResponseSuccessful(message, data);
-
-        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @Override
@@ -78,7 +72,7 @@ public class ResponseHelpersImp implements ResponseHelpers {
             return this.respondError(reply.getMessage());
         }
 
-        return this.respondSuccessful(reply.getMessage());
+        return new ResponseEntity<>(reply, HttpStatus.OK);
     }
 
     private void writeToResponse(HttpServletResponse response, Object object) {

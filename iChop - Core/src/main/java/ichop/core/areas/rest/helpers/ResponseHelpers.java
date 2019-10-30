@@ -21,7 +21,5 @@ public interface ResponseHelpers {
 
     void respondError(HttpServletResponse httpServletResponse, String error);
 
-    ResponseEntity respondSuccessful(String message, Object data);
-
     <R extends BaseReplyModel> ResponseEntity respondGeneric(R reply);
 }
