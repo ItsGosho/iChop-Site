@@ -19,6 +19,8 @@ import org.springframework.stereotype.Component;
 
 import javax.jms.Message;
 
+import java.time.LocalDate;
+
 import static ichop.users.common.constants.JmsFactories.QUEUE;
 import static ichop.users.constants.UserReplyConstants.FETCHED_SUCCESSFUL;
 import static ichop.users.constants.UserReplyConstants.INFORMATION_UPDATED_SUCCESSFUL;
@@ -46,8 +48,18 @@ public class UsersInformationListeners extends BaseListener {
     public UserInformationUpdateReply update(Message message) {
         UserInformationUpdateRequest requestModel = this.jmsHelper.getResultModel(message, UserInformationUpdateRequest.class);
 
+        /*TODO: update avatar!*/
+        UserServiceModel user = this.userServices.findById(requestModel.getUserId());
+        LocalDate birthDate = LocalDate.parse(requestModel.getBirthDate());
 
-        return null;
+        UserInformationServiceModel information = new UserInformationServiceModel();
+        information.setUser(user);
+        information.setBirthDate(birthDate);
+        information.setAboutYou(requestModel.getAboutYou());
+        information.setStatusMessage(requestModel.getStatusMessage());
+
+        information = this.userInformationServices.update(information);
+        return super.objectMapper.convertValue(information, UserInformationUpdateReply.class);
     }
 
     @JmsValidate(model = UserInformationRetrieveRequest.class)

@@ -9,14 +9,14 @@ import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 
 @Getter
 @Setter
 public class UserInformationUpdateReply extends BaseReplyModel {
 
     private String statusMessage;
-    private String avatarBinary;
-    private String birthDate;
+    private LocalDate birthDate;
     private String aboutYou;
     private UserServiceModel user;
 
