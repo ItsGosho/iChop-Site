@@ -48,10 +48,10 @@ public class UserFollowServicesImp
 
 
     @Override
-    public boolean isAlreadyFollowedUser(UserServiceModel user, UserServiceModel followedUser) {
+    public boolean isFollowed(UserServiceModel user, UserServiceModel follow) {
 
         User entityUser = super.objectMapper.convertValue(user,User.class);
-        User entityFollowedUser = super.objectMapper.convertValue(followedUser,User.class);
+        User entityFollowedUser = super.objectMapper.convertValue(follow,User.class);
         return this.repository.isUserAlreadyFollowedUser(entityUser, entityFollowedUser);
     }
 

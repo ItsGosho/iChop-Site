@@ -6,10 +6,7 @@ import ichop.users.common.aop.JmsValidate;
 import ichop.users.common.helpers.BaseListener;
 import ichop.users.common.helpers.JmsHelper;
 import ichop.users.domain.models.jms.follow.*;
-import ichop.users.domain.models.jms.information.UserInformationRetrieveReply;
-import ichop.users.domain.models.jms.information.UserInformationRetrieveRequest;
-import ichop.users.domain.models.jms.information.UserInformationUpdateReply;
-import ichop.users.domain.models.jms.information.UserInformationUpdateRequest;
+import ichop.users.domain.models.service.UserServiceModel;
 import ichop.users.services.UserFollowServices;
 import ichop.users.services.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +41,10 @@ public class UserFollowListeners extends BaseListener {
     public UserIsFollowingReply isFollowing(Message message) {
         UserIsFollowingRequest requestModel = this.jmsHelper.getResultModel(message, UserIsFollowingRequest.class);
 
+
+        UserServiceModel user = this.userServices.find
+
+        this.userFollowServices.isFollowed();
 
         return null;
     }
