@@ -67,7 +67,7 @@ public class UserFollowController {
 
         UserIsFollowingReply reply = this.userFollowRequester.isFollowing(username, follow);
 
-        return this.responseHelpers.respondGeneric(null);
+        return this.responseHelpers.respondGeneric(reply);
     }
 
 }
