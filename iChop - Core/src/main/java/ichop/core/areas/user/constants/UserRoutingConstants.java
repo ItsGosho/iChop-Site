@@ -23,8 +23,8 @@ public final class UserRoutingConstants {
 
     //UserInformationController -----------------------------------------------------------------------------------
 
-    public static final String UPDATE_INFORMATION = "/user/{username}/information/update"; /*LOGGED IN USER IN HIS PROFILE*/
-    public static final String RETRIEVE_INFORMATION = "/user/{username}/information/retrieve"; /*LOGGED IN USER IN HIS PROFILE*/
+    public static final String UPDATE_INFORMATION = "/user/{username}/information/update"; /*LOGGED IN USER IN HIS PROFILE OR OWNER*/
+    public static final String RETRIEVE_INFORMATION = "/user/{username}/information/retrieve"; /*EVERYONE*/
 
 
     /*TODO:*/

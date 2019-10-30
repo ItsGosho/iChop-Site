@@ -2,6 +2,7 @@ package ichop.core.areas.user.controllers;
 
 import ichop.core.areas.rest.helpers.ResponseHelpers;
 import ichop.core.areas.user.constants.UserRoutingConstants;
+import ichop.core.areas.user.models.jms.follow.*;
 import ichop.core.areas.user.requester.UserFollowRequester;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -31,31 +32,40 @@ public class UserFollowController {
     @PostMapping(UserRoutingConstants.FOLLOW)
     public ResponseEntity follow(@PathVariable(name = "username") String userToFollowUsername, Principal principal) {
 
-        return this.responseHelpers.respondGeneric(null);
+        UserFollowReply reply = this.userFollowRequester.follow(principal.getName(), userToFollowUsername);
+
+        return this.responseHelpers.respondGeneric(reply);
     }
 
     @PreAuthorize("isAuthenticated()")
     @PostMapping(UserRoutingConstants.UNFOLLOW)
     public ResponseEntity unfollow(@PathVariable(name = "username") String userToUnfollowUsername, Principal principal) {
 
+        UserUnfollowReply reply = this.userFollowRequester.unfollow(principal.getName(), userToUnfollowUsername);
 
-        return this.responseHelpers.respondGeneric(null);
+        return this.responseHelpers.respondGeneric(reply);
     }
 
     @GetMapping(UserRoutingConstants.ALL_FOLLOWERS)
     public ResponseEntity allFollowers(@PathVariable String username) {
 
-        return this.responseHelpers.respondGeneric(null);
+        UserFollowersAllReply reply = this.userFollowRequester.allFollowers(username);
+
+        return this.responseHelpers.respondGeneric(reply);
     }
 
     @GetMapping(UserRoutingConstants.ALL_FOLLOWINGS)
     public ResponseEntity allFollowings(@PathVariable String username) {
 
-        return this.responseHelpers.respondGeneric(null);
+        UserFollowingsAllReply reply = this.userFollowRequester.allFollowings(username);
+
+        return this.responseHelpers.respondGeneric(reply);
     }
 
     @GetMapping(UserRoutingConstants.IS_FOLLOWING)
     public ResponseEntity allFollowings(@PathVariable String username, @RequestParam(name = "username") String follow) {
+
+        UserIsFollowingReply reply = this.userFollowRequester.isFollowing(username, follow);
 
         return this.responseHelpers.respondGeneric(null);
     }

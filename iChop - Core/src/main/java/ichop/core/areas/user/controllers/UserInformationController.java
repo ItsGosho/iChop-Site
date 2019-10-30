@@ -2,6 +2,9 @@ package ichop.core.areas.user.controllers;
 
 import ichop.core.areas.rest.helpers.ResponseHelpers;
 import ichop.core.areas.user.constants.UserRoutingConstants;
+import ichop.core.areas.user.models.jms.information.UserInformationRetrieveReply;
+import ichop.core.areas.user.models.jms.information.UserInformationUpdateReply;
+import ichop.core.areas.user.models.jms.information.UserInformationUpdateRequest;
 import ichop.core.areas.user.requester.UserInformationRequester;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,18 +26,21 @@ public class UserInformationController {
     }
 
 
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("hasAuthority('OWNER') or principal.username.equals(#username)")
     @PostMapping(UserRoutingConstants.UPDATE_INFORMATION)
-    public ResponseEntity update(@PathVariable String username) {
+    public ResponseEntity update(@PathVariable String username, UserInformationUpdateRequest request) {
+        request.setUsername(username);
 
-        return this.responseHelpers.respondGeneric(null);
+        UserInformationUpdateReply reply = this.userInformationRequester.update(request);
+
+        return this.responseHelpers.respondGeneric(reply);
     }
 
-    @PreAuthorize("isAuthenticated()")
     @PostMapping(UserRoutingConstants.RETRIEVE_INFORMATION)
     public ResponseEntity retrieve(@PathVariable String username) {
+        UserInformationRetrieveReply reply = this.userInformationRequester.retrieve(username);
 
-        return this.responseHelpers.respondGeneric(null);
+        return this.responseHelpers.respondGeneric(reply);
     }
 
 }
