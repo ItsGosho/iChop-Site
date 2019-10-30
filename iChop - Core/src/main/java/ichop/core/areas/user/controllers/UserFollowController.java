@@ -2,7 +2,7 @@ package ichop.core.areas.user.controllers;
 
 import ichop.core.areas.rest.helpers.ResponseHelpers;
 import ichop.core.areas.user.constants.UserRoutingConstants;
-import ichop.core.areas.user.requester.UserRequester;
+import ichop.core.areas.user.requester.UserFollowRequester;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -17,12 +17,12 @@ import java.security.Principal;
 @Controller
 public class UserFollowController {
 
-    private final UserRequester userRequester;
+    private final UserFollowRequester userFollowRequester;
     private final ResponseHelpers responseHelpers;
 
     @Autowired
-    public UserFollowController(UserRequester userRequester, ResponseHelpers responseHelpers) {
-        this.userRequester = userRequester;
+    public UserFollowController(UserFollowRequester userFollowRequester, ResponseHelpers responseHelpers) {
+        this.userFollowRequester = userFollowRequester;
         this.responseHelpers = responseHelpers;
     }
 
