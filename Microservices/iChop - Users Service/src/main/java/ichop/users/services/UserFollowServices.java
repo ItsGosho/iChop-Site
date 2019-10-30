@@ -7,9 +7,9 @@ import java.util.List;
 public interface UserFollowServices {
 
 
-    void follow(UserServiceModel user, UserServiceModel userToFollow);
+    void follow(UserServiceModel user, UserServiceModel follow);
 
-    void unfollow(UserServiceModel user, UserServiceModel userToUnfollow);
+    void unfollow(UserServiceModel user, UserServiceModel follow);
 
     boolean isFollowed(UserServiceModel user, UserServiceModel follow);
 

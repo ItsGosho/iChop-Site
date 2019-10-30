@@ -25,9 +25,9 @@ public class UserFollowServicesImp
     }
 
     @Override
-    public void follow(UserServiceModel user, UserServiceModel userToFollow) {
+    public void follow(UserServiceModel user, UserServiceModel follow) {
         UserFollowServiceModel userFollow = super.objectMapper.convertValue(user,UserFollowServiceModel.class);
-        userFollow.setUser(userToFollow);
+        userFollow.setUser(follow);
         userFollow.setFollower(user);
         userFollow.setSince(LocalDateTime.now());
 
@@ -35,9 +35,9 @@ public class UserFollowServicesImp
     }
 
     @Override
-    public void unfollow(UserServiceModel user, UserServiceModel userToUnfollow) {
+    public void unfollow(UserServiceModel user, UserServiceModel follow) {
         User entityUser = super.objectMapper.convertValue(user,User.class);
-        User entityUserToUnfollow = super.objectMapper.convertValue(userToUnfollow,User.class);
+        User entityUserToUnfollow = super.objectMapper.convertValue(follow,User.class);
 
         UserFollow userFollow = super.repository.findByUserAndFollower(entityUserToUnfollow,entityUser);
         UserFollowServiceModel userFollowServiceModel = super.objectMapper.convertValue(userFollow,UserFollowServiceModel.class);

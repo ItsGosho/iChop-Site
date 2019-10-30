@@ -42,11 +42,12 @@ public class UserFollowListeners extends BaseListener {
         UserIsFollowingRequest requestModel = this.jmsHelper.getResultModel(message, UserIsFollowingRequest.class);
 
 
-        UserServiceModel user = this.userServices.find
+        UserServiceModel user = this.userServices.findByUsername(requestModel.getUsername());
+        UserServiceModel following = this.userServices.findByUsername(requestModel.getFollowingUsername());
 
-        this.userFollowServices.isFollowed();
+        boolean isFollowing = this.userFollowServices.isFollowed(user, following);
 
-        return null;
+        return new UserIsFollowingReply(isFollowing);
     }
 
     @JmsValidate(model = UserFollowRequest.class)

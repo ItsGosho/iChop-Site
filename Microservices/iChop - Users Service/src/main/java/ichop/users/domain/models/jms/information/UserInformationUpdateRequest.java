@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-@SpELValidation(value = "@userServicesImp.existsById(#this.userId) == true",message = "User not found!")
+@SpELValidation(value = "@userServicesImp.existsByUsername(#this.username) == true",message = "User not found!")
 public class UserInformationUpdateRequest extends BaseRequestModel {
 
     @Length(max = 16)
@@ -25,6 +25,6 @@ public class UserInformationUpdateRequest extends BaseRequestModel {
     private String aboutYou;
 
     @NotNull
-    private String userId;
+    private String username;
 
 }

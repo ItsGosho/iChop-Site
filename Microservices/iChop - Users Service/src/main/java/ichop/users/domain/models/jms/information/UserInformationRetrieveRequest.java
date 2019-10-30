@@ -10,10 +10,10 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-@SpELValidation(value = "@userServicesImp.existsByEmail(#this.email) == true",message = "User not found!")
+@SpELValidation(value = "@userServicesImp.existsByUsername(#this.username) == true",message = "User not found!")
 public class UserInformationRetrieveRequest extends BaseRequestModel {
 
     @NotNull
-    private String email;
+    private String username;
 
 }

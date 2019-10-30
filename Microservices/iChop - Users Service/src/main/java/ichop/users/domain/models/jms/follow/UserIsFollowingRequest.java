@@ -7,11 +7,11 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@SpELValidation(value = "@userServicesImp.existsById(#this.userId) == true",message = "User not found!")
-@SpELValidation(value = "@userServicesImp.existsById(#this.followingId) == true",message = "Following not found!")
+@SpELValidation(value = "@userServicesImp.existsByUsername(#this.username) == true",message = "User not found!")
+@SpELValidation(value = "@userServicesImp.existsByUsername(#this.followingUsername) == true",message = "Following not found!")
 public class UserIsFollowingRequest extends BaseRequestModel {
 
-    private String userId;
-    private String followingId;
+    private String username;
+    private String followingUsername;
 
 }

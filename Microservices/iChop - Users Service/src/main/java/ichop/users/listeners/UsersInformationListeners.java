@@ -49,7 +49,7 @@ public class UsersInformationListeners extends BaseListener {
         UserInformationUpdateRequest requestModel = this.jmsHelper.getResultModel(message, UserInformationUpdateRequest.class);
 
         /*TODO: update avatar!*/
-        UserServiceModel user = this.userServices.findById(requestModel.getUserId());
+        UserServiceModel user = this.userServices.findByUsername(requestModel.getUsername());
         LocalDate birthDate = LocalDate.parse(requestModel.getBirthDate());
 
         UserInformationServiceModel information = new UserInformationServiceModel();
@@ -68,7 +68,7 @@ public class UsersInformationListeners extends BaseListener {
     public UserInformationRetrieveReply retrieve(Message message) {
         UserInformationRetrieveRequest requestModel = this.jmsHelper.getResultModel(message, UserInformationRetrieveRequest.class);
 
-        UserServiceModel user = this.userServices.findByEmail(requestModel.getEmail());
+        UserServiceModel user = this.userServices.findByUsername(requestModel.getUsername());
         UserInformationServiceModel information = this.userInformationServices.getByUser(user);
 
         return super.objectMapper.convertValue(information, UserInformationRetrieveReply.class);
