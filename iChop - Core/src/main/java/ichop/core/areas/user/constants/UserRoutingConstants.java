@@ -21,6 +21,13 @@ public final class UserRoutingConstants {
     public static final String ALL_FOLLOWINGS = "/user/{username}/all/followings"; /*EVERYONE*/
     public static final String IS_FOLLOWING = "/user/{username}/is/following"; /*EVERYONE*/
 
+    //UserInformationController -----------------------------------------------------------------------------------
+
+    public static final String UPDATE_INFORMATION = "/user/{username}/information/update"; /*LOGGED IN USER IN HIS PROFILE*/
+    public static final String RETRIEVE_INFORMATION = "/user/{username}/information/retrieve"; /*LOGGED IN USER IN HIS PROFILE*/
+
+
+    /*TODO:*/
     //UserControlController -----------------------------------------------------------------------------------
 
     public static final String CONTROL_BASE = "/user/{username}/control"; /*ADMIN++*/

@@ -27,7 +27,6 @@ public class UserFollowController {
     }
 
 
-
     @PreAuthorize("isAuthenticated()")
     @PostMapping(UserRoutingConstants.FOLLOW)
     public ResponseEntity follow(@PathVariable(name = "username") String userToFollowUsername, Principal principal) {
@@ -45,6 +44,12 @@ public class UserFollowController {
 
     @GetMapping(UserRoutingConstants.ALL_FOLLOWERS)
     public ResponseEntity allFollowers(@PathVariable String username) {
+
+        return this.responseHelpers.respondGeneric(null);
+    }
+
+    @GetMapping(UserRoutingConstants.ALL_FOLLOWINGS)
+    public ResponseEntity allFollowings(@PathVariable String username) {
 
         return this.responseHelpers.respondGeneric(null);
     }
