@@ -80,6 +80,19 @@ public class UserListeners extends BaseListener {
         return reply;
     }
 
+    @JmsValidate(model = UserFindByEmailRequest.class)
+    @JmsAfterReturn(message = USER_FETCHED_SUCCESSFUL)
+    @JmsListener(destination = "${artemis.queue.users.find.by.email}", containerFactory = QUEUE)
+    public UserFindByEmailReply findByEmail(Message message) {
+        UserFindByEmailRequest requestModel = this.jmsHelper.getResultModel(message, UserFindByEmailRequest.class);
+
+        UserServiceModel user = this.userServices.findByEmail(requestModel.getEmail());
+
+        UserFindByEmailReply reply = super.objectMapper.convertValue(user, UserFindByEmailReply.class);
+        reply.setAuthority(this.roleServices.findHighestOfUser(user).getAuthority());
+        return reply;
+    }
+
     @JmsValidate(model = UserChangePasswordRequest.class)
     @JmsAfterReturn(message = USER_PASSWORD_CHANGED_SUCCESSFUL)
     @JmsListener(destination = "${artemis.queue.users.password.change}", containerFactory = QUEUE)
