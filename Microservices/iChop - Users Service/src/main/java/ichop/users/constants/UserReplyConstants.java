@@ -8,5 +8,7 @@ public final class UserReplyConstants {
     public static final String PASSWORD_TOKEN_SENT_SUCCESSFUL = "Your token has been sent!";
 
     public static final String INFORMATION_UPDATED_SUCCESSFUL = "Information updated successful!";
+    public static final String FOLLOW_SUCCESSFUL = "Successful follow!";
+    public static final String UNFOLLOW_SUCCESSFUL = "Successful unfollow!";
 
 }
