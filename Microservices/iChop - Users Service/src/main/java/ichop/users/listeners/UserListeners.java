@@ -61,7 +61,7 @@ public class UserListeners extends BaseListener {
 
 
     @JmsValidate(model = UserRegisterRequest.class)
-    @JmsAfterReturn(message = USER_REGISTER_SUCCESSFUL)
+    @JmsAfterReturn(message = REGISTER_SUCCESSFUL)
     @JmsListener(destination = "${artemis.queue.users.authentication.register}", containerFactory = QUEUE)
     public UserRegisterReply register(Message message) {
         UserRegisterRequest requestModel = this.jmsHelper.getResultModel(message, UserRegisterRequest.class);
@@ -72,7 +72,7 @@ public class UserListeners extends BaseListener {
     }
 
     @JmsValidate(model = UserFindByEmailRequest.class)
-    @JmsAfterReturn(message = USER_FETCHED_SUCCESSFUL)
+    @JmsAfterReturn(message = FETCHED_SUCCESSFUL)
     @JmsListener(destination = "${artemis.queue.users.find.by.email}", containerFactory = QUEUE)
     public UserFindByEmailReply findByEmail(Message message) {
         UserFindByEmailRequest requestModel = this.jmsHelper.getResultModel(message, UserFindByEmailRequest.class);
@@ -85,7 +85,7 @@ public class UserListeners extends BaseListener {
     }
 
     @JmsValidate(model = UsersAllPageableRequest.class)
-    @JmsAfterReturn(message = USER_FETCHED_SUCCESSFUL)
+    @JmsAfterReturn(message = FETCHED_SUCCESSFUL)
     @JmsListener(destination = "${artemis.queue.users.find.all.pageable}", containerFactory = QUEUE)
     public UsersAllPageableReply allPageable(Message message) {
         UsersAllPageableRequest requestModel = this.jmsHelper.getResultModel(message, UsersAllPageableRequest.class);
@@ -96,7 +96,7 @@ public class UserListeners extends BaseListener {
     }
 
     @JmsValidate(model = UserChangePasswordRequest.class)
-    @JmsAfterReturn(message = USER_PASSWORD_CHANGED_SUCCESSFUL)
+    @JmsAfterReturn(message = PASSWORD_CHANGED_SUCCESSFUL)
     @JmsListener(destination = "${artemis.queue.users.password.change}", containerFactory = QUEUE)
     public UserChangePasswordReply changePassword(Message message) {
         UserChangePasswordRequest requestModel = this.jmsHelper.getResultModel(message, UserChangePasswordRequest.class);
@@ -107,7 +107,7 @@ public class UserListeners extends BaseListener {
     }
 
     @JmsValidate(model = UserChangePasswordByTokenRequest.class)
-    @JmsAfterReturn(message = USER_PASSWORD_CHANGED_SUCCESSFUL)
+    @JmsAfterReturn(message = PASSWORD_CHANGED_SUCCESSFUL)
     @JmsListener(destination = "${artemis.queue.users.password.change.by.token}", containerFactory = QUEUE)
     public UserChangePasswordByTokenReply changePasswordByToken(Message message) {
         UserChangePasswordByTokenRequest requestModel = this.jmsHelper.getResultModel(message, UserChangePasswordByTokenRequest.class);
@@ -121,7 +121,7 @@ public class UserListeners extends BaseListener {
     }
 
     @JmsValidate(model = UserForgottenPasswordRequest.class)
-    @JmsAfterReturn(message = USER_PASSWORD_TOKEN_SENT_SUCCESSFUL)
+    @JmsAfterReturn(message = PASSWORD_TOKEN_SENT_SUCCESSFUL)
     @JmsListener(destination = "${artemis.queue.users.forgotten.password}", containerFactory = QUEUE)
     public UserForgottenPasswordReply forgottenPassword(Message message) {
         UserForgottenPasswordRequest requestModel = this.jmsHelper.getResultModel(message, UserForgottenPasswordRequest.class);
