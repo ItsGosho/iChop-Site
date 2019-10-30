@@ -11,6 +11,7 @@ import ichop.users.domain.models.jms.information.UserInformationUpdateReply;
 import ichop.users.domain.models.jms.information.UserInformationUpdateRequest;
 import ichop.users.domain.models.jms.register.UserRegisterReply;
 import ichop.users.domain.models.jms.register.UserRegisterRequest;
+import ichop.users.domain.models.service.UserInformationServiceModel;
 import ichop.users.domain.models.service.UserServiceModel;
 import ichop.users.services.UserFollowServices;
 import ichop.users.services.UserInformationServices;
@@ -57,11 +58,10 @@ public class UsersInformationListeners extends BaseListener {
     public UserInformationRetrieveReply retrieve(Message message) {
         UserInformationRetrieveRequest requestModel = this.jmsHelper.getResultModel(message, UserInformationRetrieveRequest.class);
 
-        UserServiceModel user = this.userServices.findById()
+        UserServiceModel user = this.userServices.findByEmail(requestModel.getEmail());
+        UserInformationServiceModel information = this.userInformationServices.getByUser(user);
 
-        this.userInformationServices.getByUser()
-
-        return null;
+        return super.objectMapper.convertValue(information, UserInformationRetrieveReply.class);
     }
 
 }

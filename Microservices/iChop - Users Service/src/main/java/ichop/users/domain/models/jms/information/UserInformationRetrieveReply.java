@@ -5,12 +5,14 @@ import ichop.users.domain.models.service.UserServiceModel;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 @Getter
 @Setter
 public class UserInformationRetrieveReply extends BaseReplyModel {
 
     private String statusMessage;
-    private String birthDate;
+    private LocalDate birthDate;
     private String aboutYou;
     private UserServiceModel user;
 
