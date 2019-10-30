@@ -78,7 +78,7 @@ public class ResponseHelpersImp implements ResponseHelpers {
             return this.respondError(reply.getMessage());
         }
 
-        return this.respondError(reply.getMessage());
+        return this.respondSuccessful(reply.getMessage());
     }
 
     private void writeToResponse(HttpServletResponse response, Object object) {
