@@ -16,6 +16,8 @@ import ichop.users.domain.models.jms.register.UserRegisterReply;
 import ichop.users.domain.models.jms.register.UserRegisterRequest;
 import ichop.users.domain.models.jms.retrieve.UserFindByEmailReply;
 import ichop.users.domain.models.jms.retrieve.UserFindByEmailRequest;
+import ichop.users.domain.models.jms.retrieve.UsersAllPageableReply;
+import ichop.users.domain.models.jms.retrieve.UsersAllPageableRequest;
 import ichop.users.domain.models.jms.token.create.password.PasswordTokenCreateReply;
 import ichop.users.domain.models.jms.token.create.password.PasswordTokenCreateRequest;
 import ichop.users.domain.models.jms.token.retrieve.password.PasswordTokenFindByTokenRequest;
@@ -29,6 +31,8 @@ import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 
 import javax.jms.Message;
+
+import java.util.List;
 
 import static ichop.users.common.constants.JmsFactories.QUEUE;
 import static ichop.users.constants.UserReplyConstants.*;
@@ -80,17 +84,15 @@ public class UserListeners extends BaseListener {
         return reply;
     }
 
-    @JmsValidate(model = UserFindByEmailRequest.class)
+    @JmsValidate(model = UsersAllPageableRequest.class)
     @JmsAfterReturn(message = USER_FETCHED_SUCCESSFUL)
-    @JmsListener(destination = "${artemis.queue.users.find.by.email}", containerFactory = QUEUE)
-    public UserFindByEmailReply findByEmail(Message message) {
-        UserFindByEmailRequest requestModel = this.jmsHelper.getResultModel(message, UserFindByEmailRequest.class);
+    @JmsListener(destination = "${artemis.queue.users.find.all.pageable}", containerFactory = QUEUE)
+    public UsersAllPageableReply allPageable(Message message) {
+        UsersAllPageableRequest requestModel = this.jmsHelper.getResultModel(message, UsersAllPageableRequest.class);
 
-        UserServiceModel user = this.userServices.findByEmail(requestModel.getEmail());
+        List<UserServiceModel> users = this.userServices.findAll(requestModel.getPageable());
 
-        UserFindByEmailReply reply = super.objectMapper.convertValue(user, UserFindByEmailReply.class);
-        reply.setAuthority(this.roleServices.findHighestOfUser(user).getAuthority());
-        return reply;
+        return new UsersAllPageableReply(users);
     }
 
     @JmsValidate(model = UserChangePasswordRequest.class)

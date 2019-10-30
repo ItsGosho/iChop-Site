@@ -14,7 +14,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UsersAllReply extends BaseReplyModel {
+public class UsersAllPageableReply extends BaseReplyModel {
 
     private List<UserServiceModel> users;
 
