@@ -9,11 +9,8 @@ import ichop.users.domain.models.jms.information.UserInformationRetrieveReply;
 import ichop.users.domain.models.jms.information.UserInformationRetrieveRequest;
 import ichop.users.domain.models.jms.information.UserInformationUpdateReply;
 import ichop.users.domain.models.jms.information.UserInformationUpdateRequest;
-import ichop.users.domain.models.jms.register.UserRegisterReply;
-import ichop.users.domain.models.jms.register.UserRegisterRequest;
 import ichop.users.domain.models.service.UserInformationServiceModel;
 import ichop.users.domain.models.service.UserServiceModel;
-import ichop.users.services.UserFollowServices;
 import ichop.users.services.UserInformationServices;
 import ichop.users.services.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +20,8 @@ import org.springframework.stereotype.Component;
 import javax.jms.Message;
 
 import static ichop.users.common.constants.JmsFactories.QUEUE;
-import static ichop.users.constants.UserReplyConstants.*;
+import static ichop.users.constants.UserReplyConstants.FETCHED_SUCCESSFUL;
+import static ichop.users.constants.UserReplyConstants.INFORMATION_UPDATED_SUCCESSFUL;
 
 @Component
 public class UsersInformationListeners extends BaseListener {
