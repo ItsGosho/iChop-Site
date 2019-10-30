@@ -56,8 +56,12 @@ public class UserFollowListeners extends BaseListener {
     public UserFollowReply follow(Message message) {
         UserFollowRequest requestModel = this.jmsHelper.getResultModel(message, UserFollowRequest.class);
 
+        UserServiceModel user = this.userServices.findByUsername(requestModel.getUsername());
+        UserServiceModel follow = this.userServices.findByUsername(requestModel.getFollowUsername());
 
-        return null;
+        this.userFollowServices.follow(user, follow);
+
+        return new UserFollowReply();
     }
 
     @JmsValidate(model = UserUnfollowRequest.class)
@@ -66,6 +70,10 @@ public class UserFollowListeners extends BaseListener {
     public UserUnfollowReply unFollow(Message message) {
         UserUnfollowRequest requestModel = this.jmsHelper.getResultModel(message, UserUnfollowRequest.class);
 
+        UserServiceModel user = this.userServices.findByUsername(requestModel.getUsername());
+        UserServiceModel follow = this.userServices.findByUsername(requestModel.getFollowUsername());
+
+        this.userFollowServices.follow(user, follow);
 
         return null;
     }
