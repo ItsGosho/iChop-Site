@@ -9,6 +9,8 @@ import ichop.core.areas.user.models.jms.password.forgotten.UserForgottenPassword
 import ichop.core.areas.user.models.jms.register.UserRegisterReply;
 import ichop.core.areas.user.models.jms.register.UserRegisterRequest;
 import ichop.core.areas.user.models.jms.retrieve.UserFindByEmailReply;
+import ichop.core.areas.user.models.jms.retrieve.UsersAllPageableReply;
+import ichop.core.areas.user.models.jms.retrieve.UsersAllPageableRequest;
 
 public interface UserRequester {
     UserFindByEmailReply findByEmail(String email);
@@ -20,4 +22,6 @@ public interface UserRequester {
     UserChangePasswordByTokenReply changePasswordByToken(UserChangePasswordByTokenRequest request);
 
     UserForgottenPasswordReply forgottenPassword(UserForgottenPasswordRequest request);
+
+    UsersAllPageableReply findAllPageable(UsersAllPageableRequest request);
 }

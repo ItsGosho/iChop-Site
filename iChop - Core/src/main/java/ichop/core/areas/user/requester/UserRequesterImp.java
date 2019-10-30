@@ -10,6 +10,8 @@ import ichop.core.areas.user.models.jms.register.UserRegisterReply;
 import ichop.core.areas.user.models.jms.register.UserRegisterRequest;
 import ichop.core.areas.user.models.jms.retrieve.UserFindByEmailReply;
 import ichop.core.areas.user.models.jms.retrieve.UserFindByEmailRequest;
+import ichop.core.areas.user.models.jms.retrieve.UsersAllPageableReply;
+import ichop.core.areas.user.models.jms.retrieve.UsersAllPageableRequest;
 import ichop.core.common.helpers.JmsHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -25,6 +27,7 @@ public class UserRequesterImp implements UserRequester {
 
     private String changePasswordDestination;
     private String changePasswordByTokenDestination;
+    private String findAllPageableDestination;
     private String forgottenPasswordDestination;
 
     @Autowired
@@ -33,14 +36,15 @@ public class UserRequesterImp implements UserRequester {
                             @Value("${artemis.queue.users.authentication.register}") String registerDestination,
                             @Value("${artemis.queue.users.password.change}") String changePasswordDestination,
                             @Value("${artemis.queue.users.password.change.by.token}") String changePasswordByTokenDestination,
+                            @Value("${artemis.queue.users.find.all.pageable}") String findAllPageableDestination,
                             @Value("${artemis.queue.users.forgotten.password}") String forgottenPasswordDestination) {
         this.jmsHelper = jmsHelper;
 
         this.findByEmailDestination = findByEmailDestination;
         this.registerDestination = registerDestination;
-
         this.changePasswordDestination = changePasswordDestination;
         this.changePasswordByTokenDestination = changePasswordByTokenDestination;
+        this.findAllPageableDestination = findAllPageableDestination;
         this.forgottenPasswordDestination = forgottenPasswordDestination;
     }
 
@@ -69,6 +73,11 @@ public class UserRequesterImp implements UserRequester {
     @Override
     public UserForgottenPasswordReply forgottenPassword(UserForgottenPasswordRequest request) {
         return this.jmsHelper.sendAndReceive(this.forgottenPasswordDestination, request, UserForgottenPasswordReply.class);
+    }
+
+    @Override
+    public UsersAllPageableReply findAllPageable(UsersAllPageableRequest request) {
+        return this.jmsHelper.sendAndReceive(this.findAllPageableDestination, request, UsersAllPageableReply.class);
     }
 
 }
