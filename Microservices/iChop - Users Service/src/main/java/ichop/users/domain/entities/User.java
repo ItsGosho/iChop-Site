@@ -3,44 +3,41 @@ package ichop.users.domain.entities;
 import ichop.users.common.domain.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.mongodb.core.index.Indexed;
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.validation.constraints.NotNull;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
 @Getter
 @Setter
-@Document("users")
+@Entity(name = "User")
+@Table(name = "users")
 public class User extends BaseEntity implements UserDetails {
 
-    @NotNull
-    @Indexed(unique = true)
+    @Column(unique = true,nullable = false)
     private String username;
 
-    @NotNull
+    @Column(nullable = false)
     private String password;
 
-    @Indexed(unique = true)
+    @Column(unique = true,nullable = false)
     private String email;
 
-    @NotNull
+    @Column(nullable = false)
     private boolean isAccountNonExpired;
 
-    @NotNull
+    @Column(nullable = false)
     private boolean isAccountNonLocked;
 
-    @NotNull
+    @Column(nullable = false)
     private boolean isCredentialsNonExpired;
 
-    @NotNull
+    @Column(nullable = false)
     private boolean isEnabled;
 
-    @DBRef
+    @ManyToMany(fetch = FetchType.EAGER,targetEntity = Role.class)
     private Set<Role> authorities;
 
     private LocalDateTime registrationDate = LocalDateTime.now();

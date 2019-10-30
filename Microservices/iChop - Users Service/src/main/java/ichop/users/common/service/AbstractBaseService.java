@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.users.common.domain.BaseEntity;
 import ichop.users.common.domain.BaseServiceModel;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.Collection;
@@ -13,7 +13,9 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @SuppressWarnings("all")
-public abstract class AbstractBaseService<E extends BaseEntity, S extends BaseServiceModel, R extends MongoRepository<E, String>> implements BaseService<S> {
+public abstract class AbstractBaseService
+        <E extends BaseEntity, S extends BaseServiceModel, R extends JpaRepository<E, String>>
+        implements BaseService<S> {
 
     protected ObjectMapper objectMapper;
     protected R repository;
