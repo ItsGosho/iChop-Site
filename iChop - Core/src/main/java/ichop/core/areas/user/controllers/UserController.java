@@ -34,7 +34,7 @@ public class UserController {
     @PreAuthorize("isAuthenticated()")
     @PostMapping(UserRoutingConstants.CHANGE_PASSWORD)
     public ResponseEntity changePassword(UserChangePasswordRequest changePasswordRequest, Principal principal) {
-        changePasswordRequest.setEmail(principal.getName());
+        changePasswordRequest.setUsername(principal.getName());
 
         UserChangePasswordReply reply = this.userRequester.changePassword(changePasswordRequest);
 

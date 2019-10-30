@@ -147,10 +147,10 @@ public class UserServicesImp extends AbstractBaseService<User, UserServiceModel,
     }
 
     @Override
-    public void changePassword(String email, String password) {
+    public void changePassword(String username, String password) {
         String encodedPassword = this.passwordEncoder.encode(password);
 
-        UserServiceModel user = this.findByEmail(email);
+        UserServiceModel user = this.findByUsername(username);
         user.setPassword(encodedPassword);
 
         this.save(user);

@@ -101,7 +101,7 @@ public class UserListeners extends BaseListener {
     public UserChangePasswordReply changePassword(Message message) {
         UserChangePasswordRequest requestModel = this.jmsHelper.getResultModel(message, UserChangePasswordRequest.class);
 
-        this.userServices.changePassword(requestModel.getEmail(), requestModel.getPassword());
+        this.userServices.changePassword(requestModel.getUsername(), requestModel.getPassword());
 
         return new UserChangePasswordReply();
     }

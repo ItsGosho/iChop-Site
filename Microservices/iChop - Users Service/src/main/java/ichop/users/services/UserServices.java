@@ -30,7 +30,7 @@ public interface UserServices extends UserDetailsService, BaseService<UserServic
 
     void updateLastOnline(UserServiceModel user, LocalDateTime lastOnline);
 
-    void changePassword(String email, String password);
+    void changePassword(String username, String password);
 
     void updateLocation(UserServiceModel user, String userLocation);
 }
