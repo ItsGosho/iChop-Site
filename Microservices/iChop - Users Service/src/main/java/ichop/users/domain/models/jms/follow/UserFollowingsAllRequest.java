@@ -7,9 +7,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@SpELValidation(value = "@userServicesImp.existsById(#this.userId) == true",message = "User not found!")
+@SpELValidation(value = "@userServicesImp.existsByUsername(#this.username) == true",message = "User not found!")
 public class UserFollowingsAllRequest extends BaseRequestModel {
 
-    private String userId;
+    private String username;
 
 }

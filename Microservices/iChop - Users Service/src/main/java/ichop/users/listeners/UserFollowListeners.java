@@ -15,6 +15,8 @@ import org.springframework.stereotype.Component;
 
 import javax.jms.Message;
 
+import java.util.List;
+
 import static ichop.users.common.constants.JmsFactories.QUEUE;
 import static ichop.users.constants.UserReplyConstants.*;
 
@@ -71,11 +73,11 @@ public class UserFollowListeners extends BaseListener {
         UserUnfollowRequest requestModel = this.jmsHelper.getResultModel(message, UserUnfollowRequest.class);
 
         UserServiceModel user = this.userServices.findByUsername(requestModel.getUsername());
-        UserServiceModel follow = this.userServices.findByUsername(requestModel.getFollowUsername());
+        UserServiceModel unfollow = this.userServices.findByUsername(requestModel.getUnfollowUsername());
 
-        this.userFollowServices.follow(user, follow);
+        this.userFollowServices.unfollow(user, unfollow);
 
-        return null;
+        return new UserUnfollowReply();
     }
 
     @JmsValidate(model = UserFollowersAllRequest.class)
@@ -84,8 +86,10 @@ public class UserFollowListeners extends BaseListener {
     public UserFollowersAllReply allFollowers(Message message) {
         UserFollowersAllRequest requestModel = this.jmsHelper.getResultModel(message, UserFollowersAllRequest.class);
 
+        UserServiceModel user = this.userServices.findByUsername(requestModel.getUsername());
+        List<UserServiceModel> followers = this.userFollowServices.getFollowers(user);
 
-        return null;
+        return new UserFollowersAllReply(followers);
     }
 
     @JmsValidate(model = UserFollowingsAllRequest.class)
@@ -94,8 +98,10 @@ public class UserFollowListeners extends BaseListener {
     public UserFollowingsAllReply allFollowings(Message message) {
         UserFollowingsAllRequest requestModel = this.jmsHelper.getResultModel(message, UserFollowingsAllRequest.class);
 
+        UserServiceModel user = this.userServices.findByUsername(requestModel.getUsername());
+        List<UserServiceModel> followings = this.userFollowServices.getFollowings(user);
 
-        return null;
+        return new UserFollowingsAllReply(followings);
     }
 
 }
