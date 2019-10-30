@@ -59,11 +59,11 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
             JWTVerifier verifier = JWT.require(Algorithm.HMAC512(JWT_SECRET)).withIssuer(JWT_ISSUER).build();
             DecodedJWT jwt = verifier.verify(token);
 
-            String email = jwt.getClaim(EMAIL_CLAIM).asString();
+            String username = jwt.getClaim(USERNAME_CLAIM).asString();
             Set<UserRoleSecurity> roles = this.objectMapper.readValue(jwt.getClaim(ROLES_CLAIM).asString(), new TypeReference<Set<UserRoleSecurity>>() {
             });
 
-            return new UsernamePasswordAuthenticationToken(email, null, roles);
+            return new UsernamePasswordAuthenticationToken(username, null, roles);
         } catch (Exception ex) {
             return null;
         }

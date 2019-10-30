@@ -76,6 +76,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         String jwt = JWT.create()
                 .withExpiresAt(DateUtils.asDate(LocalDateTime.now().plusHours(JWT_EXPIRATION_HOURS)))
                 .withClaim(EMAIL_CLAIM, user.getEmail())
+                .withClaim(USERNAME_CLAIM, user.getUsername())
                 .withClaim(ROLE_CLAIM, user.getAuthority())
                 .withClaim(ROLES_CLAIM, roles)
                 .withIssuer(JWT_ISSUER)
