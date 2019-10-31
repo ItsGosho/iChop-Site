@@ -71,7 +71,7 @@ public class UsersInformationListeners extends BaseListener {
         UserServiceModel user = this.userServices.findByUsername(requestModel.getUsername());
         UserInformationServiceModel information = this.userInformationServices.getByUser(user);
 
-        return super.objectMapper.convertValue(information, UserInformationRetrieveReply.class);
+        return information != null ? super.objectMapper.convertValue(information, UserInformationRetrieveReply.class) : new UserInformationRetrieveReply();
     }
 
 }
