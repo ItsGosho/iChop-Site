@@ -20,6 +20,7 @@ import org.springframework.stereotype.Component;
 import javax.jms.Message;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import static ichop.users.common.constants.JmsFactories.QUEUE;
 import static ichop.users.constants.UserReplyConstants.FETCHED_SUCCESSFUL;
@@ -50,15 +51,8 @@ public class UsersInformationListeners extends BaseListener {
 
         /*TODO: update avatar!*/
         UserServiceModel user = this.userServices.findByUsername(requestModel.getUsername());
-        LocalDate birthDate = LocalDate.parse(requestModel.getBirthDate());
 
-        UserInformationServiceModel information = new UserInformationServiceModel();
-        information.setUser(user);
-        information.setBirthDate(birthDate);
-        information.setAboutYou(requestModel.getAboutYou());
-        information.setStatusMessage(requestModel.getStatusMessage());
-
-        information = this.userInformationServices.update(information);
+        UserInformationServiceModel information = this.userInformationServices.update(requestModel);
         return super.objectMapper.convertValue(information, UserInformationUpdateReply.class);
     }
 
@@ -68,8 +62,7 @@ public class UsersInformationListeners extends BaseListener {
     public UserInformationRetrieveReply retrieve(Message message) {
         UserInformationRetrieveRequest requestModel = this.jmsHelper.getResultModel(message, UserInformationRetrieveRequest.class);
 
-        UserServiceModel user = this.userServices.findByUsername(requestModel.getUsername());
-        UserInformationServiceModel information = this.userInformationServices.getByUser(user);
+        UserInformationServiceModel information = this.userInformationServices.getByUser(requestModel.getUsername());
 
         return information != null ? super.objectMapper.convertValue(information, UserInformationRetrieveReply.class) : new UserInformationRetrieveReply();
     }

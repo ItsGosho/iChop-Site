@@ -1,16 +1,17 @@
 package ichop.users.services;
 
+import ichop.users.domain.models.jms.information.UserInformationUpdateRequest;
 import ichop.users.domain.models.service.UserInformationServiceModel;
 import ichop.users.domain.models.service.UserServiceModel;
 
 public interface UserInformationServices {
 
 
-    UserInformationServiceModel update(UserInformationServiceModel model);
+    UserInformationServiceModel update(UserInformationUpdateRequest request);
 
-    UserInformationServiceModel getByUser(UserServiceModel user);
+    UserInformationServiceModel getByUser(String username);
 
-    UserInformationServiceModel createIfNotPresent(UserServiceModel user);
+    UserInformationServiceModel createIfNotPresent(String username);
 
-    boolean hasInformation(UserServiceModel user);
+    boolean hasInformation(String username);
 }

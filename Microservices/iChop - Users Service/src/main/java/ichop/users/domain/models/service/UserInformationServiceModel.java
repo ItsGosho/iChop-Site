@@ -1,5 +1,6 @@
 package ichop.users.domain.models.service;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import ichop.users.common.domain.BaseServiceModel;
 import lombok.Getter;
 import lombok.Setter;

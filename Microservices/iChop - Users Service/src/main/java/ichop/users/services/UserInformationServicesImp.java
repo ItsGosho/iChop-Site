@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.users.common.service.AbstractBaseService;
 import ichop.users.domain.entities.User;
 import ichop.users.domain.entities.UserInformation;
+import ichop.users.domain.models.jms.information.UserInformationUpdateRequest;
 import ichop.users.domain.models.service.UserInformationServiceModel;
 import ichop.users.domain.models.service.UserServiceModel;
 import ichop.users.repositories.UserInformationRepository;
@@ -11,57 +12,67 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @Service
 public class UserInformationServicesImp
         extends AbstractBaseService<UserInformation, UserInformationServiceModel, UserInformationRepository>
         implements UserInformationServices {
 
+    private static final String BIRTHDATE_FORMAT = "d/MM/yyyy";
+    private final UserServices userServices;
 
     @Autowired
-    public UserInformationServicesImp(ObjectMapper objectMapper, UserInformationRepository repository) {
+    public UserInformationServicesImp(ObjectMapper objectMapper, UserInformationRepository repository, UserServices userServices) {
         super(objectMapper, repository);
+        this.userServices = userServices;
     }
 
 
     @Override
-    public UserInformationServiceModel update(UserInformationServiceModel model) {
+    public UserInformationServiceModel update(UserInformationUpdateRequest request) {
 
-        UserInformationServiceModel information = this.createIfNotPresent(model.getUser());
+        UserInformationServiceModel information = this.createIfNotPresent(request.getUsername());
+
+        LocalDate birthDate = null;
 
         try {
-            information = super.objectMapper.readerForUpdating(information).readValue(super.objectMapper.writeValueAsString(model));
-            super.save(information);
-        } catch (IOException e) {
-            e.printStackTrace();
+            birthDate = LocalDate.parse(request.getBirthDate(), DateTimeFormatter.ofPattern(BIRTHDATE_FORMAT));
+        } catch (Exception ignored) {
+
         }
 
-        return information;
+        information.setAboutYou(request.getAboutYou() != null ? request.getAboutYou() : information.getAboutYou());
+        information.setStatusMessage(request.getStatusMessage() != null ? request.getStatusMessage() : information.getStatusMessage());
+        information.setBirthDate(birthDate != null ? birthDate : information.getBirthDate());
+
+        return super.save(information);
     }
 
     @Override
-    public UserInformationServiceModel getByUser(UserServiceModel user) {
-        User entityUser = this.objectMapper.convertValue(user, User.class);
+    public UserInformationServiceModel getByUser(String username) {
+        User entityUser = this.objectMapper.convertValue(this.userServices.findByUsername(username), User.class);
         UserInformation userInformation = this.repository.findByUser(entityUser);
         return userInformation != null ? this.objectMapper.convertValue(userInformation, UserInformationServiceModel.class) : null;
     }
 
     @Override
-    public UserInformationServiceModel createIfNotPresent(UserServiceModel user) {
+    public UserInformationServiceModel createIfNotPresent(String username) {
 
-        if (!this.hasInformation(user)) {
+        if (!this.hasInformation(username)) {
             UserInformationServiceModel userInformation = new UserInformationServiceModel();
-            userInformation.setUser(user);
+            userInformation.setUser(this.userServices.findByUsername(username));
 
             return this.save(userInformation, UserInformationServiceModel.class);
         }
 
-        return this.getByUser(user);
+        return this.getByUser(username);
     }
 
     @Override
-    public boolean hasInformation(UserServiceModel user) {
-        User entityUser = super.objectMapper.convertValue(user, User.class);
+    public boolean hasInformation(String username) {
+        User entityUser = this.objectMapper.convertValue(this.userServices.findByUsername(username), User.class);
         return super.repository.existsByUser(entityUser);
     }
 
