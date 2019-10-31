@@ -15,6 +15,7 @@ import ichop.core.areas.user.models.jms.retrieve.UsersAllPageableRequest;
 import ichop.core.common.helpers.JmsHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -76,7 +77,10 @@ public class UserRequesterImp implements UserRequester {
     }
 
     @Override
-    public UsersAllPageableReply findAllPageable(UsersAllPageableRequest request) {
+    public UsersAllPageableReply findAllPageable(Pageable pageable) {
+        UsersAllPageableRequest request = new UsersAllPageableRequest();
+        request.setPageable(pageable);
+
         return this.jmsHelper.sendAndReceive(this.findAllPageableDestination, request, UsersAllPageableReply.class);
     }
 

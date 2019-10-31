@@ -60,7 +60,8 @@ public class UserController {
     @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping(UserRoutingConstants.ALL)
     public ResponseEntity all(Pageable pageable) {
-        /*TODO:*/
+
+        //UsersAllPageableReply reply = this.userRequester.findAllPageable(pageable);
 
         return this.responseHelpers.respondGeneric(null);
     }
