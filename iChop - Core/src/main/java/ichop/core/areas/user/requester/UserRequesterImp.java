@@ -8,10 +8,7 @@ import ichop.core.areas.user.models.jms.password.forgotten.UserForgottenPassword
 import ichop.core.areas.user.models.jms.password.forgotten.UserForgottenPasswordRequest;
 import ichop.core.areas.user.models.jms.register.UserRegisterReply;
 import ichop.core.areas.user.models.jms.register.UserRegisterRequest;
-import ichop.core.areas.user.models.jms.retrieve.UserFindByEmailReply;
-import ichop.core.areas.user.models.jms.retrieve.UserFindByEmailRequest;
-import ichop.core.areas.user.models.jms.retrieve.UsersAllPageableReply;
-import ichop.core.areas.user.models.jms.retrieve.UsersAllPageableRequest;
+import ichop.core.areas.user.models.jms.retrieve.*;
 import ichop.core.areas.user.models.jms.role.*;
 import ichop.core.common.helpers.JmsHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +22,7 @@ public class UserRequesterImp implements UserRequester {
     private final JmsHelper jmsHelper;
 
     private String findByEmailDestination;
+    private String findByUsernameDestination;
     private String registerDestination;
 
     private String changePasswordDestination;
@@ -40,6 +38,7 @@ public class UserRequesterImp implements UserRequester {
     @Autowired
     public UserRequesterImp(JmsHelper jmsHelper,
                             @Value("${artemis.queue.users.find.by.email}") String findByEmailDestination,
+                            @Value("${artemis.queue.users.find.by.username}") String findByUsernameDestination,
                             @Value("${artemis.queue.users.authentication.register}") String registerDestination,
                             @Value("${artemis.queue.users.password.change}") String changePasswordDestination,
                             @Value("${artemis.queue.users.password.change.by.token}") String changePasswordByTokenDestination,
@@ -52,6 +51,7 @@ public class UserRequesterImp implements UserRequester {
         this.jmsHelper = jmsHelper;
 
         this.findByEmailDestination = findByEmailDestination;
+        this.findByUsernameDestination = findByUsernameDestination;
         this.registerDestination = registerDestination;
         this.changePasswordDestination = changePasswordDestination;
         this.changePasswordByTokenDestination = changePasswordByTokenDestination;
@@ -69,6 +69,13 @@ public class UserRequesterImp implements UserRequester {
         UserFindByEmailRequest request = new UserFindByEmailRequest(email);
 
         return this.jmsHelper.sendAndReceive(this.findByEmailDestination, request, UserFindByEmailReply.class);
+    }
+
+    @Override
+    public UserFindByUsernameReply findByUsername(String username) {
+        UserFindByUsernameRequest request = new UserFindByUsernameRequest(username);
+
+        return this.jmsHelper.sendAndReceive(this.findByUsernameDestination, request, UserFindByUsernameReply.class);
     }
 
     @Override

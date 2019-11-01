@@ -28,9 +28,11 @@ public final class UserRoutingConstants {
 
     //AdminController -----------------------------------------------------------------------------------
 
-    public static final String ROLE_PROMOTE = "/user/{username}/role/promote";
-    public static final String ROLE_DEMOTE = "/user/{username}/role/demote";
-    public static final String ROLE_HAS_NEXT = "/user/{username}/role/has/next";
-    public static final String ROLE_HAS_PREVIOUS = "/user/{username}/role/has/previous";
+    public static final String FIND_BY = "/admin/user/find/by";
+
+    public static final String ROLE_PROMOTE = "/admin/user/{username}/role/promote";
+    public static final String ROLE_DEMOTE = "/admin/user/{username}/role/demote";
+    public static final String ROLE_HAS_NEXT = "/admin/user/{username}/role/has/next";
+    public static final String ROLE_HAS_PREVIOUS = "/admin/user/{username}/role/has/previous";
 
 }

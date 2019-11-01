@@ -14,10 +14,7 @@ import ichop.users.domain.models.jms.password.forgotten.UserForgottenPasswordRep
 import ichop.users.domain.models.jms.password.forgotten.UserForgottenPasswordRequest;
 import ichop.users.domain.models.jms.register.UserRegisterReply;
 import ichop.users.domain.models.jms.register.UserRegisterRequest;
-import ichop.users.domain.models.jms.retrieve.UserFindByEmailReply;
-import ichop.users.domain.models.jms.retrieve.UserFindByEmailRequest;
-import ichop.users.domain.models.jms.retrieve.UsersAllPageableReply;
-import ichop.users.domain.models.jms.retrieve.UsersAllPageableRequest;
+import ichop.users.domain.models.jms.retrieve.*;
 import ichop.users.domain.models.jms.token.create.password.PasswordTokenCreateReply;
 import ichop.users.domain.models.jms.token.create.password.PasswordTokenCreateRequest;
 import ichop.users.domain.models.jms.token.retrieve.password.PasswordTokenFindByTokenRequest;
@@ -80,6 +77,19 @@ public class UserListeners extends BaseListener {
         UserServiceModel user = this.userServices.findByEmail(requestModel.getEmail());
 
         UserFindByEmailReply reply = super.objectMapper.convertValue(user, UserFindByEmailReply.class);
+        reply.setAuthority(this.roleServices.findHighestOfUser(user).getAuthority());
+        return reply;
+    }
+
+    @JmsValidate(model = UserFindByUsernameRequest.class)
+    @JmsAfterReturn(message = FETCHED_SUCCESSFUL)
+    @JmsListener(destination = "${artemis.queue.users.find.by.username}", containerFactory = QUEUE)
+    public UserFindByUsernameReply findByUsername(Message message) {
+        UserFindByUsernameRequest requestModel = this.jmsHelper.getResultModel(message, UserFindByUsernameRequest.class);
+
+        UserServiceModel user = this.userServices.findByUsername(requestModel.getUsername());
+
+        UserFindByUsernameReply reply = super.objectMapper.convertValue(user, UserFindByUsernameReply.class);
         reply.setAuthority(this.roleServices.findHighestOfUser(user).getAuthority());
         return reply;
     }

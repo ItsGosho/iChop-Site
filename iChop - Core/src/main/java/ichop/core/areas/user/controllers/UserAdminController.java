@@ -2,6 +2,8 @@ package ichop.core.areas.user.controllers;
 
 import ichop.core.areas.rest.helpers.ResponseHelpers;
 import ichop.core.areas.user.constants.UserRoutingConstants;
+import ichop.core.areas.user.models.jms.retrieve.UserFindByEmailReply;
+import ichop.core.areas.user.models.jms.retrieve.UserFindByUsernameReply;
 import ichop.core.areas.user.models.jms.role.UserHasNextRoleReply;
 import ichop.core.areas.user.models.jms.role.UserHasPreviousRoleReply;
 import ichop.core.areas.user.models.jms.role.UserRoleDemoteReply;
@@ -10,10 +12,7 @@ import ichop.core.areas.user.requester.UserRequester;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @PreAuthorize("hasAuthority('ADMIN')")
@@ -26,6 +25,17 @@ public class UserAdminController {
     public UserAdminController(UserRequester userRequester, ResponseHelpers responseHelpers) {
         this.userRequester = userRequester;
         this.responseHelpers = responseHelpers;
+    }
+
+    @GetMapping(UserRoutingConstants.FIND_BY)
+    public ResponseEntity findByUsername(@RequestParam(required = false) String username, @RequestParam(required = false) String email) {
+        if(username != null){
+            UserFindByUsernameReply reply = this.userRequester.findByUsername(username);
+            return this.responseHelpers.respondGeneric(reply);
+        }
+
+        UserFindByEmailReply reply = this.userRequester.findByEmail(email);
+        return this.responseHelpers.respondGeneric(reply);
     }
 
     @PostMapping(UserRoutingConstants.ROLE_PROMOTE)
