@@ -28,7 +28,7 @@ public final class UserRoutingConstants {
 
     //AdminController -----------------------------------------------------------------------------------
 
-    public static final String PROMOTE_USER = "/user/{username}/role/promote";
-    public static final String DEMOTE_USER = "/user/{username}/role/demote";
+    public static final String ROLE_PROMOTE = "/user/{username}/role/promote";
+    public static final String ROLE_DEMOTE = "/user/{username}/role/demote";
 
 }
