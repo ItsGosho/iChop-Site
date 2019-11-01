@@ -26,19 +26,9 @@ public final class UserRoutingConstants {
     public static final String UPDATE_INFORMATION = "/user/{username}/information/update"; /*LOGGED IN USER IN HIS PROFILE OR OWNER*/
     public static final String RETRIEVE_INFORMATION = "/user/{username}/information/retrieve"; /*EVERYONE*/
 
+    //AdminController -----------------------------------------------------------------------------------
 
-    /*TODO:*/
-    //UserControlController -----------------------------------------------------------------------------------
-
-    public static final String CONTROL_BASE = "/user/{username}/control"; /*ADMIN++*/
-    public static final String CONTROL_ROLE_MANAGEMENT = "/user/{username}/control/role-management"; /*ADMIN++*/
-    public static final String CONTROL_ROLE_MANAGEMENT_PROMOTE_USER = "/user/{username}/control/role-management/promote"; /*ADMIN++*/
-
-
-    //UserMyProfileController ---------------------------------------------------------------------------------
-
-    public static final String PROFILE_OPTIONS_INFORMATION = "/user/my-profile/options/information"; /*Only LOGGED-IN USER IN HIS PROFILE*/
-    public static final String PROFILE_OPTIONS_CHANGE_PASSWORD = "/user/my-profile/options/change-password"; /*Only LOGGED-IN USER IN HIS PROFILE*/
-    public static final String PROFILE_OPTIONS_MINECRAFT = "/user/my-profile/options/minecraft"; /*Only LOGGED-IN USER IN HIS PROFILE*/
+    public static final String PROMOTE_USER = "/user/{username}/role/promote";
+    public static final String DEMOTE_USER = "/user/{username}/role/demote";
 
 }
