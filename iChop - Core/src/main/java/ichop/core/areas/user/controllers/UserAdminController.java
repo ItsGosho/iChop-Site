@@ -10,6 +10,7 @@ import ichop.core.areas.user.requester.UserRequester;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,14 +42,14 @@ public class UserAdminController {
         return this.responseHelpers.respondGeneric(reply);
     }
 
-    @PostMapping(UserRoutingConstants.ROLE_HAS_NEXT)
+    @GetMapping(UserRoutingConstants.ROLE_HAS_NEXT)
     public ResponseEntity roleHasNext(@PathVariable String username) {
         UserHasNextRoleReply reply = this.userRequester.hasNextRole(username);
 
         return this.responseHelpers.respondGeneric(reply);
     }
 
-    @PostMapping(UserRoutingConstants.ROLE_HAS_PREVIOUS)
+    @GetMapping(UserRoutingConstants.ROLE_HAS_PREVIOUS)
     public ResponseEntity roleHasPrevious(@PathVariable String username) {
         UserHasPreviousRoleReply reply = this.userRequester.hasPreviousRole(username);
 
