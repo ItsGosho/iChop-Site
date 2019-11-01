@@ -24,4 +24,6 @@ public interface UserRequester {
     UserForgottenPasswordReply forgottenPassword(UserForgottenPasswordRequest request);
 
     UsersAllPageableReply findAllPageable(Pageable pageable);
+
+
 }

@@ -35,4 +35,16 @@ public class UserAdminController {
         return this.responseHelpers.respondGeneric(null);
     }
 
+    @PostMapping(UserRoutingConstants.ROLE_HAS_NEXT)
+    public ResponseEntity roleHasNext(@PathVariable String username) {
+
+        return this.responseHelpers.respondGeneric(null);
+    }
+
+    @PostMapping(UserRoutingConstants.ROLE_HAS_PREVIOUS)
+    public ResponseEntity roleHasPrevious(@PathVariable String username) {
+
+        return this.responseHelpers.respondGeneric(null);
+    }
+
 }

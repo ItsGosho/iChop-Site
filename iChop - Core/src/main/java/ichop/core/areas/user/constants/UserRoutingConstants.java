@@ -30,5 +30,7 @@ public final class UserRoutingConstants {
 
     public static final String ROLE_PROMOTE = "/user/{username}/role/promote";
     public static final String ROLE_DEMOTE = "/user/{username}/role/demote";
+    public static final String ROLE_HAS_NEXT = "/user/{username}/role/has/next";
+    public static final String ROLE_HAS_PREVIOUS = "/user/{username}/role/has/previous";
 
 }
