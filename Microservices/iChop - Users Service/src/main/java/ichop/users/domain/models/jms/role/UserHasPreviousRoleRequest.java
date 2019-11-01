@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @SpELValidation(value = "@userServicesImp.existsByUsername(#this.username) == true",message = "User not found!")
-public class UserHasNextRoleRequest extends BaseRequestModel {
+public class UserHasPreviousRoleRequest extends BaseRequestModel {
 
     private String username;
 
