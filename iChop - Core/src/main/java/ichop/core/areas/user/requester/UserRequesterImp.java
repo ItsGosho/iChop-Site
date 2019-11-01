@@ -12,6 +12,7 @@ import ichop.core.areas.user.models.jms.retrieve.UserFindByEmailReply;
 import ichop.core.areas.user.models.jms.retrieve.UserFindByEmailRequest;
 import ichop.core.areas.user.models.jms.retrieve.UsersAllPageableReply;
 import ichop.core.areas.user.models.jms.retrieve.UsersAllPageableRequest;
+import ichop.core.areas.user.models.jms.role.*;
 import ichop.core.common.helpers.JmsHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -31,6 +32,11 @@ public class UserRequesterImp implements UserRequester {
     private String findAllPageableDestination;
     private String forgottenPasswordDestination;
 
+    private String promoteDestination;
+    private String demoteDestination;
+    private String hasNextRoleDestination;
+    private String hasPreviousRoleDestination;
+
     @Autowired
     public UserRequesterImp(JmsHelper jmsHelper,
                             @Value("${artemis.queue.users.find.by.email}") String findByEmailDestination,
@@ -38,7 +44,11 @@ public class UserRequesterImp implements UserRequester {
                             @Value("${artemis.queue.users.password.change}") String changePasswordDestination,
                             @Value("${artemis.queue.users.password.change.by.token}") String changePasswordByTokenDestination,
                             @Value("${artemis.queue.users.find.all.pageable}") String findAllPageableDestination,
-                            @Value("${artemis.queue.users.forgotten.password}") String forgottenPasswordDestination) {
+                            @Value("${artemis.queue.users.forgotten.password}") String forgottenPasswordDestination,
+                            @Value("${artemis.queue.users.role.promote}") String promoteDestination,
+                            @Value("${artemis.queue.users.role.demote}") String demoteDestination,
+                            @Value("${artemis.queue.users.role.has.next}") String hasNextRoleDestination,
+                            @Value("${artemis.queue.users.role.has.previous}") String hasPreviousRoleDestination) {
         this.jmsHelper = jmsHelper;
 
         this.findByEmailDestination = findByEmailDestination;
@@ -47,6 +57,11 @@ public class UserRequesterImp implements UserRequester {
         this.changePasswordByTokenDestination = changePasswordByTokenDestination;
         this.findAllPageableDestination = findAllPageableDestination;
         this.forgottenPasswordDestination = forgottenPasswordDestination;
+
+        this.promoteDestination = promoteDestination;
+        this.demoteDestination = demoteDestination;
+        this.hasNextRoleDestination = hasNextRoleDestination;
+        this.hasPreviousRoleDestination = hasPreviousRoleDestination;
     }
 
     @Override
@@ -82,6 +97,34 @@ public class UserRequesterImp implements UserRequester {
         request.setPageable(pageable);
 
         return this.jmsHelper.sendAndReceive(this.findAllPageableDestination, request, UsersAllPageableReply.class);
+    }
+
+    @Override
+    public UserRolePromoteReply promote(String username) {
+        UserRolePromoteRequest userRolePromoteRequest = new UserRolePromoteRequest(username);
+
+        return this.jmsHelper.sendAndReceive(this.promoteDestination, userRolePromoteRequest, UserRolePromoteReply.class);
+    }
+
+    @Override
+    public UserRoleDemoteReply demote(String username) {
+        UserRoleDemoteRequest userRoleDemoteRequest = new UserRoleDemoteRequest(username);
+
+        return this.jmsHelper.sendAndReceive(this.demoteDestination, userRoleDemoteRequest, UserRoleDemoteReply.class);
+    }
+
+    @Override
+    public UserHasNextRoleReply hasNextRole(String username) {
+        UserHasNextRoleRequest userHasNextRoleRequest = new UserHasNextRoleRequest(username);
+
+        return this.jmsHelper.sendAndReceive(this.hasNextRoleDestination, userHasNextRoleRequest, UserHasNextRoleReply.class);
+    }
+
+    @Override
+    public UserHasPreviousRoleReply hasPreviousRole(String username) {
+        UserHasPreviousRoleRequest userHasPreviousRoleRequest = new UserHasPreviousRoleRequest(username);
+
+        return this.jmsHelper.sendAndReceive(this.hasPreviousRoleDestination, userHasPreviousRoleRequest, UserHasPreviousRoleReply.class);
     }
 
 }

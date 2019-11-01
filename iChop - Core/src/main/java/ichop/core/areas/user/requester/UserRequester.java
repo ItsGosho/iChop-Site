@@ -10,6 +10,10 @@ import ichop.core.areas.user.models.jms.register.UserRegisterReply;
 import ichop.core.areas.user.models.jms.register.UserRegisterRequest;
 import ichop.core.areas.user.models.jms.retrieve.UserFindByEmailReply;
 import ichop.core.areas.user.models.jms.retrieve.UsersAllPageableReply;
+import ichop.core.areas.user.models.jms.role.UserHasNextRoleReply;
+import ichop.core.areas.user.models.jms.role.UserHasPreviousRoleReply;
+import ichop.core.areas.user.models.jms.role.UserRoleDemoteReply;
+import ichop.core.areas.user.models.jms.role.UserRolePromoteReply;
 import org.springframework.data.domain.Pageable;
 
 public interface UserRequester {
@@ -25,5 +29,11 @@ public interface UserRequester {
 
     UsersAllPageableReply findAllPageable(Pageable pageable);
 
+    UserRolePromoteReply promote(String username);
 
+    UserRoleDemoteReply demote(String username);
+
+    UserHasNextRoleReply hasNextRole(String username);
+
+    UserHasPreviousRoleReply hasPreviousRole(String username);
 }
