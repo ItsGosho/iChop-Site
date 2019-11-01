@@ -11,4 +11,7 @@ public final class UserReplyConstants {
     public static final String FOLLOW_SUCCESSFUL = "Successful follow!";
     public static final String UNFOLLOW_SUCCESSFUL = "Successful unfollow!";
 
+    public static final String PROMOTE_SUCCESSFUL = "Successful promoted!";
+    public static final String DEMOTE_SUCCESSFUL = "Successful demoted!";
+
 }
