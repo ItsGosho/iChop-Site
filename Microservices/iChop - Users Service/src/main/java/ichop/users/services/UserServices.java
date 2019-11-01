@@ -33,4 +33,12 @@ public interface UserServices extends UserDetailsService, BaseService<UserServic
     void changePassword(String username, String password);
 
     void updateLocation(UserServiceModel user, String userLocation);
+
+    boolean hasNextRole(String username);
+
+    boolean hasPreviousRole(String username);
+
+    UserServiceModel promote(String username);
+
+    UserServiceModel demote(String username);
 }

@@ -155,4 +155,45 @@ public class UserServicesImp extends AbstractBaseService<User, UserServiceModel,
 
         this.save(user);
     }
+
+    @Override
+    public boolean hasNextRole(String username) {
+        UserServiceModel user = this.findByUsername(username);
+        RoleServiceModel currentRole = this.roleServices.findHighestOfUser(user);
+        RoleServiceModel nextRole = this.roleServices.getUserNextRole(currentRole);
+
+        return nextRole != null && !nextRole.getAuthority().toUpperCase().equals(Roles.OWNER.name().toUpperCase());
+    }
+
+    @Override
+    public boolean hasPreviousRole(String username) {
+        UserServiceModel user = this.findByUsername(username);
+        RoleServiceModel currentRole = this.roleServices.findHighestOfUser(user);
+        RoleServiceModel previousRole = this.roleServices.getUserPreviousRole(currentRole);
+
+        return previousRole != null;
+    }
+
+    @Override
+    public UserServiceModel promote(String username) {
+        UserServiceModel user = this.findByUsername(username);
+
+        RoleServiceModel currentRole = this.roleServices.findHighestOfUser(user);
+        RoleServiceModel nextRole = this.roleServices.getUserNextRole(currentRole);
+
+        user.getAuthorities().add(nextRole);
+        return this.save(user, UserServiceModel.class);
+    }
+
+    @Override
+    public UserServiceModel demote(String username) {
+        UserServiceModel user = this.findByUsername(username);
+
+        RoleServiceModel currentRole = this.roleServices.findHighestOfUser(user);
+        RoleServiceModel previousRole = this.roleServices.getUserPreviousRole(currentRole);
+
+        user.getAuthorities().removeIf(x -> x.getAuthority().toUpperCase().equals(currentRole.getAuthority().toUpperCase()));
+
+        return this.save(user, UserServiceModel.class);
+    }
 }
