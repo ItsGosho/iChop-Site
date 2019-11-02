@@ -1,4 +1,4 @@
 package org.ichop.commons.domain;
 
-public class EmptyReplyModel {
+public class EmptyReplyModel extends BaseReplyModel {
 }
