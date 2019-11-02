@@ -2,7 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1984862c-2f8c-4410-af36-a1dcaaa3ddaf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/common/aop/AbstractJmsProceeder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/common/aop/JmsAfterReturn.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/common/aop/JmsAfterReturnProceeder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/common/aop/JmsValidate.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/common/aop/JmsValidateProceeder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/common/configurations/ArtemisConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/common/configurations/ExecutorsConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/common/configurations/ValidatorConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/common/constants/ColorCodesConstants.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/common/constants/JmsFactories.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/common/constants/JmsLoggingConstants.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/common/domain/BaseEntity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/common/domain/BaseReplyModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/common/domain/BaseRequestModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/common/domain/BaseServiceModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/common/domain/EmptyReplyModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/common/domain/ErrorReplyModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/common/helpers/BaseListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/common/helpers/JmsHelper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/common/helpers/JmsHelperImp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/common/service/AbstractBaseService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/common/service/BaseService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/common/validation/ValidationHelper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/common/validation/ValidationHelperImp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/common/validators/SpELValidation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/common/validators/SpELValidationValidator.java" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -390,7 +416,7 @@
       <workItem from="1572635307026" duration="6814000" />
       <workItem from="1572691807521" duration="3550000" />
       <workItem from="1572696753986" duration="5755000" />
-      <workItem from="1572716044892" duration="3366000" />
+      <workItem from="1572716044892" duration="3387000" />
     </task>
     <servers />
   </component>

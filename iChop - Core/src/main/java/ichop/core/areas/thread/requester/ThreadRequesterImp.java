@@ -1,12 +1,8 @@
 package ichop.core.areas.thread.requester;
 
-import ichop.core.areas.thread.models.jms.create.ThreadCreateReply;
 import ichop.core.areas.thread.models.jms.create.ThreadCreateRequest;
-import ichop.core.areas.thread.models.jms.delete.ThreadDeleteByIdReply;
 import ichop.core.areas.thread.models.jms.delete.ThreadDeleteByIdRequest;
-import ichop.core.areas.thread.models.jms.increase.ThreadIncreaseViewsReply;
 import ichop.core.areas.thread.models.jms.increase.ThreadIncreaseViewsRequest;
-import ichop.core.areas.thread.models.jms.retrieve.ThreadFindByIdReply;
 import ichop.core.areas.thread.models.jms.retrieve.ThreadFindByIdRequest;
 import ichop.core.common.helpers.JmsHelper;
 import org.springframework.beans.factory.annotation.Value;

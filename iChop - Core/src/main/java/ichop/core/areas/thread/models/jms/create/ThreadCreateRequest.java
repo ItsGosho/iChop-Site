@@ -1,8 +1,8 @@
 package ichop.core.areas.thread.models.jms.create;
 
-import ichop.core.common.domain.BaseRequestModel;
 import lombok.Getter;
 import lombok.Setter;
+import org.ichop.commons.domain.BaseRequestModel;
 
 @Getter
 @Setter
