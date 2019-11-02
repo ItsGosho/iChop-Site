@@ -1,5 +1,13 @@
 package ichop.core.areas.thread.requester;
 
+import ichop.core.areas.thread.models.jms.create.ThreadCreateReply;
+import ichop.core.areas.thread.models.jms.create.ThreadCreateRequest;
+import ichop.core.areas.thread.models.jms.delete.ThreadDeleteByIdReply;
+import ichop.core.areas.thread.models.jms.delete.ThreadDeleteByIdRequest;
+import ichop.core.areas.thread.models.jms.increase.ThreadIncreaseViewsReply;
+import ichop.core.areas.thread.models.jms.increase.ThreadIncreaseViewsRequest;
+import ichop.core.areas.thread.models.jms.retrieve.ThreadFindByIdReply;
+import ichop.core.areas.thread.models.jms.retrieve.ThreadFindByIdRequest;
 import ichop.core.common.helpers.JmsHelper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -27,5 +35,29 @@ public class ThreadRequesterImp implements ThreadRequester {
     }
 
 
+    @Override
+    public ThreadCreateReply create(ThreadCreateRequest request) {
+        return this.jmsHelper.sendAndReceive(this.createDestination, request, ThreadCreateReply.class);
+    }
 
+    @Override
+    public ThreadIncreaseViewsReply increaseViews(String id) {
+        ThreadIncreaseViewsRequest request = new ThreadIncreaseViewsRequest(id);
+
+        return this.jmsHelper.sendAndReceive(this.increaseViewsDestination, request, ThreadIncreaseViewsReply.class);
+    }
+
+    @Override
+    public ThreadFindByIdReply findById(String id) {
+        ThreadFindByIdRequest request = new ThreadFindByIdRequest(id);
+
+        return this.jmsHelper.sendAndReceive(this.findByIdDestination, request, ThreadFindByIdReply.class);
+    }
+
+    @Override
+    public ThreadDeleteByIdReply deleteById(String id) {
+        ThreadDeleteByIdRequest request = new ThreadDeleteByIdRequest(id);
+
+        return this.jmsHelper.sendAndReceive(this.deleteByIdDestination, request, ThreadDeleteByIdReply.class);
+    }
 }
