@@ -7,7 +7,6 @@ import ichop.comments.common.domain.EmptyReplyModel;
 import ichop.comments.common.helpers.BaseListener;
 import ichop.comments.common.helpers.JmsHelper;
 import ichop.comments.domain.models.jms.all.UserProfileCommentsByUserProfileUsernameRequest;
-import ichop.comments.domain.models.jms.create.UserProfileCommentCreateReply;
 import ichop.comments.domain.models.jms.create.UserProfileCommentCreateRequest;
 import ichop.comments.domain.models.jms.delete.UserProfileCommentDeleteByIdRequest;
 import ichop.comments.domain.models.service.UserProfileCommentServiceModel;
