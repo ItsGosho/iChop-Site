@@ -11,10 +11,10 @@ import java.time.LocalDateTime;
 public class ThreadCreateReply extends BaseReplyModel {
 
     private String id;
-    private String userId;
     private String title;
     private String content;
     private LocalDateTime createdOn = LocalDateTime.now();
     private Integer views = 0;
 
+    private String creatorUsername;
 }

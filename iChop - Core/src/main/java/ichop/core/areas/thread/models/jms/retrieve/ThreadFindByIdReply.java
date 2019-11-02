@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 public class ThreadFindByIdReply extends BaseReplyModel {
 
     private String id;
-    private String userId;
+    private String creatorUsername;
     private String title;
     private String content;
     private LocalDateTime createdOn;

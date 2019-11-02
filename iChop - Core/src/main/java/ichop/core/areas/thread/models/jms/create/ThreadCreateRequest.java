@@ -11,6 +11,6 @@ public class ThreadCreateRequest extends BaseRequestModel {
 
     private String title;
     private String content;
-    private String userId;
+    private String creatorUsername;
 
 }
