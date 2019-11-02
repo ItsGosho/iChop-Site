@@ -6,6 +6,7 @@ import ichop.comments.common.aop.JmsValidate;
 import ichop.comments.common.domain.EmptyReplyModel;
 import ichop.comments.common.helpers.BaseListener;
 import ichop.comments.common.helpers.JmsHelper;
+import ichop.comments.domain.models.jms.UserProfileCommentReplyModel;
 import ichop.comments.domain.models.jms.all.UserProfileCommentsByUserProfileUsernameRequest;
 import ichop.comments.domain.models.jms.create.UserProfileCommentCreateRequest;
 import ichop.comments.domain.models.jms.delete.UserProfileCommentDeleteByIdRequest;
@@ -38,12 +39,12 @@ public class UserProfileListeners extends BaseListener {
     @JmsValidate(model = UserProfileCommentCreateRequest.class)
     @JmsAfterReturn(message = COMMENT_CREATED_SUCCESSFUL)
     @JmsListener(destination = "${artemis.queue.comments.user.profile.create}", containerFactory = QUEUE)
-    public UserProfileCommentCreateReply create(Message message) {
+    public UserProfileCommentReplyModel create(Message message) {
         UserProfileCommentCreateRequest requestModel = this.jmsHelper.getResultModel(message, UserProfileCommentCreateRequest.class);
 
         UserProfileCommentServiceModel userProfileComment = this.objectMapper.convertValue(requestModel, UserProfileCommentServiceModel.class);
 
-        return this.userProfileCommentServices.save(userProfileComment, UserProfileCommentCreateReply.class);
+        return this.userProfileCommentServices.save(userProfileComment, UserProfileCommentReplyModel.class);
     }
 
     @JmsValidate(model = UserProfileCommentDeleteByIdRequest.class)
@@ -60,10 +61,10 @@ public class UserProfileListeners extends BaseListener {
     @JmsValidate(model = UserProfileCommentsByUserProfileUsernameRequest.class)
     @JmsAfterReturn(message = COMMENT_DELETE_SUCCESSFUL)
     @JmsListener(destination = "${artemis.queue.comments.user.profile.find.by.userProfileUsername}", containerFactory = QUEUE)
-    public List<UserProfileCommentsByUserProfileUsernameRequest> allByUserProfileUsername(Message message) {
+    public List<UserProfileCommentReplyModel> allByUserProfileUsername(Message message) {
         UserProfileCommentsByUserProfileUsernameRequest requestModel = this.jmsHelper.getResultModel(message, UserProfileCommentsByUserProfileUsernameRequest.class);
 
-        return this.userProfileCommentServices.findAllByUserProfileUsername(requestModel.getUserProfileUsername(), UserProfileCommentsByUserProfileUsernameRequest.class);
+        return this.userProfileCommentServices.findAllByUserProfileUsername(requestModel.getUserProfileUsername(), UserProfileCommentReplyModel.class);
     }
 
 }
