@@ -1,8 +1,8 @@
 package ichop.threads.domain.models.jms.create;
 
-import ichop.threads.common.domain.BaseReplyModel;
 import lombok.Getter;
 import lombok.Setter;
+import org.ichop.commons.domain.BaseReplyModel;
 
 import java.time.LocalDateTime;
 

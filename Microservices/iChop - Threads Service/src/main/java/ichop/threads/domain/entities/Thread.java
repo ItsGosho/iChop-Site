@@ -1,8 +1,8 @@
 package ichop.threads.domain.entities;
 
-import ichop.threads.common.domain.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
+import org.ichop.commons.domain.BaseEntity;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotNull;

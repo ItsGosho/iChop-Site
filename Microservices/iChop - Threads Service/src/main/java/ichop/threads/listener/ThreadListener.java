@@ -1,9 +1,6 @@
 package ichop.threads.listener;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ichop.threads.common.aop.JmsAfterReturn;
-import ichop.threads.common.aop.JmsValidate;
-import ichop.threads.common.helpers.BaseListener;
 import ichop.threads.domain.models.jms.create.ThreadCreateRequest;
 import ichop.threads.domain.models.jms.create.ThreadCreateReply;
 import ichop.threads.domain.models.jms.delete.ThreadDeleteByIdReply;
@@ -13,16 +10,19 @@ import ichop.threads.domain.models.jms.increase.ThreadIncreaseViewsRequest;
 import ichop.threads.domain.models.jms.retrieve.ThreadFindByIdReply;
 import ichop.threads.domain.models.jms.retrieve.ThreadFindByIdRequest;
 import ichop.threads.domain.models.service.ThreadServiceModel;
-import ichop.threads.common.helpers.JmsHelper;
 import ichop.threads.services.ThreadServices;
+import org.ichop.commons.aop.JmsAfterReturn;
+import org.ichop.commons.aop.JmsValidate;
+import org.ichop.commons.helpers.BaseListener;
+import org.ichop.commons.helpers.JmsHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 
 import javax.jms.Message;
 
-import static ichop.threads.common.constants.JmsFactories.QUEUE;
 import static ichop.threads.constants.ThreadReplyConstants.*;
+import static org.ichop.commons.constants.JmsFactories.QUEUE;
 
 @Component
 public class ThreadListener extends BaseListener {

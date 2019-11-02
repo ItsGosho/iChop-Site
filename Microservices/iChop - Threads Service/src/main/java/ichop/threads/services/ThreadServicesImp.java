@@ -1,10 +1,10 @@
 package ichop.threads.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ichop.threads.common.service.AbstractBaseService;
 import ichop.threads.domain.entities.Thread;
 import ichop.threads.domain.models.service.ThreadServiceModel;
 import ichop.threads.repositories.ThreadRepository;
+import org.ichop.commons.service.AbstractBaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

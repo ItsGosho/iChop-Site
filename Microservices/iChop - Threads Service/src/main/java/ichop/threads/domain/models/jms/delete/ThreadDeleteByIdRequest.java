@@ -1,9 +1,9 @@
 package ichop.threads.domain.models.jms.delete;
 
-import ichop.threads.common.domain.BaseRequestModel;
-import ichop.threads.common.validators.SpELValidation;
 import lombok.Getter;
 import lombok.Setter;
+import org.ichop.commons.domain.BaseRequestModel;
+import org.ichop.commons.validators.SpELValidation;
 
 import javax.validation.constraints.NotNull;
 
