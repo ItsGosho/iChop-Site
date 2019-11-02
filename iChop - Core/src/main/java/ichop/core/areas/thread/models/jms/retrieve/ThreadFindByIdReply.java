@@ -1,7 +1,7 @@
-package ichop.threads.domain.models.jms.retrieve;
+package ichop.core.areas.thread.models.jms.retrieve;
 
 
-import ichop.threads.common.domain.BaseReplyModel;
+import ichop.core.common.domain.BaseReplyModel;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-public class ThreadGetByIdReply extends BaseReplyModel {
+public class ThreadFindByIdReply extends BaseReplyModel {
 
     private String id;
     private String userId;

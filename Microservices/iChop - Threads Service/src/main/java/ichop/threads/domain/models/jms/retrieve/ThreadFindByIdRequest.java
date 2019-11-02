@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-public class ThreadGetByIdRequest extends BaseRequestModel {
+public class ThreadFindByIdRequest extends BaseRequestModel {
 
     @NotNull
     @ExistsBy(field = "_id",message = "Thread doesn't exists with that id!")

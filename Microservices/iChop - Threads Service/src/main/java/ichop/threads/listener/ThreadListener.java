@@ -10,8 +10,8 @@ import ichop.threads.domain.models.jms.delete.ThreadDeleteByIdReply;
 import ichop.threads.domain.models.jms.delete.ThreadDeleteByIdRequest;
 import ichop.threads.domain.models.jms.increase.ThreadIncreaseViewsReply;
 import ichop.threads.domain.models.jms.increase.ThreadIncreaseViewsRequest;
-import ichop.threads.domain.models.jms.retrieve.ThreadGetByIdReply;
-import ichop.threads.domain.models.jms.retrieve.ThreadGetByIdRequest;
+import ichop.threads.domain.models.jms.retrieve.ThreadFindByIdReply;
+import ichop.threads.domain.models.jms.retrieve.ThreadFindByIdRequest;
 import ichop.threads.domain.models.service.ThreadServiceModel;
 import ichop.threads.common.helpers.JmsHelper;
 import ichop.threads.services.ThreadServices;
@@ -47,13 +47,13 @@ public class ThreadListener extends BaseListener {
         return this.threadServices.save(thread, ThreadCreateReply.class);
     }
 
-    @JmsValidate(model = ThreadGetByIdRequest.class)
+    @JmsValidate(model = ThreadFindByIdRequest.class)
     @JmsAfterReturn(message = THREAD_RETRIEVED_SUCCESSFUL)
     @JmsListener(destination = "${artemis.queue.threads.find.by.id}", containerFactory = QUEUE)
-    public ThreadGetByIdReply getById(Message message) {
-        ThreadGetByIdRequest requestModel = this.jmsHelper.getResultModel(message, ThreadGetByIdRequest.class);
+    public ThreadFindByIdReply getById(Message message) {
+        ThreadFindByIdRequest requestModel = this.jmsHelper.getResultModel(message, ThreadFindByIdRequest.class);
 
-        return this.threadServices.findById(requestModel.getId(), ThreadGetByIdReply.class);
+        return this.threadServices.findById(requestModel.getId(), ThreadFindByIdReply.class);
     }
 
     @JmsValidate(model = ThreadIncreaseViewsRequest.class)
