@@ -7,7 +7,7 @@ import org.springframework.jms.annotation.EnableJms;
 
 @EnableJms
 @SpringBootApplication
-@ComponentScan({"org.ichop.commons"})
+@ComponentScan({"ichop.threads","org.ichop.commons"})
 public class Threads {
     public static void main(String[] args) {
         SpringApplication.run(Threads.class, args);
