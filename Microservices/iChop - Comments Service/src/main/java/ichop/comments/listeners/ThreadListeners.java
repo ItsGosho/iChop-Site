@@ -3,13 +3,13 @@ package ichop.comments.listeners;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.comments.common.aop.JmsAfterReturn;
 import ichop.comments.common.aop.JmsValidate;
+import ichop.comments.common.domain.EmptyReplyModel;
 import ichop.comments.common.helpers.BaseListener;
 import ichop.comments.common.helpers.JmsHelper;
 import ichop.comments.domain.models.jms.all.ThreadCommentsFindByThreadIdReply;
 import ichop.comments.domain.models.jms.all.ThreadCommentsFindByThreadIdRequest;
 import ichop.comments.domain.models.jms.create.ThreadCommentCreateReply;
 import ichop.comments.domain.models.jms.create.ThreadCommentCreateRequest;
-import ichop.comments.domain.models.jms.delete.CommentDeleteByIdReply;
 import ichop.comments.domain.models.jms.delete.ThreadCommentDeleteByIdRequest;
 import ichop.comments.domain.models.service.ThreadCommentServiceModel;
 import ichop.comments.services.ThreadCommentServices;
@@ -51,12 +51,12 @@ public class ThreadListeners extends BaseListener {
     @JmsValidate(model = ThreadCommentDeleteByIdRequest.class)
     @JmsAfterReturn(message = COMMENT_DELETE_SUCCESSFUL)
     @JmsListener(destination = "${artemis.queue.comments.thread.delete.by.id}", containerFactory = QUEUE)
-    public CommentDeleteByIdReply deleteById(Message message) {
+    public EmptyReplyModel deleteById(Message message) {
         ThreadCommentDeleteByIdRequest requestModel = this.jmsHelper.getResultModel(message, ThreadCommentDeleteByIdRequest.class);
 
         this.threadCommentServices.deleteById(requestModel.getId());
 
-        return new CommentDeleteByIdReply();
+        return new EmptyReplyModel();
     }
 
     @JmsValidate(model = ThreadCommentsFindByThreadIdRequest.class)
