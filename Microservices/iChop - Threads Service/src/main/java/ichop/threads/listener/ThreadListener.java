@@ -25,12 +25,12 @@ import static ichop.threads.common.constants.JmsFactories.QUEUE;
 import static ichop.threads.constants.ThreadReplyConstants.*;
 
 @Component
-public class ThreadJmsListener extends BaseListener {
+public class ThreadListener extends BaseListener {
 
     private final ThreadServices threadServices;
 
     @Autowired
-    protected ThreadJmsListener(JmsHelper jmsHelper, ObjectMapper objectMapper, ThreadServices threadServices) {
+    protected ThreadListener(JmsHelper jmsHelper, ObjectMapper objectMapper, ThreadServices threadServices) {
         super(jmsHelper, objectMapper);
         this.threadServices = threadServices;
     }
@@ -49,7 +49,7 @@ public class ThreadJmsListener extends BaseListener {
 
     @JmsValidate(model = ThreadGetByIdRequest.class)
     @JmsAfterReturn(message = THREAD_RETRIEVED_SUCCESSFUL)
-    @JmsListener(destination = "${artemis.queue.threads.get_by_id}", containerFactory = QUEUE)
+    @JmsListener(destination = "${artemis.queue.threads.find.by.id}", containerFactory = QUEUE)
     public ThreadGetByIdReply getById(Message message) {
         ThreadGetByIdRequest requestModel = this.jmsHelper.getResultModel(message, ThreadGetByIdRequest.class);
 
@@ -69,7 +69,7 @@ public class ThreadJmsListener extends BaseListener {
 
     @JmsValidate(model = ThreadDeleteByIdRequest.class)
     @JmsAfterReturn(message = THREAD_DELETED_SUCCESSFUL)
-    @JmsListener(destination = "${artemis.queue.threads.delete_by_id}", containerFactory = QUEUE)
+    @JmsListener(destination = "${artemis.queue.threads.delete.by.id}", containerFactory = QUEUE)
     public ThreadDeleteByIdReply deleteById(Message message) {
         ThreadDeleteByIdRequest requestModel = this.jmsHelper.getResultModel(message, ThreadDeleteByIdRequest.class);
 
