@@ -2,7 +2,7 @@ package ichop.threads.domain.models.jms.retrieve;
 
 
 import ichop.threads.common.domain.BaseRequestModel;
-import ichop.threads.validators.ExistsBy;
+import ichop.threads.common.validators.SpELValidation;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,10 +10,10 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
+@SpELValidation(value = "@threadServicesImp.existsById(#this.id) == true",message = "Thread not found!")
 public class ThreadFindByIdRequest extends BaseRequestModel {
 
     @NotNull
-    @ExistsBy(field = "_id",message = "Thread doesn't exists with that id!")
     private String id;
 
 }
