@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 public abstract class Comment extends BaseEntity {
 
     @NotNull
-    private String creatorId;
+    private String creatorUsername;
 
     @NotNull
     private String content;

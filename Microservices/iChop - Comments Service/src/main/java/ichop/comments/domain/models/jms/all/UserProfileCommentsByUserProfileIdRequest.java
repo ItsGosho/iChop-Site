@@ -1,8 +1,6 @@
 package ichop.comments.domain.models.jms.all;
 
 import ichop.comments.common.domain.BaseRequestModel;
-import ichop.comments.domain.enums.Type;
-import ichop.comments.validators.ExistsBy;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,6 +11,6 @@ import javax.validation.constraints.NotNull;
 public class UserProfileCommentsByUserProfileIdRequest extends BaseRequestModel {
 
     @NotNull
-    private String userProfileId;
+    private String userProfileUsername;
 
 }

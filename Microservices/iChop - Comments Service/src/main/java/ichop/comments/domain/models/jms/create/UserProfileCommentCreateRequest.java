@@ -17,8 +17,8 @@ public class UserProfileCommentCreateRequest extends BaseRequestModel {
     private String content;
 
     @NotNull
-    private String creatorId;
+    private String creatorUsername;
 
     @NotNull
-    private String userProfileId;
+    private String userProfileUsername;
 }

@@ -12,7 +12,7 @@ public abstract class CommentCreateReply extends BaseReplyModel {
 
     private String id;
     private String content;
-    private String creatorId;
+    private String creatorUsername;
     private LocalDateTime createdOn;
 
 }

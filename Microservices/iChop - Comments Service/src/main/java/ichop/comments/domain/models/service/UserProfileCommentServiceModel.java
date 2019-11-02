@@ -9,6 +9,6 @@ import javax.validation.constraints.NotNull;
 @Setter
 public class UserProfileCommentServiceModel extends CommentServiceModel {
 
-    private String userProfileId;
+    private String userProfileUsername;
 
 }

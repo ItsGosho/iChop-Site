@@ -17,7 +17,7 @@ public abstract class AbstractCommentServices
 
 
     @Override
-    public Long getTotalCreatorComments(String creatorId) {
-        return super.repository.getTotalCreatorComments(creatorId);
+    public Long getTotalCreatorComments(String creatorUsername) {
+        return super.repository.getTotalCreatorComments(creatorUsername);
     }
 }

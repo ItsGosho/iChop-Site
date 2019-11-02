@@ -21,8 +21,8 @@ public class UserProfileCommentServicesImp extends AbstractCommentServices<UserP
     }
 
     @Override
-    public List<UserProfileCommentServiceModel> findAllByUserProfileId(String userProfileId) {
-        List<UserProfileComment> comments = super.repository.findByUserProfileId(userProfileId);
+    public List<UserProfileCommentServiceModel> findAllByUserProfileUsername(String userProfileId) {
+        List<UserProfileComment> comments = super.repository.findByUserProfileUsername(userProfileId);
 
         return super.mapToList(comments,UserProfileCommentServiceModel.class);
     }

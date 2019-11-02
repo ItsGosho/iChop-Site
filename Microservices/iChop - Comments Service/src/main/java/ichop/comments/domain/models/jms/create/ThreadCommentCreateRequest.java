@@ -17,7 +17,7 @@ public class ThreadCommentCreateRequest extends BaseRequestModel {
     private String content;
 
     @NotNull
-    private String creatorId;
+    private String creatorUsername;
 
     @NotNull
     private String threadId;

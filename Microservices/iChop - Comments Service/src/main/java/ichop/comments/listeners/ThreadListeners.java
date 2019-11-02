@@ -6,7 +6,7 @@ import ichop.comments.common.aop.JmsValidate;
 import ichop.comments.common.helpers.BaseListener;
 import ichop.comments.common.helpers.JmsHelper;
 import ichop.comments.domain.models.jms.all.CommentsAllReply;
-import ichop.comments.domain.models.jms.all.ThreadCommentsByThreadIdRequest;
+import ichop.comments.domain.models.jms.all.ThreadCommentsFindByThreadIdRequest;
 import ichop.comments.domain.models.jms.create.ThreadCommentCreateReply;
 import ichop.comments.domain.models.jms.create.ThreadCommentCreateRequest;
 import ichop.comments.domain.models.jms.delete.CommentDeleteByIdReply;
@@ -50,7 +50,7 @@ public class ThreadListeners extends BaseListener {
 
     @JmsValidate(model = ThreadCommentDeleteByIdRequest.class)
     @JmsAfterReturn(message = COMMENT_DELETE_SUCCESSFUL)
-    @JmsListener(destination = "${artemis.queue.comments.thread.delete_by_id}", containerFactory = QUEUE)
+    @JmsListener(destination = "${artemis.queue.comments.thread.delete.by.id}", containerFactory = QUEUE)
     public CommentDeleteByIdReply deleteById(Message message) {
         ThreadCommentDeleteByIdRequest requestModel = this.jmsHelper.getResultModel(message, ThreadCommentDeleteByIdRequest.class);
 
@@ -59,9 +59,9 @@ public class ThreadListeners extends BaseListener {
         return new CommentDeleteByIdReply();
     }
 
-    @JmsValidate(model = ThreadCommentsByThreadIdRequest.class)
+    @JmsValidate(model = ThreadCommentsFindByThreadIdRequest.class)
     @JmsAfterReturn(message = COMMENTS_FETCHED_SUCCESSFUL)
-    @JmsListener(destination = "${artemis.queue.comments.thread.all_by_threadId}", containerFactory = QUEUE)
+    @JmsListener(destination = "${artemis.queue.comments.thread.find.by.threadId}", containerFactory = QUEUE)
     public CommentsAllReply<ThreadCommentServiceModel> allByThreadId(Message message) {
         ThreadCommentDeleteByIdRequest requestModel = this.jmsHelper.getResultModel(message, ThreadCommentDeleteByIdRequest.class);
 

@@ -8,7 +8,7 @@ import org.springframework.data.repository.NoRepositoryBean;
 @NoRepositoryBean
 public interface CommentRepository<E extends Comment> extends MongoRepository<E,String> {
 
-    @Query(value = "{'creatorId': ?0}", count = true)
-    Long getTotalCreatorComments(String creatorId);
+    @Query(value = "{'creatorUsername': ?0}", count = true)
+    Long getTotalCreatorComments(String creatorUsername);
 
 }

@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Setter
 public abstract class CommentServiceModel extends BaseServiceModel {
 
-    private String creatorId;
+    private String creatorUsername;
     private String content;
     private LocalDateTime createdOn = LocalDateTime.now();
 }

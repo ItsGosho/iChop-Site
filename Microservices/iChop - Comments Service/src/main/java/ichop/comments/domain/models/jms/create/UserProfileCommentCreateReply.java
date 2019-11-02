@@ -13,6 +13,6 @@ import java.time.LocalDateTime;
 @Setter
 public class UserProfileCommentCreateReply extends CommentCreateReply {
 
-    private String userProfileId;
+    private String userProfileUsername;
 
 }

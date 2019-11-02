@@ -39,7 +39,7 @@ public class UserProfileListeners extends BaseListener {
 
     @JmsValidate(model = UserProfileCommentCreateRequest.class)
     @JmsAfterReturn(message = COMMENT_CREATED_SUCCESSFUL)
-    @JmsListener(destination = "${artemis.queue.comments.user_profile.create}", containerFactory = QUEUE)
+    @JmsListener(destination = "${artemis.queue.comments.user.profile.create}", containerFactory = QUEUE)
     public UserProfileCommentCreateReply create(Message message) {
         UserProfileCommentCreateRequest requestModel = this.jmsHelper.getResultModel(message, UserProfileCommentCreateRequest.class);
 
@@ -50,7 +50,7 @@ public class UserProfileListeners extends BaseListener {
 
     @JmsValidate(model = UserProfileCommentDeleteByIdRequest.class)
     @JmsAfterReturn(message = COMMENT_DELETE_SUCCESSFUL)
-    @JmsListener(destination = "${artemis.queue.comments.user_profile.delete_by_id}", containerFactory = QUEUE)
+    @JmsListener(destination = "${artemis.queue.comments.user.profile.delete.by.id}", containerFactory = QUEUE)
     public CommentDeleteByIdReply deleteById(Message message) {
         UserProfileCommentDeleteByIdRequest requestModel = this.jmsHelper.getResultModel(message, UserProfileCommentDeleteByIdRequest.class);
 
@@ -61,11 +61,11 @@ public class UserProfileListeners extends BaseListener {
 
     @JmsValidate(model = UserProfileCommentsByUserProfileIdRequest.class)
     @JmsAfterReturn(message = COMMENT_DELETE_SUCCESSFUL)
-    @JmsListener(destination = "${artemis.queue.comments.user_profile.all_by_userProfileId}", containerFactory = QUEUE)
-    public CommentsAllReply<UserProfileCommentServiceModel> allByUserProfileId(Message message) {
+    @JmsListener(destination = "${artemis.queue.comments.user.profile.find.by.username}", containerFactory = QUEUE)
+    public CommentsAllReply<UserProfileCommentServiceModel> allByUserProfileUsername(Message message) {
         UserProfileCommentsByUserProfileIdRequest requestModel = this.jmsHelper.getResultModel(message, UserProfileCommentsByUserProfileIdRequest.class);
 
-        List<UserProfileCommentServiceModel> comments = this.userProfileCommentServices.findAllByUserProfileId(requestModel.getUserProfileId());
+        List<UserProfileCommentServiceModel> comments = this.userProfileCommentServices.findAllByUserProfileUsername(requestModel.getUserProfileUsername());
 
         return new CommentsAllReply<>(comments);
     }

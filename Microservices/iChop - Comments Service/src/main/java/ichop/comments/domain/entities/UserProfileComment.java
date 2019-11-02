@@ -10,6 +10,6 @@ import javax.validation.constraints.NotNull;
 public class UserProfileComment extends Comment {
 
     @NotNull
-    private String userProfileId;
+    private String userProfileUsername;
 
 }

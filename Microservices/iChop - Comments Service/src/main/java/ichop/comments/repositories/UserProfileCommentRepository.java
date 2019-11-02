@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface UserProfileCommentRepository extends CommentRepository<UserProfileComment> {
 
-    List<UserProfileComment> findByUserProfileId(String userProfileId);
+    List<UserProfileComment> findByUserProfileUsername(String username);
 
 }

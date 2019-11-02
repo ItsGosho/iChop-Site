@@ -8,5 +8,5 @@ import java.util.List;
 public interface UserProfileCommentServices extends CommentServices<UserProfileCommentServiceModel> {
 
 
-    List<UserProfileCommentServiceModel> findAllByUserProfileId(String userProfileId);
+    List<UserProfileCommentServiceModel> findAllByUserProfileUsername(String userProfileUsername);
 }

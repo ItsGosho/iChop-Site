@@ -5,6 +5,6 @@ import ichop.comments.domain.models.service.CommentServiceModel;
 
 public interface CommentServices<S extends CommentServiceModel> extends BaseService<S> {
 
-    Long getTotalCreatorComments(String creatorId);
+    Long getTotalCreatorComments(String creatorUsername);
 
 }
