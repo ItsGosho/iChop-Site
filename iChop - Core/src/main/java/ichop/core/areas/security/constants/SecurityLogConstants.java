@@ -1,6 +1,6 @@
 package ichop.core.areas.security.constants;
 
-import static ichop.core.common.constants.ColorCodesConstants.*;
+import static org.ichop.commons.constants.ColorCodesConstants.*;
 
 public final class SecurityLogConstants {
 

@@ -1,9 +1,9 @@
 package ichop.core.areas.user.models.jms.register;
 
 import ichop.core.areas.security.config.UserRoleSecurity;
-import ichop.core.common.domain.BaseReplyModel;
 import lombok.Getter;
 import lombok.Setter;
+import org.ichop.commons.domain.BaseReplyModel;
 
 import java.time.LocalDateTime;
 import java.util.Set;

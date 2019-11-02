@@ -7,7 +7,6 @@ import ichop.core.areas.other.utils.DateUtils;
 import ichop.core.areas.rest.helpers.ResponseHelpers;
 import ichop.core.areas.user.constants.UserRoutingConstants;
 import ichop.core.areas.user.models.jms.retrieve.UserFindByEmailReply;
-import ichop.core.areas.user.requester.UserRequester;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -32,16 +31,13 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     private final AuthenticationManager authenticationManager;
     private final ResponseHelpers responseHelpers;
     private final ObjectMapper objectMapper;
-    private final UserRequester userRequester;
 
     public JwtAuthenticationFilter(AuthenticationManager authenticationManager,
                                    ResponseHelpers responseHelpers,
-                                   ObjectMapper objectMapper,
-                                   UserRequester userRequester) {
+                                   ObjectMapper objectMapper) {
         this.authenticationManager = authenticationManager;
         this.responseHelpers = responseHelpers;
         this.objectMapper = objectMapper;
-        this.userRequester = userRequester;
 
         super.setFilterProcessesUrl(UserRoutingConstants.LOGIN);
     }

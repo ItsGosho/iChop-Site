@@ -1,12 +1,14 @@
 package ichop.core.areas.thread.requester;
 
+import ichop.core.areas.thread.models.jms.ThreadReply;
 import ichop.core.areas.thread.models.jms.create.ThreadCreateRequest;
+import org.ichop.commons.domain.EmptyReplyModel;
 
 public interface ThreadRequester {
 
-    ThreadCreateReply create(ThreadCreateRequest request);
-    ThreadIncreaseViewsReply increaseViews(String id);
-    ThreadFindByIdReply findById(String id);
-    ThreadDeleteByIdReply deleteById(String id);
+    ThreadReply create(ThreadCreateRequest request);
+    ThreadReply increaseViews(String id);
+    ThreadReply findById(String id);
+    EmptyReplyModel deleteById(String id);
 
 }

@@ -6,9 +6,7 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import com.auth0.jwt.interfaces.JWTVerifier;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ichop.core.areas.rest.helpers.ResponseHelpers;
 import ichop.core.areas.security.config.UserRoleSecurity;
-import ichop.core.areas.user.requester.UserRequester;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -27,18 +25,10 @@ import static ichop.core.areas.security.constants.SecurityConstants.*;
 public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 
     private final ObjectMapper objectMapper;
-    private final ResponseHelpers responseHelpers;
-    private final UserRequester userRequester;
 
-    public JwtAuthorizationFilter(AuthenticationManager authenticationManager,
-                                  ObjectMapper objectMapper,
-                                  ResponseHelpers responseHelpers,
-                                  UserRequester userRequester) {
-
+    public JwtAuthorizationFilter(AuthenticationManager authenticationManager, ObjectMapper objectMapper) {
         super(authenticationManager);
         this.objectMapper = objectMapper;
-        this.responseHelpers = responseHelpers;
-        this.userRequester = userRequester;
     }
 
     @Override

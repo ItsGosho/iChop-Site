@@ -1,7 +1,7 @@
 package ichop.core.areas.rest.helpers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import ichop.core.common.domain.BaseReplyModel;
+import org.ichop.commons.domain.BaseReplyModel;
 import org.springframework.http.ResponseEntity;
 
 import javax.servlet.http.HttpServletResponse;

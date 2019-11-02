@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.core.areas.rest.helpers.ResponseHelpers;
 import ichop.core.areas.security.filters.JwtAuthenticationFilter;
 import ichop.core.areas.security.filters.JwtAuthorizationFilter;
-import ichop.core.areas.user.requester.UserRequester;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -29,7 +28,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private final ResponseHelpers responseHelpers;
     private final ObjectMapper objectMapper;
-    private final UserRequester userRequester;
     private final UserSecurityService userSecurityService;
 
     private JwtAuthenticationFilter jwtAuthenticationFilter;
@@ -38,18 +36,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     public SecurityConfiguration(ResponseHelpers responseHelpers,
                                  ObjectMapper objectMapper,
-                                 UserRequester userRequester,
                                  UserSecurityService userSecurityService) {
         this.responseHelpers = responseHelpers;
         this.objectMapper = objectMapper;
-        this.userRequester = userRequester;
         this.userSecurityService = userSecurityService;
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        this.jwtAuthenticationFilter = new JwtAuthenticationFilter(authenticationManager(), this.responseHelpers, this.objectMapper,this.userRequester);
-        this.jwtAuthorizationFilter = new JwtAuthorizationFilter(authenticationManager(), this.objectMapper, this.responseHelpers,this.userRequester);
+        this.jwtAuthenticationFilter = new JwtAuthenticationFilter(authenticationManager(), this.responseHelpers, this.objectMapper);
+        this.jwtAuthorizationFilter = new JwtAuthorizationFilter(authenticationManager(), this.objectMapper);
 
         http.cors().and()
                 .csrf().disable()
