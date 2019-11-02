@@ -21,19 +21,19 @@ public class UserRequesterImp implements UserRequester {
 
     private final JmsHelper jmsHelper;
 
-    private String findByEmailDestination;
-    private String findByUsernameDestination;
-    private String registerDestination;
+    private final String findByEmailDestination;
+    private final String findByUsernameDestination;
+    private final String registerDestination;
 
-    private String changePasswordDestination;
-    private String changePasswordByTokenDestination;
-    private String findAllPageableDestination;
-    private String forgottenPasswordDestination;
+    private final String changePasswordDestination;
+    private final String changePasswordByTokenDestination;
+    private final String findAllPageableDestination;
+    private final String forgottenPasswordDestination;
 
-    private String promoteDestination;
-    private String demoteDestination;
-    private String hasNextRoleDestination;
-    private String hasPreviousRoleDestination;
+    private final String promoteDestination;
+    private final String demoteDestination;
+    private final String hasNextRoleDestination;
+    private final String hasPreviousRoleDestination;
 
     @Autowired
     public UserRequesterImp(JmsHelper jmsHelper,

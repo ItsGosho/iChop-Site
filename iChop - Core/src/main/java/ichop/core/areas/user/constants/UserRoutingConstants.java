@@ -28,11 +28,11 @@ public final class UserRoutingConstants {
 
     //AdminController -----------------------------------------------------------------------------------
 
-    public static final String FIND_BY = "/admin/user/find/by";
+    public static final String FIND_BY = "/admin/user/find/by"; /*ADMIN++*/
 
-    public static final String ROLE_PROMOTE = "/admin/user/{username}/role/promote";
-    public static final String ROLE_DEMOTE = "/admin/user/{username}/role/demote";
-    public static final String ROLE_HAS_NEXT = "/admin/user/{username}/role/has/next";
-    public static final String ROLE_HAS_PREVIOUS = "/admin/user/{username}/role/has/previous";
+    public static final String ROLE_PROMOTE = "/admin/user/{username}/role/promote"; /*ADMIN++*/
+    public static final String ROLE_DEMOTE = "/admin/user/{username}/role/demote"; /*ADMIN++*/
+    public static final String ROLE_HAS_NEXT = "/admin/user/{username}/role/has/next"; /*ADMIN++*/
+    public static final String ROLE_HAS_PREVIOUS = "/admin/user/{username}/role/has/previous"; /*ADMIN++*/
 
 }

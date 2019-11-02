@@ -14,8 +14,8 @@ public class UserInformationRequesterImp implements UserInformationRequester {
 
     private final JmsHelper jmsHelper;
 
-    private String updateDestination;
-    private String retrieveDestination;
+    private final String updateDestination;
+    private final String retrieveDestination;
 
     @Autowired
     public UserInformationRequesterImp(JmsHelper jmsHelper,

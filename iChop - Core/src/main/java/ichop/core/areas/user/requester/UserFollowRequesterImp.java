@@ -11,11 +11,11 @@ public class UserFollowRequesterImp implements UserFollowRequester {
 
     private final JmsHelper jmsHelper;
 
-    private String isFollowingDestination;
-    private String followDestination;
-    private String unfollowDestination;
-    private String allFollowersDestination;
-    private String allFollowingsDestination;
+    private final String isFollowingDestination;
+    private final String followDestination;
+    private final String unfollowDestination;
+    private final String allFollowersDestination;
+    private final String allFollowingsDestination;
 
     @Autowired
     public UserFollowRequesterImp(JmsHelper jmsHelper,
