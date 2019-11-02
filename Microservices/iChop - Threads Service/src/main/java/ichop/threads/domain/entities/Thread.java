@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 public class Thread extends BaseEntity {
 
     @NotNull
-    private String userId;
+    private String creatorUsername;
 
     @NotNull
     private String title;

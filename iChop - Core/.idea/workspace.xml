@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1984862c-2f8c-4410-af36-a1dcaaa3ddaf" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Threads Service/src/main/java/ichop/threads/domain/entities/Thread.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Threads Service/src/main/java/ichop/threads/domain/entities/Thread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Threads Service/src/main/java/ichop/threads/domain/models/jms/create/ThreadCreateReply.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Threads Service/src/main/java/ichop/threads/domain/models/jms/create/ThreadCreateReply.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Threads Service/src/main/java/ichop/threads/domain/models/jms/create/ThreadCreateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Threads Service/src/main/java/ichop/threads/domain/models/jms/create/ThreadCreateRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Threads Service/src/main/java/ichop/threads/domain/models/jms/retrieve/ThreadFindByIdReply.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Threads Service/src/main/java/ichop/threads/domain/models/jms/retrieve/ThreadFindByIdReply.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Threads Service/src/main/java/ichop/threads/domain/models/service/ThreadServiceModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Threads Service/src/main/java/ichop/threads/domain/models/service/ThreadServiceModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/thread/constants/ThreadRoutingConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/thread/constants/ThreadRoutingConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/thread/models/jms/create/ThreadCreateReply.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/thread/models/jms/create/ThreadCreateReply.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/thread/models/jms/create/ThreadCreateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/thread/models/jms/create/ThreadCreateRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/thread/models/jms/retrieve/ThreadFindByIdReply.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/thread/models/jms/retrieve/ThreadFindByIdReply.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -392,7 +393,7 @@
       <workItem from="1572462932278" duration="2238000" />
       <workItem from="1572538999185" duration="3362000" />
       <workItem from="1572635307026" duration="6814000" />
-      <workItem from="1572691807521" duration="3201000" />
+      <workItem from="1572691807521" duration="3550000" />
     </task>
     <servers />
   </component>

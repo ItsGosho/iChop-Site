@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Setter
 public class ThreadServiceModel extends BaseServiceModel {
 
-    private String userId;
+    private String creatorUsername;
     private String title;
     private String content;
     private LocalDateTime createdOn = LocalDateTime.now();

@@ -22,6 +22,6 @@ public class ThreadCreateRequest extends BaseRequestModel {
     private String content;
 
     @NotNull
-    private String userId;
+    private String creatorUsername;
 
 }
