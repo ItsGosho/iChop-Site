@@ -2,15 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1984862c-2f8c-4410-af36-a1dcaaa3ddaf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Comments Service/src/main/java/ichop/comments/common/service/AbstractBaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Comments Service/src/main/java/ichop/comments/common/service/AbstractBaseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Comments Service/src/main/java/ichop/comments/domain/models/jms/all/CommentsAllReply.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Comments Service/src/main/java/ichop/comments/listeners/ThreadListeners.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Comments Service/src/main/java/ichop/comments/listeners/ThreadListeners.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Comments Service/src/main/java/ichop/comments/domain/models/jms/all/UserProfileCommentsByUserProfileIdReply.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Comments Service/src/main/java/ichop/comments/domain/models/jms/all/UserProfileCommentsByUserProfileUsernameReply.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Comments Service/src/main/java/ichop/comments/domain/models/jms/all/UserProfileCommentsByUserProfileIdRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Comments Service/src/main/java/ichop/comments/domain/models/jms/all/UserProfileCommentsByUserProfileUsernameRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Comments Service/src/main/java/ichop/comments/listeners/UserProfileListeners.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Comments Service/src/main/java/ichop/comments/listeners/UserProfileListeners.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Comments Service/src/main/java/ichop/comments/services/ThreadCommentServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Comments Service/src/main/java/ichop/comments/services/ThreadCommentServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Comments Service/src/main/java/ichop/comments/services/ThreadCommentServicesImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Comments Service/src/main/java/ichop/comments/services/ThreadCommentServicesImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Comments Service/src/main/java/ichop/comments/services/UserProfileCommentServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Comments Service/src/main/java/ichop/comments/services/UserProfileCommentServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Comments Service/src/main/java/ichop/comments/services/UserProfileCommentServicesImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Comments Service/src/main/java/ichop/comments/services/UserProfileCommentServicesImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Comments Service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Comments Service/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/models/jms/all/UserProfileCommentsByUserProfileIdReply.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/models/jms/all/UserProfileCommentsByUserProfileUsernameReply.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/models/jms/all/UserProfileCommentsByUserProfileIdRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/models/jms/all/UserProfileCommentsByUserProfileUsernameRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -181,11 +180,11 @@
       <recent name="com.ichop.core" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop\iChop - Core\src\main\java\ichop\core\areas\comment\models\jms\all" />
       <recent name="C:\Users\Gosho\Desktop\GitHub\iChop\iChop - Core\src\main\java\ichop\core\areas\comment\models\jms" />
       <recent name="C:\Users\Gosho\Desktop\GitHub\iChop\iChop - Core\src\main\java\ichop\core\areas\thread\models\jms" />
       <recent name="C:\Users\Gosho\Desktop\GitHub\iChop\iChop - Core\src\main\java\ichop\core\areas\user\models\jms\retrieve" />
       <recent name="C:\Users\Gosho\Desktop\GitHub\iChop\iChop - Core\src\main\java\ichop\core\areas\user\models\jms\role" />
-      <recent name="C:\Users\LocktripDev\Desktop\Chop\iChop - Core\src\main\java\ichop\core\areas\user\models\jms\retrieve" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="ichop.core.areas.user.requester" />
@@ -397,7 +396,7 @@
       <workItem from="1572538999185" duration="3362000" />
       <workItem from="1572635307026" duration="6814000" />
       <workItem from="1572691807521" duration="3550000" />
-      <workItem from="1572696753986" duration="2413000" />
+      <workItem from="1572696753986" duration="2863000" />
     </task>
     <servers />
   </component>

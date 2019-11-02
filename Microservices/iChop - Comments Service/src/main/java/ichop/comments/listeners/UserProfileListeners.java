@@ -5,7 +5,7 @@ import ichop.comments.common.aop.JmsAfterReturn;
 import ichop.comments.common.aop.JmsValidate;
 import ichop.comments.common.helpers.BaseListener;
 import ichop.comments.common.helpers.JmsHelper;
-import ichop.comments.domain.models.jms.all.UserProfileCommentsByUserProfileIdRequest;
+import ichop.comments.domain.models.jms.all.UserProfileCommentsByUserProfileUsernameRequest;
 import ichop.comments.domain.models.jms.create.UserProfileCommentCreateReply;
 import ichop.comments.domain.models.jms.create.UserProfileCommentCreateRequest;
 import ichop.comments.domain.models.jms.delete.CommentDeleteByIdReply;
@@ -58,13 +58,13 @@ public class UserProfileListeners extends BaseListener {
         return new CommentDeleteByIdReply();
     }
 
-    @JmsValidate(model = UserProfileCommentsByUserProfileIdRequest.class)
+    @JmsValidate(model = UserProfileCommentsByUserProfileUsernameRequest.class)
     @JmsAfterReturn(message = COMMENT_DELETE_SUCCESSFUL)
-    @JmsListener(destination = "${artemis.queue.comments.user.profile.find.by.username}", containerFactory = QUEUE)
-    public List<UserProfileCommentsByUserProfileIdRequest> allByUserProfileUsername(Message message) {
-        UserProfileCommentsByUserProfileIdRequest requestModel = this.jmsHelper.getResultModel(message, UserProfileCommentsByUserProfileIdRequest.class);
+    @JmsListener(destination = "${artemis.queue.comments.user.profile.find.by.userProfileUsername}", containerFactory = QUEUE)
+    public List<UserProfileCommentsByUserProfileUsernameRequest> allByUserProfileUsername(Message message) {
+        UserProfileCommentsByUserProfileUsernameRequest requestModel = this.jmsHelper.getResultModel(message, UserProfileCommentsByUserProfileUsernameRequest.class);
 
-        return this.userProfileCommentServices.findAllByUserProfileUsername(requestModel.getUserProfileUsername(),UserProfileCommentsByUserProfileIdRequest.class);
+        return this.userProfileCommentServices.findAllByUserProfileUsername(requestModel.getUserProfileUsername(), UserProfileCommentsByUserProfileUsernameRequest.class);
     }
 
 }

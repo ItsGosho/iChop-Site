@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class UserProfileCommentsByUserProfileIdRequest extends BaseRequestModel {
+public class UserProfileCommentsByUserProfileUsernameRequest extends BaseRequestModel {
 
     private String userProfileUsername;
 

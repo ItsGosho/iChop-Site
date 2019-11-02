@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-public class UserProfileCommentsByUserProfileIdReply extends BaseReplyModel {
+public class UserProfileCommentsByUserProfileUsernameReply extends BaseReplyModel {
 
     private String creatorUsername;
     private String content;
