@@ -27,4 +27,10 @@ public class UserProfileCommentServicesImp extends AbstractCommentServices<UserP
         return super.mapToList(comments,UserProfileCommentServiceModel.class);
     }
 
+    @Override
+    public <M> List<M> findAllByUserProfileUsername(String userProfileId,Class<M> clazz) {
+        List<UserProfileComment> comments = super.repository.findByUserProfileUsername(userProfileId);
+
+        return super.mapToList(comments,clazz);
+    }
 }

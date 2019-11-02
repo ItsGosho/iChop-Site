@@ -29,4 +29,11 @@ public class ThreadCommentServicesImp extends AbstractCommentServices<ThreadComm
 
         return super.mapToList(comments,ThreadCommentServiceModel.class);
     }
+
+    @Override
+    public <M> List<M> findAllByThreadId(String threadId,Class<M> clazz) {
+        List<ThreadComment> comments = super.repository.findByThreadId(threadId);
+
+        return super.mapToList(comments,clazz);
+    }
 }

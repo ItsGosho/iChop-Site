@@ -5,7 +5,6 @@ import ichop.comments.common.aop.JmsAfterReturn;
 import ichop.comments.common.aop.JmsValidate;
 import ichop.comments.common.helpers.BaseListener;
 import ichop.comments.common.helpers.JmsHelper;
-import ichop.comments.domain.models.jms.all.CommentsAllReply;
 import ichop.comments.domain.models.jms.all.UserProfileCommentsByUserProfileIdRequest;
 import ichop.comments.domain.models.jms.create.UserProfileCommentCreateReply;
 import ichop.comments.domain.models.jms.create.UserProfileCommentCreateRequest;
@@ -62,12 +61,10 @@ public class UserProfileListeners extends BaseListener {
     @JmsValidate(model = UserProfileCommentsByUserProfileIdRequest.class)
     @JmsAfterReturn(message = COMMENT_DELETE_SUCCESSFUL)
     @JmsListener(destination = "${artemis.queue.comments.user.profile.find.by.username}", containerFactory = QUEUE)
-    public CommentsAllReply<UserProfileCommentServiceModel> allByUserProfileUsername(Message message) {
+    public List<UserProfileCommentsByUserProfileIdRequest> allByUserProfileUsername(Message message) {
         UserProfileCommentsByUserProfileIdRequest requestModel = this.jmsHelper.getResultModel(message, UserProfileCommentsByUserProfileIdRequest.class);
 
-        List<UserProfileCommentServiceModel> comments = this.userProfileCommentServices.findAllByUserProfileUsername(requestModel.getUserProfileUsername());
-
-        return new CommentsAllReply<>(comments);
+        return this.userProfileCommentServices.findAllByUserProfileUsername(requestModel.getUserProfileUsername(),UserProfileCommentsByUserProfileIdRequest.class);
     }
 
 }

@@ -9,4 +9,6 @@ public interface UserProfileCommentServices extends CommentServices<UserProfileC
 
 
     List<UserProfileCommentServiceModel> findAllByUserProfileUsername(String userProfileUsername);
+
+    <M> List<M> findAllByUserProfileUsername(String userProfileId, Class<M> clazz);
 }

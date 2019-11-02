@@ -11,4 +11,5 @@ public interface ThreadCommentServices extends CommentServices<ThreadCommentServ
 
     List<ThreadCommentServiceModel> findAllByThreadId(String threadId);
 
+    <M> List<M> findAllByThreadId(String threadId, Class<M> clazz);
 }
