@@ -5,6 +5,7 @@ import org.ichop.commons.service.BaseService;
 
 public interface ThreadServices extends BaseService<ThreadServiceModel> {
 
-    void increaseViews(String id);
+    ThreadServiceModel increaseViews(String id);
+    <M> M increaseViews(String id,Class<M> clazz);
 
 }

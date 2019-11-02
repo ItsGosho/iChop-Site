@@ -17,10 +17,15 @@ public class ThreadServicesImp extends AbstractBaseService<Thread, ThreadService
     }
 
     @Override
-    public void increaseViews(String id) {
+    public ThreadServiceModel increaseViews(String id) {
         ThreadServiceModel thread = super.findById(id);
         thread.setViews(thread.getViews() + 1);
 
-        super.save(thread);
+        return super.save(thread);
+    }
+
+    @Override
+    public <M> M increaseViews(String id, Class<M> clazz) {
+        return super.objectMapper.convertValue(this.increaseViews(id),clazz);
     }
 }

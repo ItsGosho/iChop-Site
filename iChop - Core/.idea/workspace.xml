@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1984862c-2f8c-4410-af36-a1dcaaa3ddaf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Threads Service/ichop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Threads Service/ichop.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Threads Service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Threads Service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Threads Service/src/main/java/ichop/threads/Threads.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Threads Service/src/main/java/ichop/threads/Threads.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Threads Service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Threads Service/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../libs/iChop - Common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../libs/iChop - Common/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../libs/iChop - Common/src/main/java/org/ichop/commons/Common.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../libs/iChop - Common/src/main/resources/application.properties" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -397,7 +390,7 @@
       <workItem from="1572635307026" duration="6814000" />
       <workItem from="1572691807521" duration="3550000" />
       <workItem from="1572696753986" duration="5755000" />
-      <workItem from="1572716044892" duration="2716000" />
+      <workItem from="1572716044892" duration="3366000" />
     </task>
     <servers />
   </component>
