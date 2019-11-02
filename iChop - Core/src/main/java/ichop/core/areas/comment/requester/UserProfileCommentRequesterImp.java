@@ -1,5 +1,9 @@
 package ichop.core.areas.comment.requester;
 
+import ichop.core.areas.comment.models.jms.UserProfileCommentReplyModel;
+import ichop.core.areas.comment.models.jms.all.UserProfileCommentsByUserProfileUsernameRequest;
+import ichop.core.areas.comment.models.jms.create.UserProfileCommentCreateRequest;
+import ichop.core.common.domain.EmptyReplyModel;
 import ichop.core.common.helpers.JmsHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -28,5 +32,18 @@ public class UserProfileCommentRequesterImp implements UserProfileCommentRequest
     }
 
 
+    @Override
+    public UserProfileCommentReplyModel create(UserProfileCommentCreateRequest request) {
+        return null;
+    }
 
+    @Override
+    public EmptyReplyModel deleteById(String id) {
+        return null;
+    }
+
+    @Override
+    public UserProfileCommentReplyModel findByUserProfileUsername(UserProfileCommentsByUserProfileUsernameRequest request) {
+        return null;
+    }
 }
