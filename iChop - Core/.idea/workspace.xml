@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1984862c-2f8c-4410-af36-a1dcaaa3ddaf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/models/jms/delete/ThreadCommentDeleteByIdRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/models/jms/delete/UserProfileCommentDeleteByIdRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/requester/ThreadCommentRequester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/requester/ThreadCommentRequester.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/requester/ThreadCommentRequesterImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/requester/ThreadCommentRequesterImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/requester/UserProfileCommentRequester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/requester/UserProfileCommentRequester.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/requester/UserProfileCommentRequesterImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/requester/UserProfileCommentRequesterImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/requester/BaseCommentRequester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/requester/BaseCommentRequester.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/requester/BaseCommentRequesterImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/requester/BaseCommentRequesterImp.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -398,7 +393,7 @@
       <workItem from="1572696753986" duration="5755000" />
       <workItem from="1572716044892" duration="3763000" />
       <workItem from="1572772192892" duration="4451000" />
-      <workItem from="1572794546774" duration="7084000" />
+      <workItem from="1572794546774" duration="7186000" />
     </task>
     <servers />
   </component>

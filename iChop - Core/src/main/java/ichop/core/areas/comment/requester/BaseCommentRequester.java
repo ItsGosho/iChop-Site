@@ -6,5 +6,5 @@ import org.ichop.commons.domain.JmsReplyModel;
 public interface BaseCommentRequester {
     JmsReplyModel deleteById(String commentId, CommentType type);
 
-    JmsReplyModel isCreator(String threadId, String creatorUsername, CommentType type);
+    boolean isCreator(String threadId, String creatorUsername, CommentType type);
 }
