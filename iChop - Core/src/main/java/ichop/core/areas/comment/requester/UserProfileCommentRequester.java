@@ -6,7 +6,6 @@ import org.ichop.commons.domain.JmsReplyModel;
 public interface UserProfileCommentRequester {
 
     JmsReplyModel create(UserProfileCommentCreateRequest request);
-    JmsReplyModel deleteById(String id);
     JmsReplyModel findByUserProfileUsername(String userProfileUsername);
 
 }

@@ -1,19 +1,19 @@
-package ichop.core.areas.comment.models.jms.delete;
+package ichop.core.areas.comment.models.jms.is;
 
+import ichop.core.areas.comment.models.CommentType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.ichop.commons.domain.RequestCandidate;
 
-import javax.validation.constraints.NotNull;
-
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserProfileCommentDeleteByIdRequest extends RequestCandidate {
+public class CommentIsCreatorRequest extends RequestCandidate {
 
-    @NotNull
     private String id;
+    private String creatorUsername;
+    private CommentType type;
 }

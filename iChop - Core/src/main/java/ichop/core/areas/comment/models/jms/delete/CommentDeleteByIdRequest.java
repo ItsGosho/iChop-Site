@@ -1,5 +1,6 @@
 package ichop.core.areas.comment.models.jms.delete;
 
+import ichop.core.areas.comment.models.CommentType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,8 +11,8 @@ import org.ichop.commons.domain.RequestCandidate;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ThreadCommentDeleteByIdRequest extends RequestCandidate {
+public class CommentDeleteByIdRequest extends RequestCandidate {
 
     private String id;
-
+    private CommentType type;
 }
