@@ -6,7 +6,7 @@ import ichop.users.domain.entities.UserFollow;
 import ichop.users.domain.models.service.UserFollowServiceModel;
 import ichop.users.domain.models.service.UserServiceModel;
 import ichop.users.repositories.UserFollowRepository;
-import org.ichop.commons.service.AbstractMySQLBaseService;
+import org.ichop.commons.service.BaseMySQLService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +16,7 @@ import java.util.List;
 
 @Service
 public class UserFollowServicesImp
-        extends AbstractMySQLBaseService<UserFollow, UserFollowServiceModel, UserFollowRepository>
+        extends BaseMySQLService<UserFollow, UserFollowServiceModel, UserFollowRepository>
         implements UserFollowServices {
 
     private final UserServices userServices;

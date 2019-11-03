@@ -6,7 +6,7 @@ import org.springframework.data.annotation.Id;
 
 @Getter
 @Setter
-public abstract class BaseEntity {
+public abstract class MongoEntity {
 
     @Id
     private String id;

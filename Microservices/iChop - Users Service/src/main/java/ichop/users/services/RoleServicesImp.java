@@ -9,14 +9,14 @@ import ichop.users.domain.models.service.UserServiceModel;
 import ichop.users.repositories.RoleRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.ichop.commons.service.AbstractMySQLBaseService;
+import org.ichop.commons.service.BaseMySQLService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import static ichop.users.constants.RoleLogConstants.ROLE_CREATED;
 
 @Service
-public class RoleServicesImp extends AbstractMySQLBaseService<Role, RoleServiceModel, RoleRepository> implements RoleServices {
+public class RoleServicesImp extends BaseMySQLService<Role, RoleServiceModel, RoleRepository> implements RoleServices {
 
     private static final Logger LOG = LogManager.getLogger(RoleServicesImp.class);
 

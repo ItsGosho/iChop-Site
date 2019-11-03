@@ -10,8 +10,8 @@ import ichop.users.domain.models.jms.register.UserRegisterRequest;
 import ichop.users.domain.models.jms.retrieve.UserFindByEmailRequest;
 import ichop.users.domain.models.jms.retrieve.UserFindByUsernameRequest;
 import ichop.users.domain.models.jms.retrieve.UsersAllPageableRequest;
+import ichop.users.domain.models.jms.token.PasswordTokenReply;
 import ichop.users.domain.models.jms.token.create.password.PasswordTokenCreateRequest;
-import ichop.users.domain.models.jms.token.retrieve.password.PasswordTokenFindByTokenRequest;
 import ichop.users.domain.models.service.UserServiceModel;
 import ichop.users.requesters.EmailRequester;
 import ichop.users.requesters.PasswordTokenRequester;
@@ -20,6 +20,7 @@ import ichop.users.services.UserServices;
 import org.ichop.commons.aop.JmsAfterReturn;
 import org.ichop.commons.aop.JmsValidate;
 import org.ichop.commons.domain.EmptyReply;
+import org.ichop.commons.domain.JmsReplyModel;
 import org.ichop.commons.helpers.BaseListener;
 import org.ichop.commons.helpers.JmsHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -120,8 +121,10 @@ public class UserListeners extends BaseListener {
     public EmptyReply changePasswordByToken(Message message) {
         UserChangePasswordByTokenRequest requestModel = this.jmsHelper.toModel(message, UserChangePasswordByTokenRequest.class);
 
-        String userId = this.passwordTokenRequester.findByToken(new PasswordTokenFindByTokenRequest(requestModel.getToken())).getUserId();
-        UserServiceModel user = this.userServices.findById(userId);
+        JmsReplyModel findByTokenReply = this.passwordTokenRequester.findByToken(requestModel.getToken());
+        PasswordTokenReply passwordToken = this.objectMapper.convertValue(findByTokenReply, PasswordTokenReply.class);
+
+        UserServiceModel user = this.userServices.findByUsername(passwordToken.getUserUsername());
 
         this.userServices.changePassword(user.getEmail(), requestModel.getPassword());
 
@@ -137,12 +140,13 @@ public class UserListeners extends BaseListener {
         UserServiceModel user = this.userServices.findByEmail(requestModel.getEmail());
 
         PasswordTokenCreateRequest passwordTokenCreateRequest = new PasswordTokenCreateRequest(user.getId());
-        PasswordTokenCreateReply passwordTokenCreateReply = this.passwordTokenRequester.create(passwordTokenCreateRequest);
+        JmsReplyModel passwordTokenCreateReply = this.passwordTokenRequester.create(passwordTokenCreateRequest);
+        PasswordTokenReply passwordToken = this.objectMapper.convertValue(passwordTokenCreateReply.getData(), PasswordTokenReply.class);
 
         EmailResetPasswordRequest emailResetPasswordRequest = new EmailResetPasswordRequest();
         emailResetPasswordRequest.setTo(user.getEmail());
-        emailResetPasswordRequest.setToken(passwordTokenCreateReply.getToken());
-        emailResetPasswordRequest.setExpirationDate(passwordTokenCreateReply.getCreationDate().plusHours(24));
+        emailResetPasswordRequest.setToken(passwordToken.getToken());
+        emailResetPasswordRequest.setExpirationDate(passwordToken.getCreationDate().plusHours(24));
 
         this.emailRequester.sendPasswordReset(emailResetPasswordRequest);
 

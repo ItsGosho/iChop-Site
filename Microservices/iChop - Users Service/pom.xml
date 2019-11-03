@@ -35,6 +35,16 @@
             <groupId>org.ichop</groupId>
             <artifactId>commons</artifactId>
             <version>1.0.0-BETA</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-data-mongodb</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.mongodb</groupId>
+                    <artifactId>mongo-java-driver</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>

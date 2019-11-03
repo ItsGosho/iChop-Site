@@ -2,9 +2,10 @@ package ichop.users.requesters;
 
 
 import ichop.users.domain.models.jms.email.EmailResetPasswordRequest;
+import org.ichop.commons.domain.JmsReplyModel;
 
 public interface EmailRequester {
 
-    EmailReply sendPasswordReset(EmailResetPasswordRequest request);
+    JmsReplyModel sendPasswordReset(EmailResetPasswordRequest request);
 
 }

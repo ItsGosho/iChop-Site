@@ -6,7 +6,7 @@ import ichop.users.domain.entities.UserInformation;
 import ichop.users.domain.models.jms.information.UserInformationUpdateRequest;
 import ichop.users.domain.models.service.UserInformationServiceModel;
 import ichop.users.repositories.UserInformationRepository;
-import org.ichop.commons.service.AbstractMySQLBaseService;
+import org.ichop.commons.service.BaseMySQLService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,7 @@ import java.time.format.DateTimeFormatter;
 
 @Service
 public class UserInformationServicesImp
-        extends AbstractMySQLBaseService<UserInformation, UserInformationServiceModel, UserInformationRepository>
+        extends BaseMySQLService<UserInformation, UserInformationServiceModel, UserInformationRepository>
         implements UserInformationServices {
 
     private static final String BIRTHDATE_FORMAT = "d/MM/yyyy";

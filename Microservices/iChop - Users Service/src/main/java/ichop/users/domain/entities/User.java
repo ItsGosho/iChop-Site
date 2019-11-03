@@ -2,7 +2,7 @@ package ichop.users.domain.entities;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.ichop.commons.domain.BaseEntity;
+import org.ichop.commons.domain.MySQLEntity;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
@@ -14,7 +14,7 @@ import java.util.Set;
 @Setter
 @Entity(name = "User")
 @Table(name = "users")
-public class User extends BaseEntity implements UserDetails {
+public class User extends MySQLEntity implements UserDetails {
 
     @Column(unique = true,nullable = false)
     private String username;
