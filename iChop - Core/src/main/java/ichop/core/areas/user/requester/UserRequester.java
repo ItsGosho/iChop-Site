@@ -5,7 +5,6 @@ import ichop.core.areas.user.models.jms.password.change.UserChangePasswordReques
 import ichop.core.areas.user.models.jms.password.forgotten.UserForgottenPasswordRequest;
 import ichop.core.areas.user.models.jms.register.UserRegisterRequest;
 import org.ichop.commons.domain.JmsReplyModel;
-import org.springframework.data.domain.Pageable;
 
 public interface UserRequester {
 
@@ -21,7 +20,7 @@ public interface UserRequester {
 
     JmsReplyModel forgottenPassword(UserForgottenPasswordRequest request);
 
-    JmsReplyModel findAllPageable(Pageable pageable);
+    //JmsReplyModel findAllPageable(Pageable pageable);
 
     JmsReplyModel promote(String username);
 

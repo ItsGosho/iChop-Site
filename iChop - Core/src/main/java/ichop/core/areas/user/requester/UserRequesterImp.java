@@ -4,13 +4,16 @@ import ichop.core.areas.user.models.jms.password.change.UserChangePasswordByToke
 import ichop.core.areas.user.models.jms.password.change.UserChangePasswordRequest;
 import ichop.core.areas.user.models.jms.password.forgotten.UserForgottenPasswordRequest;
 import ichop.core.areas.user.models.jms.register.UserRegisterRequest;
-import ichop.core.areas.user.models.jms.retrieve.*;
-import ichop.core.areas.user.models.jms.role.*;
+import ichop.core.areas.user.models.jms.retrieve.UserFindByEmailRequest;
+import ichop.core.areas.user.models.jms.retrieve.UserFindByUsernameRequest;
+import ichop.core.areas.user.models.jms.role.UserHasNextRoleRequest;
+import ichop.core.areas.user.models.jms.role.UserHasPreviousRoleRequest;
+import ichop.core.areas.user.models.jms.role.UserRoleDemoteRequest;
+import ichop.core.areas.user.models.jms.role.UserRolePromoteRequest;
 import org.ichop.commons.domain.JmsReplyModel;
 import org.ichop.commons.helpers.JmsHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -95,13 +98,13 @@ public class UserRequesterImp implements UserRequester {
         return this.jmsHelper.sendAndReceive(this.forgottenPasswordDestination, request);
     }
 
-    @Override
+    /*@Override
     public JmsReplyModel findAllPageable(Pageable pageable) {
         UsersAllPageableRequest request = new UsersAllPageableRequest();
         request.setPageable(pageable);
 
         return this.jmsHelper.sendAndReceive(this.findAllPageableDestination, request);
-    }
+    }*/
 
     @Override
     public JmsReplyModel promote(String username) {
