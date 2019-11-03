@@ -6,15 +6,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.ichop.commons.domain.RequestCandidate;
 
-import javax.validation.constraints.NotNull;
-
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class ThreadCommentDeleteByIdRequest extends RequestCandidate {
 
-    @NotNull
     private String id;
 
 }

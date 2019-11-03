@@ -1,5 +1,6 @@
 package ichop.core.areas.comment.requester;
 
+import ichop.core.areas.comment.models.jms.all.ThreadCommentsFindByThreadIdRequest;
 import ichop.core.areas.comment.models.jms.create.ThreadCommentCreateRequest;
 import ichop.core.areas.comment.models.jms.delete.ThreadCommentDeleteByIdRequest;
 import org.ichop.commons.domain.JmsReplyModel;
@@ -33,17 +34,20 @@ public class ThreadCommentRequesterImp implements ThreadCommentRequester {
 
     @Override
     public JmsReplyModel create(ThreadCommentCreateRequest request) {
-        return this.jmsHelper.sendAndReceive(this.createDestination,request);
+        return this.jmsHelper.sendAndReceive(this.createDestination, request);
     }
 
     @Override
     public JmsReplyModel deleteById(String id) {
         ThreadCommentDeleteByIdRequest request = new ThreadCommentDeleteByIdRequest(id);
-        return null;
+
+        return this.jmsHelper.sendAndReceive(this.deleteByIdDestination, request);
     }
 
     @Override
     public JmsReplyModel findByThreadId(String threadId) {
-        return null;
+        ThreadCommentsFindByThreadIdRequest request = new ThreadCommentsFindByThreadIdRequest(threadId);
+
+        return this.jmsHelper.sendAndReceive(this.findByThreadIdDestination, request);
     }
 }

@@ -2,6 +2,7 @@ package ichop.core.areas.comment.requester;
 
 import ichop.core.areas.comment.models.jms.all.UserProfileCommentsByUserProfileUsernameRequest;
 import ichop.core.areas.comment.models.jms.create.UserProfileCommentCreateRequest;
+import ichop.core.areas.comment.models.jms.delete.UserProfileCommentDeleteByIdRequest;
 import org.ichop.commons.domain.JmsReplyModel;
 import org.ichop.commons.helpers.JmsHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,16 +34,20 @@ public class UserProfileCommentRequesterImp implements UserProfileCommentRequest
 
     @Override
     public JmsReplyModel create(UserProfileCommentCreateRequest request) {
-        return null;
+        return this.jmsHelper.sendAndReceive(this.createDestination, request);
     }
 
     @Override
     public JmsReplyModel deleteById(String id) {
-        return null;
+        UserProfileCommentDeleteByIdRequest request = new UserProfileCommentDeleteByIdRequest(id);
+
+        return this.jmsHelper.sendAndReceive(this.deleteByIdDestination, request);
     }
 
     @Override
-    public JmsReplyModel findByUserProfileUsername(UserProfileCommentsByUserProfileUsernameRequest request) {
-        return null;
+    public JmsReplyModel findByUserProfileUsername(String userProfileUsername) {
+        UserProfileCommentsByUserProfileUsernameRequest request = new UserProfileCommentsByUserProfileUsernameRequest(userProfileUsername);
+
+        return this.jmsHelper.sendAndReceive(this.findByUserProfileUsernameDestination, request);
     }
 }
