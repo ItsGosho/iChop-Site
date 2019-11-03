@@ -2,6 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1984862c-2f8c-4410-af36-a1dcaaa3ddaf" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Threads Service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Threads Service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Threads Service/src/main/java/ichop/threads/domain/entities/Thread.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Threads Service/src/main/java/ichop/threads/domain/entities/Thread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Threads Service/src/main/java/ichop/threads/domain/models/jms/ThreadReply.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Threads Service/src/main/java/ichop/threads/domain/models/jms/ThreadReply.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Threads Service/src/main/java/ichop/threads/domain/models/jms/create/ThreadCreateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Threads Service/src/main/java/ichop/threads/domain/models/jms/create/ThreadCreateRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Threads Service/src/main/java/ichop/threads/domain/models/jms/delete/ThreadDeleteByIdRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Threads Service/src/main/java/ichop/threads/domain/models/jms/delete/ThreadDeleteByIdRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Threads Service/src/main/java/ichop/threads/domain/models/jms/increase/ThreadIncreaseViewsRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Threads Service/src/main/java/ichop/threads/domain/models/jms/increase/ThreadIncreaseViewsRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Threads Service/src/main/java/ichop/threads/domain/models/jms/retrieve/ThreadFindByIdRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Threads Service/src/main/java/ichop/threads/domain/models/jms/retrieve/ThreadFindByIdRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Threads Service/src/main/java/ichop/threads/listener/ThreadListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Threads Service/src/main/java/ichop/threads/listener/ThreadListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/java/ichop/users/listeners/UserListeners.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/java/ichop/users/listeners/UserListeners.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/security/config/UserSecurityService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/security/config/UserSecurityService.java" afterDir="false" />
@@ -398,7 +406,7 @@
       <workItem from="1572696753986" duration="5755000" />
       <workItem from="1572716044892" duration="3763000" />
       <workItem from="1572772192892" duration="4451000" />
-      <workItem from="1572794546774" duration="2060000" />
+      <workItem from="1572794546774" duration="2878000" />
     </task>
     <servers />
   </component>
