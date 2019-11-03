@@ -22,4 +22,6 @@ public interface JmsHelper {
     <R> R toModel(Message message, Class<R> clazz);
 
     <R extends ReplyCandidate> R extractReplyData(Message message, Class<R> clazz);
+
+    <R extends ReplyCandidate> void replyError(Message message, R reply, String msg);
 }
