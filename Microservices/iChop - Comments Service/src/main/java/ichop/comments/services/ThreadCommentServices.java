@@ -1,6 +1,5 @@
 package ichop.comments.services;
 
-import ichop.comments.domain.entities.ThreadComment;
 import ichop.comments.domain.models.service.ThreadCommentServiceModel;
 
 import java.util.List;

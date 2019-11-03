@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 import org.ichop.commons.domain.BaseServiceModel;
 
-import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Getter

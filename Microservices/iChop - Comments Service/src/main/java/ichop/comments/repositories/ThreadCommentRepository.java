@@ -1,7 +1,6 @@
 package ichop.comments.repositories;
 
 import ichop.comments.domain.entities.ThreadComment;
-import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

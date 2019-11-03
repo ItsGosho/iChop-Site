@@ -5,7 +5,6 @@ import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 import org.ichop.commons.domain.RequestCandidate;
 
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Getter

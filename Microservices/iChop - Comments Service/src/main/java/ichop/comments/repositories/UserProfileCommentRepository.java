@@ -1,6 +1,5 @@
 package ichop.comments.repositories;
 
-import ichop.comments.domain.entities.ThreadComment;
 import ichop.comments.domain.entities.UserProfileComment;
 import org.springframework.stereotype.Repository;
 

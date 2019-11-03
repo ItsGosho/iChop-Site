@@ -9,6 +9,7 @@ import org.ichop.commons.domain.RequestCandidate;
 public class ThreadCommentCreateRequest extends RequestCandidate {
 
     private String content;
-    private String creatorUsername;
     private String threadId;
+
+    private String creatorUsername;
 }

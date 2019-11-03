@@ -20,4 +20,5 @@ public abstract class AbstractCommentServices
     public Long getTotalCreatorComments(String creatorUsername) {
         return super.repository.getTotalCreatorComments(creatorUsername);
     }
+
 }
