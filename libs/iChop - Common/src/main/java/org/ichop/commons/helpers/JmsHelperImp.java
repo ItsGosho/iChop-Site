@@ -6,7 +6,6 @@ import org.ichop.commons.domain.ReplyCandidate;
 import org.ichop.commons.domain.RequestCandidate;
 import org.ichop.commons.validation.ValidationHelper;
 import org.ichop.commons.domain.JmsReplyModel;
-import org.jgroups.blocks.ReplCache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
@@ -19,7 +18,7 @@ import java.io.IOException;
 import java.util.UUID;
 import java.util.logging.Logger;
 
-import static org.ichop.commons.constants.JmsLoggingConstants.*;
+import static org.ichop.commons.constants.LogConstants.*;
 
 @Component
 public class JmsHelperImp implements JmsHelper {
@@ -105,8 +104,9 @@ public class JmsHelperImp implements JmsHelper {
     public void replyValidationError(Message message, Object data) {
 
         try {
-            LOG.info(String.format(VALIDATION_ERROR_REPLY_WILL_START, message.getJMSReplyTo()));
             String error = this.validationHelper.getValidationError(data);
+            LOG.info(String.format(VALIDATION_ERROR_REPLY_WILL_START,error, message.getJMSReplyTo()));
+
             JmsReplyModel jmsReplyModel = new JmsReplyModel(false, error);
 
             this.replyTo(message.getJMSReplyTo(), message.getJMSCorrelationID(), jmsReplyModel);
@@ -119,7 +119,7 @@ public class JmsHelperImp implements JmsHelper {
     public <R extends ReplyCandidate> void replyError(Message message, R reply, String msg) {
 
         try {
-            LOG.info(String.format(ERROR_REPLY_WILL_START, message.getJMSReplyTo()));
+            LOG.info(String.format(ERROR_REPLY_WILL_START,message, message.getJMSReplyTo()));
             JmsReplyModel jmsReplyModel = new JmsReplyModel(true, msg, reply);
 
             this.replyTo(message.getJMSReplyTo(), message.getJMSCorrelationID(), jmsReplyModel);
