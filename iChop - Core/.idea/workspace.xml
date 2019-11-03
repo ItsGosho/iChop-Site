@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1984862c-2f8c-4410-af36-a1dcaaa3ddaf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/controllers/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/models/jms/retrieve/UsersAllPageableRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/models/jms/retrieve/UsersAllPageableRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/requester/UserRequester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/requester/UserRequester.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/requester/UserRequesterImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/requester/UserRequesterImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-    </list>
+    <list default="true" id="1984862c-2f8c-4410-af36-a1dcaaa3ddaf" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -397,7 +389,7 @@
       <workItem from="1572691807521" duration="3550000" />
       <workItem from="1572696753986" duration="5755000" />
       <workItem from="1572716044892" duration="3763000" />
-      <workItem from="1572772192892" duration="3892000" />
+      <workItem from="1572772192892" duration="4169000" />
     </task>
     <servers />
   </component>

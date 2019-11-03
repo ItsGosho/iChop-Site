@@ -12,6 +12,6 @@ import org.ichop.commons.domain.RequestCandidate;
 @NoArgsConstructor
 public class PasswordTokenCreateRequest extends RequestCandidate {
 
-    private String userId;
+    private String userUsername;
 
 }
