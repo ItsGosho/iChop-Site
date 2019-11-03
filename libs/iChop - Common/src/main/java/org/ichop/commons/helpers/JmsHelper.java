@@ -1,19 +1,25 @@
 package org.ichop.commons.helpers;
 
-import org.ichop.commons.domain.BaseReplyModel;
-import org.ichop.commons.domain.BaseRequestModel;
+import org.ichop.commons.domain.JmsReplyModel;
+import org.ichop.commons.domain.ReplyCandidate;
+import org.ichop.commons.domain.RequestCandidate;
 
 import javax.jms.Message;
 
 public interface JmsHelper {
 
-    <S extends BaseReplyModel,R extends BaseRequestModel> S sendAndReceive(String destination, R model, Class<S> clazz);
 
-    <S extends BaseRequestModel> void send(String destination, S model);
+    <R extends RequestCandidate> JmsReplyModel sendAndReceive(String destination, R request);
 
-    <S extends BaseReplyModel> void replySuccessful(Message message, S model, String msg);
+    <R extends RequestCandidate> void send(String destination, R request);
 
-    <R> R getResultModel(Message message, Class<R> clazz);
+    <R extends ReplyCandidate> void replySuccessful(Message message, R reply, String msg);
 
-    <S extends BaseRequestModel> void replyValidationError(Message message, S receiveModel);
+    JmsReplyModel extractReply(Message message);
+
+    void replyValidationError(Message message, Object data);
+
+    <R> R toModel(Message message, Class<R> clazz);
+
+    <R extends ReplyCandidate> R extractReplyData(Message message, Class<R> clazz);
 }

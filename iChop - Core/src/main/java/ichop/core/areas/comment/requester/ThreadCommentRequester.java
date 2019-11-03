@@ -1,12 +1,11 @@
 package ichop.core.areas.comment.requester;
 
-import ichop.core.areas.comment.models.jms.ThreadCommentReplyModel;
 import ichop.core.areas.comment.models.jms.create.ThreadCommentCreateRequest;
-import ichop.core.common.domain.EmptyReplyModel;
+import org.ichop.commons.domain.JmsReplyModel;
 
 public interface ThreadCommentRequester {
 
-    ThreadCommentReplyModel create(ThreadCommentCreateRequest request);
-    EmptyReplyModel deleteById(String id);
-    ThreadCommentReplyModel findByThreadId(String threadId);
+    JmsReplyModel create(ThreadCommentCreateRequest request);
+    JmsReplyModel deleteById(String id);
+    JmsReplyModel findByThreadId(String threadId);
 }

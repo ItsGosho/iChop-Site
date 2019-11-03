@@ -1,7 +1,8 @@
 package ichop.core.areas.user.requester;
 
 import ichop.core.areas.user.models.jms.follow.*;
-import ichop.core.common.helpers.JmsHelper;
+import org.ichop.commons.domain.JmsReplyModel;
+import org.ichop.commons.helpers.JmsHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -34,38 +35,38 @@ public class UserFollowRequesterImp implements UserFollowRequester {
     }
 
     @Override
-    public UserIsFollowingReply isFollowing(String username, String followingUsername) {
+    public JmsReplyModel isFollowing(String username, String followingUsername) {
         UserIsFollowingRequest request = new UserIsFollowingRequest(username, followingUsername);
 
-        return this.jmsHelper.sendAndReceive(this.isFollowingDestination, request, UserIsFollowingReply.class);
+        return this.jmsHelper.sendAndReceive(this.isFollowingDestination, request);
     }
 
     @Override
-    public UserFollowReply follow(String username, String followUsername) {
+    public JmsReplyModel follow(String username, String followUsername) {
         UserFollowRequest request = new UserFollowRequest(username, followUsername);
 
-        return this.jmsHelper.sendAndReceive(this.followDestination, request, UserFollowReply.class);
+        return this.jmsHelper.sendAndReceive(this.followDestination, request);
     }
 
     @Override
-    public UserUnfollowReply unfollow(String username, String unfollowUsername) {
+    public JmsReplyModel unfollow(String username, String unfollowUsername) {
         UserUnfollowRequest request = new UserUnfollowRequest(username, unfollowUsername);
 
-        return this.jmsHelper.sendAndReceive(this.unfollowDestination, request, UserUnfollowReply.class);
+        return this.jmsHelper.sendAndReceive(this.unfollowDestination, request);
     }
 
     @Override
-    public UserFollowersAllReply allFollowers(String username) {
+    public JmsReplyModel allFollowers(String username) {
         UserFollowersAllRequest request = new UserFollowersAllRequest(username);
 
-        return this.jmsHelper.sendAndReceive(this.allFollowersDestination, request, UserFollowersAllReply.class);
+        return this.jmsHelper.sendAndReceive(this.allFollowersDestination, request);
     }
 
     @Override
-    public UserFollowingsAllReply allFollowings(String username) {
+    public JmsReplyModel allFollowings(String username) {
         UserFollowingsAllRequest request = new UserFollowingsAllRequest(username);
 
-        return this.jmsHelper.sendAndReceive(this.allFollowingsDestination, request, UserFollowingsAllReply.class);
+        return this.jmsHelper.sendAndReceive(this.allFollowingsDestination, request);
     }
 
 }

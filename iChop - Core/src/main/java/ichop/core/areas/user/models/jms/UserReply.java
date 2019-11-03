@@ -1,16 +1,16 @@
-package ichop.core.areas.user.models.jms.retrieve;
+package ichop.core.areas.user.models.jms;
 
-import ichop.core.areas.security.config.UserRoleSecurity;
-import ichop.core.common.domain.BaseReplyModel;
 import lombok.Getter;
 import lombok.Setter;
+import org.ichop.commons.domain.ReplyCandidate;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDateTime;
 import java.util.Set;
 
 @Getter
 @Setter
-public class UserFindByUsernameReply extends BaseReplyModel {
+public class UserReply extends ReplyCandidate implements UserDetails {
 
     private String id;
     private String username;
@@ -20,11 +20,9 @@ public class UserFindByUsernameReply extends BaseReplyModel {
     private boolean isAccountNonLocked;
     private boolean isCredentialsNonExpired;
     private boolean isEnabled;
-    private Set<UserRoleSecurity> authorities;
+    private Set<RoleReply> authorities;
     private LocalDateTime registrationDate;
     private LocalDateTime lastOnline;
     private String location;
-
-    private String authority;
 
 }

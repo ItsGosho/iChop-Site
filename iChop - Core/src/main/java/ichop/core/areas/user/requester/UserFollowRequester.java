@@ -1,15 +1,15 @@
 package ichop.core.areas.user.requester;
 
-import ichop.core.areas.user.models.jms.follow.*;
+import org.ichop.commons.domain.JmsReplyModel;
 
 public interface UserFollowRequester {
-    UserIsFollowingReply isFollowing(String username, String followingUsername);
+    JmsReplyModel isFollowing(String username, String followingUsername);
 
-    UserFollowReply follow(String username, String followUsername);
+    JmsReplyModel follow(String username, String followUsername);
 
-    UserUnfollowReply unfollow(String username, String unfollowUsername);
+    JmsReplyModel unfollow(String username, String unfollowUsername);
 
-    UserFollowersAllReply allFollowers(String username);
+    JmsReplyModel allFollowers(String username);
 
-    UserFollowingsAllReply allFollowings(String username);
+    JmsReplyModel allFollowings(String username);
 }

@@ -2,11 +2,11 @@ package ichop.core.areas.thread.models.jms.create;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.ichop.commons.domain.BaseRequestModel;
+import org.ichop.commons.domain.RequestCandidate;
 
 @Getter
 @Setter
-public class ThreadCreateRequest extends BaseRequestModel {
+public class ThreadCreateRequest extends RequestCandidate {
 
 
     private String title;

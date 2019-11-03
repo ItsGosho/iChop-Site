@@ -5,5 +5,5 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public abstract class BaseRequestModel {
+public abstract class RequestCandidate {
 }

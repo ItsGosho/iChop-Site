@@ -5,8 +5,5 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class BoolReplyModel extends BaseReplyModel {
-
-    private boolean result;
-
+public abstract class ReplyCandidate {
 }

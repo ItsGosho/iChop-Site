@@ -1,14 +1,14 @@
 package ichop.core.areas.comment.models.jms;
 
-import ichop.core.common.domain.BaseReplyModel;
 import lombok.Getter;
 import lombok.Setter;
+import org.ichop.commons.domain.ReplyCandidate;
 
 import java.time.LocalDateTime;
 
 @Getter
 @Setter
-public abstract class BaseCommentReplyModel extends BaseReplyModel {
+public abstract class BaseCommentReplyModel extends ReplyCandidate {
 
     private String id;
     private String creatorUsername;

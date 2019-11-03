@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.core.areas.rest.models.ResponseError;
 import ichop.core.areas.rest.models.ResponseSuccessful;
-import ichop.core.common.domain.BaseReplyModel;
+import org.ichop.commons.domain.JmsReplyModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -66,7 +66,7 @@ public class ResponseHelpersImp implements ResponseHelpers {
     }
 
     @Override
-    public <R extends BaseReplyModel> ResponseEntity respondGeneric(R reply) {
+    public ResponseEntity respondGeneric(JmsReplyModel reply) {
 
         if (!reply.isSuccessful()) {
             return this.respondError(reply.getMessage());

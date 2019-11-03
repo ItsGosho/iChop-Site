@@ -1,11 +1,10 @@
 package ichop.core.areas.thread.requester;
 
-import ichop.core.areas.thread.models.jms.ThreadReply;
 import ichop.core.areas.thread.models.jms.create.ThreadCreateRequest;
 import ichop.core.areas.thread.models.jms.delete.ThreadDeleteByIdRequest;
 import ichop.core.areas.thread.models.jms.increase.ThreadIncreaseViewsRequest;
 import ichop.core.areas.thread.models.jms.retrieve.ThreadFindByIdRequest;
-import org.ichop.commons.domain.EmptyReplyModel;
+import org.ichop.commons.domain.JmsReplyModel;
 import org.ichop.commons.helpers.JmsHelper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -34,28 +33,28 @@ public class ThreadRequesterImp implements ThreadRequester {
 
 
     @Override
-    public ThreadReply create(ThreadCreateRequest request) {
-        return this.jmsHelper.sendAndReceive(this.createDestination, request, ThreadReply.class);
+    public JmsReplyModel create(ThreadCreateRequest request) {
+        return this.jmsHelper.sendAndReceive(this.createDestination, request);
     }
 
     @Override
-    public ThreadReply increaseViews(String id) {
+    public JmsReplyModel increaseViews(String id) {
         ThreadIncreaseViewsRequest request = new ThreadIncreaseViewsRequest(id);
 
-        return this.jmsHelper.sendAndReceive(this.increaseViewsDestination, request, ThreadReply.class);
+        return this.jmsHelper.sendAndReceive(this.increaseViewsDestination, request);
     }
 
     @Override
-    public ThreadReply findById(String id) {
+    public JmsReplyModel findById(String id) {
         ThreadFindByIdRequest request = new ThreadFindByIdRequest(id);
 
-        return this.jmsHelper.sendAndReceive(this.findByIdDestination, request, ThreadReply.class);
+        return this.jmsHelper.sendAndReceive(this.findByIdDestination, request);
     }
 
     @Override
-    public EmptyReplyModel deleteById(String id) {
+    public JmsReplyModel deleteById(String id) {
         ThreadDeleteByIdRequest request = new ThreadDeleteByIdRequest(id);
 
-        return this.jmsHelper.sendAndReceive(this.deleteByIdDestination, request, EmptyReplyModel.class);
+        return this.jmsHelper.sendAndReceive(this.deleteByIdDestination, request);
     }
 }

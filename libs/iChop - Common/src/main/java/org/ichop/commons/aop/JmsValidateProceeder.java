@@ -1,6 +1,5 @@
 package org.ichop.commons.aop;
 
-import org.ichop.commons.domain.BaseRequestModel;
 import org.ichop.commons.helpers.JmsHelper;
 import org.ichop.commons.validation.ValidationHelper;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -28,11 +27,11 @@ public class JmsValidateProceeder extends AbstractJmsProceeder {
 
 
     @Around("@annotation(org.ichop.commons.aop.JmsValidate)")
-    public <R extends BaseRequestModel> Object validateModel(ProceedingJoinPoint joinPoint) throws Throwable {
+    public <R> Object validateModel(ProceedingJoinPoint joinPoint) throws Throwable {
         Class clazz = this.getModelClass(joinPoint);
         Message message = super.getMessage(joinPoint);
 
-        R requestModel = (R) this.jmsHelper.getResultModel(message, clazz);
+        R requestModel = (R) this.jmsHelper.toModel(message, clazz);
 
         if (!this.validationHelper.isValid(requestModel)) {
             super.jmsHelper.replyValidationError(message, requestModel);
@@ -42,7 +41,7 @@ public class JmsValidateProceeder extends AbstractJmsProceeder {
         return joinPoint.proceed();
     }
 
-    private Class<? extends BaseRequestModel> getModelClass(ProceedingJoinPoint joinPoint) {
+    private Class getModelClass(ProceedingJoinPoint joinPoint) {
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         Method method = signature.getMethod();
 

@@ -1,41 +1,33 @@
 package ichop.core.areas.user.requester;
 
-import ichop.core.areas.user.models.jms.password.change.UserChangePasswordByTokenReply;
 import ichop.core.areas.user.models.jms.password.change.UserChangePasswordByTokenRequest;
-import ichop.core.areas.user.models.jms.password.change.UserChangePasswordReply;
 import ichop.core.areas.user.models.jms.password.change.UserChangePasswordRequest;
-import ichop.core.areas.user.models.jms.password.forgotten.UserForgottenPasswordReply;
 import ichop.core.areas.user.models.jms.password.forgotten.UserForgottenPasswordRequest;
-import ichop.core.areas.user.models.jms.register.UserRegisterReply;
 import ichop.core.areas.user.models.jms.register.UserRegisterRequest;
-import ichop.core.areas.user.models.jms.retrieve.UserFindByEmailReply;
-import ichop.core.areas.user.models.jms.retrieve.UserFindByUsernameReply;
-import ichop.core.areas.user.models.jms.retrieve.UsersAllPageableReply;
-import ichop.core.areas.user.models.jms.role.UserHasNextRoleReply;
-import ichop.core.areas.user.models.jms.role.UserHasPreviousRoleReply;
-import ichop.core.areas.user.models.jms.role.UserRoleDemoteReply;
-import ichop.core.areas.user.models.jms.role.UserRolePromoteReply;
+import org.ichop.commons.domain.JmsReplyModel;
 import org.springframework.data.domain.Pageable;
 
 public interface UserRequester {
-    UserFindByEmailReply findByEmail(String email);
-    UserFindByUsernameReply findByUsername(String username);
 
-    UserRegisterReply register(UserRegisterRequest request);
+    JmsReplyModel findByEmail(String email);
 
-    UserChangePasswordReply changePassword(UserChangePasswordRequest request);
+    JmsReplyModel findByUsername(String username);
 
-    UserChangePasswordByTokenReply changePasswordByToken(UserChangePasswordByTokenRequest request);
+    JmsReplyModel register(UserRegisterRequest request);
 
-    UserForgottenPasswordReply forgottenPassword(UserForgottenPasswordRequest request);
+    JmsReplyModel changePassword(UserChangePasswordRequest request);
 
-    UsersAllPageableReply findAllPageable(Pageable pageable);
+    JmsReplyModel changePasswordByToken(UserChangePasswordByTokenRequest request);
 
-    UserRolePromoteReply promote(String username);
+    JmsReplyModel forgottenPassword(UserForgottenPasswordRequest request);
 
-    UserRoleDemoteReply demote(String username);
+    JmsReplyModel findAllPageable(Pageable pageable);
 
-    UserHasNextRoleReply hasNextRole(String username);
+    JmsReplyModel promote(String username);
 
-    UserHasPreviousRoleReply hasPreviousRole(String username);
+    JmsReplyModel demote(String username);
+
+    JmsReplyModel hasNextRole(String username);
+
+    JmsReplyModel hasPreviousRole(String username);
 }

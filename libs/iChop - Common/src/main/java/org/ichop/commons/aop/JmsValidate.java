@@ -1,6 +1,6 @@
 package org.ichop.commons.aop;
 
-import org.ichop.commons.domain.BaseRequestModel;
+import org.ichop.commons.domain.RequestCandidate;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -12,6 +12,6 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface JmsValidate {
 
-    Class<? extends BaseRequestModel> model();
+    Class<? extends RequestCandidate> model();
 
 }

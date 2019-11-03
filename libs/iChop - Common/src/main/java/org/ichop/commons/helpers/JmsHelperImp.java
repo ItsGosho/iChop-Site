@@ -2,10 +2,10 @@ package org.ichop.commons.helpers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.ichop.commons.domain.ReplyCandidate;
+import org.ichop.commons.domain.RequestCandidate;
 import org.ichop.commons.validation.ValidationHelper;
-import org.ichop.commons.domain.BaseReplyModel;
-import org.ichop.commons.domain.BaseRequestModel;
-import org.ichop.commons.domain.ErrorReplyModel;
+import org.ichop.commons.domain.JmsReplyModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
@@ -21,7 +21,6 @@ import java.util.logging.Logger;
 import static org.ichop.commons.constants.JmsLoggingConstants.*;
 
 @Component
-@SuppressWarnings("all")
 public class JmsHelperImp implements JmsHelper {
 
     private final Logger LOG = Logger.getLogger(this.getClass().getName());
@@ -38,40 +37,54 @@ public class JmsHelperImp implements JmsHelper {
     }
 
     @Override
-    public <S extends BaseReplyModel, R extends BaseRequestModel> S sendAndReceive(String destination, R model, Class<S> clazz) {
+    public <R extends RequestCandidate> JmsReplyModel sendAndReceive(String destination, R request) {
         LOG.info(String.format(SEND_AND_RECEIVED_STARTED, destination));
 
-        MessageCreator message = this.createMessage(model);
+        MessageCreator message = this.createMessage(request);
         Message result = this.jmsTemplate.sendAndReceive(destination, message);
 
-        return this.getResultModel(result, clazz);
+        return this.extractReply(result);
     }
 
     @Override
-    public <S extends BaseRequestModel> void send(String destination, S model) {
+    public <R extends RequestCandidate> void send(String destination, R request) {
         LOG.info(String.format(SEND_STARTED, destination));
 
-        MessageCreator message = this.createMessage(model);
+        MessageCreator message = this.createMessage(request);
         this.jmsTemplate.send(destination, message);
     }
 
     @Override
-    public <S extends BaseReplyModel> void replySuccessful(Message message, S model,String msg) {
+    public <R extends ReplyCandidate> void replySuccessful(Message message, R reply, String msg) {
         try {
-            model.setSuccessful(true);
-            model.setMessage(msg);
+            JmsReplyModel jmsReplyModel = new JmsReplyModel(true, msg, reply);
 
-            this.replyTo(message.getJMSReplyTo(), message.getJMSCorrelationID(), model);
+            this.replyTo(message.getJMSReplyTo(), message.getJMSCorrelationID(), jmsReplyModel);
         } catch (JMSException e) {
             e.printStackTrace();
         }
     }
 
     @Override
-    public <R> R getResultModel(Message message, Class<R> clazz) {
+    public JmsReplyModel extractReply(Message message) {
 
         try {
             String body = message.getBody(String.class);
+
+            return this.objectMapper.readValue(body, JmsReplyModel.class);
+        } catch (JMSException | IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    @Override
+    public <R> R toModel(Message message, Class<R> clazz) {
+
+        try {
+            String body = message.getBody(String.class);
+
             return this.objectMapper.readValue(body, clazz);
         } catch (JMSException | IOException e) {
             e.printStackTrace();
@@ -81,27 +94,34 @@ public class JmsHelperImp implements JmsHelper {
     }
 
     @Override
-    public <R extends BaseRequestModel> void replyValidationError(Message message, R receiveModel) {
+    public <R extends ReplyCandidate> R extractReplyData(Message message, Class<R> clazz) {
+        JmsReplyModel replyModel = this.extractReply(message);
+
+        return this.objectMapper.convertValue(replyModel.getData(), clazz);
+    }
+
+    @Override
+    public void replyValidationError(Message message, Object data) {
 
         try {
             LOG.info(String.format(VALIDATION_ERROR_REPLY_WILL_START, message.getJMSReplyTo()));
-            String error = this.validationHelper.getValidationError(receiveModel);
-            ErrorReplyModel errorSendModel = new ErrorReplyModel(error);
+            String error = this.validationHelper.getValidationError(data);
+            JmsReplyModel jmsReplyModel = new JmsReplyModel(false, error);
 
-            this.replyTo(message.getJMSReplyTo(), message.getJMSCorrelationID(), errorSendModel);
+            this.replyTo(message.getJMSReplyTo(), message.getJMSCorrelationID(), jmsReplyModel);
         } catch (JMSException e) {
             e.printStackTrace();
         }
     }
 
-    private <S extends BaseReplyModel> void replyTo(Destination destination, String correlationId, S model) {
+    private void replyTo(Destination destination, String correlationId, Object data) {
         LOG.info(String.format(REPLY_TO_STARTED, destination));
 
-        MessageCreator message = this.createMessage(model, correlationId);
+        MessageCreator message = this.createMessage(data, correlationId);
         this.jmsTemplate.send(destination, message);
     }
 
-    private MessageCreator createMessage (Object model) {
+    private MessageCreator createMessage(Object model) {
         return this.createMessage(model, this.randomId());
     }
 

@@ -2,10 +2,9 @@ package ichop.core.areas.thread.controllers;
 
 import ichop.core.areas.rest.helpers.ResponseHelpers;
 import ichop.core.areas.thread.constants.ThreadRoutingConstants;
-import ichop.core.areas.thread.models.jms.ThreadReply;
 import ichop.core.areas.thread.models.jms.create.ThreadCreateRequest;
 import ichop.core.areas.thread.requester.ThreadRequester;
-import org.ichop.commons.domain.EmptyReplyModel;
+import org.ichop.commons.domain.JmsReplyModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -30,7 +29,7 @@ public class ThreadController {
     public ResponseEntity create(ThreadCreateRequest request, Principal principal) {
         request.setCreatorUsername(principal.getName());
 
-        ThreadReply reply = this.threadRequester.create(request);
+        JmsReplyModel reply = this.threadRequester.create(request);
 
         return this.responseHelpers.respondGeneric(reply);
     }
@@ -38,21 +37,21 @@ public class ThreadController {
     @PreAuthorize("hasAuthority('MODERATOR')")
     @PostMapping(ThreadRoutingConstants.DELETE)
     public ResponseEntity delete(@PathVariable String id) {
-        EmptyReplyModel reply = this.threadRequester.deleteById(id);
+        JmsReplyModel reply = this.threadRequester.deleteById(id);
 
         return this.responseHelpers.respondGeneric(reply);
     }
 
     @PostMapping(ThreadRoutingConstants.INCREASE_VIEWS)
     public ResponseEntity increaseViews(@PathVariable String id) {
-        ThreadReply reply = this.threadRequester.increaseViews(id);
+        JmsReplyModel reply = this.threadRequester.increaseViews(id);
 
         return this.responseHelpers.respondGeneric(reply);
     }
 
     @GetMapping(ThreadRoutingConstants.FIND_BY)
     public ResponseEntity findBy(@RequestParam(required = true) String id) {
-        ThreadReply reply = this.threadRequester.findById(id);
+        JmsReplyModel reply = this.threadRequester.findById(id);
 
         return this.responseHelpers.respondGeneric(reply);
     }

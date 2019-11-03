@@ -9,12 +9,16 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public abstract class BaseReplyModel {
+public class JmsReplyModel {
 
     private boolean isSuccessful;
     private String message;
 
-    public BaseReplyModel(String message) {
+    private Object data;
+
+
+    public JmsReplyModel(boolean isSuccessful, String message) {
+        this.isSuccessful = isSuccessful;
         this.message = message;
     }
 }

@@ -1,7 +1,7 @@
 package ichop.core.areas.rest.helpers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import org.ichop.commons.domain.BaseReplyModel;
+import org.ichop.commons.domain.JmsReplyModel;
 import org.springframework.http.ResponseEntity;
 
 import javax.servlet.http.HttpServletResponse;
@@ -21,5 +21,5 @@ public interface ResponseHelpers {
 
     void respondError(HttpServletResponse httpServletResponse, String error);
 
-    <R extends BaseReplyModel> ResponseEntity respondGeneric(R reply);
+     ResponseEntity respondGeneric(JmsReplyModel reply);
 }

@@ -1,16 +1,13 @@
 package ichop.core.areas.user.requester;
 
-import ichop.core.areas.user.models.jms.password.change.UserChangePasswordByTokenReply;
 import ichop.core.areas.user.models.jms.password.change.UserChangePasswordByTokenRequest;
-import ichop.core.areas.user.models.jms.password.change.UserChangePasswordReply;
 import ichop.core.areas.user.models.jms.password.change.UserChangePasswordRequest;
-import ichop.core.areas.user.models.jms.password.forgotten.UserForgottenPasswordReply;
 import ichop.core.areas.user.models.jms.password.forgotten.UserForgottenPasswordRequest;
-import ichop.core.areas.user.models.jms.register.UserRegisterReply;
 import ichop.core.areas.user.models.jms.register.UserRegisterRequest;
 import ichop.core.areas.user.models.jms.retrieve.*;
 import ichop.core.areas.user.models.jms.role.*;
-import ichop.core.common.helpers.JmsHelper;
+import org.ichop.commons.domain.JmsReplyModel;
+import org.ichop.commons.helpers.JmsHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Pageable;
@@ -65,73 +62,73 @@ public class UserRequesterImp implements UserRequester {
     }
 
     @Override
-    public UserFindByEmailReply findByEmail(String email) {
+    public JmsReplyModel findByEmail(String email) {
         UserFindByEmailRequest request = new UserFindByEmailRequest(email);
 
-        return this.jmsHelper.sendAndReceive(this.findByEmailDestination, request, UserFindByEmailReply.class);
+        return this.jmsHelper.sendAndReceive(this.findByEmailDestination, request);
     }
 
     @Override
-    public UserFindByUsernameReply findByUsername(String username) {
+    public JmsReplyModel findByUsername(String username) {
         UserFindByUsernameRequest request = new UserFindByUsernameRequest(username);
 
-        return this.jmsHelper.sendAndReceive(this.findByUsernameDestination, request, UserFindByUsernameReply.class);
+        return this.jmsHelper.sendAndReceive(this.findByUsernameDestination, request);
     }
 
     @Override
-    public UserRegisterReply register(UserRegisterRequest request) {
-        return this.jmsHelper.sendAndReceive(this.registerDestination, request, UserRegisterReply.class);
+    public JmsReplyModel register(UserRegisterRequest request) {
+        return this.jmsHelper.sendAndReceive(this.registerDestination, request);
     }
 
     @Override
-    public UserChangePasswordReply changePassword(UserChangePasswordRequest request) {
-        return this.jmsHelper.sendAndReceive(this.changePasswordDestination, request, UserChangePasswordReply.class);
+    public JmsReplyModel changePassword(UserChangePasswordRequest request) {
+        return this.jmsHelper.sendAndReceive(this.changePasswordDestination, request);
     }
 
     @Override
-    public UserChangePasswordByTokenReply changePasswordByToken(UserChangePasswordByTokenRequest request) {
-        return this.jmsHelper.sendAndReceive(this.changePasswordByTokenDestination, request, UserChangePasswordByTokenReply.class);
+    public JmsReplyModel changePasswordByToken(UserChangePasswordByTokenRequest request) {
+        return this.jmsHelper.sendAndReceive(this.changePasswordByTokenDestination, request);
     }
 
     @Override
-    public UserForgottenPasswordReply forgottenPassword(UserForgottenPasswordRequest request) {
-        return this.jmsHelper.sendAndReceive(this.forgottenPasswordDestination, request, UserForgottenPasswordReply.class);
+    public JmsReplyModel forgottenPassword(UserForgottenPasswordRequest request) {
+        return this.jmsHelper.sendAndReceive(this.forgottenPasswordDestination, request);
     }
 
     @Override
-    public UsersAllPageableReply findAllPageable(Pageable pageable) {
+    public JmsReplyModel findAllPageable(Pageable pageable) {
         UsersAllPageableRequest request = new UsersAllPageableRequest();
         request.setPageable(pageable);
 
-        return this.jmsHelper.sendAndReceive(this.findAllPageableDestination, request, UsersAllPageableReply.class);
+        return this.jmsHelper.sendAndReceive(this.findAllPageableDestination, request);
     }
 
     @Override
-    public UserRolePromoteReply promote(String username) {
+    public JmsReplyModel promote(String username) {
         UserRolePromoteRequest userRolePromoteRequest = new UserRolePromoteRequest(username);
 
-        return this.jmsHelper.sendAndReceive(this.promoteDestination, userRolePromoteRequest, UserRolePromoteReply.class);
+        return this.jmsHelper.sendAndReceive(this.promoteDestination, userRolePromoteRequest);
     }
 
     @Override
-    public UserRoleDemoteReply demote(String username) {
+    public JmsReplyModel demote(String username) {
         UserRoleDemoteRequest userRoleDemoteRequest = new UserRoleDemoteRequest(username);
 
-        return this.jmsHelper.sendAndReceive(this.demoteDestination, userRoleDemoteRequest, UserRoleDemoteReply.class);
+        return this.jmsHelper.sendAndReceive(this.demoteDestination, userRoleDemoteRequest);
     }
 
     @Override
-    public UserHasNextRoleReply hasNextRole(String username) {
+    public JmsReplyModel hasNextRole(String username) {
         UserHasNextRoleRequest userHasNextRoleRequest = new UserHasNextRoleRequest(username);
 
-        return this.jmsHelper.sendAndReceive(this.hasNextRoleDestination, userHasNextRoleRequest, UserHasNextRoleReply.class);
+        return this.jmsHelper.sendAndReceive(this.hasNextRoleDestination, userHasNextRoleRequest);
     }
 
     @Override
-    public UserHasPreviousRoleReply hasPreviousRole(String username) {
+    public JmsReplyModel hasPreviousRole(String username) {
         UserHasPreviousRoleRequest userHasPreviousRoleRequest = new UserHasPreviousRoleRequest(username);
 
-        return this.jmsHelper.sendAndReceive(this.hasPreviousRoleDestination, userHasPreviousRoleRequest, UserHasPreviousRoleReply.class);
+        return this.jmsHelper.sendAndReceive(this.hasPreviousRoleDestination, userHasPreviousRoleRequest);
     }
 
 }

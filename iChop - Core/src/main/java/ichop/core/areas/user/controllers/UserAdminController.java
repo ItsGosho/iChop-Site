@@ -2,13 +2,8 @@ package ichop.core.areas.user.controllers;
 
 import ichop.core.areas.rest.helpers.ResponseHelpers;
 import ichop.core.areas.user.constants.UserRoutingConstants;
-import ichop.core.areas.user.models.jms.retrieve.UserFindByEmailReply;
-import ichop.core.areas.user.models.jms.retrieve.UserFindByUsernameReply;
-import ichop.core.areas.user.models.jms.role.UserHasNextRoleReply;
-import ichop.core.areas.user.models.jms.role.UserHasPreviousRoleReply;
-import ichop.core.areas.user.models.jms.role.UserRoleDemoteReply;
-import ichop.core.areas.user.models.jms.role.UserRolePromoteReply;
 import ichop.core.areas.user.requester.UserRequester;
+import org.ichop.commons.domain.JmsReplyModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -29,39 +24,41 @@ public class UserAdminController {
 
     @GetMapping(UserRoutingConstants.FIND_BY)
     public ResponseEntity findByUsername(@RequestParam(required = false) String username, @RequestParam(required = false) String email) {
-        if(username != null){
-            UserFindByUsernameReply reply = this.userRequester.findByUsername(username);
-            return this.responseHelpers.respondGeneric(reply);
+        JmsReplyModel reply = null;
+
+        if (username != null) {
+            reply = this.userRequester.findByUsername(username);
+        } else if (email != null) {
+            reply = this.userRequester.findByEmail(email);
         }
 
-        UserFindByEmailReply reply = this.userRequester.findByEmail(email);
         return this.responseHelpers.respondGeneric(reply);
     }
 
     @PostMapping(UserRoutingConstants.ROLE_PROMOTE)
     public ResponseEntity rolePromote(@PathVariable String username) {
-        UserRolePromoteReply reply = this.userRequester.promote(username);
+        JmsReplyModel reply = this.userRequester.promote(username);
 
         return this.responseHelpers.respondGeneric(reply);
     }
 
     @PostMapping(UserRoutingConstants.ROLE_DEMOTE)
     public ResponseEntity roleDemote(@PathVariable String username) {
-        UserRoleDemoteReply reply = this.userRequester.demote(username);
+        JmsReplyModel reply = this.userRequester.demote(username);
 
         return this.responseHelpers.respondGeneric(reply);
     }
 
     @GetMapping(UserRoutingConstants.ROLE_HAS_NEXT)
     public ResponseEntity roleHasNext(@PathVariable String username) {
-        UserHasNextRoleReply reply = this.userRequester.hasNextRole(username);
+        JmsReplyModel reply = this.userRequester.hasNextRole(username);
 
         return this.responseHelpers.respondGeneric(reply);
     }
 
     @GetMapping(UserRoutingConstants.ROLE_HAS_PREVIOUS)
     public ResponseEntity roleHasPrevious(@PathVariable String username) {
-        UserHasPreviousRoleReply reply = this.userRequester.hasPreviousRole(username);
+        JmsReplyModel reply = this.userRequester.hasPreviousRole(username);
 
         return this.responseHelpers.respondGeneric(reply);
     }

@@ -1,10 +1,10 @@
 package ichop.core.areas.user.models.jms.retrieve;
 
-import ichop.core.common.domain.BaseRequestModel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.ichop.commons.domain.RequestCandidate;
 
 import javax.validation.constraints.NotNull;
 
@@ -12,7 +12,7 @@ import javax.validation.constraints.NotNull;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserFindByUsernameRequest extends BaseRequestModel {
+public class UserFindByUsernameRequest extends RequestCandidate {
 
     @NotNull
     private String username;

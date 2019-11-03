@@ -1,7 +1,7 @@
 package org.ichop.commons.aop;
 
 
-import org.ichop.commons.domain.BaseReplyModel;
+import org.ichop.commons.domain.ReplyCandidate;
 import org.ichop.commons.helpers.JmsHelper;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -24,7 +24,7 @@ public class JmsAfterReturnProceeder extends AbstractJmsProceeder {
     }
 
     @Around(value = "@annotation(org.ichop.commons.aop.JmsAfterReturn)")
-    public <S extends BaseReplyModel> void test(ProceedingJoinPoint joinPoint) throws Throwable {
+    public <S extends ReplyCandidate> void afterReturn(ProceedingJoinPoint joinPoint) throws Throwable {
         Message message = super.getMessage(joinPoint);
         String msg = this.getMsg(joinPoint);
 

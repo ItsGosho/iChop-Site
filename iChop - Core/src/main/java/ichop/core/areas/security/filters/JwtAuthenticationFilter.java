@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.core.areas.other.utils.DateUtils;
 import ichop.core.areas.rest.helpers.ResponseHelpers;
 import ichop.core.areas.user.constants.UserRoutingConstants;
-import ichop.core.areas.user.models.jms.retrieve.UserFindByEmailReply;
+import ichop.core.areas.user.models.jms.UserReply;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -63,7 +63,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                                             FilterChain filterChain,
                                             Authentication authentication) throws IOException {
 
-        UserFindByEmailReply user = (UserFindByEmailReply) authentication.getPrincipal();
+        UserReply user = (UserReply) authentication.getPrincipal();
 
         LOG.info(String.format(AUTHENTICATION_SUCCESSFUL, user.getEmail()));
 
@@ -73,7 +73,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .withExpiresAt(DateUtils.asDate(LocalDateTime.now().plusHours(JWT_EXPIRATION_HOURS)))
                 .withClaim(EMAIL_CLAIM, user.getEmail())
                 .withClaim(USERNAME_CLAIM, user.getUsername())
-                .withClaim(ROLE_CLAIM, user.getAuthority())
+                //.withClaim(ROLE_CLAIM, user.getAuthority())
                 .withClaim(ROLES_CLAIM, roles)
                 .withIssuer(JWT_ISSUER)
                 .sign(Algorithm.HMAC512(JWT_SECRET));
