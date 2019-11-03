@@ -5,9 +5,7 @@ import ichop.users.common.aop.JmsAfterReturn;
 import ichop.users.common.aop.JmsValidate;
 import ichop.users.common.helpers.BaseListener;
 import ichop.users.common.helpers.JmsHelper;
-import ichop.users.domain.models.jms.information.UserInformationRetrieveReply;
 import ichop.users.domain.models.jms.information.UserInformationRetrieveRequest;
-import ichop.users.domain.models.jms.information.UserInformationUpdateReply;
 import ichop.users.domain.models.jms.information.UserInformationUpdateRequest;
 import ichop.users.domain.models.service.UserInformationServiceModel;
 import ichop.users.domain.models.service.UserServiceModel;
@@ -18,9 +16,6 @@ import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 
 import javax.jms.Message;
-
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 import static ichop.users.common.constants.JmsFactories.QUEUE;
 import static ichop.users.constants.UserReplyConstants.FETCHED_SUCCESSFUL;

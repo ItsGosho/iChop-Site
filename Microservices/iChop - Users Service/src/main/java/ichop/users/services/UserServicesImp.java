@@ -1,7 +1,6 @@
 package ichop.users.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ichop.users.common.service.AbstractBaseService;
 import ichop.users.constants.UserValidationConstants;
 import ichop.users.domain.entities.User;
 import ichop.users.domain.enums.Roles;
@@ -11,6 +10,7 @@ import ichop.users.domain.models.service.UserServiceModel;
 import ichop.users.repositories.UserRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.ichop.commons.service.AbstractMySQLBaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -26,7 +26,7 @@ import java.util.regex.Pattern;
 import static ichop.users.constants.UserLogConstants.REGISTRATION_SUCCESSFUL;
 
 @Service
-public class UserServicesImp extends AbstractBaseService<User, UserServiceModel, UserRepository> implements UserServices {
+public class UserServicesImp extends AbstractMySQLBaseService<User, UserServiceModel, UserRepository> implements UserServices {
 
     private static final Logger LOG = LogManager.getLogger(UserServicesImp.class);
 

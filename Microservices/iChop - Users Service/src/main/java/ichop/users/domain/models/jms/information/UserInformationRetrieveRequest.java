@@ -1,17 +1,16 @@
 package ichop.users.domain.models.jms.information;
 
-import ichop.users.common.domain.BaseRequestModel;
-import ichop.users.common.validators.SpELValidation;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.validator.constraints.Length;
+import org.ichop.commons.domain.RequestCandidate;
+import org.ichop.commons.validators.SpELValidation;
 
 import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
 @SpELValidation(value = "@userServicesImp.existsByUsername(#this.username) == true",message = "User not found!")
-public class UserInformationRetrieveRequest extends BaseRequestModel {
+public class UserInformationRetrieveRequest extends RequestCandidate {
 
     @NotNull
     private String username;

@@ -1,7 +1,6 @@
 package ichop.users.requesters;
 
 import ichop.users.common.helpers.JmsHelper;
-import ichop.users.domain.models.jms.email.EmailReply;
 import ichop.users.domain.models.jms.email.EmailResetPasswordRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

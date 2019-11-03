@@ -1,10 +1,11 @@
-package ichop.users.common.service;
+package org.ichop.commons.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ichop.users.common.domain.BaseEntity;
-import ichop.users.common.domain.BaseServiceModel;
+import org.ichop.commons.domain.BaseEntity;
+import org.ichop.commons.domain.BaseServiceModel;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.Collection;
@@ -13,9 +14,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @SuppressWarnings("all")
-public abstract class AbstractBaseService
-        <E extends BaseEntity, S extends BaseServiceModel, R extends JpaRepository<E, String>>
-        implements BaseService<S> {
+public abstract class AbstractMySQLBaseService<E extends BaseEntity, S extends BaseServiceModel, R extends JpaRepository<E, String>> implements BaseService<S> {
 
     protected ObjectMapper objectMapper;
     protected R repository;
@@ -23,7 +22,7 @@ public abstract class AbstractBaseService
     protected Class<E> entityClass;
     protected Class<S> serviceModelClass;
 
-    public AbstractBaseService(ObjectMapper objectMapper, R repository) {
+    public AbstractMySQLBaseService(ObjectMapper objectMapper, R repository) {
         this.objectMapper = objectMapper;
         this.repository = repository;
 

@@ -1,12 +1,12 @@
 package ichop.users.domain.models.jms.token.delete.password;
 
-import ichop.users.common.domain.BaseRequestModel;
 import lombok.Getter;
 import lombok.Setter;
+import org.ichop.commons.domain.RequestCandidate;
 
 @Getter
 @Setter
-public class PasswordTokenDeleteByTokenRequest extends BaseRequestModel {
+public class PasswordTokenDeleteByTokenRequest extends RequestCandidate {
 
     private String token;
 

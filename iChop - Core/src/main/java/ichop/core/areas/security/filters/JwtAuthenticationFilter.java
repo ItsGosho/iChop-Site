@@ -73,7 +73,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .withExpiresAt(DateUtils.asDate(LocalDateTime.now().plusHours(JWT_EXPIRATION_HOURS)))
                 .withClaim(EMAIL_CLAIM, user.getEmail())
                 .withClaim(USERNAME_CLAIM, user.getUsername())
-                //.withClaim(ROLE_CLAIM, user.getAuthority())
+                .withClaim(ROLE_CLAIM, user.getAuthority())
                 .withClaim(ROLES_CLAIM, roles)
                 .withIssuer(JWT_ISSUER)
                 .sign(Algorithm.HMAC512(JWT_SECRET));

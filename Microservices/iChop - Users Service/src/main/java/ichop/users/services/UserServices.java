@@ -1,9 +1,9 @@
 package ichop.users.services;
 
-import ichop.users.common.service.BaseService;
 import ichop.users.domain.models.jms.register.UserRegisterRequest;
 import ichop.users.domain.models.service.RoleServiceModel;
 import ichop.users.domain.models.service.UserServiceModel;
+import org.ichop.commons.service.BaseService;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.time.LocalDateTime;

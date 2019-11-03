@@ -21,6 +21,7 @@ public class UserReply extends ReplyCandidate implements UserDetails {
     private boolean isCredentialsNonExpired;
     private boolean isEnabled;
     private Set<RoleReply> authorities;
+    private String authority;
     private LocalDateTime registrationDate;
     private LocalDateTime lastOnline;
     private String location;

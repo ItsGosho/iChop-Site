@@ -1,23 +1,21 @@
 package ichop.users.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ichop.users.common.service.AbstractBaseService;
 import ichop.users.domain.entities.User;
 import ichop.users.domain.entities.UserInformation;
 import ichop.users.domain.models.jms.information.UserInformationUpdateRequest;
 import ichop.users.domain.models.service.UserInformationServiceModel;
-import ichop.users.domain.models.service.UserServiceModel;
 import ichop.users.repositories.UserInformationRepository;
+import org.ichop.commons.service.AbstractMySQLBaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 @Service
 public class UserInformationServicesImp
-        extends AbstractBaseService<UserInformation, UserInformationServiceModel, UserInformationRepository>
+        extends AbstractMySQLBaseService<UserInformation, UserInformationServiceModel, UserInformationRepository>
         implements UserInformationServices {
 
     private static final String BIRTHDATE_FORMAT = "d/MM/yyyy";
