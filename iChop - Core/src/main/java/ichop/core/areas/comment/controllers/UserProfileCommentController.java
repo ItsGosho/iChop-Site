@@ -1,8 +1,8 @@
 package ichop.core.areas.comment.controllers;
 
 import ichop.core.areas.comment.constants.CommentRoutingConstants;
-import ichop.core.areas.comment.models.jms.create.ThreadCommentCreateRequest;
-import ichop.core.areas.comment.requester.ThreadCommentRequester;
+import ichop.core.areas.comment.models.jms.create.UserProfileCommentCreateRequest;
+import ichop.core.areas.comment.requester.UserProfileCommentRequester;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -14,31 +14,31 @@ import org.springframework.web.bind.annotation.RestController;
 import java.security.Principal;
 
 @RestController
-public class ThreadCommentController {
+public class UserProfileCommentController {
 
-    private final ThreadCommentRequester threadCommentRequester;
+    private final UserProfileCommentRequester userProfileCommentRequester;
 
     @Autowired
-    public ThreadCommentController(ThreadCommentRequester threadCommentRequester) {
-        this.threadCommentRequester = threadCommentRequester;
+    public UserProfileCommentController(UserProfileCommentRequester userProfileCommentRequester) {
+        this.userProfileCommentRequester = userProfileCommentRequester;
     }
 
     @PreAuthorize("hasAuthority('MODERATOR')")
-    @PostMapping(CommentRoutingConstants.CREATE_THREAD)
-    public ResponseEntity create(ThreadCommentCreateRequest request, Principal principal) {
+    @PostMapping(CommentRoutingConstants.CREATE_USER_PROFILE)
+    public ResponseEntity create(UserProfileCommentCreateRequest request, Principal principal) {
 
         return null;
     }
 
-    @PreAuthorize("hasAuthority('MODERATOR') and baseCommentRequesterImp.isCreator(#id,#principal.name,'THREAD') == true")
+    @PreAuthorize("hasAuthority('MODERATOR') and baseCommentRequesterImp.isCreator(#id,#principal.name,'USER_PROFILE') == true")
     @PostMapping(CommentRoutingConstants.DELETE)
     public ResponseEntity delete(@PathVariable String id, Principal principal) {
 
         return null;
     }
 
-    @PostMapping(CommentRoutingConstants.THREAD_FIND_BY)
-    public ResponseEntity findBy(@RequestParam String threadId) {
+    @PostMapping(CommentRoutingConstants.USER_PROFILE_FIND_BY)
+    public ResponseEntity findBy(@RequestParam String userProfileUsername) {
 
         return null;
     }
