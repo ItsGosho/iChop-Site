@@ -1,7 +1,6 @@
 package ichop.tokens.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ichop.tokens.common.service.AbstractBaseService;
 import ichop.tokens.domain.entities.PasswordToken;
 import ichop.tokens.domain.models.service.PasswordTokenServiceModel;
 import ichop.tokens.domain.models.service.TokenServiceModel;
@@ -11,10 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.nio.charset.Charset;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 
 @Service
@@ -32,8 +29,8 @@ public class PasswordTokenServicesImp
 
 
     @Override
-    public Long deleteAllByUser(String userId) {
-        return super.repository.deleteAllByUserId(userId);
+    public Long deleteAllByUserUsername(String username) {
+        return super.repository.deleteAllByUserUsername(username);
     }
 
     @Override

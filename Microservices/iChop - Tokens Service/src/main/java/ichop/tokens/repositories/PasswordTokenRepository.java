@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PasswordTokenRepository extends TokenRepository<PasswordToken> {
 
-    Long deleteAllByUserId(String userId);
+    Long deleteAllByUserUsername(String username);
 
 }

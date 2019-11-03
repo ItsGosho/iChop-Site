@@ -1,17 +1,17 @@
-package ichop.tokens.domain.models.jms.create;
+package ichop.tokens.domain.models.jms;
 
-import ichop.tokens.common.domain.BaseReplyModel;
 import lombok.Getter;
 import lombok.Setter;
+import org.ichop.commons.domain.ReplyCandidate;
 
 import java.time.LocalDateTime;
 
 @Getter
 @Setter
-public abstract class TokenCreateReply extends BaseReplyModel {
+public class PasswordTokenReply extends ReplyCandidate {
 
     private String id;
-    private String userId;
+    private String userUsername;
     private String token;
     private LocalDateTime creationDate;
 

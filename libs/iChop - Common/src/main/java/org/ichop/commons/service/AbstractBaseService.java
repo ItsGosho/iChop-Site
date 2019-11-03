@@ -5,12 +5,14 @@ import org.ichop.commons.domain.BaseEntity;
 import org.ichop.commons.domain.BaseServiceModel;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @SuppressWarnings("all")
 public abstract class AbstractBaseService<E extends BaseEntity, S extends BaseServiceModel, R extends MongoRepository<E, String>> implements BaseService<S> {
@@ -78,8 +80,7 @@ public abstract class AbstractBaseService<E extends BaseEntity, S extends BaseSe
 
     @Override
     public <M> List<M> findAll(Class<M> returnModelClass) {
-        return this.repository
-                .findAll()
+        return this.repository.findAll()
                 .stream()
                 .map(x -> this.toModel(x, returnModelClass))
                 .collect(Collectors.toList());
@@ -87,8 +88,7 @@ public abstract class AbstractBaseService<E extends BaseEntity, S extends BaseSe
 
     @Override
     public List<S> findAll(Pageable pageable) {
-        return this.repository
-                .findAll(pageable)
+        return this.repository.findAll(pageable)
                 .stream()
                 .map(x -> this.toServiceModel(x))
                 .collect(Collectors.toList());

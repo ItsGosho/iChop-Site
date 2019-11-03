@@ -1,8 +1,8 @@
 package ichop.tokens.domain.entities;
 
-import ichop.tokens.common.domain.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
+import org.ichop.commons.domain.BaseEntity;
 
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 public abstract class Token extends BaseEntity {
 
     @NotNull
-    private String userId;
+    private String userUsername;
 
     @NotNull
     private String token;
