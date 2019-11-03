@@ -1,16 +1,16 @@
 package ichop.comments.domain.models.jms.delete;
 
-import ichop.comments.common.domain.BaseRequestModel;
-import ichop.comments.common.validators.SpELValidation;
 import lombok.Getter;
 import lombok.Setter;
+import org.ichop.commons.domain.RequestCandidate;
+import org.ichop.commons.validators.SpELValidation;
 
 import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
 @SpELValidation(value = "@threadCommentServicesImp.existsById(#this.id) == true", message = "Comment doesn't exist!")
-public class UserProfileCommentDeleteByIdRequest extends BaseRequestModel {
+public class UserProfileCommentDeleteByIdRequest extends RequestCandidate {
 
     @NotNull
     private String id;

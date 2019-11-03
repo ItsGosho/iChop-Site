@@ -1,6 +1,7 @@
 package ichop.core.areas.comment.requester;
 
 import ichop.core.areas.comment.models.jms.create.ThreadCommentCreateRequest;
+import ichop.core.areas.comment.models.jms.delete.ThreadCommentDeleteByIdRequest;
 import org.ichop.commons.domain.JmsReplyModel;
 import org.ichop.commons.helpers.JmsHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,11 +33,12 @@ public class ThreadCommentRequesterImp implements ThreadCommentRequester {
 
     @Override
     public JmsReplyModel create(ThreadCommentCreateRequest request) {
-        return null;
+        return this.jmsHelper.sendAndReceive(this.createDestination,request);
     }
 
     @Override
     public JmsReplyModel deleteById(String id) {
+        ThreadCommentDeleteByIdRequest request = new ThreadCommentDeleteByIdRequest(id);
         return null;
     }
 
