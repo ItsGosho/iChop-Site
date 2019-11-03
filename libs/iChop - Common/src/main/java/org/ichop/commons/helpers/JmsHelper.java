@@ -13,7 +13,7 @@ public interface JmsHelper {
 
     <R extends RequestCandidate> void send(String destination, R request);
 
-    <R extends ReplyCandidate> void replySuccessful(Message message, R reply, String msg);
+     void replySuccessful(Message message, Object reply, String msg);
 
     JmsReplyModel extractReply(Message message);
 

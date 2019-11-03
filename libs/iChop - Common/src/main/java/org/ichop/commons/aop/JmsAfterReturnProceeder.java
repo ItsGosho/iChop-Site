@@ -24,11 +24,11 @@ public class JmsAfterReturnProceeder extends AbstractJmsProceeder {
     }
 
     @Around(value = "@annotation(org.ichop.commons.aop.JmsAfterReturn)")
-    public <S extends ReplyCandidate> void afterReturn(ProceedingJoinPoint joinPoint) throws Throwable {
+    public void afterReturn(ProceedingJoinPoint joinPoint) throws Throwable {
         Message message = super.getMessage(joinPoint);
         String msg = this.getMsg(joinPoint);
 
-        S object = (S) joinPoint.proceed();
+        Object object =  joinPoint.proceed();
 
         if (object != null) {
             super.jmsHelper.replySuccessful(message, object, msg);

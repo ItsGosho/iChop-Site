@@ -1,6 +1,7 @@
 package ichop.core.areas.security.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import ichop.core.areas.user.models.jms.UserReply;
 import ichop.core.areas.user.requester.UserRequester;
 import org.ichop.commons.domain.JmsReplyModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,6 @@ public class UserSecurityService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         JmsReplyModel replyModel = this.userRequester.findByEmail(username);
 
-        return this.objectMapper.convertValue(replyModel.getData(),UserDetails.class);
+        return this.objectMapper.convertValue(replyModel.getData(), UserReply.class);
     }
 }

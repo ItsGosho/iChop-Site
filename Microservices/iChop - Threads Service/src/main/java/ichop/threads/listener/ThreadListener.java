@@ -10,7 +10,7 @@ import ichop.threads.domain.models.service.ThreadServiceModel;
 import ichop.threads.services.ThreadServices;
 import org.ichop.commons.aop.JmsAfterReturn;
 import org.ichop.commons.aop.JmsValidate;
-import org.ichop.commons.domain.EmptyReplyModel;
+import org.ichop.commons.domain.EmptyReply;
 import org.ichop.commons.helpers.BaseListener;
 import org.ichop.commons.helpers.JmsHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +38,7 @@ public class ThreadListener extends BaseListener {
     @JmsAfterReturn(message = THREAD_CREATED_SUCCESSFUL)
     @JmsListener(destination = "${artemis.queue.threads.create}", containerFactory = QUEUE)
     public ThreadReply createThread(Message message) {
-        ThreadCreateRequest requestModel = this.jmsHelper.getResultModel(message, ThreadCreateRequest.class);
+        ThreadCreateRequest requestModel = this.jmsHelper.toModel(message, ThreadCreateRequest.class);
 
         ThreadServiceModel thread = this.objectMapper.convertValue(requestModel, ThreadServiceModel.class);
 
@@ -49,7 +49,7 @@ public class ThreadListener extends BaseListener {
     @JmsAfterReturn(message = THREAD_RETRIEVED_SUCCESSFUL)
     @JmsListener(destination = "${artemis.queue.threads.find.by.id}", containerFactory = QUEUE)
     public ThreadReply getById(Message message) {
-        ThreadFindByIdRequest requestModel = this.jmsHelper.getResultModel(message, ThreadFindByIdRequest.class);
+        ThreadFindByIdRequest requestModel = this.jmsHelper.toModel(message, ThreadFindByIdRequest.class);
 
         return this.threadServices.findById(requestModel.getId(), ThreadReply.class);
     }
@@ -58,7 +58,7 @@ public class ThreadListener extends BaseListener {
     @JmsAfterReturn(message = THREAD_VIEW_INCREASED_SUCCESSFUL)
     @JmsListener(destination = "${artemis.queue.threads.increase_views}", containerFactory = QUEUE)
     public ThreadReply increaseViews(Message message) {
-        ThreadIncreaseViewsRequest requestModel = this.jmsHelper.getResultModel(message, ThreadIncreaseViewsRequest.class);
+        ThreadIncreaseViewsRequest requestModel = this.jmsHelper.toModel(message, ThreadIncreaseViewsRequest.class);
 
         return this.threadServices.increaseViews(requestModel.getId(),ThreadReply.class);
     }
@@ -66,12 +66,12 @@ public class ThreadListener extends BaseListener {
     @JmsValidate(model = ThreadDeleteByIdRequest.class)
     @JmsAfterReturn(message = THREAD_DELETED_SUCCESSFUL)
     @JmsListener(destination = "${artemis.queue.threads.delete.by.id}", containerFactory = QUEUE)
-    public EmptyReplyModel deleteById(Message message) {
-        ThreadDeleteByIdRequest requestModel = this.jmsHelper.getResultModel(message, ThreadDeleteByIdRequest.class);
+    public EmptyReply deleteById(Message message) {
+        ThreadDeleteByIdRequest requestModel = this.jmsHelper.toModel(message, ThreadDeleteByIdRequest.class);
 
         this.threadServices.deleteById(requestModel.getId());
 
-        return new EmptyReplyModel();
+        return new EmptyReply();
     }
 
 }

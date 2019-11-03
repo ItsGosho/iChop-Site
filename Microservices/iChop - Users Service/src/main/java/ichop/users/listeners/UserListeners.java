@@ -122,11 +122,11 @@ public class UserListeners extends BaseListener {
         UserChangePasswordByTokenRequest requestModel = this.jmsHelper.toModel(message, UserChangePasswordByTokenRequest.class);
 
         JmsReplyModel findByTokenReply = this.passwordTokenRequester.findByToken(requestModel.getToken());
-        PasswordTokenReply passwordToken = this.objectMapper.convertValue(findByTokenReply, PasswordTokenReply.class);
+        PasswordTokenReply passwordToken = this.objectMapper.convertValue(findByTokenReply.getData(), PasswordTokenReply.class);
 
         UserServiceModel user = this.userServices.findByUsername(passwordToken.getUserUsername());
 
-        this.userServices.changePassword(user.getEmail(), requestModel.getPassword());
+        this.userServices.changePassword(user.getUsername(), requestModel.getPassword());
 
         return new EmptyReply();
     }
@@ -139,7 +139,7 @@ public class UserListeners extends BaseListener {
 
         UserServiceModel user = this.userServices.findByEmail(requestModel.getEmail());
 
-        PasswordTokenCreateRequest passwordTokenCreateRequest = new PasswordTokenCreateRequest(user.getId());
+        PasswordTokenCreateRequest passwordTokenCreateRequest = new PasswordTokenCreateRequest(user.getUsername());
         JmsReplyModel passwordTokenCreateReply = this.passwordTokenRequester.create(passwordTokenCreateRequest);
         PasswordTokenReply passwordToken = this.objectMapper.convertValue(passwordTokenCreateReply.getData(), PasswordTokenReply.class);
 

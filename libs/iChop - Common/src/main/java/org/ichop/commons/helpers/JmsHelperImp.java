@@ -56,7 +56,7 @@ public class JmsHelperImp implements JmsHelper {
     }
 
     @Override
-    public <R extends ReplyCandidate> void replySuccessful(Message message, R reply, String msg) {
+    public void replySuccessful(Message message, Object reply, String msg) {
         try {
             JmsReplyModel jmsReplyModel = new JmsReplyModel(true, msg, reply);
 
