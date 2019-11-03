@@ -2,63 +2,37 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1984862c-2f8c-4410-af36-a1dcaaa3ddaf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Email Service/emails.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Email Service/emails.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Email Service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Email Service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Email Service/src/main/java/ichop/emails/Emails.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Email Service/src/main/java/ichop/emails/Emails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/iChop - Tokens Service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/iChop - Tokens Service.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/Tokens.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/Tokens.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/common/aop/AbstractJmsProceeder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/common/aop/JmsAfterReturn.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/common/aop/JmsAfterReturnProceeder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/common/aop/JmsValidate.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/common/aop/JmsValidateProceeder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/common/configurations/ArtemisConfiguration.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/common/configurations/ExecutorsConfiguration.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/common/configurations/ValidatorConfiguration.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/common/constants/ColorCodesConstants.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/common/constants/JmsFactories.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/common/constants/JmsLoggingConstants.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/common/domain/BaseEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/common/domain/BaseReplyModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/common/domain/BaseRequestModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/common/domain/BaseServiceModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/common/domain/ErrorReplyModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/common/helpers/BaseListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/common/helpers/JmsHelper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/common/helpers/JmsHelperImp.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/common/service/AbstractBaseService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/common/service/BaseService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/common/validation/ValidationHelper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/common/validation/ValidationHelperImp.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/common/validators/SpELValidation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/common/validators/SpELValidationValidator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/constants/ConditionalConstants.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/domain/entities/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/domain/entities/Token.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/domain/models/jms/create/TokenCreateReply.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/domain/models/jms/create/password/PasswordTokenCreateReply.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/domain/models/jms/create/password/PasswordTokenCreateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/domain/models/jms/create/PasswordTokenCreateRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/domain/models/jms/delete/password/PasswordTokenDeleteByTokenReply.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/domain/models/jms/delete/password/PasswordTokenDeleteByTokenRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/domain/models/jms/delete/PasswordTokenDeleteByTokenRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/domain/models/jms/retrieve/password/PasswordTokenFindByTokenReply.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/domain/models/jms/retrieve/password/PasswordTokenFindByTokenRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/domain/models/jms/retrieve/PasswordTokenFindByTokenRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/domain/models/jms/valid/password/PasswordTokenIsValidReply.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/domain/models/jms/valid/password/PasswordTokenIsValidRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/domain/models/jms/valid/PasswordTokenIsValidRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/domain/models/service/TokenServiceModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/domain/models/service/TokenServiceModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/listener/PasswordTokenListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/listener/PasswordTokenListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/repositories/PasswordTokenRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/repositories/PasswordTokenRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/repositories/TokenRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/repositories/TokenRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/services/AbstractTokenServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/services/AbstractTokenServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/services/PasswordTokenServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/services/PasswordTokenServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/services/PasswordTokenServicesImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/services/PasswordTokenServicesImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/services/TokenServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/services/TokenServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/validators/ExistsBy.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/main/java/ichop/tokens/validators/ExistsByValidator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/test/java/configurations/constants/ConditionalsConditionConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Tokens Service/src/test/java/configurations/constants/ConditionalsConditionConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Email Service/src/main/java/ichop/emails/common/aop/AbstractJmsProceeder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Email Service/src/main/java/ichop/emails/common/aop/JmsAfterReturn.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Email Service/src/main/java/ichop/emails/common/aop/JmsAfterReturnProceeder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Email Service/src/main/java/ichop/emails/common/aop/JmsValidate.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Email Service/src/main/java/ichop/emails/common/aop/JmsValidateProceeder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Email Service/src/main/java/ichop/emails/common/configurations/ArtemisConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Email Service/src/main/java/ichop/emails/common/configurations/ExecutorsConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Email Service/src/main/java/ichop/emails/common/configurations/ValidatorConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Email Service/src/main/java/ichop/emails/common/constants/ColorCodesConstants.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Email Service/src/main/java/ichop/emails/common/constants/JmsFactories.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Email Service/src/main/java/ichop/emails/common/constants/JmsLoggingConstants.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Email Service/src/main/java/ichop/emails/common/domain/BaseEntity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Email Service/src/main/java/ichop/emails/common/domain/BaseReplyModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Email Service/src/main/java/ichop/emails/common/domain/BaseRequestModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Email Service/src/main/java/ichop/emails/common/domain/BaseServiceModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Email Service/src/main/java/ichop/emails/common/domain/ErrorReplyModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Email Service/src/main/java/ichop/emails/common/helpers/BaseListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Email Service/src/main/java/ichop/emails/common/helpers/JmsHelper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Email Service/src/main/java/ichop/emails/common/helpers/JmsHelperImp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Email Service/src/main/java/ichop/emails/common/service/AbstractBaseService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Email Service/src/main/java/ichop/emails/common/service/BaseService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Email Service/src/main/java/ichop/emails/common/validation/ValidationHelper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Email Service/src/main/java/ichop/emails/common/validation/ValidationHelperImp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Email Service/src/main/java/ichop/emails/common/validators/SpELValidation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Email Service/src/main/java/ichop/emails/common/validators/SpELValidationValidator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Email Service/src/main/java/ichop/emails/constants/ConditionalConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Email Service/src/main/java/ichop/emails/constants/ConditionalConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Email Service/src/main/java/ichop/emails/domain/models/jms/EmailReply.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Email Service/src/main/java/ichop/emails/domain/models/jms/EmailResetPasswordRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Email Service/src/main/java/ichop/emails/domain/models/jms/EmailResetPasswordRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Email Service/src/main/java/ichop/emails/listeners/EmailListeners.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Email Service/src/main/java/ichop/emails/listeners/EmailListeners.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Email Service/src/test/java/configurations/constants/ConditionalsConditionConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Email Service/src/test/java/configurations/constants/ConditionalsConditionConstants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../libs/iChop - Common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../libs/iChop - Common/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../libs/iChop - Common/src/main/java/org/ichop/commons/service/AbstractBaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../libs/iChop - Common/src/main/java/org/ichop/commons/service/AbstractBaseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../libs/iChop - Common/src/main/java/org/ichop/commons/service/AbstractMySQLBaseService.java" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
