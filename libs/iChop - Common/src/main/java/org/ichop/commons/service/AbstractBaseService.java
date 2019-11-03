@@ -124,8 +124,8 @@ public abstract class AbstractBaseService<E, S extends BaseServiceModel, R exten
         return result;
     }
 
-    protected <M> List<S> mapToList(Collection collection, Class<M> clazz) {
-        List<S> result = (List<S>) collection
+    protected <M> List<M> mapToList(Collection collection, Class<M> clazz) {
+        List<M> result = (List<M>) collection
                 .stream()
                 .map(x -> this.toModel((E) x, clazz))
                 .collect(Collectors.toList());
