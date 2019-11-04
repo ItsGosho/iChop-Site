@@ -1,6 +1,7 @@
 package configurations.constants;
 
-import static ichop.reactions.constants.ConditionalConstants.ARTEMIS_CONFIGURATION;
+
+import static org.ichop.commons.constants.ConditionalConstants.ARTEMIS_CONFIGURATION;
 
 public class ConditionalsConditionConstants {
 

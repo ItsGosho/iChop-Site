@@ -1,16 +1,16 @@
-package ichop.reactions.domain.models.jms.create;
+package ichop.reactions.domain.models.jms;
 
-import ichop.reactions.common.domain.BaseReplyModel;
 import ichop.reactions.domain.enums.EntityType;
 import ichop.reactions.domain.enums.ReactionType;
 import lombok.Getter;
 import lombok.Setter;
+import org.ichop.commons.domain.ReplyCandidate;
 
 import java.time.LocalDateTime;
 
 @Getter
 @Setter
-public class ReactionCreateReply extends BaseReplyModel {
+public class ReactionReply extends ReplyCandidate {
 
     private String id;
     private String userId;
