@@ -1,11 +1,11 @@
 package ichop.storage.models;
 
-import ichop.storage.common.domain.BaseRequestModel;
 import ichop.storage.validators.Base64;
 import ichop.storage.validators.Base64Image;
 import ichop.storage.validators.Base64Size;
 import lombok.Getter;
 import lombok.Setter;
+import org.ichop.commons.domain.RequestCandidate;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -14,7 +14,7 @@ import static ichop.storage.constants.ValidationMessages.*;
 
 @Getter
 @Setter
-public class UserSetAvatarRequest extends BaseRequestModel {
+public class UserSetAvatarRequest extends RequestCandidate {
 
     @NotNull
     @NotEmpty
