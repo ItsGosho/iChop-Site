@@ -1,15 +1,16 @@
-package ichop.reports.domain.models.service;
+package ichop.reports.domain.models.jms;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.ichop.commons.domain.BaseServiceModel;
+import org.ichop.commons.domain.ReplyCandidate;
 
 import java.time.LocalDateTime;
 
 @Getter
 @Setter
-public abstract class ReportServiceModel extends BaseServiceModel {
+public abstract class ReportReply extends ReplyCandidate {
 
+    private String id;
     private String userId;
     private String reason;
     private LocalDateTime reportedOn;

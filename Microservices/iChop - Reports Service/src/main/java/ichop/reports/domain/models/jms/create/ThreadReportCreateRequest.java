@@ -1,8 +1,8 @@
-package ichop.reports.domain.models.jms.create.request;
+package ichop.reports.domain.models.jms.create;
 
-import ichop.reports.common.validators.SpELValidation;
 import lombok.Getter;
 import lombok.Setter;
+import org.ichop.commons.validators.SpELValidation;
 
 import javax.validation.constraints.NotNull;
 

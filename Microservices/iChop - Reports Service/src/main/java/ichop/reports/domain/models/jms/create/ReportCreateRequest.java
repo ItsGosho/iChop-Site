@@ -1,15 +1,15 @@
-package ichop.reports.domain.models.jms.create.request;
+package ichop.reports.domain.models.jms.create;
 
-import ichop.reports.common.domain.BaseRequestModel;
 import lombok.Getter;
 import lombok.Setter;
+import org.ichop.commons.domain.RequestCandidate;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-public abstract class ReportCreateRequest extends BaseRequestModel {
+public abstract class ReportCreateRequest extends RequestCandidate {
 
     @NotNull
     private String userId;

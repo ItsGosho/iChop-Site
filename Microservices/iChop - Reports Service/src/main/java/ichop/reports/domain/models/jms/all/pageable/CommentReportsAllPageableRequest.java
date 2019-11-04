@@ -1,4 +1,4 @@
-package ichop.reports.domain.models.jms.all.pageable.request;
+package ichop.reports.domain.models.jms.all.pageable;
 
 import ichop.reports.domain.enums.Type;
 import lombok.Getter;
