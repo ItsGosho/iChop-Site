@@ -48,7 +48,7 @@ public class ThreadReportListeners extends BaseListener {
 
     @JmsValidate(model = ThreadReportDeleteByIdRequest.class)
     @JmsAfterReturn(message = REPORT_DELETED_SUCCESSFUL)
-    @JmsListener(destination = "${artemis.queue.reports.thread.delete_by_id}", containerFactory = QUEUE)
+    @JmsListener(destination = "${artemis.queue.reports.thread.delete.by.id}", containerFactory = QUEUE)
     public EmptyReply deleteByThreadId(Message message) {
         ThreadReportDeleteByIdRequest requestModel = this.jmsHelper.toModel(message, ThreadReportDeleteByIdRequest.class);
 
@@ -59,7 +59,7 @@ public class ThreadReportListeners extends BaseListener {
 
     @JmsValidate(model = ThreadReportsAllPageableRequest.class)
     @JmsAfterReturn(message = REPORTS_FETCHED_SUCCESSFUL)
-    @JmsListener(destination = "${artemis.queue.reports.thread.all_pageable}", containerFactory = QUEUE)
+    @JmsListener(destination = "${artemis.queue.reports.thread.find.pageable}", containerFactory = QUEUE)
     public List<ThreadReportReply> allPageable(Message message) {
         ThreadReportsAllPageableRequest requestModel = this.jmsHelper.toModel(message, ThreadReportsAllPageableRequest.class);
 

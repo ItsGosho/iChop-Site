@@ -48,7 +48,7 @@ public class CommentReportListeners extends BaseListener {
 
     @JmsValidate(model = CommentReportDeleteByIdRequest.class)
     @JmsAfterReturn(message = REPORT_DELETED_SUCCESSFUL)
-    @JmsListener(destination = "${artemis.queue.reports.comment.delete_by_id}", containerFactory = QUEUE)
+    @JmsListener(destination = "${artemis.queue.reports.comment.delete.by.id}", containerFactory = QUEUE)
     public EmptyReply deleteByCommentId(Message message) {
         CommentReportDeleteByIdRequest requestModel = this.jmsHelper.toModel(message, CommentReportDeleteByIdRequest.class);
 
@@ -59,7 +59,7 @@ public class CommentReportListeners extends BaseListener {
 
     @JmsValidate(model = CommentReportsAllPageableRequest.class)
     @JmsAfterReturn(message = REPORTS_FETCHED_SUCCESSFUL)
-    @JmsListener(destination = "${artemis.queue.reports.comment.all_pageable}", containerFactory = QUEUE)
+    @JmsListener(destination = "${artemis.queue.reports.comment.find.pageable}", containerFactory = QUEUE)
     public List<CommentReportReply> allPageable(Message message) {
         CommentReportsAllPageableRequest requestModel = this.jmsHelper.toModel(message, CommentReportsAllPageableRequest.class);
 
