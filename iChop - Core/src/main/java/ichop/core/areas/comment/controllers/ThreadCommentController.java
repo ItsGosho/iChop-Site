@@ -1,7 +1,9 @@
 package ichop.core.areas.comment.controllers;
 
 import ichop.core.areas.comment.constants.CommentRoutingConstants;
+import ichop.core.areas.comment.models.CommentType;
 import ichop.core.areas.comment.models.jms.create.ThreadCommentCreateRequest;
+import ichop.core.areas.comment.requester.BaseCommentRequester;
 import ichop.core.areas.comment.requester.ThreadCommentRequester;
 import ichop.core.areas.rest.helpers.ResponseHelpers;
 import ichop.core.areas.thread.requester.ThreadRequester;
@@ -9,10 +11,7 @@ import org.ichop.commons.domain.JmsReplyModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 
@@ -21,12 +20,17 @@ public class ThreadCommentController {
 
     private final ThreadRequester threadRequester;
     private final ThreadCommentRequester threadCommentRequester;
+    private final BaseCommentRequester baseCommentRequester;
     private final ResponseHelpers responseHelpers;
 
     @Autowired
-    public ThreadCommentController(ThreadRequester threadRequester, ThreadCommentRequester threadCommentRequester, ResponseHelpers responseHelpers) {
+    public ThreadCommentController(ThreadRequester threadRequester,
+                                   ThreadCommentRequester threadCommentRequester,
+                                   BaseCommentRequester baseCommentRequester,
+                                   ResponseHelpers responseHelpers) {
         this.threadRequester = threadRequester;
         this.threadCommentRequester = threadCommentRequester;
+        this.baseCommentRequester = baseCommentRequester;
         this.responseHelpers = responseHelpers;
     }
 
@@ -38,22 +42,37 @@ public class ThreadCommentController {
         JmsReplyModel threadReply = this.threadRequester.findById(request.getThreadId());
 
         if (threadReply.isSuccessful()) {
-            return null;
+            JmsReplyModel result = this.threadCommentRequester.create(request);
+            return this.responseHelpers.respondGeneric(result);
         }
 
         return this.responseHelpers.respondGeneric(threadReply);
     }
 
-    @PreAuthorize("hasAuthority('MODERATOR') and @baseCommentRequesterImp.isCreator(#threadId,#principal.name,'THREAD') == true")
+    @PreAuthorize("hasAuthority('MODERATOR') or @baseCommentRequesterImp.isCreator(#commentId,#principal.name,'THREAD') == true")
     @PostMapping(CommentRoutingConstants.THREAD_DELETE)
     public ResponseEntity delete(@PathVariable String threadId, @PathVariable String commentId, Principal principal) {
 
-        return null;
+        JmsReplyModel threadReply = this.threadRequester.findById(threadId);
+
+        if (threadReply.isSuccessful()) {
+            JmsReplyModel result = this.baseCommentRequester.deleteById(commentId, CommentType.THREAD);
+            return this.responseHelpers.respondGeneric(result);
+        }
+
+        return this.responseHelpers.respondGeneric(threadReply);
     }
 
-    @PostMapping(CommentRoutingConstants.THREAD_ALL)
-    public ResponseEntity findBy(@RequestParam String threadId) {
+    @GetMapping(CommentRoutingConstants.THREAD_ALL)
+    public ResponseEntity findBy(@PathVariable String threadId) {
 
-        return null;
+        JmsReplyModel threadReply = this.threadRequester.findById(threadId);
+
+        if (threadReply.isSuccessful()) {
+            JmsReplyModel result = this.threadCommentRequester.findByThreadId(threadId);
+            return this.responseHelpers.respondGeneric(result);
+        }
+
+        return this.responseHelpers.respondGeneric(threadReply);
     }
 }

@@ -42,11 +42,11 @@ public class BaseCommentRequesterImp implements BaseCommentRequester {
     }
 
     @Override
-    public boolean isCreator(String threadId, String creatorUsername, CommentType type) {
-        CommentIsCreatorRequest request = new CommentIsCreatorRequest(threadId, creatorUsername, type);
+    public boolean isCreator(String commentId, String creatorUsername, CommentType type) {
+        CommentIsCreatorRequest request = new CommentIsCreatorRequest(commentId, creatorUsername, type);
 
         JmsReplyModel reply = this.jmsHelper.sendAndReceive(this.isCreatorDestination, request);
 
-        return reply.isSuccessful() ? this.objectMapper.convertValue(reply, BoolReply.class).getResult() : false;
+        return reply.isSuccessful() ? this.objectMapper.convertValue(reply.getData(), BoolReply.class).getResult() : false;
     }
 }
