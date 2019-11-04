@@ -46,7 +46,7 @@ public class ReactionListeners extends BaseListener {
 
     @JmsValidate(model = ReactionIsReactedRequest.class)
     @JmsAfterReturn(message = REACTION_CHECK_SUCCESSFUL)
-    @JmsListener(destination = "${artemis.queue.reactions.is_reacted}", containerFactory = QUEUE)
+    @JmsListener(destination = "${artemis.queue.reactions.is.reacted}", containerFactory = QUEUE)
     public BoolReply isReacted(Message message) {
         ReactionIsReactedRequest requestModel = this.jmsHelper.toModel(message, ReactionIsReactedRequest.class);
 
