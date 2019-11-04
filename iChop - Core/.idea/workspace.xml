@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1984862c-2f8c-4410-af36-a1dcaaa3ddaf" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Comments Service/src/main/java/ichop/comments/listeners/UserProfileListeners.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Comments Service/src/main/java/ichop/comments/listeners/UserProfileListeners.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/models/jms/create/ThreadCommentCreateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/models/jms/create/ThreadCommentCreateRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/models/jms/create/UserProfileCommentCreateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/models/jms/create/UserProfileCommentCreateRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/controllers/UserProfileCommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/controllers/UserProfileCommentController.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -397,7 +397,7 @@
       <workItem from="1572794546774" duration="7920000" />
       <workItem from="1572885862346" duration="28000" />
       <workItem from="1572885911737" duration="13000" />
-      <workItem from="1572897390363" duration="5327000" />
+      <workItem from="1572897390363" duration="6547000" />
     </task>
     <servers />
   </component>

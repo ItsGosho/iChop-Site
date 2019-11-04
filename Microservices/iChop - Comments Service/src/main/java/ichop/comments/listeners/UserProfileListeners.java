@@ -17,8 +17,7 @@ import org.springframework.stereotype.Component;
 import javax.jms.Message;
 import java.util.List;
 
-import static ichop.comments.constants.CommentReplyConstants.COMMENT_CREATED_SUCCESSFUL;
-import static ichop.comments.constants.CommentReplyConstants.COMMENT_DELETE_SUCCESSFUL;
+import static ichop.comments.constants.CommentReplyConstants.*;
 import static org.ichop.commons.constants.JmsFactories.QUEUE;
 
 @Component
@@ -45,7 +44,7 @@ public class UserProfileListeners extends BaseListener {
     }
 
     @JmsValidate(model = UserProfileCommentsByUserProfileUsernameRequest.class)
-    @JmsAfterReturn(message = COMMENT_DELETE_SUCCESSFUL)
+    @JmsAfterReturn(message = COMMENTS_FETCHED_SUCCESSFUL)
     @JmsListener(destination = "${artemis.queue.comments.user.profile.find.by.userProfileUsername}", containerFactory = QUEUE)
     public List<UserProfileCommentReplyModel> allByUserProfileUsername(Message message) {
         UserProfileCommentsByUserProfileUsernameRequest requestModel = this.jmsHelper.toModel(message, UserProfileCommentsByUserProfileUsernameRequest.class);
