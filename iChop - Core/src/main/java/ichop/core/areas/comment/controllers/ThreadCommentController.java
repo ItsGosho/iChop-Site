@@ -24,7 +24,7 @@ public class ThreadCommentController {
     }
 
     @PreAuthorize("hasAuthority('MODERATOR')")
-    @PostMapping(CommentRoutingConstants.CREATE_THREAD)
+    @PostMapping(CommentRoutingConstants.THREAD_CREATE)
     public ResponseEntity create(ThreadCommentCreateRequest request, Principal principal) {
 
         return null;

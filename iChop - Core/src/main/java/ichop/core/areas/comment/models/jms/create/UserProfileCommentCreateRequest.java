@@ -8,7 +8,8 @@ import org.ichop.commons.domain.RequestCandidate;
 @Setter
 public class UserProfileCommentCreateRequest extends RequestCandidate {
 
-    private String content;
     private String creatorUsername;
+    private String content;
+
     private String userProfileUsername;
 }

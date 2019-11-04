@@ -24,7 +24,7 @@ public class UserProfileCommentController {
     }
 
     @PreAuthorize("hasAuthority('MODERATOR')")
-    @PostMapping(CommentRoutingConstants.CREATE_USER_PROFILE)
+    @PostMapping(CommentRoutingConstants.USER_PROFILE_CREATE)
     public ResponseEntity create(UserProfileCommentCreateRequest request, Principal principal) {
 
         return null;

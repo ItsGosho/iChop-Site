@@ -2,14 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1984862c-2f8c-4410-af36-a1dcaaa3ddaf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Comments Service/comments.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Data Storage/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Data Storage/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Data Storage/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Data Storage/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reactions Service/reactions.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/reports.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/constants/CommentRoutingConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/constants/CommentRoutingConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/controllers/ThreadCommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/controllers/ThreadCommentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/controllers/UserProfileCommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/controllers/UserProfileCommentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/models/jms/create/ThreadCommentCreateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/models/jms/create/ThreadCommentCreateRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/models/jms/create/UserProfileCommentCreateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/models/jms/create/UserProfileCommentCreateRequest.java" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,28 +113,6 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="32" column="18" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="28">
-              <caret line="2" column="27" selection-start-line="2" selection-end-line="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -169,44 +146,6 @@
   <component name="ProjectId" id="1SLVaB7pWgMMfGwTcFjdhnSpPNL" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
-  </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="iChop-Core" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iChop - Core" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="iChop-Core" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iChop - Core" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="iChop-Core" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iChop - Core" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="iChop-Core" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iChop - Core" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="PackagesPane" />
-    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
@@ -467,6 +406,7 @@
       <workItem from="1572794546774" duration="7920000" />
       <workItem from="1572885862346" duration="28000" />
       <workItem from="1572885911737" duration="13000" />
+      <workItem from="1572897390363" duration="1422000" />
     </task>
     <servers />
   </component>
@@ -502,9 +442,6 @@
       <configuration name="com.ichop.core in core" configurationId="JUnit" />
     </history-entry>
   </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41000" />
-  </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
       <is-autoscroll-to-source value="true" />
@@ -513,46 +450,6 @@
       <are-packages-shown value="true" />
       <is-autoscroll-to-source value="true" />
     </todo-panel>
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="true" />
-    <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25266525" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Designer" order="2" />
-      <window_info id="Image Layers" order="3" />
-      <window_info id="Capture Tool" order="4" />
-      <window_info id="UI Designer" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info id="Web" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Spring" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Statistic" order="11" />
-      <window_info anchor="bottom" id="Problems" order="12" />
-      <window_info anchor="bottom" id="Java Enterprise" order="13" />
-      <window_info anchor="bottom" id="Database Changes" order="14" />
-      <window_info anchor="bottom" id="Version Control" order="15" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Maven" order="3" />
-      <window_info anchor="right" id="Palette" order="4" />
-      <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info anchor="right" id="Database" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Theme Preview" order="8" />
-      <window_info anchor="right" id="Bean Validation" order="9" />
-    </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -563,12 +460,6 @@
         <entry key="MAIN">
           <value>
             <State>
-              <option name="RECENTLY_FILTERED_USER_GROUPS">
-                <collection />
-              </option>
-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
-              </option>
               <option name="COLUMN_ORDER" />
             </State>
           </value>
@@ -596,32 +487,14 @@
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ichop/core/security/handlers/CustomAuthenticationFailureHandler.java</url>
           <line>25</line>
-          <properties />
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ichop/core/security/handlers/CustomAuthenticationFailureHandler.java</url>
           <line>23</line>
-          <properties />
           <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="32" column="18" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="2" column="27" selection-start-line="2" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
   </component>
 </project>
