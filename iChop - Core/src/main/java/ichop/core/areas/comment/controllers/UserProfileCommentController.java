@@ -31,13 +31,13 @@ public class UserProfileCommentController {
     }
 
     @PreAuthorize("hasAuthority('MODERATOR') and baseCommentRequesterImp.isCreator(#id,#principal.name,'USER_PROFILE') == true")
-    @PostMapping(CommentRoutingConstants.DELETE)
+    @PostMapping(CommentRoutingConstants.USER_PROFILE_DELETE)
     public ResponseEntity delete(@PathVariable String id, Principal principal) {
 
         return null;
     }
 
-    @PostMapping(CommentRoutingConstants.USER_PROFILE_FIND_BY)
+    @PostMapping(CommentRoutingConstants.USER_PROFILE_ALL)
     public ResponseEntity findBy(@RequestParam String userProfileUsername) {
 
         return null;

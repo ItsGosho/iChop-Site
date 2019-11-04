@@ -26,18 +26,19 @@ public class ThreadCommentController {
     @PreAuthorize("hasAuthority('MODERATOR')")
     @PostMapping(CommentRoutingConstants.THREAD_CREATE)
     public ResponseEntity create(ThreadCommentCreateRequest request, Principal principal) {
+        request.setCreatorUsername(principal.getName());
 
         return null;
     }
 
-    @PreAuthorize("hasAuthority('MODERATOR') and baseCommentRequesterImp.isCreator(#id,#principal.name,'THREAD') == true")
-    @PostMapping(CommentRoutingConstants.DELETE)
-    public ResponseEntity delete(@PathVariable String id, Principal principal) {
+    @PreAuthorize("hasAuthority('MODERATOR') and @baseCommentRequesterImp.isCreator(#threadId,#principal.name,'THREAD') == true")
+    @PostMapping(CommentRoutingConstants.THREAD_DELETE)
+    public ResponseEntity delete(@PathVariable String threadId,@PathVariable String commentId, Principal principal) {
 
         return null;
     }
 
-    @PostMapping(CommentRoutingConstants.THREAD_FIND_BY)
+    @PostMapping(CommentRoutingConstants.THREAD_ALL)
     public ResponseEntity findBy(@RequestParam String threadId) {
 
         return null;

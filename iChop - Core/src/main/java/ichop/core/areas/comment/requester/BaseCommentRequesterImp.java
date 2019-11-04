@@ -47,6 +47,6 @@ public class BaseCommentRequesterImp implements BaseCommentRequester {
 
         JmsReplyModel reply = this.jmsHelper.sendAndReceive(this.isCreatorDestination, request);
 
-        return this.objectMapper.convertValue(reply, BoolReply.class).getResult();
+        return reply.isSuccessful() ? this.objectMapper.convertValue(reply, BoolReply.class).getResult() : false;
     }
 }

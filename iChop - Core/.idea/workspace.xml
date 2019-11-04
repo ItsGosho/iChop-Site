@@ -6,8 +6,6 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/constants/CommentRoutingConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/constants/CommentRoutingConstants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/controllers/ThreadCommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/controllers/ThreadCommentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/controllers/UserProfileCommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/controllers/UserProfileCommentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/models/jms/create/ThreadCommentCreateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/models/jms/create/ThreadCommentCreateRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/models/jms/create/UserProfileCommentCreateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/models/jms/create/UserProfileCommentCreateRequest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -406,7 +404,7 @@
       <workItem from="1572794546774" duration="7920000" />
       <workItem from="1572885862346" duration="28000" />
       <workItem from="1572885911737" duration="13000" />
-      <workItem from="1572897390363" duration="1422000" />
+      <workItem from="1572897390363" duration="1843000" />
     </task>
     <servers />
   </component>
@@ -493,6 +491,16 @@
           <url>file://$PROJECT_DIR$/src/main/java/ichop/core/security/handlers/CustomAuthenticationFailureHandler.java</url>
           <line>23</line>
           <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/controllers/ThreadCommentController.java</url>
+          <line>43</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/controllers/ThreadCommentController.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

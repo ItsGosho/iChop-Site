@@ -36,13 +36,13 @@ public class GenericCommentServices {
         Query query = new Query();
         query.addCriteria(Criteria.where("_id").is(id));
 
-        return this.mongoTemplate.find(query, this.getEntity(type)) != null;
+        return this.mongoTemplate.findOne(query, this.getEntity(type)) != null;
     }
 
     public <C extends Comment> boolean isCreator(String id, String creatorUsername, Type type) {
         Query query = new Query();
         query.addCriteria(Criteria.where("_id").is(id));
-        C comment = (C) this.mongoTemplate.find(query, this.getEntity(type));
+        C comment = (C) this.mongoTemplate.findOne(query, this.getEntity(type));
 
         return comment.getCreatorUsername().equals(creatorUsername);
     }
