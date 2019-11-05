@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1984862c-2f8c-4410-af36-a1dcaaa3ddaf" name="Default Changelist" comment="" />
+    <list default="true" id="1984862c-2f8c-4410-af36-a1dcaaa3ddaf" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/models/jms/check/ReactionIsReactedRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/models/jms/check/ReactionIsReactedRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/requesters/ReactionRequester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/requesters/ReactionRequester.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/requesters/ReactionRequesterImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/requesters/ReactionRequesterImp.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,10 +113,14 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ichop/core/areas/report/constants/ReportRoutingConstants.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/requesters/ReactionRequesterImp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="8" column="100" selection-start-line="8" selection-start-column="100" selection-end-line="8" selection-end-column="100" />
+            <state relative-caret-position="504">
+              <caret line="36" column="18" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#741#776#1" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -157,7 +165,6 @@
         <option value="$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/models/ReactionOn.java" />
         <option value="$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/models/jms/ReactionReply.java" />
         <option value="$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/models/jms/create/ReactionCreateRequest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/models/jms/check/ReactionIsReactedRequest.java" />
         <option value="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/models/ReportOn.java" />
         <option value="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/models/jms/CommentReportReply.java" />
         <option value="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/models/jms/delete/CommentReportDeleteByIdRequest.java" />
@@ -169,6 +176,8 @@
         <option value="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/models/jms/all/pageable/ReportsAllPageableRequest.java" />
         <option value="$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/constants/ReactionRoutingConstants.java" />
         <option value="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/constants/ReportRoutingConstants.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/models/jms/check/ReactionIsReactedRequest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/requesters/ReactionRequesterImp.java" />
       </list>
     </option>
   </component>
@@ -256,7 +265,7 @@
               <item name="ichop" type="462c0819:PsiDirectoryNode" />
               <item name="core" type="462c0819:PsiDirectoryNode" />
               <item name="areas" type="462c0819:PsiDirectoryNode" />
-              <item name="report" type="462c0819:PsiDirectoryNode" />
+              <item name="comment" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="iChop-Core" type="b2602c69:ProjectViewProjectNode" />
@@ -267,8 +276,7 @@
               <item name="ichop" type="462c0819:PsiDirectoryNode" />
               <item name="core" type="462c0819:PsiDirectoryNode" />
               <item name="areas" type="462c0819:PsiDirectoryNode" />
-              <item name="report" type="462c0819:PsiDirectoryNode" />
-              <item name="constants" type="462c0819:PsiDirectoryNode" />
+              <item name="reaction" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="iChop-Core" type="b2602c69:ProjectViewProjectNode" />
@@ -279,7 +287,7 @@
               <item name="ichop" type="462c0819:PsiDirectoryNode" />
               <item name="core" type="462c0819:PsiDirectoryNode" />
               <item name="areas" type="462c0819:PsiDirectoryNode" />
-              <item name="report" type="462c0819:PsiDirectoryNode" />
+              <item name="reaction" type="462c0819:PsiDirectoryNode" />
               <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -291,23 +299,9 @@
               <item name="ichop" type="462c0819:PsiDirectoryNode" />
               <item name="core" type="462c0819:PsiDirectoryNode" />
               <item name="areas" type="462c0819:PsiDirectoryNode" />
-              <item name="report" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-              <item name="jms" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="iChop-Core" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iChop - Core" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ichop" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
-              <item name="areas" type="462c0819:PsiDirectoryNode" />
-              <item name="report" type="462c0819:PsiDirectoryNode" />
+              <item name="reaction" type="462c0819:PsiDirectoryNode" />
               <item name="models" type="462c0819:PsiDirectoryNode" />
               <item name="jms" type="462c0819:PsiDirectoryNode" />
-              <item name="create" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="iChop-Core" type="b2602c69:ProjectViewProjectNode" />
@@ -318,10 +312,22 @@
               <item name="ichop" type="462c0819:PsiDirectoryNode" />
               <item name="core" type="462c0819:PsiDirectoryNode" />
               <item name="areas" type="462c0819:PsiDirectoryNode" />
-              <item name="report" type="462c0819:PsiDirectoryNode" />
+              <item name="reaction" type="462c0819:PsiDirectoryNode" />
               <item name="models" type="462c0819:PsiDirectoryNode" />
               <item name="jms" type="462c0819:PsiDirectoryNode" />
-              <item name="delete" type="462c0819:PsiDirectoryNode" />
+              <item name="check" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iChop-Core" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iChop - Core" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ichop" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+              <item name="areas" type="462c0819:PsiDirectoryNode" />
+              <item name="reaction" type="462c0819:PsiDirectoryNode" />
+              <item name="requesters" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="iChop-Core" type="b2602c69:ProjectViewProjectNode" />
@@ -597,7 +603,7 @@
       <workItem from="1572885862346" duration="28000" />
       <workItem from="1572885911737" duration="13000" />
       <workItem from="1572897390363" duration="6639000" />
-      <workItem from="1572972336396" duration="1886000" />
+      <workItem from="1572972336396" duration="2258000" />
     </task>
     <servers />
   </component>
@@ -634,7 +640,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1886000" />
+    <option name="totallyTimeSpent" value="2258000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -751,29 +757,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/requesters/ReactionRequester.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="2" column="34" selection-start-line="2" selection-start-column="34" selection-end-line="2" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ichop/core/areas/report/requesters/ThreadReportRequester.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="28">
           <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/requesters/ReactionRequesterImp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="20" column="43" lean-forward="true" selection-start-line="20" selection-start-column="43" selection-end-line="20" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#741#776#1" expanded="true" />
-            <element signature="e#846#885#1" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -819,13 +806,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="28">
           <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/models/jms/check/ReactionIsReactedRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
         </state>
       </provider>
     </entry>
@@ -916,13 +896,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/constants/CommentRoutingConstants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ichop/core/areas/report/models/jms/create/ReportCreateRequest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
@@ -944,10 +917,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/constants/CommentRoutingConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="28">
+          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ichop/core/areas/report/constants/ReportRoutingConstants.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="8" column="100" selection-start-line="8" selection-start-column="100" selection-end-line="8" selection-end-column="100" />
+        <state relative-caret-position="140">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/requesters/ReactionRequester.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="28">
+          <caret line="6" column="34" selection-start-line="6" selection-start-column="34" selection-end-line="6" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/models/jms/check/ReactionIsReactedRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="98">
+          <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/requesters/ReactionRequesterImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="36" column="18" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#741#776#1" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
