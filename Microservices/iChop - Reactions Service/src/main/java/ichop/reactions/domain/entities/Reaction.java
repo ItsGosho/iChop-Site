@@ -25,7 +25,6 @@ public class Reaction extends MongoEntity {
     @NotNull
     private ReactionType reactionType;
 
-    @NotNull
     private LocalDateTime reactedOn = LocalDateTime.now();
 
 }
