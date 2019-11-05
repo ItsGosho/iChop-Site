@@ -7,5 +7,5 @@ import org.ichop.commons.domain.JmsReplyModel;
 public interface ReactionRequester {
     JmsReplyModel create(ReactionCreateRequest request);
 
-    boolean isReacted(String userId, String entityId, ReactionOn reactionOn);
+    boolean isReacted(String creatorUsername, String entityId, ReactionOn reactionOn);
 }

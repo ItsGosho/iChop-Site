@@ -10,7 +10,7 @@ import org.ichop.commons.domain.RequestCandidate;
 @Setter
 public class ReactionCreateRequest extends RequestCandidate {
 
-    private String userId;
+    private String creatorUsername;
     private String entityId;
     private ReactionOn entityType;
     private ReactionType reactionType;

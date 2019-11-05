@@ -13,7 +13,7 @@ import org.ichop.commons.domain.RequestCandidate;
 @NoArgsConstructor
 public class ReactionIsReactedRequest extends RequestCandidate {
 
-    private String userId;
+    private String creatorUsername;
     private String entityId;
     private ReactionOn entityType;
 

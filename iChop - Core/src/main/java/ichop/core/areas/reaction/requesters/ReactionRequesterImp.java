@@ -39,8 +39,8 @@ public class ReactionRequesterImp implements ReactionRequester {
     }
 
     @Override
-    public boolean isReacted(String userId, String entityId, ReactionOn reactionOn) {
-        ReactionIsReactedRequest request = new ReactionIsReactedRequest(userId, entityId, reactionOn);
+    public boolean isReacted(String creatorUsername, String entityId, ReactionOn reactionOn) {
+        ReactionIsReactedRequest request = new ReactionIsReactedRequest(creatorUsername, entityId, reactionOn);
 
         JmsReplyModel reply = this.jmsHelper.sendAndReceive(this.isReactedDestination, request);
 
