@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.core.areas.reaction.models.ReactionOn;
 import ichop.core.areas.reaction.models.jms.check.ReactionIsReactedRequest;
 import ichop.core.areas.reaction.models.jms.create.ReactionCreateRequest;
-import org.ichop.commons.domain.BoolReply;
 import org.ichop.commons.domain.JmsReplyModel;
 import org.ichop.commons.helpers.JmsHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,12 +38,10 @@ public class ReactionRequesterImp implements ReactionRequester {
     }
 
     @Override
-    public boolean isReacted(String creatorUsername, String entityId, ReactionOn reactionOn) {
+    public JmsReplyModel isReacted(String creatorUsername, String entityId, ReactionOn reactionOn) {
         ReactionIsReactedRequest request = new ReactionIsReactedRequest(creatorUsername, entityId, reactionOn);
 
-        JmsReplyModel reply = this.jmsHelper.sendAndReceive(this.isReactedDestination, request);
-
-        return reply.isSuccessful() ? this.objectMapper.convertValue(reply, BoolReply.class).getResult() : false;
+        return this.jmsHelper.sendAndReceive(this.isReactedDestination, request);
     }
 
 }
