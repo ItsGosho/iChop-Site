@@ -15,4 +15,5 @@ public class ReactionCreateRequest extends RequestCandidate {
     private ReactionOn entityType;
     private ReactionType reactionType;
 
+
 }

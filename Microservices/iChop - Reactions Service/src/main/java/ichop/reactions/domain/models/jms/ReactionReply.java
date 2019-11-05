@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 public class ReactionReply extends ReplyCandidate {
 
     private String id;
-    private String userId;
+    private String creatorUsername;
     private String entityId;
     private EntityType entityType;
     private ReactionType reactionType;

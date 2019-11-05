@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Setter
 public class ReactionServiceModel extends BaseServiceModel {
 
-    private String userId;
+    private String creatorUsername;
     private String entityId;
     private EntityType entityType;
     private ReactionType reactionType;

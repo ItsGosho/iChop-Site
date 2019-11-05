@@ -6,6 +6,6 @@ import org.ichop.commons.service.BaseService;
 
 public interface ReactionServices extends BaseService<ReactionServiceModel> {
 
-    boolean isReacted(String userId, String entityId, EntityType entityType);
+    boolean isReacted(String creatorUsername, String entityId, EntityType entityType);
 
 }

@@ -12,7 +12,7 @@ import javax.validation.constraints.NotNull;
 public class ReactionIsReactedRequest extends RequestCandidate {
 
     @NotNull
-    private String userId;
+    private String creatorUsername;
 
     @NotNull
     private String entityId;

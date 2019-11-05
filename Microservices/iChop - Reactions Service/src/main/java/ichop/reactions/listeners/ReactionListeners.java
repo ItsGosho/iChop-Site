@@ -50,7 +50,7 @@ public class ReactionListeners extends BaseListener {
     public BoolReply isReacted(Message message) {
         ReactionIsReactedRequest requestModel = this.jmsHelper.toModel(message, ReactionIsReactedRequest.class);
 
-        boolean isReacted = this.reactionServices.isReacted(requestModel.getUserId(), requestModel.getEntityId(), requestModel.getEntityType());
+        boolean isReacted = this.reactionServices.isReacted(requestModel.getCreatorUsername(), requestModel.getEntityId(), requestModel.getEntityType());
 
         return new BoolReply(isReacted);
     }

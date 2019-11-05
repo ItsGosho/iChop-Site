@@ -21,8 +21,8 @@ public class ReactionServicesImp
     }
 
     @Override
-    public boolean isReacted(String userId, String entityId, EntityType entityType) {
-        return super.repository.existsByUserIdAndAndEntityIdAndEntityType(userId,entityId,entityType);
+    public boolean isReacted(String creatorUsername, String entityId, EntityType entityType) {
+        return super.repository.existsByCreatorUsernameAndEntityIdAndEntityType(creatorUsername,entityId,entityType);
     }
 
 }

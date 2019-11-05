@@ -11,11 +11,11 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-@SpELValidation(value = "@reactionServicesImp.isReacted(#this.userId,#this.entityId,#this.entityType) == false", message = "Already reacted!")
+@SpELValidation(value = "@reactionServicesImp.isReacted(#this.creatorUsername,#this.entityId,#this.entityType) == false", message = "Already reacted!")
 public class ReactionCreateRequest extends RequestCandidate {
 
     @NotNull
-    private String userId;
+    private String creatorUsername;
 
     @NotNull
     private String entityId;

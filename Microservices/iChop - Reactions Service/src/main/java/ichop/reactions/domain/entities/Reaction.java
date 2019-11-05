@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 public class Reaction extends MongoEntity {
 
     @NotNull
-    private String userId;
+    private String creatorUsername;
 
     @NotNull
     private String entityId;
