@@ -5,7 +5,7 @@ import ichop.core.areas.user.constants.UserRoutingConstants;
 import ichop.core.areas.user.models.jms.password.change.UserChangePasswordByTokenRequest;
 import ichop.core.areas.user.models.jms.password.change.UserChangePasswordRequest;
 import ichop.core.areas.user.models.jms.password.forgotten.UserForgottenPasswordRequest;
-import ichop.core.areas.user.requester.UserRequester;
+import ichop.core.areas.user.requesters.UserRequester;
 import org.ichop.commons.domain.JmsReplyModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

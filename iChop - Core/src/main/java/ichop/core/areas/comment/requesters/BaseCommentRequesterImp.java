@@ -1,4 +1,4 @@
-package ichop.core.areas.comment.requester;
+package ichop.core.areas.comment.requesters;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.core.areas.comment.models.CommentType;

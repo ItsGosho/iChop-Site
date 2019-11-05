@@ -1,4 +1,4 @@
-package ichop.core.areas.comment.requester;
+package ichop.core.areas.comment.requesters;
 
 import ichop.core.areas.comment.models.jms.create.ThreadCommentCreateRequest;
 import org.ichop.commons.domain.JmsReplyModel;

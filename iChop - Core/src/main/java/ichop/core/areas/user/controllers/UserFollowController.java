@@ -2,8 +2,7 @@ package ichop.core.areas.user.controllers;
 
 import ichop.core.areas.rest.helpers.ResponseHelpers;
 import ichop.core.areas.user.constants.UserRoutingConstants;
-import ichop.core.areas.user.models.jms.follow.*;
-import ichop.core.areas.user.requester.UserFollowRequester;
+import ichop.core.areas.user.requesters.UserFollowRequester;
 import org.ichop.commons.domain.JmsReplyModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

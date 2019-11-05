@@ -1,4 +1,4 @@
-package ichop.core.areas.thread.requester;
+package ichop.core.areas.thread.requesters;
 
 import ichop.core.areas.thread.models.jms.create.ThreadCreateRequest;
 import org.ichop.commons.domain.JmsReplyModel;

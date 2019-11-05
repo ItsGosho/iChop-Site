@@ -2,7 +2,7 @@ package ichop.core.areas.security.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.core.areas.user.models.jms.UserReply;
-import ichop.core.areas.user.requester.UserRequester;
+import ichop.core.areas.user.requesters.UserRequester;
 import org.ichop.commons.domain.JmsReplyModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

@@ -1,4 +1,4 @@
-package ichop.core.areas.user.requester;
+package ichop.core.areas.user.requesters;
 
 import ichop.core.areas.user.models.jms.password.change.UserChangePasswordByTokenRequest;
 import ichop.core.areas.user.models.jms.password.change.UserChangePasswordRequest;

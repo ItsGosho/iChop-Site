@@ -3,7 +3,7 @@ package ichop.core.areas.user.controllers;
 import ichop.core.areas.rest.helpers.ResponseHelpers;
 import ichop.core.areas.user.constants.UserRoutingConstants;
 import ichop.core.areas.user.models.jms.information.UserInformationUpdateRequest;
-import ichop.core.areas.user.requester.UserInformationRequester;
+import ichop.core.areas.user.requesters.UserInformationRequester;
 import org.ichop.commons.domain.JmsReplyModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

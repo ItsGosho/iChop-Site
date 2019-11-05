@@ -1,4 +1,4 @@
-package ichop.core.areas.user.requester;
+package ichop.core.areas.user.requesters;
 
 import ichop.core.areas.user.models.jms.information.UserInformationUpdateRequest;
 import org.ichop.commons.domain.JmsReplyModel;

@@ -3,7 +3,7 @@ package ichop.core.areas.thread.controllers;
 import ichop.core.areas.rest.helpers.ResponseHelpers;
 import ichop.core.areas.thread.constants.ThreadRoutingConstants;
 import ichop.core.areas.thread.models.jms.create.ThreadCreateRequest;
-import ichop.core.areas.thread.requester.ThreadRequester;
+import ichop.core.areas.thread.requesters.ThreadRequester;
 import org.ichop.commons.domain.JmsReplyModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
