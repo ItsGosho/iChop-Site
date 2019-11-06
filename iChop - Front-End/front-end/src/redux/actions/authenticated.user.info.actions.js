@@ -1,7 +1,7 @@
 import Actions from "../../constants/actions.constants";
 
 
-let login = (user) => {
+let set = (user) => {
     return async (dispatch) => {
         dispatch({
             type: Actions.SET_AUTHENTICATED_USER_INFO,
@@ -12,7 +12,7 @@ let login = (user) => {
     }
 };
 
-let logout = () => {
+let remove = () => {
     return async (dispatch) => {
         dispatch({
             type: Actions.REMOVE_AUTHENTICATED_USER_INFO
@@ -21,6 +21,6 @@ let logout = () => {
 };
 
 export {
-    login,
-    logout
+    set,
+    remove
 }

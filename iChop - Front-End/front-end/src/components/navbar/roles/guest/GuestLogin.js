@@ -2,6 +2,9 @@ import React, {Component, Fragment} from 'react';
 import navbarGuestReduxHoc from "../../../../redux/hocs/navbar.guest.hoc";
 import FormHoc from "../../../../hocs/form.hoc";
 import InputGroupIcon from "../../other/InputGroupIcon";
+import {compose} from "redux";
+import {connect} from "react-redux";
+import UserServices from "../../../../services/user.services";
 
 class GuestLogin extends Component {
 
@@ -12,8 +15,8 @@ class GuestLogin extends Component {
     }
 
     onLogin() {
-        let {usernameOrEmail, password} = this.props.formData;
-
+        let {email, password} = this.props.formData;
+        UserServices.login(email, password);
     }
 
     render() {
@@ -27,8 +30,8 @@ class GuestLogin extends Component {
                     <InputGroupIcon icon={'👤/📧'}
                                     type={'text'}
                                     autoComplete={'on'}
-                                    name={'usernameOrEmail'}
-                                    placeholder={'Username or Email...'}
+                                    name={'email'}
+                                    placeholder={'Email...'}
                                     onChange={onChange}/>
 
                     <InputGroupIcon icon={'🔒'}
@@ -69,4 +72,16 @@ class GuestLogin extends Component {
 
 }
 
-export default FormHoc(navbarGuestReduxHoc(GuestLogin));
+let mapState = (states) => {
+    return {redux: states}
+};
+
+let mapDispatch = (dispatch) => {
+    return
+};
+
+export default FormHoc(
+    compose(connect(mapState, mapDispatch))(GuestLogin)
+)
+
+//export default FormHoc(navbarGuestReduxHoc(GuestLogin));

@@ -1,5 +1,6 @@
 import RequestTypes from "../constants/rest/request.type.constants";
 import ContentType from "../constants/rest/content.type.constants";
+import RequestHeaders from "../constants/rest/request.header.constants";
 
 
 const Requester = {
@@ -8,8 +9,9 @@ const Requester = {
 
         let response = await fetch(url, {
             method: RequestTypes.POST,
+            credentials: 'include',
             headers: {
-                'Content-Type': ContentType.JSON
+                [RequestHeaders.CONTENT_TYPE]: ContentType.JSON
             },
             body: JSON.stringify(data)
         });
