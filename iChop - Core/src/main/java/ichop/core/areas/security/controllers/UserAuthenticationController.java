@@ -25,7 +25,6 @@ public class UserAuthenticationController {
         this.responseHelpers = responseHelpers;
     }
 
-
     @PostMapping(UserRoutingConstants.REGISTER)
     public ResponseEntity proceedRegistration(@RequestBody UserRegisterRequest request) {
         JmsReplyModel reply = this.userRequester.register(request);
