@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {setAuthenticatedUserInfoAction,removeAuthenticatedUserInfoAction} from "../actions/authenticated.user.actions";
+import {login,logout} from "../actions/user.actions";
 
 let props = (state) => {
     return {redux: state.authenticatedUserInfo};
@@ -9,10 +9,10 @@ let props = (state) => {
 let dispatcher = (dispatch) => {
     return {
         set: (user) => {
-            dispatch(setAuthenticatedUserInfoAction(user))
+            dispatch(login(user))
         },
         remove: () => {
-            dispatch(removeAuthenticatedUserInfoAction())
+            dispatch(logout())
         },
     }
 };

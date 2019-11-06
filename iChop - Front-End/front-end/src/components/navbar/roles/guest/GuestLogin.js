@@ -14,8 +14,6 @@ class GuestLogin extends Component {
     onLogin() {
         let {usernameOrEmail, password} = this.props.formData;
 
-        console.log(usernameOrEmail);
-        console.log(password);
     }
 
     render() {
