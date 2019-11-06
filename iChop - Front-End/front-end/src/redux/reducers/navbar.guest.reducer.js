@@ -14,7 +14,7 @@ let navbarGuestReducer = (state = initialState, action) => {
 
         case Actions.NAVBAR_GUEST_SHOW_DROPDOWN:
             return Object.assign({}, state, {
-                showDropdown: action.showDropdown
+                showDropdown: action.payload.showDropdown
             });
 
         case Actions.NAVBAR_GUEST_SELECT_LOGIN:

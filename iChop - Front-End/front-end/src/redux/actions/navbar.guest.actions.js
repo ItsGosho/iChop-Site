@@ -5,7 +5,9 @@ let navbarGuestShowDropdownAction = (toShow) => {
     return async (dispatch) => {
         dispatch({
             type: Actions.NAVBAR_GUEST_SHOW_DROPDOWN,
-            showDropdown: toShow
+            payload: {
+                showDropdown: toShow
+            }
         });
     }
 };
