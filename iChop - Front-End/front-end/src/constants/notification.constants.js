@@ -5,11 +5,11 @@ const NotificationConstants = {
     },
     ERROR: {
         TITLE: 'Whoops!',
-        DURATION: 700
+        DURATION: 1200
     },
     SUCCESS: {
         TITLE: 'Success!',
-        DURATION: 700
+        DURATION: 1200
     }
 };
 
