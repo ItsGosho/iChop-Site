@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.Map;
 
 import static ichop.core.areas.security.constants.SecurityConstants.*;
 import static ichop.core.areas.security.constants.SecurityLogConstants.*;
@@ -46,10 +47,12 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) {
         LOG.info(String.format(AUTHENTICATION_STARTED, request.getParameter(EMAIL_FIELD)));
 
-        String email = request.getParameter(EMAIL_FIELD);
-        String password = request.getParameter(PASSWORD_FIELD);
-
         try {
+            Map<String,String> parameters = this.objectMapper.readValue(request.getInputStream(),Map.class);
+
+            String email = parameters.get(EMAIL_FIELD);
+            String password = parameters.get(PASSWORD_FIELD);
+
             return this.authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));
         } catch (Exception ex) {
             this.responseHelpers.respondError(response, "Bad credentials!");
