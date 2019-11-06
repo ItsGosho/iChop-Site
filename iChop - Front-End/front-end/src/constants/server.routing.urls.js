@@ -4,7 +4,12 @@ const OTHER_CRAFATAR_SERVER_DOMAIN = 'https://crafatar.com';
 const OTHER_MINOTAR_SERVER_DOMAIN = 'https://minotar.net';
 
 const ServerRoutingURLs = {
-    CORE: {},
+    CORE: {
+        USER: {
+            LOGIN: `${DATA_SERVER_DOMAIN}/login`,
+            REGISTER: `${DATA_SERVER_DOMAIN}/register`
+        }
+    },
     DATA: {
         USER: {
             AVATAR: {
