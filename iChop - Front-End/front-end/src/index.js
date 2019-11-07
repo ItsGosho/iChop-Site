@@ -13,7 +13,7 @@ import 'react-notifications-component/dist/theme.css'
 
 let store = createStore(
     combineReducers(reducers),
-    compose(applyMiddleware(thunk/*, logger*/), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+    compose(applyMiddleware(thunk/*, logger*/), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() || compose)
 );
 
 ReactDOM.render(
