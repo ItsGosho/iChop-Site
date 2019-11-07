@@ -17,7 +17,7 @@ class NavbarGuest extends Component {
     }
 
     showDropdown() {
-        let toShow = !this.props.showDropdown;
+        let toShow = !this.props.isDropdownShow;
 
         this.props.showDropdown(toShow);
     }
@@ -37,6 +37,7 @@ class NavbarGuest extends Component {
     }
 
     render() {
+console.log(this.props.isDropdownShow);
         return (
             <Fragment>
 
@@ -46,7 +47,7 @@ class NavbarGuest extends Component {
                     Sign In
                 </button>
 
-                {this.props.showDropdown ? (
+                {this.props.isDropdownShow ? (
                     <div
                         className={`dropdown-menu dropdown-menu-right guest-navbar-form ${this.props.showDropdown ? 'show' : ''}`}>
                         {this.getDropdown()}

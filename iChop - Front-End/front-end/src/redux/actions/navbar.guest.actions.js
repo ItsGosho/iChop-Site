@@ -6,7 +6,7 @@ let navbarGuestShowDropdownAction = (toShow) => {
         dispatch({
             type: Actions.NAVBAR_GUEST_SHOW_DROPDOWN,
             payload: {
-                showDropdown: toShow
+                isDropdownShow: toShow
             }
         });
     }

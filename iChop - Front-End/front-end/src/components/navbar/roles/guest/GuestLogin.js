@@ -27,7 +27,6 @@ class GuestLogin extends Component {
     render() {
         let {onChange} = this.props.formMethods;
 
-        console.log(this.props);
         return (
             <Fragment>
 
