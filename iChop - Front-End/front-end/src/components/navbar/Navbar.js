@@ -8,6 +8,8 @@ import GuestNavbar from "./roles/guest/NavbarGuest";
 import {Link} from "react-router-dom";
 import RoutingURLs from "../../constants/routing.constants";
 import FrontEndResourcesRoutingURLs from "../../constants/front-end.resources.routings";
+import {connect} from "react-redux";
+import {compose} from "redux";
 
 class Navbar extends Component {
 
@@ -33,7 +35,7 @@ class Navbar extends Component {
     }
 
     render() {
-        let role = '';
+        let role = this.props.authenticatedUserInfo.authority;
 
         return (
             <div className="container">
@@ -71,4 +73,10 @@ class Navbar extends Component {
 
 }
 
-export default Navbar;
+let mapState = (states) => {
+    return {...states}
+};
+
+export default compose(
+    connect(mapState, null)
+)(Navbar);

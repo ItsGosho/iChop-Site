@@ -1,9 +1,9 @@
 const Roles = {
-    GUEST: 'Guest',
-    USER: 'User',
-    MODERATOR: 'Moderator',
-    ADMIN: 'Admin',
-    OWNER: 'Owner',
+    GUEST: 'GUEST',
+    USER: 'USER',
+    MODERATOR: 'MODERATOR',
+    ADMIN: 'ADMIN',
+    OWNER: 'OWNER',
 };
 
 export default Roles;

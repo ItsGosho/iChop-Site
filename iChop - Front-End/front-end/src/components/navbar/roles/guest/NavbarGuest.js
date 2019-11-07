@@ -37,7 +37,6 @@ class NavbarGuest extends Component {
     }
 
     render() {
-console.log(this.props.isDropdownShow);
         return (
             <Fragment>
 

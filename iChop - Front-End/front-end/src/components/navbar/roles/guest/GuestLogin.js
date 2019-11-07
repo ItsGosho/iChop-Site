@@ -77,7 +77,6 @@ class GuestLogin extends Component {
 
 }
 
-
 let mapState = (states) => {
     return {...states}
 };
