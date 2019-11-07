@@ -38,10 +38,14 @@ class GuestRegister extends Component {
         this.setState((prevState) => ({isPasswordsShown: !prevState.isPasswordsShown}))
     }
 
-    onRegister() {
+    async onRegister() {
         let {username, password, confirmPassword, email} = this.props.formData;
 
-        UserServices.register(username,password,confirmPassword,email);
+        let isSuccessful = await UserServices.register(username, password, confirmPassword, email);
+
+        if (isSuccessful) {
+            this.props.selectLogin();
+        }
     }
 
     render() {
