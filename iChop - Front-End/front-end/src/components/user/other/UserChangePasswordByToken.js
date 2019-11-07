@@ -17,8 +17,8 @@ class UserChangePasswordByToken extends Component {
         this.getQueryParam = this.getQueryParam.bind(this);
     }
 
-    async componentDidMount() {
-        let token = await this.getQueryParam(QueryParams.TOKEN);
+     componentDidMount() {
+        let token =  this.getQueryParam(QueryParams.TOKEN);
         console.log(token);
     }
 
@@ -30,7 +30,6 @@ class UserChangePasswordByToken extends Component {
 
     getQueryParam(name) {
         let queryParams = queryString.parse(this.props.location.search);
-        console.log(queryParams);
         return queryParams[name];
     }
 
