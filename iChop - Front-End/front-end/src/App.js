@@ -29,10 +29,12 @@ function App() {
 
             <ReactNotification/>
 
-            <Switch>
-                <Route exact path={RoutingURLs.AUTHENTICATION.LOGOUT} render={() => (<Logout/>)}/>
-                <Route exact path={RoutingURLs.AUTHENTICATION.TOKEN.RESET_PASSWORD} render={() => (<UserChangePasswordByToken/>)}/>
-            </Switch>
+            <div style={{'marginTop':'75px'}}>
+                <Switch>
+                    <Route exact path={RoutingURLs.AUTHENTICATION.LOGOUT} render={() => (<Logout/>)}/>
+                    <Route exact path={RoutingURLs.AUTHENTICATION.TOKEN.RESET_PASSWORD} render={() => (<UserChangePasswordByToken/>)}/>
+                </Switch>
+            </div>
 
             {/*<div style={{'marginTop': '75px'}}>
 
@@ -43,7 +45,7 @@ function App() {
 
             </div>*/}
 
-            <ThreadsAll/>
+            {/*<ThreadsAll/>*/}
 
             <Footer/>
         </Fragment>

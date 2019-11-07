@@ -20,23 +20,29 @@ class UserChangePasswordByToken extends Component {
         let onChange = (event) => (this.setState({[event.target.name]: event.target.value}));
 
         return (
-            <form className="px-4 py-3">
+            <div className="col-sm d-flex justify-content-center">
+                <div className="card">
+                    <div className="card-body">
+                        <form className="px-4 py-3">
 
-                <UniversalPasswordsInputs onChange={onChange}/>
+                            <UniversalPasswordsInputs onChange={onChange}/>
 
-                <div align="center">
+                            <div align="center">
 
-                    <button type="button"
-                            data-style="zoom-in"
-                            className="btn btn-primary btn-ladda"
-                            onClick={this.onChangeClick}>
-                        Reset
-                    </button>
+                                <button type="button"
+                                        data-style="zoom-in"
+                                        className="btn btn-primary btn-ladda"
+                                        onClick={this.onChangeClick}>
+                                    Reset
+                                </button>
 
-                    <div className="dropdown-divider"/>
+                                <div className="dropdown-divider"/>
+                            </div>
+
+                        </form>
+                    </div>
                 </div>
-
-            </form>
+            </div>
         );
     }
 
