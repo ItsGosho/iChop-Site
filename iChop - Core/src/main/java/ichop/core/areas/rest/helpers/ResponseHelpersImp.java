@@ -7,6 +7,7 @@ import ichop.core.areas.rest.models.ResponseSuccessful;
 import org.ichop.commons.domain.JmsReplyModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
@@ -84,7 +85,7 @@ public class ResponseHelpersImp implements ResponseHelpers {
 
     private void writeToResponse(HttpServletResponse response, Object object) {
         try {
-            response.setContentType("application/json");
+            response.setContentType(MediaType.APPLICATION_JSON_VALUE);
             response.getWriter().write(this.objectMapper.writeValueAsString(object));
             response.getWriter().close();
         } catch (Exception ex) {
