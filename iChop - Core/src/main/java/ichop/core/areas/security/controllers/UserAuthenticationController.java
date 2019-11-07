@@ -18,7 +18,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @RestController
-@PreAuthorize("isAnonymous()")
 public class UserAuthenticationController {
 
     private final UserRequester userRequester;
@@ -30,6 +29,7 @@ public class UserAuthenticationController {
         this.responseHelpers = responseHelpers;
     }
 
+    @PreAuthorize("isAnonymous()")
     @PostMapping(UserRoutingConstants.REGISTER)
     public ResponseEntity register(@RequestBody UserRegisterRequest request) {
         JmsReplyModel reply = this.userRequester.register(request);
@@ -37,6 +37,7 @@ public class UserAuthenticationController {
         return this.responseHelpers.respondGeneric(reply);
     }
 
+    @PreAuthorize("isAuthenticated()")
     @PostMapping(UserRoutingConstants.LOGOUT)
     public ResponseEntity logout(HttpServletRequest request, HttpServletResponse response) {
 
