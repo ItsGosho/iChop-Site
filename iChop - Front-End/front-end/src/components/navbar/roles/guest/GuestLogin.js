@@ -5,6 +5,7 @@ import {compose} from "redux";
 import {connect} from "react-redux";
 import UserServices from "../../../../services/user.services";
 import navbarGuestDispatchers from "../../../../redux/dispatchers/navbar.guest.dispatchers";
+import authenticatedUserInfoDispatchers from "../../../../redux/dispatchers/authenticated.user.info.dispatchers";
 
 class GuestLogin extends Component {
 
@@ -80,7 +81,8 @@ let mapState = (states) => {
 
 export default FormHoc(
     compose(
-        connect(mapState, navbarGuestDispatchers)
+        connect(mapState, navbarGuestDispatchers),
+        connect(mapState, authenticatedUserInfoDispatchers),
     )(GuestLogin)
 )
 
