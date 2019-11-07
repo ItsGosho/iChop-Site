@@ -1,7 +1,6 @@
 package ichop.core.areas.security.controllers;
 
 import ichop.core.areas.rest.helpers.ResponseHelpers;
-import ichop.core.areas.security.constants.SecurityConstants;
 import ichop.core.areas.user.constants.UserRoutingConstants;
 import ichop.core.areas.user.models.jms.register.UserRegisterRequest;
 import ichop.core.areas.user.requesters.UserRequester;
@@ -18,6 +17,8 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.security.Principal;
+
+import static ichop.core.areas.security.constants.SecurityConstants.JWT_COOKIE_NAME;
 
 @RestController
 public class UserAuthenticationController {
@@ -43,9 +44,12 @@ public class UserAuthenticationController {
     @PostMapping(UserRoutingConstants.LOGOUT)
     public ResponseEntity logout(HttpServletRequest request, HttpServletResponse response) {
 
-        Cookie cookie = new Cookie(SecurityConstants.JWT_COOKIE_NAME, null);
-        cookie.setMaxAge(0);
-        response.addCookie(cookie);
+        Cookie jwtCookie = new Cookie(JWT_COOKIE_NAME, null);
+        jwtCookie.setSecure(false);
+        jwtCookie.setHttpOnly(false);
+        jwtCookie.setMaxAge(0);
+        jwtCookie.setPath("/");
+        response.addCookie(jwtCookie);
 
         return this.responseHelpers.respondSuccessful("Successful logout!");
     }
