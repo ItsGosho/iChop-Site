@@ -24,10 +24,10 @@ const NotificationHelper = {
     },
 
     showNotificationByResponse(response) {
-        if(response.isSuccessful){
+        if(response.successful){
             NotificationHelper.showSuccessNotification(response.message);
         }else{
-            NotificationHelper.showErrorNotification(response.message);
+            NotificationHelper.showErrorNotification(response.error);
         }
     },
 

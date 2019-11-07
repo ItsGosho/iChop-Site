@@ -4,6 +4,7 @@ import InputGroupIcon from "../../other/InputGroupIcon";
 import {compose} from "redux";
 import {connect} from "react-redux";
 import navbarGuestDispatchers from "../../../../redux/dispatchers/navbar.guest.dispatchers";
+import UserServices from "../../../../services/user.services";
 
 class GuestLostPassword extends Component {
 
@@ -16,8 +17,7 @@ class GuestLostPassword extends Component {
 
     onForgottenPassword() {
         let {email} = this.props.formData;
-
-        console.log(email);
+        UserServices.forgottenPassword(email);
     }
 
     render() {
