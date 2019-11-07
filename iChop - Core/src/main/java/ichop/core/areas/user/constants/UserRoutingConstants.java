@@ -2,9 +2,9 @@ package ichop.core.areas.user.constants;
 
 public final class UserRoutingConstants {
 
-    public static final String LOGIN = "/login"; /*GUEST*/
-    public static final String REGISTER = "/register"; /*GUEST*/
-    public static final String LOGOUT = "/logout"; /*AUTHENTICATED*/
+    public static final String LOGIN = "/auth/login"; /*GUEST*/
+    public static final String REGISTER = "/auth/register"; /*GUEST*/
+    public static final String LOGOUT = "/auth/logout"; /*AUTHENTICATED*/
 
     public static final String CHANGE_PASSWORD = "/user/change/password"; /*USER++*/
     public static final String FORGOTTEN_PASSWORD = "/user/forgotten/password"; /*USER++*/

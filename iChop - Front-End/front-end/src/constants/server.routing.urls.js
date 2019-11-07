@@ -6,9 +6,9 @@ const OTHER_MINOTAR_SERVER_DOMAIN = 'https://minotar.net';
 const ServerRoutingURLs = {
     CORE: {
         USER: {
-            LOGIN: `${CORE_SERVER_DOMAIN}/login`,
-            REGISTER: `${CORE_SERVER_DOMAIN}/register`,
-            LOGOUT: `${CORE_SERVER_DOMAIN}/logout`,
+            LOGIN: `${CORE_SERVER_DOMAIN}/auth/login`,
+            REGISTER: `${CORE_SERVER_DOMAIN}/auth/register`,
+            LOGOUT: `${CORE_SERVER_DOMAIN}/auth/logout`,
         }
     },
     DATA: {

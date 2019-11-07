@@ -17,9 +17,9 @@ import UserControl from "./components/user/control/UserControl";
 import {Switch} from "react-bootstrap";
 import {Route} from "react-router-dom";
 import RoutingURLs from "./constants/routing.constants";
+import Logout from "./components/navbar/other/Logout";
 
 function App() {
-
 
 
     return (
@@ -27,6 +27,10 @@ function App() {
             <Navbar/>
 
             <ReactNotification/>
+
+            <Switch>
+                <Route exact path={RoutingURLs.AUTHENTICATION.LOGOUT} render={() => (<Logout/>)}/>
+            </Switch>
 
             {/*<div style={{'marginTop': '75px'}}>
 

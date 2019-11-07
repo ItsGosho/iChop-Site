@@ -12,7 +12,7 @@ const RoutingURLs = {
     },
 
     AUTHENTICATION: {
-        LOGOUT: '/auth/remove', /*Logged in*/
+        LOGOUT: '/logout', /*Logged in*/
         RESET: {
             PASSWORD: '/auth/reset/password' /*Logged out*/
         }
