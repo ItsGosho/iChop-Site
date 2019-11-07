@@ -9,6 +9,7 @@ import org.ichop.commons.domain.JmsReplyModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -50,7 +51,7 @@ public class UserAuthenticationController {
     }
 
     @PreAuthorize("isAuthenticated()")
-    @PostMapping(UserRoutingConstants.GET_CURRENT_AUTHENTICATED)
+    @GetMapping(UserRoutingConstants.GET_CURRENT_AUTHENTICATED)
     public ResponseEntity getCurrentAuthenticated(Principal principal) {
 
         JmsReplyModel replyModel = this.userRequester.findByUsername(principal.getName());
