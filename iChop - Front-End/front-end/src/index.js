@@ -19,8 +19,10 @@ let store = createStore(
 );
 
 (async () => {
-     let user = await UserServices.retrieveUserByToken();
-     store.dispatch(set(user));
+    let user = await UserServices.retrieveUserByToken();
+    if (user) {
+        store.dispatch(set(user));
+    }
 })();
 
 ReactDOM.render(
