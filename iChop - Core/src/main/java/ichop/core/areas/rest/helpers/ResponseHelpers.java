@@ -19,6 +19,8 @@ public interface ResponseHelpers {
 
     void respondSuccessful(HttpServletResponse httpServletResponse, String message);
 
+    void respondSuccessful(HttpServletResponse httpServletResponse, String message, Object data);
+
     void respondError(HttpServletResponse httpServletResponse, String error);
 
      ResponseEntity respondGeneric(JmsReplyModel reply);
