@@ -19,8 +19,11 @@ const Requester = {
         return await response.json();
     },
 
+
     async get(url) {
-        let response = await fetch(url);
+        let response = await fetch(url, {
+            credentials: 'include',
+        });
         return await response.json();
     }
 

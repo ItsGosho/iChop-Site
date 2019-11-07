@@ -11,6 +11,7 @@ import Provider from "react-redux/es/components/Provider";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-notifications-component/dist/theme.css'
 import UserServices from "./services/user.services";
+import {set} from "./redux/actions/authenticated.user.info.actions";
 
 let store = createStore(
     combineReducers(reducers),
@@ -19,7 +20,7 @@ let store = createStore(
 
 (async () => {
      let user = await UserServices.retrieveUserByToken();
-     console.log(user);
+     store.dispatch(set(user));
 })();
 
 ReactDOM.render(
