@@ -55,7 +55,7 @@ public class PasswordTokenRequesterImp implements PasswordTokenRequester {
         JmsReplyModel result = this.jmsHelper.sendAndReceive(this.isValidDestination, new PasswordTokenIsValidRequest(token));
         BoolReply reply = this.objectMapper.convertValue(result.getData(), BoolReply.class);
 
-        return reply.getResult();
+        return reply != null ? reply.getResult() : false;
     }
 
     @Override
