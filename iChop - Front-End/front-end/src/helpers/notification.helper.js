@@ -24,22 +24,24 @@ const NotificationHelper = {
     },
 
     showLoadingNotification(message = ' ') {
-        let {TITLE,DURATION} = NotificationConstants.LOADING;
+        let {TITLE, DURATION} = NotificationConstants.LOADING;
         return NotificationHelper.showNotification(TITLE, message, 'info', DURATION);
     },
 
     showSuccessNotification(message = ' ') {
-        let {TITLE,DURATION} = NotificationConstants.SUCCESS;
+        let {TITLE, DURATION} = NotificationConstants.SUCCESS;
         return NotificationHelper.showNotification(TITLE, message, 'success', DURATION);
     },
 
     showErrorNotification(message = ' ') {
-        let {TITLE,DURATION} = NotificationConstants.ERROR;
+        let {TITLE, DURATION} = NotificationConstants.ERROR;
         return NotificationHelper.showNotification(TITLE, message, 'danger', DURATION);
     },
 
     removeNotification(id) {
-        store.removeNotification(id);
+        if (id) {
+            store.removeNotification(id);
+        }
     }
 
 };

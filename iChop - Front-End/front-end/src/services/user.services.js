@@ -7,7 +7,7 @@ const Endpoints = ServerRoutingURLs.CORE.USER;
 const UserServices = {
 
     async login(email, password) {
-        let response = await Requester.post(Endpoints.LOGIN, {email, password});
+        let response = await Requester.post(Endpoints.LOGIN, {email, password},true);
 
         if (response.error) {
             NotificationHelper.showErrorNotification(response.error);
@@ -19,7 +19,7 @@ const UserServices = {
     },
 
     async register(username, password, confirmPassword, email) {
-        let response = await Requester.post(Endpoints.REGISTER, {username, password, confirmPassword, email});
+        let response = await Requester.post(Endpoints.REGISTER, {username, password, confirmPassword, email},true);
         console.log(response);
         /* if (response.error) {
              NotificationHelper.showErrorNotification(response.error);
