@@ -11,6 +11,10 @@ class Logout extends Component {
     constructor(props) {
         super(props);
 
+        this.state = {
+            isSuccessful: false,
+        };
+
         this.logout = this.logout.bind(this);
     }
 
@@ -24,13 +28,14 @@ class Logout extends Component {
         if (username) {
             UserServices.logout();
             this.props.removeAuthenticatedUser();
+            this.setState({isSuccessful: true})
         } else {
             NotificationHelper.showErrorNotification('You are not logged in!');
         }
     }
 
     render() {
-        let isSuccessful = true;
+        let {isSuccessful} = this.state;
 
         return (
             <Fragment>

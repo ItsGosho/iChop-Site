@@ -28,6 +28,14 @@ const UserServices = {
          }*/
     },
 
+    async retrieveUserByToken() {
+        let response = await Requester.get(Endpoints.GET_CURRENT_AUTHENTICATED);
+
+        if (!response.error) {
+            return response.data;
+        }
+    },
+
     async logout() {
         let response = await Requester.post(Endpoints.LOGOUT, {});
         console.log(response);
