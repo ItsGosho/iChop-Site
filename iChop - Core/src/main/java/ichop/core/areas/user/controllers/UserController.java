@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.security.Principal;
@@ -29,7 +30,7 @@ public class UserController {
 
     @PreAuthorize("isAuthenticated()")
     @PostMapping(UserRoutingConstants.CHANGE_PASSWORD)
-    public ResponseEntity changePassword(UserChangePasswordRequest changePasswordRequest, Principal principal) {
+    public ResponseEntity changePassword(@RequestBody UserChangePasswordRequest changePasswordRequest, Principal principal) {
         changePasswordRequest.setUsername(principal.getName());
 
         JmsReplyModel reply = this.userRequester.changePassword(changePasswordRequest);
@@ -39,7 +40,7 @@ public class UserController {
 
     @PreAuthorize("isAnonymous()")
     @PostMapping(UserRoutingConstants.FORGOTTEN_PASSWORD)
-    public ResponseEntity forgottenPassword(UserForgottenPasswordRequest forgottenPasswordRequest) {
+    public ResponseEntity forgottenPassword(@RequestBody UserForgottenPasswordRequest forgottenPasswordRequest) {
         JmsReplyModel reply = this.userRequester.forgottenPassword(forgottenPasswordRequest);
 
         return this.responseHelpers.respondGeneric(reply);
@@ -47,7 +48,7 @@ public class UserController {
 
     @PreAuthorize("isAnonymous()")
     @PostMapping(UserRoutingConstants.CHANGE_PASSWORD_BY_TOKEN)
-    public ResponseEntity changePasswordByToken(UserChangePasswordByTokenRequest changePasswordByTokenRequest) {
+    public ResponseEntity changePasswordByToken(@RequestBody UserChangePasswordByTokenRequest changePasswordByTokenRequest) {
         JmsReplyModel reply = this.userRequester.changePasswordByToken(changePasswordByTokenRequest);
 
         return this.responseHelpers.respondGeneric(reply);

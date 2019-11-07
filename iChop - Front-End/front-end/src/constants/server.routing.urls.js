@@ -10,6 +10,7 @@ const ServerRoutingURLs = {
             REGISTER: `${CORE_SERVER_DOMAIN}/auth/register`,
             LOGOUT: `${CORE_SERVER_DOMAIN}/auth/logout`,
             GET_CURRENT_AUTHENTICATED: `${CORE_SERVER_DOMAIN}/user/current/authenticated`,
+            FORGOTTEN_PASSWORD: `${CORE_SERVER_DOMAIN}/user/forgotten/password`,
         }
     },
     DATA: {
