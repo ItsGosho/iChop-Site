@@ -36,7 +36,7 @@ class Navbar extends Component {
     }
 
     render() {
-        let role = this.props.authenticatedUserInfo.authority;
+        let user = this.props.authenticatedUserInfo;
 
         return (
             <div className="container">
@@ -62,7 +62,7 @@ class Navbar extends Component {
                     <div className="collapse navbar-collapse" id="core-navigation-bar">
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item dropdown active">
-                                {this.getNavbar(role)}
+                                {this.getNavbar(user.authority)}
                             </li>
                         </ul>
                     </div>
