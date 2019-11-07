@@ -18,6 +18,7 @@ import {Switch} from "react-bootstrap";
 import {Route} from "react-router-dom";
 import RoutingURLs from "./constants/routing.constants";
 import Logout from "./components/navbar/other/Logout";
+import UserChangePasswordByToken from "./components/user/other/UserChangePasswordByToken";
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
 
             <Switch>
                 <Route exact path={RoutingURLs.AUTHENTICATION.LOGOUT} render={() => (<Logout/>)}/>
+                <Route exact path={RoutingURLs.AUTHENTICATION.TOKEN.RESET_PASSWORD} render={() => (<UserChangePasswordByToken/>)}/>
             </Switch>
 
             {/*<div style={{'marginTop': '75px'}}>

@@ -13,8 +13,8 @@ const RoutingURLs = {
 
     AUTHENTICATION: {
         LOGOUT: '/logout', /*Logged in*/
-        RESET: {
-            PASSWORD: '/auth/reset/password' /*Logged out*/
+        TOKEN: {
+            RESET_PASSWORD: '/reset/password/by/token' /*Logged out*/
         }
     },
 
@@ -35,8 +35,8 @@ const RoutingURLs = {
         },
 
         CONTROL: {
-            INFORMATION : '/user/:username/control/information',
-            ROLE : '/user/:username/control/role',
+            INFORMATION: '/user/:username/control/information',
+            ROLE: '/user/:username/control/role',
         },
 
         OPTIONS: {
