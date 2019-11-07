@@ -82,8 +82,10 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .sign(Algorithm.HMAC512(JWT_SECRET));
 
         Cookie jwtCookie = new Cookie(JWT_COOKIE_NAME, jwt);
-        jwtCookie.setSecure(true);
+        jwtCookie.setSecure(false);
+        jwtCookie.setHttpOnly(false);
         jwtCookie.setMaxAge(JWT_EXPIRATION_HOURS * 3600);
+        jwtCookie.setPath("/");
 
         response.addCookie(jwtCookie);
 
