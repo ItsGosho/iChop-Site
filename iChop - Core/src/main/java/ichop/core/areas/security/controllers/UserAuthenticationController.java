@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.security.Principal;
 
 @RestController
 public class UserAuthenticationController {
@@ -46,6 +47,15 @@ public class UserAuthenticationController {
         response.addCookie(cookie);
 
         return this.responseHelpers.respondSuccessful("Successful logout!");
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @PostMapping(UserRoutingConstants.GET_CURRENT_AUTHENTICATED)
+    public ResponseEntity getCurrentAuthenticated(Principal principal) {
+
+        JmsReplyModel replyModel = this.userRequester.findByUsername(principal.getName());
+
+        return this.responseHelpers.respondGeneric(replyModel);
     }
 
 }

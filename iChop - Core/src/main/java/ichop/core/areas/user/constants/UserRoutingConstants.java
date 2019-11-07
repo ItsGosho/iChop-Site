@@ -12,6 +12,8 @@ public final class UserRoutingConstants {
 
     public static final String ALL = "/users/all"; /*ADMIN++*/
 
+    public static final String GET_CURRENT_AUTHENTICATED = "/user/current/authenticated"; /*GUEST++*/
+
     /*TODO:*/
 
     //UserFollowController ------------------------------------------------------------------------------------
