@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import UniversalPasswordsInputs from "../../other/UniversalPasswordsInputs";
 import UserServices from "../../../services/user.services";
 import {withRouter} from "react-router-dom";
+
 const queryString = require("query-string");
 
 class UserChangePasswordByToken extends Component {
@@ -17,9 +18,9 @@ class UserChangePasswordByToken extends Component {
         this.getQueryParam = this.getQueryParam.bind(this);
     }
 
-     componentDidMount() {
-        let token =  this.getQueryParam(QueryParams.TOKEN);
-        console.log(token);
+    componentDidMount() {
+        let token = this.getQueryParam(QueryParams.TOKEN);
+        this.setState({token: token})
     }
 
     onChangeClick() {

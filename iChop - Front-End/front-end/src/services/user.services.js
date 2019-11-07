@@ -24,14 +24,14 @@ const UserServices = {
 
         return response.successful;
     },
-
+//
     async forgottenPassword(email) {
         let response = await Requester.post(Endpoints.FORGOTTEN_PASSWORD, {email}, true);
         NotificationHelper.showNotificationByResponse(response);
     },
 
     async changePasswordByToken(token,password,confirmPassword) {
-        let response = await Requester.post(Endpoints.FORGOTTEN_PASSWORD, {token,password,confirmPassword}, true);
+        let response = await Requester.post(Endpoints.CHANGE_PASSWORD_BY_TOKEN, {token,password,confirmPassword}, true);
         NotificationHelper.showNotificationByResponse(response);
     },
 
