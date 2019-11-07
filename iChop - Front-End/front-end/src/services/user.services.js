@@ -30,6 +30,11 @@ const UserServices = {
         NotificationHelper.showNotificationByResponse(response);
     },
 
+    async changePasswordByToken(token,password,confirmPassword) {
+        let response = await Requester.post(Endpoints.FORGOTTEN_PASSWORD, {token,password,confirmPassword}, true);
+        NotificationHelper.showNotificationByResponse(response);
+    },
+
     async retrieveUserByToken() {
         let response = await Requester.get(Endpoints.GET_CURRENT_AUTHENTICATED);
 

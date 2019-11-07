@@ -1,19 +1,37 @@
 import React, {Component} from 'react';
 import UniversalPasswordsInputs from "../../other/UniversalPasswordsInputs";
+import UserServices from "../../../services/user.services";
+import {withRouter} from "react-router-dom";
+import queryString from "query-string";
 
 class UserChangePasswordByToken extends Component {
 
     constructor(props) {
         super(props);
 
+        this.state = {
+            token: ''
+        };
+
         this.onChangeClick = this.onChangeClick.bind(this);
+        this.getQueryParam = this.getQueryParam.bind(this);
+    }
+
+    async componentDidMount() {
+        let token = await this.getQueryParam(QueryParams.TOKEN);
+        console.log(token);
     }
 
     onChangeClick() {
-        let {password, confirmPassword} = this.state;
+        let {token, password, confirmPassword} = this.state;
 
-        console.log(password);
-        console.log(confirmPassword);
+        UserServices.changePasswordByToken(token, password, confirmPassword);
+    }
+
+    getQueryParam(name) {
+        let queryParams = queryString.parse(this.props.location.search);
+        console.log(queryParams);
+        return queryParams[name];
     }
 
     render() {
@@ -48,4 +66,8 @@ class UserChangePasswordByToken extends Component {
 
 }
 
-export default UserChangePasswordByToken;
+export default withRouter(UserChangePasswordByToken);
+
+const QueryParams = {
+    TOKEN: 'token'
+};

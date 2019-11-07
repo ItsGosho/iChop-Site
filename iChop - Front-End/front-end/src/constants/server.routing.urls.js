@@ -11,6 +11,7 @@ const ServerRoutingURLs = {
             LOGOUT: `${CORE_SERVER_DOMAIN}/auth/logout`,
             GET_CURRENT_AUTHENTICATED: `${CORE_SERVER_DOMAIN}/user/current/authenticated`,
             FORGOTTEN_PASSWORD: `${CORE_SERVER_DOMAIN}/user/forgotten/password`,
+            CHANGE_PASSWORD_BY_TOKEN: `${CORE_SERVER_DOMAIN}/user/change/password/by/token`,
         }
     },
     DATA: {
