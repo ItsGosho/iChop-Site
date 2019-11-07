@@ -41,19 +41,11 @@ public class UserAuthenticationController {
     @PostMapping(UserRoutingConstants.LOGOUT)
     public ResponseEntity logout(HttpServletRequest request, HttpServletResponse response) {
 
-        boolean res = this.isJwtCookiePresent(request.getCookies());
+        Cookie cookie = new Cookie(SecurityConstants.JWT_COOKIE_NAME, null);
+        cookie.setMaxAge(0);
+        response.addCookie(cookie);
 
-        return null;
-    }
-
-    private boolean isJwtCookiePresent(Cookie[] cookies) {
-        for (Cookie cookie : cookies) {
-            if (cookie.getName().equals(SecurityConstants.JWT_COOKIE_NAME)) {
-                return true;
-            }
-        }
-
-        return false;
+        return this.responseHelpers.respondSuccessful("Successful logout!");
     }
 
 }
