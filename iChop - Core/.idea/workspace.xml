@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1984862c-2f8c-4410-af36-a1dcaaa3ddaf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/controllers/UserController.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -401,7 +400,7 @@
       <workItem from="1573057912222" duration="1448000" />
       <workItem from="1573075183947" duration="4066000" />
       <workItem from="1573115299885" duration="14864000" />
-      <workItem from="1573151138630" duration="3812000" />
+      <workItem from="1573151138630" duration="4617000" />
     </task>
     <servers />
   </component>

@@ -12,10 +12,7 @@ import org.ichop.commons.domain.JmsReplyModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 
@@ -61,7 +58,7 @@ public class UserController {
         return this.responseHelpers.respondGeneric(reply);
     }
 
-    @PostMapping(UserRoutingConstants.FIND_BY)
+    @GetMapping(UserRoutingConstants.FIND_BY)
     public ResponseEntity findBy(@RequestParam String username) {
         JmsReplyModel reply = this.userRequester.findByUsername(username);
 
