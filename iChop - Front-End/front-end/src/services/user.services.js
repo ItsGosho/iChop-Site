@@ -24,7 +24,7 @@ const UserServices = {
 
         return response.successful;
     },
-//
+
     async forgottenPassword(email) {
         let response = await Requester.post(Endpoints.FORGOTTEN_PASSWORD, {email}, true);
         NotificationHelper.showNotificationByResponse(response);

@@ -7,6 +7,7 @@ class UserProfile extends Component {
 
 
     render() {
+        /*TODO: test if the :username is passed after adding withRouter(UserProfile)*/
 
         return (
             <div className="container container-user-profile">

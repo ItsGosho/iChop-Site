@@ -33,6 +33,8 @@ function App() {
                 <Switch>
                     <Route exact path={RoutingURLs.AUTHENTICATION.LOGOUT} render={() => (<Logout/>)}/>
                     <Route exact path={RoutingURLs.AUTHENTICATION.TOKEN.RESET_PASSWORD} render={() => (<UserChangePasswordByToken/>)}/>
+
+                    <Route exact path={RoutingURLs.USER.PROFILE} render={() => (<UserProfile/>)}/>
                 </Switch>
             </div>
 
