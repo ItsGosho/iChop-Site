@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import UniversalPasswordsInputs from "../../other/UniversalPasswordsInputs";
 import UserServices from "../../../services/user.services";
 import {withRouter} from "react-router-dom";
-import queryString from "query-string";
+const queryString = require("query-string");
 
 class UserChangePasswordByToken extends Component {
 
