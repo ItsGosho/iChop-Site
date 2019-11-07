@@ -4,11 +4,6 @@ import InputGroupIcon from "../../other/InputGroupIcon";
 import {compose} from "redux";
 import {connect} from "react-redux";
 import UserServices from "../../../../services/user.services";
-import {
-    navbarGuestSelectForgottenPasswordAction,
-    navbarGuestSelectLoginAction, navbarGuestSelectRegisterAction,
-    navbarGuestShowDropdownAction
-} from "../../../../redux/actions/navbar.guest.actions";
 import navbarGuestDispatchers from "../../../../redux/dispatchers/navbar.guest.dispatchers";
 
 class GuestLogin extends Component {
@@ -84,7 +79,9 @@ let mapState = (states) => {
 };
 
 export default FormHoc(
-    compose(connect(mapState, navbarGuestDispatchers))(GuestLogin)
+    compose(
+        connect(mapState, navbarGuestDispatchers)
+    )(GuestLogin)
 )
 
 //export default FormHoc(navbarGuestReduxHoc(GuestLogin));
