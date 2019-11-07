@@ -85,5 +85,3 @@ export default FormHoc(
         connect(mapState, authenticatedUserInfoDispatchers),
     )(GuestLogin)
 )
-
-//export default FormHoc(navbarGuestReduxHoc(GuestLogin));

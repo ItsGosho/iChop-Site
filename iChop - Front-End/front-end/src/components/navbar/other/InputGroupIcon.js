@@ -5,7 +5,6 @@ class InputGroupIcon extends Component {
     render() {
         let {icon, type, autoComplete,reference, name, placeholder, onChange} = this.props;
 
-        console.log(reference);
         return (
             <div className="form-group">
                 <div className="input-group mb-2">

@@ -8,7 +8,8 @@ const UserServices = {
 
     async login(email, password) {
         let response = await Requester.post(Endpoints.LOGIN, {email, password});
-
+console.log(123);
+console.log(response);
         if (response.error) {
             NotificationHelper.showErrorNotification(response.error);
         } else {
