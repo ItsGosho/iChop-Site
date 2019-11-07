@@ -8,7 +8,8 @@ import withState from "../../../hocs/with.state";
 let NavbarAuthenticatedList = CreateReactClass({
 
     render() {
-        let username = '';
+        let user = this.props.authenticatedUserInfo;
+        let username = user.username;
 
         let profileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', username);
         let informationUrl = RoutingURLs.USER.OPTIONS.INFORMATION;
@@ -17,7 +18,7 @@ let NavbarAuthenticatedList = CreateReactClass({
         return (
             <div className="dropdown-menu dropdown-menu-right">
 
-                <DropdownIconLink to={profileUrl} icon={'👤'} text={username}/>
+                <DropdownIconLink to={profileUrl} icon={'👤'} text={'Profile'}/>
                 <DropdownIconLink to={informationUrl} icon={'⚙'} text={'Options'}/>
 
                 {this.props.children}
