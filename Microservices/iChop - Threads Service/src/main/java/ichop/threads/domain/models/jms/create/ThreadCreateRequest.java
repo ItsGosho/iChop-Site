@@ -1,16 +1,16 @@
 package ichop.threads.domain.models.jms.create;
 
-import ichop.threads.common.domain.BaseRequestModel;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
+import org.ichop.commons.domain.RequestCandidate;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-public class ThreadCreateRequest extends BaseRequestModel {
+public class ThreadCreateRequest extends RequestCandidate {
 
     @NotNull
     @NotEmpty
@@ -22,6 +22,6 @@ public class ThreadCreateRequest extends BaseRequestModel {
     private String content;
 
     @NotNull
-    private String userId;
+    private String creatorUsername;
 
 }

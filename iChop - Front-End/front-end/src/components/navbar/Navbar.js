@@ -8,6 +8,9 @@ import GuestNavbar from "./roles/guest/NavbarGuest";
 import {Link} from "react-router-dom";
 import RoutingURLs from "../../constants/routing.constants";
 import FrontEndResourcesRoutingURLs from "../../constants/front-end.resources.routings";
+import {connect} from "react-redux";
+import {compose} from "redux";
+import withState from "../../hocs/with.state";
 
 class Navbar extends Component {
 
@@ -33,7 +36,7 @@ class Navbar extends Component {
     }
 
     render() {
-        let role = '';
+        let user = this.props.authenticatedUserInfo;
 
         return (
             <div className="container">
@@ -59,7 +62,7 @@ class Navbar extends Component {
                     <div className="collapse navbar-collapse" id="core-navigation-bar">
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item dropdown active">
-                                {this.getNavbar(role)}
+                                {this.getNavbar(user.authority)}
                             </li>
                         </ul>
                     </div>
@@ -71,4 +74,4 @@ class Navbar extends Component {
 
 }
 
-export default Navbar;
+export default withState(Navbar);

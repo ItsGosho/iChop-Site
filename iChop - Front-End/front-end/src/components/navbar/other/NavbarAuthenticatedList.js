@@ -2,11 +2,14 @@ import React from "react";
 import CreateReactClass from 'create-react-class';
 import RoutingURLs from "../../../constants/routing.constants";
 import DropdownIconLink from "../../other/DropdownIconLink";
+import {Link} from "react-router-dom";
+import withState from "../../../hocs/with.state";
 
 let NavbarAuthenticatedList = CreateReactClass({
 
     render() {
-        let username = '';
+        let user = this.props.authenticatedUserInfo;
+        let username = user.username;
 
         let profileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', username);
         let informationUrl = RoutingURLs.USER.OPTIONS.INFORMATION;
@@ -29,4 +32,4 @@ let NavbarAuthenticatedList = CreateReactClass({
 
 });
 
-export default NavbarAuthenticatedList;
+export default withState(NavbarAuthenticatedList);

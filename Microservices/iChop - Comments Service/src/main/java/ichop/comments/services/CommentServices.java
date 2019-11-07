@@ -1,10 +1,10 @@
 package ichop.comments.services;
 
-import ichop.comments.common.service.BaseService;
 import ichop.comments.domain.models.service.CommentServiceModel;
+import org.ichop.commons.service.BaseService;
 
 public interface CommentServices<S extends CommentServiceModel> extends BaseService<S> {
 
-    Long getTotalCreatorComments(String creatorId);
+    Long getTotalCreatorComments(String creatorUsername);
 
 }

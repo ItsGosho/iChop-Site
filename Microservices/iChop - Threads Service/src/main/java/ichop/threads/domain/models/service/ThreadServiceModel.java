@@ -1,8 +1,8 @@
 package ichop.threads.domain.models.service;
 
-import ichop.threads.common.domain.BaseServiceModel;
 import lombok.Getter;
 import lombok.Setter;
+import org.ichop.commons.domain.BaseServiceModel;
 
 import java.time.LocalDateTime;
 
@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Setter
 public class ThreadServiceModel extends BaseServiceModel {
 
-    private String userId;
+    private String creatorUsername;
     private String title;
     private String content;
     private LocalDateTime createdOn = LocalDateTime.now();

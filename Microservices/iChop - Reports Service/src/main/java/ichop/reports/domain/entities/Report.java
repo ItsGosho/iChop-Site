@@ -1,15 +1,15 @@
 package ichop.reports.domain.entities;
 
-import ichop.reports.common.domain.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
+import org.ichop.commons.domain.MongoEntity;
 
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Getter
 @Setter
-public abstract class Report extends BaseEntity {
+public abstract class Report extends MongoEntity {
 
     @NotNull
     private String userId;

@@ -1,8 +1,8 @@
 package ichop.users.requesters;
 
-import ichop.users.common.helpers.JmsHelper;
-import ichop.users.domain.models.jms.email.EmailReply;
 import ichop.users.domain.models.jms.email.EmailResetPasswordRequest;
+import org.ichop.commons.domain.JmsReplyModel;
+import org.ichop.commons.helpers.JmsHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -23,7 +23,7 @@ public class EmailRequesterImp implements EmailRequester {
 
 
     @Override
-    public EmailReply sendPasswordReset(EmailResetPasswordRequest request) {
-        return this.jmsHelper.sendAndReceive(this.passwordResetDestination,request,EmailReply.class);
+    public JmsReplyModel sendPasswordReset(EmailResetPasswordRequest request) {
+        return this.jmsHelper.sendAndReceive(this.passwordResetDestination,request);
     }
 }

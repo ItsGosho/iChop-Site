@@ -1,17 +1,17 @@
 package ichop.tokens.repositories;
 
-import ichop.tokens.common.domain.BaseEntity;
+import org.ichop.commons.domain.MongoEntity;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.repository.NoRepositoryBean;
 
-import java.time.LocalDateTime;
-
 @NoRepositoryBean
-public interface TokenRepository<E extends BaseEntity> extends MongoRepository<E, String> {
+public interface TokenRepository<E extends MongoEntity> extends MongoRepository<E, String> {
 
-    E findByUserId(String userId);
+    E findByUserUsername(String username);
 
     E findByToken(String token);
 
     boolean existsByToken(String token);
+
+    Long deleteByToken(String token);
 }

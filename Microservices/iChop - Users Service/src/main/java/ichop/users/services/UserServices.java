@@ -1,9 +1,9 @@
 package ichop.users.services;
 
-import ichop.users.common.service.BaseService;
 import ichop.users.domain.models.jms.register.UserRegisterRequest;
 import ichop.users.domain.models.service.RoleServiceModel;
 import ichop.users.domain.models.service.UserServiceModel;
+import org.ichop.commons.service.BaseService;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.time.LocalDateTime;
@@ -30,7 +30,15 @@ public interface UserServices extends UserDetailsService, BaseService<UserServic
 
     void updateLastOnline(UserServiceModel user, LocalDateTime lastOnline);
 
-    void changePassword(String email, String password);
+    void changePassword(String username, String password);
 
     void updateLocation(UserServiceModel user, String userLocation);
+
+    boolean hasNextRole(String username);
+
+    boolean hasPreviousRole(String username);
+
+    UserServiceModel promote(String username);
+
+    UserServiceModel demote(String username);
 }

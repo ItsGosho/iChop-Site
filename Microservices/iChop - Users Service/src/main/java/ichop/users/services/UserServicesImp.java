@@ -1,7 +1,6 @@
 package ichop.users.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ichop.users.common.service.AbstractBaseService;
 import ichop.users.constants.UserValidationConstants;
 import ichop.users.domain.entities.User;
 import ichop.users.domain.enums.Roles;
@@ -11,6 +10,7 @@ import ichop.users.domain.models.service.UserServiceModel;
 import ichop.users.repositories.UserRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.ichop.commons.service.BaseMySQLService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -26,7 +26,9 @@ import java.util.regex.Pattern;
 import static ichop.users.constants.UserLogConstants.REGISTRATION_SUCCESSFUL;
 
 @Service
-public class UserServicesImp extends AbstractBaseService<User, UserServiceModel, UserRepository> implements UserServices {
+public class UserServicesImp
+        extends BaseMySQLService<User, UserServiceModel, UserRepository>
+        implements UserServices {
 
     private static final Logger LOG = LogManager.getLogger(UserServicesImp.class);
 
@@ -147,12 +149,53 @@ public class UserServicesImp extends AbstractBaseService<User, UserServiceModel,
     }
 
     @Override
-    public void changePassword(String email, String password) {
+    public void changePassword(String username, String password) {
         String encodedPassword = this.passwordEncoder.encode(password);
 
-        UserServiceModel user = this.findByEmail(email);
+        UserServiceModel user = this.findByUsername(username);
         user.setPassword(encodedPassword);
 
         this.save(user);
+    }
+
+    @Override
+    public boolean hasNextRole(String username) {
+        UserServiceModel user = this.findByUsername(username);
+        RoleServiceModel currentRole = this.roleServices.findHighestOfUser(user);
+        RoleServiceModel nextRole = this.roleServices.getUserNextRole(currentRole);
+
+        return nextRole != null && !nextRole.getAuthority().toUpperCase().equals(Roles.OWNER.name().toUpperCase());
+    }
+
+    @Override
+    public boolean hasPreviousRole(String username) {
+        UserServiceModel user = this.findByUsername(username);
+        RoleServiceModel currentRole = this.roleServices.findHighestOfUser(user);
+        RoleServiceModel previousRole = this.roleServices.getUserPreviousRole(currentRole);
+
+        return previousRole != null;
+    }
+
+    @Override
+    public UserServiceModel promote(String username) {
+        UserServiceModel user = this.findByUsername(username);
+
+        RoleServiceModel currentRole = this.roleServices.findHighestOfUser(user);
+        RoleServiceModel nextRole = this.roleServices.getUserNextRole(currentRole);
+
+        user.getAuthorities().add(nextRole);
+        return this.save(user, UserServiceModel.class);
+    }
+
+    @Override
+    public UserServiceModel demote(String username) {
+        UserServiceModel user = this.findByUsername(username);
+
+        RoleServiceModel currentRole = this.roleServices.findHighestOfUser(user);
+        RoleServiceModel previousRole = this.roleServices.getUserPreviousRole(currentRole);
+
+        user.getAuthorities().removeIf(x -> x.getAuthority().toUpperCase().equals(currentRole.getAuthority().toUpperCase()));
+
+        return this.save(user, UserServiceModel.class);
     }
 }

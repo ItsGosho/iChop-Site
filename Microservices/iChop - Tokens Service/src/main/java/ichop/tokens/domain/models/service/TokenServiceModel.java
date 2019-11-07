@@ -1,8 +1,8 @@
 package ichop.tokens.domain.models.service;
 
-import ichop.tokens.common.domain.BaseServiceModel;
 import lombok.Getter;
 import lombok.Setter;
+import org.ichop.commons.domain.BaseServiceModel;
 
 import java.time.LocalDateTime;
 
@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Setter
 public abstract class TokenServiceModel extends BaseServiceModel {
 
-    private String userId;
+    private String userUsername;
     private String token;
     private LocalDateTime creationDate = LocalDateTime.now();
 

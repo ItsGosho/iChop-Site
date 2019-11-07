@@ -3,7 +3,7 @@ package ichop.users.services;
 import ichop.users.domain.enums.Roles;
 import ichop.users.domain.models.service.RoleServiceModel;
 import ichop.users.domain.models.service.UserServiceModel;
-import ichop.users.common.service.BaseService;
+import org.ichop.commons.service.BaseService;
 
 public interface RoleServices extends BaseService<RoleServiceModel> {
 

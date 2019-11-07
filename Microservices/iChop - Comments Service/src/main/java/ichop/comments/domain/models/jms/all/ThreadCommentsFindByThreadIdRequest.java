@@ -1,0 +1,15 @@
+package ichop.comments.domain.models.jms.all;
+
+import lombok.Getter;
+import lombok.Setter;
+import org.ichop.commons.domain.RequestCandidate;
+
+import javax.validation.constraints.NotNull;
+
+@Getter
+@Setter
+public class ThreadCommentsFindByThreadIdRequest extends RequestCandidate {
+
+    @NotNull
+    private String threadId;
+}

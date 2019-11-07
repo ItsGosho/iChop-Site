@@ -1,18 +1,18 @@
 package ichop.threads.domain.models.jms.delete;
 
-import ichop.threads.common.domain.BaseRequestModel;
-import ichop.threads.validators.ExistsBy;
 import lombok.Getter;
 import lombok.Setter;
+import org.ichop.commons.domain.RequestCandidate;
+import org.ichop.commons.validators.SpELValidation;
 
 import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-public class ThreadDeleteByIdRequest extends BaseRequestModel {
+@SpELValidation(value = "@threadServicesImp.existsById(#this.id) == true",message = "Thread not found!")
+public class ThreadDeleteByIdRequest extends RequestCandidate {
 
     @NotNull
-    @ExistsBy(field = "_id",message = "Thread doesn't exists with that id!")
     private String id;
 
 }

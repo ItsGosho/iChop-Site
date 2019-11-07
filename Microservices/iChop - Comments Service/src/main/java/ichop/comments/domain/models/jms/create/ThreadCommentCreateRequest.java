@@ -1,23 +1,22 @@
 package ichop.comments.domain.models.jms.create;
 
-import ichop.comments.common.domain.BaseRequestModel;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.validator.constraints.Length;
+import org.ichop.commons.domain.RequestCandidate;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-public class ThreadCommentCreateRequest extends BaseRequestModel {
+public class ThreadCommentCreateRequest extends RequestCandidate {
 
     @NotNull
     @NotEmpty
     private String content;
 
     @NotNull
-    private String creatorId;
+    private String creatorUsername;
 
     @NotNull
     private String threadId;

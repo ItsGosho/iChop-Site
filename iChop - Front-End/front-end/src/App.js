@@ -17,9 +17,10 @@ import UserControl from "./components/user/control/UserControl";
 import {Switch} from "react-bootstrap";
 import {Route} from "react-router-dom";
 import RoutingURLs from "./constants/routing.constants";
+import Logout from "./components/navbar/other/Logout";
+import UserChangePasswordByToken from "./components/user/other/UserChangePasswordByToken";
 
 function App() {
-
 
 
     return (
@@ -27,6 +28,15 @@ function App() {
             <Navbar/>
 
             <ReactNotification/>
+
+            <div style={{'marginTop':'75px'}}>
+                <Switch>
+                    <Route exact path={RoutingURLs.AUTHENTICATION.LOGOUT} render={() => (<Logout/>)}/>
+                    <Route exact path={RoutingURLs.AUTHENTICATION.TOKEN.RESET_PASSWORD} render={() => (<UserChangePasswordByToken/>)}/>
+
+                    <Route exact path={RoutingURLs.USER.PROFILE} render={() => (<UserProfile/>)}/>
+                </Switch>
+            </div>
 
             {/*<div style={{'marginTop': '75px'}}>
 
@@ -37,7 +47,7 @@ function App() {
 
             </div>*/}
 
-            <ThreadsAll/>
+            {/*<ThreadsAll/>*/}
 
             <Footer/>
         </Fragment>

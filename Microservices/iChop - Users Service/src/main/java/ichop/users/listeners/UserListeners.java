@@ -1,36 +1,37 @@
 package ichop.users.listeners;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ichop.users.common.aop.JmsAfterReturn;
-import ichop.users.common.aop.JmsValidate;
-import ichop.users.common.helpers.BaseListener;
-import ichop.users.common.helpers.JmsHelper;
+import ichop.users.domain.models.jms.UserReply;
 import ichop.users.domain.models.jms.email.EmailResetPasswordRequest;
-import ichop.users.domain.models.jms.password.change.UserChangePasswordByTokenReply;
 import ichop.users.domain.models.jms.password.change.UserChangePasswordByTokenRequest;
-import ichop.users.domain.models.jms.password.change.UserChangePasswordReply;
 import ichop.users.domain.models.jms.password.change.UserChangePasswordRequest;
-import ichop.users.domain.models.jms.password.forgotten.UserForgottenPasswordReply;
 import ichop.users.domain.models.jms.password.forgotten.UserForgottenPasswordRequest;
-import ichop.users.domain.models.jms.register.UserRegisterReply;
 import ichop.users.domain.models.jms.register.UserRegisterRequest;
-import ichop.users.domain.models.jms.retrieve.UserFindByEmailReply;
 import ichop.users.domain.models.jms.retrieve.UserFindByEmailRequest;
-import ichop.users.domain.models.jms.token.create.password.PasswordTokenCreateReply;
+import ichop.users.domain.models.jms.retrieve.UserFindByUsernameRequest;
+import ichop.users.domain.models.jms.retrieve.UsersAllPageableRequest;
+import ichop.users.domain.models.jms.token.PasswordTokenReply;
 import ichop.users.domain.models.jms.token.create.password.PasswordTokenCreateRequest;
 import ichop.users.domain.models.service.UserServiceModel;
 import ichop.users.requesters.EmailRequester;
 import ichop.users.requesters.PasswordTokenRequester;
 import ichop.users.services.RoleServices;
 import ichop.users.services.UserServices;
+import org.ichop.commons.aop.JmsAfterReturn;
+import org.ichop.commons.aop.JmsValidate;
+import org.ichop.commons.domain.EmptyReply;
+import org.ichop.commons.domain.JmsReplyModel;
+import org.ichop.commons.helpers.BaseListener;
+import org.ichop.commons.helpers.JmsHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 
 import javax.jms.Message;
+import java.util.List;
 
-import static ichop.users.common.constants.JmsFactories.QUEUE;
 import static ichop.users.constants.UserReplyConstants.*;
+import static org.ichop.commons.constants.JmsFactories.QUEUE;
 
 @Component
 public class UserListeners extends BaseListener {
@@ -56,68 +57,100 @@ public class UserListeners extends BaseListener {
 
 
     @JmsValidate(model = UserRegisterRequest.class)
-    @JmsAfterReturn(message = USER_REGISTER_SUCCESSFUL)
+    @JmsAfterReturn(message = REGISTER_SUCCESSFUL)
     @JmsListener(destination = "${artemis.queue.users.authentication.register}", containerFactory = QUEUE)
-    public UserRegisterReply register(Message message) {
-        UserRegisterRequest requestModel = this.jmsHelper.getResultModel(message, UserRegisterRequest.class);
+    public UserReply register(Message message) {
+        UserRegisterRequest requestModel = this.jmsHelper.toModel(message, UserRegisterRequest.class);
 
         UserServiceModel user = this.userServices.register(requestModel);
 
-        return super.objectMapper.convertValue(user, UserRegisterReply.class);
+        return super.objectMapper.convertValue(user, UserReply.class);
     }
 
     @JmsValidate(model = UserFindByEmailRequest.class)
-    @JmsAfterReturn(message = USER_FETCHED_SUCCESSFUL)
+    @JmsAfterReturn(message = FETCHED_SUCCESSFUL)
     @JmsListener(destination = "${artemis.queue.users.find.by.email}", containerFactory = QUEUE)
-    public UserFindByEmailReply findByEmail(Message message) {
-        UserFindByEmailRequest requestModel = this.jmsHelper.getResultModel(message, UserFindByEmailRequest.class);
+    public UserReply findByEmail(Message message) {
+        UserFindByEmailRequest requestModel = this.jmsHelper.toModel(message, UserFindByEmailRequest.class);
 
         UserServiceModel user = this.userServices.findByEmail(requestModel.getEmail());
 
-        UserFindByEmailReply reply = super.objectMapper.convertValue(user, UserFindByEmailReply.class);
+        UserReply reply = super.objectMapper.convertValue(user, UserReply.class);
         reply.setAuthority(this.roleServices.findHighestOfUser(user).getAuthority());
         return reply;
     }
 
-    @JmsValidate(model = UserChangePasswordRequest.class)
-    @JmsAfterReturn(message = USER_PASSWORD_CHANGED_SUCCESSFUL)
-    @JmsListener(destination = "${artemis.queue.users.password.change}", containerFactory = QUEUE)
-    public UserChangePasswordReply changePassword(Message message) {
-        UserChangePasswordRequest requestModel = this.jmsHelper.getResultModel(message, UserChangePasswordRequest.class);
+    @JmsValidate(model = UserFindByUsernameRequest.class)
+    @JmsAfterReturn(message = FETCHED_SUCCESSFUL)
+    @JmsListener(destination = "${artemis.queue.users.find.by.username}", containerFactory = QUEUE)
+    public UserReply findByUsername(Message message) {
+        UserFindByUsernameRequest requestModel = this.jmsHelper.toModel(message, UserFindByUsernameRequest.class);
 
-        this.userServices.changePassword(requestModel.getEmail(), requestModel.getPassword());
+        UserServiceModel user = this.userServices.findByUsername(requestModel.getUsername());
 
-        return new UserChangePasswordReply();
+        UserReply reply = super.objectMapper.convertValue(user, UserReply.class);
+        reply.setAuthority(this.roleServices.findHighestOfUser(user).getAuthority());
+        return reply;
     }
 
-    @JmsValidate(model = UserChangePasswordByTokenRequest.class)
-    @JmsAfterReturn(message = USER_PASSWORD_CHANGED_SUCCESSFUL)
-    @JmsListener(destination = "${artemis.queue.users.password.change.by.token}", containerFactory = QUEUE)
-    public UserChangePasswordByTokenReply changePasswordByToken(Message message) {
-        UserChangePasswordByTokenRequest requestModel = this.jmsHelper.getResultModel(message, UserChangePasswordByTokenRequest.class);
+    @JmsValidate(model = UsersAllPageableRequest.class)
+    @JmsAfterReturn(message = FETCHED_SUCCESSFUL)
+    @JmsListener(destination = "${artemis.queue.users.find.all.pageable}", containerFactory = QUEUE)
+    public List<UserReply> allPageable(Message message) {
+        UsersAllPageableRequest requestModel = this.jmsHelper.toModel(message, UsersAllPageableRequest.class);
+
+        List<UserServiceModel> users = this.userServices.findAll(requestModel.getPageable());
 
         return null;
     }
 
+    @JmsValidate(model = UserChangePasswordRequest.class)
+    @JmsAfterReturn(message = PASSWORD_CHANGED_SUCCESSFUL)
+    @JmsListener(destination = "${artemis.queue.users.password.change}", containerFactory = QUEUE)
+    public EmptyReply changePassword(Message message) {
+        UserChangePasswordRequest requestModel = this.jmsHelper.toModel(message, UserChangePasswordRequest.class);
+
+        this.userServices.changePassword(requestModel.getUsername(), requestModel.getPassword());
+
+        return new EmptyReply();
+    }
+
+    @JmsValidate(model = UserChangePasswordByTokenRequest.class)
+    @JmsAfterReturn(message = PASSWORD_CHANGED_SUCCESSFUL)
+    @JmsListener(destination = "${artemis.queue.users.password.change.by.token}", containerFactory = QUEUE)
+    public EmptyReply changePasswordByToken(Message message) {
+        UserChangePasswordByTokenRequest requestModel = this.jmsHelper.toModel(message, UserChangePasswordByTokenRequest.class);
+
+        JmsReplyModel findByTokenReply = this.passwordTokenRequester.findByToken(requestModel.getToken());
+        PasswordTokenReply passwordToken = this.objectMapper.convertValue(findByTokenReply.getData(), PasswordTokenReply.class);
+
+        UserServiceModel user = this.userServices.findByUsername(passwordToken.getUserUsername());
+
+        this.userServices.changePassword(user.getUsername(), requestModel.getPassword());
+
+        return new EmptyReply();
+    }
+
     @JmsValidate(model = UserForgottenPasswordRequest.class)
-    @JmsAfterReturn(message = USER_PASSWORD_TOKEN_SENT_SUCCESSFUL)
+    @JmsAfterReturn(message = PASSWORD_TOKEN_SENT_SUCCESSFUL)
     @JmsListener(destination = "${artemis.queue.users.forgotten.password}", containerFactory = QUEUE)
-    public UserForgottenPasswordReply forgottenPassword(Message message) {
-        UserForgottenPasswordRequest requestModel = this.jmsHelper.getResultModel(message, UserForgottenPasswordRequest.class);
+    public EmptyReply forgottenPassword(Message message) {
+        UserForgottenPasswordRequest requestModel = this.jmsHelper.toModel(message, UserForgottenPasswordRequest.class);
 
         UserServiceModel user = this.userServices.findByEmail(requestModel.getEmail());
 
-        PasswordTokenCreateRequest passwordTokenCreateRequest = new PasswordTokenCreateRequest(user.getId());
-        PasswordTokenCreateReply passwordTokenCreateReply = this.passwordTokenRequester.create(passwordTokenCreateRequest);
+        PasswordTokenCreateRequest passwordTokenCreateRequest = new PasswordTokenCreateRequest(user.getUsername());
+        JmsReplyModel passwordTokenCreateReply = this.passwordTokenRequester.create(passwordTokenCreateRequest);
+        PasswordTokenReply passwordToken = this.objectMapper.convertValue(passwordTokenCreateReply.getData(), PasswordTokenReply.class);
 
         EmailResetPasswordRequest emailResetPasswordRequest = new EmailResetPasswordRequest();
         emailResetPasswordRequest.setTo(user.getEmail());
-        emailResetPasswordRequest.setToken(passwordTokenCreateReply.getToken());
-        emailResetPasswordRequest.setExpirationDate(passwordTokenCreateReply.getCreationDate().plusHours(24));
+        emailResetPasswordRequest.setToken(passwordToken.getToken());
+        emailResetPasswordRequest.setExpirationDate(passwordToken.getCreationDate().plusHours(24));
 
         this.emailRequester.sendPasswordReset(emailResetPasswordRequest);
 
-        return new UserForgottenPasswordReply();
+        return new EmptyReply();
     }
 
 }

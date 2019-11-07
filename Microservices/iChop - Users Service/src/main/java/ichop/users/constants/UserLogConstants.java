@@ -1,6 +1,6 @@
 package ichop.users.constants;
 
-import static ichop.users.common.constants.ColorCodesConstants.*;
+import static org.ichop.commons.constants.ColorCodesConstants.*;
 
 public final class UserLogConstants {
 

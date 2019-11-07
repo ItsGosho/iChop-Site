@@ -5,18 +5,18 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.users.domain.entities.Role;
 import ichop.users.domain.enums.Roles;
 import ichop.users.domain.models.service.RoleServiceModel;
-import ichop.users.repositories.RoleRepository;
 import ichop.users.domain.models.service.UserServiceModel;
-import ichop.users.common.service.AbstractBaseService;
+import ichop.users.repositories.RoleRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.ichop.commons.service.BaseMySQLService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import static ichop.users.constants.RoleLogConstants.ROLE_CREATED;
 
 @Service
-public class RoleServicesImp extends AbstractBaseService<Role, RoleServiceModel, RoleRepository> implements RoleServices {
+public class RoleServicesImp extends BaseMySQLService<Role, RoleServiceModel, RoleRepository> implements RoleServices {
 
     private static final Logger LOG = LogManager.getLogger(RoleServicesImp.class);
 

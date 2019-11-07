@@ -1,7 +1,8 @@
 package ichop.storage.constants;
 
-import static ichop.storage.common.constants.ColorCodesConstants.ANSI_BLACK;
-import static ichop.storage.common.constants.ColorCodesConstants.ANSI_GREEN;
+
+import static org.ichop.commons.constants.ColorCodesConstants.ANSI_BLACK;
+import static org.ichop.commons.constants.ColorCodesConstants.ANSI_GREEN;
 
 public final class DropboxLoggingConstants {
 

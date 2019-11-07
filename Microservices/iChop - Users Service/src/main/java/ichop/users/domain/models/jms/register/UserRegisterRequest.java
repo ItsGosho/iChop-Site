@@ -1,10 +1,10 @@
 package ichop.users.domain.models.jms.register;
 
-import ichop.users.common.domain.BaseRequestModel;
-import ichop.users.common.validators.SpELValidation;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
+import org.ichop.commons.domain.RequestCandidate;
+import org.ichop.commons.validators.SpELValidation;
 
 import javax.validation.constraints.Email;
 
@@ -13,7 +13,7 @@ import javax.validation.constraints.Email;
 @SpELValidation(value = "@userServicesImp.existsByUsername(#this.username) == false", message = "Username is already present!")
 @SpELValidation(value = "@userServicesImp.existsByEmail(#this.email) == false", message = "Email is already present!")
 @SpELValidation(value = "#this.password == #this.confirmPassword", message = "Passwords are not equal!")
-public class UserRegisterRequest extends BaseRequestModel {
+public class UserRegisterRequest extends RequestCandidate {
 
     @Length(min = 3,message = "Username must be at least 3 characters!")
     @Length(max = 25,message = "Username must be max 25 characters!")

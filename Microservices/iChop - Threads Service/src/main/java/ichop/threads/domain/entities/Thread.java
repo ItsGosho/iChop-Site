@@ -1,8 +1,8 @@
 package ichop.threads.domain.entities;
 
-import ichop.threads.common.domain.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
+import org.ichop.commons.domain.MongoEntity;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotNull;
@@ -11,10 +11,10 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Document("threads")
-public class Thread extends BaseEntity {
+public class Thread extends MongoEntity {
 
     @NotNull
-    private String userId;
+    private String creatorUsername;
 
     @NotNull
     private String title;

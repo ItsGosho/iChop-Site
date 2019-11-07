@@ -1,18 +1,17 @@
 package ichop.reports.listeners;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ichop.reports.common.aop.JmsAfterReturn;
-import ichop.reports.common.aop.JmsValidate;
-import ichop.reports.common.helpers.BaseListener;
-import ichop.reports.common.helpers.JmsHelper;
-import ichop.reports.domain.models.jms.all.pageable.reply.ReportsAllPageableReply;
-import ichop.reports.domain.models.jms.all.pageable.request.ThreadReportsAllPageableRequest;
-import ichop.reports.domain.models.jms.create.reply.ThreadReportCreateReply;
-import ichop.reports.domain.models.jms.create.request.ThreadReportCreateRequest;
-import ichop.reports.domain.models.jms.delete.reply.ReportDeleteByIdReply;
-import ichop.reports.domain.models.jms.delete.request.ThreadReportDeleteByIdRequest;
+import ichop.reports.domain.models.jms.ThreadReportReply;
+import ichop.reports.domain.models.jms.all.pageable.ThreadReportsAllPageableRequest;
+import ichop.reports.domain.models.jms.create.ThreadReportCreateRequest;
+import ichop.reports.domain.models.jms.delete.ThreadReportDeleteByIdRequest;
 import ichop.reports.domain.models.service.ThreadReportServiceModel;
 import ichop.reports.services.ThreadReportServices;
+import org.ichop.commons.aop.JmsAfterReturn;
+import org.ichop.commons.aop.JmsValidate;
+import org.ichop.commons.domain.EmptyReply;
+import org.ichop.commons.helpers.BaseListener;
+import org.ichop.commons.helpers.JmsHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
@@ -20,8 +19,8 @@ import org.springframework.stereotype.Component;
 import javax.jms.Message;
 import java.util.List;
 
-import static ichop.reports.common.constants.JmsFactories.QUEUE;
 import static ichop.reports.constants.ReportReplyConstants.*;
+import static org.ichop.commons.constants.JmsFactories.QUEUE;
 
 @Component
 public class ThreadReportListeners extends BaseListener {
@@ -39,34 +38,32 @@ public class ThreadReportListeners extends BaseListener {
     @JmsValidate(model = ThreadReportCreateRequest.class)
     @JmsAfterReturn(message = REPORT_CREATED_SUCCESSFUL)
     @JmsListener(destination = "${artemis.queue.reports.thread.create}", containerFactory = QUEUE)
-    public ThreadReportCreateReply create(Message message) {
-        ThreadReportCreateRequest requestModel = this.jmsHelper.getResultModel(message, ThreadReportCreateRequest.class);
+    public ThreadReportReply create(Message message) {
+        ThreadReportCreateRequest requestModel = this.jmsHelper.toModel(message, ThreadReportCreateRequest.class);
 
         ThreadReportServiceModel threadReport = this.objectMapper.convertValue(requestModel, ThreadReportServiceModel.class);
 
-        return this.threadReportServices.save(threadReport, ThreadReportCreateReply.class);
+        return this.threadReportServices.save(threadReport, ThreadReportReply.class);
     }
 
     @JmsValidate(model = ThreadReportDeleteByIdRequest.class)
     @JmsAfterReturn(message = REPORT_DELETED_SUCCESSFUL)
-    @JmsListener(destination = "${artemis.queue.reports.thread.delete_by_id}", containerFactory = QUEUE)
-    public ReportDeleteByIdReply deleteByThreadId(Message message) {
-        ThreadReportDeleteByIdRequest requestModel = this.jmsHelper.getResultModel(message, ThreadReportDeleteByIdRequest.class);
+    @JmsListener(destination = "${artemis.queue.reports.thread.delete.by.id}", containerFactory = QUEUE)
+    public EmptyReply deleteByThreadId(Message message) {
+        ThreadReportDeleteByIdRequest requestModel = this.jmsHelper.toModel(message, ThreadReportDeleteByIdRequest.class);
 
         this.threadReportServices.deleteByThreadId(requestModel.getThreadId());
 
-        return new ReportDeleteByIdReply();
+        return new EmptyReply();
     }
 
     @JmsValidate(model = ThreadReportsAllPageableRequest.class)
     @JmsAfterReturn(message = REPORTS_FETCHED_SUCCESSFUL)
-    @JmsListener(destination = "${artemis.queue.reports.thread.all_pageable}", containerFactory = QUEUE)
-    public ReportsAllPageableReply<ThreadReportServiceModel> allPageable(Message message) {
-        ThreadReportsAllPageableRequest requestModel = this.jmsHelper.getResultModel(message, ThreadReportsAllPageableRequest.class);
+    @JmsListener(destination = "${artemis.queue.reports.thread.find.pageable}", containerFactory = QUEUE)
+    public List<ThreadReportReply> allPageable(Message message) {
+        ThreadReportsAllPageableRequest requestModel = this.jmsHelper.toModel(message, ThreadReportsAllPageableRequest.class);
 
-        List<ThreadReportServiceModel> reports = this.threadReportServices.findAll(requestModel.getPageable(), ThreadReportServiceModel.class);
-
-        return new ReportsAllPageableReply<>(reports);
+        return this.threadReportServices.findAll(requestModel.getPageable(), ThreadReportReply.class);
     }
 
 }

@@ -1,2 +1,2 @@
-TITLE "iChop - Reports Service"
+TITLE iChop - Reports Service
 mvn clean spring-boot:run

@@ -4,7 +4,16 @@ const OTHER_CRAFATAR_SERVER_DOMAIN = 'https://crafatar.com';
 const OTHER_MINOTAR_SERVER_DOMAIN = 'https://minotar.net';
 
 const ServerRoutingURLs = {
-    CORE: {},
+    CORE: {
+        USER: {
+            LOGIN: `${CORE_SERVER_DOMAIN}/auth/login`,
+            REGISTER: `${CORE_SERVER_DOMAIN}/auth/register`,
+            LOGOUT: `${CORE_SERVER_DOMAIN}/auth/logout`,
+            GET_CURRENT_AUTHENTICATED: `${CORE_SERVER_DOMAIN}/user/current/authenticated`,
+            FORGOTTEN_PASSWORD: `${CORE_SERVER_DOMAIN}/user/forgotten/password`,
+            CHANGE_PASSWORD_BY_TOKEN: `${CORE_SERVER_DOMAIN}/user/change/password/by/token`,
+        }
+    },
     DATA: {
         USER: {
             AVATAR: {

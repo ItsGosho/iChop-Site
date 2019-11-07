@@ -1,7 +1,11 @@
 import React, {Component, Fragment} from 'react';
-import navbarGuestReduxHoc from "../../../../redux/hocs/navbar.guest.hoc";
 import FormHoc from "../../../../hocs/form.hoc";
 import InputGroupIcon from "../../other/InputGroupIcon";
+import {compose} from "redux";
+import {connect} from "react-redux";
+import UserServices from "../../../../services/user.services";
+import navbarGuestDispatchers from "../../../../redux/dispatchers/navbar.guest.dispatchers";
+import authenticatedUserInfoDispatchers from "../../../../redux/dispatchers/authenticated.user.info.dispatchers";
 
 class GuestLogin extends Component {
 
@@ -11,11 +15,13 @@ class GuestLogin extends Component {
         this.onLogin = this.onLogin.bind(this);
     }
 
-    onLogin() {
-        let {usernameOrEmail, password} = this.props.formData;
+    async onLogin() {
+        let {email, password} = this.props.formData;
+        let user = await UserServices.login(email, password);
 
-        console.log(usernameOrEmail);
-        console.log(password);
+        if (user) {
+            this.props.setAuthenticatedUser(user);
+        }
     }
 
     render() {
@@ -29,8 +35,8 @@ class GuestLogin extends Component {
                     <InputGroupIcon icon={'👤/📧'}
                                     type={'text'}
                                     autoComplete={'on'}
-                                    name={'usernameOrEmail'}
-                                    placeholder={'Username or Email...'}
+                                    name={'email'}
+                                    placeholder={'Email...'}
                                     onChange={onChange}/>
 
                     <InputGroupIcon icon={'🔒'}
@@ -71,4 +77,13 @@ class GuestLogin extends Component {
 
 }
 
-export default FormHoc(navbarGuestReduxHoc(GuestLogin));
+let mapState = (states) => {
+    return {...states}
+};
+
+export default FormHoc(
+    compose(
+        connect(mapState, navbarGuestDispatchers),
+        connect(mapState, authenticatedUserInfoDispatchers),
+    )(GuestLogin)
+)

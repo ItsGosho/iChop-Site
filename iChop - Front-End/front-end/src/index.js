@@ -10,11 +10,20 @@ import logger from 'redux-logger'
 import Provider from "react-redux/es/components/Provider";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-notifications-component/dist/theme.css'
+import UserServices from "./services/user.services";
+import {set} from "./redux/actions/authenticated.user.info.actions";
 
 let store = createStore(
     combineReducers(reducers),
-    compose(applyMiddleware(thunk, logger), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+    compose(applyMiddleware(thunk/*, logger*/), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() || compose)
 );
+
+(async () => {
+    let user = await UserServices.retrieveUserByToken();
+    if (user) {
+        store.dispatch(set(user));
+    }
+})();
 
 ReactDOM.render(
     <Provider store={store}>
@@ -22,4 +31,5 @@ ReactDOM.render(
             <App/>
         </BrowserRouter>
     </Provider>,
-    document.getElementById('root'));
+    document.getElementById('root')
+);

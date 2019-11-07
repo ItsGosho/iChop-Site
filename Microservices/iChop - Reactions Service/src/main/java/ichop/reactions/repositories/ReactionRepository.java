@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ReactionRepository extends MongoRepository<Reaction, String> {
 
-    boolean existsByUserIdAndAndEntityIdAndEntityType(String userId, String entityId, EntityType entityType);
+    boolean existsByCreatorUsernameAndEntityIdAndEntityType(String creatorUsername, String entityId, EntityType entityType);
 
 }

@@ -1,10 +1,10 @@
 package ichop.reactions.domain.models.service;
 
-import ichop.reactions.common.domain.BaseServiceModel;
 import ichop.reactions.domain.enums.EntityType;
 import ichop.reactions.domain.enums.ReactionType;
 import lombok.Getter;
 import lombok.Setter;
+import org.ichop.commons.domain.BaseServiceModel;
 
 import java.time.LocalDateTime;
 
@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Setter
 public class ReactionServiceModel extends BaseServiceModel {
 
-    private String userId;
+    private String creatorUsername;
     private String entityId;
     private EntityType entityType;
     private ReactionType reactionType;

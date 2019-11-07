@@ -1,6 +1,7 @@
 package ichop.core.constants;
 
 
+@Deprecated
 public final class URLConstants {
 
     //PlayerController ---------------------------------------------------------------------------------------

@@ -6,8 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.core.areas.other.utils.DateUtils;
 import ichop.core.areas.rest.helpers.ResponseHelpers;
 import ichop.core.areas.user.constants.UserRoutingConstants;
-import ichop.core.areas.user.models.jms.retrieve.UserFindByEmailReply;
-import ichop.core.areas.user.requester.UserRequester;
+import ichop.core.areas.user.models.jms.UserReply;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -21,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.Map;
 
 import static ichop.core.areas.security.constants.SecurityConstants.*;
 import static ichop.core.areas.security.constants.SecurityLogConstants.*;
@@ -32,16 +32,13 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     private final AuthenticationManager authenticationManager;
     private final ResponseHelpers responseHelpers;
     private final ObjectMapper objectMapper;
-    private final UserRequester userRequester;
 
     public JwtAuthenticationFilter(AuthenticationManager authenticationManager,
                                    ResponseHelpers responseHelpers,
-                                   ObjectMapper objectMapper,
-                                   UserRequester userRequester) {
+                                   ObjectMapper objectMapper) {
         this.authenticationManager = authenticationManager;
         this.responseHelpers = responseHelpers;
         this.objectMapper = objectMapper;
-        this.userRequester = userRequester;
 
         super.setFilterProcessesUrl(UserRoutingConstants.LOGIN);
     }
@@ -50,10 +47,12 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) {
         LOG.info(String.format(AUTHENTICATION_STARTED, request.getParameter(EMAIL_FIELD)));
 
-        String email = request.getParameter(EMAIL_FIELD);
-        String password = request.getParameter(PASSWORD_FIELD);
-
         try {
+            Map<String,String> parameters = this.objectMapper.readValue(request.getInputStream(),Map.class);
+
+            String email = parameters.get(EMAIL_FIELD);
+            String password = parameters.get(PASSWORD_FIELD);
+
             return this.authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));
         } catch (Exception ex) {
             this.responseHelpers.respondError(response, "Bad credentials!");
@@ -67,7 +66,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                                             FilterChain filterChain,
                                             Authentication authentication) throws IOException {
 
-        UserFindByEmailReply user = (UserFindByEmailReply) authentication.getPrincipal();
+        UserReply user = (UserReply) authentication.getPrincipal();
 
         LOG.info(String.format(AUTHENTICATION_SUCCESSFUL, user.getEmail()));
 
@@ -76,16 +75,22 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         String jwt = JWT.create()
                 .withExpiresAt(DateUtils.asDate(LocalDateTime.now().plusHours(JWT_EXPIRATION_HOURS)))
                 .withClaim(EMAIL_CLAIM, user.getEmail())
+                .withClaim(USERNAME_CLAIM, user.getUsername())
                 .withClaim(ROLE_CLAIM, user.getAuthority())
                 .withClaim(ROLES_CLAIM, roles)
                 .withIssuer(JWT_ISSUER)
                 .sign(Algorithm.HMAC512(JWT_SECRET));
 
+        Cookie jwtCookie = new Cookie(JWT_COOKIE_NAME, jwt);
+        jwtCookie.setSecure(false);
+        jwtCookie.setHttpOnly(false);
+        jwtCookie.setMaxAge(JWT_EXPIRATION_HOURS * 3600);
+        jwtCookie.setPath("/");
 
-        response.addCookie(new Cookie(JWT_COOKIE_NAME, jwt));
+        response.addCookie(jwtCookie);
 
         LOG.info(String.format(JWT_GENERATION_SUCCESSFUL, user.getEmail()));
-        this.responseHelpers.respondSuccessful(response, "Login successful!");
+        this.responseHelpers.respondSuccessful(response, "Login successful!",user);
 
     }
 }

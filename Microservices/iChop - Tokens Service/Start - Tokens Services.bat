@@ -1,2 +1,2 @@
-TITLE "iChop - Tokens Service"
+TITLE iChop - Tokens Service
 mvn clean spring-boot:run

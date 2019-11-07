@@ -1,12 +1,12 @@
 package ichop.core.areas.user.models.jms.register;
 
-import ichop.core.common.domain.BaseRequestModel;
 import lombok.Getter;
 import lombok.Setter;
+import org.ichop.commons.domain.RequestCandidate;
 
 @Getter
 @Setter
-public class UserRegisterRequest extends BaseRequestModel {
+public class UserRegisterRequest extends RequestCandidate {
 
     private String username;
     private String password;

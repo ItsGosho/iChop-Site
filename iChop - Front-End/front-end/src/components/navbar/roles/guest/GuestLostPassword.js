@@ -1,7 +1,10 @@
 import React, {Component, Fragment} from 'react';
-import navbarGuestReduxHoc from "../../../../redux/hocs/navbar.guest.hoc";
 import FormHoc from "../../../../hocs/form.hoc";
 import InputGroupIcon from "../../other/InputGroupIcon";
+import {compose} from "redux";
+import {connect} from "react-redux";
+import navbarGuestDispatchers from "../../../../redux/dispatchers/navbar.guest.dispatchers";
+import UserServices from "../../../../services/user.services";
 
 class GuestLostPassword extends Component {
 
@@ -13,9 +16,8 @@ class GuestLostPassword extends Component {
     }
 
     onForgottenPassword() {
-        let {usernameOrEmail} = this.props.formData;
-
-        console.log(usernameOrEmail);
+        let {email} = this.props.formData;
+        UserServices.forgottenPassword(email);
     }
 
     render() {
@@ -28,8 +30,8 @@ class GuestLostPassword extends Component {
                     <InputGroupIcon icon={'👤/📧'}
                                     type={'text'}
                                     autoComplete={'on'}
-                                    name={'usernameOrEmail'}
-                                    placeholder={'Username or Email...'}
+                                    name={'email'}
+                                    placeholder={'Email...'}
                                     onChange={onChange}/>
 
                     <button type="button"
@@ -53,4 +55,10 @@ class GuestLostPassword extends Component {
 
 }
 
-export default FormHoc(navbarGuestReduxHoc(GuestLostPassword));
+let mapState = (states) => {
+    return {...states}
+};
+
+export default FormHoc(
+    compose(connect(mapState, navbarGuestDispatchers))(GuestLostPassword)
+)

@@ -1,7 +1,7 @@
 import Actions from "../../constants/actions.constants";
 
 let initialState = {
-    showDropdown: false,
+    isDropdownShow: false,
     isLoginSelected: true,
     isRegisterSelected: false,
     isForgottenPasswordSelected: false,
@@ -14,7 +14,7 @@ let navbarGuestReducer = (state = initialState, action) => {
 
         case Actions.NAVBAR_GUEST_SHOW_DROPDOWN:
             return Object.assign({}, state, {
-                showDropdown: action.showDropdown
+                isDropdownShow: action.payload.isDropdownShow
             });
 
         case Actions.NAVBAR_GUEST_SELECT_LOGIN:

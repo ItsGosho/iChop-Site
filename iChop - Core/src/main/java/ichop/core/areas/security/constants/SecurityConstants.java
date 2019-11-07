@@ -6,6 +6,7 @@ public final class SecurityConstants {
 
     public static final String JWT_ISSUER = "iChop";
     public static final String EMAIL_CLAIM = "email";
+    public static final String USERNAME_CLAIM = "username";
     public static final String ROLE_CLAIM = "role";
     public static final String ROLES_CLAIM = "roles";
 

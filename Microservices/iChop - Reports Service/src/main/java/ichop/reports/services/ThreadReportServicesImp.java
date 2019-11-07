@@ -20,6 +20,11 @@ public class ThreadReportServicesImp
 
 
     @Override
+    public boolean existsByThreadId(String threadId) {
+        return false;
+    }
+
+    @Override
     public boolean hasReported(String userId, String threadId) {
         return super.repository.existsByUserIdAndThreadId(userId, threadId);
     }

@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import FooterLinksWrapper from "../etc/FooterLinksWrapper";
-import navbarGuestReduxHoc from "../../../redux/hocs/navbar.guest.hoc";
+import navbarGuestReduxHoc from "../../../redux/dispatchers/navbar.guest.dispatchers";
 import LinkIconLi from "../../other/LinkIconLi";
 
 class GuestFooter extends Component {

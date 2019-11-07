@@ -1,8 +1,8 @@
 package ichop.reports.domain.models.service;
 
-import ichop.reports.common.domain.BaseServiceModel;
 import lombok.Getter;
 import lombok.Setter;
+import org.ichop.commons.domain.BaseServiceModel;
 
 import java.time.LocalDateTime;
 

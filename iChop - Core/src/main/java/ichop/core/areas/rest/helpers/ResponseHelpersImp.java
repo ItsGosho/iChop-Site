@@ -4,9 +4,10 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.core.areas.rest.models.ResponseError;
 import ichop.core.areas.rest.models.ResponseSuccessful;
-import ichop.core.common.domain.BaseReplyModel;
+import org.ichop.commons.domain.JmsReplyModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
@@ -58,6 +59,14 @@ public class ResponseHelpersImp implements ResponseHelpers {
     }
 
     @Override
+    public void respondSuccessful(HttpServletResponse httpServletResponse, String message,Object data) {
+        ResponseSuccessful response = new ResponseSuccessful(message,data);
+
+        this.writeToResponse(httpServletResponse, response);
+    }
+
+
+    @Override
     public void respondError(HttpServletResponse httpServletResponse, String error) {
         ResponseError response = new ResponseError(error);
 
@@ -65,25 +74,18 @@ public class ResponseHelpersImp implements ResponseHelpers {
     }
 
     @Override
-    public ResponseEntity respondSuccessful(String message, Object data) {
-        ResponseSuccessful response = new ResponseSuccessful(message, data);
-
-        return new ResponseEntity<>(response, HttpStatus.OK);
-    }
-
-    @Override
-    public <R extends BaseReplyModel> ResponseEntity respondGeneric(R reply) {
+    public ResponseEntity respondGeneric(JmsReplyModel reply) {
 
         if (!reply.isSuccessful()) {
             return this.respondError(reply.getMessage());
         }
 
-        return this.respondError(reply.getMessage());
+        return new ResponseEntity<>(reply, HttpStatus.OK);
     }
 
     private void writeToResponse(HttpServletResponse response, Object object) {
         try {
-            response.setContentType("application/json");
+            response.setContentType(MediaType.APPLICATION_JSON_VALUE);
             response.getWriter().write(this.objectMapper.writeValueAsString(object));
             response.getWriter().close();
         } catch (Exception ex) {

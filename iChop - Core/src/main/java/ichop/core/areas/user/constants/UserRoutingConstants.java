@@ -2,22 +2,19 @@ package ichop.core.areas.user.constants;
 
 public final class UserRoutingConstants {
 
-    public static final String LOGIN = "/login"; /*GUEST*/
-    public static final String REGISTER = "/register"; /*GUEST*/
+    public static final String LOGIN = "/auth/login"; /*GUEST*/
+    public static final String REGISTER = "/auth/register"; /*GUEST*/
+    public static final String LOGOUT = "/auth/logout"; /*AUTHENTICATED*/
 
     public static final String CHANGE_PASSWORD = "/user/change/password"; /*USER++*/
     public static final String FORGOTTEN_PASSWORD = "/user/forgotten/password"; /*USER++*/
     public static final String CHANGE_PASSWORD_BY_TOKEN = "/user/change/password/by/token"; /*GUEST++*/
 
-    public static final String IS_FOLLOWING = "/user/is/following"; /*EVERYONE*/
-    public static final String EXISTS = "/user/exists"; /*EVERYONE*/
     public static final String ALL = "/users/all"; /*ADMIN++*/
 
+    public static final String GET_CURRENT_AUTHENTICATED = "/user/current/authenticated"; /*GUEST++*/
+
     /*TODO:*/
-
-    //UserController ------------------------------------------------------------------------------------------
-
-    public static final String PROFILE = "/user/{username}/profile"; /*EVERYONE*/
 
     //UserFollowController ------------------------------------------------------------------------------------
 
@@ -25,18 +22,20 @@ public final class UserRoutingConstants {
     public static final String UNFOLLOW = "/user/{username}/unfollow"; /*USER++*/
     public static final String ALL_FOLLOWERS = "/user/{username}/all/followers"; /*EVERYONE*/
     public static final String ALL_FOLLOWINGS = "/user/{username}/all/followings"; /*EVERYONE*/
+    public static final String IS_FOLLOWING = "/user/{username}/is/following"; /*EVERYONE*/
 
-    //UserControlController -----------------------------------------------------------------------------------
+    //UserInformationController -----------------------------------------------------------------------------------
 
-    public static final String CONTROL_BASE = "/user/{username}/control"; /*ADMIN++*/
-    public static final String CONTROL_ROLE_MANAGEMENT = "/user/{username}/control/role-management"; /*ADMIN++*/
-    public static final String CONTROL_ROLE_MANAGEMENT_PROMOTE_USER = "/user/{username}/control/role-management/promote"; /*ADMIN++*/
+    public static final String UPDATE_INFORMATION = "/user/{username}/information/update"; /*LOGGED IN USER IN HIS PROFILE OR OWNER*/
+    public static final String RETRIEVE_INFORMATION = "/user/{username}/information/retrieve"; /*EVERYONE*/
 
+    //AdminController -----------------------------------------------------------------------------------
 
-    //UserMyProfileController ---------------------------------------------------------------------------------
+    public static final String FIND_BY = "/admin/user/find/by"; /*ADMIN++*/
 
-    public static final String PROFILE_OPTIONS_INFORMATION = "/user/my-profile/options/information"; /*Only LOGGED-IN USER IN HIS PROFILE*/
-    public static final String PROFILE_OPTIONS_CHANGE_PASSWORD = "/user/my-profile/options/change-password"; /*Only LOGGED-IN USER IN HIS PROFILE*/
-    public static final String PROFILE_OPTIONS_MINECRAFT = "/user/my-profile/options/minecraft"; /*Only LOGGED-IN USER IN HIS PROFILE*/
+    public static final String ROLE_PROMOTE = "/admin/user/{username}/role/promote"; /*ADMIN++*/
+    public static final String ROLE_DEMOTE = "/admin/user/{username}/role/demote"; /*ADMIN++*/
+    public static final String ROLE_HAS_NEXT = "/admin/user/{username}/role/has/next"; /*ADMIN++*/
+    public static final String ROLE_HAS_PREVIOUS = "/admin/user/{username}/role/has/previous"; /*ADMIN++*/
 
 }

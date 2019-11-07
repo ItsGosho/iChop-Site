@@ -1,2 +1,2 @@
-TITLE "iChop - Comments Service"
+TITLE iChop - Comments Service
 mvn clean spring-boot:run
