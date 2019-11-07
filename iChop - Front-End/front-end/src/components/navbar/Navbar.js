@@ -10,6 +10,7 @@ import RoutingURLs from "../../constants/routing.constants";
 import FrontEndResourcesRoutingURLs from "../../constants/front-end.resources.routings";
 import {connect} from "react-redux";
 import {compose} from "redux";
+import withState from "../../hocs/with.state";
 
 class Navbar extends Component {
 
@@ -73,10 +74,4 @@ class Navbar extends Component {
 
 }
 
-let mapState = (states) => {
-    return {...states}
-};
-
-export default compose(
-    connect(mapState, null)
-)(Navbar);
+export default withState(Navbar);
