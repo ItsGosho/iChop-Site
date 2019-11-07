@@ -30,8 +30,12 @@ const UserServices = {
         NotificationHelper.showNotificationByResponse(response);
     },
 
-    async changePasswordByToken(token,password,confirmPassword) {
-        let response = await Requester.post(Endpoints.CHANGE_PASSWORD_BY_TOKEN, {token,password,confirmPassword}, true);
+    async changePasswordByToken(token, password, confirmPassword) {
+        let response = await Requester.post(Endpoints.CHANGE_PASSWORD_BY_TOKEN, {
+            token,
+            password,
+            confirmPassword
+        }, true);
         NotificationHelper.showNotificationByResponse(response);
     },
 
@@ -41,6 +45,13 @@ const UserServices = {
         if (!response.error) {
             return response.data;
         }
+    },
+
+    async findByUsername(username) {
+        let query = `?username=${username}`;
+        let response = await Requester.get(Endpoints.FIND_BY + query);
+
+        return response.data;
     },
 
     async logout() {
