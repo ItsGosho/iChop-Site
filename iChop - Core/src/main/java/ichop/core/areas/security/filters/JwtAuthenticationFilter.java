@@ -83,6 +83,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
 
         response.addCookie(new Cookie(JWT_COOKIE_NAME, jwt));
+        response.setContentType();
 
         LOG.info(String.format(JWT_GENERATION_SUCCESSFUL, user.getEmail()));
         this.responseHelpers.respondSuccessful(response, "Login successful!");
