@@ -15,9 +15,9 @@ class GuestLostPassword extends Component {
     }
 
     onForgottenPassword() {
-        let {usernameOrEmail} = this.props.formData;
+        let {email} = this.props.formData;
 
-        console.log(usernameOrEmail);
+        console.log(email);
     }
 
     render() {
@@ -30,8 +30,8 @@ class GuestLostPassword extends Component {
                     <InputGroupIcon icon={'👤/📧'}
                                     type={'text'}
                                     autoComplete={'on'}
-                                    name={'usernameOrEmail'}
-                                    placeholder={'Username or Email...'}
+                                    name={'email'}
+                                    placeholder={'Email...'}
                                     onChange={onChange}/>
 
                     <button type="button"

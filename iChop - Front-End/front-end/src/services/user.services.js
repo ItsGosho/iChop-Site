@@ -28,14 +28,9 @@ const UserServices = {
          }*/
     },
 
-    async register(username, password, confirmPassword, email) {
-        let response = await Requester.post(Endpoints.REGISTER, {username, password, confirmPassword, email}, true);
-        console.log(response);
-        /* if (response.error) {
-             NotificationHelper.showErrorNotification(response.error);
-         } else {
-             NotificationHelper.showSuccessNotification(response.message);
-         }*/
+    async forgottenPassword(email) {
+        let response = await Requester.post(Endpoints.FORGOTTEN_PASSWORD, {email}, true);
+        NotificationHelper.showNotificationByResponse(response);
     },
 
     async retrieveUserByToken() {

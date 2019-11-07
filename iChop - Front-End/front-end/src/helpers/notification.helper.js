@@ -23,6 +23,14 @@ const NotificationHelper = {
         });
     },
 
+    showNotificationByResponse(response) {
+        if(response.isSuccessful){
+            NotificationHelper.showSuccessNotification(response.message);
+        }else{
+            NotificationHelper.showErrorNotification(response.message);
+        }
+    },
+
     showLoadingNotification(message = ' ') {
         let {TITLE, DURATION} = NotificationConstants.LOADING;
         return NotificationHelper.showNotification(TITLE, message, 'info', DURATION);
