@@ -4,10 +4,10 @@ import {set,remove} from "../actions/authenticated.user.info.actions";
 
 let authenticatedUserInfoDispatchers = (dispatch) => {
     return {
-        set: (user) => {
+        setAuthenticatedUser: (user) => {
             dispatch(set(user))
         },
-        remove: () => {
+        removeAuthenticatedUser: () => {
             dispatch(remove())
         },
     }
