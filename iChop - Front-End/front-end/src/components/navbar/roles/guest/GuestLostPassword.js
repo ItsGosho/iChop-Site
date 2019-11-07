@@ -1,7 +1,9 @@
 import React, {Component, Fragment} from 'react';
-import navbarGuestReduxHoc from "../../../../redux/hocs/navbar.guest.hoc";
 import FormHoc from "../../../../hocs/form.hoc";
 import InputGroupIcon from "../../other/InputGroupIcon";
+import {compose} from "redux";
+import {connect} from "react-redux";
+import navbarGuestDispatchers from "../../../../redux/dispatchers/navbar.guest.dispatchers";
 
 class GuestLostPassword extends Component {
 
@@ -53,4 +55,10 @@ class GuestLostPassword extends Component {
 
 }
 
-export default FormHoc(navbarGuestReduxHoc(GuestLostPassword));
+let mapState = (states) => {
+    return {...states}
+};
+
+export default FormHoc(
+    compose(connect(mapState, navbarGuestDispatchers))(GuestLostPassword)
+)

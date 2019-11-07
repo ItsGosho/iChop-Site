@@ -7,7 +7,8 @@ const ServerRoutingURLs = {
     CORE: {
         USER: {
             LOGIN: `${CORE_SERVER_DOMAIN}/login`,
-            REGISTER: `${CORE_SERVER_DOMAIN}/register`
+            REGISTER: `${CORE_SERVER_DOMAIN}/register`,
+            LOGOUT: `${CORE_SERVER_DOMAIN}/logout`,
         }
     },
     DATA: {

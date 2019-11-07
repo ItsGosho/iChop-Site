@@ -1,8 +1,11 @@
 import React, {Component, Fragment} from 'react';
-import navbarGuestReduxHoc from "../../../../redux/hocs/navbar.guest.hoc";
 import FormHoc from "../../../../hocs/form.hoc";
 import UniversalPasswordsInputs from "../../../other/UniversalPasswordsInputs";
 import InputGroupIcon from "../../other/InputGroupIcon";
+import UserServices from "../../../../services/user.services";
+import {compose} from "redux";
+import {connect} from "react-redux";
+import navbarGuestDispatchers from "../../../../redux/dispatchers/navbar.guest.dispatchers";
 
 class GuestRegister extends Component {
 
@@ -38,10 +41,7 @@ class GuestRegister extends Component {
     onRegister() {
         let {username, password, confirmPassword, email} = this.props.formData;
 
-        console.log(username);
-        console.log(password);
-        console.log(confirmPassword);
-        console.log(email);
+        UserServices.register(username,password,confirmPassword,email);
     }
 
     render() {
@@ -87,4 +87,10 @@ class GuestRegister extends Component {
 
 }
 
-export default FormHoc(navbarGuestReduxHoc(GuestRegister));
+let mapState = (states) => {
+    return {...states}
+};
+
+export default FormHoc(
+    compose(connect(mapState, navbarGuestDispatchers))(GuestRegister)
+)

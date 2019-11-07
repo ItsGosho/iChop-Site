@@ -3,7 +3,9 @@ import './NavbarGuest.css';
 import GuestLoginDropdown from "./GuestLogin";
 import GuestRegisterDropdown from "./GuestRegister";
 import GuestForgottenPasswordDropdown from "./GuestLostPassword";
-import navbarGuestReduxHoc from "../../../../redux/hocs/navbar.guest.hoc";
+import {compose} from "redux";
+import {connect} from "react-redux";
+import navbarGuestDispatchers from "../../../../redux/dispatchers/navbar.guest.dispatchers";
 
 class NavbarGuest extends Component {
 
@@ -15,27 +17,26 @@ class NavbarGuest extends Component {
     }
 
     showDropdown() {
-        let toShow = !this.props.redux.showDropdown;
+        let toShow = !this.props.showDropdown;
 
         this.props.showDropdown(toShow);
     }
 
     getDropdown() {
-        if (this.props.redux.isLoginSelected) {
+        if (this.props.isLoginSelected) {
             return (<GuestLoginDropdown/>);
         }
 
-        if (this.props.redux.isRegisterSelected) {
+        if (this.props.isRegisterSelected) {
             return (<GuestRegisterDropdown/>);
         }
 
-        if (this.props.redux.isForgottenPasswordSelected) {
+        if (this.props.isForgottenPasswordSelected) {
             return (<GuestForgottenPasswordDropdown/>);
         }
     }
 
     render() {
-
         return (
             <Fragment>
 
@@ -45,7 +46,7 @@ class NavbarGuest extends Component {
                     Sign In
                 </button>
 
-                {this.props.redux.showDropdown ? (
+                {this.props.showDropdown ? (
                     <div
                         className={`dropdown-menu dropdown-menu-right guest-navbar-form ${this.props.showDropdown ? 'show' : ''}`}>
                         {this.getDropdown()}
@@ -58,4 +59,9 @@ class NavbarGuest extends Component {
 
 }
 
-export default navbarGuestReduxHoc(NavbarGuest);
+
+let mapState = (states) => {
+    return {...states.navbarGuest}
+};
+
+export default compose(connect(mapState, navbarGuestDispatchers))(NavbarGuest)

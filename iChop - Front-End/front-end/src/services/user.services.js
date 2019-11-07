@@ -16,8 +16,19 @@ const UserServices = {
         }
     },
 
-    async logout() {
+    async register(username, password, confirmPassword, email) {
+        let response = await Requester.post(Endpoints.REGISTER, {username, password, confirmPassword, email});
+        console.log(response);
+        /* if (response.error) {
+             NotificationHelper.showErrorNotification(response.error);
+         } else {
+             NotificationHelper.showSuccessNotification(response.message);
+         }*/
+    },
 
+    async logout() {
+        let response = await Requester.post(Endpoints.LOGOUT, {});
+        console.log(response);
     }
 
 };

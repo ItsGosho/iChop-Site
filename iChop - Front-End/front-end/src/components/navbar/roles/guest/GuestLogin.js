@@ -1,10 +1,15 @@
 import React, {Component, Fragment} from 'react';
-import navbarGuestReduxHoc from "../../../../redux/hocs/navbar.guest.hoc";
 import FormHoc from "../../../../hocs/form.hoc";
 import InputGroupIcon from "../../other/InputGroupIcon";
 import {compose} from "redux";
 import {connect} from "react-redux";
 import UserServices from "../../../../services/user.services";
+import {
+    navbarGuestSelectForgottenPasswordAction,
+    navbarGuestSelectLoginAction, navbarGuestSelectRegisterAction,
+    navbarGuestShowDropdownAction
+} from "../../../../redux/actions/navbar.guest.actions";
+import navbarGuestDispatchers from "../../../../redux/dispatchers/navbar.guest.dispatchers";
 
 class GuestLogin extends Component {
 
@@ -14,7 +19,7 @@ class GuestLogin extends Component {
         this.onLogin = this.onLogin.bind(this);
     }
 
-    onLogin() {
+    async onLogin() {
         let {email, password} = this.props.formData;
         UserServices.login(email, password);
     }
@@ -22,6 +27,7 @@ class GuestLogin extends Component {
     render() {
         let {onChange} = this.props.formMethods;
 
+        console.log(this.props);
         return (
             <Fragment>
 
@@ -72,16 +78,13 @@ class GuestLogin extends Component {
 
 }
 
-let mapState = (states) => {
-    return {redux: states}
-};
 
-let mapDispatch = (dispatch) => {
-    return
+let mapState = (states) => {
+    return {...states}
 };
 
 export default FormHoc(
-    compose(connect(mapState, mapDispatch))(GuestLogin)
+    compose(connect(mapState, navbarGuestDispatchers))(GuestLogin)
 )
 
 //export default FormHoc(navbarGuestReduxHoc(GuestLogin));
