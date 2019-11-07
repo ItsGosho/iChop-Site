@@ -2,12 +2,14 @@ import React, {Component} from 'react';
 import UserProfileLeftSideInformation from "./UserProfileLeftSideInformation";
 import './UserProfile.css';
 import UserProfileCentralContent from "./UserProfileCentralContent";
+import {withRouter} from "react-router-dom";
 
 class UserProfile extends Component {
 
 
     render() {
-        /*TODO: test if the :username is passed after adding withRouter(UserProfile)*/
+        let {username} = this.props.match.params;
+        console.log(username);
 
         return (
             <div className="container container-user-profile">
@@ -24,4 +26,4 @@ class UserProfile extends Component {
 
 }
 
-export default UserProfile;
+export default withRouter(UserProfile);
