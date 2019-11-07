@@ -22,7 +22,7 @@ public class UserAdminController {
         this.responseHelpers = responseHelpers;
     }
 
-    @GetMapping(UserRoutingConstants.FIND_BY)
+    @GetMapping(UserRoutingConstants.ADMIN_FIND_BY)
     public ResponseEntity findByUsername(@RequestParam(required = false) String username, @RequestParam(required = false) String email) {
         JmsReplyModel reply = null;
 
