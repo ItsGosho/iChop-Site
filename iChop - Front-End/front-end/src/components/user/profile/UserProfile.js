@@ -2,13 +2,32 @@ import React, {Component} from 'react';
 import UserProfileLeftSideInformation from "./UserProfileLeftSideInformation";
 import './UserProfile.css';
 import UserProfileCentralContent from "./UserProfileCentralContent";
+import {withRouter} from "react-router-dom";
+import UserServices from "../../../services/user.services";
+import NotificationHelper from "../../../helpers/notification.helper";
 
 class UserProfile extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            user: undefined
+        }
+    }
+
+    async componentDidMount() {
+        let {username} = this.props.match.params;
+        let user = await UserServices.findByUsername(username);
+
+        if (!user) {
+            NotificationHelper.showErrorNotification(`User wasn't found`)
+        } else {
+            this.setState({user: user})
+        }
+    }
 
     render() {
-        /*TODO: test if the :username is passed after adding withRouter(UserProfile)*/
-
         return (
             <div className="container container-user-profile">
 
@@ -24,4 +43,4 @@ class UserProfile extends Component {
 
 }
 
-export default UserProfile;
+export default withRouter(UserProfile);
