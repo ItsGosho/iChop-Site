@@ -4,6 +4,8 @@ import UserProfileCentralHead from "./UserProfileCentralHead";
 import PanePosts from "./panes/PanePosts";
 import PaneInformation from "./panes/PaneInformation";
 import CreateReactClass from "create-react-class";
+import PropTypes from "prop-types";
+import UserProfileLeftSideInformation from "./UserProfileLeftSideInformation";
 
 class UserProfileCentralContent extends Component {
 
@@ -83,8 +85,11 @@ class UserProfileCentralContent extends Component {
 
 }
 
-export default UserProfileCentralContent;
+UserProfileCentralContent.propTypes = {
+    user: PropTypes.object
+};
 
+export default UserProfileCentralContent;
 
 const NavContent = CreateReactClass({
     render() {

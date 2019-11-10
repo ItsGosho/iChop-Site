@@ -37,7 +37,7 @@ class UserProfile extends Component {
                 <div className="row">
 
                     <UserProfileLeftSideInformation user={user}/>
-                    <UserProfileCentralContent/>
+                    <UserProfileCentralContent user={user}/>
 
                 </div>
             </div>

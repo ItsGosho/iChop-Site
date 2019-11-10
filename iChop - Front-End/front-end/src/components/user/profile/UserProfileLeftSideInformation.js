@@ -58,8 +58,8 @@ class UserProfileLeftSideInformation extends Component {
     }
 }
 
-export default UserProfileLeftSideInformation;
-
 UserProfileLeftSideInformation.propTypes = {
     user: PropTypes.object
 };
+
+export default UserProfileLeftSideInformation;
