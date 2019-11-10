@@ -59,8 +59,8 @@ public class ResponseHelpersImp implements ResponseHelpers {
     }
 
     @Override
-    public void respondSuccessful(HttpServletResponse httpServletResponse, String message,Object data) {
-        ResponseSuccessful response = new ResponseSuccessful(message,data);
+    public void respondSuccessful(HttpServletResponse httpServletResponse, String message, Object data) {
+        ResponseSuccessful response = new ResponseSuccessful(message, data);
 
         this.writeToResponse(httpServletResponse, response);
     }

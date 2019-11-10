@@ -23,5 +23,6 @@ public interface ResponseHelpers {
 
     void respondError(HttpServletResponse httpServletResponse, String error);
 
-     ResponseEntity respondGeneric(JmsReplyModel reply);
+    ResponseEntity respondGeneric(JmsReplyModel reply);
+
 }

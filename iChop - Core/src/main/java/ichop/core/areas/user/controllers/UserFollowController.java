@@ -1,7 +1,9 @@
 package ichop.core.areas.user.controllers;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.core.areas.rest.helpers.ResponseHelpers;
 import ichop.core.areas.user.constants.UserRoutingConstants;
+import ichop.core.areas.user.models.view.UserViewModel;
 import ichop.core.areas.user.requesters.UserFollowRequester;
 import org.ichop.commons.domain.JmsReplyModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,17 +16,23 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class UserFollowController {
 
     private final UserFollowRequester userFollowRequester;
     private final ResponseHelpers responseHelpers;
+    private final ObjectMapper objectMapper;
 
     @Autowired
-    public UserFollowController(UserFollowRequester userFollowRequester, ResponseHelpers responseHelpers) {
+    public UserFollowController(UserFollowRequester userFollowRequester,
+                                ResponseHelpers responseHelpers,
+                                ObjectMapper objectMapper) {
         this.userFollowRequester = userFollowRequester;
         this.responseHelpers = responseHelpers;
+        this.objectMapper = objectMapper;
     }
 
 
@@ -46,18 +54,42 @@ public class UserFollowController {
         return this.responseHelpers.respondGeneric(reply);
     }
 
+    /*TODO: refactor it*/
     @GetMapping(UserRoutingConstants.ALL_FOLLOWERS)
     public ResponseEntity allFollowers(@PathVariable String username) {
 
         JmsReplyModel reply = this.userFollowRequester.allFollowers(username);
 
+        if (reply.isSuccessful()) {
+            List<UserViewModel> data = new ArrayList<>();
+            List<Object> wtf = (List<Object>) reply.getData();
+
+            for (Object item : wtf) {
+                UserViewModel viewModel = this.objectMapper.convertValue(item, UserViewModel.class);
+                data.add(viewModel);
+            }
+            reply.setData(data);
+        }
+
         return this.responseHelpers.respondGeneric(reply);
     }
 
+    /*TODO: refactor it*/
     @GetMapping(UserRoutingConstants.ALL_FOLLOWINGS)
     public ResponseEntity allFollowings(@PathVariable String username) {
 
         JmsReplyModel reply = this.userFollowRequester.allFollowings(username);
+
+        if (reply.isSuccessful()) {
+            List<UserViewModel> data = new ArrayList<>();
+            List<Object> wtf = (List<Object>) reply.getData();
+
+            for (Object item : wtf) {
+                UserViewModel viewModel = this.objectMapper.convertValue(item, UserViewModel.class);
+                data.add(viewModel);
+            }
+            reply.setData(data);
+        }
 
         return this.responseHelpers.respondGeneric(reply);
     }
