@@ -23,8 +23,8 @@ class UserProfile extends Component {
     async componentDidMount() {
         let {username} = this.props.match.params;
         let user = await UserServices.findByUsername(username);
-        let followings = undefined;
-        let followers = undefined;
+        let followings = await UserServices.findFollowings(username);
+        let followers = await UserServices.findFollowers(username);
         let posts = [];
         let information = undefined;
         let minecraftUUID = undefined;

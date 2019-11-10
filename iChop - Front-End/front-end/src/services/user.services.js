@@ -54,6 +54,20 @@ const UserServices = {
         return response.data;
     },
 
+    async findFollowings(username) {
+        let url = Endpoints.ALL_FOLLOWINGS.replace(':username',username);
+        let response = await Requester.get(url);
+
+        return response.data;
+    },
+
+    async findFollowers(username) {
+        let url = Endpoints.ALL_FOLLOWERS.replace(':username',username);
+        let response = await Requester.get(url);
+
+        return response.data;
+    },
+
     async logout() {
         await Requester.post(Endpoints.LOGOUT, {});
     }
