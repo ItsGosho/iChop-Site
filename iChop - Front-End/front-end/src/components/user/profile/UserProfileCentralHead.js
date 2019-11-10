@@ -1,5 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import Roles from "../../../constants/roles.constants";
+import PropTypes from "prop-types";
+import UserProfileCentralContent from "./UserProfileCentralContent";
 
 class UserProfileCentralHead extends Component {
 
@@ -20,8 +22,8 @@ class UserProfileCentralHead extends Component {
     }
 
     render() {
-        let username = 'ItsGosho';
-        let role = Roles.ADMIN;
+        let {username,authority} = this.props.user;
+
         let statusMessage = 'Hello!';
         let isAuthenticated = true;
 
@@ -44,7 +46,7 @@ class UserProfileCentralHead extends Component {
                         <div className="row">
                             <div>
                                 <div className="col-md-auto head">
-                                    <span className="div-first-content">{role}</span>
+                                    <span className="div-first-content">{authority}</span>
                                 </div>
                             </div>
                         </div>
@@ -95,6 +97,12 @@ class UserProfileCentralHead extends Component {
 
 }
 
+UserProfileCentralHead.propTypes = {
+    user: PropTypes.object
+};
+
+export default UserProfileCentralHead;
+
 const FollowControlButton = (props) => {
     let {onClick, text} = props;
 
@@ -106,5 +114,3 @@ const FollowControlButton = (props) => {
         </a>
     )
 };
-
-export default UserProfileCentralHead;

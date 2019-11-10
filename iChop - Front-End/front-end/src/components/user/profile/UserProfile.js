@@ -32,7 +32,6 @@ class UserProfile extends Component {
 
     render() {
         let {user, isLoading} = this.state;
-        console.log(user);
 
         return (
             <Fragment>

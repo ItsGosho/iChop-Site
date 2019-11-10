@@ -55,12 +55,13 @@ class UserProfileCentralContent extends Component {
     }
 
     render() {
+        let {user} = this.props;
 
         return (
             <Fragment>
                 <div className="central-content">
 
-                    <UserProfileCentralHead/>
+                    <UserProfileCentralHead user={user}/>
 
                     <div className="col-md-auto user-information-navigation">
 
