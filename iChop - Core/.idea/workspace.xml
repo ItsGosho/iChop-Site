@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1984862c-2f8c-4410-af36-a1dcaaa3ddaf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/redux/actions/user.profile.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/redux/actions/user.profile.actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/redux/reducers/user.profile.info.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/redux/reducers/user.profile.info.reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -403,7 +402,7 @@
       <workItem from="1573115299885" duration="14864000" />
       <workItem from="1573151138630" duration="5215000" />
       <workItem from="1573252238251" duration="648000" />
-      <workItem from="1573405725917" duration="1465000" />
+      <workItem from="1573405725917" duration="2555000" />
     </task>
     <servers />
   </component>
