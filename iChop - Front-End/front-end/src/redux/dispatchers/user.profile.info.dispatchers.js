@@ -1,12 +1,32 @@
 import React from 'react';
-import {setProfileInfo} from "../actions/user.profile.actions";
+import {
+    setUserProfileFollow,
+    setUserProfileInformation, setUserProfileMinecraft,
+    setUserProfilePosts, setUserProfileReactions,
+    setUserProfileUser
+} from "../actions/user.profile.actions";
 
 
 let userProfileInfoDispatchers = (dispatch) => {
     return {
-        setInfo: (user) => {
-            dispatch(setProfileInfo(user))
-        }
+        setUser: (user) => {
+            dispatch(setUserProfileUser(user))
+        },
+        setFollow: (followings,followers) => {
+            dispatch(setUserProfileFollow(followings,followers))
+        },
+        setPosts: (posts) => {
+            dispatch(setUserProfilePosts(posts))
+        },
+        setInformation: (information) => {
+            dispatch(setUserProfileInformation(information))
+        },
+        setMinecraft: (uuid,accountName) => {
+            dispatch(setUserProfileMinecraft(uuid,accountName))
+        },
+        setReaction: (totalLikes,totalDislikes) => {
+            dispatch(setUserProfileReactions(totalLikes,totalDislikes))
+        },
     }
 };
 

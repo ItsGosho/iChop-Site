@@ -1,8 +1,6 @@
 import Actions from "../../constants/actions.constants";
 
 let initialState = {
-
-    /*USER*/
     id: null,
     username: null,
     email: null,
