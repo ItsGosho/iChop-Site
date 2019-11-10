@@ -32,7 +32,7 @@ class UserProfileLeftSideInformation extends Component {
                     <div className="card user-base-info">
                         <div className="card-body user-base-info-body">
 
-                            <SideInformationUser/>
+                            <SideInformationUser user={user}/>
 
                         </div>
                     </div>
@@ -48,12 +48,7 @@ class UserProfileLeftSideInformation extends Component {
                     </div>
 
                     <SideInformationFollow/>
-
-                    <div className="card user-location-card">
-                        <div className="card-body user-location-body">
-                            <SideInformationLocation/>
-                        </div>
-                    </div>
+                    <SideInformationLocation user={user}/>
                 </div>
             </div>
         );
