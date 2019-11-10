@@ -14,7 +14,9 @@ class UserProfileLeftSideInformation extends Component {
 
 
     render() {
-        let username = 'ItsGosho';
+        let {user} = this.props;
+
+        let username = user.username;
         let userAvatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', username);
 
         return (

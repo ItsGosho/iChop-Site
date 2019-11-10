@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import UserProfileLeftSideInformation from "./UserProfileLeftSideInformation";
 import './UserProfile.css';
 import UserProfileCentralContent from "./UserProfileCentralContent";
@@ -12,7 +12,8 @@ class UserProfile extends Component {
         super(props);
 
         this.state = {
-            user: undefined
+            user: undefined,
+            isLoading: true
         }
     }
 
@@ -25,22 +26,25 @@ class UserProfile extends Component {
         } else {
             this.setState({user: user})
         }
+
+        this.setState({isLoading: false})
     }
 
     render() {
-        let {user} = this.state;
+        let {user, isLoading} = this.state;
         console.log(user);
 
         return (
-            <div className="container container-user-profile">
-
-                <div className="row">
-
-                    <UserProfileLeftSideInformation user={user}/>
-                    <UserProfileCentralContent user={user}/>
-
-                </div>
-            </div>
+            <Fragment>
+                {user !== undefined && !isLoading ? (
+                    <div className="container container-user-profile">
+                        <div className="row">
+                            <UserProfileLeftSideInformation user={user}/>
+                            <UserProfileCentralContent user={user}/>
+                        </div>
+                    </div>
+                ) : null}
+            </Fragment>
         );
     }
 
