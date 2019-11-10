@@ -28,12 +28,15 @@ class UserProfile extends Component {
     }
 
     render() {
+        let {user} = this.state;
+        console.log(user);
+
         return (
             <div className="container container-user-profile">
 
                 <div className="row">
 
-                    <UserProfileLeftSideInformation/>
+                    <UserProfileLeftSideInformation user={user}/>
                     <UserProfileCentralContent/>
 
                 </div>

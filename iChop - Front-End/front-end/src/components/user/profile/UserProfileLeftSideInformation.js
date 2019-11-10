@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import ServerRoutingURLs from "../../../constants/server.routing.urls";
 import SideInformationLocation from "./side/SideInformationLocation";
 import FrontEndResourcesRoutingURLs from "../../../constants/front-end.resources.routings";
@@ -58,3 +59,7 @@ class UserProfileLeftSideInformation extends Component {
 }
 
 export default UserProfileLeftSideInformation;
+
+UserProfileLeftSideInformation.propTypes = {
+    user: PropTypes.object
+};
