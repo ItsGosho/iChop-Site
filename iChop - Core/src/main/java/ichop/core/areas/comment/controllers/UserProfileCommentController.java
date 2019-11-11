@@ -50,7 +50,7 @@ public class UserProfileCommentController {
         return this.responseHelpers.respondGeneric(userReply);
     }
 
-    @PreAuthorize("hasAuthority('MODERATOR') or @baseCommentRequesterImp.isCreator(#commentId,#principal.name,'USER_PROFILE') == true")
+    @PreAuthorize("hasAuthority('MODERATOR') or @baseCommentRequesterImp.isCreator(#commentId,#principal.name,'USER_PROFILE') == true or #userProfileUsername.equals(#principal.name)")
     @PostMapping(CommentRoutingConstants.USER_PROFILE_DELETE)
     public ResponseEntity delete(@PathVariable String userProfileUsername, @PathVariable String commentId, Principal principal) {
 
