@@ -48,7 +48,7 @@ class UserProfileCentralHead extends Component {
                         </div>
                     </div>
 
-                    {authenticatedUser.username !== '' ? (
+                    {authenticatedUser.username !== '' && authenticatedUser.username !== username ? (
                         <Fragment>
                             <div className="row">
                                 <div className="col-md-12 head">

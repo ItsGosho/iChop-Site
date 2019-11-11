@@ -87,7 +87,7 @@ const UserServices = {
         let url = Endpoints.IS_FOLLOWING.replace(':username', username) + '?username=' + follow;
         let response = await Requester.get(url);
 
-        return response.data;
+        return response.data.result;
     },
 
     async logout() {
