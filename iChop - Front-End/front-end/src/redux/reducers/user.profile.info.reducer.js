@@ -12,8 +12,9 @@ let initialState = {
     totalMessages: 0,
     profileComments: [],
 
+    statusMessage: null,
+    birthDate: null,
     aboutYou: null,
-    birthday: null,
 
     totalFollowing: 0,
     totalFollowers: 0,
@@ -61,9 +62,9 @@ let userProfileInfoReducer = (state = initialState, action) => {
             return Object.assign({}, state, {posts});
 
         case Actions.SET_USER_PROFILE_INFORMATION:
-            let {aboutYou, birthday} = action.payload;
+            let {statusMessage, birthDate, aboutYou} = action.payload;
 
-            return Object.assign({}, state, {aboutYou, birthday});
+            return Object.assign({}, state, {statusMessage, birthDate, aboutYou});
 
         case Actions.SET_USER_PROFILE_MINECRAFT:
             let {minecraftUUID, minecraftAccountName} = action.payload;

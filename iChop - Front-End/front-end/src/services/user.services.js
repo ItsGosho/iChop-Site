@@ -61,6 +61,13 @@ const UserServices = {
         return response.data;
     },
 
+    async findInformation(username) {
+        let url = Endpoints.RETRIEVE_INFORMATION.replace(':username',username);
+        let response = await Requester.get(url);
+
+        return response.data;
+    },
+
     async findFollowers(username) {
         let url = Endpoints.ALL_FOLLOWERS.replace(':username',username);
         let response = await Requester.get(url);

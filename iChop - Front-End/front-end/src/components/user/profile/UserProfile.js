@@ -26,7 +26,7 @@ class UserProfile extends Component {
         let followings = await UserServices.findFollowings(username);
         let followers = await UserServices.findFollowers(username);
         let posts = [];
-        let information = undefined;
+        let information = await UserServices.findInformation(username);
         let minecraftUUID = undefined;
         let minecraftAccountName = undefined;
         let totalLikes = 0;

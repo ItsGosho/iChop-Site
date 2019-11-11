@@ -15,6 +15,7 @@ const ServerRoutingURLs = {
             FIND_BY: `${CORE_SERVER_DOMAIN}/user/find/by`,
             ALL_FOLLOWINGS: `${CORE_SERVER_DOMAIN}/user/:username/all/followings`,
             ALL_FOLLOWERS: `${CORE_SERVER_DOMAIN}/user/:username/all/followers`,
+            RETRIEVE_INFORMATION: `${CORE_SERVER_DOMAIN}/user/:username/information/retrieve`,
         }
     },
     DATA: {
