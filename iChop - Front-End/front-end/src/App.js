@@ -34,7 +34,7 @@ function App() {
                     <Route exact path={RoutingURLs.AUTHENTICATION.LOGOUT} render={() => (<Logout/>)}/>
                     <Route exact path={RoutingURLs.AUTHENTICATION.TOKEN.RESET_PASSWORD} render={() => (<UserChangePasswordByToken/>)}/>
 
-                    <Route exact path={RoutingURLs.USER.PROFILE.VIEW} render={() => (<UserProfile/>)}/>
+                    <Route exact path={RoutingURLs.USER.PROFILE.VIEW} render={(props) => (<UserProfile key={props.match.params.username} {...props}/>)}/>
                 </Switch>
             </div>
 

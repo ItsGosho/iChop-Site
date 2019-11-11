@@ -23,11 +23,8 @@ class UserProfileCentralHead extends Component {
     }
 
     render() {
-        let {username, authority, statusMessage} = this.props.userProfileInfo;
+        let {username, authority, statusMessage,isViewerFollowingHim,isViewerFollowedByHim} = this.props.userProfileInfo;
         let authenticatedUser = this.props.authenticatedUserInfo;
-
-        let isFollowedMe = true;
-        let isImFollowedHim = false;
 
         return (
             <Fragment>
@@ -56,7 +53,7 @@ class UserProfileCentralHead extends Component {
                             <div className="row">
                                 <div className="col-md-12 head">
 
-                                    {isImFollowedHim ?
+                                    {isViewerFollowingHim ?
                                         (<FollowControlButton onClick={this.onUnfollow} text="Unfollow"/>) :
                                         (<FollowControlButton onClick={this.onFollow} text="Follow"/>)}
 
@@ -64,7 +61,7 @@ class UserProfileCentralHead extends Component {
                             </div>
                             <div className="row">
                                 <div className="col-md-12 head">
-                                    {isFollowedMe ?
+                                    {isViewerFollowedByHim ?
                                         (<small className="is-followed-you">This user is following you ✋</small>)
                                         : null}
                                 </div>

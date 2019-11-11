@@ -22,7 +22,7 @@ class UserProfile extends Component {
     }
 
     async componentDidMount() {
-        let {username} = this.props.match.params;
+        let username = this.props.match.params.username;
         let user = await UserServices.findByUsername(username);
         let profileViewer = this.props.authenticatedUserInfo;
 
@@ -30,7 +30,7 @@ class UserProfile extends Component {
             NotificationHelper.showErrorNotification(`User wasn't found`)
         } else {
             this.props.fetchUser(username);
-            this.props.fetchFollow(username,profileViewer.username);
+            this.props.fetchFollow(username, profileViewer.username);
             this.props.fetchPosts(username);
             this.props.fetchInformation(username);
             this.props.fetchMinecraft(username);
