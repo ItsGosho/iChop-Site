@@ -44,7 +44,9 @@ class PanePost extends Component {
                             <div className="col-md-12">
                                 <span className="post-createdOn">{dateFormat(createdOn, datePattern)}</span>
 
-                                <PanePostActions createdOn={createdOn}/>
+                                <PanePostActions id={id}
+                                                 creatorUsername={creatorUsername}
+                                                 userProfileUsername={userProfileUsername}/>
                             </div>
                         </div>
                     ) : null}
