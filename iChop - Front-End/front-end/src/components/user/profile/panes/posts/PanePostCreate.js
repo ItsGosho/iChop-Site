@@ -5,7 +5,6 @@ import './PanePostCreate.css';
 import Image from "../../../../other/Image";
 import TextAreaWithCounter from "../../../../other/TextAreaWithCounter";
 import {PostValidationConstants} from "../../../../../constants/validation.constants";
-import withState from "../../../../../hocs/with.state";
 import {withRouter} from "react-router-dom";
 import {compose} from "redux";
 import {connect} from "react-redux";
@@ -43,7 +42,6 @@ class PanePostCreate extends Component {
 
         let response = await CommentServices.createUserProfileComment(username, content);
 
-        console.log(response);
         if (response.successful) {
             this.props.fetchPosts(username);
             this.setState({content: ''})
