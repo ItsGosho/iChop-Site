@@ -20,6 +20,18 @@ const CommentServices = {
         NotificationHelper.showNotificationByResponse(response);
 
         return response;
+    },
+
+    async deleteUserProfileComment(username,commentId) {
+        let url = Endpoints.USER_PROFILE_DELETE
+            .replace(':username', username)
+            .replace(':commentId',commentId);
+
+        let response = await Requester.post(url, {});
+
+        NotificationHelper.showNotificationByResponse(response);
+
+        return response;
     }
 
 

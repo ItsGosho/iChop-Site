@@ -5,6 +5,11 @@ import './PanePostActions.css'
 import PropTypes from "prop-types";
 import PanePost from "./PanePost";
 import withState from "../../../../../hocs/with.state";
+import CommentServices from "../../../../../services/comment.services";
+import {compose} from "redux";
+import {connect} from "react-redux";
+import authenticatedUserInfoDispatchers from "../../../../../redux/dispatchers/authenticated.user.info.dispatchers";
+import userProfileInfoDispatchers from "../../../../../redux/dispatchers/user.profile.info.dispatchers";
 
 class PanePostActions extends Component {
 
@@ -16,9 +21,14 @@ class PanePostActions extends Component {
     }
 
 
-    onDelete() {
+    async onDelete() {
+        let {username} = this.props.userProfileInfo;
         let {id} = this.props;
-        console.log(`Delete post with ID: ${id}`);
+        let response = await CommentServices.deleteUserProfileComment(username,id);
+
+        if(response.successful){
+            this.props.fetchPosts(username);
+        }
     }
 
     onReport() {
@@ -46,4 +56,11 @@ class PanePostActions extends Component {
     }
 }
 
-export default withState(PanePostActions);
+let mapState = (states) => {
+    return {...states}
+};
+
+export default compose(
+    connect(mapState,authenticatedUserInfoDispatchers),
+    connect(mapState,userProfileInfoDispatchers)
+)(PanePostActions);
