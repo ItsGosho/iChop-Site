@@ -1,7 +1,9 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import dateFormat from 'dateformat';
 import Roles from "../../../../../constants/roles.constants";
 import './PanePostActions.css'
+import PropTypes from "prop-types";
+import PanePost from "./PanePost";
 
 class PanePostActions extends Component {
 
@@ -22,7 +24,6 @@ class PanePostActions extends Component {
     }
 
     render() {
-        let createdOn = dateFormat(new Date(), 'dd mmm, yyyy');
         let username = 'ItsGosho';
 
         let postUserUsername = 'Roki';
@@ -32,9 +33,7 @@ class PanePostActions extends Component {
         let post = null;
 
         return (
-            <div className="col-md-12">
-                <span className="post-createdOn">{createdOn}</span>
-
+            <Fragment>
                 {
                     (() => {
                         let isPostCreator = postCreatorUsername === username;
@@ -55,8 +54,7 @@ class PanePostActions extends Component {
                     this.onReport(post)
                 }}>🎌Report
                 </button>
-
-            </div>
+            </Fragment>
         );
     }
 }

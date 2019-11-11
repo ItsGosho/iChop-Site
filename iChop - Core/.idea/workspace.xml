@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1984862c-2f8c-4410-af36-a1dcaaa3ddaf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/user/profile/panes/posts/PanePostCreate.js" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/user/profile/panes/posts/PanePostCreate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/services/comment.services.js" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/services/comment.services.js" afterDir="false" />
-    </list>
+    <list default="true" id="1984862c-2f8c-4410-af36-a1dcaaa3ddaf" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -575,7 +572,7 @@
       <workItem from="1573151138630" duration="5215000" />
       <workItem from="1573252238251" duration="648000" />
       <workItem from="1573405725917" duration="5225000" />
-      <workItem from="1573470265458" duration="7657000" />
+      <workItem from="1573470265458" duration="8248000" />
     </task>
     <servers />
   </component>
@@ -612,7 +609,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7657000" />
+    <option name="totallyTimeSpent" value="8248000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">

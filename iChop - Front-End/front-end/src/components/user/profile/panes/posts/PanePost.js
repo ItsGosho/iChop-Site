@@ -7,12 +7,14 @@ import FrontEndResourcesRoutingURLs from "../../../../../constants/front-end.res
 import {Link} from "react-router-dom";
 import RoutingURLs from "../../../../../constants/routing.constants";
 import PropTypes from "prop-types";
+import dateFormat from "dateformat";
 
 class PanePost extends Component {
 
 
     render() {
         let {id, creatorUsername, content, createdOn, userProfileUsername, isAuthenticated} = this.props;
+        let datePattern = "dd mmm, yyyy";
 
         let creatorAvatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', creatorUsername);
         let creatorProfileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', creatorUsername);
@@ -39,7 +41,11 @@ class PanePost extends Component {
 
                     {isAuthenticated ? (
                         <div className="row">
-                            <PanePostActions/>
+                            <div className="col-md-12">
+                                <span className="post-createdOn">{dateFormat(createdOn, datePattern)}</span>
+
+                                <PanePostActions createdOn={createdOn}/>
+                            </div>
                         </div>
                     ) : null}
 
