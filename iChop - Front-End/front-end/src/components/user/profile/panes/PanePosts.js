@@ -2,18 +2,20 @@ import React, {Component, Fragment} from 'react';
 import PanePostCreate from "./posts/PanePostCreate";
 import PanePostsAll from "./posts/PanePostsAll";
 import './PanePosts.css'
+import withState from "../../../../hocs/with.state";
 
 class PanePosts extends Component {
 
     render() {
-        let isAuthenticated = true;
+        let authenticatedUser = this.props.authenticatedUserInfo;
+
 
         return (
             <Fragment>
                 <div className="dropdown-divider"/>
 
                 <div className="create-post">
-                    {isAuthenticated ? (<PanePostCreate/>) : null}
+                    {authenticatedUser.username !== '' ? (<PanePostCreate/>) : null}
                 </div>
 
                 <div className="dropdown-divider"/>
@@ -25,4 +27,4 @@ class PanePosts extends Component {
     }
 }
 
-export default PanePosts;
+export default withState(PanePosts);

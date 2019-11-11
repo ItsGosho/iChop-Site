@@ -6,12 +6,14 @@ import Image from "../../../../other/Image";
 import FrontEndResourcesRoutingURLs from "../../../../../constants/front-end.resources.routings";
 import {Link} from "react-router-dom";
 import RoutingURLs from "../../../../../constants/routing.constants";
+import PropTypes from "prop-types";
 
 class PanePost extends Component {
 
 
     render() {
-        let {creatorUsername, isAuthenticated, content} = this.props;
+        let {id, creatorUsername, content, createdOn, userProfileUsername, isAuthenticated} = this.props;
+        
         let creatorAvatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', creatorUsername);
         let creatorProfileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', creatorUsername);
 
@@ -47,5 +49,14 @@ class PanePost extends Component {
     }
 
 }
+
+PanePost.propTypes = {
+    isAuthenticated: PropTypes.bool,
+    id: PropTypes.string,
+    creatorUsername: PropTypes.string,
+    content: PropTypes.string,
+    createdOn: PropTypes.object,
+    userProfileUsername: PropTypes.string,
+};
 
 export default PanePost;

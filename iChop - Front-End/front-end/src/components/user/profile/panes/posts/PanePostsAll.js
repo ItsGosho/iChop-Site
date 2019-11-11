@@ -1,5 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import PanePost from "./PanePost";
+import withState from "../../../../../hocs/with.state";
 
 class PanePostsAll extends Component {
 
@@ -10,35 +11,29 @@ class PanePostsAll extends Component {
     }
 
     iteratePosts(posts) {
-        let isAuthenticated = true;
+        let authenticatedUser = this.props.authenticatedUserInfo;
 
         return posts.map((post, index) => {
-            let {creatorUsername, content} = post;
+            let {id, creatorUsername, content, createdOn, userProfileUsername} = post;
 
-            return (<PanePost creatorUsername={creatorUsername}
-                              isAuthenticated={isAuthenticated}
+            return (<PanePost id={id}
+                              creatorUsername={creatorUsername}
+                              isAuthenticated={authenticatedUser.username !== ''}
+                              createdOn={createdOn}
+                              userProfileUsername={userProfileUsername}
                               content={content}/>);
         })
     }
 
     render() {
-        let posts = [
-            {
-                creatorUsername: 'Salamcho',
-                content: 'Nice profile!'
-            },
-            {
-                creatorUsername: 'Ivancho',
-                content: 'Woooho!'
-            }
-        ];
+        let {profileComments} = this.props.userProfileInfo;
 
         return (
             <Fragment>
-                {this.iteratePosts(posts)}
+                {this.iteratePosts(profileComments)}
             </Fragment>
         );
     }
 }
 
-export default PanePostsAll;
+export default withState(PanePostsAll);
