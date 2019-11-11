@@ -57,13 +57,13 @@ class TextAreaWithCounter extends Component {
             });
         };
 
-        let {name, className} = this.props;
+        let {name, className,value} = this.props;
 
         return (
             <textarea name={name}
                       className={className}
                       ref={this.textAreaRef}
-                      value={this.state[name]}
+                      value={value}
                       onChange={onChange}/>
         );
     }

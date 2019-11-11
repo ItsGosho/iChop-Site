@@ -41,8 +41,13 @@ class PanePostCreate extends Component {
         let {username} = this.props.userProfileInfo;
         let {content} = this.state;
 
-        await CommentServices.createUserProfileComment(username, content);
-        this.props.fetchPosts(username);
+        let response = await CommentServices.createUserProfileComment(username, content);
+
+        console.log(response);
+        if (response.successful) {
+            this.props.fetchPosts(username);
+            this.setState({content: ''})
+        }
     }
 
     render() {

@@ -18,6 +18,8 @@ const CommentServices = {
         let response = await Requester.post(url, {content});
 
         NotificationHelper.showNotificationByResponse(response);
+
+        return response;
     }
 
 
