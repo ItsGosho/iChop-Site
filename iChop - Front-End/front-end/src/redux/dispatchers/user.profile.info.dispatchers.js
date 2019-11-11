@@ -12,8 +12,8 @@ let userProfileInfoDispatchers = (dispatch) => {
         fetchUser: (username) => {
             dispatch(setUserProfileUser(username))
         },
-        fetchFollow: (username) => {
-            dispatch(setUserProfileFollow(username))
+        fetchFollow: (username,profileViewerUsername) => {
+            dispatch(setUserProfileFollow(username,profileViewerUsername))
         },
         fetchPosts: (username) => {
             dispatch(setUserProfilePosts(username))

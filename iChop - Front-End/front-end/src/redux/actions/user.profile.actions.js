@@ -14,14 +14,16 @@ let setUserProfileUser = (username) => {
     }
 };
 
-let setUserProfileFollow = (username) => {
+let setUserProfileFollow = (username,profileViewerUsername) => {
     return async (dispatch) => {
         let followings = await UserServices.findFollowings(username);
         let followers = await UserServices.findFollowers(username);
+        let isViewerFollowingHim = false;
+        let isViewerFollowedByHim = false;
 
         dispatch({
             type: Actions.SET_USER_PROFILE_FOLLOW,
-            payload: {followings, followers}
+            payload: {followings, followers,isViewerFollowingHim,isViewerFollowedByHim}
         });
     }
 };

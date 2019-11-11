@@ -55,21 +55,36 @@ const UserServices = {
     },
 
     async findFollowings(username) {
-        let url = Endpoints.ALL_FOLLOWINGS.replace(':username',username);
+        let url = Endpoints.ALL_FOLLOWINGS.replace(':username', username);
         let response = await Requester.get(url);
 
         return response.data;
     },
 
     async findInformation(username) {
-        let url = Endpoints.RETRIEVE_INFORMATION.replace(':username',username);
+        let url = Endpoints.RETRIEVE_INFORMATION.replace(':username', username);
         let response = await Requester.get(url);
 
         return response.data;
     },
 
     async findFollowers(username) {
-        let url = Endpoints.ALL_FOLLOWERS.replace(':username',username);
+        let url = Endpoints.ALL_FOLLOWERS.replace(':username', username);
+        let response = await Requester.get(url);
+
+        return response.data;
+    },
+
+    async follow(username) {
+
+    },
+
+    async unfollow(username) {
+
+    },
+
+    async isFollowing(username, follow) {
+        let url = Endpoints.IS_FOLLOWING.replace(':username', username) + '?username=' + follow;
         let response = await Requester.get(url);
 
         return response.data;

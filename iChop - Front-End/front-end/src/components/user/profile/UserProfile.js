@@ -24,12 +24,13 @@ class UserProfile extends Component {
     async componentDidMount() {
         let {username} = this.props.match.params;
         let user = await UserServices.findByUsername(username);
+        let profileViewer = this.props.authenticatedUserInfo;
 
         if (!user) {
             NotificationHelper.showErrorNotification(`User wasn't found`)
         } else {
             this.props.fetchUser(username);
-            this.props.fetchFollow(username);
+            this.props.fetchFollow(username,profileViewer.username);
             this.props.fetchPosts(username);
             this.props.fetchInformation(username);
             this.props.fetchMinecraft(username);
@@ -60,7 +61,7 @@ class UserProfile extends Component {
 }
 
 let mapState = (states) => {
-    return {userProfileInfo: states.userProfileInfo}
+    return {...states}
 };
 
 export default withRouter(

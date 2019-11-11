@@ -13,9 +13,13 @@ const ServerRoutingURLs = {
             FORGOTTEN_PASSWORD: `${CORE_SERVER_DOMAIN}/user/forgotten/password`,
             CHANGE_PASSWORD_BY_TOKEN: `${CORE_SERVER_DOMAIN}/user/change/password/by/token`,
             FIND_BY: `${CORE_SERVER_DOMAIN}/user/find/by`,
+            RETRIEVE_INFORMATION: `${CORE_SERVER_DOMAIN}/user/:username/information/retrieve`,
+
+            FOLLOW: `${CORE_SERVER_DOMAIN}/user/:username/follow`,
+            UNFOLLOW: `${CORE_SERVER_DOMAIN}/user/:username/unfollow`,
             ALL_FOLLOWINGS: `${CORE_SERVER_DOMAIN}/user/:username/all/followings`,
             ALL_FOLLOWERS: `${CORE_SERVER_DOMAIN}/user/:username/all/followers`,
-            RETRIEVE_INFORMATION: `${CORE_SERVER_DOMAIN}/user/:username/information/retrieve`,
+            IS_FOLLOWING: `${CORE_SERVER_DOMAIN}/user/:username/is/following`
         },
         COMMENT: {
             USER_PROFILE_ALL: `${CORE_SERVER_DOMAIN}/user/:username/comment/all`,

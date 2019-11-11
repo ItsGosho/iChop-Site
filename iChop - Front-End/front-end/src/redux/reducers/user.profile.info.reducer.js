@@ -19,6 +19,9 @@ let initialState = {
     followings: [],
     followers: [],
 
+    isViewerFollowingHim: false,
+    isViewerFollowedByHim: false,
+
     totalLikes: 0,
     totalDislikes: 0,
 
@@ -45,11 +48,13 @@ let userProfileInfoReducer = (state = initialState, action) => {
             });
 
         case Actions.SET_USER_PROFILE_FOLLOW:
-            let {followings, followers} = action.payload;
+            let {followings, followers,isViewerFollowingHim,isViewerFollowedByHim} = action.payload;
 
             return Object.assign({}, state, {
                 followings,
-                followers
+                followers,
+                isViewerFollowingHim,
+                isViewerFollowedByHim,
             });
 
         case Actions.SET_USER_PROFILE_POSTS:

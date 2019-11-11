@@ -13,7 +13,7 @@ class PanePost extends Component {
 
     render() {
         let {id, creatorUsername, content, createdOn, userProfileUsername, isAuthenticated} = this.props;
-        
+
         let creatorAvatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', creatorUsername);
         let creatorProfileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', creatorUsername);
 
