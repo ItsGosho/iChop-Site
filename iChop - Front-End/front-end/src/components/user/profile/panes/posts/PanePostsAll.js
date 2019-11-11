@@ -29,7 +29,6 @@ class PanePostsAll extends Component {
     render() {
         let {posts} = this.props.userProfileInfo;
 
-        console.log(posts);
         return (
             <Fragment>
                 {this.iteratePosts(posts)}
