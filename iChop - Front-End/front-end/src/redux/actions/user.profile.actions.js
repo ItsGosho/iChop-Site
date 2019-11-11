@@ -18,8 +18,8 @@ let setUserProfileFollow = (username,profileViewerUsername) => {
     return async (dispatch) => {
         let followings = await UserServices.findFollowings(username);
         let followers = await UserServices.findFollowers(username);
-        let isViewerFollowingHim = false;
-        let isViewerFollowedByHim = false;
+        let isViewerFollowingHim = await UserServices.isFollowing(profileViewerUsername,username);
+        let isViewerFollowedByHim = await UserServices.isFollowing(username,profileViewerUsername);
 
         dispatch({
             type: Actions.SET_USER_PROFILE_FOLLOW,
