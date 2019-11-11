@@ -23,6 +23,7 @@ const ServerRoutingURLs = {
         },
         COMMENT: {
             USER_PROFILE_ALL: `${CORE_SERVER_DOMAIN}/user/:username/comment/all`,
+            USER_PROFILE_CREATE: `${CORE_SERVER_DOMAIN}/user/:username/comment/create`,
         }
     },
     DATA: {

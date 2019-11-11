@@ -13,24 +13,26 @@ class PanePostsAll extends Component {
     iteratePosts(posts) {
         let authenticatedUser = this.props.authenticatedUserInfo;
 
-        return posts.map((post, index) => {
-            let {id, creatorUsername, content, createdOn, userProfileUsername} = post;
+        return posts !== undefined ?
+            posts.map((post, index) => {
+                let {id, creatorUsername, content, createdOn, userProfileUsername} = post;
 
-            return (<PanePost id={id}
-                              creatorUsername={creatorUsername}
-                              isAuthenticated={authenticatedUser.username !== ''}
-                              createdOn={createdOn}
-                              userProfileUsername={userProfileUsername}
-                              content={content}/>);
-        })
+                return (<PanePost id={id}
+                                  creatorUsername={creatorUsername}
+                                  isAuthenticated={authenticatedUser.username !== ''}
+                                  createdOn={createdOn}
+                                  userProfileUsername={userProfileUsername}
+                                  content={content}/>);
+            }) : null;
     }
 
     render() {
-        let {profileComments} = this.props.userProfileInfo;
+        let {posts} = this.props.userProfileInfo;
 
+        console.log(posts);
         return (
             <Fragment>
-                {this.iteratePosts(profileComments)}
+                {this.iteratePosts(posts)}
             </Fragment>
         );
     }

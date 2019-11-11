@@ -34,10 +34,11 @@ public class UserProfileCommentController {
         this.baseCommentRequester = baseCommentRequester;
     }
 
-    @PreAuthorize("hasAuthority('MODERATOR')")
+    @PreAuthorize("isAuthenticated()")
     @PostMapping(CommentRoutingConstants.USER_PROFILE_CREATE)
-    public ResponseEntity create(UserProfileCommentCreateRequest request, Principal principal) {
+    public ResponseEntity create(@RequestBody UserProfileCommentCreateRequest request, Principal principal, @PathVariable String userProfileUsername) {
         request.setCreatorUsername(principal.getName());
+        request.setUserProfileUsername(userProfileUsername);
 
         JmsReplyModel userReply = this.userRequester.findByUsername(request.getUserProfileUsername());
 

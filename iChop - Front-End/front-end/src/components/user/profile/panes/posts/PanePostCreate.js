@@ -5,6 +5,13 @@ import './PanePostCreate.css';
 import Image from "../../../../other/Image";
 import TextAreaWithCounter from "../../../../other/TextAreaWithCounter";
 import {PostValidationConstants} from "../../../../../constants/validation.constants";
+import withState from "../../../../../hocs/with.state";
+import {withRouter} from "react-router-dom";
+import {compose} from "redux";
+import {connect} from "react-redux";
+import userProfileInfoDispatchers from "../../../../../redux/dispatchers/user.profile.info.dispatchers";
+import authenticatedUserInfoDispatchers from "../../../../../redux/dispatchers/authenticated.user.info.dispatchers";
+import CommentServices from "../../../../../services/comment.services";
 
 class PanePostCreate extends Component {
 
@@ -30,22 +37,26 @@ class PanePostCreate extends Component {
         this.setState({content: value})
     }
 
-    onCreate() {
+    async onCreate() {
+        let {username} = this.props.userProfileInfo;
         let {content} = this.state;
-        console.log('Create!');
+
+        await CommentServices.createUserProfileComment(username, content);
+        this.props.fetchPosts(username);
     }
 
     render() {
-        let username = 'ItsGosho';
-        let userAvatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', username);
+        let viewerUsername = this.props.authenticatedUserInfo.username;
+        let viewerAvatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', viewerUsername);
 
         return (
             <form>
                 <div className="row">
 
                     <div className="col-md-1">
-                        <Image url={userAvatarUrl}
+                        <Image url={viewerAvatarUrl}
                                defaultUrl={FrontEndResourcesRoutingURLs.USER.AVATAR}
+                               title={viewerUsername}
                                className="pane-post-create-avatar"/>
                     </div>
 
@@ -78,4 +89,13 @@ class PanePostCreate extends Component {
     }
 }
 
-export default PanePostCreate;
+let mapState = (states) => {
+    return {...states}
+};
+
+export default withRouter(
+    compose(
+        connect(mapState, authenticatedUserInfoDispatchers),
+        connect(mapState, userProfileInfoDispatchers),
+    )(PanePostCreate)
+)
