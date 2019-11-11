@@ -2,8 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1984862c-2f8c-4410-af36-a1dcaaa3ddaf" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reactions Service/reactions.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reactions Service/src/main/java/ichop/reactions/constants/ReactionReplyConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Reactions Service/src/main/java/ichop/reactions/constants/ReactionReplyConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reactions Service/src/main/java/ichop/reactions/listeners/ReactionListeners.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Reactions Service/src/main/java/ichop/reactions/listeners/ReactionListeners.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reactions Service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Reactions Service/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/controllers/UserProfileCommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/controllers/UserProfileCommentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/constants/ReactionRoutingConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/constants/ReactionRoutingConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/controllers/ReactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/controllers/ReactionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/requesters/ReactionRequester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/requesters/ReactionRequester.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/requesters/ReactionRequesterImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/requesters/ReactionRequesterImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/user/profile/panes/posts/PanePostsAll.js" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/user/profile/panes/posts/PanePostsAll.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -162,8 +171,12 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="ichop.web.controllers.thread" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\templates\user\profile\partials" />
+      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\templates\user\profile\panes" />
+      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\templates\user\profile" />
+      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\static\res\css\lib" />
+      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\static\res\js\lib" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.ichop.core.areas.post.services" />
@@ -177,18 +190,14 @@
       <recent name="C:\Users\Gosho\Desktop\GitHub\iChop\iChop - Core\src\main\java\ichop\core\areas\comment\models\jms" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="ichop.core.areas.reaction.models.jms.find" />
       <recent name="ichop.core.areas.report.constants" />
       <recent name="ichop.core.areas.report.models" />
       <recent name="ichop.core.areas.reaction.models.jms" />
       <recent name="ichop.core.areas.report.requesters" />
-      <recent name="ichop.core.areas.comment.controllers" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\templates\user\profile\partials" />
-      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\templates\user\profile\panes" />
-      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\templates\user\profile" />
-      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\static\res\css\lib" />
-      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\static\res\js\lib" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="ichop.web.controllers.thread" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -405,7 +414,7 @@
       <workItem from="1573252238251" duration="648000" />
       <workItem from="1573405725917" duration="5225000" />
       <workItem from="1573470265458" duration="8248000" />
-      <workItem from="1573506649816" duration="905000" />
+      <workItem from="1573506649816" duration="3104000" />
     </task>
     <servers />
   </component>
@@ -492,11 +501,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/ichop/core/security/handlers/CustomAuthenticationFailureHandler.java</url>
           <line>23</line>
           <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ichop/core/areas/reaction/controllers/ReactionController.java</url>
-          <line>51</line>
-          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

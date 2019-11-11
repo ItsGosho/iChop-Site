@@ -4,6 +4,7 @@ import ichop.core.areas.comment.requesters.ThreadCommentRequester;
 import ichop.core.areas.reaction.constants.ReactionRoutingConstants;
 import ichop.core.areas.reaction.models.ReactionOn;
 import ichop.core.areas.reaction.models.jms.create.ReactionCreateRequest;
+import ichop.core.areas.reaction.models.jms.find.ReactionsFindByRequest;
 import ichop.core.areas.reaction.requesters.ReactionRequester;
 import ichop.core.areas.rest.helpers.ResponseHelpers;
 import ichop.core.areas.thread.requesters.ThreadRequester;
@@ -48,6 +49,13 @@ public class ReactionController {
     @GetMapping(ReactionRoutingConstants.IS_REACTED)
     public ResponseEntity isReacted(@RequestParam String creatorUsername, @RequestParam String entityId, @RequestParam String reactionOn) {
         JmsReplyModel replyModel = this.reactionRequester.isReacted(creatorUsername, entityId, ReactionOn.valueOf(reactionOn));
+
+        return this.responseHelpers.respondGeneric(replyModel);
+    }
+
+    @GetMapping(ReactionRoutingConstants.FIND_BY)
+    public ResponseEntity findBy(ReactionsFindByRequest request) {
+        JmsReplyModel replyModel = this.reactionRequester.findBy(request);
 
         return this.responseHelpers.respondGeneric(replyModel);
     }
