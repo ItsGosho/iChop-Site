@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1984862c-2f8c-4410-af36-a1dcaaa3ddaf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/user/profile/panes/posts/PanePost.js" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/user/profile/panes/posts/PanePost.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/constants/server.routing.urls.js" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/constants/server.routing.urls.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/services/user.services.js" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/services/user.services.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -116,8 +113,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ichop/core/areas/user/constants/UserRoutingConstants.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="23" column="31" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
+            <state relative-caret-position="266">
+              <caret line="19" column="31" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -125,8 +122,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/ichop/core/areas/user/controllers/UserFollowController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="75" lean-forward="true" selection-start-line="75" selection-end-line="75" />
+            <state relative-caret-position="336">
+              <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
             </state>
           </provider>
         </entry>
@@ -522,7 +519,7 @@
       <workItem from="1573151138630" duration="5215000" />
       <workItem from="1573252238251" duration="648000" />
       <workItem from="1573405725917" duration="5225000" />
-      <workItem from="1573470265458" duration="4232000" />
+      <workItem from="1573470265458" duration="5148000" />
     </task>
     <servers />
   </component>
@@ -559,7 +556,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4232000" />
+    <option name="totallyTimeSpent" value="5148000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -596,7 +593,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39978564" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.39978564" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -729,15 +726,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ichop/core/areas/user/constants/UserRoutingConstants.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="23" column="31" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
+        <state relative-caret-position="266">
+          <caret line="19" column="31" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ichop/core/areas/user/controllers/UserFollowController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="75" lean-forward="true" selection-start-line="75" selection-end-line="75" />
+        <state relative-caret-position="336">
+          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
         </state>
       </provider>
     </entry>

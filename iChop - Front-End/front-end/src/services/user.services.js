@@ -76,11 +76,17 @@ const UserServices = {
     },
 
     async follow(username) {
+        let url = Endpoints.FOLLOW.replace(':username', username);
+        let response = await Requester.post(url);
 
+        NotificationHelper.showNotificationByResponse(response);
     },
 
     async unfollow(username) {
+        let url = Endpoints.UNFOLLOW.replace(':username', username);
+        let response = await Requester.post(url);
 
+        NotificationHelper.showNotificationByResponse(response);
     },
 
     async isFollowing(username, follow) {

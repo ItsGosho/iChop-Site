@@ -3,6 +3,11 @@ import Roles from "../../../constants/roles.constants";
 import PropTypes from "prop-types";
 import UserProfileCentralContent from "./UserProfileCentralContent";
 import withState from "../../../hocs/with.state";
+import UserServices from "../../../services/user.services";
+import {withRouter} from "react-router-dom";
+import {compose} from "redux";
+import {connect} from "react-redux";
+import userProfileInfoDispatchers from "../../../redux/dispatchers/user.profile.info.dispatchers";
 
 class UserProfileCentralHead extends Component {
 
@@ -13,17 +18,25 @@ class UserProfileCentralHead extends Component {
         this.onUnfollow = this.onUnfollow.bind(this);
     }
 
+    async onFollow() {
+        let {username} = this.props.userProfileInfo;
+        let authenticatedUser = this.props.authenticatedUserInfo;
 
-    onFollow() {
-        console.log("Follow");
+
+        await UserServices.follow(username);
+        this.props.fetchFollow(username, authenticatedUser.username);
     }
 
-    onUnfollow() {
-        console.log("Unfollow");
+    async onUnfollow() {
+        let {username} = this.props.userProfileInfo;
+        let authenticatedUser = this.props.authenticatedUserInfo;
+
+        await UserServices.unfollow(username);
+        this.props.fetchFollow(username, authenticatedUser.username);
     }
 
     render() {
-        let {username, authority, statusMessage,isViewerFollowingHim,isViewerFollowedByHim} = this.props.userProfileInfo;
+        let {username, authority, statusMessage, isViewerFollowingHim, isViewerFollowedByHim} = this.props.userProfileInfo;
         let authenticatedUser = this.props.authenticatedUserInfo;
 
         return (
@@ -94,7 +107,15 @@ class UserProfileCentralHead extends Component {
 }
 
 
-export default withState(UserProfileCentralHead);
+let mapState = (states) => {
+    return {...states}
+};
+
+export default withRouter(
+    compose(
+        connect(mapState, userProfileInfoDispatchers),
+    )(UserProfileCentralHead)
+)
 
 const FollowControlButton = (props) => {
     let {onClick, text} = props;
