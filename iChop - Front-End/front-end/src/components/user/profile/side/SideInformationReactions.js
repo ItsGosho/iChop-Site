@@ -1,24 +1,24 @@
 import React, {Component, Fragment} from 'react';
 import './SideInformationReactions.css';
+import withState from "../../../../hocs/with.state";
 
 
 class SideInformationReactions extends Component {
 
 
     render() {
-        let totaLikes = 56;
-        let totalDislikes = 3;
+        let {totalLikes,totalDislikes} = this.props.userProfileInfo;
 
         return (
             <Fragment>
-                <Total icon="👍" color="darkgreen" total={totaLikes}/>
+                <Total icon="👍" color="darkgreen" total={totalLikes}/>
                 <Total icon="👎" color="indianred" total={totalDislikes}/>
             </Fragment>
         );
     }
 }
 
-export default SideInformationReactions;
+export default withState(SideInformationReactions);
 
 
 const Total = (props) => {

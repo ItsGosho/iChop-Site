@@ -8,6 +8,7 @@ import NotificationHelper from "../../../helpers/notification.helper";
 import {compose} from "redux";
 import {connect} from "react-redux";
 import userProfileInfoDispatchers from "../../../redux/dispatchers/user.profile.info.dispatchers";
+import CommentServices from "../../../services/comment.services";
 
 class UserProfile extends Component {
 
@@ -23,24 +24,16 @@ class UserProfile extends Component {
     async componentDidMount() {
         let {username} = this.props.match.params;
         let user = await UserServices.findByUsername(username);
-        let followings = await UserServices.findFollowings(username);
-        let followers = await UserServices.findFollowers(username);
-        let posts = [];
-        let information = await UserServices.findInformation(username);
-        let minecraftUUID = undefined;
-        let minecraftAccountName = undefined;
-        let totalLikes = 0;
-        let totalDislikes = 0;
 
         if (!user) {
             NotificationHelper.showErrorNotification(`User wasn't found`)
         } else {
-            this.props.setUser(user);
-            this.props.setFollow(followings, followers);
-            this.props.setPosts(posts);
-            this.props.setInformation(information);
-            this.props.setMinecraft(minecraftUUID, minecraftAccountName);
-            this.props.setReaction(totalLikes, totalDislikes);
+            this.props.fetchUser(username);
+            this.props.fetchFollow(username);
+            this.props.fetchPosts(username);
+            this.props.fetchInformation(username);
+            this.props.fetchMinecraft(username);
+            this.props.fetchReactions(username);
         }
 
         this.setState({isLoading: false});

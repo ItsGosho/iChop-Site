@@ -16,6 +16,9 @@ const ServerRoutingURLs = {
             ALL_FOLLOWINGS: `${CORE_SERVER_DOMAIN}/user/:username/all/followings`,
             ALL_FOLLOWERS: `${CORE_SERVER_DOMAIN}/user/:username/all/followers`,
             RETRIEVE_INFORMATION: `${CORE_SERVER_DOMAIN}/user/:username/information/retrieve`,
+        },
+        COMMENT: {
+            USER_PROFILE_ALL: `${CORE_SERVER_DOMAIN}/user/:username/comment/all`,
         }
     },
     DATA: {

@@ -1,13 +1,13 @@
 import React, {Component, Fragment} from 'react';
 import './SideInformationLocation.css'
 import PropTypes from "prop-types";
+import withState from "../../../../hocs/with.state";
 
 class SideInformationLocation extends Component {
 
     render() {
-        let {location} = this.props.user;
+        let {location} = this.props.userProfileInfo;
 
-        console.log(location);
         return (
             <Fragment>
                 {location !== null ? (
@@ -31,8 +31,4 @@ class SideInformationLocation extends Component {
     }
 }
 
-SideInformationLocation.propTypes = {
-    user: PropTypes.object
-};
-
-export default SideInformationLocation;
+export default withState(SideInformationLocation);

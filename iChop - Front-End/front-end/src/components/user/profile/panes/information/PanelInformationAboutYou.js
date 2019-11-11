@@ -1,10 +1,11 @@
 import React, {Component, Fragment} from 'react';
 import './PanelInformationAboutYou.css'
+import PropTypes from "prop-types";
 
 class PanelInformationAboutYou extends Component {
 
     render() {
-        let aboutYou = 'Coding!';
+        let {aboutYou} = this.props;
 
         return (
             <Fragment>
@@ -16,5 +17,9 @@ class PanelInformationAboutYou extends Component {
         );
     }
 }
+
+PanelInformationAboutYou.propTypes = {
+   aboutYou: PropTypes.string
+};
 
 export default PanelInformationAboutYou;

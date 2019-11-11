@@ -16,8 +16,6 @@ let initialState = {
     birthDate: null,
     aboutYou: null,
 
-    totalFollowing: 0,
-    totalFollowers: 0,
     followings: [],
     followers: [],
 
@@ -51,9 +49,7 @@ let userProfileInfoReducer = (state = initialState, action) => {
 
             return Object.assign({}, state, {
                 followings,
-                followers,
-                totalFollowing: followings.length,
-                totalFollowers: followers.length,
+                followers
             });
 
         case Actions.SET_USER_PROFILE_POSTS:

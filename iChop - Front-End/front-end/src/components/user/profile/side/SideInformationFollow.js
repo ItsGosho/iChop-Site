@@ -8,17 +8,18 @@ import {Link} from "react-router-dom";
 import Image from "../../../other/Image";
 import FrontEndResourcesRoutingURLs from "../../../../constants/front-end.resources.routings";
 import './SideInformationFollow.css'
+import withState from "../../../../hocs/with.state";
 
 class SideInformationFollow extends Component {
 
 
     render() {
-        let totalFollowings = 7;
-        let totalFollowers = 5;
+        let {followings, followers} = this.props.userProfileInfo;
+
+        let totalFollowings = followings.length;
+        let totalFollowers = followers.length;
 
         let maxFollowShow = 4;
-        let followings = [{username: 'ItsGosho'}, {username: 'Roshko'}].slice(0, maxFollowShow);
-        let followers = [{username: 'Qncho'}].slice(0, maxFollowShow);
 
         return (
             <Fragment>
@@ -28,7 +29,7 @@ class SideInformationFollow extends Component {
                         <span>Following: {totalFollowings}</span>
                     </div>
 
-                    <FollowInformation users={followings}/>
+                    <FollowInformation users={followings.slice(0, maxFollowShow)}/>
 
                     {totalFollowings > maxFollowShow ? (
                         <ModalOpen relationTo="all-followings">
@@ -46,7 +47,7 @@ class SideInformationFollow extends Component {
                         <span>Followers: {totalFollowers}</span>
                     </div>
 
-                    <FollowInformation users={followers}/>
+                    <FollowInformation users={followers.slice(0, maxFollowShow)}/>
 
                     {totalFollowers > maxFollowShow ? (
                         <ModalOpen relationTo="all-followers">
@@ -63,7 +64,7 @@ class SideInformationFollow extends Component {
 
 }
 
-export default SideInformationFollow;
+export default withState(SideInformationFollow);
 
 const FollowInformation = (props) => {
     let {users} = props;

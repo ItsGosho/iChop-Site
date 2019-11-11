@@ -9,14 +9,14 @@ import SideInformationFollow from "./side/SideInformationFollow";
 import SideInformationReactions from "./side/SideInformationReactions";
 import SideInformationMinecraftAccount from "./side/SideInformationMinecraftAccount";
 import SideInformationUser from "./side/SideInformationUser";
+import withState from "../../../hocs/with.state";
 
 class UserProfileLeftSideInformation extends Component {
 
 
     render() {
-        let {user} = this.props;
+        let {username} = this.props.userProfileInfo;
 
-        let username = user.username;
         let userAvatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', username);
 
         return (
@@ -32,7 +32,7 @@ class UserProfileLeftSideInformation extends Component {
                     <div className="card user-base-info">
                         <div className="card-body user-base-info-body">
 
-                            <SideInformationUser user={user}/>
+                            <SideInformationUser/>
 
                         </div>
                     </div>
@@ -48,15 +48,11 @@ class UserProfileLeftSideInformation extends Component {
                     </div>
 
                     <SideInformationFollow/>
-                    <SideInformationLocation user={user}/>
+                    <SideInformationLocation/>
                 </div>
             </div>
         );
     }
 }
 
-UserProfileLeftSideInformation.propTypes = {
-    user: PropTypes.object
-};
-
-export default UserProfileLeftSideInformation;
+export default withState(UserProfileLeftSideInformation);

@@ -9,23 +9,23 @@ import {
 
 let userProfileInfoDispatchers = (dispatch) => {
     return {
-        setUser: (user) => {
-            dispatch(setUserProfileUser(user))
+        fetchUser: (username) => {
+            dispatch(setUserProfileUser(username))
         },
-        setFollow: (followings,followers) => {
-            dispatch(setUserProfileFollow(followings,followers))
+        fetchFollow: (username) => {
+            dispatch(setUserProfileFollow(username))
         },
-        setPosts: (posts) => {
-            dispatch(setUserProfilePosts(posts))
+        fetchPosts: (username) => {
+            dispatch(setUserProfilePosts(username))
         },
-        setInformation: (information) => {
-            dispatch(setUserProfileInformation(information))
+        fetchInformation: (username) => {
+            dispatch(setUserProfileInformation(username))
         },
-        setMinecraft: (uuid,accountName) => {
-            dispatch(setUserProfileMinecraft(uuid,accountName))
+        fetchMinecraft: (username) => {
+            dispatch(setUserProfileMinecraft(username))
         },
-        setReaction: (totalLikes,totalDislikes) => {
-            dispatch(setUserProfileReactions(totalLikes,totalDislikes))
+        fetchReactions: (username) => {
+            dispatch(setUserProfileReactions(username))
         },
     }
 };

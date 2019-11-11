@@ -1,30 +1,26 @@
 import React, {Component} from 'react';
 import dateFormat from 'dateformat'
-import PanelInformationBirthday from "./information/PanelInformationBirthday";
+import PanelInformationBirthdate from "./information/PanelInformationBirthdate";
 import PanelInformationAboutYou from "./information/PanelInformationAboutYou";
 import './PaneInformation.css';
+import withState from "../../../../hocs/with.state";
 
 class PaneInformation extends Component {
 
     render() {
-        let information = {
-            birthday: dateFormat(Date.now()),
-            aboutYou: ''
-        };
-
-        let {birthday, aboutYou} = information;
+        let {birthDate, aboutYou} = this.props.userProfileInfo;
 
         return (
             <div className="row">
                 <div className="w-100 top-10px">
 
-                    {birthday != null ? (<PanelInformationBirthday/>) : null}
+                    {birthDate != null ? (<PanelInformationBirthdate birthDate={birthDate}/>) : null}
 
                     <div className="dropdown-divider"/>
 
-                    {aboutYou != null ? (<PanelInformationAboutYou/>) : null}
+                    {aboutYou != null ? (<PanelInformationAboutYou aboutYou={aboutYou}/>) : null}
 
-                    {aboutYou == null && birthday == null ? (<span>User has not any information!</span>) : null}
+                    {aboutYou == null && birthDate == null ? (<span>User has not set any information!</span>) : null}
                 </div>
             </div>
         )
@@ -32,4 +28,4 @@ class PaneInformation extends Component {
 }
 
 
-export default PaneInformation;
+export default withState(PaneInformation);

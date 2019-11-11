@@ -2,23 +2,22 @@ import React, {Component, Fragment} from 'react';
 import dateFormat from "dateformat";
 import './SideInformationUser.css'
 import PropTypes from "prop-types";
+import withState from "../../../../hocs/with.state";
 
 class SideInformationUser extends Component {
 
     render() {
-        let {user} = this.props;
+        let {lastOnline,registrationDate,totalMessages} = this.props.userProfileInfo;
+
         let datePattern = 'dd mmm,yyyy';
 
-        let lastOnline = dateFormat(user.lastOnline, datePattern);
-        let registrationDate = dateFormat(user.registrationDate, datePattern);
-        let totalMessages = 32;
         /*TODO: total messages*/
 
         return (
             <Fragment>
 
-                {user.lastOnline !== null ? (<Info title="Last Online" content={lastOnline}/>) : null}
-                {user.registrationDate !== null ? (<Info title="Joined On" content={registrationDate}/>) : null}
+                {lastOnline !== null ? (<Info title="Last Online" content={dateFormat(lastOnline, datePattern)}/>) : null}
+                {registrationDate !== null ? (<Info title="Joined On" content={dateFormat(registrationDate, datePattern)}/>) : null}
                 <Info title="Messages" content={totalMessages}/>
 
             </Fragment>
@@ -26,12 +25,7 @@ class SideInformationUser extends Component {
     }
 }
 
-SideInformationUser.propTypes = {
-    user: PropTypes.object
-};
-
-
-export default SideInformationUser;
+export default withState(SideInformationUser);
 
 const Info = (props) => {
     let {title, content} = props;

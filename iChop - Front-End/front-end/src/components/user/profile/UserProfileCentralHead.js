@@ -2,6 +2,7 @@ import React, {Component, Fragment} from 'react';
 import Roles from "../../../constants/roles.constants";
 import PropTypes from "prop-types";
 import UserProfileCentralContent from "./UserProfileCentralContent";
+import withState from "../../../hocs/with.state";
 
 class UserProfileCentralHead extends Component {
 
@@ -22,10 +23,8 @@ class UserProfileCentralHead extends Component {
     }
 
     render() {
-        let {username,authority} = this.props.user;
-
-        let statusMessage = 'Hello!';
-        let isAuthenticated = true;
+        let {username, authority, statusMessage} = this.props.userProfileInfo;
+        let authenticatedUser = this.props.authenticatedUserInfo;
 
         let isFollowedMe = true;
         let isImFollowedHim = false;
@@ -52,7 +51,7 @@ class UserProfileCentralHead extends Component {
                         </div>
                     </div>
 
-                    {isAuthenticated ? (
+                    {authenticatedUser.username !== '' ? (
                         <Fragment>
                             <div className="row">
                                 <div className="col-md-12 head">
@@ -97,11 +96,8 @@ class UserProfileCentralHead extends Component {
 
 }
 
-UserProfileCentralHead.propTypes = {
-    user: PropTypes.object
-};
 
-export default UserProfileCentralHead;
+export default withState(UserProfileCentralHead);
 
 const FollowControlButton = (props) => {
     let {onClick, text} = props;
