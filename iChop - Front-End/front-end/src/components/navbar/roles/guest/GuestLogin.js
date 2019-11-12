@@ -17,11 +17,8 @@ class GuestLogin extends Component {
 
     async onLogin() {
         let {email, password} = this.props.formData;
-        let user = await UserServices.login(email, password);
-
-        if (user) {
-            this.props.fetchAuthenticatedUserInfo();
-        }
+        await UserServices.login(email, password);
+        this.props.fetchAuthenticatedUserInfo();
     }
 
     render() {
