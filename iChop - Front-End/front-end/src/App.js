@@ -30,15 +30,16 @@ function App() {
 
             <ReactNotification/>
 
-            <div style={{'marginTop':'75px'}}>
+            <div style={{'marginTop': '75px'}}>
                 <Switch>
+
                     <Route exact path={RoutingURLs.AUTHENTICATION.LOGOUT} render={() => (<Logout/>)}/>
                     <Route exact path={RoutingURLs.AUTHENTICATION.TOKEN.RESET_PASSWORD} render={() => (<UserChangePasswordByToken/>)}/>
 
                     <Route exact path={RoutingURLs.USER.PROFILE.VIEW} render={(props) => (<UserProfile key={props.match.params.username} {...props}/>)}/>
-                    
+                    <Route path={PrefixURLs.OPTIONS_PREFIX} render={() => (<UserOptions/>)}/>
 
-                    <Redirect exact path={PrefixURLs.OPTIONS_PREFIX} to={RoutingURLs.USER.OPTIONS.INFORMATION}/>
+
                 </Switch>
             </div>
 

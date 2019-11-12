@@ -3,6 +3,7 @@ import RoutingURLs from "../../../constants/routing/routing.constants";
 import LinkIconLi from "../../other/LinkIconLi";
 import {connect} from "react-redux";
 import navbarGuestDispatchers from "../../../redux/dispatchers/navbar.guest.dispatchers";
+import PrefixURLs from "../../../constants/routing/prefix.routing.constants";
 
 class FooterAuthenticatedLinks extends Component {
 
@@ -15,7 +16,7 @@ class FooterAuthenticatedLinks extends Component {
             <Fragment>
 
                 <LinkIconLi url={myProfileUrl} icon={'👤'} text={'Profile'}/>
-                <LinkIconLi url={RoutingURLs.USER.OPTIONS.INFORMATION} icon={'⚙'} text={'Options'}/>
+                <LinkIconLi url={PrefixURLs.OPTIONS_PREFIX} icon={'⚙'} text={'Options'}/>
                 <LinkIconLi url={RoutingURLs.AUTHENTICATION.LOGOUT} icon={'🚪'} text={'Logout'}/>
 
             </Fragment>

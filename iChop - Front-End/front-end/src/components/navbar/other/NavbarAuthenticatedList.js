@@ -4,6 +4,7 @@ import RoutingURLs from "../../../constants/routing/routing.constants";
 import DropdownIconLink from "../../other/DropdownIconLink";
 import {Link} from "react-router-dom";
 import withState from "../../../hocs/with.state";
+import PrefixURLs from "../../../constants/routing/prefix.routing.constants";
 
 let NavbarAuthenticatedList = CreateReactClass({
 
@@ -12,7 +13,7 @@ let NavbarAuthenticatedList = CreateReactClass({
         let username = user.username;
 
         let profileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', username);
-        let informationUrl = RoutingURLs.USER.OPTIONS.INFORMATION;
+        let informationUrl = PrefixURLs.OPTIONS_PREFIX;
         let logoutUrl = RoutingURLs.AUTHENTICATION.LOGOUT;
 
         return (
