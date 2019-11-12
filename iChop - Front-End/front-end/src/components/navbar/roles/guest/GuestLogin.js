@@ -20,7 +20,7 @@ class GuestLogin extends Component {
         let user = await UserServices.login(email, password);
 
         if (user) {
-            this.props.setAuthenticatedUser(user);
+            this.props.fetchAuthenticatedUserInfo();
         }
     }
 

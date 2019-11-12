@@ -27,7 +27,7 @@ class Logout extends Component {
 
         if (username) {
             UserServices.logout();
-            this.props.removeAuthenticatedUser();
+            this.props.removeAuthenticatedUserInfo();
             this.setState({isSuccessful: true});
             NotificationHelper.showSuccessNotification('Logout successful')
         } else {
