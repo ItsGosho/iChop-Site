@@ -21,7 +21,9 @@ let authenticatedUserInfoReducer = (state = initialState, action) => {
     switch (action.type) {
 
         case Actions.SET_AUTHENTICATED_USER_INFO:
-            return Object.assign({}, state, {...action.payload.user});
+            let {user,information} = action.payload;
+
+            return Object.assign({}, state, {...user,...information});
 
         case Actions.REMOVE_AUTHENTICATED_USER_INFO:
             return {...initialState};
