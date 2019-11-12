@@ -42,7 +42,8 @@ class CommentReportButton extends Component {
                                         </button>
                                     </ModalOpen>
 
-                                    <ReportModal relationTo={'reportComment'} value={reason}
+                                    <ReportModal relationTo={'reportComment'}
+                                                 value={reason}
                                                  onValueChange={this.onReasonValueChange}/>
                                 </div>
                             );

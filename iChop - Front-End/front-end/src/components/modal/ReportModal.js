@@ -19,7 +19,7 @@ class ReportModal extends Component {
 
 
     render() {
-        let {relationTo,value} = this.props;
+        let {relationTo,value,onReport} = this.props;
 
         let onChange = (event) => {
             this.setState({[event.target.name]: event.target.value}, () => {
@@ -41,7 +41,7 @@ class ReportModal extends Component {
                 </ModalBody>
 
                 <ModalFooter>
-                    <button className="btn btn-danger">Report</button>
+                    <button className="btn btn-danger" onClick={onReport}>Report</button>
                     <ModalClose/>
                 </ModalFooter>
             </Modal>
@@ -53,7 +53,8 @@ class ReportModal extends Component {
 ReportModal.propTypes = {
     relationTo: PropTypes.string,
     value: PropTypes.string,
-    onValueChange: PropTypes.func
+    onValueChange: PropTypes.func,
+    onReport: PropTypes.func
 };
 
 export default ReportModal;

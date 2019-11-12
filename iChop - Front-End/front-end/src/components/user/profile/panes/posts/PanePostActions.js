@@ -10,14 +10,21 @@ import {compose} from "redux";
 import {connect} from "react-redux";
 import authenticatedUserInfoDispatchers from "../../../../../redux/dispatchers/authenticated.user.info.dispatchers";
 import userProfileInfoDispatchers from "../../../../../redux/dispatchers/user.profile.info.dispatchers";
+import ModalOpen from "../../../../modal/ModalOpen";
+import ReportModal from "../../../../modal/ReportModal";
 
 class PanePostActions extends Component {
 
     constructor(props) {
         super(props);
 
+        this.state = {
+            reportReason: ''
+        };
+
         this.onDelete = this.onDelete.bind(this);
         this.onReport = this.onReport.bind(this);
+        this.onReasonValueChange = this.onReasonValueChange.bind(this);
     }
 
 
@@ -34,13 +41,20 @@ class PanePostActions extends Component {
     onReport() {
         let {id} = this.props;
 
-        console.log(`Report post with ID: ${id}`);
+        console.log(`Report post with ID: ${id} and reason [${this.state.reportReason}]`);
+    }
+
+    onReasonValueChange(value) {
+        this.setState({reportReason: value})
     }
 
     render() {
+        let {reportReason} = this.state;
         let isPostCreator = this.props.authenticatedUserInfo.username === this.props.creatorUsername;
         let isPostOnCreatorProfile = this.props.authenticatedUserInfo.username === this.props.userProfileUsername;
         let isModerator = this.props.authenticatedUserInfo.authority === Roles.MODERATOR;
+
+        console.log(reportReason);
 
         return (
             <Fragment>
@@ -49,7 +63,17 @@ class PanePostActions extends Component {
                     <button className="control-button" onClick={this.onDelete}>❌Delete</button>
                 ) : null}
 
-                <button className="control-button" onClick={this.onReport}>🎌Report</button>
+                <ModalOpen relationTo={'reportPost'} title={'Report Post'}>
+                    <button className="control-button" onClick={this.onReport} title={'Report Post'}>
+                        <small>🎌</small>
+                        <span>Report</span>
+                    </button>
+                </ModalOpen>
+
+                <ReportModal relationTo={'reportPost'}
+                             value={reportReason}
+                             onReport={this.onReport}
+                             onValueChange={this.onReasonValueChange}/>
 
             </Fragment>
         );

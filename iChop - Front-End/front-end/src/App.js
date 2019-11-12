@@ -38,8 +38,6 @@ function App() {
                 </Switch>
             </div>
 
-            <ThreadRead/>
-
             {/*<div style={{'marginTop': '75px'}}>
 
                 <Switch>
@@ -48,8 +46,6 @@ function App() {
                 </Switch>
 
             </div>*/}
-
-            {/*<ThreadsAll/>*/}
 
             <Footer/>
         </Fragment>
