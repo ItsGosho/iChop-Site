@@ -11,13 +11,6 @@ class UserFollowingsModal extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            followings: [
-                {username: 'Ivan'},
-                {username: 'Qncho'},
-            ]
-        };
-
         this.unFollow = this.unFollow.bind(this);
         this.iterFollowings = this.iterFollowings.bind(this);
     }
