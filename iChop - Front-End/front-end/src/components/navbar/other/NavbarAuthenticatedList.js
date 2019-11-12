@@ -1,6 +1,6 @@
 import React from "react";
 import CreateReactClass from 'create-react-class';
-import RoutingURLs from "../../../constants/routing.constants";
+import RoutingURLs from "../../../constants/routing/routing.constants";
 import DropdownIconLink from "../../other/DropdownIconLink";
 import {Link} from "react-router-dom";
 import withState from "../../../hocs/with.state";

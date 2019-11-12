@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import RoutingURLs from "../../../constants/routing.constants";
+import RoutingURLs from "../../../constants/routing/routing.constants";
 import {Redirect} from "react-router-dom";
 import {connect} from "react-redux";
 import authenticatedUserInfoDispatchers from "../../../redux/dispatchers/authenticated.user.info.dispatchers";

@@ -4,7 +4,7 @@ import UserControlRole from "./role/UserControlRole";
 import UserControlNav from "./other/UserControlNav";
 import UserControlSidebar from "./other/UserControlSidebar";
 import {Route, Switch} from "react-router-dom";
-import RoutingURLs from "../../../constants/routing.constants";
+import RoutingURLs from "../../../constants/routing/routing.constants";
 
 class UserControl extends Component {
 

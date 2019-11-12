@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './ThreadsAll.css';
 import formatDate from 'dateformat'
 import PaginationNav from "../../other/PaginationNav";
-import RoutingURLs from "../../../constants/routing.constants";
+import RoutingURLs from "../../../constants/routing/routing.constants";
 import CreateReactClass from "create-react-class";
 import ThreadsAllThread from "./ThreadsAllThread";
 

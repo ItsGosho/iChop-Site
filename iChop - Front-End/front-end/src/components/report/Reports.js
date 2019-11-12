@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import {Route, Switch} from "react-router-dom";
-import RoutingURLs from "../../constants/routing.constants";
+import RoutingURLs from "../../constants/routing/routing.constants";
 import ReportsThread from "./ReportsThread";
 import ReportsPost from "./ReportsPost";
 import ReportsComment from "./ReportsComment";

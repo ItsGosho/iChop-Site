@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import ServerRoutingURLs from "../../../../../constants/server.routing.urls";
+import ServerRoutingURLs from "../../../../../constants/routing/server.routing.urls";
 import FrontEndResourcesRoutingURLs from "../../../../../constants/front-end.resources.routings";
 import './PanePostCreate.css';
 import Image from "../../../../other/Image";
 import TextAreaWithCounter from "../../../../other/TextAreaWithCounter";
-import {PostValidationConstants} from "../../../../../constants/validation.constants";
+import {PostValidationConstants} from "../../../../../constants/other/validation.constants";
 import {withRouter} from "react-router-dom";
 import {compose} from "redux";
 import {connect} from "react-redux";

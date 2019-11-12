@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import RoutingURLs from "../../../../constants/routing.constants";
+import RoutingURLs from "../../../../constants/routing/routing.constants";
 import '../NavbarAuthenticated.css'
 import NavbarAuthenticatedButton from "../../other/NavbarAuthenticatedButton";
 import NavbarAuthenticatedList from "../../other/NavbarAuthenticatedList";

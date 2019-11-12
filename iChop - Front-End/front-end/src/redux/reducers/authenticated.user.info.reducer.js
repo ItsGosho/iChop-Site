@@ -1,5 +1,5 @@
-import Actions from "../../constants/actions.constants";
-import Roles from "../../constants/roles.constants";
+import Actions from "../../constants/redux/actions.constants";
+import Roles from "../../constants/enums/roles.constants";
 
 let initialState = {
     id: '',

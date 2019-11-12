@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import ServerRoutingURLs from "../../../../constants/server.routing.urls";
+import ServerRoutingURLs from "../../../../constants/routing/server.routing.urls";
 import PlayerProfileNavigation from "../PlayerProfileNavigation";
 import PlayerLinkedTo from "../PlayerLinkedTo";
 

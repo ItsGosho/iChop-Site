@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
-import ServerRoutingURLs from "../../../../constants/server.routing.urls";
-import RoutingURLs from "../../../../constants/routing.constants";
+import ServerRoutingURLs from "../../../../constants/routing/server.routing.urls";
+import RoutingURLs from "../../../../constants/routing/routing.constants";
 import {Link} from "react-router-dom";
 import './SideInformationMinecraftAccount.css'
 

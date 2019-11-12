@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
-import RoutingURLs from "../../../../constants/routing.constants";
+import RoutingURLs from "../../../../constants/routing/routing.constants";
 import './UserControlSidebar.css'
 
 class UserControlSidebar extends Component {

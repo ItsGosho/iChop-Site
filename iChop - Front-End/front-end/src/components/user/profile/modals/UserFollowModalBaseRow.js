@@ -3,8 +3,8 @@ import Image from "../../../other/Image";
 import FrontEndResourcesRoutingURLs from "../../../../constants/front-end.resources.routings";
 import {Link} from "react-router-dom";
 import CreateReactClass from "create-react-class";
-import RoutingURLs from "../../../../constants/routing.constants";
-import ServerRoutingURLs from "../../../../constants/server.routing.urls";
+import RoutingURLs from "../../../../constants/routing/routing.constants";
+import ServerRoutingURLs from "../../../../constants/routing/server.routing.urls";
 
 const UserFollowModalBaseRow = CreateReactClass({
 

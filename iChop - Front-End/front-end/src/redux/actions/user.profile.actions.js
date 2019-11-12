@@ -1,8 +1,8 @@
-import Actions from "../../constants/actions.constants";
+import Actions from "../../constants/redux/actions.constants";
 import UserServices from "../../services/user.services";
 import CommentServices from "../../services/comment.services";
 import ReactionServices from "../../services/reaction.services";
-import ReactionType from "../../constants/reaction.types.constants";
+import ReactionType from "../../constants/enums/reaction.types.constants";
 
 
 let setUserProfileUser = (username) => {
@@ -16,16 +16,21 @@ let setUserProfileUser = (username) => {
     }
 };
 
-let setUserProfileFollow = (username,profileViewerUsername) => {
+let setUserProfileFollow = (username, profileViewerUsername) => {
     return async (dispatch) => {
         let followings = await UserServices.findFollowings(username);
         let followers = await UserServices.findFollowers(username);
-        let isViewerFollowingHim = await UserServices.isFollowing(profileViewerUsername,username);
-        let isViewerFollowedByHim = await UserServices.isFollowing(username,profileViewerUsername);
+        let isViewerFollowingHim = false;
+        let isViewerFollowedByHim = false;
+
+        if (profileViewerUsername !== '') {
+            isViewerFollowingHim = await UserServices.isFollowing(profileViewerUsername, username);
+            isViewerFollowedByHim = await UserServices.isFollowing(username, profileViewerUsername);
+        }
 
         dispatch({
             type: Actions.SET_USER_PROFILE_FOLLOW,
-            payload: {followings, followers,isViewerFollowingHim,isViewerFollowedByHim}
+            payload: {followings, followers, isViewerFollowingHim, isViewerFollowedByHim}
         });
     }
 };
@@ -69,8 +74,8 @@ let setUserProfileMinecraft = (username) => {
 
 let setUserProfileReactions = (username) => {
     return async (dispatch) => {
-        let likes = await ReactionServices.findByCreatorUsernameAndReactionType(username,ReactionType.LIKE);
-        let dislikes = await ReactionServices.findByCreatorUsernameAndReactionType(username,ReactionType.DISLIKE);
+        let likes = await ReactionServices.findByCreatorUsernameAndReactionType(username, ReactionType.LIKE);
+        let dislikes = await ReactionServices.findByCreatorUsernameAndReactionType(username, ReactionType.DISLIKE);
 
         dispatch({
             type: Actions.SET_USER_PROFILE_REACTIONS,

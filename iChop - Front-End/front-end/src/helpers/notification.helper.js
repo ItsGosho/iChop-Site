@@ -1,5 +1,5 @@
 import {store} from "react-notifications-component";
-import NotificationConstants from "../constants/notification.constants";
+import NotificationConstants from "../constants/notification/notification.constants";
 
 const NotificationHelper = {
 

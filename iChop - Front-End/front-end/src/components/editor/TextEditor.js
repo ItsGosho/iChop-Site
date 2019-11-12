@@ -8,7 +8,7 @@ import TextEditorInsertImageModal from "./fragments/TextEditorInsertImageModal";
 import CommandExecutorHoc from "./command.executor.hoc";
 import TextEditorCommands from "./text.editor.commands.constants";
 import './TextEditor.css'
-import MaterialIcons from "../../constants/material.icons.types.constants";
+import MaterialIcons from "../../constants/other/material.icons.types.constants";
 import ModalOpen from "../modal/ModalOpen";
 
 class TextEditor extends Component {

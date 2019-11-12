@@ -3,7 +3,7 @@ import ThreadsAllThreadInformation from "./ThreadsAllThreadInformation";
 import Interweave from "interweave";
 import ThreadsAllThreadOptionsDropdown from "./ThreadsAllThreadOptionsDropdown";
 import {Link} from "react-router-dom";
-import RoutingURLs from "../../../constants/routing.constants";
+import RoutingURLs from "../../../constants/routing/routing.constants";
 
 class ThreadsAllThread extends Component {
 

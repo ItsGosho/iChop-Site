@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './Footer.css'
-import Roles from "../../constants/roles.constants";
+import Roles from "../../constants/enums/roles.constants";
 import UserFooter from "./roles/UserFooter";
 import ModeratorFooter from "./roles/ModeratorFooter";
 import AdminFooter from "./roles/AdminFooter";

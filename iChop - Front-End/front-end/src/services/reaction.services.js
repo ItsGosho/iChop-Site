@@ -1,4 +1,4 @@
-import ServerRoutingURLs from "../constants/server.routing.urls";
+import ServerRoutingURLs from "../constants/routing/server.routing.urls";
 import Requester from "../requesters/requester";
 
 const Endpoints = ServerRoutingURLs.CORE.REACTION;

@@ -15,10 +15,11 @@ import UserProfile from "./components/user/profile/UserProfile";
 import UserOptions from "./components/user/options/UserOptions";
 import UserControl from "./components/user/control/UserControl";
 import {Switch} from "react-bootstrap";
-import {Route} from "react-router-dom";
-import RoutingURLs from "./constants/routing.constants";
+import {Redirect, Route} from "react-router-dom";
+import RoutingURLs from "./constants/routing/routing.constants";
 import Logout from "./components/navbar/other/Logout";
 import UserChangePasswordByToken from "./components/user/other/UserChangePasswordByToken";
+import PrefixURLs from "./constants/routing/prefix.routing.constants";
 
 function App() {
 
@@ -35,6 +36,9 @@ function App() {
                     <Route exact path={RoutingURLs.AUTHENTICATION.TOKEN.RESET_PASSWORD} render={() => (<UserChangePasswordByToken/>)}/>
 
                     <Route exact path={RoutingURLs.USER.PROFILE.VIEW} render={(props) => (<UserProfile key={props.match.params.username} {...props}/>)}/>
+                    
+
+                    <Redirect exact path={PrefixURLs.OPTIONS_PREFIX} to={RoutingURLs.USER.OPTIONS.INFORMATION}/>
                 </Switch>
             </div>
 

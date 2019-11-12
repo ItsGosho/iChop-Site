@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Roles from "../../../../constants/roles.constants";
+import Roles from "../../../../constants/enums/roles.constants";
 import UserControlRoleLogs from "./UserControlRoleLogs";
 import './UserControlRole.css'
 

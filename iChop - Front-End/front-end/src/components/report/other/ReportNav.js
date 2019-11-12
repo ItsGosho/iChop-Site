@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
-import RoutingURLs from "../../../constants/routing.constants";
+import RoutingURLs from "../../../constants/routing/routing.constants";
 import {Form, FormControl, Nav, Navbar} from "react-bootstrap";
 import styles from './ReportNav.module.css'
 

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import TextEditorCommands from "../text.editor.commands.constants";
-import MaterialIcons from "../../../constants/material.icons.types.constants";
+import MaterialIcons from "../../../constants/other/material.icons.types.constants";
 
 class TextEditorColorPicker extends Component {
 

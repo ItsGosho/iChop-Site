@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
-import ServerRoutingURLs from "../../../../constants/server.routing.urls";
-import RoutingURLs from "../../../../constants/routing.constants";
+import ServerRoutingURLs from "../../../../constants/routing/server.routing.urls";
+import RoutingURLs from "../../../../constants/routing/routing.constants";
 import FrontEndResourcesRoutingURLs from "../../../../constants/front-end.resources.routings";
 import Image from "../../../other/Image";
 import './UserControlNav.css'

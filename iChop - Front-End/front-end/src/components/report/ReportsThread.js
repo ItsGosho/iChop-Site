@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import ReportTable from "./other/ReportTable";
-import RoutingURLs from "../../constants/routing.constants";
+import RoutingURLs from "../../constants/routing/routing.constants";
 import ReportTableColumns from "./other/ReportTableColumns";
 import {Link} from "react-router-dom";
 import PaginationNav from "../other/PaginationNav";

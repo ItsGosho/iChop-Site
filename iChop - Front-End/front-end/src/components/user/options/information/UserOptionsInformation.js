@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import ServerRoutingURLs from "../../../../constants/server.routing.urls";
+import ServerRoutingURLs from "../../../../constants/routing/server.routing.urls";
 import FrontEndResourcesRoutingURLs from "../../../../constants/front-end.resources.routings";
 import dateFormat from 'dateformat';
 import DatePicker from "react-datepicker";
@@ -8,7 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import Image from "../../../other/Image";
 import UploadBase64Image from "../../../other/UploadBase64Image";
 import TextAreaWithCounter from "../../../other/TextAreaWithCounter";
-import {UserValidationConstants} from "../../../../constants/validation.constants";
+import {UserValidationConstants} from "../../../../constants/other/validation.constants";
 
 class UserOptionsInformation extends Component {
 

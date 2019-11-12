@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import ServerRoutingURLs from "../../../constants/server.routing.urls";
+import ServerRoutingURLs from "../../../constants/routing/server.routing.urls";
 import SideInformationLocation from "./side/SideInformationLocation";
 import FrontEndResourcesRoutingURLs from "../../../constants/front-end.resources.routings";
 import './UserProfileLeftSideInformation.css'

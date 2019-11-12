@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import RoutingURLs from "../../../constants/routing.constants";
+import RoutingURLs from "../../../constants/routing/routing.constants";
 import LinkIconLi from "../../other/LinkIconLi";
 import {connect} from "react-redux";
 import navbarGuestDispatchers from "../../../redux/dispatchers/navbar.guest.dispatchers";

@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import RoutingURLs from "../../../constants/routing.constants";
+import RoutingURLs from "../../../constants/routing/routing.constants";
 
 class FooterCopyright extends Component {
 

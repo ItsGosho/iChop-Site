@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import formatDate from "dateformat";
 import ReportActionButtons from "./ReportActionButtons";
 import CreateReactClass from "create-react-class";
-import RoutingURLs from "../../../constants/routing.constants";
+import RoutingURLs from "../../../constants/routing/routing.constants";
 import './ReportTableColumns.css'
 
 let ReportTableColumns = CreateReactClass({

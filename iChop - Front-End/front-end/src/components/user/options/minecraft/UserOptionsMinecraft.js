@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react';
-import RoutingURLs from "../../../../constants/routing.constants";
+import RoutingURLs from "../../../../constants/routing/routing.constants";
 import {Link} from "react-router-dom";
-import ServerRoutingURLs from "../../../../constants/server.routing.urls";
+import ServerRoutingURLs from "../../../../constants/routing/server.routing.urls";
 import './UserOptionsMinecraft.css'
 
 class UserOptionsMinecraft extends Component {

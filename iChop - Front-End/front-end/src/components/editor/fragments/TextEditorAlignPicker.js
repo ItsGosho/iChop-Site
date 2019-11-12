@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import CommandExecutorHoc from "../command.executor.hoc";
 import TextEditorCommands from "../text.editor.commands.constants";
-import MaterialIcons from "../../../constants/material.icons.types.constants";
+import MaterialIcons from "../../../constants/other/material.icons.types.constants";
 
 class TextEditorAlignPicker extends Component {
 

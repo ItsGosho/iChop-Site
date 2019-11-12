@@ -1,3 +1,5 @@
+import PrefixURLs from "./prefix.routing.constants";
+
 const RoutingURLs = {
     HOME: '/',
 
@@ -40,9 +42,9 @@ const RoutingURLs = {
         },
 
         OPTIONS: {
-            INFORMATION: '/user/options/information', /*User+*/
-            PASSWORD: '/user/options/password', /*User+*/
-            MINECRAFT: '/user/options/minecraft', /*User+*/
+            INFORMATION: `${PrefixURLs.OPTIONS_PREFIX}/information`, /*User+*/
+            PASSWORD: `${PrefixURLs.OPTIONS_PREFIX}/password`, /*User+*/
+            MINECRAFT: `${PrefixURLs.OPTIONS_PREFIX}/minecraft`, /*User+*/
         },
     },
 

@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import Roles from "../../constants/roles.constants";
+import Roles from "../../constants/enums/roles.constants";
 import NavbarUser from "./roles/user/NavbarUser";
 import NavbarModerator from "./roles/moderator/NavbarModerator";
 import NavbarAdmin from "./roles/admin/NavbarAdmin";
 import NavbarOwner from "./roles/owner/NavbarOwner";
 import GuestNavbar from "./roles/guest/NavbarGuest";
 import {Link} from "react-router-dom";
-import RoutingURLs from "../../constants/routing.constants";
+import RoutingURLs from "../../constants/routing/routing.constants";
 import FrontEndResourcesRoutingURLs from "../../constants/front-end.resources.routings";
 import {connect} from "react-redux";
 import {compose} from "redux";

@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import './PanePost.css'
 import PanePostActions from "./PanePostActions";
-import ServerRoutingURLs from "../../../../../constants/server.routing.urls";
+import ServerRoutingURLs from "../../../../../constants/routing/server.routing.urls";
 import Image from "../../../../other/Image";
 import FrontEndResourcesRoutingURLs from "../../../../../constants/front-end.resources.routings";
 import {Link} from "react-router-dom";
-import RoutingURLs from "../../../../../constants/routing.constants";
+import RoutingURLs from "../../../../../constants/routing/routing.constants";
 import PropTypes from "prop-types";
 import dateFormat from "dateformat";
 

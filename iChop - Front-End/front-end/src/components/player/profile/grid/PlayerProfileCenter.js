@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PlayerStatistics from "../PlayerStatistics";
 import {Route, Switch} from "react-router-dom";
-import RoutingURLs from "../../../../constants/routing.constants";
+import RoutingURLs from "../../../../constants/routing/routing.constants";
 
 class PlayerProfileCenter extends Component {
 

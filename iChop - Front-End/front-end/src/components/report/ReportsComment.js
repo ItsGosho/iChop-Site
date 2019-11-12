@@ -2,7 +2,7 @@ import React, {Component, Fragment} from 'react';
 import ReportTableColumns from "./other/ReportTableColumns";
 import ReportTable from "./other/ReportTable";
 import PaginationNav from "../other/PaginationNav";
-import RoutingURLs from "../../constants/routing.constants";
+import RoutingURLs from "../../constants/routing/routing.constants";
 import './ReportsComment.css'
 
 class ReportsComment extends Component {

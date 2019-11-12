@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import Roles from "../../../constants/roles.constants";
+import Roles from "../../../constants/enums/roles.constants";
 import PropTypes from "prop-types";
 import UserProfileCentralContent from "./UserProfileCentralContent";
 import withState from "../../../hocs/with.state";
