@@ -18,13 +18,8 @@ class PanePostActions extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            reportReason: ''
-        };
-
         this.onDelete = this.onDelete.bind(this);
         this.onReport = this.onReport.bind(this);
-        this.onReasonValueChange = this.onReasonValueChange.bind(this);
     }
 
 
@@ -38,23 +33,17 @@ class PanePostActions extends Component {
         }
     }
 
-    onReport() {
+    onReport(reason) {
         let {id} = this.props;
 
-        console.log(`Report post with ID: ${id} and reason [${this.state.reportReason}]`);
-    }
-
-    onReasonValueChange(value) {
-        this.setState({reportReason: value})
+        console.log(`Report post with ID: ${id} and reason [${reason}]`);
     }
 
     render() {
-        let {reportReason} = this.state;
         let isPostCreator = this.props.authenticatedUserInfo.username === this.props.creatorUsername;
         let isPostOnCreatorProfile = this.props.authenticatedUserInfo.username === this.props.userProfileUsername;
         let isModerator = this.props.authenticatedUserInfo.authority === Roles.MODERATOR;
 
-        console.log(reportReason);
 
         return (
             <Fragment>
@@ -64,16 +53,14 @@ class PanePostActions extends Component {
                 ) : null}
 
                 <ModalOpen relationTo={'reportPost'} title={'Report Post'}>
-                    <button className="control-button" onClick={this.onReport} title={'Report Post'}>
+                    <button className="control-button">
                         <small>🎌</small>
                         <span>Report</span>
                     </button>
                 </ModalOpen>
 
                 <ReportModal relationTo={'reportPost'}
-                             value={reportReason}
-                             onReport={this.onReport}
-                             onValueChange={this.onReasonValueChange}/>
+                             onReport={this.onReport}/>
 
             </Fragment>
         );

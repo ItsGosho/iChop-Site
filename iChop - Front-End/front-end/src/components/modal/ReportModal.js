@@ -19,13 +19,7 @@ class ReportModal extends Component {
 
 
     render() {
-        let {relationTo,value,onReport} = this.props;
-
-        let onChange = (event) => {
-            this.setState({[event.target.name]: event.target.value}, () => {
-                this.props.onValueChange(this.state.reason);
-            });
-        };
+        let {relationTo, value, onReport} = this.props;
 
         return (
             <Modal relationTo={relationTo}>
@@ -34,14 +28,18 @@ class ReportModal extends Component {
                 <ModalBody>
                    <textarea
                        className="report-modal"
-                       name="reason"
                        value={value}
-                       onChange={onChange}
+                       onChange={(event) => {
+                           this.setState({reason: event.target.value});
+                       }}
                        placeholder="Reason..."/>
                 </ModalBody>
 
                 <ModalFooter>
-                    <button className="btn btn-danger" onClick={onReport}>Report</button>
+                    <button className="btn btn-danger" onClick={() => {
+                        onReport(this.state.reason)
+                    }}>Report
+                    </button>
                     <ModalClose/>
                 </ModalFooter>
             </Modal>
@@ -53,7 +51,6 @@ class ReportModal extends Component {
 ReportModal.propTypes = {
     relationTo: PropTypes.string,
     value: PropTypes.string,
-    onValueChange: PropTypes.func,
     onReport: PropTypes.func
 };
 
