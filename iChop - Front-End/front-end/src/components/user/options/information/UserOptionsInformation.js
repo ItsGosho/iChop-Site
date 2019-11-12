@@ -9,6 +9,8 @@ import Image from "../../../other/Image";
 import UploadBase64Image from "../../../other/UploadBase64Image";
 import TextAreaWithCounter from "../../../other/TextAreaWithCounter";
 import {UserValidationConstants} from "../../../../constants/other/validation.constants";
+import withState from "../../../../hocs/with.state";
+import authenticatedUserInfoReducer from "../../../../redux/reducers/authenticated.user.info.reducer";
 
 class UserOptionsInformation extends Component {
 
@@ -20,7 +22,7 @@ class UserOptionsInformation extends Component {
 
             statusMessage: '',
             userAvatarUrl: '',
-            birthday: 0,
+            birthDate: 0,
             aboutYou: '',
 
             uploadedUserAvatar: '',
@@ -54,7 +56,7 @@ class UserOptionsInformation extends Component {
 
     onDateChange(date) {
         this.setState({
-            birthday: date
+            birthDate: date
         });
     }
 
@@ -75,10 +77,10 @@ class UserOptionsInformation extends Component {
     }
 
     onSaveChanges() {
-        let {statusMessage, birthday, aboutYou, uploadedUserAvatar} = this.state;
+        let {statusMessage, birthDate, aboutYou, uploadedUserAvatar} = this.state;
 
         console.log(statusMessage);
-        console.log(dateFormat(birthday, 'dd/mm/yyyy'));
+        console.log(dateFormat(birthDate, 'dd/mm/yyyy'));
         console.log(aboutYou);
         console.log(uploadedUserAvatar);
 
@@ -86,18 +88,17 @@ class UserOptionsInformation extends Component {
 
     componentWillMount() {
         /*REQUIRED DATA*/
-        let username = 'ItsGosho';
+        let {username,statusMessage,birthDate,aboutYou} = this.props.authenticatedUserInfo;
         let avatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', username);
-        let statusMessage = 'Hi!';
-        let birthday = new Date();
-        let aboutYou = 'Just me :)';
+
+        statusMessage = statusMessage !== undefined ? statusMessage : '';
+        aboutYou = aboutYou !== undefined ? aboutYou : '';
 
         this.setState({username: username});
         this.setState({statusMessage: statusMessage});
         this.setState({userAvatarUrl: avatarUrl});
-        this.setState({birthday: birthday});
+        this.setState({birthDate: birthDate});
         this.setState({aboutYou: aboutYou});
-
 
         this.setState({leftStatusMessageCharacters: UserValidationConstants.MAX_STATUS_MESSAGE_CHARACTERS - statusMessage.length});
         this.setState({leftAboutYouCharacters: UserValidationConstants.MAX_ABOUT_YOU_CHARACTERS - aboutYou.length});
@@ -163,7 +164,7 @@ class UserOptionsInformation extends Component {
 
                 <div className="row row-birthdate-title" align="center">
                     <div className="col-lg">
-                        <span>Birthday:</span>
+                        <span>Birthdate:</span>
                     </div>
                 </div>
 
@@ -173,8 +174,8 @@ class UserOptionsInformation extends Component {
                         <DatePicker
                             className="form-control"
                             format='Pp'
-                            value={this.state.birthday}
-                            selected={this.state.birthday}
+                            value={this.state.birthDate}
+                            selected={this.state.birthDate}
                             onChange={date => {
                                 this.onDateChange(date);
                             }}/>
@@ -226,4 +227,4 @@ class UserOptionsInformation extends Component {
 
 }
 
-export default UserOptionsInformation;
+export default withState(UserOptionsInformation);
