@@ -4,6 +4,7 @@ import ModalTitle from "../../../modal/ModalTitle";
 import ModalBody from "../../../modal/ModalBody";
 import Modal from "../../../modal/Modal";
 import UserFollowModalBaseRow from "./UserFollowModalBaseRow";
+import withState from "../../../../hocs/with.state";
 
 class UserFollowingsModal extends Component {
 
@@ -27,7 +28,7 @@ class UserFollowingsModal extends Component {
 
 
     iterFollowings() {
-        return this.state.followings.map((following, index) => {
+        return this.props.userProfileInfo.followings.map((following, index) => {
             let {username} = following;
 
             return (
@@ -66,4 +67,4 @@ class UserFollowingsModal extends Component {
     }
 }
 
-export default UserFollowingsModal;
+export default withState(UserFollowingsModal);
