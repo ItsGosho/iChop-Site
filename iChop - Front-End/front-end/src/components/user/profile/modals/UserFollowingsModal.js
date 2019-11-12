@@ -16,7 +16,7 @@ class UserFollowingsModal extends Component {
     }
 
     unFollow(username) {
-        console.log(`Unfollow: ${username}`);
+        console.log(`Soon!`);
     }
 
 
@@ -30,7 +30,7 @@ class UserFollowingsModal extends Component {
                             onClick={() => {
                                 this.unFollow(username)
                             }}>
-                        Unfollow
+                        Soon!
                     </button>
                 </UserFollowModalBaseRow>
             )
@@ -45,7 +45,7 @@ class UserFollowingsModal extends Component {
             <Modal relationTo="all-followings">
 
                 <ModalTitle>
-                    <h5 className="modal-title">All users that <span><b>ItsGosho</b></span> is following:</h5>
+                    <h5 className="modal-title">All users that <span><b>{this.props.userProfileInfo.username}</b></span> is following:</h5>
                 </ModalTitle>
 
                 <ModalBody>

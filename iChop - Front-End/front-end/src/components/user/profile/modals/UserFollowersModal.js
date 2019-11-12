@@ -31,7 +31,7 @@ class UserFollowersModal extends Component {
             <Modal relationTo="all-followers">
                 
                 <ModalTitle>
-                    <h5 className="modal-title">All users that are following <span><b>ItsGosho</b></span>:</h5>
+                    <h5 className="modal-title">All users that are following <span><b>{this.props.userProfileInfo.username}</b></span>:</h5>
                 </ModalTitle>
 
                 <ModalBody>
