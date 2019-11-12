@@ -69,12 +69,15 @@ let setUserProfileMinecraft = (username) => {
 
 let setUserProfileReactions = (username) => {
     return async (dispatch) => {
-        let totalLikes = await ReactionServices.findByCreatorUsernameAndReactionType(username,ReactionType.LIKE).length;
-        let totalDislikes = await ReactionServices.findByCreatorUsernameAndReactionType(username,ReactionType.DISLIKE).length;
+        let likes = await ReactionServices.findByCreatorUsernameAndReactionType(username,ReactionType.LIKE);
+        let dislikes = await ReactionServices.findByCreatorUsernameAndReactionType(username,ReactionType.DISLIKE);
 
         dispatch({
             type: Actions.SET_USER_PROFILE_REACTIONS,
-            payload: {totalLikes,totalDislikes}
+            payload: {
+                totalLikes: likes.length,
+                totalDislikes: dislikes.length,
+            }
         });
     }
 };
