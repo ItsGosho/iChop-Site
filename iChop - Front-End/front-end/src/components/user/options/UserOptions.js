@@ -11,7 +11,6 @@ class UserOptions extends Component {
 
 
     render() {
-console.log(1232131);
         return (
             <div className="container" style={{'marginLeft': '0'}}>
                 <div className="row">

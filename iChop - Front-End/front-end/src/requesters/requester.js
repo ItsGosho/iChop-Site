@@ -6,10 +6,10 @@ import NotificationHelper from "../helpers/notification.helper";
 
 const Requester = {
 
-    async post(url, data, notification) {
+    async post(url, data, loadingNotification) {
 
         let notificationId = undefined;
-        if (notification) {
+        if (loadingNotification) {
             notificationId =  NotificationHelper.showLoadingNotification('Please wait!')
         }
 

@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import UniversalPasswordsInputs from "../../../other/UniversalPasswordsInputs";
+import NotificationHelper from "../../../../helpers/notification.helper";
+import UserServices from "../../../../services/user.services";
 
 class UserOptionsChangePassword extends Component {
 
@@ -10,11 +12,14 @@ class UserOptionsChangePassword extends Component {
     }
 
     onResetClick() {
-        /*RESET*/
         let {password, confirmPassword} = this.state;
 
-        console.log(password);
-        console.log(confirmPassword);
+        if (password !== confirmPassword) {
+            NotificationHelper.showErrorNotification('Passwords are not equal!');
+            return;
+        }
+
+        UserServices.changePassword(password,confirmPassword);
     }
 
     render() {

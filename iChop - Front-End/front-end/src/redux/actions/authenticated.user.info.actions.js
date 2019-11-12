@@ -5,16 +5,19 @@ import UserServices from "../../services/user.services";
 let fetchAuthenticatedUserInfo = () => {
     return async (dispatch) => {
         let user = await UserServices.retrieveUserByToken();
-        let information = await UserServices.findInformation(user.username);
 
         if (user) {
-            dispatch({
-                type: Actions.SET_AUTHENTICATED_USER_INFO,
-                payload: {
-                    user: user,
-                    information: information
-                }
-            });
+            let information = await UserServices.findInformation(user.username);
+
+            if (user) {
+                dispatch({
+                    type: Actions.SET_AUTHENTICATED_USER_INFO,
+                    payload: {
+                        user: user,
+                        information: information
+                    }
+                });
+            }
         }
     }
 };
