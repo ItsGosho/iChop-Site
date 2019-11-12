@@ -8,7 +8,6 @@ import NotificationHelper from "../../../helpers/notification.helper";
 import {compose} from "redux";
 import {connect} from "react-redux";
 import userProfileInfoDispatchers from "../../../redux/dispatchers/user.profile.info.dispatchers";
-import CommentServices from "../../../services/comment.services";
 
 class UserProfile extends Component {
 
@@ -22,6 +21,7 @@ class UserProfile extends Component {
     }
 
     async componentDidMount() {
+        this.props.clearProfile();
         let username = this.props.match.params.username;
         let user = await UserServices.findByUsername(username);
         let profileViewer = this.props.authenticatedUserInfo;

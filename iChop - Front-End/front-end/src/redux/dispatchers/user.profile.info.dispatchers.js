@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+    clearUserProfile,
     setUserProfileFollow,
     setUserProfileInformation, setUserProfileMinecraft,
     setUserProfilePosts, setUserProfileReactions,
@@ -27,6 +28,9 @@ let userProfileInfoDispatchers = (dispatch) => {
         fetchReactions: (username) => {
             dispatch(setUserProfileReactions(username))
         },
+        clearProfile: () => {
+            dispatch(clearUserProfile());
+        }
     }
 };
 

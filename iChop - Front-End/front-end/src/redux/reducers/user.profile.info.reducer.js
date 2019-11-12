@@ -77,6 +77,9 @@ let userProfileInfoReducer = (state = initialState, action) => {
 
             return Object.assign({}, state, {totalLikes, totalDislikes});
 
+        case Actions.CLEAR_USER_PROFILE:
+            return Object.assign({}, state, initialState);
+
         default:
             return state;
 

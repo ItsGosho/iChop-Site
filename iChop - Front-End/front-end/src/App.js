@@ -38,6 +38,8 @@ function App() {
                 </Switch>
             </div>
 
+            <ThreadRead/>
+
             {/*<div style={{'marginTop': '75px'}}>
 
                 <Switch>

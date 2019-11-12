@@ -1,0 +1,6 @@
+.report-modal {
+    width: 100%;
+    overflow-y: scroll;
+    height: 200px;
+    resize: none;
+}

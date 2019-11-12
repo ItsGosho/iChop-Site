@@ -121,13 +121,6 @@
     display: inline-block;
 }
 
-.thread-comments-modal {
-    width: 100%;
-    overflow-y: scroll;
-    height: 200px;
-    resize: none;
-}
-
 
 
 

@@ -1,11 +1,26 @@
 import React, {Component, Fragment} from 'react';
-import CommentReportModal from "./CommentReportModal";
 import ModalOpen from "../../../../modal/ModalOpen";
+import ReportModal from "../../../../modal/ReportModal";
 
 class CommentReportButton extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            reason: ''
+        };
+
+        this.onReasonValueChange = this.onReasonValueChange.bind(this);
+    }
+
+    onReasonValueChange(value) {
+        this.setState({reason: value})
+    }
 
     render() {
+        let {reason} = this.state;
+        console.log(reason);
 
         return (
             <Fragment>
@@ -27,7 +42,8 @@ class CommentReportButton extends Component {
                                         </button>
                                     </ModalOpen>
 
-                                    <CommentReportModal/>
+                                    <ReportModal relationTo={'reportComment'} value={reason}
+                                                 onValueChange={this.onReasonValueChange}/>
                                 </div>
                             );
                         }

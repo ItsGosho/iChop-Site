@@ -79,11 +79,21 @@ let setUserProfileReactions = (username) => {
     }
 };
 
+let clearUserProfile = () => {
+    return async (dispatch) => {
+
+        dispatch({
+            type: Actions.CLEAR_USER_PROFILE,
+        });
+    }
+};
+
 export {
     setUserProfileUser,
     setUserProfileFollow,
     setUserProfilePosts,
     setUserProfileInformation,
     setUserProfileMinecraft,
-    setUserProfileReactions
+    setUserProfileReactions,
+    clearUserProfile
 }

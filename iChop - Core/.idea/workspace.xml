@@ -161,7 +161,7 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="1912" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
@@ -528,7 +528,7 @@
       <workItem from="1573405725917" duration="5225000" />
       <workItem from="1573470265458" duration="8248000" />
       <workItem from="1573506649816" duration="3104000" />
-      <workItem from="1573550979442" duration="741000" />
+      <workItem from="1573550979442" duration="1339000" />
     </task>
     <servers />
   </component>
@@ -565,7 +565,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="741000" />
+    <option name="totallyTimeSpent" value="1339000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
