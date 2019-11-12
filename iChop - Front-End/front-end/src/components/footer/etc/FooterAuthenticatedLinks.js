@@ -1,12 +1,14 @@
 import React, {Component, Fragment} from 'react';
 import RoutingURLs from "../../../constants/routing.constants";
 import LinkIconLi from "../../other/LinkIconLi";
+import {connect} from "react-redux";
+import navbarGuestDispatchers from "../../../redux/dispatchers/navbar.guest.dispatchers";
 
 class FooterAuthenticatedLinks extends Component {
 
 
     render() {
-        let username = '';
+        let {username} = this.props.authenticatedUserInfo;
         let myProfileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', username);
 
         return (
@@ -22,4 +24,8 @@ class FooterAuthenticatedLinks extends Component {
 
 }
 
-export default FooterAuthenticatedLinks;
+let mapState = (state) => {
+    return {...state};
+};
+
+export default connect(mapState,navbarGuestDispatchers)(FooterAuthenticatedLinks);

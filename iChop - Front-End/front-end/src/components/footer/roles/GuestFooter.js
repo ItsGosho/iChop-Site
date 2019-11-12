@@ -1,7 +1,8 @@
 import React, {Component, Fragment} from 'react';
 import FooterLinksWrapper from "../etc/FooterLinksWrapper";
-import navbarGuestReduxHoc from "../../../redux/dispatchers/navbar.guest.dispatchers";
 import LinkIconLi from "../../other/LinkIconLi";
+import navbarGuestDispatchers from "../../../redux/dispatchers/navbar.guest.dispatchers";
+import {connect} from "react-redux";
 
 class GuestFooter extends Component {
 
@@ -39,7 +40,6 @@ class GuestFooter extends Component {
 
         return (
             <Fragment>
-
                 <FooterLinksWrapper text={'VISIT'}>
 
                     <LinkIconLi icon={'🔐'} text={'Login'} onClick={this.onLoginRequired}/>
@@ -53,4 +53,8 @@ class GuestFooter extends Component {
 
 }
 
-export default navbarGuestReduxHoc(GuestFooter);
+let mapState = (state) => {
+    return {...state};
+};
+
+export default connect(mapState,navbarGuestDispatchers)(GuestFooter);

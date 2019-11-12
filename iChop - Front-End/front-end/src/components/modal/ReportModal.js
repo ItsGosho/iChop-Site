@@ -51,7 +51,7 @@ class ReportModal extends Component {
 ReportModal.propTypes = {
     relationTo: PropTypes.string,
     value: PropTypes.string,
-    onReport: PropTypes.func
+    onReport: PropTypes.func,
 };
 
 export default ReportModal;

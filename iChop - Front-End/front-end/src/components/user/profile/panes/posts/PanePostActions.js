@@ -33,17 +33,16 @@ class PanePostActions extends Component {
         }
     }
 
-    onReport(reason) {
-        let {id} = this.props;
+    async onReport(reason) {
 
-        console.log(`Report post with ID: ${id} and reason [${reason}]`);
+        console.log(this.props);
+        //console.log(`Report post with ID: ${id} and reason [${reason}]`);
     }
 
     render() {
         let isPostCreator = this.props.authenticatedUserInfo.username === this.props.creatorUsername;
         let isPostOnCreatorProfile = this.props.authenticatedUserInfo.username === this.props.userProfileUsername;
         let isModerator = this.props.authenticatedUserInfo.authority === Roles.MODERATOR;
-
 
         return (
             <Fragment>
@@ -60,6 +59,7 @@ class PanePostActions extends Component {
                 </ModalOpen>
 
                 <ReportModal relationTo={'reportPost'}
+                             key={this.props.id}
                              onReport={this.onReport}/>
 
             </Fragment>

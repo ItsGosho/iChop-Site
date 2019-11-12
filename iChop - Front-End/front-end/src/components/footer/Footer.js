@@ -8,6 +8,7 @@ import OwnerFooter from "./roles/OwnerFooter";
 import GuestFooter from "./roles/GuestFooter";
 import FooterCopyright from "./etc/FooterCopyright";
 import FooterHeader from "./etc/FooterHeader";
+import withState from "../../hocs/with.state";
 
 class Footer extends Component {
 
@@ -33,7 +34,7 @@ class Footer extends Component {
     }
 
     render() {
-        let role = Roles.ADMIN;
+        let user = this.props.authenticatedUserInfo;
 
         return (
             <footer className="page-footer font-small stylish-color-dark pt-4">
@@ -44,7 +45,7 @@ class Footer extends Component {
                             <FooterHeader/>
                         </div>
 
-                        {this.getFooter(role)}
+                        {this.getFooter(user.authority)}
 
                     </div>
 
@@ -56,4 +57,4 @@ class Footer extends Component {
 
 }
 
-export default Footer;
+export default withState(Footer);
