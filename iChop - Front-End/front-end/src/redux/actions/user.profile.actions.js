@@ -1,6 +1,8 @@
 import Actions from "../../constants/actions.constants";
 import UserServices from "../../services/user.services";
 import CommentServices from "../../services/comment.services";
+import ReactionServices from "../../services/reaction.services";
+import ReactionType from "../../constants/reaction.types.constants";
 
 
 let setUserProfileUser = (username) => {
@@ -67,8 +69,8 @@ let setUserProfileMinecraft = (username) => {
 
 let setUserProfileReactions = (username) => {
     return async (dispatch) => {
-        let totalLikes = 0;
-        let totalDislikes = 0;
+        let totalLikes = await ReactionServices.findByCreatorUsernameAndReactionType(username,ReactionType.LIKE).length;
+        let totalDislikes = await ReactionServices.findByCreatorUsernameAndReactionType(username,ReactionType.DISLIKE).length;
 
         dispatch({
             type: Actions.SET_USER_PROFILE_REACTIONS,
