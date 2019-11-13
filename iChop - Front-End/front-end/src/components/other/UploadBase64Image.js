@@ -1,4 +1,5 @@
 import React, {Component, Fragment} from 'react';
+import NotificationHelper from "../../helpers/notification.helper";
 
 class UploadBase64Image extends Component {
 
@@ -19,10 +20,10 @@ class UploadBase64Image extends Component {
         let type = file.type; /*image/png*/
         let size = file.size;
 
-        if (type === 'image/png') {
+        if (type === 'image/png' || type=== 'image/jpeg') {
 
             if (size > 1048576) {
-                /*TODO: show error*/
+                NotificationHelper.showErrorNotification('The image must be less than 1 MB!');
                 return;
             }
 
@@ -31,7 +32,7 @@ class UploadBase64Image extends Component {
             });
 
         } else {
-            /*TODO: show error*/
+            NotificationHelper.showErrorNotification('The image format must be png/jpeg!');
         }
     }
 
