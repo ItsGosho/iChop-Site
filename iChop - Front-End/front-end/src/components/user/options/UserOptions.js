@@ -24,7 +24,7 @@ class UserOptions extends Component {
                                 <Switch>
                                     <Route exact path={PrefixURLs.OPTIONS_PREFIX} render={() => (<Redirect to={RoutingURLs.USER.OPTIONS.INFORMATION}/>)}/>
 
-                                    <Route exact path={RoutingURLs.USER.OPTIONS.INFORMATION} component={() => (<UserOptionsInformation/>)}/>
+                                    <Route exact path={RoutingURLs.USER.OPTIONS.INFORMATION} component={(props) => (<UserOptionsInformation {...props}/>)}/>
                                     <Route exact path={RoutingURLs.USER.OPTIONS.PASSWORD} component={() => (<UserOptionsChangePassword/>)}/>
                                     <Route exact path={RoutingURLs.USER.OPTIONS.MINECRAFT} component={() => (<UserOptionsMinecraft/>)}/>
                                 </Switch>

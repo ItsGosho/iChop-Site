@@ -30,23 +30,16 @@ class UserOptionsInformation extends Component {
             aboutYou: '',
 
             uploadedUserAvatar: '',
-
-            maxStatusMessageCharacters: 0,
-            maxAboutYouCharacters: 0,
-
-            leftStatusMessageCharacters: 0,
-            leftAboutYouCharacters: 0
         };
 
         this.onSaveChanges = this.onSaveChanges.bind(this);
         this.onDateChange = this.onDateChange.bind(this);
         this.onBase64Upload = this.onBase64Upload.bind(this);
 
-        this.onStatusMessageCountedCharacters = this.onStatusMessageCountedCharacters.bind(this);
         this.onStatusMessageChange = this.onStatusMessageChange.bind(this);
 
-        this.onAboutYouCountedCharacters = this.onAboutYouCountedCharacters.bind(this);
         this.onAboutYouChange = this.onAboutYouChange.bind(this);
+        this.proceedStateUpdate = this.proceedStateUpdate.bind(this);
 
         this.userAvatarRef = React.createRef();
     }
@@ -68,16 +61,8 @@ class UserOptionsInformation extends Component {
         this.setState({statusMessage: status})
     }
 
-    onStatusMessageCountedCharacters(leftChars) {
-        this.setState({leftStatusMessageCharacters: leftChars});
-    }
-
     onAboutYouChange(status) {
         this.setState({aboutYou: status})
-    }
-
-    onAboutYouCountedCharacters(leftChars) {
-        this.setState({leftAboutYouCharacters: leftChars})
     }
 
     async onSaveChanges() {
@@ -95,9 +80,16 @@ class UserOptionsInformation extends Component {
         }
     }
 
+    componentWillReceiveProps(nextProps, nextContext) {
+        this.proceedStateUpdate(nextProps.authenticatedUserInfo);
+    }
+
     componentWillMount() {
-        /*REQUIRED DATA*/
-        let {username, statusMessage, birthDate, aboutYou} = this.props.authenticatedUserInfo;
+        this.proceedStateUpdate(this.props.authenticatedUserInfo);
+    }
+
+    proceedStateUpdate(source) {
+        let {username, statusMessage, birthDate, aboutYou} = source;
         let avatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', username);
 
         statusMessage = statusMessage !== undefined ? statusMessage : '';
@@ -108,15 +100,11 @@ class UserOptionsInformation extends Component {
         this.setState({userAvatarUrl: avatarUrl});
         this.setState({birthDate: Date.parse(birthDate)});
         this.setState({aboutYou: aboutYou});
-
-        this.setState({leftStatusMessageCharacters: UserValidationConstants.MAX_STATUS_MESSAGE_CHARACTERS - statusMessage.length});
-        this.setState({leftAboutYouCharacters: UserValidationConstants.MAX_ABOUT_YOU_CHARACTERS - aboutYou.length});
-
-        this.setState({maxStatusMessageCharacters: UserValidationConstants.MAX_STATUS_MESSAGE_CHARACTERS});
-        this.setState({maxAboutYouCharacters: UserValidationConstants.MAX_ABOUT_YOU_CHARACTERS});
     }
 
     render() {
+        let leftStatusMessageCharacters = UserValidationConstants.MAX_STATUS_MESSAGE_CHARACTERS - this.state.statusMessage.length;
+        let leftAboutYouCharacters = UserValidationConstants.MAX_ABOUT_YOU_CHARACTERS - this.state.aboutYou.length;
 
         return (
             <form>
@@ -130,16 +118,15 @@ class UserOptionsInformation extends Component {
 
                         <TextAreaWithCounter name={'statusMessage'}
                                              className={'textarea-status'}
-                                             maxCharacters={this.state.maxStatusMessageCharacters}
+                                             maxCharacters={UserValidationConstants.MAX_STATUS_MESSAGE_CHARACTERS}
                                              value={this.state.statusMessage}
-                                             onValueChange={this.onStatusMessageChange}
-                                             onCounted={this.onStatusMessageCountedCharacters}/>
+                                             onValueChange={this.onStatusMessageChange}/>
                     </div>
                 </div>
 
                 <div className="row status-left-chars-row">
                     <div className="col-lg">
-                        <small className="status-left-chars">{this.state.leftStatusMessageCharacters}</small>
+                        <small className="status-left-chars">{leftStatusMessageCharacters}</small>
                     </div>
                 </div>
 
@@ -206,17 +193,16 @@ class UserOptionsInformation extends Component {
 
                         <TextAreaWithCounter name={'aboutYou'}
                                              className={'textarea-about-you'}
-                                             maxCharacters={this.state.maxAboutYouCharacters}
+                                             maxCharacters={UserValidationConstants.MAX_ABOUT_YOU_CHARACTERS}
                                              value={this.state.aboutYou}
-                                             onValueChange={this.onAboutYouChange}
-                                             onCounted={this.onAboutYouCountedCharacters}/>
+                                             onValueChange={this.onAboutYouChange}/>
 
                     </div>
                 </div>
 
                 <div className="row about-you-title">
                     <div className="col-lg">
-                        <small className="about-you-left-chars">{this.state.leftAboutYouCharacters}</small>
+                        <small className="about-you-left-chars">{leftAboutYouCharacters}</small>
                     </div>
                 </div>
 

@@ -33,8 +33,6 @@ class TextAreaWithCounter extends Component {
 
         this.setState((prev) => {
             return {leftCharacters: prev.maxCharacters - value.length}
-        }, () => {
-            this.props.onCounted(this.state.leftCharacters);
         });
     }
 
