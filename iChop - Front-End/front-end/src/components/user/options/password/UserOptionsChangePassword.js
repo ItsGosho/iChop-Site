@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import UniversalPasswordsInputs from "../../../other/UniversalPasswordsInputs";
 import NotificationHelper from "../../../../helpers/notification.helper";
 import UserServices from "../../../../services/user.services";
-/**/
+
 class UserOptionsChangePassword extends Component {
 
     constructor(props) {

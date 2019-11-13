@@ -97,7 +97,7 @@ class UserOptionsInformation extends Component {
         this.setState({username: username});
         this.setState({statusMessage: statusMessage});
         this.setState({userAvatarUrl: avatarUrl});
-        this.setState({birthDate: birthDate});
+        this.setState({birthDate: Date.parse(birthDate)});
         this.setState({aboutYou: aboutYou});
 
         this.setState({leftStatusMessageCharacters: UserValidationConstants.MAX_STATUS_MESSAGE_CHARACTERS - statusMessage.length});
@@ -174,6 +174,7 @@ class UserOptionsInformation extends Component {
                         <DatePicker
                             className="form-control"
                             format='Pp'
+                            dateFormat='dd/MM/yyyy'
                             value={this.state.birthDate}
                             selected={this.state.birthDate}
                             onChange={date => {
