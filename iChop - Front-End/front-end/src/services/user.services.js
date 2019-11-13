@@ -76,6 +76,15 @@ const UserServices = {
         return response.data;
     },
 
+    async updateInformation(username, statusMessage, birthDate, aboutYou, avatarBinary) {
+        let url = Endpoints.UPDATE_INFORMATION.replace(':username', username);
+        let response = await Requester.post(url, {statusMessage, birthDate, aboutYou, avatarBinary});
+
+        NotificationHelper.showNotificationByResponse(response);
+
+        return response;
+    },
+
     async findFollowers(username) {
         let url = Endpoints.ALL_FOLLOWERS.replace(':username', username);
         let response = await Requester.get(url);

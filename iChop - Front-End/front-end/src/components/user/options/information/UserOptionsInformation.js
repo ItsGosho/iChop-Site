@@ -11,6 +11,10 @@ import TextAreaWithCounter from "../../../other/TextAreaWithCounter";
 import {UserValidationConstants} from "../../../../constants/other/validation.constants";
 import withState from "../../../../hocs/with.state";
 import authenticatedUserInfoReducer from "../../../../redux/reducers/authenticated.user.info.reducer";
+import UserServices from "../../../../services/user.services";
+import {connect} from "react-redux";
+import {compose} from "redux";
+import authenticatedUserInfoDispatchers from "../../../../redux/dispatchers/authenticated.user.info.dispatchers";
 
 class UserOptionsInformation extends Component {
 
@@ -76,19 +80,24 @@ class UserOptionsInformation extends Component {
         this.setState({leftAboutYouCharacters: leftChars})
     }
 
-    onSaveChanges() {
+    async onSaveChanges() {
+        let {username} = this.props.authenticatedUserInfo;
         let {statusMessage, birthDate, aboutYou, uploadedUserAvatar} = this.state;
 
-        console.log(statusMessage);
-        console.log(dateFormat(birthDate, 'dd/mm/yyyy'));
-        console.log(aboutYou);
-        console.log(uploadedUserAvatar);
+        let response = await UserServices.updateInformation(username,
+            statusMessage,
+            dateFormat(birthDate, 'dd/mm/yyyy'),
+            aboutYou,
+            uploadedUserAvatar);
 
+        if (response.successful) {
+            this.props.fetchAuthenticatedUserInfo();
+        }
     }
 
     componentWillMount() {
         /*REQUIRED DATA*/
-        let {username,statusMessage,birthDate,aboutYou} = this.props.authenticatedUserInfo;
+        let {username, statusMessage, birthDate, aboutYou} = this.props.authenticatedUserInfo;
         let avatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', username);
 
         statusMessage = statusMessage !== undefined ? statusMessage : '';
@@ -228,4 +237,8 @@ class UserOptionsInformation extends Component {
 
 }
 
-export default withState(UserOptionsInformation);
+let mapState = (state) => {
+    return {...state};
+};
+
+export default connect(mapState, authenticatedUserInfoDispatchers)(UserOptionsInformation);

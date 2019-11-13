@@ -14,7 +14,9 @@ const ServerRoutingURLs = {
             CHANGE_PASSWORD_BY_TOKEN: `${CORE_SERVER_DOMAIN}/user/change/password/by/token`,
             CHANGE_PASSWORD: `${CORE_SERVER_DOMAIN}/user/change/password`,
             FIND_BY: `${CORE_SERVER_DOMAIN}/user/find/by`,
+
             RETRIEVE_INFORMATION: `${CORE_SERVER_DOMAIN}/user/:username/information/retrieve`,
+            UPDATE_INFORMATION: `${CORE_SERVER_DOMAIN}/user/:username/information/update`,
 
             FOLLOW: `${CORE_SERVER_DOMAIN}/user/:username/follow`,
             UNFOLLOW: `${CORE_SERVER_DOMAIN}/user/:username/unfollow`,
