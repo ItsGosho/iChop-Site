@@ -4,6 +4,7 @@ import ThreadCreateHelpModal from "./ThreadCreateHelpModal";
 import ModalOpen from "../../modal/ModalOpen";
 import CreateReactClass from "create-react-class";
 import HTMLEditor from "../../editors/HTMLEditor";
+import ThreadServices from "../../../services/thread.services";
 
 class ThreadCreate extends Component {
 
@@ -16,17 +17,17 @@ class ThreadCreate extends Component {
         };
 
         this.onCreate = this.onCreate.bind(this);
-
-        this.titleRef = React.createRef();
-        this.contentRef = React.createRef();
+        this.onContentUpdate = this.onContentUpdate.bind(this);
     }
 
+    onContentUpdate(content) {
+        this.setState({content})
+    }
 
     onCreate() {
-        let {title,content} = this.state;
+        let {title, content} = this.state;
 
-        console.log(title);
-        console.log(content);
+        ThreadServices.create(title, content);
     }
 
 
@@ -46,14 +47,17 @@ class ThreadCreate extends Component {
                             <input id="input-title-threadCreate"
                                    className="form-control"
                                    name="title"
-                                   placeholder="Thread title" ref={this.titleRef}/>
+                                   placeholder="Thread title"
+                                   onChange={(event) => {
+                                       this.setState({title: event.target.value})
+                                   }}/>
                         </div>
 
                         <div className="dropdown-divider"/>
 
-                        <HTMLEditor onChangeHTML={}/>
+                        <HTMLEditor onChangeHTML={this.onContentUpdate}/>
 
-                        <div id="textarea-content" contentEditable="true" ref={this.contentRef}/>
+                        <div id="textarea-content" contentEditable="true"/>
 
                         <ModalOpen relationTo={'help'} title={'Help'}>
                             <span>❓</span>
