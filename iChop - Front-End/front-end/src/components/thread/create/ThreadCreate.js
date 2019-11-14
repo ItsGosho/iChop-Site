@@ -5,6 +5,9 @@ import ModalOpen from "../../modal/ModalOpen";
 import CreateReactClass from "create-react-class";
 import HTMLEditor from "../../editors/HTMLEditor";
 import ThreadServices from "../../../services/thread.services";
+import NotificationHelper from "../../../helpers/notification.helper";
+import {Redirect} from "react-router-dom";
+import RoutingURLs from "../../../constants/routing/routing.constants";
 
 class ThreadCreate extends Component {
 
@@ -13,7 +16,8 @@ class ThreadCreate extends Component {
 
         this.state = {
             title: '',
-            content: ''
+            content: '',
+            isSuccessful: false
         };
 
         this.onCreate = this.onCreate.bind(this);
@@ -24,14 +28,20 @@ class ThreadCreate extends Component {
         this.setState({content})
     }
 
-    onCreate() {
+    async onCreate() {
         let {title, content} = this.state;
 
-        ThreadServices.create(title, content);
+        let response = await ThreadServices.create(title, content);
+        NotificationHelper.showNotificationByResponse(response);
+
+        if (response.successful) {
+            this.setState({isSuccessful: true})
+        }
     }
 
 
     render() {
+        let {isSuccessful} = this.state;
 
         return (
             <CreateCard>
@@ -76,6 +86,7 @@ class ThreadCreate extends Component {
 
                     </form>
                 </div>
+                {isSuccessful ? <Redirect to={RoutingURLs.HOME} push/> : null}
             </CreateCard>
         );
     }
