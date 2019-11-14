@@ -105,6 +105,7 @@ class UserOptionsInformation extends Component {
     render() {
         let leftStatusMessageCharacters = UserValidationConstants.MAX_STATUS_MESSAGE_CHARACTERS - this.state.statusMessage.length;
         let leftAboutYouCharacters = UserValidationConstants.MAX_ABOUT_YOU_CHARACTERS - this.state.aboutYou.length;
+        let {statusMessage,aboutYou} = this.props.authenticatedUserInfo;
 
         return (
             <form>
@@ -119,7 +120,7 @@ class UserOptionsInformation extends Component {
                         <TextAreaWithCounter name={'statusMessage'}
                                              className={'textarea-status'}
                                              maxCharacters={UserValidationConstants.MAX_STATUS_MESSAGE_CHARACTERS}
-                                             value={this.state.statusMessage}
+                                             initialValue={statusMessage}
                                              onValueChange={this.onStatusMessageChange}/>
                     </div>
                 </div>
@@ -194,7 +195,7 @@ class UserOptionsInformation extends Component {
                         <TextAreaWithCounter name={'aboutYou'}
                                              className={'textarea-about-you'}
                                              maxCharacters={UserValidationConstants.MAX_ABOUT_YOU_CHARACTERS}
-                                             value={this.state.aboutYou}
+                                             initialValue={aboutYou}
                                              onValueChange={this.onAboutYouChange}/>
 
                     </div>

@@ -7,14 +7,14 @@ class TextAreaWithCounter extends Component {
 
         this.state = {
             maxCharacters: 0,
-            leftCharacters: 0
+            leftCharacters: 0,
+            initialValue: null
         };
 
         this.onStatusChange = this.onStatusChange.bind(this);
 
         this.textAreaRef = React.createRef();
     }
-
 
     onStatusChange(value) {
         let element = this.textAreaRef.current;
@@ -36,18 +36,24 @@ class TextAreaWithCounter extends Component {
         });
     }
 
-    componentDidMount() {
-        this.setState({maxCharacters: this.props.maxCharacters});
-        this.setState({leftCharacters: this.props.maxCharacters});
+    componentWillReceiveProps(nextProps, nextContext) {
+        let {maxCharacters, initialValue} = nextProps;
 
-        this.setState({[this.props.name]: this.props.value});
-        this.setState((prev) => {
-            return {leftCharacters: prev.leftCharacters - this.props.value.length}
-        });
+        initialValue = initialValue !== undefined ? initialValue : '';
+
+        this.setState({maxCharacters: maxCharacters});
+        this.setState({leftCharacters: maxCharacters});
+
+        if(this.state.initialValue !== initialValue){
+            this.setState({initialValue});
+            this.setState({[this.props.name]: initialValue});
+            this.setState((prev) => {
+                return {leftCharacters: prev.leftCharacters - initialValue.length}
+            });
+        }
     }
 
     render() {
-
         let onChange = (event) => {
             this.setState({[event.target.name]: event.target.value}, () => {
                 this.onStatusChange(this.state[name]);
@@ -55,7 +61,8 @@ class TextAreaWithCounter extends Component {
             });
         };
 
-        let {name, className,value} = this.props;
+        let {name, className} = this.props;
+        let value = this.state[[this.props.name]];
 
         return (
             <textarea name={name}
