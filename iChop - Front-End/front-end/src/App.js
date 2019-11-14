@@ -2,20 +2,11 @@ import React, {Fragment} from 'react';
 import Footer from "./components/footer/Footer";
 import Navbar from "./components/navbar/Navbar";
 import ReactNotification from "react-notifications-component";
-import TextEditor from "./components/editor/TextEditor";
 import ThreadCreate from "./components/thread/create/ThreadCreate";
-import PlayerLinkAccount from "./components/player/PlayerLinkAccount";
-import PlayerProfile from "./components/player/PlayerProfile";
-import Reports from "./components/report/Reports";
-import ThreadRead from "./components/thread/read/ThreadRead";
-import ThreadsAll from "./components/thread/all/ThreadsAll";
-import TextEditorInsertImageModal from "./components/editor/fragments/TextEditorInsertImageModal";
-import ThreadCreateHelpModal from "./components/thread/create/ThreadCreateHelpModal";
 import UserProfile from "./components/user/profile/UserProfile";
 import UserOptions from "./components/user/options/UserOptions";
-import UserControl from "./components/user/control/UserControl";
 import {Switch} from "react-bootstrap";
-import {Redirect, Route} from "react-router-dom";
+import {Route} from "react-router-dom";
 import RoutingURLs from "./constants/routing/routing.constants";
 import Logout from "./components/navbar/other/Logout";
 import UserChangePasswordByToken from "./components/user/other/UserChangePasswordByToken";
@@ -39,6 +30,8 @@ function App() {
                     <Route exact path={RoutingURLs.USER.PROFILE.VIEW} render={(props) => (<UserProfile key={props.match.params.username} {...props}/>)}/>
                     <Route path={PrefixURLs.OPTIONS_PREFIX} render={() => (<UserOptions/>)}/>
 
+
+                    <Route exact path={RoutingURLs.THREAD.CREATE} render={() => (<ThreadCreate/>)}/>
 
                 </Switch>
             </div>

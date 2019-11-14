@@ -7,6 +7,7 @@
     "create-react-class": "^15.6.3",
     "dateformat": "^3.0.3",
     "interweave": "^11.2.0",
+    "prop-types": "latest",
     "qs": "^6.9.0",
     "query-string": "^6.8.3",
     "react": "^16.10.2",
@@ -16,10 +17,10 @@
     "react-redux": "^7.1.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "3.1.2",
+    "react-trumbowyg": "^1.1.0",
     "redux": "^4.0.4",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0",
-    "prop-types": "latest"
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",

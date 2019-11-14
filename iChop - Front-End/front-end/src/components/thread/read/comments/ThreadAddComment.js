@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import TextEditor from "../../../editor/TextEditor";
+import HTMLEditor from "../../../editors/HTMLEditor";
 
 class ThreadAddComment extends Component {
 
@@ -15,7 +15,7 @@ class ThreadAddComment extends Component {
                             return (
                                 <div className="commentBox thread-comment_box">
 
-                                    <TextEditor/>
+                                    <HTMLEditor/>
 
                                     <div id="textarea-content-createComment"
                                          className="thread-comment_box-textarea"

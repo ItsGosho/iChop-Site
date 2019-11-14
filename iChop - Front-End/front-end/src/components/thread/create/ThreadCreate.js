@@ -1,14 +1,19 @@
 import React, {Component} from 'react';
-import TextEditor from "../../editor/TextEditor";
 import './ThreadCreate.css'
 import ThreadCreateHelpModal from "./ThreadCreateHelpModal";
 import ModalOpen from "../../modal/ModalOpen";
 import CreateReactClass from "create-react-class";
+import HTMLEditor from "../../editors/HTMLEditor";
 
 class ThreadCreate extends Component {
 
     constructor(props) {
         super(props);
+
+        this.state = {
+            title: '',
+            content: ''
+        };
 
         this.onCreate = this.onCreate.bind(this);
 
@@ -18,8 +23,7 @@ class ThreadCreate extends Component {
 
 
     onCreate() {
-        let title = this.titleRef.current.value;
-        let content = this.contentRef.current.innerHTML;
+        let {title,content} = this.state;
 
         console.log(title);
         console.log(content);
@@ -47,7 +51,7 @@ class ThreadCreate extends Component {
 
                         <div className="dropdown-divider"/>
 
-                        <TextEditor/>
+                        <HTMLEditor onChangeHTML={}/>
 
                         <div id="textarea-content" contentEditable="true" ref={this.contentRef}/>
 
