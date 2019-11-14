@@ -26,7 +26,7 @@ public class ThreadController {
 
     @PreAuthorize("hasAuthority('MODERATOR')")
     @PostMapping(ThreadRoutingConstants.CREATE)
-    public ResponseEntity create(ThreadCreateRequest request, Principal principal) {
+    public ResponseEntity create(@RequestBody ThreadCreateRequest request, Principal principal) {
         request.setCreatorUsername(principal.getName());
 
         JmsReplyModel reply = this.threadRequester.create(request);
