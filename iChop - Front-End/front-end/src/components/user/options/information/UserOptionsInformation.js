@@ -39,7 +39,7 @@ class UserOptionsInformation extends Component {
         this.onStatusMessageChange = this.onStatusMessageChange.bind(this);
 
         this.onAboutYouChange = this.onAboutYouChange.bind(this);
-        this.proceedStateUpdate = this.proceedStateUpdate.bind(this);
+        this.onComponentChanged = this.onComponentChanged.bind(this);
 
         this.userAvatarRef = React.createRef();
     }
@@ -81,15 +81,15 @@ class UserOptionsInformation extends Component {
     }
 
     componentWillReceiveProps(nextProps, nextContext) {
-        this.proceedStateUpdate(nextProps.authenticatedUserInfo);
+        this.onComponentChanged(nextProps)
     }
 
-    componentWillMount() {
-        this.proceedStateUpdate(this.props.authenticatedUserInfo);
+    componentDidMount() {
+        this.onComponentChanged(this.props)
     }
 
-    proceedStateUpdate(source) {
-        let {username, statusMessage, birthDate, aboutYou} = source;
+    onComponentChanged(props) {
+        let {username, statusMessage, birthDate, aboutYou} = props.authenticatedUserInfo;
         let avatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', username);
 
         statusMessage = statusMessage !== undefined ? statusMessage : '';
@@ -103,9 +103,9 @@ class UserOptionsInformation extends Component {
     }
 
     render() {
+        let {statusMessage, aboutYou} = this.props.authenticatedUserInfo;
         let leftStatusMessageCharacters = UserValidationConstants.MAX_STATUS_MESSAGE_CHARACTERS - this.state.statusMessage.length;
         let leftAboutYouCharacters = UserValidationConstants.MAX_ABOUT_YOU_CHARACTERS - this.state.aboutYou.length;
-        let {statusMessage,aboutYou} = this.props.authenticatedUserInfo;
 
         return (
             <form>
