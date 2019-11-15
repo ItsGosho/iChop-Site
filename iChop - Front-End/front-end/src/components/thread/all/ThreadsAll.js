@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './ThreadsAll.css';
+import '../read/ThreadRead.css';
 import formatDate from 'dateformat'
 import PaginationNav from "../../other/PaginationNav";
 import RoutingURLs from "../../../constants/routing/routing.constants";
@@ -53,7 +54,7 @@ class ThreadsAll extends Component {
                 totalViews: 10,
                 totalReactions: 5,
                 totalComments: 3,
-                content: '<h1>Welcome</h1>'
+                content: '<h1>Welcome</h1><b>tesssssssssssssst!</b>'
             },
             {
                 id: 'id2',

@@ -11,6 +11,7 @@ import RoutingURLs from "./constants/routing/routing.constants";
 import Logout from "./components/navbar/other/Logout";
 import UserChangePasswordByToken from "./components/user/other/UserChangePasswordByToken";
 import PrefixURLs from "./constants/routing/prefix.routing.constants";
+import ThreadsAll from "./components/thread/all/ThreadsAll";
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
 
             <div style={{'marginTop': '75px'}}>
                 <Switch>
+                    <Route exact path={RoutingURLs.HOME} render={() => (<ThreadsAll/>)}/>
 
                     <Route exact path={RoutingURLs.AUTHENTICATION.LOGOUT} render={() => (<Logout/>)}/>
                     <Route exact path={RoutingURLs.AUTHENTICATION.TOKEN.RESET_PASSWORD} render={() => (<UserChangePasswordByToken/>)}/>
