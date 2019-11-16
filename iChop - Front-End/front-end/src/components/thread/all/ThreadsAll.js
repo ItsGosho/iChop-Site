@@ -6,21 +6,20 @@ import PaginationNav from "../../other/PaginationNav";
 import RoutingURLs from "../../../constants/routing/routing.constants";
 import CreateReactClass from "create-react-class";
 import ThreadsAllThread from "./ThreadsAllThread";
+import withState from "../../../hocs/with.state";
+import threadDispatchers from "../../../redux/dispatchers/thread.dispatchers";
+import {connect} from "react-redux";
 
 class ThreadsAll extends Component {
 
     constructor(props) {
         super(props);
 
-        this.state = {
-            threads: []
-        };
-
         this.iterateThreads = this.iterateThreads.bind(this);
     }
 
     iterateThreads() {
-        let {threads} = this.state;
+        let {threads} = this.props.threadsAll;
 
         if (threads.length === 0) {
             return (<span>There are no news!</span>);
@@ -44,7 +43,9 @@ class ThreadsAll extends Component {
     }
 
     componentDidMount() {
-        let threads = [
+        /*TODO: page and size*/
+        this.props.fetchAllPageable(0,5);
+        /*let threads = [
             {
                 id: 'id1',
                 title: 'Welcome',
@@ -55,36 +56,12 @@ class ThreadsAll extends Component {
                 totalReactions: 5,
                 totalComments: 3,
                 content: '<h1>Welcome</h1><b>tesssssssssssssst!</b>'
-            },
-            {
-                id: 'id2',
-                title: 'Ooops',
-                createdOn: formatDate(new Date(), 'dd mmm,yyyy'),
-                creatorUsername: 'Mariika',
-                postTime: formatDate(new Date(), 'HH:mm'),
-                totalViews: 3,
-                totalReactions: 16,
-                totalComments: 2,
-                content: '<h1>Welcome 2</h1>'
-            },
-            {
-                id: 'id3',
-                title: 'Guten tag!',
-                createdOn: formatDate(new Date(), 'dd mmm,yyyy'),
-                creatorUsername: 'Ivancho',
-                postTime: formatDate(new Date(), 'HH:mm'),
-                totalViews: 4,
-                totalReactions: 7,
-                totalComments: 19,
-                content: '<h1>Welcome 3</h1>'
             }
-        ];
-
-        this.setState({threads})
+        ];*/
     }
 
     render() {
-        let {threads} = this.state;
+        let {threads} = this.props.threadsAll;
 
         return (
             <Threads>
@@ -108,7 +85,11 @@ class ThreadsAll extends Component {
 
 }
 
-export default ThreadsAll;
+let mapState = (state) => {
+    return {...state};
+};
+
+export default connect(mapState,threadDispatchers)(ThreadsAll);
 
 
 const Threads = CreateReactClass({
