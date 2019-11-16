@@ -19,6 +19,7 @@ class ThreadsAll extends Component {
         };
 
         this.iterateThreads = this.iterateThreads.bind(this);
+        this.onPageChange = this.onPageChange.bind(this);
     }
 
     iterateThreads() {
@@ -43,6 +44,12 @@ class ThreadsAll extends Component {
                                   content={content}/>
             )
         });
+    }
+
+    onPageChange(obj) {
+        let page = obj.selected;
+        let {resultsPerPage} = this.state;
+        this.props.fetchAllPageable(page, resultsPerPage);
     }
 
     componentDidMount() {
@@ -91,7 +98,7 @@ class ThreadsAll extends Component {
                     pageCount={total / resultsPerPage}/*
                     marginPagesDisplayed={2}
                     pageRangeDisplayed={5}*/
-                    onPageChange={this.handlePageClick}
+                    onPageChange={this.onPageChange}
                     breakClassName={'page-item'}
                     breakLinkClassName={'page-link'}
                     containerClassName={'pagination justify-content-center'}
