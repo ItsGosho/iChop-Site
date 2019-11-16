@@ -1,14 +1,13 @@
 import React, {Component} from 'react';
 import './ThreadsAll.css';
 import '../read/ThreadRead.css';
-import formatDate from 'dateformat'
 import PaginationNav from "../../other/PaginationNav";
 import RoutingURLs from "../../../constants/routing/routing.constants";
 import CreateReactClass from "create-react-class";
 import ThreadsAllThread from "./ThreadsAllThread";
-import withState from "../../../hocs/with.state";
 import threadDispatchers from "../../../redux/dispatchers/thread.dispatchers";
 import {connect} from "react-redux";
+import ReactPaginate from 'react-paginate';
 
 class ThreadsAll extends Component {
 
@@ -62,6 +61,7 @@ class ThreadsAll extends Component {
 
     render() {
         let {threads} = this.props.threadsAll;
+        let pageCount = 3;
 
         return (
             <Threads>
@@ -75,9 +75,29 @@ class ThreadsAll extends Component {
 
                 <div className="dropdown-divider"/>
 
-                <PaginationNav totalResults={threads.length}
-                               resultsPerPage={10}
-                               redirectPage={RoutingURLs.HOME}/>
+                {/*<PaginationNav totalResults={threads.length}
+                               resultsPerPage={1}
+                               redirectPage={RoutingURLs.HOME}/>*/}
+
+                <ReactPaginate
+                    previousLabel={'previous'}
+                    nextLabel={'next'}
+                    breakLabel={'...'}
+                    pageCount={pageCount}
+                    marginPagesDisplayed={2}
+                    pageRangeDisplayed={5}
+                    onPageChange={this.handlePageClick}
+                    breakClassName={'page-item'}
+                    breakLinkClassName={'page-link'}
+                    containerClassName={'pagination justify-content-center'}
+                    pageClassName={'page-item'}
+                    pageLinkClassName={'page-link'}
+                    previousClassName={'page-item'}
+                    previousLinkClassName={'page-link'}
+                    nextClassName={'page-item'}
+                    nextLinkClassName={'page-link'}
+                    activeClassName={'active'}
+                />
 
             </Threads>
         );
