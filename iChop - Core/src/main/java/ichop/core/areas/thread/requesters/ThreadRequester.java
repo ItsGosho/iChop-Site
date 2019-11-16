@@ -11,5 +11,6 @@ public interface ThreadRequester {
     JmsReplyModel findById(String id);
     JmsReplyModel deleteById(String id);
     JmsReplyModel findAll(Pageable pageable);
+    JmsReplyModel findTotal();
 
 }

@@ -57,6 +57,13 @@ public class ThreadController {
         return this.responseHelpers.respondGeneric(reply);
     }
 
+    @GetMapping(ThreadRoutingConstants.FIND_TOTAL)
+    public ResponseEntity findTotal() {
+        JmsReplyModel reply = this.threadRequester.findTotal();
+
+        return this.responseHelpers.respondGeneric(reply);
+    }
+
     @GetMapping(ThreadRoutingConstants.FIND_ALL)
     public ResponseEntity findAll(Pageable pageable) {
         JmsReplyModel reply = this.threadRequester.findAll(pageable);

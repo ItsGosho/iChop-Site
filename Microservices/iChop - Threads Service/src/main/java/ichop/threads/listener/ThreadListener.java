@@ -80,6 +80,12 @@ public class ThreadListener extends BaseListener {
         return this.threadServices.findAll(pageable,ThreadReply.class);
     }
 
+    @JmsAfterReturn(message = FETCH_SUCCESSFUL)
+    @JmsListener(destination = "${artemis.queue.threads.find.total}", containerFactory = QUEUE)
+    public Long total(Message message) {
+        return this.threadServices.findTotal();
+    }
+
     @JmsValidate(model = ThreadIncreaseViewsRequest.class)
     @JmsAfterReturn(message = THREAD_VIEW_INCREASED_SUCCESSFUL)
     @JmsListener(destination = "${artemis.queue.threads.increase_views}", containerFactory = QUEUE)
