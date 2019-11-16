@@ -6,5 +6,6 @@ public final class ThreadRoutingConstants {
     public static final String DELETE = "/thread/{id}/delete"; /*MODERATOR++*/
     public static final String INCREASE_VIEWS = "/thread/{id}/increase-views"; /*EVERYONE++*/
     public static final String FIND_BY = "/thread/find/by"; /*EVERYONE++*/
+    public static final String FIND_ALL = "/thread/find/all"; /*EVERYONE++*/
 
 }

@@ -6,6 +6,7 @@ import ichop.core.areas.thread.models.jms.create.ThreadCreateRequest;
 import ichop.core.areas.thread.requesters.ThreadRequester;
 import org.ichop.commons.domain.JmsReplyModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -52,6 +53,13 @@ public class ThreadController {
     @GetMapping(ThreadRoutingConstants.FIND_BY)
     public ResponseEntity findBy(@RequestParam(required = true) String id) {
         JmsReplyModel reply = this.threadRequester.findById(id);
+
+        return this.responseHelpers.respondGeneric(reply);
+    }
+
+    @GetMapping(ThreadRoutingConstants.FIND_ALL)
+    public ResponseEntity findAll(Pageable pageable) {
+        JmsReplyModel reply = this.threadRequester.findAll(pageable);
 
         return this.responseHelpers.respondGeneric(reply);
     }
