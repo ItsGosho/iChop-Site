@@ -33,7 +33,8 @@ const ServerRoutingURLs = {
             FIND_BY: `${CORE_SERVER_DOMAIN}/reaction/find/by`
         },
         THREAD: {
-            CREATE: `${CORE_SERVER_DOMAIN}/thread/create`
+            CREATE: `${CORE_SERVER_DOMAIN}/thread/create`,
+            ALL: `${CORE_SERVER_DOMAIN}/thread/find/all`
         }
     },
     DATA: {
