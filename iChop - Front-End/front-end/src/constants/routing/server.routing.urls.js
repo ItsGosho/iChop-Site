@@ -34,7 +34,8 @@ const ServerRoutingURLs = {
         },
         THREAD: {
             CREATE: `${CORE_SERVER_DOMAIN}/thread/create`,
-            ALL: `${CORE_SERVER_DOMAIN}/thread/find/all`
+            ALL: `${CORE_SERVER_DOMAIN}/thread/find/all`,
+            TOTAL: `${CORE_SERVER_DOMAIN}/thread/find/total`
         }
     },
     DATA: {

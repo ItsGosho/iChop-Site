@@ -1,10 +1,13 @@
 import React from 'react';
-import {fetchAllPageable} from "../actions/thread.actions";
+import {fetchAllPageable, fetchTotal} from "../actions/thread.actions";
 
 let threadDispatchers = (dispatch) => {
     return {
         fetchAllPageable: (page,size) => {
             dispatch(fetchAllPageable(page,size))
+        },
+        fetchTotal: () => {
+            dispatch(fetchTotal())
         },
     }
 };

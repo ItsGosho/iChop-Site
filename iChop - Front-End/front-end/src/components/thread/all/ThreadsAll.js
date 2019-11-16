@@ -43,7 +43,8 @@ class ThreadsAll extends Component {
 
     componentDidMount() {
         /*TODO: page and size*/
-        this.props.fetchAllPageable(0,5);
+        this.props.fetchAllPageable(0, 5);
+        this.props.fetchTotal();
         /*let threads = [
             {
                 id: 'id1',
@@ -60,8 +61,8 @@ class ThreadsAll extends Component {
     }
 
     render() {
-        let {threads} = this.props.threadsAll;
-        let pageCount = 3;
+        let {threads, total} = this.props.threadsAll;
+        let pageCount = total / 5;
 
         return (
             <Threads>
@@ -83,9 +84,9 @@ class ThreadsAll extends Component {
                     previousLabel={'previous'}
                     nextLabel={'next'}
                     breakLabel={'...'}
-                    pageCount={pageCount}
+                    pageCount={pageCount}/*
                     marginPagesDisplayed={2}
-                    pageRangeDisplayed={5}
+                    pageRangeDisplayed={5}*/
                     onPageChange={this.handlePageClick}
                     breakClassName={'page-item'}
                     breakLinkClassName={'page-link'}
@@ -96,8 +97,7 @@ class ThreadsAll extends Component {
                     previousLinkClassName={'page-link'}
                     nextClassName={'page-item'}
                     nextLinkClassName={'page-link'}
-                    activeClassName={'active'}
-                />
+                    activeClassName={'active'}/>
 
             </Threads>
         );
@@ -109,7 +109,7 @@ let mapState = (state) => {
     return {...state};
 };
 
-export default connect(mapState,threadDispatchers)(ThreadsAll);
+export default connect(mapState, threadDispatchers)(ThreadsAll);
 
 
 const Threads = CreateReactClass({

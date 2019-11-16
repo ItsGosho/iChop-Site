@@ -13,6 +13,18 @@ let fetchAllPageable = (page, size) => {
     }
 };
 
+let fetchTotal = () => {
+    return async (dispatch) => {
+        let total = await ThreadServices.getTotal();
+
+        dispatch({
+            type: Actions.FETCH_TOTAL_THREADS,
+            payload: {total}
+        });
+    }
+};
+
 export {
-    fetchAllPageable
+    fetchAllPageable,
+    fetchTotal
 }

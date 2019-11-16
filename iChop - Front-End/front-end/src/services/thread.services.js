@@ -13,6 +13,11 @@ const ThreadServices = {
         let query = `?page=${page}&size=${size}`;
         let response = await Requester.get(Endpoints.ALL + query);
         return response.data;
+    },
+
+    async getTotal() {
+        let response = await Requester.get(Endpoints.TOTAL);
+        return response.data;
     }
 
 };
