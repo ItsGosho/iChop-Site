@@ -12,6 +12,13 @@ const ReactionServices = {
         return response.data;
     },
 
+    async findAllById(id, entityType) {
+        let url = Endpoints.FIND_BY + `?entityId=${id}&entityType=${entityType}`;
+        let response = await Requester.get(url);
+
+        return response.data;
+    },
+
 };
 
 export default ReactionServices;

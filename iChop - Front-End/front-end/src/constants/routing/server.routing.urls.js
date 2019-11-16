@@ -25,6 +25,7 @@ const ServerRoutingURLs = {
             IS_FOLLOWING: `${CORE_SERVER_DOMAIN}/user/:username/is/following`
         },
         COMMENT: {
+            THREAD_ALL: `${CORE_SERVER_DOMAIN}/thread/:id/comment/all`,
             USER_PROFILE_ALL: `${CORE_SERVER_DOMAIN}/user/:username/comment/all`,
             USER_PROFILE_CREATE: `${CORE_SERVER_DOMAIN}/user/:username/comment/create`,
             USER_PROFILE_DELETE: `${CORE_SERVER_DOMAIN}/user/:username/comment/:commentId/delete`,

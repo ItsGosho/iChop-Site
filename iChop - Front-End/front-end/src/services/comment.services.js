@@ -13,6 +13,13 @@ const CommentServices = {
         return response.data;
     },
 
+    async findAllThreadComments(id) {
+        let url = Endpoints.THREAD_ALL.replace(':id', id);
+        let response = await Requester.get(url);
+
+        return response.data;
+    },
+
     async createUserProfileComment(username, content) {
         let url = Endpoints.USER_PROFILE_CREATE.replace(':username', username);
         let response = await Requester.post(url, {content});
