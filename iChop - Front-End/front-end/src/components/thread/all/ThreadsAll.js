@@ -14,6 +14,10 @@ class ThreadsAll extends Component {
     constructor(props) {
         super(props);
 
+        this.state = {
+            resultsPerPage: 5
+        };
+
         this.iterateThreads = this.iterateThreads.bind(this);
     }
 
@@ -42,8 +46,8 @@ class ThreadsAll extends Component {
     }
 
     componentDidMount() {
-        /*TODO: page and size*/
-        this.props.fetchAllPageable(0, 5);
+        let {resultsPerPage} = this.state;
+        this.props.fetchAllPageable(0, resultsPerPage);
         this.props.fetchTotal();
         /*let threads = [
             {
@@ -61,8 +65,8 @@ class ThreadsAll extends Component {
     }
 
     render() {
-        let {threads, total} = this.props.threadsAll;
-        let pageCount = total / 5;
+        let {resultsPerPage} = this.state;
+        let {total} = this.props.threadsAll;
 
         return (
             <Threads>
@@ -84,7 +88,7 @@ class ThreadsAll extends Component {
                     previousLabel={'previous'}
                     nextLabel={'next'}
                     breakLabel={'...'}
-                    pageCount={pageCount}/*
+                    pageCount={total / resultsPerPage}/*
                     marginPagesDisplayed={2}
                     pageRangeDisplayed={5}*/
                     onPageChange={this.handlePageClick}
