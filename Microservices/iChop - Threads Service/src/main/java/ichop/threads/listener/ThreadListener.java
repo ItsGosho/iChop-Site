@@ -1,7 +1,5 @@
 package ichop.threads.listener;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.threads.domain.models.jms.ThreadReply;
 import ichop.threads.domain.models.jms.create.ThreadCreateRequest;
@@ -14,13 +12,12 @@ import ichop.threads.services.ThreadServices;
 import org.ichop.commons.aop.JmsAfterReturn;
 import org.ichop.commons.aop.JmsValidate;
 import org.ichop.commons.domain.EmptyReply;
-import org.ichop.commons.domain.RestPageImpl;
 import org.ichop.commons.helpers.BaseListener;
 import org.ichop.commons.helpers.JmsHelper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 
@@ -75,10 +72,12 @@ public class ThreadListener extends BaseListener {
 
         int page = Integer.parseInt(pageableData.get("pageNumber").toString());
         int size = Integer.parseInt(pageableData.get("pageSize").toString());
-        Pageable pageable = PageRequest.of(page,size);
+        Pageable pageable = PageRequest.of(page,size, Sort.by(Sort.Order.desc("createdOn")));
 
         return this.threadServices.findAll(pageable,ThreadReply.class);
     }
+
+
 
     @JmsAfterReturn(message = FETCH_SUCCESSFUL)
     @JmsListener(destination = "${artemis.queue.threads.find.total}", containerFactory = QUEUE)

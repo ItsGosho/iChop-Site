@@ -1,4 +1,9 @@
 import React, {Component, Fragment} from 'react';
+import Roles from "../../../constants/enums/roles.constants";
+import withState from "../../../hocs/with.state";
+import ThreadServices from "../../../services/thread.services";
+import {connect} from "react-redux";
+import threadDispatchers from "../../../redux/dispatchers/thread.dispatchers";
 
 class ThreadsAllThreadOptionsDropdown extends Component {
 
@@ -9,19 +14,17 @@ class ThreadsAllThreadOptionsDropdown extends Component {
     }
 
 
-    onDelete(id) {
-        console.log('Delete -> ' + id);
+    async onDelete(id) {
+        await ThreadServices.deleteById(id);
     }
 
     render() {
         let {id} = this.props;
-
-        let isAuthenticated = true;
-        let hasAtLeastModeratorRole = true;
+        let {authority} = this.props.authenticatedUserInfo;
 
         return (
             <Fragment>
-                {isAuthenticated && hasAtLeastModeratorRole ? (
+                {authority !== Roles.GUEST && authority !== Roles.USER ? (
                     <Fragment>
 
                         <button className="btn btn-warning btn-sm dropdown-toggle"
@@ -51,4 +54,8 @@ class ThreadsAllThreadOptionsDropdown extends Component {
 
 }
 
-export default ThreadsAllThreadOptionsDropdown;
+let mapState = (state) => {
+    return {...state};
+};
+
+export default connect(mapState, threadDispatchers)(ThreadsAllThreadOptionsDropdown);

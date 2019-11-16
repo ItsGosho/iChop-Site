@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import RoutingURLs from "../../../constants/routing/routing.constants";
 import {Link} from "react-router-dom";
+import formatDate from 'dateformat';
 
 class ThreadsAllThreadInformation extends Component {
 
@@ -11,6 +12,9 @@ class ThreadsAllThreadInformation extends Component {
         let userProfileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', username);
         let threadReadUrl = RoutingURLs.THREAD.VIEW.replace(':id', id);
 
+        let datePattern = 'dd mmm,yyyy';
+        let postPattern = 'HH:mm';
+
         return (
             <Fragment>
                 <div className="row">
@@ -19,7 +23,7 @@ class ThreadsAllThreadInformation extends Component {
                     </div>
                     <div className="col-md-4">
                         <small className="date">
-                            <small className="dateIcon">📅 {createdOn}</small>
+                            <small className="dateIcon">📅 {formatDate(createdOn,datePattern)}</small>
                         </small>
                     </div>
                 </div>
@@ -28,7 +32,7 @@ class ThreadsAllThreadInformation extends Component {
                         <small>
                             <span>by </span>
                             <Link to={userProfileUrl}>👤 {username}</Link>
-                            <span> at {postTime} ({totalViews}👀/{totalReactions} 👍)</span>
+                            <span> at {formatDate(postTime,postPattern)} ({totalViews}👀/{totalReactions} 👍)</span>
                         </small>
                     </div>
                     <div className="col-md-4">

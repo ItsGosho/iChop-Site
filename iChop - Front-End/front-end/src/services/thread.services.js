@@ -1,5 +1,6 @@
 import ServerRoutingURLs from "../constants/routing/server.routing.urls";
 import Requester from "../requesters/requester";
+import NotificationHelper from "../helpers/notification.helper";
 
 const Endpoints = ServerRoutingURLs.CORE.THREAD;
 
@@ -18,6 +19,13 @@ const ThreadServices = {
     async getTotal() {
         let response = await Requester.get(Endpoints.TOTAL);
         return response.data;
+    },
+
+    async deleteById(id) {
+        let url = Endpoints.DELETE_BY_ID.replace(':id',id);
+        let response = await Requester.post(url,{});
+
+        NotificationHelper.showNotificationByResponse(response);
     }
 
 };

@@ -7,6 +7,7 @@ import ichop.core.areas.thread.requesters.ThreadRequester;
 import org.ichop.commons.domain.JmsReplyModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -70,5 +71,4 @@ public class ThreadController {
 
         return this.responseHelpers.respondGeneric(reply);
     }
-
 }

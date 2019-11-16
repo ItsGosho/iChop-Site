@@ -56,19 +56,6 @@ class ThreadsAll extends Component {
         let {resultsPerPage} = this.state;
         this.props.fetchAllPageable(0, resultsPerPage);
         this.props.fetchTotal();
-        /*let threads = [
-            {
-                id: 'id1',
-                title: 'Welcome',
-                createdOn: formatDate(new Date(), 'dd mmm,yyyy'),
-                creatorUsername: 'ItsGosho',
-                postTime: formatDate(new Date(), 'HH:mm'),
-                totalViews: 10,
-                totalReactions: 5,
-                totalComments: 3,
-                content: '<h1>Welcome</h1><b>tesssssssssssssst!</b>'
-            }
-        ];*/
     }
 
     render() {
