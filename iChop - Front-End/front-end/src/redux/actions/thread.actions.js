@@ -24,7 +24,17 @@ let fetchTotal = () => {
     }
 };
 
+let removeFromAllById = (id) => {
+    return async (dispatch) => {
+        dispatch({
+            type: Actions.REMOVE_FROM_ALL_THREADS_BY_ID,
+            payload: {id}
+        });
+    }
+};
+
 export {
     fetchAllPageable,
-    fetchTotal
+    fetchTotal,
+    removeFromAllById
 }

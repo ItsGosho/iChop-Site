@@ -1,6 +1,5 @@
 import React, {Component, Fragment} from 'react';
 import Roles from "../../../constants/enums/roles.constants";
-import withState from "../../../hocs/with.state";
 import ThreadServices from "../../../services/thread.services";
 import {connect} from "react-redux";
 import threadDispatchers from "../../../redux/dispatchers/thread.dispatchers";
@@ -15,7 +14,11 @@ class ThreadsAllThreadOptionsDropdown extends Component {
 
 
     async onDelete(id) {
-        await ThreadServices.deleteById(id);
+        let response = await ThreadServices.deleteById(id);
+
+        if(response.successful){
+            this.props.removeFromAllById(id);
+        }
     }
 
     render() {

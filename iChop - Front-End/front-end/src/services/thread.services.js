@@ -26,6 +26,7 @@ const ThreadServices = {
         let response = await Requester.post(url,{});
 
         NotificationHelper.showNotificationByResponse(response);
+        return response;
     }
 
 };

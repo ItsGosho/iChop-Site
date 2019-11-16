@@ -1,5 +1,5 @@
 import React from 'react';
-import {fetchAllPageable, fetchTotal} from "../actions/thread.actions";
+import {fetchAllPageable, fetchTotal, removeFromAllById} from "../actions/thread.actions";
 
 let threadDispatchers = (dispatch) => {
     return {
@@ -8,6 +8,9 @@ let threadDispatchers = (dispatch) => {
         },
         fetchTotal: () => {
             dispatch(fetchTotal())
+        },
+        removeFromAllById: (id) => {
+           dispatch(removeFromAllById(id));
         },
     }
 };

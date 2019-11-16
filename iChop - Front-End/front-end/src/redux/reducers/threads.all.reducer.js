@@ -20,6 +20,18 @@ let threadsAllReducer = (state = initialState, action) => {
 
             return Object.assign({}, state, {total});
 
+        case Actions.REMOVE_FROM_ALL_THREADS_BY_ID:
+            let {id} = action.payload;
+            let newThreads = [];
+
+            for (const thread of state.threads) {
+                if (thread.id !== id) {
+                    newThreads.push(thread);
+                }
+            }
+
+            return Object.assign({}, state, {threads: newThreads});
+
         default:
             return state;
 
