@@ -27,6 +27,13 @@ const ThreadServices = {
 
         NotificationHelper.showNotificationByResponse(response);
         return response;
+    },
+
+    async findById(id){
+        let query = `?id=${id}`;
+        let response = await Requester.get(Endpoints.FIND_BY + query);
+
+        return response.data;
     }
 
 };
