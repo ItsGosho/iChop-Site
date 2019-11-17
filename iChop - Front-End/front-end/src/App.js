@@ -12,6 +12,7 @@ import Logout from "./components/navbar/other/Logout";
 import UserChangePasswordByToken from "./components/user/other/UserChangePasswordByToken";
 import PrefixURLs from "./constants/routing/prefix.routing.constants";
 import ThreadsAll from "./components/thread/all/ThreadsAll";
+import ThreadRead from "./components/thread/read/ThreadRead";
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
                     <Route path={PrefixURLs.OPTIONS_PREFIX} render={() => (<UserOptions/>)}/>
 
 
+                    <Route exact path={RoutingURLs.THREAD.READ} render={(props) => (<ThreadRead key={props.match.params.id} {...props}/>)}/>
                     <Route exact path={RoutingURLs.THREAD.CREATE} render={() => (<ThreadCreate/>)}/>
 
                 </Switch>

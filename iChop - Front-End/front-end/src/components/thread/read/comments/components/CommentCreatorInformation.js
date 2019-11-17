@@ -43,8 +43,7 @@ class CommentCreatorInformation extends Component {
                 <div>
                     <small>
                         <small>💬</small>
-                        <span
-                            className="totalComments">{totalComments} total comments</span>
+                        <span>{totalComments} total comments</span>
                     </small>
                 </div>
 

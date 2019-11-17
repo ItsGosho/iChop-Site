@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import './ThreadsAll.css';
 import '../read/ThreadRead.css';
-import PaginationNav from "../../other/PaginationNav";
-import RoutingURLs from "../../../constants/routing/routing.constants";
 import CreateReactClass from "create-react-class";
 import ThreadsAllThread from "./ThreadsAllThread";
 import threadDispatchers from "../../../redux/dispatchers/thread.dispatchers";

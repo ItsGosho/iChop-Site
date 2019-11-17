@@ -10,7 +10,7 @@ class ThreadsAllThreadInformation extends Component {
         let {id, title, createdOn, postTime, username, totalViews, totalReactions, totalComments} = this.props;
 
         let userProfileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', username);
-        let threadReadUrl = RoutingURLs.THREAD.VIEW.replace(':id', id);
+        let threadReadUrl = RoutingURLs.THREAD.READ.replace(':id', id);
 
         let datePattern = 'dd mmm,yyyy';
         let postPattern = 'HH:mm';

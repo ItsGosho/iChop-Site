@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1984862c-2f8c-4410-af36-a1dcaaa3ddaf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/constants/routing/server.routing.urls.js" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/constants/routing/server.routing.urls.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/redux/actions/thread.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/redux/actions/thread.actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/services/comment.services.js" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/services/comment.services.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -415,6 +412,7 @@
       <workItem from="1573765772765" duration="883000" />
       <workItem from="1573850806183" duration="1446000" />
       <workItem from="1573900560227" duration="10286000" />
+      <workItem from="1573999511679" duration="1923000" />
     </task>
     <servers />
   </component>

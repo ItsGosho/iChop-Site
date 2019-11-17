@@ -35,7 +35,7 @@ class ThreadCreatorInformation extends Component {
                     <div align="center">
                         <small>
                             <small>💬</small>
-                            <span className="totalComments">{totalComments} total comments</span>
+                            <span>{totalComments} total comments</span>
                         </small>
                     </div>
                 </div>

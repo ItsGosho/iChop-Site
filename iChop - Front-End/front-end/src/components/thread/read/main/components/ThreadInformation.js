@@ -7,7 +7,7 @@ class ThreadInformation extends Component {
 
     render() {
         let {id,title,createdOn,postedAt,totalViews,totalReactions,totalComments} = this.props;
-        let threadCommentsFragmentUrl = RoutingURLs.THREAD.VIEW.replace(':id', id) + '#section-thread_read_comments';
+        let threadCommentsFragmentUrl = RoutingURLs.THREAD.READ.replace(':id', id) + '#section-thread_read_comments';
 
         return (
             <Fragment>
@@ -18,7 +18,7 @@ class ThreadInformation extends Component {
                     <div className="col-md-4">
                         <small className="thread-createdOn">
                             <small className="dateIcon">📅</small>
-                            <small className="date">{createdOn}</small>
+                            <small>{createdOn}</small>
                         </small>
                     </div>
                 </div>
@@ -34,7 +34,7 @@ class ThreadInformation extends Component {
                     <div className="col-md-4">
                         <small className="thread-total_comments">
                             <Link to={threadCommentsFragmentUrl}>
-                                <span className="totalComments">{totalComments}</span>
+                                <span>{totalComments}</span>
                             </Link>
                             <small>💬</small>
                         </small>

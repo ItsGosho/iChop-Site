@@ -37,7 +37,7 @@ class ReportsThread extends Component {
         return this.state.reports.map((report, index) => {
             let {threadId, reason, creatorUsername, reportDate} = report;
 
-            let threadReadUrl = RoutingURLs.THREAD.VIEW.replace(':id', threadId);
+            let threadReadUrl = RoutingURLs.THREAD.READ.replace(':id', threadId);
 
             return (
                 <ReportTableColumns onDeleteEntity={this.onDeleteEntity}

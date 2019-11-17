@@ -10,7 +10,7 @@ class ThreadsAllThread extends Component {
 
     render() {
         let {id, title, createdOn, creatorUsername, postTime, totalViews, totalReactions, totalComments, content} = this.props;
-        let threadReadUrl = RoutingURLs.THREAD.VIEW.replace(':id', id);
+        let threadReadUrl = RoutingURLs.THREAD.READ.replace(':id', id);
 
         return (
             <div className="card-body">

@@ -62,7 +62,7 @@ const RoutingURLs = {
 
     THREAD: {
         CREATE: '/thread/create', /*Moderator+*/
-        VIEW: '/thread/:id/view', /*Everyone*/
+        READ: '/thread/:id/read', /*Everyone*/
         REPORT: {
             ALL: '/thread/reports/all' /*Moderator+*/
         }

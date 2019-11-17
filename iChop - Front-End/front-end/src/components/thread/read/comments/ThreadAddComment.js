@@ -17,10 +17,6 @@ class ThreadAddComment extends Component {
 
                                     <HTMLEditor/>
 
-                                    <div id="textarea-content-createComment"
-                                         className="thread-comment_box-textarea"
-                                         contentEditable="true"/>
-
                                     <div
                                         className="row d-flex justify-content-center align-items-center thread-comment_box-buttons">
 

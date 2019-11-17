@@ -10,15 +10,15 @@ class CommentInformation extends Component {
             <Fragment>
                 <small className="thread-comments-date_likes_dislikes">
                     <small className="dateIcon">📅</small>
-                    <small className="date">{createdOn}</small>
+                    <small>{createdOn}</small>
                 </small>
                 <small className="thread-comments-date_likes_dislikes">
                     <small>👍</small>
-                    <span className="totalComments">{totalLikes}</span>
+                    <span>{totalLikes}</span>
                 </small>
                 <small className="thread-comments-date_likes_dislikes">
                     <small>👎</small>
-                    <span className="totalComments">{totalDislikes}</span>
+                    <span>{totalDislikes}</span>
                 </small>
             </Fragment>
         );
