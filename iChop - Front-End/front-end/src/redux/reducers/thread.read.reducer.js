@@ -20,7 +20,7 @@ let threadsAllReducer = (state = initialState, action) => {
 
     switch (action.type) {
 
-        case Actions.FETCH_ALL_THREADS:
+        case Actions.THREADS_ALL_SET:
             let {threads} = action.payload;
 
             return Object.assign({}, state, {threads});

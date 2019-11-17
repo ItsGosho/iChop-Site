@@ -11,17 +11,17 @@ let threadsAllReducer = (state = initialState, action) => {
 
     switch (action.type) {
 
-        case Actions.FETCH_ALL_THREADS:
+        case Actions.THREADS_ALL_SET:
             let {threads} = action.payload;
 
             return Object.assign({}, state, {threads});
 
-        case Actions.FETCH_TOTAL_THREADS:
+        case Actions.THREADS_ALL_SET_TOTAL:
             let {total} = action.payload;
 
             return Object.assign({}, state, {total});
 
-        case Actions.SET_ALL_THREADS_TOTAL_STATISTICS_BY_ID: {
+        case Actions.THREADS_ALL_SET_STATISTICS: {
             let {id, totalViews, totalReactions, totalComments} = action.payload;
 
             result = [];
@@ -38,7 +38,7 @@ let threadsAllReducer = (state = initialState, action) => {
         }
             return Object.assign({}, state, {threads: result});
 
-        case Actions.REMOVE_FROM_ALL_THREADS_BY_ID: {
+        case Actions.THREADS_ALL_REMOVE_BY_ID: {
             let {id} = action.payload;
 
             result = [];

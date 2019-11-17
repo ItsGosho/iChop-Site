@@ -34,7 +34,7 @@ let userProfileInfoReducer = (state = initialState, action) => {
 
     switch (action.type) {
 
-        case Actions.SET_USER_PROFILE_USER:
+        case Actions.USER_PROFILE_SET_USER:
             let {id, username, email, authority, registrationDate, lastOnline, location} = action.payload;
 
             return Object.assign({}, state, {
@@ -47,7 +47,7 @@ let userProfileInfoReducer = (state = initialState, action) => {
                 location
             });
 
-        case Actions.SET_USER_PROFILE_FOLLOW:
+        case Actions.USER_PROFILE_SET_FOLLOW:
             let {followings, followers,isViewerFollowingHim,isViewerFollowedByHim} = action.payload;
 
             return Object.assign({}, state, {
@@ -57,27 +57,27 @@ let userProfileInfoReducer = (state = initialState, action) => {
                 isViewerFollowedByHim,
             });
 
-        case Actions.SET_USER_PROFILE_POSTS:
+        case Actions.USER_PROFILE_SET_POSTS:
             let {posts} = action.payload;
 
             return Object.assign({}, state, {posts});
 
-        case Actions.SET_USER_PROFILE_INFORMATION:
+        case Actions.USER_PROFILE_SET_INFORMATION:
             let {statusMessage, birthDate, aboutYou} = action.payload;
 
             return Object.assign({}, state, {statusMessage, birthDate, aboutYou});
 
-        case Actions.SET_USER_PROFILE_MINECRAFT:
+        case Actions.USER_PROFILE_SET_MINECRAFT:
             let {minecraftUUID, minecraftAccountName} = action.payload;
 
             return Object.assign({}, state, {minecraftUUID, minecraftAccountName});
 
-        case Actions.SET_USER_PROFILE_REACTIONS:
+        case Actions.USER_PROFILE_SET_REACTIONS:
             let {totalLikes, totalDislikes} = action.payload;
 
             return Object.assign({}, state, {totalLikes, totalDislikes});
 
-        case Actions.CLEAR_USER_PROFILE:
+        case Actions.USER_PROFILE_CLEAR:
             return Object.assign({}, state, initialState);
 
         default:

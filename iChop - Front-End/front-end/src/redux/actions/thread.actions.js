@@ -9,7 +9,7 @@ let fetchAllPageable = (page, size) => {
         let threads = await ThreadServices.getAllPageable(page, size);
 
         dispatch({
-            type: Actions.FETCH_ALL_THREADS,
+            type: Actions.THREADS_ALL_SET,
             payload: {threads}
         });
 
@@ -26,7 +26,7 @@ let fetchAllPageable = (page, size) => {
 let setTotalStatisticsForThreadById = (id, totalViews, totalReactions, totalComments) => {
     return async (dispatch) => {
         dispatch({
-            type: Actions.SET_ALL_THREADS_TOTAL_STATISTICS_BY_ID,
+            type: Actions.THREADS_ALL_SET_STATISTICS,
             payload: {id, totalViews, totalReactions, totalComments}
         });
     }
@@ -37,7 +37,7 @@ let fetchTotal = () => {
         let total = await ThreadServices.getTotal();
 
         dispatch({
-            type: Actions.FETCH_TOTAL_THREADS,
+            type: Actions.THREADS_ALL_SET_TOTAL,
             payload: {total}
         });
     }
@@ -46,7 +46,7 @@ let fetchTotal = () => {
 let removeFromAllById = (id) => {
     return async (dispatch) => {
         dispatch({
-            type: Actions.REMOVE_FROM_ALL_THREADS_BY_ID,
+            type: Actions.THREADS_ALL_REMOVE_BY_ID,
             payload: {id}
         });
     }

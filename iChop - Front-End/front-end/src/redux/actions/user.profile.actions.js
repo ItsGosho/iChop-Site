@@ -10,7 +10,7 @@ let setUserProfileUser = (username) => {
         let user = await UserServices.findByUsername(username);
 
         dispatch({
-            type: Actions.SET_USER_PROFILE_USER,
+            type: Actions.USER_PROFILE_SET_USER,
             payload: {...user}
         });
     }
@@ -29,7 +29,7 @@ let setUserProfileFollow = (username, profileViewerUsername) => {
         }
 
         dispatch({
-            type: Actions.SET_USER_PROFILE_FOLLOW,
+            type: Actions.USER_PROFILE_SET_FOLLOW,
             payload: {followings, followers, isViewerFollowingHim, isViewerFollowedByHim}
         });
     }
@@ -40,7 +40,7 @@ let setUserProfilePosts = (username) => {
         let posts = await CommentServices.findAllUserProfileComments(username);
 
         dispatch({
-            type: Actions.SET_USER_PROFILE_POSTS,
+            type: Actions.USER_PROFILE_SET_POSTS,
             payload: {posts}
         });
     }
@@ -51,7 +51,7 @@ let setUserProfileInformation = (username) => {
         let information = await UserServices.findInformation(username);
 
         dispatch({
-            type: Actions.SET_USER_PROFILE_INFORMATION,
+            type: Actions.USER_PROFILE_SET_INFORMATION,
             payload: {...information}
         });
     }
@@ -63,7 +63,7 @@ let setUserProfileMinecraft = (username) => {
         let accountName = undefined;
 
         dispatch({
-            type: Actions.SET_USER_PROFILE_MINECRAFT,
+            type: Actions.USER_PROFILE_SET_MINECRAFT,
             payload: {
                 minecraftUUID: uuid,
                 minecraftAccountName: accountName
@@ -78,7 +78,7 @@ let setUserProfileReactions = (username) => {
         let dislikes = await ReactionServices.findByCreatorUsernameAndReactionType(username, ReactionType.DISLIKE);
 
         dispatch({
-            type: Actions.SET_USER_PROFILE_REACTIONS,
+            type: Actions.USER_PROFILE_SET_REACTIONS,
             payload: {
                 totalLikes: likes.length,
                 totalDislikes: dislikes.length,
@@ -91,7 +91,7 @@ let clearUserProfile = () => {
     return async (dispatch) => {
 
         dispatch({
-            type: Actions.CLEAR_USER_PROFILE,
+            type: Actions.USER_PROFILE_CLEAR,
         });
     }
 };

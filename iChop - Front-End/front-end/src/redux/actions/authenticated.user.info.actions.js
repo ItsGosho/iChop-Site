@@ -11,7 +11,7 @@ let fetchAuthenticatedUserInfo = () => {
 
             if (user) {
                 dispatch({
-                    type: Actions.SET_AUTHENTICATED_USER_INFO,
+                    type: Actions.AUTHENTICATED_USER_INFO_SET,
                     payload: {
                         user: user,
                         information: information
@@ -25,7 +25,7 @@ let fetchAuthenticatedUserInfo = () => {
 let removeAuthenticatedUserInfo = () => {
     return async (dispatch) => {
         dispatch({
-            type: Actions.REMOVE_AUTHENTICATED_USER_INFO
+            type: Actions.AUTHENTICATED_USER_INFO_REMOVE
         });
     }
 };
