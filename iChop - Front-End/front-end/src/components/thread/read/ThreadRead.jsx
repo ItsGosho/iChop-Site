@@ -2,26 +2,20 @@ import React, {Component} from 'react';
 import ThreadMainContent from "./main/ThreadMainContent";
 import ThreadComments from "./comments/ThreadComments";
 import './ThreadRead.css'
-import {withRouter} from "react-router-dom";
-import ThreadAddComment from "./comments/ThreadAddComment";
 import ThreadServices from "../../../services/thread.services";
 import UserServices from "../../../services/user.services";
 import CommentServices from "../../../services/comment.services";
+import {compose} from "redux";
+import {connect} from "react-redux";
+import threadReadDispatchers from "../../../redux/dispatchers/thread.read.dispatchers";
 
 class ThreadRead extends Component {
 
     async componentDidMount() {
         let {id} = this.props.match.params;
         let thread = await ThreadServices.findById(id);
-        let creator = await UserServices.findByUsername(thread.creatorUsername);
-        let comments = await CommentServices.findAllThreadComments(id);
 
-        console.log(thread);
-        console.log(creator);
-        console.log(comments);
-
-
-
+       this.props.fetchById(id);
     }
 
     render() {
@@ -42,4 +36,6 @@ class ThreadRead extends Component {
 
 }
 
-export default withRouter(ThreadRead);
+export default compose(
+    connect(null,threadReadDispatchers)
+)(ThreadRead);

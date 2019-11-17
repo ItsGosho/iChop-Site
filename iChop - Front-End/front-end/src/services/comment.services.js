@@ -20,6 +20,13 @@ const CommentServices = {
         return response.data;
     },
 
+    async findCreatorTotalComments(username) {
+        let query = `?username=${username}`;
+        let response = await Requester.get(Endpoints.CREATOR_TOTAL_COMMENTS + query);
+
+        return response.data.result;
+    },
+
     async createUserProfileComment(username, content) {
         let url = Endpoints.USER_PROFILE_CREATE.replace(':username', username);
         let response = await Requester.post(url, {content});
@@ -29,10 +36,10 @@ const CommentServices = {
         return response;
     },
 
-    async deleteUserProfileComment(username,commentId) {
+    async deleteUserProfileComment(username, commentId) {
         let url = Endpoints.USER_PROFILE_DELETE
             .replace(':username', username)
-            .replace(':commentId',commentId);
+            .replace(':commentId', commentId);
 
         let response = await Requester.post(url, {});
 

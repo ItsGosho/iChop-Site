@@ -2,7 +2,7 @@ import React, {Component, Fragment} from 'react';
 import Roles from "../../../constants/enums/roles.constants";
 import ThreadServices from "../../../services/thread.services";
 import {connect} from "react-redux";
-import threadDispatchers from "../../../redux/dispatchers/thread.dispatchers";
+import threadAllDispatchers from "../../../redux/dispatchers/thread.all.dispatchers";
 
 class ThreadsAllThreadOptionsDropdown extends Component {
 
@@ -61,4 +61,4 @@ let mapState = (state) => {
     return {...state};
 };
 
-export default connect(mapState, threadDispatchers)(ThreadsAllThreadOptionsDropdown);
+export default connect(mapState, threadAllDispatchers)(ThreadsAllThreadOptionsDropdown);

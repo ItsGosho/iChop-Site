@@ -3,7 +3,7 @@ import './ThreadsAll.css';
 import '../read/ThreadRead.css';
 import CreateReactClass from "create-react-class";
 import ThreadsAllThread from "./ThreadsAllThread";
-import threadDispatchers from "../../../redux/dispatchers/thread.dispatchers";
+import threadAllDispatchers from "../../../redux/dispatchers/thread.all.dispatchers";
 import {connect} from "react-redux";
 import ReactPaginate from 'react-paginate';
 
@@ -105,7 +105,7 @@ let mapState = (state) => {
     return {...state};
 };
 
-export default connect(mapState, threadDispatchers)(ThreadsAll);
+export default connect(mapState, threadAllDispatchers)(ThreadsAll);
 
 
 const Threads = CreateReactClass({
