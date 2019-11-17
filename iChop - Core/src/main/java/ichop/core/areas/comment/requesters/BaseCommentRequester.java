@@ -7,4 +7,5 @@ public interface BaseCommentRequester {
     JmsReplyModel deleteById(String commentId, CommentType type);
 
     boolean isCreator(String threadId, String creatorUsername, CommentType type);
+    JmsReplyModel totalComments(String username);
 }

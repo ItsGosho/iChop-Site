@@ -2,10 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1984862c-2f8c-4410-af36-a1dcaaa3ddaf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../Microservices/iChop - Comments Service/src/main/java/ichop/comments/domain/models/jms/find/CreatorFindTotalCommentsRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Comments Service/comments.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Comments Service/src/main/java/ichop/comments/listeners/CommentListeners.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Comments Service/src/main/java/ichop/comments/listeners/CommentListeners.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Comments Service/src/main/java/ichop/comments/services/GenericCommentServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Comments Service/src/main/java/ichop/comments/services/GenericCommentServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Comments Service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Comments Service/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/thread/read/ThreadRead.js" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/thread/read/ThreadRead.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/constants/routing/server.routing.urls.js" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/constants/routing/server.routing.urls.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/services/thread.services.js" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/services/thread.services.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/constants/CommentRoutingConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/constants/CommentRoutingConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/requesters/BaseCommentRequester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/requesters/BaseCommentRequester.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/requesters/BaseCommentRequesterImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/requesters/BaseCommentRequesterImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/thread/all/ThreadsAll.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/thread/all/ThreadsAll.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/thread/all/ThreadsAllThreadOptionsDropdown.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/thread/all/ThreadsAllThreadOptionsDropdown.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/thread/read/ThreadRead.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/thread/read/ThreadRead.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/constants/redux/actions.constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/constants/redux/actions.constants.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/redux/actions/thread.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/redux/actions/thread.all.actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/redux/dispatchers/thread.dispatchers.js" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/redux/dispatchers/thread.all.dispatchers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/redux/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/redux/reducers/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/redux/reducers/thread.read.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/redux/reducers/thread.read.reducer.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -164,8 +178,12 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="ichop.web.controllers.thread" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\templates\user\profile\partials" />
+      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\templates\user\profile\panes" />
+      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\templates\user\profile" />
+      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\static\res\css\lib" />
+      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\static\res\js\lib" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.ichop.core.areas.post.services" />
@@ -179,18 +197,14 @@
       <recent name="C:\Users\Gosho\Desktop\GitHub\iChop\iChop - Core\src\main\java\ichop\core\areas\comment\models\jms" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="ichop.core.areas.comment.controllers" />
+      <recent name="ichop.core.areas.comment.models.jms.find" />
       <recent name="ichop.core.areas.user.models.jms" />
       <recent name="ichop.core.areas.reaction.models.jms.find" />
       <recent name="ichop.core.areas.report.constants" />
-      <recent name="ichop.core.areas.report.models" />
-      <recent name="ichop.core.areas.reaction.models.jms" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\templates\user\profile\partials" />
-      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\templates\user\profile\panes" />
-      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\templates\user\profile" />
-      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\static\res\css\lib" />
-      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\static\res\js\lib" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="ichop.web.controllers.thread" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -415,7 +429,7 @@
       <workItem from="1573765772765" duration="883000" />
       <workItem from="1573850806183" duration="1446000" />
       <workItem from="1573900560227" duration="10286000" />
-      <workItem from="1573999511679" duration="3179000" />
+      <workItem from="1573999511679" duration="5736000" />
     </task>
     <servers />
   </component>

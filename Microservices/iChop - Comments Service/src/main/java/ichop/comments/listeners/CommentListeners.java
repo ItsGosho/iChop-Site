@@ -2,12 +2,14 @@ package ichop.comments.listeners;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.comments.domain.models.jms.delete.CommentDeleteByIdRequest;
+import ichop.comments.domain.models.jms.find.CreatorFindTotalCommentsRequest;
 import ichop.comments.domain.models.jms.is.CommentIsCreatorRequest;
 import ichop.comments.services.GenericCommentServices;
 import org.ichop.commons.aop.JmsAfterReturn;
 import org.ichop.commons.aop.JmsValidate;
 import org.ichop.commons.domain.BoolReply;
 import org.ichop.commons.domain.EmptyReply;
+import org.ichop.commons.domain.LongReply;
 import org.ichop.commons.helpers.BaseListener;
 import org.ichop.commons.helpers.JmsHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,6 +54,15 @@ public class CommentListeners extends BaseListener {
         boolean isCreator = this.genericCommentServices.isCreator(requestModel.getId(), requestModel.getCreatorUsername(), requestModel.getType());
 
         return new BoolReply(isCreator);
+    }
+
+    @JmsValidate(model = CreatorFindTotalCommentsRequest.class)
+    @JmsAfterReturn(message = FETCH_SUCCESSFUL)
+    @JmsListener(destination = "${artemis.queue.comments.find.creator.total}", containerFactory = QUEUE)
+    public LongReply findCreatorTotal(Message message) {
+        CreatorFindTotalCommentsRequest requestModel = this.jmsHelper.toModel(message, CreatorFindTotalCommentsRequest.class);
+
+        return new LongReply(this.genericCommentServices.findCreatorTotal(requestModel.getUsername()));
     }
 
 }
