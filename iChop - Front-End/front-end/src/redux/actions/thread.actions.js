@@ -16,9 +16,16 @@ let fetchAllPageable = (page, size) => {
         for (const thread of threads) {
             let id = thread.id;
             let reactions = await ReactionServices.findAllById(id,'THREAD');
-            console.log(reactions);
             let comments = await CommentServices.findAllThreadComments(id);
+
+            thread.totalReactions = reactions.length;
+            thread.totalComments = comments.length;
         }
+
+        dispatch({
+            type: Actions.FETCH_ALL_THREADS,
+            payload: {threads}
+        });
     }
 };
 
