@@ -15,16 +15,19 @@ let fetchAllPageable = (page, size) => {
 
         for (const thread of threads) {
             let id = thread.id;
-            let reactions = await ReactionServices.findAllById(id,'THREAD');
+            let reactions = await ReactionServices.findAllById(id, 'THREAD');
             let comments = await CommentServices.findAllThreadComments(id);
 
-            thread.totalReactions = reactions.length;
-            thread.totalComments = comments.length;
+            dispatch(setTotalStatisticsForThreadById(id, 0, reactions.length, comments.length))
         }
+    }
+};
 
+let setTotalStatisticsForThreadById = (id, totalViews, totalReactions, totalComments) => {
+    return async (dispatch) => {
         dispatch({
-            type: Actions.FETCH_ALL_THREADS,
-            payload: {threads}
+            type: Actions.SET_ALL_THREADS_TOTAL_STATISTICS_BY_ID,
+            payload: {id, totalViews, totalReactions, totalComments}
         });
     }
 };

@@ -6,6 +6,7 @@ let initialState = {
 };
 
 
+let result;
 let threadsAllReducer = (state = initialState, action) => {
 
     switch (action.type) {
@@ -20,17 +21,36 @@ let threadsAllReducer = (state = initialState, action) => {
 
             return Object.assign({}, state, {total});
 
-        case Actions.REMOVE_FROM_ALL_THREADS_BY_ID:
+        case Actions.SET_ALL_THREADS_TOTAL_STATISTICS_BY_ID: {
+            let {id, totalViews, totalReactions, totalComments} = action.payload;
+
+            result = [];
+
+            for (const thread of state.threads) {
+                if (thread.id === id) {
+                    thread.totalViews = totalViews;
+                    thread.totalReactions = totalReactions;
+                    thread.totalComments = totalComments;
+                }
+                result.push(thread);
+            }
+
+        }
+            return Object.assign({}, state, {threads: result});
+
+        case Actions.REMOVE_FROM_ALL_THREADS_BY_ID: {
             let {id} = action.payload;
-            let newThreads = [];
+
+            result = [];
 
             for (const thread of state.threads) {
                 if (thread.id !== id) {
-                    newThreads.push(thread);
+                    result.push(thread);
                 }
             }
 
-            return Object.assign({}, state, {threads: newThreads});
+        }
+            return Object.assign({}, state, {threads: result});
 
         default:
             return state;
