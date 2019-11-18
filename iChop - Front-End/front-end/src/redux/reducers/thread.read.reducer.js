@@ -62,14 +62,14 @@ let threadReadReducer = (state = initialState, action) => {
     }
 
     if (action.type === Actions.THREAD_READ_SET_COMMENT_STATISTICS) {
-        let {id,totalLikes,totalDislikes} = action.payload;
+        let {id,likes,dislikes} = action.payload;
 
         let comments = [];
 
         for (const comment of state.comments) {
             if (comment.id === id) {
-                comment.totalLikes = totalLikes;
-                comment.totalDislikes = totalDislikes;
+                comment.likes = likes;
+                comment.dislikes = dislikes;
             }
             comments.push(comment);
         }

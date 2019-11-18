@@ -69,8 +69,8 @@ let fetchThreadComments = (id) => {
                 type: Actions.THREAD_READ_SET_COMMENT_STATISTICS,
                 payload: {
                     id: comment.id,
-                    totalLikes: likes,
-                    totalDislikes: dislikes,
+                    likes,
+                    dislikes
                 }
             });
         }

@@ -1,21 +1,23 @@
 import React, {Component, Fragment} from 'react';
+import withState from "../../../../../hocs/with.state";
+import Roles from "../../../../../constants/enums/roles.constants";
 
 class CommentOptionsDropdown extends Component {
 
 
     render() {
 
-        let isAuthenticated = true;
-        let creatorUsername = 'ItsGosho';
-        let currentLoggedInUserUsername = 'ItsGosho';
-        let hasRoleModerator = true;
+        let {creatorUsername} = this.props;
+        let {username: authenticatedUsername, authority: authenticatedAuthority} = this.props.authenticatedUserInfo;
+        let isAuthenticated = authenticatedUsername !== undefined;
+        let hasRoleModerator = authenticatedAuthority !== Roles.GUEST && authenticatedAuthority !== Roles.USER;
 
         return (
             <Fragment>
 
                 {
                     (() => {
-                        if (isAuthenticated && (currentLoggedInUserUsername === creatorUsername || hasRoleModerator)) {
+                        if (isAuthenticated && (authenticatedUsername === creatorUsername || hasRoleModerator)) {
                             return (
                                 <Fragment>
 
@@ -48,4 +50,4 @@ class CommentOptionsDropdown extends Component {
 
 }
 
-export default CommentOptionsDropdown;
+export default withState(CommentOptionsDropdown);
