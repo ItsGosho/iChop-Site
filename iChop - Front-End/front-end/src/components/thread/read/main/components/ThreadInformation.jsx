@@ -1,12 +1,17 @@
 import React, {Component, Fragment} from 'react';
 import {Link} from "react-router-dom";
 import RoutingURLs from "../../../../../constants/routing/routing.constants";
+import withState from "../../../../../hocs/with.state";
+import formDate from 'dateformat';
 
 class ThreadInformation extends Component {
 
 
     render() {
-        let {id,title,createdOn,postedAt,totalViews,totalReactions,totalComments} = this.props;
+        let createdOnPattern = 'dd mmm,yyyy';
+        let postedAtPattern = 'HH:mm';
+
+        let {id, title, createdOn, postedAt, views, totalReactions, comments} = this.props.threadRead;
         let threadCommentsFragmentUrl = RoutingURLs.THREAD.READ.replace(':id', id) + '#section-thread_read_comments';
 
         return (
@@ -18,7 +23,7 @@ class ThreadInformation extends Component {
                     <div className="col-md-4">
                         <small className="thread-createdOn">
                             <small className="dateIcon">📅</small>
-                            <small>{createdOn}</small>
+                            <small>{formDate(createdOn, createdOnPattern)}</small>
                         </small>
                     </div>
                 </div>
@@ -26,7 +31,7 @@ class ThreadInformation extends Component {
                 <div className="row">
                     <div className="col-md-8">
                         <small>
-                            <span>Posted at {postedAt} ( {totalViews}👀 / {totalReactions}👍 )</span>
+                            <span>Posted at {formDate(postedAt, postedAtPattern)} ( {views}👀 / {totalReactions}👍 )</span>
                         </small>
                     </div>
 
@@ -34,7 +39,7 @@ class ThreadInformation extends Component {
                     <div className="col-md-4">
                         <small className="thread-total_comments">
                             <Link to={threadCommentsFragmentUrl}>
-                                <span>{totalComments}</span>
+                                <span>{comments.length}</span>
                             </Link>
                             <small>💬</small>
                         </small>
@@ -46,4 +51,4 @@ class ThreadInformation extends Component {
 
 }
 
-export default ThreadInformation;
+export default withState(ThreadInformation);

@@ -2,9 +2,6 @@ import React, {Component} from 'react';
 import ThreadMainContent from "./main/ThreadMainContent";
 import ThreadComments from "./comments/ThreadComments";
 import './ThreadRead.css'
-import ThreadServices from "../../../services/thread.services";
-import UserServices from "../../../services/user.services";
-import CommentServices from "../../../services/comment.services";
 import {compose} from "redux";
 import {connect} from "react-redux";
 import threadReadDispatchers from "../../../redux/dispatchers/thread.read.dispatchers";
@@ -13,7 +10,6 @@ class ThreadRead extends Component {
 
     async componentDidMount() {
         let {id} = this.props.match.params;
-        let thread = await ThreadServices.findById(id);
 
        this.props.fetchById(id);
     }

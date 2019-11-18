@@ -5,44 +5,23 @@ import ThreadCreatorInformation from "./components/ThreadCreatorInformation";
 import ThreadInformation from "./components/ThreadInformation";
 import ThreadButtonsLeft from "./components/ThreadButtonsLeft";
 import ThreadButtonsRight from "./components/ThreadButtonsRight";
+import withState from "../../../../hocs/with.state";
 
 class ThreadMainContent extends Component {
 
     render() {
-        let threadId = 'threadId123';
-        let creatorUsername = 'ItsGosho';
-        let creatorTotalComments = 15;
-        let title = 'Abra kadabra';
-        let createdOn = formatDate(new Date(), 'dd mmm,yyyy');
-        let postedAt = formatDate(new Date(), 'HH:mm');
-        let totalViews = 45;
-        let totalReactions = 15;
-        let totalComments = 3;
-        let content = '<center><h1>Hi!</h1></center>';
-
-        let uuid = '8ed20904-3262-401a-901a-1946504d2eea';
-        let creatorMinecraftAccountName = 'ItsGosho';
+        let {content} = this.props.threadRead;
 
         return (
             <div className="card thread">
 
                 <div className="card-header">
-                    <ThreadCreatorInformation uuid={uuid}
-                                              username={creatorUsername}
-                                              totalComments={creatorTotalComments}
-                                              minecraftAccountName={creatorMinecraftAccountName}/>
+                    <ThreadCreatorInformation/>
                 </div>
 
                 <div className="card-body">
 
-                    <ThreadInformation
-                        id={threadId}
-                        title={title}
-                        createdOn={createdOn}
-                        postedAt={postedAt}
-                        totalViews={totalViews}
-                        totalReactions={totalReactions}
-                        totalComments={totalComments}/>
+                    <ThreadInformation/>
 
                     <div className="dropdown-divider"/>
 
@@ -71,4 +50,4 @@ class ThreadMainContent extends Component {
     }
 }
 
-export default ThreadMainContent;
+export default withState(ThreadMainContent);
