@@ -10,7 +10,7 @@ let initialState = {
     views: 0,
     totalReactions: 0,
 
-    comments: []
+    comments: [],
 };
 
 let threadReadReducer = (state = initialState, action) => {
@@ -34,6 +34,10 @@ let threadReadReducer = (state = initialState, action) => {
         return Object.assign({}, state, {creatorTotalComments});
     }
 
+    if (action.type === Actions.THREAD_READ_INCREASE_REACTIONS) {
+        return Object.assign({}, state, {totalReactions: state.totalReactions + 1});
+    }
+
     if (action.type === Actions.THREAD_READ_SET_STATISTICS) {
         let {totalReactions} = action.payload;
 
@@ -47,13 +51,13 @@ let threadReadReducer = (state = initialState, action) => {
     }
 
     if (action.type === Actions.THREAD_READ_SET_COMMENT_CREATOR_INFO) {
-        let {id,totalComments} = action.payload;
+        let {id, totalComments} = action.payload;
 
         let comments = [];
 
         for (const comment of state.comments) {
             if (comment.id === id) {
-               comment.creatorTotalComments = totalComments;
+                comment.creatorTotalComments = totalComments;
             }
             comments.push(comment);
         }
@@ -62,7 +66,7 @@ let threadReadReducer = (state = initialState, action) => {
     }
 
     if (action.type === Actions.THREAD_READ_SET_COMMENT_STATISTICS) {
-        let {id,likes,dislikes} = action.payload;
+        let {id, likes, dislikes} = action.payload;
 
         let comments = [];
 

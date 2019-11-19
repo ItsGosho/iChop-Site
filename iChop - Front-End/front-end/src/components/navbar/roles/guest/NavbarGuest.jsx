@@ -42,7 +42,7 @@ class NavbarGuest extends Component {
 
                 <button type="button"
                         className="btn btn-success btn-sm"
-                        onClick={this.showGuestDropdown}>
+                        onClick={this.showDropdown}>
                     Sign In
                 </button>
 

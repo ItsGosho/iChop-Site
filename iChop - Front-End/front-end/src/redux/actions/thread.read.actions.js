@@ -77,6 +77,15 @@ let fetchThreadComments = (id) => {
     }
 };
 
+let increaseReactions = () => {
+    return async (dispatch) => {
+        dispatch({
+            type: Actions.THREAD_READ_INCREASE_REACTIONS,
+        });
+    }
+};
+
 export {
-    fetchById
+    fetchById,
+    increaseReactions
 }

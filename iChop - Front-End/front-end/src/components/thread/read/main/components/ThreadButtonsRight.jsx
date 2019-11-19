@@ -2,13 +2,34 @@ import React, {Component, Fragment} from 'react';
 import {connect} from "react-redux";
 import formsDispatchers from "../../../../../redux/dispatchers/forms.dispatchers";
 import Roles from "../../../../../constants/enums/roles.constants";
+import ReactionServices from "../../../../../services/reaction.services";
+import {compose} from "redux";
+import threadReadDispatchers from "../../../../../redux/dispatchers/thread.read.dispatchers";
 
 class ThreadButtonsRight extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            hasReacted: false
+        }
+    }
+
+    async componentWillReceiveProps(nextProps, nextContext) {
+        /*TODO: fix the 4 calls that are made ,because of the re-rendering,with state...*/
+        let {id} = this.props.threadRead;
+        let {username: authenticatedUsername} = this.props.authenticatedUserInfo;
+
+        let hasReacted = await ReactionServices.hasReactedThread(id, authenticatedUsername);
+        this.setState({hasReacted})
+    }
+
     render() {
-        let isAuthenticated = this.props.authenticatedUserInfo.authority !== Roles.GUEST;
-        console.log(this.props);
-        let isLikedThreadAlready = false;
+        let {id} = this.props.threadRead;
+        let {authority: authenticatedAuthority} = this.props.authenticatedUserInfo;
+        let {hasReacted} = this.state;
+        let isAuthenticated = authenticatedAuthority !== Roles.GUEST;
 
         return (
             <Fragment>
@@ -27,36 +48,38 @@ class ThreadButtonsRight extends Component {
                                         <span>Comment</span>
                                     </button>
 
-                                    <button className="btn btn-sm dropdown-toggle"
-                                            type="button"
-                                            data-toggle="dropdown" aria-haspopup="true"
-                                            aria-expanded="false">
-                                        <small>💡</small>
-                                        React
-                                    </button>
+                                    {!hasReacted ? (
+                                        <Fragment>
+                                            <button className="btn btn-sm dropdown-toggle"
+                                                    type="button"
+                                                    data-toggle="dropdown" aria-haspopup="true"
+                                                    aria-expanded="false">
+                                                <small>💡</small>
+                                                React
+                                            </button>
 
-                                    {
-                                        (() => {
-                                            if (!isLikedThreadAlready) {
-                                                return (
-                                                    <div className="dropdown-menu">
-                                                        <button
-                                                            className="btn btn-sm thread-right_side_button-react"
-                                                            type="button">
-                                                            <small>👍🏻</small>
-                                                            <span> Like</span>
-                                                        </button>
-                                                        <button
-                                                            className="btn btn-sm thread-right_side_button-react"
-                                                            type="button">
-                                                            <small>👎🏻</small>
-                                                            <span> Dislike</span>
-                                                        </button>
-                                                    </div>
-                                                );
-                                            }
-                                        })()
-                                    }
+                                            <div className="dropdown-menu">
+                                                <button
+                                                    className="btn btn-sm thread-right_side_button-react"
+                                                    type="button" onClick={async () => {
+                                                    await ReactionServices.reactThread(id, 'LIKE');
+                                                    this.props.increaseReactions();
+                                                }}>
+                                                    <small>👍🏻</small>
+                                                    <span> Like</span>
+                                                </button>
+                                                <button
+                                                    className="btn btn-sm thread-right_side_button-react"
+                                                    type="button" onClick={async () => {
+                                                    await ReactionServices.reactThread(id, 'DISLIKE');
+                                                    this.props.increaseReactions();
+                                                }}>
+                                                    <small>👎🏻</small>
+                                                    <span> Dislike</span>
+                                                </button>
+                                            </div>
+                                        </Fragment>
+                                    ) : null}
 
                                 </Fragment>
                             );
@@ -73,4 +96,7 @@ let mapState = (state) => {
     return {...state}
 };
 
-export default connect(mapState, formsDispatchers)(ThreadButtonsRight);
+export default compose(
+    connect(mapState, formsDispatchers),
+    connect(mapState, threadReadDispatchers)
+)(ThreadButtonsRight);

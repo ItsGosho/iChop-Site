@@ -12,7 +12,7 @@ class ThreadRead extends Component {
     async componentDidMount() {
         let {id} = this.props.match.params;
 
-       this.props.fetchById(id);
+       this.props.fetchThreadById(id);
     }
 
     render() {

@@ -1,11 +1,14 @@
 import React from 'react';
-import {fetchById} from "../actions/thread.read.actions";
+import {fetchById, fetchThreadStatisticsInformation, increaseReactions} from "../actions/thread.read.actions";
 
 let threadReadDispatchers = (dispatch) => {
     return {
-        fetchById: (id) => {
+        fetchThreadById: (id) => {
             dispatch(fetchById(id))
         },
+        increaseReactions: () => {
+            dispatch(increaseReactions())
+        }
     }
 };
 

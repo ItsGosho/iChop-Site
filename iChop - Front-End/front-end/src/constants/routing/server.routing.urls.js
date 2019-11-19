@@ -32,7 +32,8 @@ const ServerRoutingURLs = {
             USER_PROFILE_DELETE: `${CORE_SERVER_DOMAIN}/user/:username/comment/:commentId/delete`,
         },
         REACTION: {
-            FIND_BY: `${CORE_SERVER_DOMAIN}/reaction/find/by`
+            FIND_BY: `${CORE_SERVER_DOMAIN}/reaction/find/by`,
+            CREATE: `${CORE_SERVER_DOMAIN}/reaction/create`
         },
         THREAD: {
             CREATE: `${CORE_SERVER_DOMAIN}/thread/create`,
