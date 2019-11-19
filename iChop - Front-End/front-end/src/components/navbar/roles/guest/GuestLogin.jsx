@@ -4,7 +4,7 @@ import InputGroupIcon from "../../other/InputGroupIcon";
 import {compose} from "redux";
 import {connect} from "react-redux";
 import UserServices from "../../../../services/user.services";
-import navbarGuestDispatchers from "../../../../redux/dispatchers/navbar.guest.dispatchers";
+import formsDispatchers from "../../../../redux/dispatchers/forms.dispatchers";
 import authenticatedUserInfoDispatchers from "../../../../redux/dispatchers/authenticated.user.info.dispatchers";
 
 class GuestLogin extends Component {
@@ -55,7 +55,7 @@ class GuestLogin extends Component {
 
                 <div className="dropdown-item">
                     <button type="button"
-                            onClick={this.props.selectRegister}
+                            onClick={this.props.selectGuestRegister}
                             className="btn btn-success btn-sm">
                         Register
                     </button>
@@ -64,7 +64,7 @@ class GuestLogin extends Component {
                 <div className="dropdown-item">
                     <button type="button"
                             className="btn btn-warning btn-sm"
-                            onClick={this.props.selectForgottenPassword}>
+                            onClick={this.props.selectGuestForgottenPassword}>
                         Forgotten Password
                     </button>
                 </div>
@@ -80,7 +80,7 @@ let mapState = (states) => {
 
 export default FormHoc(
     compose(
-        connect(mapState, navbarGuestDispatchers),
+        connect(mapState, formsDispatchers),
         connect(mapState, authenticatedUserInfoDispatchers),
     )(GuestLogin)
 )

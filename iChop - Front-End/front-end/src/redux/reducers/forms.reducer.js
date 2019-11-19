@@ -5,10 +5,12 @@ let initialState = {
     isLoginSelected: true,
     isRegisterSelected: false,
     isForgottenPasswordSelected: false,
+
+    isCreateCommentShow: false,
 };
 
 
-let navbarGuestReducer = (state = initialState, action) => {
+let formsReducer = (state = initialState, action) => {
 
     switch (action.type) {
 
@@ -38,10 +40,16 @@ let navbarGuestReducer = (state = initialState, action) => {
                 isForgottenPasswordSelected: true
             });
 
+
+        case Actions.THREAD_READ_SHOW_CREATE_COMMENT:
+            return Object.assign({}, state, {
+                isCreateCommentShow: action.payload.isCreateCommentShow
+            });
+
         default:
             return state;
 
     }
 };
 
-export default navbarGuestReducer;
+export default formsReducer;

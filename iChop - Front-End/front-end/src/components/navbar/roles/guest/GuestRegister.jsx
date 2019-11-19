@@ -5,7 +5,7 @@ import InputGroupIcon from "../../other/InputGroupIcon";
 import UserServices from "../../../../services/user.services";
 import {compose} from "redux";
 import {connect} from "react-redux";
-import navbarGuestDispatchers from "../../../../redux/dispatchers/navbar.guest.dispatchers";
+import formsDispatchers from "../../../../redux/dispatchers/forms.dispatchers";
 
 class GuestRegister extends Component {
 
@@ -44,7 +44,7 @@ class GuestRegister extends Component {
         let isSuccessful = await UserServices.register(username, password, confirmPassword, email);
 
         if (isSuccessful) {
-            this.props.selectLogin();
+            this.props.selectGuestLogin();
         }
     }
 
@@ -73,7 +73,7 @@ class GuestRegister extends Component {
 
                     <button type="button"
                             className="btn btn-primary btn-sm"
-                            onClick={this.props.selectLogin}>
+                            onClick={this.props.selectGuestLogin}>
                         Back
                     </button>
 
@@ -96,5 +96,5 @@ let mapState = (states) => {
 };
 
 export default FormHoc(
-    compose(connect(mapState, navbarGuestDispatchers))(GuestRegister)
+    compose(connect(mapState, formsDispatchers))(GuestRegister)
 )

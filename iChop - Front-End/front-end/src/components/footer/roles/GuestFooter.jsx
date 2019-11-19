@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import FooterLinksWrapper from "../etc/FooterLinksWrapper";
 import LinkIconLi from "../../other/LinkIconLi";
-import navbarGuestDispatchers from "../../../redux/dispatchers/navbar.guest.dispatchers";
+import formsDispatchers from "../../../redux/dispatchers/forms.dispatchers";
 import {connect} from "react-redux";
 
 class GuestFooter extends Component {
@@ -18,22 +18,22 @@ class GuestFooter extends Component {
     onLoginRequired(event) {
         event.preventDefault();
 
-        this.props.showDropdown(true);
-        this.props.selectLogin();
+        this.props.showGuestDropdown(true);
+        this.props.selectGuestLogin();
     }
 
     onRegisterRequired(event) {
         event.preventDefault();
 
-        this.props.showDropdown(true);
-        this.props.selectRegister();
+        this.props.showGuestDropdown(true);
+        this.props.selectGuestRegister();
     }
 
     onForgottenPasswordRequired(event) {
         event.preventDefault();
 
-        this.props.showDropdown(true);
-        this.props.selectForgottenPassword();
+        this.props.showGuestDropdown(true);
+        this.props.selectGuestForgottenPassword();
     }
 
     render() {
@@ -57,4 +57,4 @@ let mapState = (state) => {
     return {...state};
 };
 
-export default connect(mapState,navbarGuestDispatchers)(GuestFooter);
+export default connect(mapState,formsDispatchers)(GuestFooter);

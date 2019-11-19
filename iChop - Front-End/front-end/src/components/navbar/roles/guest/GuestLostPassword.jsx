@@ -3,7 +3,7 @@ import FormHoc from "../../../../hocs/form.hoc";
 import InputGroupIcon from "../../other/InputGroupIcon";
 import {compose} from "redux";
 import {connect} from "react-redux";
-import navbarGuestDispatchers from "../../../../redux/dispatchers/navbar.guest.dispatchers";
+import formsDispatchers from "../../../../redux/dispatchers/forms.dispatchers";
 import UserServices from "../../../../services/user.services";
 
 class GuestLostPassword extends Component {
@@ -36,7 +36,7 @@ class GuestLostPassword extends Component {
 
                     <button type="button"
                             className="btn btn-primary btn-sm"
-                            onClick={this.props.selectLogin}>
+                            onClick={this.props.selectGuestLogin}>
                         Back
                     </button>
 
@@ -60,5 +60,5 @@ let mapState = (states) => {
 };
 
 export default FormHoc(
-    compose(connect(mapState, navbarGuestDispatchers))(GuestLostPassword)
+    compose(connect(mapState, formsDispatchers))(GuestLostPassword)
 )

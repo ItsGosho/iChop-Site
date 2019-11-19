@@ -1,13 +1,15 @@
 import React, {Component, Fragment} from 'react';
 import ThreadReportModal from "./ThreadReportModal";
 import ModalOpen from "../../../../modal/ModalOpen";
+import Roles from "../../../../../constants/enums/roles.constants";
+import withState from "../../../../../hocs/with.state";
 
 class ThreadButtonsLeft extends Component {
 
 
     render() {
-        let isAuthenticated = true;
-        let hasRoleModerator = true;
+        let isAuthenticated = this.props.authenticatedUserInfo.authority !== Roles.GUEST;
+        let hasRoleModerator = this.props.authenticatedUserInfo.authority !== Roles.USER;
 
         let isReportedThreadAlready = false;
         return (
@@ -76,4 +78,4 @@ class ThreadButtonsLeft extends Component {
 
 }
 
-export default ThreadButtonsLeft;
+export default withState(ThreadButtonsLeft);

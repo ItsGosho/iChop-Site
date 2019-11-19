@@ -5,7 +5,7 @@ import GuestRegisterDropdown from "./GuestRegister";
 import GuestForgottenPasswordDropdown from "./GuestLostPassword";
 import {compose} from "redux";
 import {connect} from "react-redux";
-import navbarGuestDispatchers from "../../../../redux/dispatchers/navbar.guest.dispatchers";
+import formsDispatchers from "../../../../redux/dispatchers/forms.dispatchers";
 
 class NavbarGuest extends Component {
 
@@ -19,7 +19,7 @@ class NavbarGuest extends Component {
     showDropdown() {
         let toShow = !this.props.isDropdownShow;
 
-        this.props.showDropdown(toShow);
+        this.props.showGuestDropdown(toShow);
     }
 
     getDropdown() {
@@ -42,13 +42,13 @@ class NavbarGuest extends Component {
 
                 <button type="button"
                         className="btn btn-success btn-sm"
-                        onClick={this.showDropdown}>
+                        onClick={this.showGuestDropdown}>
                     Sign In
                 </button>
 
                 {this.props.isDropdownShow ? (
                     <div
-                        className={`dropdown-menu dropdown-menu-right guest-navbar-form ${this.props.showDropdown ? 'show' : ''}`}>
+                        className={`dropdown-menu dropdown-menu-right guest-navbar-form ${this.props.showGuestDropdown ? 'show' : ''}`}>
                         {this.getDropdown()}
                     </div>
                 ) : null}
@@ -61,7 +61,7 @@ class NavbarGuest extends Component {
 
 
 let mapState = (states) => {
-    return {...states.navbarGuest}
+    return {...states.forms}
 };
 
-export default compose(connect(mapState, navbarGuestDispatchers))(NavbarGuest)
+export default compose(connect(mapState, formsDispatchers))(NavbarGuest)

@@ -2,7 +2,7 @@ import React, {Component, Fragment} from 'react';
 import RoutingURLs from "../../../constants/routing/routing.constants";
 import LinkIconLi from "../../other/LinkIconLi";
 import {connect} from "react-redux";
-import navbarGuestDispatchers from "../../../redux/dispatchers/navbar.guest.dispatchers";
+import formsDispatchers from "../../../redux/dispatchers/forms.dispatchers";
 import PrefixURLs from "../../../constants/routing/prefix.routing.constants";
 
 class FooterAuthenticatedLinks extends Component {
@@ -29,4 +29,4 @@ let mapState = (state) => {
     return {...state};
 };
 
-export default connect(mapState,navbarGuestDispatchers)(FooterAuthenticatedLinks);
+export default connect(mapState,formsDispatchers)(FooterAuthenticatedLinks);

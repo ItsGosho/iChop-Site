@@ -1,7 +1,7 @@
 import Actions from "../../constants/redux/actions.constants";
 
 
-let navbarGuestShowDropdownAction = (toShow) => {
+let showGuestDropdown = (toShow) => {
     return async (dispatch) => {
         dispatch({
             type: Actions.NAVBAR_GUEST_SHOW_DROPDOWN,
@@ -12,7 +12,19 @@ let navbarGuestShowDropdownAction = (toShow) => {
     }
 };
 
-let navbarGuestSelectLoginAction = () => {
+
+let showCreateComment = (toShow) => {
+    return async (dispatch) => {
+        dispatch({
+            type: Actions.THREAD_READ_SHOW_CREATE_COMMENT,
+            payload: {
+                isCreateCommentShow: toShow
+            }
+        });
+    }
+};
+
+let selectGuestLogin = () => {
     return async (dispatch) => {
         dispatch({
             type: Actions.NAVBAR_GUEST_SELECT_LOGIN
@@ -20,7 +32,7 @@ let navbarGuestSelectLoginAction = () => {
     }
 };
 
-let navbarGuestSelectRegisterAction = () => {
+let selectGuestRegister = () => {
     return async (dispatch) => {
         dispatch({
             type: Actions.NAVBAR_GUEST_SELECT_REGISTER
@@ -28,7 +40,7 @@ let navbarGuestSelectRegisterAction = () => {
     }
 };
 
-let navbarGuestSelectForgottenPasswordAction = () => {
+let selectGuestForgottenPassword = () => {
     return async (dispatch) => {
         dispatch({
             type: Actions.NAVBAR_GUEST_SELECT_FORGOTTEN_PASSWORD
@@ -37,8 +49,9 @@ let navbarGuestSelectForgottenPasswordAction = () => {
 };
 
 export {
-    navbarGuestShowDropdownAction,
-    navbarGuestSelectLoginAction,
-    navbarGuestSelectRegisterAction,
-    navbarGuestSelectForgottenPasswordAction,
+    showGuestDropdown,
+    showCreateComment,
+    selectGuestLogin,
+    selectGuestRegister,
+    selectGuestForgottenPassword,
 }

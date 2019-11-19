@@ -5,6 +5,7 @@ import './ThreadRead.css'
 import {compose} from "redux";
 import {connect} from "react-redux";
 import threadReadDispatchers from "../../../redux/dispatchers/thread.read.dispatchers";
+import ThreadAddComment from "./comments/ThreadAddComment";
 
 class ThreadRead extends Component {
 
@@ -21,7 +22,7 @@ class ThreadRead extends Component {
                     <div className="col-xs-6">
 
                         <ThreadMainContent/>
-                        {/*<ThreadAddComment/>*/}
+                        <ThreadAddComment/>
                         <ThreadComments/>
 
                     </div>

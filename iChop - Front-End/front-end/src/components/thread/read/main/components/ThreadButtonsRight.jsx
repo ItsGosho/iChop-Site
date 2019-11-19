@@ -1,10 +1,13 @@
 import React, {Component, Fragment} from 'react';
+import {connect} from "react-redux";
+import formsDispatchers from "../../../../../redux/dispatchers/forms.dispatchers";
+import Roles from "../../../../../constants/enums/roles.constants";
 
 class ThreadButtonsRight extends Component {
 
-
     render() {
-        let isAuthenticated = true;
+        let isAuthenticated = this.props.authenticatedUserInfo.authority !== Roles.GUEST;
+        console.log(this.props);
         let isLikedThreadAlready = false;
 
         return (
@@ -17,7 +20,9 @@ class ThreadButtonsRight extends Component {
                                     <button
                                         id="button-commentThread-readThreadPage"
                                         className="btn btn-sm" type="button"
-                                        aria-haspopup="true" aria-expanded="false">
+                                        aria-haspopup="true" aria-expanded="false" onClick={() => {
+                                        this.props.showCreateComment(!this.props.forms.isCreateCommentShow);
+                                    }}>
                                         <small>💬</small>
                                         <span>Comment</span>
                                     </button>
@@ -64,4 +69,8 @@ class ThreadButtonsRight extends Component {
 
 }
 
-export default ThreadButtonsRight;
+let mapState = (state) => {
+    return {...state}
+};
+
+export default connect(mapState, formsDispatchers)(ThreadButtonsRight);
