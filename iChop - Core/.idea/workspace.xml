@@ -1,7 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1984862c-2f8c-4410-af36-a1dcaaa3ddaf" name="Default Changelist" comment="" />
+    <list default="true" id="1984862c-2f8c-4410-af36-a1dcaaa3ddaf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/domain/models/jms/ReportCreateRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/requesters/ReportRequester.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/requesters/ReportRequesterImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/reports.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/constants/ReportReplyConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/constants/ReportReplyConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/domain/entities/CommentReport.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/domain/entities/Report.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/domain/entities/Report.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/domain/entities/ThreadReport.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/domain/models/jms/CommentReportReply.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/domain/models/jms/ReportReply.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/domain/models/jms/ReportReply.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/domain/models/jms/ThreadReportReply.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/domain/models/jms/all/pageable/CommentReportsAllPageableRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/domain/models/jms/all/pageable/ReportsAllPageableRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/domain/models/jms/all/pageable/ThreadReportsAllPageableRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/domain/models/jms/create/CommentReportCreateRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/domain/models/jms/create/ReportCreateRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/domain/models/jms/create/ThreadReportCreateRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/domain/models/jms/delete/CommentReportDeleteByIdRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/domain/models/jms/ReportDeleteByIdRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/domain/models/jms/delete/ThreadReportDeleteByIdRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/domain/models/service/CommentReportServiceModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/domain/models/service/ReportServiceModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/domain/models/service/ReportServiceModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/domain/models/service/ThreadReportServiceModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/listeners/CommentReportListeners.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/listeners/ThreadReportListeners.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/listeners/ReportListeners.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/repositories/CommentReportRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/repositories/ReportRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/repositories/ReportRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/repositories/ThreadReportRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/services/AbstractReportServices.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/services/CommentReportServices.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/services/CommentReportServicesImp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/services/ReportServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/services/ReportServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/services/ThreadReportServices.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/services/ThreadReportServicesImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/services/ReportServicesImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/constants/ReportRoutingConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/constants/ReportRoutingConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/models/jms/CommentReportReply.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/models/jms/ReportReply.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/models/jms/ThreadReportReply.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/models/jms/create/CommentReportCreateRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/models/jms/create/ReportCreateRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/models/jms/create/ThreadReportCreateRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/models/jms/delete/CommentReportDeleteByIdRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/models/jms/delete/ThreadReportDeleteByIdRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/requesters/CommentReportRequester.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/requesters/CommentReportRequesterImp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/requesters/ThreadReportRequester.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/requesters/ThreadReportRequesterImp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,7 +196,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555178668866" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/models/jms" />
     <property name="list.type.of.created.stylesheet" value="PLAIN_TEXT" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -159,33 +209,33 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\templates\user\profile\partials" />
-      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\templates\user\profile\panes" />
-      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\templates\user\profile" />
-      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\static\res\css\lib" />
-      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\static\res\js\lib" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="ichop.web.controllers.thread" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.ichop.core.areas.post.services" />
       <recent name="com.ichop.core" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop\iChop - Core\src\main\java\ichop\core\areas\report\models\jms" />
       <recent name="C:\Users\LocktripDev\Desktop\iChop\iChop - Core\src\main\java\ichop\core\areas\report\models\jms" />
       <recent name="C:\Users\LocktripDev\Desktop\iChop\iChop - Core\src\main\java\ichop\core\areas\reaction\models\jms" />
       <recent name="C:\Users\LocktripDev\Desktop\iChop\iChop - Core\src\main\java\ichop\core\areas\reaction\models" />
       <recent name="C:\Users\LocktripDev\Desktop\iChop\iChop - Core\src\main\java\ichop\core\areas\report" />
-      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop\iChop - Core\src\main\java\ichop\core\areas\comment\models\jms" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="ichop.core.areas.report.models.jms" />
+      <recent name="ichop.core.areas.report.controllers" />
       <recent name="ichop.core.areas.comment.controllers" />
       <recent name="ichop.core.areas.comment.models.jms.find" />
       <recent name="ichop.core.areas.user.models.jms" />
-      <recent name="ichop.core.areas.reaction.models.jms.find" />
-      <recent name="ichop.core.areas.report.constants" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="ichop.web.controllers.thread" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\templates\user\profile\partials" />
+      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\templates\user\profile\panes" />
+      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\templates\user\profile" />
+      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\static\res\css\lib" />
+      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\static\res\js\lib" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -412,7 +462,8 @@
       <workItem from="1573900560227" duration="10286000" />
       <workItem from="1573999511679" duration="5736000" />
       <workItem from="1574109865114" duration="1195000" />
-      <workItem from="1574254851557" duration="3897000" />
+      <workItem from="1574254851557" duration="4482000" />
+      <workItem from="1574283651653" duration="3446000" />
     </task>
     <servers />
   </component>

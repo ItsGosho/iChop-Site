@@ -3,12 +3,13 @@ package ichop.core.areas.report.models.jms;
 import ichop.core.areas.report.models.ReportOn;
 import lombok.Getter;
 import lombok.Setter;
+import org.ichop.commons.domain.RequestCandidate;
 
 @Getter
 @Setter
-public class CommentReportReply extends ReportReply {
+public class ReportDeleteByIdRequest extends RequestCandidate {
 
-    private String commentId;
+    private String id;
     private ReportOn type;
-    
+
 }
