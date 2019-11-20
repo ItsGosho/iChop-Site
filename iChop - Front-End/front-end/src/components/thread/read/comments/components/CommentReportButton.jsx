@@ -20,7 +20,6 @@ class CommentReportButton extends Component {
 
     render() {
         let {reason} = this.state;
-        console.log(reason);
 
         return (
             <Fragment>

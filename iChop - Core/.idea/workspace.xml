@@ -3,9 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="1984862c-2f8c-4410-af36-a1dcaaa3ddaf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/thread/read/main/components/ThreadButtonsRight.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/thread/read/main/components/ThreadButtonsRight.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/controllers/ThreadCommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/controllers/ThreadCommentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/thread/read/comments/ThreadAddComment.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/thread/read/comments/ThreadAddComment.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/constants/routing/server.routing.urls.js" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/constants/routing/server.routing.urls.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/services/reaction.services.js" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/services/reaction.services.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/services/comment.services.js" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/services/comment.services.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -417,6 +418,7 @@
       <workItem from="1573900560227" duration="10286000" />
       <workItem from="1573999511679" duration="5736000" />
       <workItem from="1574109865114" duration="1195000" />
+      <workItem from="1574254851557" duration="907000" />
     </task>
     <servers />
   </component>
@@ -508,6 +510,11 @@
           <url>jar://$MAVEN_REPOSITORY$/org/ichop/commons/1.0.0-BETA/commons-1.0.0-BETA.jar!/org/ichop/commons/domain/RestPageImpl.class</url>
           <line>22</line>
           <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ichop/core/areas/comment/controllers/ThreadCommentController.java</url>
+          <line>39</line>
+          <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

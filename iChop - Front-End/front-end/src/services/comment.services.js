@@ -6,6 +6,15 @@ const Endpoints = ServerRoutingURLs.CORE.COMMENT;
 
 const CommentServices = {
 
+    async createThreadComment(threadId,content) {
+        let url = Endpoints.THREAD_CREATE.replace(':id', threadId);
+        let response = await Requester.post(url, {threadId,content});
+
+        NotificationHelper.showNotificationByResponse(response);
+
+        return response;
+    },
+
     async findAllUserProfileComments(username) {
         let url = Endpoints.USER_PROFILE_ALL.replace(':username', username);
         let response = await Requester.get(url);

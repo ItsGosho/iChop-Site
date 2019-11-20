@@ -36,7 +36,7 @@ public class ThreadCommentController {
 
     @PreAuthorize("hasAuthority('MODERATOR')")
     @PostMapping(CommentRoutingConstants.THREAD_CREATE)
-    public ResponseEntity create(ThreadCommentCreateRequest request, Principal principal) {
+    public ResponseEntity create(@RequestBody ThreadCommentCreateRequest request, Principal principal) {
         request.setCreatorUsername(principal.getName());
 
         JmsReplyModel threadReply = this.threadRequester.findById(request.getThreadId());
