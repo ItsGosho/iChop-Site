@@ -26,6 +26,8 @@ class CommentReactDropdown extends Component {
     }
 
     render() {
+        let {id: commentId} = this.props;
+        let {id: threadId} = this.props.threadRead;
         let {authority: authenticatedAuthority} = this.props.authenticatedUserInfo;
         let {hasReacted} = this.state;
         let isAuthenticated = authenticatedAuthority !== Roles.GUEST;
@@ -51,14 +53,20 @@ class CommentReactDropdown extends Component {
 
                             <button
                                 className="btn btn-sm thread-right_side_button-react"
-                                type="submit">
+                                type="submit" onClick={async () => {
+                                await ReactionServices.reactComment(commentId, 'LIKE');
+                                this.props.fetchThreadById(threadId);
+                            }}>
                                 <small>👍🏻</small>
                                 <span>Like</span>
                             </button>
 
                             <button
                                 className="btn btn-sm thread-right_side_button-react"
-                                type="submit">
+                                type="submit" onClick={async () => {
+                                await ReactionServices.reactComment(commentId, 'DISLIKE');
+                                this.props.fetchThreadById(threadId);
+                            }}>
                                 <small>👎🏻</small>
                                 <span>Dislike</span>
                             </button>
