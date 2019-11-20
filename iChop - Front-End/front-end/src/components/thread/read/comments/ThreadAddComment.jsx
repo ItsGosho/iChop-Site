@@ -3,6 +3,8 @@ import HTMLEditor from "../../../editors/HTMLEditor";
 import formsDispatchers from "../../../../redux/dispatchers/forms.dispatchers";
 import {connect} from "react-redux";
 import CommentServices from "../../../../services/comment.services";
+import {compose} from "redux";
+import threadReadDispatchers from "../../../../redux/dispatchers/thread.read.dispatchers";
 
 class ThreadAddComment extends Component {
 
@@ -27,6 +29,7 @@ class ThreadAddComment extends Component {
 
         if (response.successful) {
             this.props.showCreateComment(false);
+            this.props.fetchThreadById(id);
         }
     }
 
@@ -71,4 +74,7 @@ let mapState = (state) => {
     return {...state}
 };
 
-export default connect(mapState, formsDispatchers)(ThreadAddComment);
+export default compose(
+    connect(mapState, formsDispatchers),
+    connect(mapState, threadReadDispatchers)
+)(ThreadAddComment);

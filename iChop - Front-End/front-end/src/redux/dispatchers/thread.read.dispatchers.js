@@ -1,5 +1,8 @@
-import React from 'react';
-import {fetchById, fetchThreadStatisticsInformation, increaseReactions} from "../actions/thread.read.actions";
+import {
+    addComment,
+    fetchById,
+    increaseReactions
+} from "../actions/thread.read.actions";
 
 let threadReadDispatchers = (dispatch) => {
     return {
@@ -8,6 +11,9 @@ let threadReadDispatchers = (dispatch) => {
         },
         increaseReactions: () => {
             dispatch(increaseReactions())
+        },
+        addComment: (comment) => {
+            dispatch(addComment(comment))
         }
     }
 };
