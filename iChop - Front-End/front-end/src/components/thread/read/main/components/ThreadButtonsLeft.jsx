@@ -1,13 +1,26 @@
 import React, {Component, Fragment} from 'react';
-import ThreadReportModal from "./ThreadReportModal";
 import ModalOpen from "../../../../modal/ModalOpen";
 import Roles from "../../../../../constants/enums/roles.constants";
 import withState from "../../../../../hocs/with.state";
+import ReportModal from "../../../../modal/ReportModal";
 
 class ThreadButtonsLeft extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.onReport = this.onReport.bind(this);
+    }
+
+
+    async onReport(reason) {
+        let {id} = this.props.threadRead;
+
+        /*TODO: REPORT [THREAD!]*/
+    }
 
     render() {
+        let {id} = this.props.threadRead;
         let isAuthenticated = this.props.authenticatedUserInfo.authority !== Roles.GUEST;
         let hasRoleModerator = this.props.authenticatedUserInfo.authority !== Roles.USER;
 
@@ -57,15 +70,15 @@ class ThreadButtonsLeft extends Component {
                             return (
                                 <Fragment>
 
-                                    <ModalOpen relationTo={'reportThread'}>
+                                    <ModalOpen relationTo={id} title={'Report Thread'}>
                                         <button className="btn btn-sm thread-report_button">
                                             <small>⚠</small>
                                             Report
                                         </button>
                                     </ModalOpen>
 
-
-                                    <ThreadReportModal/>
+                                    <ReportModal relationTo={id}
+                                                 onReport={this.onReport}/>
 
                                 </Fragment>
                             );

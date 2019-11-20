@@ -7,19 +7,17 @@ class CommentReportButton extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            reason: ''
-        };
-
-        this.onReasonValueChange = this.onReasonValueChange.bind(this);
+        this.onReport = this.onReport.bind(this);
     }
 
-    onReasonValueChange(value) {
-        this.setState({reason: value})
-    }
+    async onReport(reason) {
+        let {id} = this.props;
+        console.log(id);
 
+        /*TODO: REPORT [COMMENT!]*/
+    }
     render() {
-        let {reason} = this.state;
+        let {id} = this.props;
 
         return (
             <Fragment>
@@ -33,7 +31,7 @@ class CommentReportButton extends Component {
                                 <div
                                     className="thread-comments-button_report">
 
-                                    <ModalOpen relationTo={'reportComment'} title={'Report Comment'}>
+                                    <ModalOpen relationTo={id} title={'Report Comment'}>
                                         <button
                                             className="btn btn-sm">
                                             <small>⚠</small>
@@ -41,9 +39,8 @@ class CommentReportButton extends Component {
                                         </button>
                                     </ModalOpen>
 
-                                    <ReportModal relationTo={'reportComment'}
-                                                 value={reason}
-                                                 onValueChange={this.onReasonValueChange}/>
+                                    <ReportModal relationTo={id}
+                                                 onReport={this.onReport}/>
                                 </div>
                             );
                         }

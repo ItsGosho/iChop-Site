@@ -65,7 +65,7 @@ class ThreadComments extends Component {
                                             <Fragment>
                                                 <CommentOptionsDropdown creatorUsername={creatorUsername}/>
 
-                                                <CommentReportButton/>
+                                                <CommentReportButton id={id}/>
 
                                                 <CommentReactDropdown id={id}/>
                                             </Fragment>
