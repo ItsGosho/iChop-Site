@@ -42,6 +42,13 @@ const ReactionServices = {
         return response.data.length > 0;
     },
 
+    async hasReactedThreadComment(id,username) {
+        let url = Endpoints.FIND_BY + `?creatorUsername=${username}&entityId=${id}&entityType=${'THREAD_COMMENT'}`;
+        let response = await Requester.get(url);
+
+        return response.data.length > 0;
+    },
+
     async create(id, entityType, reactionType) {
         let response = await Requester.post(Endpoints.CREATE, {entityId: id, entityType, reactionType});
 

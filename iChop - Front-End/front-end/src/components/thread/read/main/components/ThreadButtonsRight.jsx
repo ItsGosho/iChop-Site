@@ -63,7 +63,7 @@ class ThreadButtonsRight extends Component {
                                                     className="btn btn-sm thread-right_side_button-react"
                                                     type="button" onClick={async () => {
                                                     await ReactionServices.reactThread(id, 'LIKE');
-                                                    this.props.increaseReactions();
+                                                    this.props.fetchThreadById(id);
                                                 }}>
                                                     <small>👍🏻</small>
                                                     <span> Like</span>
@@ -72,7 +72,7 @@ class ThreadButtonsRight extends Component {
                                                     className="btn btn-sm thread-right_side_button-react"
                                                     type="button" onClick={async () => {
                                                     await ReactionServices.reactThread(id, 'DISLIKE');
-                                                    this.props.increaseReactions();
+                                                    this.props.fetchThreadById(id);
                                                 }}>
                                                     <small>👎🏻</small>
                                                     <span> Dislike</span>

@@ -19,6 +19,7 @@ class ThreadComments extends Component {
                 {
                     (() => comments.map((comment, index) => {
                         let {
+                            id,
                             createdOn,
                             likes,
                             dislikes,
@@ -66,7 +67,7 @@ class ThreadComments extends Component {
 
                                                 <CommentReportButton/>
 
-                                                <CommentReactDropdown/>
+                                                <CommentReactDropdown id={id}/>
                                             </Fragment>
                                         </div>
                                     </div>

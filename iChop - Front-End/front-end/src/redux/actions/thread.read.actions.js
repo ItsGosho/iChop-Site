@@ -77,27 +77,6 @@ let fetchThreadComments = (id) => {
     }
 };
 
-let increaseReactions = () => {
-    return async (dispatch) => {
-        dispatch({
-            type: Actions.THREAD_READ_INCREASE_REACTIONS,
-        });
-    }
-};
-
-let addComment = (comment) => {
-    return async (dispatch) => {
-        dispatch({
-            type: Actions.THREAD_READ_ADD_COMMENT,
-            payload: {
-                comment
-            }
-        });
-    }
-};
-
 export {
-    fetchById,
-    increaseReactions,
-    addComment
+    fetchById
 }

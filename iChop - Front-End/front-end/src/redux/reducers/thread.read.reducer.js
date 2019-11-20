@@ -34,19 +34,6 @@ let threadReadReducer = (state = initialState, action) => {
         return Object.assign({}, state, {creatorTotalComments});
     }
 
-    if (action.type === Actions.THREAD_READ_INCREASE_REACTIONS) {
-        return Object.assign({}, state, {totalReactions: state.totalReactions + 1});
-    }
-
-    if (action.type === Actions.THREAD_READ_ADD_COMMENT) {
-        let {comment} = action.payload;
-
-        let comments = state.comments;
-        comments.push(comment);
-
-        return Object.assign({}, state, {comments});
-    }
-
     if (action.type === Actions.THREAD_READ_SET_STATISTICS) {
         let {totalReactions} = action.payload;
 
