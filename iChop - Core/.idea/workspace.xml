@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1984862c-2f8c-4410-af36-a1dcaaa3ddaf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/thread/read/comments/components/CommentReactDropdown.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/thread/read/comments/components/CommentReactDropdown.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -414,7 +414,7 @@
       <workItem from="1573900560227" duration="10286000" />
       <workItem from="1573999511679" duration="5736000" />
       <workItem from="1574109865114" duration="1195000" />
-      <workItem from="1574254851557" duration="1928000" />
+      <workItem from="1574254851557" duration="3300000" />
     </task>
     <servers />
   </component>

@@ -79,13 +79,15 @@ const FollowInformation = (props) => {
                 let avatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', username);
 
                 return (
-                    <Link to={profileUrl}>
+                    <div key={user.id}>
+                        <Link to={profileUrl}>
 
-                        <Image url={avatarUrl}
-                               defaultUrl={FrontEndResourcesRoutingURLs.USER.AVATAR}
-                               title={username}
-                               className="follow-image"/>
-                    </Link>
+                            <Image url={avatarUrl}
+                                   defaultUrl={FrontEndResourcesRoutingURLs.USER.AVATAR}
+                                   title={username}
+                                   className="follow-image"/>
+                        </Link>
+                    </div>
                 );
             })}
         </div>

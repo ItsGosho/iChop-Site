@@ -17,7 +17,6 @@ class ReportModal extends Component {
         }
     }
 
-
     render() {
         let {relationTo, value, onReport} = this.props;
 
@@ -49,6 +48,7 @@ class ReportModal extends Component {
 }
 
 ReportModal.propTypes = {
+    id: PropTypes.string,
     relationTo: PropTypes.string,
     value: PropTypes.string,
     onReport: PropTypes.func,

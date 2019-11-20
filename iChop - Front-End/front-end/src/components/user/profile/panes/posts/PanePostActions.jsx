@@ -1,10 +1,6 @@
 import React, {Component, Fragment} from 'react';
-import dateFormat from 'dateformat';
 import Roles from "../../../../../constants/enums/roles.constants";
 import './PanePostActions.css'
-import PropTypes from "prop-types";
-import PanePost from "./PanePost";
-import withState from "../../../../../hocs/with.state";
 import CommentServices from "../../../../../services/comment.services";
 import {compose} from "redux";
 import {connect} from "react-redux";
@@ -34,9 +30,9 @@ class PanePostActions extends Component {
     }
 
     async onReport(reason) {
+        let {id} = this.props;
 
-        console.log(this.props);
-        //console.log(`Report post with ID: ${id} and reason [${reason}]`);
+        /*TODO: REPORT [POST!]*/
     }
 
     render() {
@@ -51,15 +47,14 @@ class PanePostActions extends Component {
                     <button className="control-button" onClick={this.onDelete}>❌Delete</button>
                 ) : null}
 
-                <ModalOpen relationTo={'reportPost'} title={'Report Post'}>
+                <ModalOpen relationTo={this.props.id} title={'Report Post'}>
                     <button className="control-button">
                         <small>🎌</small>
                         <span>Report</span>
                     </button>
                 </ModalOpen>
 
-                <ReportModal relationTo={'reportPost'}
-                             key={this.props.id}
+                <ReportModal relationTo={this.props.id}
                              onReport={this.onReport}/>
 
             </Fragment>

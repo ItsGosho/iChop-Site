@@ -32,7 +32,6 @@ class CommentReactDropdown extends Component {
         let {hasReacted} = this.state;
         let isAuthenticated = authenticatedAuthority !== Roles.GUEST;
 
-        console.log(hasReacted);
         return (
             <Fragment>
 

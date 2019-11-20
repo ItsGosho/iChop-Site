@@ -10,13 +10,13 @@ const UserFollowModalBaseRow = CreateReactClass({
 
 
     render() {
-        let {username} = this.props;
+        let {username,key} = this.props;
 
         let profileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', username);
         let avatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', username);
 
         return (
-            <div className="w-100 div-follow-holder">
+            <div className="w-100 div-follow-holder" key={key}>
 
                 <Image url={avatarUrl} defaultUrl={FrontEndResourcesRoutingURLs.USER.AVATAR} className="div-follow-image"/>
 

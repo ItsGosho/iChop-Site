@@ -19,6 +19,7 @@ class PanePostsAll extends Component {
                 let {id, creatorUsername, content, createdOn, userProfileUsername} = post;
 
                 return (<PanePost id={id}
+                                  key={id}
                                   creatorUsername={creatorUsername}
                                   isAuthenticated={authenticatedUser.username !== ''}
                                   createdOn={createdOn}

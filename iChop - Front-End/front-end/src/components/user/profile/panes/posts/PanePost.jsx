@@ -13,14 +13,14 @@ class PanePost extends Component {
 
 
     render() {
-        let {id, creatorUsername, content, createdOn, userProfileUsername, isAuthenticated} = this.props;
+        let {id, creatorUsername, content, createdOn, userProfileUsername, isAuthenticated,key} = this.props;
         let datePattern = "dd mmm, yyyy";
 
         let creatorAvatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', creatorUsername);
         let creatorProfileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', creatorUsername);
 
         return (
-            <div className="card top-10px">
+            <div className="card top-10px" key={key}>
                 <div className="card-body bottom--15px">
 
                     <div className="row top--15px">
@@ -45,6 +45,7 @@ class PanePost extends Component {
                                 <span className="post-createdOn">{dateFormat(createdOn, datePattern)}</span>
 
                                 <PanePostActions id={id}
+                                                 content={content}
                                                  creatorUsername={creatorUsername}
                                                  userProfileUsername={userProfileUsername}/>
                             </div>
@@ -61,6 +62,7 @@ class PanePost extends Component {
 PanePost.propTypes = {
     isAuthenticated: PropTypes.bool,
     id: PropTypes.string,
+    key: PropTypes.string,
     creatorUsername: PropTypes.string,
     content: PropTypes.string,
     createdOn: PropTypes.object,

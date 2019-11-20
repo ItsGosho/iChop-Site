@@ -10,10 +10,6 @@ class ReportsPost extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            reports: []
-        };
-
         this.onDeleteEntity = this.onDeleteEntity.bind(this);
         this.onDeleteReport = this.onDeleteReport.bind(this);
         this.iterateReports = this.iterateReports.bind(this);

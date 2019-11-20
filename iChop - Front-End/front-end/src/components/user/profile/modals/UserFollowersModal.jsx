@@ -20,7 +20,7 @@ class UserFollowersModal extends Component {
             let {username} = following;
 
             return (
-                <UserFollowModalBaseRow username={username}/>
+                <UserFollowModalBaseRow username={username} key={username}/>
             )
         })
     }
