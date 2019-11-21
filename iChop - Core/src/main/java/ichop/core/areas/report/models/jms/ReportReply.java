@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 public class ReportReply extends ReplyCandidate {
 
     private String id;
-    private String userId;
+    private String creatorUsername;
     private String reason;
     private LocalDateTime reportedOn;
     private String entityId;

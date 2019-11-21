@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 public interface ReportRepository extends MongoRepository<Report,String> {
 
     boolean existsByTypeAndId(Type type, String id);
-    boolean existsByTypeAndUserIdAndEntityId(Type type, String userId,String entityId);
+    boolean existsByTypeAndCreatorUsernameAndEntityId(Type type, String creatorUsername,String entityId);
     boolean deleteByTypeAndId(Type type, String id);
 
 }

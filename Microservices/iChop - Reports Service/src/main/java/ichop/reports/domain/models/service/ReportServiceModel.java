@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Setter
 public class ReportServiceModel extends BaseServiceModel {
 
-    private String userId;
+    private String creatorUsername;
     private String reason;
     private LocalDateTime reportedOn;
     private String entityId;

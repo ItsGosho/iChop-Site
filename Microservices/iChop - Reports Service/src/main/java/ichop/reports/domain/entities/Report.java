@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 public class Report extends MongoEntity {
 
     @NotNull
-    private String userId;
+    private String creatorUsername;
 
     @NotNull
     private String reason;

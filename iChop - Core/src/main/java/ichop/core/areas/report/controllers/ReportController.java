@@ -32,7 +32,7 @@ public class ReportController {
     @PreAuthorize("isAuthenticated()")
     @PostMapping(ReportRoutingConstants.CREATE)
     public ResponseEntity create(@RequestBody ReportCreateRequest request, Principal principal) {
-        request.setUserId(principal.getName());
+        request.setCreatorUsername(principal.getName());
 
         JmsReplyModel reply = this.reportRequesterImp.create(request);
 

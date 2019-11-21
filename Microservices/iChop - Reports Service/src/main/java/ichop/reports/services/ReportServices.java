@@ -7,7 +7,7 @@ import org.ichop.commons.service.BaseService;
 public interface ReportServices extends BaseService<ReportServiceModel> {
 
     boolean existsById(Type type,String id);
-    boolean hasReported(Type type, String userId, String entityId);
+    boolean hasReported(Type type, String creatorUsername, String entityId);
     void deleteById(Type type, String id);
 
 }

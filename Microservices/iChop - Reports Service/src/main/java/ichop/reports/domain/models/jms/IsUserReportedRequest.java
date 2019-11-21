@@ -18,5 +18,5 @@ public class IsUserReportedRequest extends RequestCandidate {
     private String entityId;
 
     @NotNull
-    private String userId;
+    private String creatorUsername;
 }

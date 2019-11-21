@@ -11,11 +11,11 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-@SpELValidation(value = "@reportServicesImp.hasReported(#this.type,#this.userId,#this.entityId) == false", message = "You reported already!")
+@SpELValidation(value = "@reportServicesImp.hasReported(#this.type,#this.creatorUsername,#this.entityId) == false", message = "You reported already!")
 public class ReportCreateRequest extends RequestCandidate {
 
     @NotNull
-    private String userId;
+    private String creatorUsername;
 
     @NotNull
     @NotEmpty

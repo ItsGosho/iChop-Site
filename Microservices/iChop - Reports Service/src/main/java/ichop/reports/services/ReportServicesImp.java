@@ -14,6 +14,7 @@ public class ReportServicesImp
         extends BaseMongoService<Report, ReportServiceModel, ReportRepository>
         implements ReportServices {
 
+
     @Autowired
     public ReportServicesImp(ObjectMapper objectMapper, ReportRepository repository) {
         super(objectMapper, repository);
@@ -26,8 +27,8 @@ public class ReportServicesImp
     }
 
     @Override
-    public boolean hasReported(Type type, String userId, String entityId) {
-        return super.repository.existsByTypeAndUserIdAndEntityId(type,userId,entityId);
+    public boolean hasReported(Type type, String creatorUsername, String entityId) {
+        return super.repository.existsByTypeAndCreatorUsernameAndEntityId(type,creatorUsername,entityId);
     }
 
     @Override

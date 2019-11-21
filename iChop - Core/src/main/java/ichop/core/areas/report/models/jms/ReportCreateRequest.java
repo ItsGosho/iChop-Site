@@ -9,7 +9,7 @@ import org.ichop.commons.domain.RequestCandidate;
 @Setter
 public class ReportCreateRequest extends RequestCandidate {
 
-    private String userId;
+    private String creatorUsername;
     private String reason;
     private ReportOn type;
     private String entityId;
