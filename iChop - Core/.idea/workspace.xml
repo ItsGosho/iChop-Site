@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1984862c-2f8c-4410-af36-a1dcaaa3ddaf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/constants/routing/server.routing.urls.js" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/constants/routing/server.routing.urls.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -417,7 +416,8 @@
       <workItem from="1574109865114" duration="1195000" />
       <workItem from="1574254851557" duration="4482000" />
       <workItem from="1574283651653" duration="3446000" />
-      <workItem from="1574356714057" duration="2030000" />
+      <workItem from="1574356714057" duration="2184000" />
+      <workItem from="1574372724981" duration="974000" />
     </task>
     <servers />
   </component>

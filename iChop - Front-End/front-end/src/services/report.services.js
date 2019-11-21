@@ -6,19 +6,19 @@ const Endpoints = ServerRoutingURLs.CORE.REPORT;
 
 const ReportServices = {
 
-    async createThread(threadId, reason) {
-        return await ReportServices.create(threadId, reason, 'THREAD');
+    async reportThread(threadId, reason) {
+        return await ReportServices.report(threadId, reason, 'THREAD');
     },
 
-    async createThreadComment(commentId, reason) {
-        return await ReportServices.create(commentId, reason, 'THREAD_COMMENT');
+    async reportThreadComment(commentId, reason) {
+        return await ReportServices.report(commentId, reason, 'THREAD_COMMENT');
     },
 
-    async createUserProfileComment(userProfileCommentId, reason) {
-        return await ReportServices.create(userProfileCommentId, reason, 'USER_PROFILE_COMMENT');
+    async reportUserProfileComment(userProfileCommentId, reason) {
+        return await ReportServices.report(userProfileCommentId, reason, 'USER_PROFILE_COMMENT');
     },
 
-    async create(entityId, reason, type) {
+    async report(entityId, reason, type) {
         let response = await Requester.post(Endpoints.CREATE, {entityId, reason, type});
 
         NotificationHelper.showNotificationByResponse(response);

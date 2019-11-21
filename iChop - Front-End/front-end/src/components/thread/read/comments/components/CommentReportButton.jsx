@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import ModalOpen from "../../../../modal/ModalOpen";
 import ReportModal from "../../../../modal/ReportModal";
+import ReportServices from "../../../../../services/report.services";
 
 class CommentReportButton extends Component {
 
@@ -12,9 +13,8 @@ class CommentReportButton extends Component {
 
     async onReport(reason) {
         let {id} = this.props;
-        console.log(id);
 
-        /*TODO: REPORT [COMMENT!]*/
+        ReportServices.reportThreadComment(id,reason);
     }
     render() {
         let {id} = this.props;

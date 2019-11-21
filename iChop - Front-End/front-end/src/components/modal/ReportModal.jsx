@@ -35,7 +35,7 @@ class ReportModal extends Component {
                 </ModalBody>
 
                 <ModalFooter>
-                    <button className="btn btn-danger" onClick={() => {
+                    <button className="btn btn-danger" data-dismiss="modal" onClick={() => {
                         onReport(this.state.reason)
                     }}>Report
                     </button>

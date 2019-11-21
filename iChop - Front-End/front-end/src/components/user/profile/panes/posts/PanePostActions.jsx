@@ -8,6 +8,7 @@ import authenticatedUserInfoDispatchers from "../../../../../redux/dispatchers/a
 import userProfileInfoDispatchers from "../../../../../redux/dispatchers/user.profile.info.dispatchers";
 import ModalOpen from "../../../../modal/ModalOpen";
 import ReportModal from "../../../../modal/ReportModal";
+import ReportServices from "../../../../../services/report.services";
 
 class PanePostActions extends Component {
 
@@ -31,8 +32,7 @@ class PanePostActions extends Component {
 
     async onReport(reason) {
         let {id} = this.props;
-
-        /*TODO: REPORT [POST!]*/
+        ReportServices.reportUserProfileComment(id,reason);
     }
 
     render() {

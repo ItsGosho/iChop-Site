@@ -3,6 +3,7 @@ import ModalOpen from "../../../../modal/ModalOpen";
 import Roles from "../../../../../constants/enums/roles.constants";
 import withState from "../../../../../hocs/with.state";
 import ReportModal from "../../../../modal/ReportModal";
+import ReportServices from "../../../../../services/report.services";
 
 class ThreadButtonsLeft extends Component {
 
@@ -16,7 +17,8 @@ class ThreadButtonsLeft extends Component {
     async onReport(reason) {
         let {id} = this.props.threadRead;
 
-        /*TODO: REPORT [THREAD!]*/
+        ReportServices.reportThread(id,reason);
+
     }
 
     render() {
