@@ -2,20 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1984862c-2f8c-4410-af36-a1dcaaa3ddaf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Core/core.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/domain/entities/Report.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/domain/entities/Report.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/domain/models/jms/IsUserReportedRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/domain/models/jms/IsUserReportedRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/domain/models/jms/ReportCreateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/domain/models/jms/ReportCreateRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/domain/models/jms/ReportReply.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/domain/models/jms/ReportReply.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/domain/models/service/ReportServiceModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/domain/models/service/ReportServiceModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/listeners/ReportListeners.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/listeners/ReportListeners.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/repositories/ReportRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/repositories/ReportRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/services/ReportServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/services/ReportServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/services/ReportServicesImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/services/ReportServicesImp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/models/jms/IsUserReportedRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/models/jms/IsUserReportedRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/models/jms/ReportCreateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/models/jms/ReportCreateRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/models/jms/ReportReply.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/report/models/jms/ReportReply.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/constants/routing/server.routing.urls.js" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/constants/routing/server.routing.urls.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -429,7 +417,7 @@
       <workItem from="1574109865114" duration="1195000" />
       <workItem from="1574254851557" duration="4482000" />
       <workItem from="1574283651653" duration="3446000" />
-      <workItem from="1574356714057" duration="950000" />
+      <workItem from="1574356714057" duration="2030000" />
     </task>
     <servers />
   </component>

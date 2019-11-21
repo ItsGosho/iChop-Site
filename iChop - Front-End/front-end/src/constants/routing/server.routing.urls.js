@@ -42,6 +42,11 @@ const ServerRoutingURLs = {
             TOTAL: `${CORE_SERVER_DOMAIN}/thread/find/total`,
             DELETE_BY_ID: `${CORE_SERVER_DOMAIN}/thread/:id/delete`,
             FIND_BY: `${CORE_SERVER_DOMAIN}/thread/find/by`
+        },
+        REPORT: {
+            CREATE: `${CORE_SERVER_DOMAIN}/report/create`,
+            DELETE_BY_ID: `${CORE_SERVER_DOMAIN}/report/delete/by/id`,
+            IS_USER_REPORTED: `${CORE_SERVER_DOMAIN}/report/is/user/reported`,
         }
     },
     DATA: {
