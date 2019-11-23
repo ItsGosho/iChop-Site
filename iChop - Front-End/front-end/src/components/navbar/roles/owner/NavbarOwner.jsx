@@ -1,29 +1,23 @@
-import React, {Component, Fragment} from 'react';
+import React, {Fragment} from 'react';
 import RoutingURLs from "../../../../constants/routing/routing.constants";
 import '../NavbarAuthenticated.css'
 import NavbarAuthenticatedButton from "../../components/NavbarAuthenticatedButton";
 import NavbarAuthenticatedList from "../../components/NavbarAuthenticatedList";
 import DropdownIconLink from "../../../other/DropdownIconLink";
 
-class NavbarOwner extends Component {
 
-    render() {
+const NavbarOwner = () => (
+    <Fragment>
+        <NavbarAuthenticatedButton/>
 
-        return (
-            <Fragment>
-                <NavbarAuthenticatedButton/>
+        <NavbarAuthenticatedList>
 
-                <NavbarAuthenticatedList>
+            <DropdownIconLink to={RoutingURLs.THREAD.CREATE} icon={'🚩'} text={'Create Thread'}/>
+            <DropdownIconLink to={RoutingURLs.USER.ALL} icon={'👥'} text={'Users'}/>
+            <DropdownIconLink to={RoutingURLs.COMMENT.REPORT.ALL} icon={'⚠'} text={'Reports'}/>
 
-                    <DropdownIconLink to={RoutingURLs.THREAD.CREATE} icon={'🚩'} text={'Create Thread'}/>
-                    <DropdownIconLink to={RoutingURLs.USER.ALL} icon={'👥'} text={'Users'}/>
-                    <DropdownIconLink to={RoutingURLs.COMMENT.REPORT.ALL} icon={'⚠'} text={'Reports'}/>
-
-                </NavbarAuthenticatedList>
-            </Fragment>
-        );
-    }
-
-}
+        </NavbarAuthenticatedList>
+    </Fragment>
+);
 
 export default NavbarOwner;

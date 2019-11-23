@@ -1,11 +1,9 @@
 import React, {Component, Fragment} from 'react';
 import FormHoc from "../../../../hocs/form.hoc";
 import InputGroupIcon from "../../components/InputGroupIcon";
-import {compose} from "redux";
-import {connect} from "react-redux";
 import UserServices from "../../../../services/user.services";
-import formsDispatchers from "../../../../redux/dispatchers/forms.dispatchers";
-import authenticatedUserInfoDispatchers from "../../../../redux/dispatchers/authenticated.user.info.dispatchers";
+import withDispatchers from "../../../../hocs/with.dispatchers";
+
 
 class GuestLogin extends Component {
 
@@ -17,6 +15,7 @@ class GuestLogin extends Component {
 
     async onLogin() {
         let {email, password} = this.props.formData;
+
         await UserServices.login(email, password);
         this.props.fetchAuthenticatedUserInfo();
     }
@@ -74,13 +73,4 @@ class GuestLogin extends Component {
 
 }
 
-let mapState = (states) => {
-    return {...states}
-};
-
-export default FormHoc(
-    compose(
-        connect(mapState, formsDispatchers),
-        connect(mapState, authenticatedUserInfoDispatchers),
-    )(GuestLogin)
-)
+export default FormHoc(withDispatchers(GuestLogin));

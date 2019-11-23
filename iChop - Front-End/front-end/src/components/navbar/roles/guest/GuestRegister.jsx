@@ -3,9 +3,8 @@ import FormHoc from "../../../../hocs/form.hoc";
 import UniversalPasswordsInputs from "../../../other/UniversalPasswordsInputs";
 import InputGroupIcon from "../../components/InputGroupIcon";
 import UserServices from "../../../../services/user.services";
-import {compose} from "redux";
-import {connect} from "react-redux";
 import formsDispatchers from "../../../../redux/dispatchers/forms.dispatchers";
+import withDispatcher from "../../../../hocs/with.dispatcher";
 
 class GuestRegister extends Component {
 
@@ -17,25 +16,6 @@ class GuestRegister extends Component {
         };
 
         this.onRegister = this.onRegister.bind(this);
-        this.onShowPasswords = this.onShowPasswords.bind(this);
-
-        this.passwordRef = React.createRef();
-        this.confirmPasswordRef = React.createRef();
-    }
-
-    onShowPasswords() {
-        let passwordElement = this.passwordRef.current;
-        let confirmPasswordElement = this.confirmPasswordRef.current;
-
-        if (this.state.isPasswordsShown) {
-            passwordElement.type = 'password';
-            confirmPasswordElement.type = 'password';
-        } else {
-            passwordElement.type = 'text';
-            confirmPasswordElement.type = 'text';
-        }
-
-        this.setState((prevState) => ({isPasswordsShown: !prevState.isPasswordsShown}))
     }
 
     async onRegister() {
@@ -91,10 +71,4 @@ class GuestRegister extends Component {
 
 }
 
-let mapState = (states) => {
-    return {...states}
-};
-
-export default FormHoc(
-    compose(connect(mapState, formsDispatchers))(GuestRegister)
-)
+export default FormHoc(withDispatcher(formsDispatchers)(GuestRegister))

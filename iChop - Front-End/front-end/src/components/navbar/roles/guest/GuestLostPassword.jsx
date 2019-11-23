@@ -1,13 +1,12 @@
 import React, {Component, Fragment} from 'react';
 import FormHoc from "../../../../hocs/form.hoc";
 import InputGroupIcon from "../../components/InputGroupIcon";
-import {compose} from "redux";
-import {connect} from "react-redux";
 import formsDispatchers from "../../../../redux/dispatchers/forms.dispatchers";
 import UserServices from "../../../../services/user.services";
+import withDispatcher from "../../../../hocs/with.dispatcher";
+
 
 class GuestLostPassword extends Component {
-
 
     constructor(props) {
         super(props);
@@ -17,6 +16,7 @@ class GuestLostPassword extends Component {
 
     onForgottenPassword() {
         let {email} = this.props.formData;
+
         UserServices.forgottenPassword(email);
     }
 
@@ -55,10 +55,4 @@ class GuestLostPassword extends Component {
 
 }
 
-let mapState = (states) => {
-    return {...states}
-};
-
-export default FormHoc(
-    compose(connect(mapState, formsDispatchers))(GuestLostPassword)
-)
+export default FormHoc(withDispatcher(formsDispatchers)(GuestLostPassword))

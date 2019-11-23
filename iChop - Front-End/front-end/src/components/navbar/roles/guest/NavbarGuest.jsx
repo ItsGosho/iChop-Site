@@ -3,9 +3,8 @@ import './NavbarGuest.css';
 import GuestLoginDropdown from "./GuestLogin";
 import GuestRegisterDropdown from "./GuestRegister";
 import GuestForgottenPasswordDropdown from "./GuestLostPassword";
-import {compose} from "redux";
-import {connect} from "react-redux";
 import formsDispatchers from "../../../../redux/dispatchers/forms.dispatchers";
+import withDispatcher from "../../../../hocs/with.dispatcher";
 
 class NavbarGuest extends Component {
 
@@ -17,38 +16,37 @@ class NavbarGuest extends Component {
     }
 
     showDropdown() {
-        let toShow = !this.props.isDropdownShow;
+        let {isDropdownShow} = this.props.forms;
 
-        this.props.showGuestDropdown(toShow);
+        this.props.showGuestDropdown(!isDropdownShow);
     }
 
     getDropdown() {
-        if (this.props.isLoginSelected) {
+        let {isLoginSelected, isRegisterSelected, isForgottenPasswordSelected} = this.props.forms;
+
+        if (isLoginSelected) {
             return (<GuestLoginDropdown/>);
         }
 
-        if (this.props.isRegisterSelected) {
+        if (isRegisterSelected) {
             return (<GuestRegisterDropdown/>);
         }
 
-        if (this.props.isForgottenPasswordSelected) {
+        if (isForgottenPasswordSelected) {
             return (<GuestForgottenPasswordDropdown/>);
         }
     }
 
     render() {
+        let {isDropdownShow} = this.props.forms;
+
         return (
             <Fragment>
+                <button type="button" className="btn btn-success btn-sm" onClick={this.showDropdown}>Sign In</button>
 
-                <button type="button"
-                        className="btn btn-success btn-sm"
-                        onClick={this.showDropdown}>
-                    Sign In
-                </button>
-
-                {this.props.isDropdownShow ? (
+                {isDropdownShow ? (
                     <div
-                        className={`dropdown-menu dropdown-menu-right guest-navbar-form ${this.props.showGuestDropdown ? 'show' : ''}`}>
+                        className={`dropdown-menu dropdown-menu-right guest-navbar-form ${isDropdownShow ? 'show' : ''}`}>
                         {this.getDropdown()}
                     </div>
                 ) : null}
@@ -59,9 +57,4 @@ class NavbarGuest extends Component {
 
 }
 
-
-let mapState = (states) => {
-    return {...states.forms}
-};
-
-export default compose(connect(mapState, formsDispatchers))(NavbarGuest)
+export default withDispatcher(formsDispatchers)(NavbarGuest);
