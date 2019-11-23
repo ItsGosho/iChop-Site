@@ -4,8 +4,9 @@ import FrontEndResourcesRoutingURLs from "../../../constants/front-end.resources
 import withState from "../../../hocs/with.state";
 import ServerRoutingURLs from "../../../constants/routing/server.routing.urls";
 
-const NavbarAuthenticatedButton = () => {
-    let {username} = this.props.authenticatedUserInfo;
+
+const NavbarAuthenticatedButton = (props) => {
+    let {username} = props.authenticatedUserInfo;
 
     return (
         <button type="button"

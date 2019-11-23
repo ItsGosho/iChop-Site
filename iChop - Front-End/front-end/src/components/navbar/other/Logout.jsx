@@ -1,10 +1,13 @@
 import React, {Component, Fragment} from 'react';
 import RoutingURLs from "../../../constants/routing/routing.constants";
 import {Redirect} from "react-router-dom";
-import {connect} from "react-redux";
 import authenticatedUserInfoDispatchers from "../../../redux/dispatchers/authenticated.user.info.dispatchers";
 import NotificationHelper from "../../../helpers/notification.helper";
 import UserServices from "../../../services/user.services";
+import withDispatcher from "../../../hocs/with.dispatcher";
+import Roles from "../../../constants/enums/roles.constants";
+import NotificationMessagesConstants from "../../../constants/notification/notification.messages.constants";
+
 
 class Logout extends Component {
 
@@ -14,24 +17,17 @@ class Logout extends Component {
         this.state = {
             isSuccessful: false,
         };
-
-        this.logout = this.logout.bind(this);
     }
 
     componentDidMount() {
-        this.logout();
-    }
+        let {authority} = this.props.authenticatedUserInfo;
 
-    logout() {
-        let username = this.props.authenticatedUserInfo.username;
-
-        if (username) {
+        if (authority !== Roles.GUEST) {
             UserServices.logout();
             this.props.removeAuthenticatedUserInfo();
+
             this.setState({isSuccessful: true});
-            NotificationHelper.showSuccessNotification('Logout successful')
-        } else {
-            NotificationHelper.showErrorNotification('You are not logged in!');
+            NotificationHelper.showSuccessNotification(NotificationMessagesConstants.LOGOUT_SUCCESSFUL)
         }
     }
 
@@ -47,8 +43,4 @@ class Logout extends Component {
 
 }
 
-let mapState = (state) => {
-    return {...state};
-};
-
-export default connect(mapState, authenticatedUserInfoDispatchers)(Logout);
+export default withDispatcher(authenticatedUserInfoDispatchers)(Logout);
