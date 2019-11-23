@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './Footer.css'
 import Roles from "../../constants/enums/roles.constants";
 import UserFooter from "./roles/UserFooter";
@@ -10,51 +10,40 @@ import FooterCopyright from "./components/FooterCopyright";
 import FooterHeader from "./components/FooterHeader";
 import withState from "../../hocs/with.state";
 
-class Footer extends Component {
+const Footer = (props) => {
+    let {authority} = props.authenticatedUserInfo;
 
-    constructor(props) {
-        super(props);
+    return (
+        <footer className="page-footer font-small stylish-color-dark pt-4">
+            <div className="container text-center text-md-left">
+                <div className="row">
 
-        this.getFooter = this.getFooter.bind(this);
-    }
-
-    getFooter() {
-        let {authority} = this.props.authenticatedUserInfo;
-
-        switch (authority) {
-            case Roles.USER:
-                return (<UserFooter/>);
-            case Roles.MODERATOR:
-                return (<ModeratorFooter/>);
-            case Roles.ADMIN:
-                return (<AdminFooter/>);
-            case Roles.OWNER:
-                return (<OwnerFooter/>);
-            default:
-                return (<GuestFooter/>);
-        }
-    }
-
-    render() {
-
-        return (
-            <footer className="page-footer font-small stylish-color-dark pt-4">
-                <div className="container text-center text-md-left">
-                    <div className="row">
-
-                        <div className="col-md-4 mx-auto">
-                            <FooterHeader/>
-                        </div>
-
-                        {this.getFooter()}
-
+                    <div className="col-md-4 mx-auto">
+                        <FooterHeader/>
                     </div>
-                </div>
-                <FooterCopyright/>
-            </footer>
-        );
-    }
 
-}
+                    {getFooter(authority)}
+
+                </div>
+            </div>
+            <FooterCopyright/>
+        </footer>
+    );
+};
 
 export default withState(Footer);
+
+const getFooter = (authority) => {
+    switch (authority) {
+        case Roles.USER:
+            return (<UserFooter/>);
+        case Roles.MODERATOR:
+            return (<ModeratorFooter/>);
+        case Roles.ADMIN:
+            return (<AdminFooter/>);
+        case Roles.OWNER:
+            return (<OwnerFooter/>);
+        default:
+            return (<GuestFooter/>);
+    }
+};

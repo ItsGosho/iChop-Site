@@ -1,17 +1,8 @@
-import React, {Component} from "react";
+import React from "react";
 import {compose} from "redux";
 import {connect} from "react-redux";
 
-const withState = (Comp) => {
-
-    let mapState = (states) => {
-        return {...states}
-    };
-
-    return compose(
-        connect(mapState, null)
-    )(Comp);
-};
+const withState = (Comp) => (compose(connect((states) => ({...states}), null))(Comp));
 
 
 export default withState;

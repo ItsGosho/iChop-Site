@@ -1,60 +1,40 @@
-import React, {Component, Fragment} from 'react';
+import React, {Fragment} from 'react';
 import FooterLinksWrapper from "../components/FooterLinksWrapper";
 import LinkIconLi from "../../other/LinkIconLi";
 import formsDispatchers from "../../../redux/dispatchers/forms.dispatchers";
 import {connect} from "react-redux";
 
-class GuestFooter extends Component {
+const GuestFooter = () => (
+    <Fragment>
+        <FooterLinksWrapper text={'VISIT'}>
 
-    constructor(props) {
-        super(props);
+            <LinkIconLi icon={'🔐'} text={'Login'} onClick={onLoginRequired}/>
+            <LinkIconLi icon={'🗝️'} text={'Register'} onClick={onRegisterRequired}/>
+            <LinkIconLi icon={'🏷️'} text={'Forgotten Password'} onClick={onForgottenPasswordRequired}/>
 
-        this.onLoginRequired = this.onLoginRequired.bind(this);
-        this.onRegisterRequired = this.onRegisterRequired.bind(this);
-        this.onForgottenPasswordRequired = this.onForgottenPasswordRequired.bind(this);
-    }
+        </FooterLinksWrapper>
+    </Fragment>
+);
 
+export default connect((state) => ({...state}), formsDispatchers)(GuestFooter);
 
-    onLoginRequired(event) {
-        event.preventDefault();
+const onDropdownEvent = (event) => {
+    event.preventDefault();
 
-        this.props.showGuestDropdown(true);
-        this.props.selectGuestLogin();
-    }
-
-    onRegisterRequired(event) {
-        event.preventDefault();
-
-        this.props.showGuestDropdown(true);
-        this.props.selectGuestRegister();
-    }
-
-    onForgottenPasswordRequired(event) {
-        event.preventDefault();
-
-        this.props.showGuestDropdown(true);
-        this.props.selectGuestForgottenPassword();
-    }
-
-    render() {
-
-        return (
-            <Fragment>
-                <FooterLinksWrapper text={'VISIT'}>
-
-                    <LinkIconLi icon={'🔐'} text={'Login'} onClick={this.onLoginRequired}/>
-                    <LinkIconLi icon={'🗝️'} text={'Register'} onClick={this.onRegisterRequired}/>
-                    <LinkIconLi icon={'🏷️'} text={'Forgotten Password'} onClick={this.onForgottenPasswordRequired}/>
-
-                </FooterLinksWrapper>
-            </Fragment>
-        );
-    }
-
-}
-
-let mapState = (state) => {
-    return {...state};
+    this.props.showGuestDropdown(true);
 };
 
-export default connect(mapState,formsDispatchers)(GuestFooter);
+const onLoginRequired = (event) => {
+    this.onDropdownEvent(event);
+    this.props.selectGuestLogin();
+};
+
+const onRegisterRequired = (event) => {
+    this.onDropdownEvent(event);
+    this.props.selectGuestRegister();
+};
+
+const onForgottenPasswordRequired = (event) => {
+    this.onDropdownEvent(event);
+    this.props.selectGuestForgottenPassword();
+};
