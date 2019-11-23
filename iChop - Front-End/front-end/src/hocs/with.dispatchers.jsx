@@ -7,8 +7,7 @@ import threadAllDispatchers from "../redux/dispatchers/thread.all.dispatchers";
 import userProfileInfoDispatchers from "../redux/dispatchers/user.profile.info.dispatchers";
 
 const withDispatchers = (Comp) => {
-
-    let mapToState = (states) => ({...states});
+    const mapToState = (states) => ({...states});
 
     return compose(
         connect(mapToState, authenticatedUserInfoDispatchers),
