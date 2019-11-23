@@ -32,7 +32,7 @@ class HTMLEditor extends Component {
     }
 
     render() {
-        let {html, placeholder, onChangeHTML} = this.props;
+        let {html, placeholder} = this.props;
 
         return (
             <Trumbowyg buttons={this.getButtons()}
