@@ -7,15 +7,14 @@ import PrefixURLs from "../../../constants/routing/prefix.routing.constants";
 
 class FooterAuthenticatedLinks extends Component {
 
-
     render() {
-        let {username} = this.props.authenticatedUserInfo;
-        let myProfileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', username);
+        let {username: authenticatedUsername} = this.props.authenticatedUserInfo;
+        let profileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', authenticatedUsername);
 
         return (
             <Fragment>
 
-                <LinkIconLi url={myProfileUrl} icon={'👤'} text={'Profile'}/>
+                <LinkIconLi url={profileUrl} icon={'👤'} text={'Profile'}/>
                 <LinkIconLi url={PrefixURLs.OPTIONS_PREFIX} icon={'⚙'} text={'Options'}/>
                 <LinkIconLi url={RoutingURLs.AUTHENTICATION.LOGOUT} icon={'🚪'} text={'Logout'}/>
 
@@ -25,8 +24,4 @@ class FooterAuthenticatedLinks extends Component {
 
 }
 
-let mapState = (state) => {
-    return {...state};
-};
-
-export default connect(mapState,formsDispatchers)(FooterAuthenticatedLinks);
+export default connect((state) => ({...state}), formsDispatchers)(FooterAuthenticatedLinks);

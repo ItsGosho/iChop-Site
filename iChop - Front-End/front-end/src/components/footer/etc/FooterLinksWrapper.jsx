@@ -1,7 +1,8 @@
 import React, {Fragment} from "react";
 import CreateReactClass from 'create-react-class';
+import PropTypes from 'prop-types';
 
-var FooterLinksWrapper = CreateReactClass({
+let FooterLinksWrapper = CreateReactClass({
     render() {
         return (
             <Fragment>
@@ -19,3 +20,7 @@ var FooterLinksWrapper = CreateReactClass({
 
 
 export default FooterLinksWrapper;
+
+FooterLinksWrapper.propTypes = {
+    text: PropTypes.string
+};

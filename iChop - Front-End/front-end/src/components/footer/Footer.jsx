@@ -48,7 +48,6 @@ class Footer extends Component {
                         {this.getFooter(user.authority)}
 
                     </div>
-
                 </div>
                 <FooterCopyright/>
             </footer>
