@@ -1,8 +1,8 @@
 import React, {Component, Fragment} from 'react';
 import RoutingURLs from "../../../../constants/routing/routing.constants";
 import '../NavbarAuthenticated.css'
-import NavbarAuthenticatedButton from "../../other/NavbarAuthenticatedButton";
-import NavbarAuthenticatedList from "../../other/NavbarAuthenticatedList";
+import NavbarAuthenticatedButton from "../../components/NavbarAuthenticatedButton";
+import NavbarAuthenticatedList from "../../components/NavbarAuthenticatedList";
 import DropdownIconLink from "../../../other/DropdownIconLink";
 
 class NavbarModerator extends Component {

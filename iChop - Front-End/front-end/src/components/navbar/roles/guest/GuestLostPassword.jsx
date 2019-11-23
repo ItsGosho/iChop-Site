@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import FormHoc from "../../../../hocs/form.hoc";
-import InputGroupIcon from "../../other/InputGroupIcon";
+import InputGroupIcon from "../../components/InputGroupIcon";
 import {compose} from "redux";
 import {connect} from "react-redux";
 import formsDispatchers from "../../../../redux/dispatchers/forms.dispatchers";

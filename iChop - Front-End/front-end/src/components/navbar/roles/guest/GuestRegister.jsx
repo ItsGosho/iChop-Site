@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import FormHoc from "../../../../hocs/form.hoc";
 import UniversalPasswordsInputs from "../../../other/UniversalPasswordsInputs";
-import InputGroupIcon from "../../other/InputGroupIcon";
+import InputGroupIcon from "../../components/InputGroupIcon";
 import UserServices from "../../../../services/user.services";
 import {compose} from "redux";
 import {connect} from "react-redux";

@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import '../NavbarAuthenticated.css'
-import NavbarAuthenticatedButton from "../../other/NavbarAuthenticatedButton";
-import NavbarAuthenticatedList from "../../other/NavbarAuthenticatedList";
+import NavbarAuthenticatedButton from "../../components/NavbarAuthenticatedButton";
+import NavbarAuthenticatedList from "../../components/NavbarAuthenticatedList";
 
 class NavbarUser extends Component {
 
