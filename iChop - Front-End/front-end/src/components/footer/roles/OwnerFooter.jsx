@@ -1,34 +1,23 @@
-import React, {Component, Fragment} from 'react';
+import React, {Fragment} from 'react';
 import RoutingURLs from "../../../constants/routing/routing.constants";
 import FooterAuthenticatedLinks from "../components/FooterAuthenticatedLinks";
 import FooterLinksWrapper from "../components/FooterLinksWrapper";
 import LinkIconLi from "../../other/LinkIconLi";
 
-class OwnerFooter extends Component {
+const OwnerFooter = () => (
+    <Fragment>
+        <FooterLinksWrapper text={'VISIT'}>
+            <FooterAuthenticatedLinks/>
+        </FooterLinksWrapper>
 
+        <FooterLinksWrapper text={'---'}>
 
-    render() {
+            <LinkIconLi url={RoutingURLs.USER.ALL} icon={'👥'} text={'Users'}/>
+            <LinkIconLi url={RoutingURLs.COMMENT.REPORT.ALL} icon={'⚠'} text={'Reports'}/>
+            <LinkIconLi url={RoutingURLs.THREAD.CREATE} icon={'🚩'} text={'Create Thread'}/>
 
-        return (
-            <Fragment>
-
-
-                <FooterLinksWrapper text={'VISIT'}>
-                    <FooterAuthenticatedLinks/>
-                </FooterLinksWrapper>
-
-
-                <FooterLinksWrapper text={'---'}>
-
-                    <LinkIconLi url={RoutingURLs.USER.ALL} icon={'👥'} text={'Users'}/>
-                    <LinkIconLi url={RoutingURLs.COMMENT.REPORT.ALL} icon={'⚠'} text={'Reports'}/>
-                    <LinkIconLi url={RoutingURLs.THREAD.CREATE} icon={'🚩'} text={'Create Thread'}/>
-
-                </FooterLinksWrapper>
-            </Fragment>
-        );
-    }
-
-}
+        </FooterLinksWrapper>
+    </Fragment>
+);
 
 export default OwnerFooter;

@@ -18,8 +18,10 @@ class Footer extends Component {
         this.getFooter = this.getFooter.bind(this);
     }
 
-    getFooter(role) {
-        switch (role) {
+    getFooter() {
+        let {authority} = this.props.authenticatedUserInfo;
+
+        switch (authority) {
             case Roles.USER:
                 return (<UserFooter/>);
             case Roles.MODERATOR:
@@ -34,7 +36,6 @@ class Footer extends Component {
     }
 
     render() {
-        let user = this.props.authenticatedUserInfo;
 
         return (
             <footer className="page-footer font-small stylish-color-dark pt-4">
@@ -45,7 +46,7 @@ class Footer extends Component {
                             <FooterHeader/>
                         </div>
 
-                        {this.getFooter(user.authority)}
+                        {this.getFooter()}
 
                     </div>
                 </div>

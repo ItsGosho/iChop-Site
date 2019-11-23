@@ -1,37 +1,33 @@
-import React, {Component, Fragment} from 'react';
+import React, {Fragment} from 'react';
 import RoutingURLs from "../../../constants/routing/routing.constants";
 import FooterLinksWrapper from "../components/FooterLinksWrapper";
 import LinkIconLi from "../../other/LinkIconLi";
+import withState from "../../../hocs/with.state";
 
-class ModeratorFooter extends Component {
+const ModeratorFooter = (props) => {
+    let {username} = props.authenticatedUserInfo;
+    let myProfileUrl = RoutingURLs.USER.PROFILE.VIEW(username);
 
+    return (
+        <Fragment>
 
-    render() {
-        let username = '';
-        let myProfileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', username);
+            <FooterLinksWrapper text={'VISIT'}>
 
-        return (
-            <Fragment>
+                <LinkIconLi url={myProfileUrl} icon={'👤'} text={'Profile'}/>
+                <LinkIconLi url={RoutingURLs.USER.OPTIONS.INFORMATION} icon={'⚙'} text={'Options'}/>
+                <LinkIconLi url={RoutingURLs.THREAD.CREATE} icon={'🚩'} text={'Create Thread'}/>
 
-                <FooterLinksWrapper text={'VISIT'}>
-
-                    <LinkIconLi url={myProfileUrl} icon={'👤'} text={'Profile'}/>
-                    <LinkIconLi url={RoutingURLs.USER.OPTIONS.INFORMATION} icon={'⚙'} text={'Options'}/>
-                    <LinkIconLi url={RoutingURLs.THREAD.CREATE} icon={'🚩'} text={'Create Thread'}/>
-
-                </FooterLinksWrapper>
+            </FooterLinksWrapper>
 
 
-                <FooterLinksWrapper text={'---'}>
+            <FooterLinksWrapper text={'---'}>
 
-                    <LinkIconLi url={RoutingURLs.COMMENT.REPORT.ALL} icon={'⚠'} text={'Reports'}/>
-                    <LinkIconLi url={RoutingURLs.AUTHENTICATION.LOGOUT} icon={'🚪'} text={'Logout'}/>
+                <LinkIconLi url={RoutingURLs.COMMENT.REPORT.ALL} icon={'⚠'} text={'Reports'}/>
+                <LinkIconLi url={RoutingURLs.AUTHENTICATION.LOGOUT} icon={'🚪'} text={'Logout'}/>
 
-                </FooterLinksWrapper>
-            </Fragment>
-        );
-    }
+            </FooterLinksWrapper>
+        </Fragment>
+    );
+};
 
-}
-
-export default ModeratorFooter;
+export default withState(ModeratorFooter);

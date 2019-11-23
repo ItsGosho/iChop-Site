@@ -6,8 +6,8 @@ import formsDispatchers from "../../../redux/dispatchers/forms.dispatchers";
 import PrefixURLs from "../../../constants/routing/prefix.routing.constants";
 
 const FooterAuthenticatedLinks = (props) => {
-    let {username: authenticatedUsername} = props.authenticatedUserInfo;
-    let profileUrl = RoutingURLs.USER.PROFILE.VIEW(authenticatedUsername);
+    let {username} = props.authenticatedUserInfo;
+    let profileUrl = RoutingURLs.USER.PROFILE.VIEW(username);
 
     return (
         <Fragment>
