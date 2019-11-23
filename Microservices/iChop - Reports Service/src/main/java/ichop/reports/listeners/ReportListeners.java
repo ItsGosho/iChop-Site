@@ -63,7 +63,7 @@ public class ReportListeners extends BaseListener {
     public BoolReply isUserReported(Message message) {
         IsUserReportedRequest requestModel = this.jmsHelper.toModel(message, IsUserReportedRequest.class);
 
-        boolean hasReported = this.reportServices.hasReported(requestModel.getType(), requestModel.getCreatorUsername(), requestModel.getCreatorUsername());
+        boolean hasReported = this.reportServices.hasReported(requestModel.getType(), requestModel.getCreatorUsername(), requestModel.getEntityId());
 
         return new BoolReply(hasReported);
     }
