@@ -12,7 +12,7 @@ let NavbarAuthenticatedList = CreateReactClass({
         let user = this.props.authenticatedUserInfo;
         let username = user.username;
 
-        let profileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', username);
+        let profileUrl = RoutingURLs.USER.PROFILE.VIEW(username);
         let informationUrl = PrefixURLs.OPTIONS_PREFIX;
         let logoutUrl = RoutingURLs.AUTHENTICATION.LOGOUT;
 

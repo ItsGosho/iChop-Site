@@ -1,9 +1,11 @@
 import {connect} from "react-redux";
 
-const withDispatcher = (dispatcher,Comp) => {
+const withDispatcher = (dispatcher) => {
     const mapToState = (states) => ({...states});
 
-    return connect(mapToState, dispatcher)(Comp);
+    return (Comp) => {
+        return connect(mapToState, dispatcher)(Comp);
+    };
 };
 
 export default withDispatcher;

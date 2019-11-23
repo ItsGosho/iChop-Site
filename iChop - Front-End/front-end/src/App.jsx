@@ -19,15 +19,14 @@ function App() {
 
     return (
         <Fragment>
-           {/* <Navbar/>*/}
+            <Navbar/>
 
             <ReactNotification/>
 
             <div style={{'marginTop': '75px'}}>
                 <Switch>
-                   {/* <Route exact path={RoutingURLs.HOME} render={() => (<ThreadsAll/>)}/>
+                    {/*<Route exact path={RoutingURLs.HOME} render={() => (<ThreadsAll/>)}/>
 
-                    <Route exact path={RoutingURLs.AUTHENTICATION.LOGOUT} render={() => (<Logout/>)}/>
                     <Route exact path={RoutingURLs.AUTHENTICATION.TOKEN.RESET_PASSWORD} render={() => (<UserChangePasswordByToken/>)}/>
 
                     <Route exact path={RoutingURLs.USER.PROFILE.VIEW} render={(props) => (<UserProfile key={props.match.params.username} {...props}/>)}/>
@@ -37,6 +36,7 @@ function App() {
                     <Route exact path={RoutingURLs.THREAD.READ} render={(props) => (<ThreadRead key={props.match.params.id} {...props}/>)}/>
                     <Route exact path={RoutingURLs.THREAD.CREATE} render={() => (<ThreadCreate/>)}/>*/}
 
+                    <Route exact path={RoutingURLs.AUTHENTICATION.LOGOUT} render={() => (<Logout/>)}/>
                 </Switch>
             </div>
 

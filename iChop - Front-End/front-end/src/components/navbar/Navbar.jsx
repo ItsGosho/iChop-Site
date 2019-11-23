@@ -8,8 +8,6 @@ import GuestNavbar from "./roles/guest/NavbarGuest";
 import {Link} from "react-router-dom";
 import RoutingURLs from "../../constants/routing/routing.constants";
 import FrontEndResourcesRoutingURLs from "../../constants/front-end.resources.routings";
-import {connect} from "react-redux";
-import {compose} from "redux";
 import withState from "../../hocs/with.state";
 
 class Navbar extends Component {
