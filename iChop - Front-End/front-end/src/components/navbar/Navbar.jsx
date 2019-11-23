@@ -10,8 +10,8 @@ import RoutingURLs from "../../constants/routing/routing.constants";
 import FrontEndResourcesRoutingURLs from "../../constants/front-end.resources.routings";
 import withState from "../../hocs/with.state";
 
-const Navbar = () => {
-        let {authority} = this.props.authenticatedUserInfo;
+const Navbar = (props) => {
+        let {authority} = props.authenticatedUserInfo;
 
         return (
             <div className="container">

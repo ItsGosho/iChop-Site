@@ -1,35 +1,27 @@
-import React, {Component} from "react";
+import React from "react";
 import PropTypes from 'prop-types';
 
-class InputGroupIcon extends Component {
 
-    render() {
-        let {icon, type, autoComplete, reference, name, placeholder, onChange} = this.props;
+const InputGroupIcon = ({icon, type, autoComplete, reference, name, placeholder, onChange,children}) => (
+    <div className="form-group">
+        <div className="input-group mb-2">
 
-        return (
-            <div className="form-group">
-                <div className="input-group mb-2">
-
-                    <div className="input-group-prepend">
-                        <div className="input-group-text">{icon}</div>
-                    </div>
-
-                    <input type={type}
-                           className="form-control"
-                           autoComplete={autoComplete}
-                           name={name}
-                           ref={reference}
-                           placeholder={placeholder}
-                           onChange={onChange}/>
-
-                    {this.props.children}
-                </div>
+            <div className="input-group-prepend">
+                <div className="input-group-text">{icon}</div>
             </div>
 
-        );
-    }
+            <input type={type}
+                   className="form-control"
+                   autoComplete={autoComplete}
+                   name={name}
+                   ref={reference}
+                   placeholder={placeholder}
+                   onChange={onChange}/>
 
-};
+            {children}
+        </div>
+    </div>
+);
 
 export default InputGroupIcon;
 
@@ -39,4 +31,7 @@ InputGroupIcon.propTypes = {
     type: PropTypes.string,
     autoComplete: PropTypes.bool,
     reference: PropTypes.func,
+    name: PropTypes.string,
+    placeholder: PropTypes.string,
+    onChange: PropTypes.func,
 };

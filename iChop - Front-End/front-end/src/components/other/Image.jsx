@@ -1,5 +1,9 @@
 import React, {Component} from 'react';
 
+
+/*TODO:Да споделя решението си тук:*/
+/*https://stackoverflow.com/questions/980855/inputting-a-default-image-in-case-the-src-attribute-of-an-html-img-is-not-vali*/
+
 class Image extends Component {
 
     constructor(props) {
