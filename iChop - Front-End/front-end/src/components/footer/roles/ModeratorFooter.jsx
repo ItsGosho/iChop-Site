@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import RoutingURLs from "../../../constants/routing/routing.constants";
-import FooterLinksWrapper from "../etc/FooterLinksWrapper";
+import FooterLinksWrapper from "../components/FooterLinksWrapper";
 import LinkIconLi from "../../other/LinkIconLi";
 
 class ModeratorFooter extends Component {

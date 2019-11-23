@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import RoutingURLs from "../../../constants/routing/routing.constants";
-import FooterAuthenticatedLinks from "../etc/FooterAuthenticatedLinks";
-import FooterLinksWrapper from "../etc/FooterLinksWrapper";
+import FooterAuthenticatedLinks from "../components/FooterAuthenticatedLinks";
+import FooterLinksWrapper from "../components/FooterLinksWrapper";
 import LinkIconLi from "../../other/LinkIconLi";
 
 class AdminFooter extends Component {

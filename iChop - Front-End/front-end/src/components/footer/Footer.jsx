@@ -6,8 +6,8 @@ import ModeratorFooter from "./roles/ModeratorFooter";
 import AdminFooter from "./roles/AdminFooter";
 import OwnerFooter from "./roles/OwnerFooter";
 import GuestFooter from "./roles/GuestFooter";
-import FooterCopyright from "./etc/FooterCopyright";
-import FooterHeader from "./etc/FooterHeader";
+import FooterCopyright from "./components/FooterCopyright";
+import FooterHeader from "./components/FooterHeader";
 import withState from "../../hocs/with.state";
 
 class Footer extends Component {

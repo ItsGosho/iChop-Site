@@ -7,7 +7,7 @@ import PrefixURLs from "../../../constants/routing/prefix.routing.constants";
 
 const FooterAuthenticatedLinks = (props) => {
     let {username: authenticatedUsername} = props.authenticatedUserInfo;
-    let profileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', authenticatedUsername);
+    let profileUrl = RoutingURLs.USER.PROFILE.VIEW(authenticatedUsername);
 
     return (
         <Fragment>

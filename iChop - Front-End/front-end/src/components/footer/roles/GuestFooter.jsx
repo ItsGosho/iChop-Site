@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import FooterLinksWrapper from "../etc/FooterLinksWrapper";
+import FooterLinksWrapper from "../components/FooterLinksWrapper";
 import LinkIconLi from "../../other/LinkIconLi";
 import formsDispatchers from "../../../redux/dispatchers/forms.dispatchers";
 import {connect} from "react-redux";

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import FooterAuthenticatedLinks from "../etc/FooterAuthenticatedLinks";
-import FooterLinksWrapper from "../etc/FooterLinksWrapper";
+import FooterAuthenticatedLinks from "../components/FooterAuthenticatedLinks";
+import FooterLinksWrapper from "../components/FooterLinksWrapper";
 
 class UserFooter extends Component {
 
