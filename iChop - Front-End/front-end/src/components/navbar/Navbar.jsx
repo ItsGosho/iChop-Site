@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Roles from "../../constants/enums/roles.constants";
 import NavbarUser from "./roles/user/NavbarUser";
 import NavbarModerator from "./roles/moderator/NavbarModerator";
@@ -10,31 +10,8 @@ import RoutingURLs from "../../constants/routing/routing.constants";
 import FrontEndResourcesRoutingURLs from "../../constants/front-end.resources.routings";
 import withState from "../../hocs/with.state";
 
-class Navbar extends Component {
-
-    constructor(props) {
-        super(props);
-
-        this.getNavbar = this.getNavbar.bind(this);
-    }
-
-    getNavbar(role) {
-        switch (role) {
-            case Roles.USER:
-                return (<NavbarUser/>);
-            case Roles.MODERATOR:
-                return (<NavbarModerator/>);
-            case Roles.ADMIN:
-                return (<NavbarAdmin/>);
-            case Roles.OWNER:
-                return (<NavbarOwner/>);
-            default:
-                return (<GuestNavbar/>);
-        }
-    }
-
-    render() {
-        let user = this.props.authenticatedUserInfo;
+const Navbar = () => {
+        let {authority} = this.props.authenticatedUserInfo;
 
         return (
             <div className="container">
@@ -60,7 +37,7 @@ class Navbar extends Component {
                     <div className="collapse navbar-collapse" id="core-navigation-bar">
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item dropdown active">
-                                {this.getNavbar(user.authority)}
+                                {getNavigationBar(authority)}
                             </li>
                         </ul>
                     </div>
@@ -68,8 +45,21 @@ class Navbar extends Component {
                 </nav>
             </div>
         );
-    }
-
-}
+};
 
 export default withState(Navbar);
+
+const getNavigationBar = (authority) => {
+    switch (authority) {
+        case Roles.USER:
+            return (<NavbarUser/>);
+        case Roles.MODERATOR:
+            return (<NavbarModerator/>);
+        case Roles.ADMIN:
+            return (<NavbarAdmin/>);
+        case Roles.OWNER:
+            return (<NavbarOwner/>);
+        default:
+            return (<GuestNavbar/>);
+    }
+};

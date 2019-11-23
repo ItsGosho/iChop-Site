@@ -1,9 +1,10 @@
 import React, {Component} from "react";
+import PropTypes from 'prop-types';
 
 class InputGroupIcon extends Component {
 
     render() {
-        let {icon, type, autoComplete,reference, name, placeholder, onChange} = this.props;
+        let {icon, type, autoComplete, reference, name, placeholder, onChange} = this.props;
 
         return (
             <div className="form-group">
@@ -31,3 +32,11 @@ class InputGroupIcon extends Component {
 };
 
 export default InputGroupIcon;
+
+
+InputGroupIcon.propTypes = {
+    icon: PropTypes.string,
+    type: PropTypes.string,
+    autoComplete: PropTypes.bool,
+    reference: PropTypes.func,
+};
