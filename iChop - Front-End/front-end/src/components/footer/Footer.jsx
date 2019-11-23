@@ -8,7 +8,7 @@ import OwnerFooter from "./roles/OwnerFooter";
 import GuestFooter from "./roles/GuestFooter";
 import FooterCopyright from "./components/FooterCopyright";
 import FooterHeader from "./components/FooterHeader";
-import withState from "../../hocs/with.state";
+import withDispatchers from "../../hocs/with.dispatchers";
 
 const Footer = (props) => {
     let {authority} = props.authenticatedUserInfo;
@@ -31,7 +31,7 @@ const Footer = (props) => {
     );
 };
 
-export default withState(Footer);
+export default withDispatchers(Footer);
 
 const getFooter = (authority) => {
     switch (authority) {
