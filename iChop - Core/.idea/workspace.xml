@@ -418,6 +418,10 @@
       <workItem from="1574283651653" duration="3446000" />
       <workItem from="1574356714057" duration="2184000" />
       <workItem from="1574372724981" duration="974000" />
+      <workItem from="1574412199384" duration="48000" />
+      <workItem from="1574438576407" duration="1982000" />
+      <workItem from="1574463556804" duration="618000" />
+      <workItem from="1574505194561" duration="1204000" />
     </task>
     <servers />
   </component>
@@ -509,6 +513,11 @@
           <url>jar://$MAVEN_REPOSITORY$/org/ichop/commons/1.0.0-BETA/commons-1.0.0-BETA.jar!/org/ichop/commons/domain/RestPageImpl.class</url>
           <line>22</line>
           <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ichop/core/areas/report/controllers/ReportController.java</url>
+          <line>51</line>
+          <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

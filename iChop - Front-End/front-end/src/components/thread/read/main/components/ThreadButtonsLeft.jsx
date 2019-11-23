@@ -10,23 +10,37 @@ class ThreadButtonsLeft extends Component {
     constructor(props) {
         super(props);
 
+        this.state = {
+            hasReported: false
+        };
+
         this.onReport = this.onReport.bind(this);
+    }
+
+    async componentWillReceiveProps(nextProps, nextContext) {
+        let {username: authenticatedUsername} = this.props.authenticatedUserInfo;
+        let {id} = this.props.threadRead;
+        let hasReported = await ReportServices.hasReportedThread(authenticatedUsername,id);
+        this.setState({hasReported});
     }
 
 
     async onReport(reason) {
         let {id} = this.props.threadRead;
 
-        ReportServices.reportThread(id,reason);
+        let response = await ReportServices.reportThread(id,reason);
 
+        if(response.successful){
+            this.setState({hasReported: true})
+        }
     }
 
     render() {
         let {id} = this.props.threadRead;
+        let {hasReported} = this.state;
         let isAuthenticated = this.props.authenticatedUserInfo.authority !== Roles.GUEST;
         let hasRoleModerator = this.props.authenticatedUserInfo.authority !== Roles.USER;
 
-        let isReportedThreadAlready = false;
         return (
             <Fragment>
                 {
@@ -68,7 +82,7 @@ class ThreadButtonsLeft extends Component {
 
                 {
                     (() => {
-                        if (isAuthenticated && !isReportedThreadAlready) {
+                        if (isAuthenticated && !hasReported) {
                             return (
                                 <Fragment>
 

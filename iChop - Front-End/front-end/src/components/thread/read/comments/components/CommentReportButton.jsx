@@ -2,54 +2,66 @@ import React, {Component, Fragment} from 'react';
 import ModalOpen from "../../../../modal/ModalOpen";
 import ReportModal from "../../../../modal/ReportModal";
 import ReportServices from "../../../../../services/report.services";
+import withState from "../../../../../hocs/with.state";
 
 class CommentReportButton extends Component {
 
     constructor(props) {
         super(props);
 
+        this.state = {
+            hasReported: false
+        };
+
         this.onReport = this.onReport.bind(this);
+    }
+
+    async componentWillReceiveProps(nextProps, nextContext) {
+        let {username: authenticatedUsername} = this.props.authenticatedUserInfo;
+        let {id} = this.props;
+        let hasReported = await ReportServices.hasReportedThreadComment(authenticatedUsername, id);
+        this.setState({hasReported});
     }
 
     async onReport(reason) {
         let {id} = this.props;
 
-        ReportServices.reportThreadComment(id,reason);
+        let response = await ReportServices.reportThreadComment(id, reason);
+
+        if (response.successful) {
+            this.setState({hasReported: true})
+        }
     }
+
     render() {
+        let {username: authenticatedUsername} = this.props.authenticatedUserInfo;
         let {id} = this.props;
+        let {hasReported} = this.state;
 
         return (
             <Fragment>
-                {
-                    (() => {
-                        let isAuthenticated = true;
-                        let isCurrentLoggedInUserReportedTheComment = false;
 
-                        if (isAuthenticated && !isCurrentLoggedInUserReportedTheComment) {
-                            return (
-                                <div
-                                    className="thread-comments-button_report">
+                {authenticatedUsername !== undefined && !hasReported ? (
+                    <div
+                        className="thread-comments-button_report">
 
-                                    <ModalOpen relationTo={id} title={'Report Comment'}>
-                                        <button
-                                            className="btn btn-sm">
-                                            <small>⚠</small>
-                                            <span>Report</span>
-                                        </button>
-                                    </ModalOpen>
+                        <ModalOpen relationTo={id} title={'Report Comment'}>
+                            <button
+                                className="btn btn-sm">
+                                <small>⚠</small>
+                                <span>Report</span>
+                            </button>
+                        </ModalOpen>
 
-                                    <ReportModal relationTo={id}
-                                                 onReport={this.onReport}/>
-                                </div>
-                            );
-                        }
-                    })()
-                }
+                        <ReportModal relationTo={id}
+                                     onReport={this.onReport}/>
+                    </div>
+                ) : null}
+
             </Fragment>
         );
     }
 
 }
 
-export default CommentReportButton;
+export default withState(CommentReportButton);
