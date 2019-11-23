@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
 
 /*TODO:Да споделя решението си тук:*/
+
 /*https://stackoverflow.com/questions/980855/inputting-a-default-image-in-case-the-src-attribute-of-an-html-img-is-not-vali*/
 
 class Image extends Component {
@@ -9,36 +11,37 @@ class Image extends Component {
     constructor(props) {
         super(props);
 
-        let {url, defaultUrl} = this.props;
-
         this.state = {
-            url: url,
-            defaultUrl: defaultUrl,
-
-            avatarUrl: defaultUrl
+            url: '',
+            defaultUrl: '',
+            imageUrl: ''
         };
 
-        this.onUserAvatarError = this.onUserAvatarError.bind(this);
-        this.onLoad = this.onLoad.bind(this);
+        this.onImageError = this.onImageError.bind(this);
 
         this.customImageRef = React.createRef();
     }
 
-    onUserAvatarError(event) {
+    onImageError(event) {
         event.target.onerror = null;
         event.target.src = this.state.defaultUrl;
     }
 
-    onLoad() {
-        this.setState({avatarUrl: this.state.url})
+    componentDidMount() {
+        let {url, defaultUrl} = this.props;
+
+        this.setState({url, defaultUrl, imageUrl: defaultUrl});
+        this.setState({imageUrl: this.state.url})
+
     }
 
     render() {
-        let {className,style,title} = this.props;
+        let {imageUrl} = this.state;
+        let {className, style, title} = this.props;
 
         return (
-            <img src={this.state.avatarUrl}
-                 onError={this.onUserAvatarError}
+            <img src={imageUrl}
+                 onError={this.onImageError}
                  onLoad={this.onLoad}
                  alt=''
                  title={title}
@@ -51,3 +54,12 @@ class Image extends Component {
 }
 
 export default Image;
+
+
+Image.propTypes = {
+    url: PropTypes.string,
+    defaultUrl: PropTypes.string,
+    className: PropTypes.string,
+    style: PropTypes.object,
+    title: PropTypes.string,
+};

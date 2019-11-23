@@ -1,20 +1,20 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Link} from "react-router-dom";
+import PropTypes from 'prop-types';
 
-class LinkIcon extends Component {
 
-    render() {
-        let {url, icon, text,onClick} = this.props;
-
-        url = url === undefined ? '#' : url;
-
-        return (
-            <Link to={url} onClick={onClick}>
-                <small>{icon}</small>
-                <span>{text}</span>
-            </Link>
-        );
-    }
-}
+const LinkIcon = ({url, icon, text, onClick}) => (
+    <Link to={url === undefined ? '#' : url} onClick={onClick}>
+        <small>{icon}</small>
+        <span>{text}</span>
+    </Link>
+);
 
 export default LinkIcon;
+
+LinkIcon.propTypes = {
+    url: PropTypes.string,
+    icon: PropTypes.string,
+    text: PropTypes.string,
+    onClick: PropTypes.func,
+};

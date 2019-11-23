@@ -69,9 +69,9 @@ class ReportsPost extends Component {
                     {this.iterateReports()}
                 </ReportTable>
 
-                <PaginationNav totalResults={reports.length}
+               {/* <PaginationNav totalResults={reports.length}
                                resultsPerPage={1}
-                               redirectPage={RoutingURLs.POST.REPORT.ALL}/>
+                               redirectPage={RoutingURLs.POST.REPORT.ALL}/>*/}
             </Fragment>
         );
     }

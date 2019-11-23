@@ -6,6 +6,7 @@ import ThreadsAllThread from "./ThreadsAllThread";
 import threadAllDispatchers from "../../../redux/dispatchers/thread.all.dispatchers";
 import {connect} from "react-redux";
 import ReactPaginate from 'react-paginate';
+import PaginationNav from "../../other/PaginationNav";
 
 class ThreadsAll extends Component {
 
@@ -76,24 +77,9 @@ class ThreadsAll extends Component {
                                resultsPerPage={1}
                                redirectPage={RoutingURLs.HOME}/>*/}
 
-                <ReactPaginate
-                    previousLabel={'previous'}
-                    nextLabel={'next'}
-                    breakLabel={'...'}
-                    pageCount={total / resultsPerPage}/*
-                    marginPagesDisplayed={2}
-                    pageRangeDisplayed={5}*/
-                    onPageChange={this.onPageChange}
-                    breakClassName={'page-item'}
-                    breakLinkClassName={'page-link'}
-                    containerClassName={'pagination justify-content-center'}
-                    pageClassName={'page-item'}
-                    pageLinkClassName={'page-link'}
-                    previousClassName={'page-item'}
-                    previousLinkClassName={'page-link'}
-                    nextClassName={'page-item'}
-                    nextLinkClassName={'page-link'}
-                    activeClassName={'active'}/>
+                <PaginationNav total={total}
+                               resultsPerPage={resultsPerPage}
+                               onPageChange={this.onPageChange}/>
 
             </Threads>
         );

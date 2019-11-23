@@ -1,18 +1,19 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Link} from "react-router-dom";
+import PropTypes from 'prop-types';
 
-class DropdownIconLink extends Component {
 
-    render() {
-        let {to, icon, text} = this.props;
-
-        return (
-            <Link className="dropdown-item" to={to}>
-                <small>{icon}</small>
-                {text}
-            </Link>
-        );
-    }
-}
+const DropdownIconLink = ({to, icon, text}) => (
+    <Link className="dropdown-item" to={to}>
+        <small>{icon}</small>
+        {text}
+    </Link>
+);
 
 export default DropdownIconLink;
+
+DropdownIconLink.propTypes = {
+    to: PropTypes.string,
+    icon: PropTypes.string,
+    text: PropTypes.string,
+};

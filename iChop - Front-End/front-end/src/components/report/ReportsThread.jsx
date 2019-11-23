@@ -73,9 +73,9 @@ class ReportsThread extends Component {
                     {this.iterateReports()}
                 </ReportTable>
 
-                <PaginationNav totalResults={reports.length}
+                {/*<PaginationNav totalResults={reports.length}
                                resultsPerPage={1}
-                               redirectPage={RoutingURLs.THREAD.REPORT.ALL}/>
+                               redirectPage={RoutingURLs.THREAD.REPORT.ALL}/>*/}
             </Fragment>
         );
     }

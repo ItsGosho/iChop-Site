@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
+
 
 class TextAreaWithCounter extends Component {
 
@@ -76,3 +78,11 @@ class TextAreaWithCounter extends Component {
 }
 
 export default TextAreaWithCounter;
+
+TextAreaWithCounter.propTypes = {
+    name: PropTypes.string,
+    initialValue: PropTypes.string,
+    className: PropTypes.string,
+    onValueChange: PropTypes.func,
+    maxCharacters: PropTypes.number,
+};

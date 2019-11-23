@@ -73,9 +73,9 @@ class ReportsComment extends Component {
                 <ReportTable>
                     {this.iterateReports()}
                 </ReportTable>
-                <PaginationNav totalResults={reports.length}
+               {/* <PaginationNav totalResults={reports.length}
                                resultsPerPage={1}
-                               redirectPage={RoutingURLs.COMMENT.REPORT.ALL}/>
+                               redirectPage={RoutingURLs.COMMENT.REPORT.ALL}/>*/}
             </Fragment>
         );
     }

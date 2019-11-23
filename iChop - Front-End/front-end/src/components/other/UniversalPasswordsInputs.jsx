@@ -1,5 +1,7 @@
 import React, {Component, Fragment} from 'react';
-import InputGroupIcon from "../navbar/other/InputGroupIcon";
+import InputGroupIcon from "../navbar/components/InputGroupIcon";
+import PropTypes from 'prop-types';
+
 
 class UniversalPasswordsInputs extends Component {
 
@@ -93,3 +95,7 @@ class UniversalPasswordsInputs extends Component {
 }
 
 export default UniversalPasswordsInputs;
+
+UniversalPasswordsInputs.propTypes = {
+    onChange: PropTypes.func
+};

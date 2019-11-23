@@ -1,5 +1,10 @@
 import React, {Component, Fragment} from 'react';
 import NotificationHelper from "../../helpers/notification.helper";
+import NotificationMessagesConstants from "../../constants/notification/notification.messages.constants";
+import PropTypes from 'prop-types';
+
+const MAX_SIZE = 1048576;
+const SUPPORTED_FORMATS = ['image/png','image/jpeg'];
 
 class UploadBase64Image extends Component {
 
@@ -17,13 +22,13 @@ class UploadBase64Image extends Component {
 
         let file = event.target.files[0];
 
-        let type = file.type; /*image/png*/
+        let type = file.type;
         let size = file.size;
 
-        if (type === 'image/png' || type=== 'image/jpeg') {
+        if (SUPPORTED_FORMATS.includes(type)) {
 
-            if (size > 1048576) {
-                NotificationHelper.showErrorNotification('The image must be less than 1 MB!');
+            if (size > MAX_SIZE) {
+                NotificationHelper.showErrorNotification(NotificationMessagesConstants.UPLOAD_IMAGE_TOO_BIG);
                 return;
             }
 
@@ -32,7 +37,7 @@ class UploadBase64Image extends Component {
             });
 
         } else {
-            NotificationHelper.showErrorNotification('The image format must be png/jpeg!');
+            NotificationHelper.showErrorNotification(NotificationMessagesConstants.UPLOAD_IMAGE_UNSUPPORTED_FORMAT);
         }
     }
 
@@ -73,3 +78,7 @@ class UploadBase64Image extends Component {
 }
 
 export default UploadBase64Image;
+
+UploadBase64Image.propTypes = {
+    onUpload: PropTypes.func
+};

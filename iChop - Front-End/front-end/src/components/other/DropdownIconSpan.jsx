@@ -1,18 +1,18 @@
-import React, {Component} from 'react';
-import {Link} from "react-router-dom";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-class DropdownIconSpan extends Component {
 
-    render() {
-        let {icon, text,onClick} = this.props;
-
-        return (
-            <span className="dropdown-item" onClick={onClick}>
-                <small>{icon}</small>
-                {text}
-            </span>
-        );
-    }
-}
+const DropdownIconSpan = ({icon, text, onClick}) => (
+    <span className="dropdown-item" onClick={onClick}>
+        <small>{icon}</small>
+        {text}
+    </span>
+);
 
 export default DropdownIconSpan;
+
+DropdownIconSpan.propTypes = {
+    icon: PropTypes.string,
+    text: PropTypes.string,
+    onClick: PropTypes.func,
+};
