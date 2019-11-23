@@ -8,8 +8,8 @@ const RoutingURLs = {
             LINK: '/player/account/link' /*User+*/
         },
         PROFILE: {
-            VIEW: '/player/:uuid/profile', /*Everyone*/
-            STATISTICS: '/player/:uuid/profile/statistics' /*Everyone*/
+            VIEW: (uuid) => (`/player/${uuid}/profile`), /*Everyone*/
+            STATISTICS: (uuid) => (`/player/${uuid}/profile/statistics`) /*Everyone*/
         }
     },
 
@@ -29,16 +29,16 @@ const RoutingURLs = {
         ALL: '/users/all', /*Admin+*/
 
         FOLLOWERS: {
-            ALL: '/user/:username/followers/all' /*Everyone+*/
+            ALL: (username) => (`/user/${username}/followers/all`) /*Everyone+*/
         },
 
         FOLLOWINGS: {
-            ALL: '/user/:username/followings/all' /*Everyone+*/
+            ALL: (username) => (`/user/${username}/followings/all`) /*Everyone+*/
         },
 
         CONTROL: {
-            INFORMATION: '/user/:username/control/information',
-            ROLE: '/user/:username/control/role',
+            INFORMATION: (username) => (`/user/${username}/control/information`),
+            ROLE: (username) => (`/user/${username}/control/role`),
         },
 
         OPTIONS: {
@@ -62,7 +62,7 @@ const RoutingURLs = {
 
     THREAD: {
         CREATE: '/thread/create', /*Moderator+*/
-        READ: '/thread/:id/read', /*Everyone*/
+        READ: (id) => (`/thread/${id}/read`), /*Everyone*/
         REPORT: {
             ALL: '/thread/reports/all' /*Moderator+*/
         }
