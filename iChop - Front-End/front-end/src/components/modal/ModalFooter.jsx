@@ -1,19 +1,9 @@
 import React from 'react';
-import CreateReactClass from "create-react-class";
 
 
-let ModalFooter = CreateReactClass({
-
-    render() {
-
-        return (
-            <div className="modal-footer">
-                {this.props.children}
-            </div>
-        );
-    }
-
-});
+const ModalFooter = ({children}) => (
+    <div className="modal-footer">{children}</div>
+);
 
 
 export default ModalFooter;

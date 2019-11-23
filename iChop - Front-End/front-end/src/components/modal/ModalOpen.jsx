@@ -1,25 +1,23 @@
 import React from 'react';
-import CreateReactClass from "create-react-class";
+import PropTypes from 'prop-types';
 import './ModalOpen.css'
 
-let ModalOpen = CreateReactClass({
 
+const ModalOpen = ({relationTo, title, children}) => (
+    <button type="button"
+            className="modal-open-button"
+            data-toggle="modal"
+            data-target={'#' + relationTo}
+            title={title} onClick={(event => event.preventDefault())}>
 
-    render() {
-        let {relationTo, title} = this.props;
+        {children}
 
-        return (
-            <button type="button" className="modal-open-button"
-                    data-toggle="modal"
-                    data-target={'#' + relationTo}
-                    title={title} onClick={(event => event.preventDefault())}>
-
-                {this.props.children}
-
-            </button>
-        );
-    }
-
-});
+    </button>
+);
 
 export default ModalOpen;
+
+ModalOpen.propTypes = {
+    relationTo: PropTypes.string,
+    title: PropTypes.string,
+};

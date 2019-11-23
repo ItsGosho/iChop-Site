@@ -1,26 +1,17 @@
 import React from 'react';
-import CreateReactClass from "create-react-class";
-
-let Modal = CreateReactClass({
+import PropTypes from 'prop-types';
 
 
-
-    render() {
-        let {relationTo} = this.props;
-
-        return (
-            <div className="modal fade" id={relationTo} tabIndex="-1" role="dialog" aria-hidden="true">
-                <div className="modal-dialog" role="document">
-                    <div className="modal-content">
-
-                        {this.props.children}
-
-                    </div>
-                </div>
-            </div>
-        );
-    }
-
-});
+const Modal = ({relationTo, children}) => (
+    <div className="modal fade" id={relationTo} tabIndex="-1" role="dialog" aria-hidden="true">
+        <div className="modal-dialog" role="document">
+            <div className="modal-content">{children}</div>
+        </div>
+    </div>
+);
 
 export default Modal;
+
+Modal.propTypes = {
+    relationTo: PropTypes.string
+};
