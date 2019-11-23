@@ -4,6 +4,9 @@ import Roles from "../../../../../constants/enums/roles.constants";
 import withState from "../../../../../hocs/with.state";
 import ReportModal from "../../../../modal/ReportModal";
 import ReportServices from "../../../../../services/report.services";
+import {Redirect} from "react-router-dom";
+import RoutingURLs from "../../../../../constants/routing/routing.constants";
+import ThreadServices from "../../../../../services/thread.services";
 
 class ThreadButtonsLeft extends Component {
 
@@ -11,33 +14,41 @@ class ThreadButtonsLeft extends Component {
         super(props);
 
         this.state = {
-            hasReported: false
+            hasReported: false,
+            isDeleteSuccessful: false
         };
 
         this.onReport = this.onReport.bind(this);
+        this.onDelete = this.onDelete.bind(this);
     }
 
     async componentWillReceiveProps(nextProps, nextContext) {
         let {username: authenticatedUsername} = this.props.authenticatedUserInfo;
         let {id} = this.props.threadRead;
-        let hasReported = await ReportServices.hasReportedThread(authenticatedUsername,id);
+        let hasReported = await ReportServices.hasReportedThread(authenticatedUsername, id);
         this.setState({hasReported});
     }
 
+    async onDelete() {
+        let {id} = this.props.threadRead;
+
+        let response = await ThreadServices.deleteById(id);
+        this.setState({isDeleteSuccessful: response.successful})
+    }
 
     async onReport(reason) {
         let {id} = this.props.threadRead;
 
-        let response = await ReportServices.reportThread(id,reason);
+        let response = await ReportServices.reportThread(id, reason);
 
-        if(response.successful){
+        if (response.successful) {
             this.setState({hasReported: true})
         }
     }
 
     render() {
         let {id} = this.props.threadRead;
-        let {hasReported} = this.state;
+        let {hasReported, isDeleteSuccessful} = this.state;
         let isAuthenticated = this.props.authenticatedUserInfo.authority !== Roles.GUEST;
         let hasRoleModerator = this.props.authenticatedUserInfo.authority !== Roles.USER;
 
@@ -69,7 +80,7 @@ class ThreadButtonsLeft extends Component {
                                 return (
                                     <button
                                         type="button"
-                                        className="btn btn-light btn-sm thread-delete_button">
+                                        className="btn btn-light btn-sm thread-delete_button" onClick={this.onDelete}>
                                         <small>❌</small>
                                         <span>Delete</span>
                                     </button>
@@ -101,6 +112,9 @@ class ThreadButtonsLeft extends Component {
                         }
                     })()
                 }
+
+                {isDeleteSuccessful ? (<Redirect to={RoutingURLs.HOME} push/>) : null}
+
             </Fragment>
         );
     }

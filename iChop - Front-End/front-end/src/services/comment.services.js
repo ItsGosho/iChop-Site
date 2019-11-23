@@ -55,9 +55,19 @@ const CommentServices = {
         NotificationHelper.showNotificationByResponse(response);
 
         return response;
+    },
+
+    async deleteThreadComment(threadId,commentId) {
+        let url = Endpoints.THREAD_DELETE
+            .replace(':id', threadId)
+            .replace(':commentId', commentId);
+
+        let response = await Requester.post(url, {});
+
+        NotificationHelper.showNotificationByResponse(response);
+
+        return response;
     }
-
-
 };
 
 export default CommentServices;

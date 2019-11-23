@@ -78,5 +78,6 @@ let fetchThreadComments = (id) => {
 };
 
 export {
-    fetchById
+    fetchById,
+    fetchThreadComments
 }

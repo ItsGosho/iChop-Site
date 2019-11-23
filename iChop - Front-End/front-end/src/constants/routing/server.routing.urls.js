@@ -26,6 +26,7 @@ const ServerRoutingURLs = {
         },
         COMMENT: {
             THREAD_ALL: `${CORE_SERVER_DOMAIN}/thread/:id/comment/all`,
+            THREAD_DELETE: `${CORE_SERVER_DOMAIN}/thread/:id/comment/:commentId/delete`,
             THREAD_CREATE: `${CORE_SERVER_DOMAIN}/thread/:id/comment/create`,
             CREATOR_TOTAL_COMMENTS: `${CORE_SERVER_DOMAIN}/comments/total/by/creator`,
             USER_PROFILE_ALL: `${CORE_SERVER_DOMAIN}/user/:username/comment/all`,

@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1984862c-2f8c-4410-af36-a1dcaaa3ddaf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/thread/read/comments/components/CommentOptionsDropdown.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/thread/read/comments/components/CommentOptionsDropdown.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/thread/read/main/components/ThreadButtonsLeft.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/thread/read/main/components/ThreadButtonsLeft.jsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -421,7 +422,7 @@
       <workItem from="1574412199384" duration="48000" />
       <workItem from="1574438576407" duration="1982000" />
       <workItem from="1574463556804" duration="618000" />
-      <workItem from="1574505194561" duration="1204000" />
+      <workItem from="1574505194561" duration="1893000" />
     </task>
     <servers />
   </component>
@@ -513,11 +514,6 @@
           <url>jar://$MAVEN_REPOSITORY$/org/ichop/commons/1.0.0-BETA/commons-1.0.0-BETA.jar!/org/ichop/commons/domain/RestPageImpl.class</url>
           <line>22</line>
           <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ichop/core/areas/report/controllers/ReportController.java</url>
-          <line>51</line>
-          <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

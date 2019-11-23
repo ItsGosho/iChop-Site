@@ -1,9 +1,27 @@
 import React, {Component, Fragment} from 'react';
-import withState from "../../../../../hocs/with.state";
 import Roles from "../../../../../constants/enums/roles.constants";
+import {connect} from "react-redux";
+import threadReadDispatchers from "../../../../../redux/dispatchers/thread.read.dispatchers";
+import CommentServices from "../../../../../services/comment.services";
 
 class CommentOptionsDropdown extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.onDelete = this.onDelete.bind(this);
+    }
+
+    async onDelete() {
+        let {id: threadReadId} = this.props.threadRead;
+        let {id: commentId} = this.props;
+
+        let response = await CommentServices.deleteThreadComment(threadReadId, commentId);
+
+        if (response.successful) {
+            this.props.fetchThreadComments(threadReadId);
+        }
+    }
 
     render() {
 
@@ -34,7 +52,8 @@ class CommentOptionsDropdown extends Component {
                                     <div
                                         className="dropdown-menu">
                                         <button type="submit"
-                                                className="btn btn-light btn-sm thread-delete_button">
+                                                className="btn btn-light btn-sm thread-delete_button"
+                                                onClick={this.onDelete}>
                                             <small>❌</small>
                                             <span>Delete</span>
                                         </button>
@@ -50,4 +69,8 @@ class CommentOptionsDropdown extends Component {
 
 }
 
-export default withState(CommentOptionsDropdown);
+let mapState = (state) => {
+    return {...state};
+};
+
+export default connect(mapState, threadReadDispatchers)(CommentOptionsDropdown);
