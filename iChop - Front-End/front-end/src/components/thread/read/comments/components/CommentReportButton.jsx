@@ -3,6 +3,7 @@ import ModalOpen from "../../../../modal/ModalOpen";
 import ReportModal from "../../../../modal/ReportModal";
 import ReportServices from "../../../../../services/report.services";
 import withState from "../../../../../hocs/with.state";
+import Roles from "../../../../../constants/enums/roles.constants";
 
 class CommentReportButton extends Component {
 
@@ -34,14 +35,14 @@ class CommentReportButton extends Component {
     }
 
     render() {
-        let {username: authenticatedUsername} = this.props.authenticatedUserInfo;
+        let {authority: authenticatedAuthority} = this.props.authenticatedUserInfo;
         let {id} = this.props;
         let {hasReported} = this.state;
 
         return (
             <Fragment>
 
-                {authenticatedUsername !== undefined && !hasReported ? (
+                {authenticatedAuthority !== Roles.GUEST && !hasReported ? (
                     <div
                         className="thread-comments-button_report">
 

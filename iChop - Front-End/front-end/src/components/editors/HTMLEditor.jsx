@@ -8,6 +8,7 @@ class HTMLEditor extends Component {
         super(props);
 
         this.getButtons = this.getButtons.bind(this);
+        this.onChange = this.onChange.bind(this);
     }
 
 
@@ -24,16 +25,20 @@ class HTMLEditor extends Component {
         ];
     }
 
+    onChange(event) {
+        let {onChangeHTML} = this.props;
+
+        onChangeHTML(event.target.innerHTML);
+    }
+
     render() {
         let {html, placeholder, onChangeHTML} = this.props;
 
         return (
             <Trumbowyg buttons={this.getButtons()}
                        data={html}
-                       placeholder={placeholder == undefined ? '' : placeholder}
-                       onChange={(event) => {
-                           onChangeHTML(event.target.innerHTML);
-                       }}/>
+                       placeholder={placeholder === undefined ? '' : placeholder}
+                       onChange={this.onChange}/>
         );
     }
 

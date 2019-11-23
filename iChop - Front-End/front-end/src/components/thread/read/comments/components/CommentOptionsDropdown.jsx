@@ -24,7 +24,6 @@ class CommentOptionsDropdown extends Component {
     }
 
     render() {
-
         let {creatorUsername} = this.props;
         let {username: authenticatedUsername, authority: authenticatedAuthority} = this.props.authenticatedUserInfo;
         let isAuthenticated = authenticatedUsername !== undefined;
