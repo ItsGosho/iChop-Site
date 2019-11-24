@@ -1,6 +1,7 @@
 import ServerRoutingURLs from "../constants/routing/server.routing.urls";
 import Requester from "../requesters/requester";
 import NotificationHelper from "../helpers/notification.helper";
+import EntityTypes from "../constants/enums/entity.types.constants";
 
 const Endpoints = ServerRoutingURLs.CORE.REACTION;
 
@@ -28,22 +29,22 @@ const ReactionServices = {
     },
 
     async reactThread(id, type) {
-        ReactionServices.create(id, 'THREAD', type);
+        ReactionServices.create(id, EntityTypes.THREAD, type);
     },
 
     async reactComment(id, type) {
-        ReactionServices.create(id, 'THREAD_COMMENT', type);
+        ReactionServices.create(id, EntityTypes.THREAD_COMMENT, type);
     },
 
     async hasReactedThread(id,username) {
-        let url = Endpoints.FIND_BY + `?creatorUsername=${username}&entityId=${id}&entityType=${'THREAD'}`;
+        let url = Endpoints.FIND_BY + `?creatorUsername=${username}&entityId=${id}&entityType=${EntityTypes.THREAD}`;
         let response = await Requester.get(url);
 
         return response.data.length > 0;
     },
 
     async hasReactedThreadComment(id,username) {
-        let url = Endpoints.FIND_BY + `?creatorUsername=${username}&entityId=${id}&entityType=${'THREAD_COMMENT'}`;
+        let url = Endpoints.FIND_BY + `?creatorUsername=${username}&entityId=${id}&entityType=${EntityTypes.THREAD_COMMENT}`;
         let response = await Requester.get(url);
 
         return response.data.length > 0;

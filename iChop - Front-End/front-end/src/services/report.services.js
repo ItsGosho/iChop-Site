@@ -1,21 +1,22 @@
 import ServerRoutingURLs from "../constants/routing/server.routing.urls";
 import Requester from "../requesters/requester";
 import NotificationHelper from "../helpers/notification.helper";
+import EntityTypes from "../constants/enums/entity.types.constants";
 
 const Endpoints = ServerRoutingURLs.CORE.REPORT;
 
 const ReportServices = {
 
     async reportThread(threadId, reason) {
-        return await ReportServices.report(threadId, reason, 'THREAD');
+        return await ReportServices.report(threadId, reason, EntityTypes.THREAD);
     },
 
     async reportThreadComment(commentId, reason) {
-        return await ReportServices.report(commentId, reason, 'THREAD_COMMENT');
+        return await ReportServices.report(commentId, reason, EntityTypes.THREAD_COMMENT);
     },
 
     async reportUserProfileComment(userProfileCommentId, reason) {
-        return await ReportServices.report(userProfileCommentId, reason, 'USER_PROFILE_COMMENT');
+        return await ReportServices.report(userProfileCommentId, reason, EntityTypes.USER_PROFILE_COMMENT);
     },
 
     async report(entityId, reason, type) {
@@ -27,15 +28,15 @@ const ReportServices = {
     },
 
     async hasReportedThread(username, threadId) {
-        return await ReportServices.hasUserReported(username, 'THREAD',threadId);
+        return await ReportServices.hasUserReported(username, EntityTypes.THREAD,threadId);
     },
 
     async hasReportedThreadComment(username, commentId) {
-        return await ReportServices.hasUserReported(username, 'THREAD_COMMENT',commentId);
+        return await ReportServices.hasUserReported(username, EntityTypes.THREAD_COMMENT,commentId);
     },
 
     async hasReportedUserProfileComment(username, userProfileCommentId) {
-        return await ReportServices.hasUserReported(username,'USER_PROFILE_COMMENT',userProfileCommentId);
+        return await ReportServices.hasUserReported(username,EntityTypes.USER_PROFILE_COMMENT,userProfileCommentId);
     },
 
     async hasUserReported(creatorUsername,type,entityId) {
