@@ -2,7 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1984862c-2f8c-4410-af36-a1dcaaa3ddaf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/thread/create/ThreadCreate.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/thread/create/ThreadCreate.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/thread/create/ThreadCreateHelpModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/thread/create/ThreadCreateHelpModal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/thread/read/ThreadRead.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/thread/read/ThreadRead.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/thread/read/comments/ThreadAddComment.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/thread/read/comments/ThreadAddComment.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/thread/read/comments/ThreadComments.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/thread/read/comments/ThreadComments.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/thread/read/comments/components/CommentCreatorInformation.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/thread/read/comments/components/CommentCreatorInformation.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/thread/read/comments/components/CommentInformation.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/thread/read/comments/components/CommentInformation.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/thread/read/comments/components/CommentOptionsDropdown.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/thread/read/comments/components/CommentOptionsDropdown.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/thread/read/comments/components/CommentReactDropdown.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/thread/read/comments/components/CommentReactDropdown.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/thread/read/comments/components/CommentReportButton.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/thread/read/comments/components/CommentReportButton.jsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -422,7 +431,7 @@
       <workItem from="1574438576407" duration="1982000" />
       <workItem from="1574463556804" duration="618000" />
       <workItem from="1574505194561" duration="2542000" />
-      <workItem from="1574591352184" duration="2243000" />
+      <workItem from="1574591352184" duration="2879000" />
     </task>
     <servers />
   </component>
