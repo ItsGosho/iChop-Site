@@ -15,23 +15,23 @@ const ServerRoutingURLs = {
             CHANGE_PASSWORD: `${CORE_SERVER_DOMAIN}/user/change/password`,
             FIND_BY: `${CORE_SERVER_DOMAIN}/user/find/by`,
 
-            RETRIEVE_INFORMATION: `${CORE_SERVER_DOMAIN}/user/:username/information/retrieve`,
-            UPDATE_INFORMATION: `${CORE_SERVER_DOMAIN}/user/:username/information/update`,
+            RETRIEVE_INFORMATION: (username) => `${CORE_SERVER_DOMAIN}/user/${username}/information/retrieve`,
+            UPDATE_INFORMATION: (username) => `${CORE_SERVER_DOMAIN}/user/${username}/information/update`,
 
-            FOLLOW: `${CORE_SERVER_DOMAIN}/user/:username/follow`,
-            UNFOLLOW: `${CORE_SERVER_DOMAIN}/user/:username/unfollow`,
-            ALL_FOLLOWINGS: `${CORE_SERVER_DOMAIN}/user/:username/all/followings`,
-            ALL_FOLLOWERS: `${CORE_SERVER_DOMAIN}/user/:username/all/followers`,
-            IS_FOLLOWING: `${CORE_SERVER_DOMAIN}/user/:username/is/following`
+            FOLLOW: (username) => `${CORE_SERVER_DOMAIN}/user/${username}/follow`,
+            UNFOLLOW: (username) => `${CORE_SERVER_DOMAIN}/user/${username}/unfollow`,
+            ALL_FOLLOWINGS: (username) => `${CORE_SERVER_DOMAIN}/user/${username}/all/followings`,
+            ALL_FOLLOWERS: (username) => `${CORE_SERVER_DOMAIN}/user/${username}/all/followers`,
+            IS_FOLLOWING: (username) => `${CORE_SERVER_DOMAIN}/user/${username}/is/following`
         },
         COMMENT: {
-            THREAD_ALL: `${CORE_SERVER_DOMAIN}/thread/:id/comment/all`,
-            THREAD_DELETE: `${CORE_SERVER_DOMAIN}/thread/:id/comment/:commentId/delete`,
-            THREAD_CREATE: `${CORE_SERVER_DOMAIN}/thread/:id/comment/create`,
+            THREAD_ALL: (id) => `${CORE_SERVER_DOMAIN}/thread/${id}/comment/all`,
+            THREAD_DELETE: (threadId, commentId) => `${CORE_SERVER_DOMAIN}/thread/${threadId}/comment/${commentId}/delete`,
+            THREAD_CREATE: (id) => `${CORE_SERVER_DOMAIN}/thread/${id}/comment/create`,
             CREATOR_TOTAL_COMMENTS: `${CORE_SERVER_DOMAIN}/comments/total/by/creator`,
-            USER_PROFILE_ALL: `${CORE_SERVER_DOMAIN}/user/:username/comment/all`,
-            USER_PROFILE_CREATE: `${CORE_SERVER_DOMAIN}/user/:username/comment/create`,
-            USER_PROFILE_DELETE: `${CORE_SERVER_DOMAIN}/user/:username/comment/:commentId/delete`,
+            USER_PROFILE_ALL: (username) => `${CORE_SERVER_DOMAIN}/user/${username}/comment/all`,
+            USER_PROFILE_CREATE: (username) => `${CORE_SERVER_DOMAIN}/user/${username}/comment/create`,
+            USER_PROFILE_DELETE: (username, commentId) => `${CORE_SERVER_DOMAIN}/user/${username}/comment/${commentId}/delete`,
         },
         REACTION: {
             FIND_BY: `${CORE_SERVER_DOMAIN}/reaction/find/by`,
@@ -41,7 +41,7 @@ const ServerRoutingURLs = {
             CREATE: `${CORE_SERVER_DOMAIN}/thread/create`,
             ALL: `${CORE_SERVER_DOMAIN}/thread/find/all`,
             TOTAL: `${CORE_SERVER_DOMAIN}/thread/find/total`,
-            DELETE_BY_ID: `${CORE_SERVER_DOMAIN}/thread/:id/delete`,
+            DELETE_BY_ID: id => `${CORE_SERVER_DOMAIN}/thread/${id}/delete`,
             FIND_BY: `${CORE_SERVER_DOMAIN}/thread/find/by`
         },
         REPORT: {
@@ -53,19 +53,19 @@ const ServerRoutingURLs = {
     DATA: {
         USER: {
             AVATAR: {
-                GET: (username) => (`${DATA_SERVER_DOMAIN}/data/user/${username}/avatar`)
+                GET: (username) => `${DATA_SERVER_DOMAIN}/data/user/${username}/avatar`
             }
         }
     },
     OUTSIDE: {
         CRAFATAR: {
             MINECRAFT: {
-                SKIN: (uuid) => (`${OTHER_CRAFATAR_SERVER_DOMAIN}/renders/body/${uuid}`)
+                SKIN: (uuid) => `${OTHER_CRAFATAR_SERVER_DOMAIN}/renders/body/${uuid}`
             }
         },
         MINOTAR: {
             MINECRAFT: {
-                HEAD: (accountName) => (`${OTHER_MINOTAR_SERVER_DOMAIN}/avatar/${accountName}`)
+                HEAD: (accountName) => `${OTHER_MINOTAR_SERVER_DOMAIN}/avatar/${accountName}`
             }
         }
     }

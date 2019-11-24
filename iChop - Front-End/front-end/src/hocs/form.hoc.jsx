@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 
+
 const FormHoc = (Comp) => {
     return class extends Component {
 
@@ -35,3 +36,4 @@ const FormHoc = (Comp) => {
 };
 
 export default FormHoc;
+

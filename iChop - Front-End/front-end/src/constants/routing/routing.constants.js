@@ -8,8 +8,8 @@ const RoutingURLs = {
             LINK: '/player/account/link' /*User+*/
         },
         PROFILE: {
-            VIEW: (uuid) => (`/player/${uuid}/profile`), /*Everyone*/
-            STATISTICS: (uuid) => (`/player/${uuid}/profile/statistics`) /*Everyone*/
+            VIEW: (uuid) => `/player/${uuid}/profile`, /*Everyone*/
+            STATISTICS: (uuid) => `/player/${uuid}/profile/statistics` /*Everyone*/
         }
     },
 
@@ -23,22 +23,22 @@ const RoutingURLs = {
     USER: {
 
         PROFILE: {
-            VIEW: (username) => (`/user/${username}/profile`), /*Everyone*/
+            VIEW: (username) => `/user/${username}/profile`, /*Everyone*/
         },
 
         ALL: '/users/all', /*Admin+*/
 
         FOLLOWERS: {
-            ALL: (username) => (`/user/${username}/followers/all`) /*Everyone+*/
+            ALL: (username) => `/user/${username}/followers/all` /*Everyone+*/
         },
 
         FOLLOWINGS: {
-            ALL: (username) => (`/user/${username}/followings/all`) /*Everyone+*/
+            ALL: (username) => `/user/${username}/followings/all` /*Everyone+*/
         },
 
         CONTROL: {
-            INFORMATION: (username) => (`/user/${username}/control/information`),
-            ROLE: (username) => (`/user/${username}/control/role`),
+            INFORMATION: (username) => `/user/${username}/control/information`,
+            ROLE: (username) => `/user/${username}/control/role`,
         },
 
         OPTIONS: {
@@ -62,7 +62,7 @@ const RoutingURLs = {
 
     THREAD: {
         CREATE: '/thread/create', /*Moderator+*/
-        READ: (id) => (`/thread/${id}/read`), /*Everyone*/
+        READ: (id) => `/thread/${id}/read`, /*Everyone*/
         REPORT: {
             ALL: '/thread/reports/all' /*Moderator+*/
         }
