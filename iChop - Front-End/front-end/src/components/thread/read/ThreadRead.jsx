@@ -2,10 +2,10 @@ import React, {Component} from 'react';
 import ThreadMainContent from "./main/ThreadMainContent";
 import ThreadComments from "./comments/ThreadComments";
 import './ThreadRead.css'
-import {compose} from "redux";
-import {connect} from "react-redux";
 import threadReadDispatchers from "../../../redux/dispatchers/thread.read.dispatchers";
 import ThreadAddComment from "./comments/ThreadAddComment";
+import withDispatcher from "../../../hocs/with.dispatcher";
+
 
 class ThreadRead extends Component {
 
@@ -33,6 +33,4 @@ class ThreadRead extends Component {
 
 }
 
-export default compose(
-    connect(null,threadReadDispatchers)
-)(ThreadRead);
+export default withDispatcher(threadReadDispatchers)(ThreadRead);

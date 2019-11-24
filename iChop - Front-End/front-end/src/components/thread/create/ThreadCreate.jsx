@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import './ThreadCreate.css'
 import ThreadCreateHelpModal from "./ThreadCreateHelpModal";
 import ModalOpen from "../../modal/ModalOpen";
-import CreateReactClass from "create-react-class";
 import HTMLEditor from "../../editors/HTMLEditor";
 import ThreadServices from "../../../services/thread.services";
 import NotificationHelper from "../../../helpers/notification.helper";
@@ -41,6 +40,7 @@ class ThreadCreate extends Component {
 
 
     render() {
+        let onChange = (event) => (this.setState({[event.target.name]: event.target.value}));
         let {isSuccessful} = this.state;
 
         return (
@@ -58,9 +58,7 @@ class ThreadCreate extends Component {
                                    className="form-control"
                                    name="title"
                                    placeholder="Thread title"
-                                   onChange={(event) => {
-                                       this.setState({title: event.target.value})
-                                   }}/>
+                                   onChange={onChange}/>
                         </div>
 
                         <div className="dropdown-divider"/>
@@ -69,9 +67,7 @@ class ThreadCreate extends Component {
 
                         <div id="textarea-content" contentEditable="true"/>
 
-                        <ModalOpen relationTo={'help'} title={'Help'}>
-                            <span>❓</span>
-                        </ModalOpen>
+                        <ModalOpen relationTo={'help'} title={'Help'}>❓</ModalOpen>
 
                         <ThreadCreateHelpModal/>
 
@@ -96,18 +92,14 @@ class ThreadCreate extends Component {
 export default ThreadCreate;
 
 
-const CreateCard = CreateReactClass({
-    render() {
-        return (
-            <div className="container d-flex justify-content-center align-items-center">
-                <div className="row">
-                    <div className="col-xs-6">
-                        <div className="card">
-                            {this.props.children}
-                        </div>
-                    </div>
+const CreateCard = ({children}) => (
+    <div className="container d-flex justify-content-center align-items-center">
+        <div className="row">
+            <div className="col-xs-6">
+                <div className="card">
+                    {children}
                 </div>
             </div>
-        );
-    }
-});
+        </div>
+    </div>
+);

@@ -1,10 +1,7 @@
 import React, {Component, Fragment} from 'react';
-import {connect} from "react-redux";
-import formsDispatchers from "../../../../../redux/dispatchers/forms.dispatchers";
-import Roles from "../../../../../constants/enums/roles.constants";
 import ReactionServices from "../../../../../services/reaction.services";
-import {compose} from "redux";
-import threadReadDispatchers from "../../../../../redux/dispatchers/thread.read.dispatchers";
+import withDispatchers from "../../../../../hocs/with.dispatchers";
+import ReactionType from "../../../../../constants/enums/reaction.types.constants";
 
 class ThreadButtonsRight extends Component {
 
@@ -27,76 +24,63 @@ class ThreadButtonsRight extends Component {
 
     render() {
         let {id} = this.props.threadRead;
-        let {authority: authenticatedAuthority} = this.props.authenticatedUserInfo;
+        let {isAuthenticated} = this.props.authenticatedUserInfo;
         let {hasReacted} = this.state;
-        let isAuthenticated = authenticatedAuthority !== Roles.GUEST;
 
         return (
             <Fragment>
-                {
-                    (() => {
-                        if (isAuthenticated) {
-                            return (
-                                <Fragment>
+                {isAuthenticated ? (
+                    <Fragment>
+                        <button
+                            id="button-commentThread-readThreadPage"
+                            className="btn btn-sm" type="button"
+                            aria-haspopup="true" aria-expanded="false" onClick={() => {
+                            this.props.showCreateComment(!this.props.forms.isCreateCommentShow);
+                        }}>
+                            <small>💬</small>
+                            <span>Comment</span>
+                        </button>
+
+                        {!hasReacted ? (
+                            <Fragment>
+                                <button className="btn btn-sm dropdown-toggle"
+                                        type="button"
+                                        data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">
+                                    <small>💡</small>
+                                    React
+                                </button>
+
+                                <div className="dropdown-menu">
                                     <button
-                                        id="button-commentThread-readThreadPage"
-                                        className="btn btn-sm" type="button"
-                                        aria-haspopup="true" aria-expanded="false" onClick={() => {
-                                        this.props.showCreateComment(!this.props.forms.isCreateCommentShow);
+                                        className="btn btn-sm thread-right_side_button-react"
+                                        type="button" onClick={async () => {
+                                        await ReactionServices.reactThread(id, ReactionType.LIKE);
+                                        this.props.fetchThreadById(id);
                                     }}>
-                                        <small>💬</small>
-                                        <span>Comment</span>
+                                        <small>👍🏻</small>
+                                        <span> Like</span>
                                     </button>
+                                    <button
+                                        className="btn btn-sm thread-right_side_button-react"
+                                        type="button" onClick={async () => {
+                                        await ReactionServices.reactThread(id, ReactionType.DISLIKE);
+                                        this.props.fetchThreadById(id);
+                                    }}>
+                                        <small>👎🏻</small>
+                                        <span> Dislike</span>
+                                    </button>
+                                </div>
+                            </Fragment>
+                        ) : null}
 
-                                    {!hasReacted ? (
-                                        <Fragment>
-                                            <button className="btn btn-sm dropdown-toggle"
-                                                    type="button"
-                                                    data-toggle="dropdown" aria-haspopup="true"
-                                                    aria-expanded="false">
-                                                <small>💡</small>
-                                                React
-                                            </button>
-
-                                            <div className="dropdown-menu">
-                                                <button
-                                                    className="btn btn-sm thread-right_side_button-react"
-                                                    type="button" onClick={async () => {
-                                                    await ReactionServices.reactThread(id, 'LIKE');
-                                                    this.props.fetchThreadById(id);
-                                                }}>
-                                                    <small>👍🏻</small>
-                                                    <span> Like</span>
-                                                </button>
-                                                <button
-                                                    className="btn btn-sm thread-right_side_button-react"
-                                                    type="button" onClick={async () => {
-                                                    await ReactionServices.reactThread(id, 'DISLIKE');
-                                                    this.props.fetchThreadById(id);
-                                                }}>
-                                                    <small>👎🏻</small>
-                                                    <span> Dislike</span>
-                                                </button>
-                                            </div>
-                                        </Fragment>
-                                    ) : null}
-
-                                </Fragment>
-                            );
-                        }
-                    })()
-                }
+                    </Fragment>
+                ) : null}
             </Fragment>
         );
     }
 
 }
 
-let mapState = (state) => {
-    return {...state}
-};
 
-export default compose(
-    connect(mapState, formsDispatchers),
-    connect(mapState, threadReadDispatchers)
-)(ThreadButtonsRight);
+export default withDispatchers(ThreadButtonsRight);

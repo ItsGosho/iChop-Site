@@ -1,33 +1,26 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Modal from "../../modal/Modal";
 import ModalTitle from "../../modal/ModalTitle";
 import ModalBody from "../../modal/ModalBody";
 import ModalFooter from "../../modal/ModalFooter";
 import ModalClose from "../../modal/ModalClose";
 
-class ThreadCreateHelpModal extends Component {
+const ThreadCreateHelpModal = () => (
+    <Modal relationTo={'help'}>
 
-    render() {
+        <ModalTitle>
+            <span>How to show only first X rows from thread on the news page:</span>
+        </ModalTitle>
 
-        return (
-            <Modal relationTo={'help'}>
+        <ModalBody>
+            <span>If you dont want all of the content to be show on the news page /better/ ,place SHOW_TO_NOW whether you want to end.</span>
+        </ModalBody>
 
-                <ModalTitle>
-                    <span>How to show only first X rows from thread on the news page:</span>
-                </ModalTitle>
+        <ModalFooter>
+            <ModalClose/>
+        </ModalFooter>
 
-                <ModalBody>
-                    <span>If you dont want all of the content to be show on the news page /better/ ,place SHOW_TO_NOW whether you want to end.</span>
-                </ModalBody>
-
-                <ModalFooter>
-                    <ModalClose/>
-                </ModalFooter>
-
-            </Modal>
-        );
-    }
-
-}
+    </Modal>
+);
 
 export default ThreadCreateHelpModal;

@@ -1,78 +1,61 @@
-import React, {Component, Fragment} from 'react';
+import React, {Fragment} from 'react';
 import {Link} from "react-router-dom";
 import FrontEndResourcesRoutingURLs from "../../../../../constants/front-end.resources.routings";
 import RoutingURLs from "../../../../../constants/routing/routing.constants";
 import ServerRoutingURLs from "../../../../../constants/routing/server.routing.urls";
+import Image from "../../../../other/Image";
+import PropTypes from 'prop-types';
 
-class CommentCreatorInformation extends Component {
 
-    constructor(props) {
-        super(props);
+const CommentCreatorInformation = ({uuid, username, totalComments, minecraftAccountName}) => (
+    <Fragment>
 
-        this.onUserAvatarError = this.onUserAvatarError.bind(this);
-    }
+        <div>
+            <Image style={{'width': '50px', 'height': '50px', 'maxWidth': '100%'}}
+                   url={ServerRoutingURLs.DATA.USER.AVATAR.GET(username)}
+                   defaultUrl={FrontEndResourcesRoutingURLs.USER.AVATAR}
+                   className="card-img-top thread-comment-creator_avatar"
+                   title={minecraftAccountName}/>
+        </div>
 
-    onUserAvatarError(event) {
-        event.target.onerror = null;
-        event.target.src = FrontEndResourcesRoutingURLs.USER.AVATAR;
-    }
+        <div>
+            <small>
+                👤<Link to={RoutingURLs.USER.PROFILE.VIEW(username)}>{username}</Link>
+            </small>
+        </div>
 
-    render() {
-        let {uuid,username,totalComments,minecraftAccountName} = this.props;
+        <div>
+            <small>
+                <small>💬</small>
+                <span>{totalComments} total comments</span>
+            </small>
+        </div>
 
-        let userProfileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', username);
-        let userAvatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', username);
-        let minecraftPorfileUrl = RoutingURLs.PLAYER.PROFILE.VIEW.replace(':uuid', uuid);
-        let minecraftAvatarUrl = ServerRoutingURLs.OUTSIDE.MINOTAR.MINECRAFT.HEAD.replace(':accountName', minecraftAccountName);
+        <div>
 
-        return (
-            <Fragment>
-                <div>
-                    <img
-                        src={userAvatarUrl}
-                        alt=' '
-                        onError={this.onUserAvatarError}
-                        style={{'width':'50px','height':'50px','maxWidth':'100%'}}
-                        className="card-img-top thread-comment-creator_avatar"/>
-                </div>
-                <div>
-                    <small>
-                        👤<Link to={userProfileUrl}>{username}</Link>
-                    </small>
-                </div>
-                <div>
-                    <small>
-                        <small>💬</small>
-                        <span>{totalComments} total comments</span>
-                    </small>
-                </div>
+            {minecraftAccountName !== undefined ? (
+                <small>
+                    <Link to={RoutingURLs.PLAYER.PROFILE.VIEW(uuid)}>
+                        <img
+                            src={ServerRoutingURLs.OUTSIDE.MINOTAR.MINECRAFT.HEAD(minecraftAccountName)}
+                            className="card-img-top"
+                            style={{'width': '15px', 'height': '15px', 'maxWidth': '100%'}}
+                            alt=' '/>
+                        {minecraftAccountName}
+                    </Link>
+                </small>
+            ) : null}
 
-                <div>
+        </div>
+    </Fragment>
+);
 
-                    {
-                        (() => {
-                            if (minecraftAccountName !== undefined) {
-                                return (
-                                    <small>
-                                        <Link to={minecraftPorfileUrl}>
-                                            <img
-                                                src={minecraftAvatarUrl}
-                                                className="card-img-top"
-                                                style={{'width':'15px','height':'15px','maxWidth':'100%'}}
-                                                alt=' '/>
-                                            {minecraftAccountName}
-                                        </Link>
-                                    </small>
-                                );
-                            }
-                        })()
-                    }
-
-                </div>
-            </Fragment>
-        );
-    }
-
-}
 
 export default CommentCreatorInformation;
+
+CommentCreatorInformation.propTypes = {
+    uuid: PropTypes.string,
+    username: PropTypes.string,
+    totalComments: PropTypes.number,
+    minecraftAccountName: PropTypes.string,
+};

@@ -1,10 +1,8 @@
 import React, {Component, Fragment} from 'react';
 import HTMLEditor from "../../../editors/HTMLEditor";
-import formsDispatchers from "../../../../redux/dispatchers/forms.dispatchers";
-import {connect} from "react-redux";
 import CommentServices from "../../../../services/comment.services";
-import {compose} from "redux";
-import threadReadDispatchers from "../../../../redux/dispatchers/thread.read.dispatchers";
+import withDispatchers from "../../../../hocs/with.dispatchers";
+
 
 class ThreadAddComment extends Component {
 
@@ -44,12 +42,12 @@ class ThreadAddComment extends Component {
                         <HTMLEditor placeholder=''
                                     onChangeHTML={this.onContentChange}/>
 
-                        <div
-                            className="row d-flex justify-content-center align-items-center thread-comment_box-buttons">
+                        <div className="row d-flex justify-content-center align-items-center thread-comment_box-buttons">
 
                             <button id="button-createCommentThread-readThreadPage"
                                     className="btn btn-sm btn-success"
-                                    type="button" onClick={this.onCreate}>
+                                    type="button"
+                                    onClick={this.onCreate}>
                                 Comment
                             </button>
 
@@ -68,13 +66,7 @@ class ThreadAddComment extends Component {
         );
     }
 
-}
-
-let mapState = (state) => {
-    return {...state}
 };
 
-export default compose(
-    connect(mapState, formsDispatchers),
-    connect(mapState, threadReadDispatchers)
-)(ThreadAddComment);
+
+export default withDispatchers(ThreadAddComment);

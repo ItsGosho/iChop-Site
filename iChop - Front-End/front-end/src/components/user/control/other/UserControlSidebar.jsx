@@ -1,36 +1,31 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Link} from "react-router-dom";
 import RoutingURLs from "../../../../constants/routing/routing.constants";
 import './UserControlSidebar.css'
+import PropTypes from 'prop-types';
 
-class UserControlSidebar extends Component {
 
-    render() {
-        let username = 'ItsGosho';
+const UserControlSidebar = ({username}) => (
+    <div className="col-sm">
+        <div className="card card-holder">
+            <div className="card-header">Options Menu</div>
+            <ul className="list-group list-group-flush">
 
-        let informationUrl = RoutingURLs.USER.CONTROL.INFORMATION.replace(':username', username);
-        let roleUrl = RoutingURLs.USER.CONTROL.ROLE.replace(':username', username);
+                <Link to={RoutingURLs.USER.CONTROL.INFORMATION(username)}>
+                    <li className="list-group-item control-option">Information</li>
+                </Link>
 
-        return (
-            <div className="col-sm">
-                <div className="card card-holder">
-                    <div className="card-header">Options Menu</div>
-                    <ul className="list-group list-group-flush">
+                <Link to={RoutingURLs.USER.CONTROL.ROLE(username)}>
+                    <li className="list-group-item control-option">Role Management</li>
+                </Link>
 
-                        <Link to={informationUrl}>
-                            <li className="list-group-item control-option">Information</li>
-                        </Link>
-
-                        <Link to={roleUrl}>
-                            <li className="list-group-item control-option">Role Management</li>
-                        </Link>
-
-                    </ul>
-                </div>
-            </div>
-        );
-    }
-
-}
+            </ul>
+        </div>
+    </div>
+);
 
 export default UserControlSidebar;
+
+UserControlSidebar.propTypes = {
+    username: PropTypes.string
+};

@@ -1,10 +1,11 @@
 import React, {Component, Fragment} from 'react';
 import ReactionServices from "../../../../../services/reaction.services";
 import Roles from "../../../../../constants/enums/roles.constants";
-import {compose} from "redux";
-import {connect} from "react-redux";
-import formsDispatchers from "../../../../../redux/dispatchers/forms.dispatchers";
 import threadReadDispatchers from "../../../../../redux/dispatchers/thread.read.dispatchers";
+import withDispatcher from "../../../../../hocs/with.dispatcher";
+import ReactionType from "../../../../../constants/enums/reaction.types.constants";
+import PropTypes from 'prop-types';
+
 
 class CommentReactDropdown extends Component {
 
@@ -53,7 +54,7 @@ class CommentReactDropdown extends Component {
                             <button
                                 className="btn btn-sm thread-right_side_button-react"
                                 type="submit" onClick={async () => {
-                                await ReactionServices.reactComment(commentId, 'LIKE');
+                                await ReactionServices.reactComment(commentId, ReactionType.LIKE);
                                 this.props.fetchThreadById(threadId);
                             }}>
                                 <small>👍🏻</small>
@@ -63,7 +64,7 @@ class CommentReactDropdown extends Component {
                             <button
                                 className="btn btn-sm thread-right_side_button-react"
                                 type="submit" onClick={async () => {
-                                await ReactionServices.reactComment(commentId, 'DISLIKE');
+                                await ReactionServices.reactComment(commentId, ReactionType.DISLIKE);
                                 this.props.fetchThreadById(threadId);
                             }}>
                                 <small>👎🏻</small>
@@ -79,8 +80,10 @@ class CommentReactDropdown extends Component {
 
 }
 
-let mapState = (state) => {
-   return {...state};
-};
 
-export default connect(mapState, threadReadDispatchers)(CommentReactDropdown);
+export default withDispatcher(threadReadDispatchers)(CommentReactDropdown);
+
+
+CommentReactDropdown.propTypes = {
+    id: PropTypes.string,
+};

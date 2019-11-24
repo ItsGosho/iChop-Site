@@ -6,6 +6,10 @@ const Endpoints = ServerRoutingURLs.CORE.USER;
 
 const UserServices = {
 
+    hasRole(roles,role) {
+       return roles.filter(x => x.authority.toLowerCase() === role.toLowerCase()).length > 0;
+    },
+
     async login(email, password) {
         let response = await Requester.post(Endpoints.LOGIN, {email, password}, true);
 

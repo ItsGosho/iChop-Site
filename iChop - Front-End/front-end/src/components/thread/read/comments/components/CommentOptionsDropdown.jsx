@@ -1,8 +1,10 @@
 import React, {Component, Fragment} from 'react';
 import Roles from "../../../../../constants/enums/roles.constants";
-import {connect} from "react-redux";
 import threadReadDispatchers from "../../../../../redux/dispatchers/thread.read.dispatchers";
 import CommentServices from "../../../../../services/comment.services";
+import withDispatcher from "../../../../../hocs/with.dispatcher";
+import PropTypes from 'prop-types';
+
 
 class CommentOptionsDropdown extends Component {
 
@@ -32,44 +34,40 @@ class CommentOptionsDropdown extends Component {
         return (
             <Fragment>
 
-                {
-                    (() => {
-                        if (isAuthenticated && (authenticatedUsername === creatorUsername || hasRoleModerator)) {
-                            return (
-                                <Fragment>
+                {isAuthenticated && (authenticatedUsername === creatorUsername || hasRoleModerator) ? (
+                    <Fragment>
 
-                                    <button
-                                        className="btn btn-sm dropdown-toggle"
-                                        type="button"
-                                        data-toggle="dropdown"
-                                        aria-haspopup="true"
-                                        aria-expanded="false">
-                                        <small>⚙</small>
-                                        <span>Options</span>
-                                    </button>
+                        <button
+                            className="btn btn-sm dropdown-toggle"
+                            type="button"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false">
+                            <small>⚙</small>
+                            <span>Options</span>
+                        </button>
 
-                                    <div
-                                        className="dropdown-menu">
-                                        <button type="submit"
-                                                className="btn btn-light btn-sm thread-delete_button"
-                                                onClick={this.onDelete}>
-                                            <small>❌</small>
-                                            <span>Delete</span>
-                                        </button>
-                                    </div>
-                                </Fragment>
-                            )
-                        }
-                    })()
-                }
+                        <div
+                            className="dropdown-menu">
+                            <button type="submit"
+                                    className="btn btn-light btn-sm thread-delete_button"
+                                    onClick={this.onDelete}>
+                                <small>❌</small>
+                                <span>Delete</span>
+                            </button>
+                        </div>
+                    </Fragment>
+                ) : null}
             </Fragment>
         );
     }
 
 }
 
-let mapState = (state) => {
-    return {...state};
-};
+export default withDispatcher(threadReadDispatchers)(CommentOptionsDropdown);
 
-export default connect(mapState, threadReadDispatchers)(CommentOptionsDropdown);
+
+CommentOptionsDropdown.propTypes = {
+    id: PropTypes.string,
+    creatorUsername: PropTypes.string,
+};

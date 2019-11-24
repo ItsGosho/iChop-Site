@@ -1,33 +1,31 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Link} from "react-router-dom";
 import ServerRoutingURLs from "../../../../constants/routing/server.routing.urls";
 import RoutingURLs from "../../../../constants/routing/routing.constants";
 import FrontEndResourcesRoutingURLs from "../../../../constants/front-end.resources.routings";
 import Image from "../../../other/Image";
 import './UserControlNav.css'
+import PropTypes from 'prop-types';
 
-class UserControlNav extends Component {
 
-    render() {
-        let username = this.props.username;
-        let userAvatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', username);
-        let profileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', username);
+const UserControlNav = ({username}) => (
+    <nav className="navbar navbar-expand-lg navbar-light bg-dark justify-content-md-center">
 
-        return (
-            <nav className="navbar navbar-expand-lg navbar-light bg-dark justify-content-md-center">
+        <Image url={ServerRoutingURLs.DATA.USER.AVATAR.GET(username)}
+               className="user-nav-picture"
+               defaultUrl={FrontEndResourcesRoutingURLs.USER.AVATAR}/>
 
-                <Image url={userAvatarUrl}
-                       className="user-nav-picture"
-                       defaultUrl={FrontEndResourcesRoutingURLs.USER.AVATAR}/>
+        <Link className="navbar-brand" to={RoutingURLs.USER.PROFILE.VIEW(username)}>
+            <span className="user-username-nav">{username}</span>
+        </Link>
 
-                <Link className="navbar-brand" to={profileUrl}>
-                    <span className="user-username-nav">{username}</span>
-                </Link>
+    </nav>
+);
 
-            </nav>
-        );
-    }
-
-}
 
 export default UserControlNav;
+
+
+UserControlNav.propTypes = {
+    username: PropTypes.string
+};

@@ -4,6 +4,8 @@ import ReportModal from "../../../../modal/ReportModal";
 import ReportServices from "../../../../../services/report.services";
 import withState from "../../../../../hocs/with.state";
 import Roles from "../../../../../constants/enums/roles.constants";
+import PropTypes from 'prop-types';
+
 
 class CommentReportButton extends Component {
 
@@ -66,3 +68,7 @@ class CommentReportButton extends Component {
 }
 
 export default withState(CommentReportButton);
+
+CommentReportButton.propTypes = {
+    id: PropTypes.string,
+};

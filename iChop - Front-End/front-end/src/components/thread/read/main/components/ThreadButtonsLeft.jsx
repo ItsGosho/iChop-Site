@@ -7,6 +7,7 @@ import ReportServices from "../../../../../services/report.services";
 import {Redirect} from "react-router-dom";
 import RoutingURLs from "../../../../../constants/routing/routing.constants";
 import ThreadServices from "../../../../../services/thread.services";
+import UserServices from "../../../../../services/user.services";
 
 class ThreadButtonsLeft extends Component {
 
@@ -48,70 +49,48 @@ class ThreadButtonsLeft extends Component {
 
     render() {
         let {id} = this.props.threadRead;
+        let {authorities, isAuthenticated} = this.props.authenticatedUserInfo;
         let {hasReported, isDeleteSuccessful} = this.state;
-        let isAuthenticated = this.props.authenticatedUserInfo.authority !== Roles.GUEST;
-        let hasRoleModerator = this.props.authenticatedUserInfo.authority !== Roles.USER;
 
         return (
             <Fragment>
-                {
-                    (() => {
 
-                        if (isAuthenticated && hasRoleModerator) {
-                            return (
-                                <button
-                                    className="btn btn-secondary btn-sm dropdown-toggle"
-                                    type="button"
-                                    data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
-                                    <small>⚙</small>
-                                    <span>Options</span>
-                                </button>
-                            );
-                        }
-
-                    })()
-                }
+                {UserServices.hasRole(authorities, Roles.MODERATOR) ? (
+                    <button
+                        className="btn btn-secondary btn-sm dropdown-toggle"
+                        type="button"
+                        data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <small>⚙</small>
+                        <span>Options</span>
+                    </button>
+                ) : null}
 
                 <div className="dropdown-menu">
-                    {
-                        (() => {
-                            if (isAuthenticated && hasRoleModerator) {
-                                return (
-                                    <button
-                                        type="button"
-                                        className="btn btn-light btn-sm thread-delete_button" onClick={this.onDelete}>
-                                        <small>❌</small>
-                                        <span>Delete</span>
-                                    </button>
-                                );
-                            }
-                        })()
-                    }
-
+                    {UserServices.hasRole(authorities, Roles.MODERATOR) ? (
+                        <button
+                            type="button"
+                            className="btn btn-light btn-sm thread-delete_button" onClick={this.onDelete}>
+                            <small>❌</small>
+                            <span>Delete</span>
+                        </button>
+                    ) : null}
                 </div>
 
-                {
-                    (() => {
-                        if (isAuthenticated && !hasReported) {
-                            return (
-                                <Fragment>
+                {isAuthenticated && !hasReported ? (
+                    <Fragment>
 
-                                    <ModalOpen relationTo={id} title={'Report Thread'}>
-                                        <button className="btn btn-sm thread-report_button">
-                                            <small>⚠</small>
-                                            Report
-                                        </button>
-                                    </ModalOpen>
+                        <ModalOpen relationTo={id} title={'Report Thread'}>
+                            <button className="btn btn-sm thread-report_button">
+                                <small>⚠</small>
+                                Report
+                            </button>
+                        </ModalOpen>
 
-                                    <ReportModal relationTo={id}
-                                                 onReport={this.onReport}/>
+                        <ReportModal relationTo={id} onReport={this.onReport}/>
 
-                                </Fragment>
-                            );
-                        }
-                    })()
-                }
+                    </Fragment>
+                ) : null}
 
                 {isDeleteSuccessful ? (<Redirect to={RoutingURLs.HOME} push/>) : null}
 
