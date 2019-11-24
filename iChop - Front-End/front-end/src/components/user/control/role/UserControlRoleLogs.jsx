@@ -1,6 +1,8 @@
 import React, {Component, Fragment} from 'react';
 import dateFormat from "dateformat";
 
+const ACTION_DATE_FORMAT = 'dd mmmm,yyyy HH:mm';
+
 class UserControlRoleLogs extends Component {
 
     constructor(props) {
@@ -14,27 +16,23 @@ class UserControlRoleLogs extends Component {
     }
 
     componentDidMount() {
-        let format = 'dd mmmm,yyyy HH:mm';
-
         let logs = [
-            {happenedOn: dateFormat(Date.now(), format), message: ' Changed the role to X'},
-            {happenedOn: dateFormat(Date.now(), format), message: ' Changed the role to X'},
+            {happenedOn: dateFormat(Date.now(), ACTION_DATE_FORMAT), message: ' Changed the role to X'},
+            {happenedOn: dateFormat(Date.now(), ACTION_DATE_FORMAT), message: ' Changed the role to X'},
         ];
 
         this.setState({logs})
     }
 
     iterateLogs() {
-        return this.state.logs.map((item, index) => {
-            return (
-                <li key={index}>
-                    <small>
-                        <b>[{item.happenedOn}]</b>
-                        <span>{item.message}</span>.
-                    </small>
-                </li>
-            );
-        });
+        return this.state.logs.map(({happenedOn, message}, index) => (
+            <li key={index}>
+                <small>
+                    <b>[{happenedOn}]</b>
+                    <span>{message}</span>.
+                </small>
+            </li>
+        ));
     }
 
     render() {

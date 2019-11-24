@@ -5,9 +5,10 @@ import UserProfileCentralContent from "./UserProfileCentralContent";
 import {withRouter} from "react-router-dom";
 import UserServices from "../../../services/user.services";
 import NotificationHelper from "../../../helpers/notification.helper";
-import {compose} from "redux";
-import {connect} from "react-redux";
 import userProfileInfoDispatchers from "../../../redux/dispatchers/user.profile.info.dispatchers";
+import withDispatcher from "../../../hocs/with.dispatcher";
+import NotificationMessagesConstants from "../../../constants/notification/notification.messages.constants";
+
 
 class UserProfile extends Component {
 
@@ -22,12 +23,12 @@ class UserProfile extends Component {
 
     async componentDidMount() {
         this.props.clearProfile();
-        let username = this.props.match.params.username;
+        let {username} = this.props.match.params;
         let user = await UserServices.findByUsername(username);
         let profileViewer = this.props.authenticatedUserInfo;
 
         if (!user) {
-            NotificationHelper.showErrorNotification(`User wasn't found`)
+            NotificationHelper.showErrorNotification(NotificationMessagesConstants.USER_NOT_FOUND)
         } else {
             this.props.fetchUser(username);
             this.props.fetchFollow(username, profileViewer.username);
@@ -60,12 +61,4 @@ class UserProfile extends Component {
 
 }
 
-let mapState = (states) => {
-    return {...states}
-};
-
-export default withRouter(
-    compose(
-        connect(mapState, userProfileInfoDispatchers),
-    )(UserProfile)
-)
+export default withRouter(withDispatcher(userProfileInfoDispatchers)(UserProfile));

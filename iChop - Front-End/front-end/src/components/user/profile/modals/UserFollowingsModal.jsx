@@ -21,31 +21,26 @@ class UserFollowingsModal extends Component {
 
 
     iterFollowings() {
-        return this.props.userProfileInfo.followings.map((following, index) => {
-            let {username} = following;
-
-            return (
-                <UserFollowModalBaseRow username={username}>
-                    <button className="btn btn-warning btn-sm float-right button-unfollow"
-                            onClick={() => {
-                                this.unFollow(username)
-                            }}>
-                        Soon!
-                    </button>
-                </UserFollowModalBaseRow>
-            )
-        })
+        return this.props.userProfileInfo.followings.map(({username}, index) => (
+            <UserFollowModalBaseRow username={username}>
+                <button className="btn btn-warning btn-sm float-right button-unfollow"
+                        onClick={() => {
+                            this.unFollow(username)
+                        }}>
+                    Soon!
+                </button>
+            </UserFollowModalBaseRow>
+        ));
     }
 
     render() {
+        let {username} = this.props.userProfileInfo;
 
         return (
-
-
             <Modal relationTo="all-followings">
 
                 <ModalTitle>
-                    <h5 className="modal-title">All users that <span><b>{this.props.userProfileInfo.username}</b></span> is following:</h5>
+                    <h5 className="modal-title">All users that <span><b>{username}</b></span> is following:</h5>
                 </ModalTitle>
 
                 <ModalBody>

@@ -22,8 +22,8 @@ class UserOptionsMinecraft extends Component {
 
         let uuid = '8ed20904-3262-401a-901a-1946504d2eea';
         let player = 'ItsGosho';
-        let profileUrl = RoutingURLs.PLAYER.PROFILE.VIEW.replace(':uuid', uuid);
-        let skinUrl = ServerRoutingURLs.OUTSIDE.CRAFATAR.MINECRAFT.SKIN.replace(':uuid', uuid);
+        let profileUrl = RoutingURLs.PLAYER.PROFILE.VIEW(uuid);
+        let skinUrl = ServerRoutingURLs.OUTSIDE.CRAFATAR.MINECRAFT.SKIN(uuid);
 
         return (
             <Fragment>

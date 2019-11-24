@@ -1,13 +1,9 @@
 import React, {Component, Fragment} from 'react';
-import Roles from "../../../constants/enums/roles.constants";
-import PropTypes from "prop-types";
-import UserProfileCentralContent from "./UserProfileCentralContent";
-import withState from "../../../hocs/with.state";
 import UserServices from "../../../services/user.services";
 import {withRouter} from "react-router-dom";
-import {compose} from "redux";
-import {connect} from "react-redux";
+import PropTypes from 'prop-types';
 import userProfileInfoDispatchers from "../../../redux/dispatchers/user.profile.info.dispatchers";
+import withDispatcher from "../../../hocs/with.dispatcher";
 
 class UserProfileCentralHead extends Component {
 
@@ -37,7 +33,7 @@ class UserProfileCentralHead extends Component {
 
     render() {
         let {username, authority, statusMessage, isViewerFollowingHim, isViewerFollowedByHim} = this.props.userProfileInfo;
-        let authenticatedUser = this.props.authenticatedUserInfo;
+        let {username: authenticatedUsername,isAuthenticated} = this.props.authenticatedUserInfo;
 
         return (
             <Fragment>
@@ -61,7 +57,7 @@ class UserProfileCentralHead extends Component {
                         </div>
                     </div>
 
-                    {authenticatedUser.username !== '' && authenticatedUser.username !== username ? (
+                    {isAuthenticated && authenticatedUsername !== username ? (
                         <Fragment>
                             <div className="row">
                                 <div className="col-md-12 head">
@@ -106,25 +102,17 @@ class UserProfileCentralHead extends Component {
 
 }
 
+export default withRouter(withDispatcher(userProfileInfoDispatchers)(UserProfileCentralHead))
 
-let mapState = (states) => {
-    return {...states}
-};
+const FollowControlButton = ({onClick, text}) => (
+    <a href='#'
+       onClick={onClick}
+       className="follow-control">
+        <span>{text}</span>
+    </a>
+);
 
-export default withRouter(
-    compose(
-        connect(mapState, userProfileInfoDispatchers),
-    )(UserProfileCentralHead)
-)
-
-const FollowControlButton = (props) => {
-    let {onClick, text} = props;
-
-    return (
-        <a href='#'
-           onClick={onClick}
-           className="follow-control">
-            <span>{text}</span>
-        </a>
-    )
+FollowControlButton.propTypes = {
+    text: PropTypes.string,
+    onClick: PropTypes.func,
 };

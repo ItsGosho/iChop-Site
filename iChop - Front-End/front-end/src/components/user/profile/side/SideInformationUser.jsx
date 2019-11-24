@@ -1,48 +1,45 @@
-import React, {Component, Fragment} from 'react';
+import React, {Fragment} from 'react';
 import dateFormat from "dateformat";
 import './SideInformationUser.css'
 import PropTypes from "prop-types";
 import withState from "../../../../hocs/with.state";
 
-class SideInformationUser extends Component {
+const DATE_PATTERN = 'dd mmm,yyyy';
 
-    render() {
-        let {lastOnline,registrationDate,totalMessages} = this.props.userProfileInfo;
+const SideInformationUser = (props) => {
+    let {lastOnline, registrationDate, totalMessages} = props.userProfileInfo;
 
-        let datePattern = 'dd mmm,yyyy';
+    /*TODO: total messages*/
+    return (
+        <Fragment>
 
-        /*TODO: total messages*/
+            {lastOnline !== null ? (<Info title="Last Online" content={dateFormat(lastOnline, DATE_PATTERN)}/>) : null}
+            {registrationDate !== null ? (<Info title="Joined On" content={dateFormat(registrationDate, DATE_PATTERN)}/>) : null}
+            <Info title="Messages" content={totalMessages}/>
 
-        return (
-            <Fragment>
-
-                {lastOnline !== null ? (<Info title="Last Online" content={dateFormat(lastOnline, datePattern)}/>) : null}
-                {registrationDate !== null ? (<Info title="Joined On" content={dateFormat(registrationDate, datePattern)}/>) : null}
-                <Info title="Messages" content={totalMessages}/>
-
-            </Fragment>
-        );
-    }
-}
+        </Fragment>
+    );
+};
 
 export default withState(SideInformationUser);
 
-const Info = (props) => {
-    let {title, content} = props;
+const Info = ({title, content}) => (
+    <div className="col-md-auto">
+        <div className="row info-row">
 
-    return (
-        <div className="col-md-auto">
-            <div className="row info-row">
-
-                <div className="col-md">
-                    {title}:
-                </div>
-
-                <div className="col-md">
-                    <span className="info-content">{content}</span>
-                </div>
-
+            <div className="col-md">
+                {title}:
             </div>
+
+            <div className="col-md">
+                <span className="info-content">{content}</span>
+            </div>
+
         </div>
-    )
+    </div>
+);
+
+Info.propTypes = {
+    title: PropTypes.string,
+    content: PropTypes.string,
 };

@@ -1,30 +1,28 @@
-import React, {Component, Fragment} from 'react';
+import React, {Fragment} from 'react';
 import ServerRoutingURLs from "../../../../constants/routing/server.routing.urls";
 import RoutingURLs from "../../../../constants/routing/routing.constants";
 import {Link} from "react-router-dom";
 import './SideInformationMinecraftAccount.css'
 
-class SideInformationMinecraftAccount extends Component {
 
-    render() {
-        let uuid = 'fdsfs';
-        let accountName = 'ItsGosho';
-        let headAvatarUrl = ServerRoutingURLs.OUTSIDE.MINOTAR.MINECRAFT.HEAD.replace(':accountName', accountName);
-        let accountProfileUrl = RoutingURLs.PLAYER.PROFILE.VIEW.replace(':uuid', uuid);
+const SideInformationMinecraftAccount = () => {
+    let uuid = 'fdsfs';
+    let accountName = 'ItsGosho';
 
-        return (
-            <Fragment>
-                {accountName != null ? (
-                    <div className="card card-minecraft-holder">
-                        <div>
-                            <img src={headAvatarUrl} alt='' className="avatar-minecraft-player"/>
-                            <Link to={accountProfileUrl} className="username-minecraf-player">{accountName}</Link>
-                        </div>
+    return (
+        <Fragment>
+            {accountName != null ? (
+                <div className="card card-minecraft-holder">
+                    <div>
+                        <img src={ServerRoutingURLs.OUTSIDE.MINOTAR.MINECRAFT.HEAD(accountName)} alt=''
+                             className="avatar-minecraft-player"/>
+                        <Link to={RoutingURLs.PLAYER.PROFILE.VIEW(uuid)}
+                              className="username-minecraf-player">{accountName}</Link>
                     </div>
-                ) : null}
-            </Fragment>
-        )
-    }
-}
+                </div>
+            ) : null}
+        </Fragment>
+    )
+};
 
 export default SideInformationMinecraftAccount;

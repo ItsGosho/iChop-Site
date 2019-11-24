@@ -2,13 +2,12 @@ import React, {Component, Fragment} from 'react';
 import Roles from "../../../../../constants/enums/roles.constants";
 import './PanePostActions.css'
 import CommentServices from "../../../../../services/comment.services";
-import {compose} from "redux";
-import {connect} from "react-redux";
-import authenticatedUserInfoDispatchers from "../../../../../redux/dispatchers/authenticated.user.info.dispatchers";
-import userProfileInfoDispatchers from "../../../../../redux/dispatchers/user.profile.info.dispatchers";
 import ModalOpen from "../../../../modal/ModalOpen";
 import ReportModal from "../../../../modal/ReportModal";
 import ReportServices from "../../../../../services/report.services";
+import withDispatchers from "../../../../../hocs/with.dispatchers";
+import UserServices from "../../../../../services/user.services";
+
 
 class PanePostActions extends Component {
 
@@ -25,7 +24,7 @@ class PanePostActions extends Component {
 
     async componentWillReceiveProps(nextProps, nextContext) {
         let {username: authenticatedUsername} = this.props.authenticatedUserInfo;
-        let hasReported = await ReportServices.hasReportedUserProfileComment(authenticatedUsername,this.props.id);
+        let hasReported = await ReportServices.hasReportedUserProfileComment(authenticatedUsername, this.props.id);
         this.setState({hasReported});
     }
 
@@ -44,16 +43,19 @@ class PanePostActions extends Component {
         let {id} = this.props;
         let response = await ReportServices.reportUserProfileComment(id, reason);
 
-        if(response.successful){
+        if (response.successful) {
             this.setState({hasReported: true})
         }
     }
 
     render() {
-        let isPostCreator = this.props.authenticatedUserInfo.username === this.props.creatorUsername;
-        let isPostOnCreatorProfile = this.props.authenticatedUserInfo.username === this.props.userProfileUsername;
-        let isModerator = this.props.authenticatedUserInfo.authority === Roles.MODERATOR;
+        let {username: authenticatedUsername, authorities: authenticatedAuthorities} = this.props.authenticatedUserInfo;
+        let {creatorUsername, userProfileUsername} = this.props;
         let {hasReported} = this.state;
+
+        let isPostCreator = authenticatedUsername === creatorUsername;
+        let isPostOnCreatorProfile = authenticatedUsername === userProfileUsername;
+        let isModerator = UserServices.hasRole(authenticatedAuthorities, Roles.MODERATOR);
 
         return (
             <Fragment>
@@ -81,11 +83,4 @@ class PanePostActions extends Component {
     }
 }
 
-let mapState = (states) => {
-    return {...states}
-};
-
-export default compose(
-    connect(mapState, authenticatedUserInfoDispatchers),
-    connect(mapState, userProfileInfoDispatchers)
-)(PanePostActions);
+export default withDispatchers(PanePostActions);

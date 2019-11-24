@@ -8,8 +8,8 @@ import CommentReactDropdown from "./components/CommentReactDropdown";
 import withState from "../../../../hocs/with.state";
 
 
-const ThreadComments = () => {
-    let {comments} = this.props.threadRead;
+const ThreadComments = (props) => {
+    let {comments} = props.threadRead;
 
     return (
         <section id="section-thread_read_comments">

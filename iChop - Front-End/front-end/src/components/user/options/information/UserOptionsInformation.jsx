@@ -9,12 +9,9 @@ import Image from "../../../other/Image";
 import UploadBase64Image from "../../../other/UploadBase64Image";
 import TextAreaWithCounter from "../../../other/TextAreaWithCounter";
 import {UserValidationConstants} from "../../../../constants/other/validation.constants";
-import withState from "../../../../hocs/with.state";
-import authenticatedUserInfoReducer from "../../../../redux/reducers/authenticated.user.info.reducer";
 import UserServices from "../../../../services/user.services";
-import {connect} from "react-redux";
-import {compose} from "redux";
 import authenticatedUserInfoDispatchers from "../../../../redux/dispatchers/authenticated.user.info.dispatchers";
+import withDispatcher from "../../../../hocs/with.dispatcher";
 
 class UserOptionsInformation extends Component {
 
@@ -69,9 +66,10 @@ class UserOptionsInformation extends Component {
         let {username} = this.props.authenticatedUserInfo;
         let {statusMessage, birthDate, aboutYou, uploadedUserAvatar} = this.state;
 
+        birthDate = birthDate ? dateFormat(birthDate, 'dd/mm/yyyy') : null;
         let response = await UserServices.updateInformation(username,
             statusMessage,
-            dateFormat(birthDate, 'dd/mm/yyyy'),
+            birthDate,
             aboutYou,
             uploadedUserAvatar);
 
@@ -90,10 +88,10 @@ class UserOptionsInformation extends Component {
 
     onComponentChanged(props) {
         let {username, statusMessage, birthDate, aboutYou} = props.authenticatedUserInfo;
-        let avatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', username);
+        let avatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET(username);
 
-        statusMessage = statusMessage !== undefined ? statusMessage : '';
-        aboutYou = aboutYou !== undefined ? aboutYou : '';
+        statusMessage = statusMessage ? statusMessage : '';
+        aboutYou = aboutYou ? aboutYou : '';
 
         this.setState({username: username});
         this.setState({statusMessage: statusMessage});
@@ -224,8 +222,5 @@ class UserOptionsInformation extends Component {
 
 }
 
-let mapState = (state) => {
-    return {...state};
-};
 
-export default connect(mapState, authenticatedUserInfoDispatchers)(UserOptionsInformation);
+export default withDispatcher(authenticatedUserInfoDispatchers)(UserOptionsInformation);

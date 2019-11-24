@@ -7,8 +7,8 @@ import formDate from 'dateformat';
 const CREATED_ON_DATE_PATTERN = 'dd mmm,yyyy';
 const POSTED_AT_DATE_PATTERN = 'HH:mm';
 
-const ThreadInformation = () => {
-    let {id, title, createdOn, postedAt, views, totalReactions, comments} = this.props.threadRead;
+const ThreadInformation = (props) => {
+    let {id, title, createdOn, postedAt, views, totalReactions, comments} = props.threadRead;
     let threadCommentsFragmentUrl = RoutingURLs.THREAD.READ(id) + '#section-thread_read_comments';
 
     return (

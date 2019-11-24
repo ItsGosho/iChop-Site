@@ -3,7 +3,6 @@ import './UserProfileCentralContent.css'
 import UserProfileCentralHead from "./UserProfileCentralHead";
 import PanePosts from "./panes/PanePosts";
 import PaneInformation from "./panes/PaneInformation";
-import CreateReactClass from "create-react-class";
 import PropTypes from "prop-types";
 
 class UserProfileCentralContent extends Component {
@@ -40,10 +39,7 @@ class UserProfileCentralContent extends Component {
     }
 
     getTab() {
-        let {
-            isPostsTabSelected,
-            isInformationSelected,
-        } = this.state;
+        let {isPostsTabSelected, isInformationSelected,} = this.state;
 
         if (isPostsTabSelected) {
             return (<PanePosts/>)
@@ -72,9 +68,9 @@ class UserProfileCentralContent extends Component {
                         </NavTabs>
 
 
-                       <NavContent>
-                           {this.getTab()}
-                       </NavContent>
+                        <NavContent>
+                            {this.getTab()}
+                        </NavContent>
 
                     </div>
                 </div>
@@ -86,36 +82,32 @@ class UserProfileCentralContent extends Component {
 
 export default UserProfileCentralContent;
 
-const NavContent = CreateReactClass({
-    render() {
-        return (
-            <div className="tab-content">
-                <div className="tab-pane container active">
-                    {this.props.children}
-                </div>
-            </div>
-        )
-    }
-});
+const NavContent = ({children}) => (
+    <div className="tab-content">
+        <div className="tab-pane container active">
+            {children}
+        </div>
+    </div>
+);
 
-const NavTabs = CreateReactClass({
-    render() {
-        return (
-            <div className="navigation">
-                <ul className="nav nav-tabs">
-                    {this.props.children}
-                </ul>
-            </div>
-        )
-    }
-});
+const NavTabs = ({children}) => (
+    <div className="navigation">
+        <ul className="nav nav-tabs">
+            {children}
+        </ul>
+    </div>
+);
 
-const Tab = (props) => {
-    let {text, onClick} = props;
+const Tab = ({text, onClick}) => {
 
     return (
         <li className="nav-item">
             <a className="nav-link" data-toggle='tab' href='#' onClick={onClick}>{text}</a>
         </li>
     )
+};
+
+Tab.propTypes = {
+    text: PropTypes.string,
+    onClick: PropTypes.func,
 };

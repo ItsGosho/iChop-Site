@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react';
+import React, {Fragment} from 'react';
 import ModalOpen from "../../../modal/ModalOpen";
 import UserFollowingsModal from "../modals/UserFollowingsModal";
 import UserFollowersModal from "../modals/UserFollowersModal";
@@ -10,76 +10,70 @@ import FrontEndResourcesRoutingURLs from "../../../../constants/front-end.resour
 import './SideInformationFollow.css'
 import withState from "../../../../hocs/with.state";
 
-class SideInformationFollow extends Component {
 
+const MAX_FOLLOW_SHOW = 4;
 
-    render() {
-        let {followings, followers} = this.props.userProfileInfo;
+const SideInformationFollow = (props) => {
+    let {followings, followers} = props.userProfileInfo;
 
-        let totalFollowings = followings.length;
-        let totalFollowers = followers.length;
+    let totalFollowings = followings.length;
+    let totalFollowers = followers.length;
 
-        let maxFollowShow = 4;
+    return (
+        <Fragment>
+            <div className="card follow-card">
 
-        return (
-            <Fragment>
-                <div className="card follow-card">
-
-                    <div align="center">
-                        <span>Following: {totalFollowings}</span>
-                    </div>
-
-                    <FollowInformation users={followings.slice(0, maxFollowShow)}/>
-
-                    {totalFollowings > maxFollowShow ? (
-                        <ModalOpen relationTo="all-followings">
-                            <a href='#'>See all</a>
-                        </ModalOpen>
-                    ) : null}
-
-                    <UserFollowingsModal/>
-
+                <div align="center">
+                    <span>Following: {totalFollowings}</span>
                 </div>
 
-                <div className="card follow-card">
+                <FollowInformation users={followings.slice(0, MAX_FOLLOW_SHOW)}/>
 
-                    <div align="center">
-                        <span>Followers: {totalFollowers}</span>
-                    </div>
+                {totalFollowings > MAX_FOLLOW_SHOW ? (
+                    <ModalOpen relationTo="all-followings">
+                        <a href='#'>See all</a>
+                    </ModalOpen>
+                ) : null}
 
-                    <FollowInformation users={followers.slice(0, maxFollowShow)}/>
+                <UserFollowingsModal/>
 
-                    {totalFollowers > maxFollowShow ? (
-                        <ModalOpen relationTo="all-followers">
-                            <a href='#'>See all</a>
-                        </ModalOpen>
-                    ) : null}
+            </div>
 
-                    <UserFollowersModal/>
+            <div className="card follow-card">
 
+                <div align="center">
+                    <span>Followers: {totalFollowers}</span>
                 </div>
-            </Fragment>
-        );
-    }
 
-}
+                <FollowInformation users={followers.slice(0, MAX_FOLLOW_SHOW)}/>
+
+                {totalFollowers > MAX_FOLLOW_SHOW ? (
+                    <ModalOpen relationTo="all-followers">
+                        <a href='#'>See all</a>
+                    </ModalOpen>
+                ) : null}
+
+                <UserFollowersModal/>
+
+            </div>
+        </Fragment>
+    );
+};
+
 
 export default withState(SideInformationFollow);
 
-const FollowInformation = (props) => {
-    let {users} = props;
-
-    let usersSliced = users.slice(0, 4);
+const FollowInformation = ({users}) => {
+    let usersSliced = users.slice(0, MAX_FOLLOW_SHOW);
 
     return (
         <div className="row d-flex justify-content-center align-items-center">
-            {usersSliced.map((user, index) => {
-                let {username} = user;
-                let profileUrl = RoutingURLs.USER.PROFILE.VIEW.replace(':username', username);
-                let avatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', username);
+            {usersSliced.map(({id,username}, index) => {
+                let profileUrl = RoutingURLs.USER.PROFILE.VIEW(username);
+                let avatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET(username);
 
                 return (
-                    <div key={user.id}>
+                    <div key={id}>
                         <Link to={profileUrl}>
 
                             <Image url={avatarUrl}

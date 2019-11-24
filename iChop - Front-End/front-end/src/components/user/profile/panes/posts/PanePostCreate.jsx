@@ -6,11 +6,9 @@ import Image from "../../../../other/Image";
 import TextAreaWithCounter from "../../../../other/TextAreaWithCounter";
 import {PostValidationConstants} from "../../../../../constants/other/validation.constants";
 import {withRouter} from "react-router-dom";
-import {compose} from "redux";
-import {connect} from "react-redux";
-import userProfileInfoDispatchers from "../../../../../redux/dispatchers/user.profile.info.dispatchers";
-import authenticatedUserInfoDispatchers from "../../../../../redux/dispatchers/authenticated.user.info.dispatchers";
 import CommentServices from "../../../../../services/comment.services";
+import withDispatchers from "../../../../../hocs/with.dispatchers";
+
 
 class PanePostCreate extends Component {
 
@@ -49,8 +47,8 @@ class PanePostCreate extends Component {
     }
 
     render() {
-        let viewerUsername = this.props.authenticatedUserInfo.username;
-        let viewerAvatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET.replace(':username', viewerUsername);
+        let {username: viewerUsername} = this.props.authenticatedUserInfo;
+        let viewerAvatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET(viewerUsername);
 
         return (
             <form>
@@ -92,13 +90,4 @@ class PanePostCreate extends Component {
     }
 }
 
-let mapState = (states) => {
-    return {...states}
-};
-
-export default withRouter(
-    compose(
-        connect(mapState, authenticatedUserInfoDispatchers),
-        connect(mapState, userProfileInfoDispatchers),
-    )(PanePostCreate)
-)
+export default withRouter(withDispatchers(PanePostCreate));

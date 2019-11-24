@@ -36,14 +36,14 @@ const ReactionServices = {
         ReactionServices.create(id, EntityTypes.THREAD_COMMENT, type);
     },
 
-    async hasReactedThread(id,username) {
+    async hasReactedThread(id, username) {
         let url = Endpoints.FIND_BY + `?creatorUsername=${username}&entityId=${id}&entityType=${EntityTypes.THREAD}`;
         let response = await Requester.get(url);
 
-        return response.data.length > 0;
+        return response.data !== undefined ? response.data.length > 0 : false;
     },
 
-    async hasReactedThreadComment(id,username) {
+    async hasReactedThreadComment(id, username) {
         let url = Endpoints.FIND_BY + `?creatorUsername=${username}&entityId=${id}&entityType=${EntityTypes.THREAD_COMMENT}`;
         let response = await Requester.get(url);
 

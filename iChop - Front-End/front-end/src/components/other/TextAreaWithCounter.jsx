@@ -41,7 +41,7 @@ class TextAreaWithCounter extends Component {
     componentWillReceiveProps(nextProps, nextContext) {
         let {maxCharacters, initialValue} = nextProps;
 
-        initialValue = initialValue !== undefined ? initialValue : '';
+        initialValue = initialValue ? initialValue : '';
 
         this.setState({maxCharacters: maxCharacters});
         this.setState({leftCharacters: maxCharacters});

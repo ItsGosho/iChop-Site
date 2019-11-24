@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import UniversalPasswordsInputs from "../../../other/UniversalPasswordsInputs";
 import NotificationHelper from "../../../../helpers/notification.helper";
 import UserServices from "../../../../services/user.services";
+import NotificationMessagesConstants from "../../../../constants/notification/notification.messages.constants";
 
 class UserOptionsChangePassword extends Component {
 
@@ -15,7 +16,7 @@ class UserOptionsChangePassword extends Component {
         let {password, confirmPassword} = this.state;
 
         if (password !== confirmPassword) {
-            NotificationHelper.showErrorNotification('Passwords are not equal!');
+            NotificationHelper.showErrorNotification(NotificationMessagesConstants.PASSWORDS_NOT_EQUAL);
             return;
         }
 
