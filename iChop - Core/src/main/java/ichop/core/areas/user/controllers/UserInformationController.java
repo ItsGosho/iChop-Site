@@ -33,7 +33,7 @@ public class UserInformationController {
     }
 
 
-    @PreAuthorize("hasAuthority('OWNER') or principal.username.equals(#username)")
+    @PreAuthorize("hasAuthority('OWNER') or #username == authentication.principal")
     @PostMapping(UserRoutingConstants.UPDATE_INFORMATION)
     public ResponseEntity update(@PathVariable String username,@RequestBody UserInformationUpdateRequest request) {
         request.setUsername(username);
