@@ -1,12 +1,10 @@
 import React, {Component} from 'react';
 import './ThreadsAll.css';
 import '../read/ThreadRead.css';
-import CreateReactClass from "create-react-class";
 import ThreadsAllThread from "./ThreadsAllThread";
 import threadAllDispatchers from "../../../redux/dispatchers/thread.all.dispatchers";
-import {connect} from "react-redux";
-import ReactPaginate from 'react-paginate';
 import PaginationNav from "../../other/PaginationNav";
+import withDispatcher from "../../../hocs/with.dispatcher";
 
 class ThreadsAll extends Component {
 
@@ -28,21 +26,17 @@ class ThreadsAll extends Component {
             return (<span>There are no news!</span>);
         }
 
-        return threads.map((thread, index) => {
-            let {id, title, createdOn, creatorUsername, postTime, totalViews, totalReactions, totalComments, content} = thread;
-
-            return (
-                <ThreadsAllThread id={id}
-                                  title={title}
-                                  createdOn={createdOn}
-                                  creatorUsername={creatorUsername}
-                                  postTime={postTime}
-                                  totalViews={totalViews}
-                                  totalReactions={totalReactions}
-                                  totalComments={totalComments}
-                                  content={content}/>
-            )
-        });
+        return threads.map(({id, title, createdOn, creatorUsername, postTime, totalViews, totalReactions, totalComments, content}, index) => (
+            <ThreadsAllThread id={id}
+                              title={title}
+                              createdOn={createdOn}
+                              creatorUsername={creatorUsername}
+                              postTime={postTime}
+                              totalViews={totalViews}
+                              totalReactions={totalReactions}
+                              totalComments={totalComments}
+                              content={content}/>
+        ));
     }
 
     onPageChange(obj) {
@@ -73,10 +67,6 @@ class ThreadsAll extends Component {
 
                 <div className="dropdown-divider"/>
 
-                {/*<PaginationNav totalResults={threads.length}
-                               resultsPerPage={1}
-                               redirectPage={RoutingURLs.HOME}/>*/}
-
                 <PaginationNav total={total}
                                resultsPerPage={resultsPerPage}
                                onPageChange={this.onPageChange}/>
@@ -87,25 +77,18 @@ class ThreadsAll extends Component {
 
 }
 
-let mapState = (state) => {
-    return {...state};
-};
 
-export default connect(mapState, threadAllDispatchers)(ThreadsAll);
+export default withDispatcher(threadAllDispatchers)(ThreadsAll);
 
 
-const Threads = CreateReactClass({
-    render() {
-        return (
-            <div className="d-flex justify-content-center">
-                <div className="col-md-auto width-75-percent">
-                    <div className="col-xs-6">
-                        <div className="card">
-                            {this.props.children}
-                        </div>
-                    </div>
+const Threads = ({children}) => (
+    <div className="d-flex justify-content-center">
+        <div className="col-md-auto width-75-percent">
+            <div className="col-xs-6">
+                <div className="card">
+                    {children}
                 </div>
             </div>
-        );
-    }
-});
+        </div>
+    </div>
+);
