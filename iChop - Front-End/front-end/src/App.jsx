@@ -8,7 +8,7 @@ import UserOptions from "./components/user/options/UserOptions";
 import {Switch} from "react-bootstrap";
 import {Route} from "react-router-dom";
 import RoutingURLs from "./constants/routing/routing.constants";
-import Logout from "./components/navbar/other/Logout";
+import Logout from "./components/navbar/components/Logout";
 import UserChangePasswordByToken from "./components/user/other/UserChangePasswordByToken";
 import PrefixURLs from "./constants/routing/prefix.routing.constants";
 import ThreadsAll from "./components/thread/all/ThreadsAll";

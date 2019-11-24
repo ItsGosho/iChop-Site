@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1984862c-2f8c-4410-af36-a1dcaaa3ddaf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/thread/read/comments/components/CommentOptionsDropdown.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/thread/read/comments/components/CommentOptionsDropdown.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/thread/read/main/components/ThreadButtonsLeft.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/thread/read/main/components/ThreadButtonsLeft.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -422,7 +421,8 @@
       <workItem from="1574412199384" duration="48000" />
       <workItem from="1574438576407" duration="1982000" />
       <workItem from="1574463556804" duration="618000" />
-      <workItem from="1574505194561" duration="1893000" />
+      <workItem from="1574505194561" duration="2542000" />
+      <workItem from="1574591352184" duration="634000" />
     </task>
     <servers />
   </component>

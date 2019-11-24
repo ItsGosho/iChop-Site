@@ -2,7 +2,7 @@ import RequestTypes from "../constants/rest/request.type.constants";
 import ContentType from "../constants/rest/content.type.constants";
 import RequestHeaders from "../constants/rest/request.header.constants";
 import NotificationHelper from "../helpers/notification.helper";
-import NotificationConstants from "../constants/notification/notification.constants";
+import NotificationMessagesConstants from "../constants/notification/notification.messages.constants";
 
 
 const Requester = {
@@ -11,7 +11,7 @@ const Requester = {
 
         let notificationId = undefined;
         if (loadingNotification) {
-            notificationId = NotificationHelper.showLoadingNotification(NotificationConstants.LOADING)
+            notificationId = NotificationHelper.showLoadingNotification(NotificationMessagesConstants.LOADING)
         }
 
         let response = await fetch(url, {
