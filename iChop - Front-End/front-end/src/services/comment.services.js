@@ -6,9 +6,9 @@ const Endpoints = ServerRoutingURLs.CORE.COMMENT;
 
 const CommentServices = {
 
-    async createThreadComment(threadId,content) {
-        let url = Endpoints.THREAD_CREATE.replace(':id', threadId);
-        let response = await Requester.post(url, {threadId,content});
+    async createThreadComment(threadId, content) {
+        let url = Endpoints.THREAD_CREATE(threadId);
+        let response = await Requester.post(url, {threadId, content});
 
         NotificationHelper.showNotificationByResponse(response);
 
@@ -16,14 +16,14 @@ const CommentServices = {
     },
 
     async findAllUserProfileComments(username) {
-        let url = Endpoints.USER_PROFILE_ALL.replace(':username', username);
+        let url = Endpoints.USER_PROFILE_ALL(username);
         let response = await Requester.get(url);
 
         return response.data;
     },
 
     async findAllThreadComments(id) {
-        let url = Endpoints.THREAD_ALL.replace(':id', id);
+        let url = Endpoints.THREAD_ALL(id);
         let response = await Requester.get(url);
 
         return response.data;
@@ -37,7 +37,7 @@ const CommentServices = {
     },
 
     async createUserProfileComment(username, content) {
-        let url = Endpoints.USER_PROFILE_CREATE.replace(':username', username);
+        let url = Endpoints.USER_PROFILE_CREATE(username);
         let response = await Requester.post(url, {content});
 
         NotificationHelper.showNotificationByResponse(response);
@@ -46,9 +46,7 @@ const CommentServices = {
     },
 
     async deleteUserProfileComment(username, commentId) {
-        let url = Endpoints.USER_PROFILE_DELETE
-            .replace(':username', username)
-            .replace(':commentId', commentId);
+        let url = Endpoints.USER_PROFILE_DELETE(username, commentId);
 
         let response = await Requester.post(url, {});
 
@@ -57,10 +55,8 @@ const CommentServices = {
         return response;
     },
 
-    async deleteThreadComment(threadId,commentId) {
-        let url = Endpoints.THREAD_DELETE
-            .replace(':id', threadId)
-            .replace(':commentId', commentId);
+    async deleteThreadComment(threadId, commentId) {
+        let url = Endpoints.THREAD_DELETE(threadId, commentId);
 
         let response = await Requester.post(url, {});
 

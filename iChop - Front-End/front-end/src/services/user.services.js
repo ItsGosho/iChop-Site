@@ -63,21 +63,21 @@ const UserServices = {
     },
 
     async findFollowings(username) {
-        let url = Endpoints.ALL_FOLLOWINGS.replace(':username', username);
+        let url = Endpoints.ALL_FOLLOWINGS(username);
         let response = await Requester.get(url);
 
         return response.data;
     },
 
     async findInformation(username) {
-        let url = Endpoints.RETRIEVE_INFORMATION.replace(':username', username);
+        let url = Endpoints.RETRIEVE_INFORMATION(username);
         let response = await Requester.get(url);
 
         return response.data;
     },
 
     async updateInformation(username, statusMessage, birthDate, aboutYou, avatarBinary) {
-        let url = Endpoints.UPDATE_INFORMATION.replace(':username', username);
+        let url = Endpoints.UPDATE_INFORMATION(username);
         let response = await Requester.post(url, {statusMessage, birthDate, aboutYou, avatarBinary});
 
         NotificationHelper.showNotificationByResponse(response);
@@ -86,28 +86,28 @@ const UserServices = {
     },
 
     async findFollowers(username) {
-        let url = Endpoints.ALL_FOLLOWERS.replace(':username', username);
+        let url = Endpoints.ALL_FOLLOWERS(username)
         let response = await Requester.get(url);
 
         return response.data;
     },
 
     async follow(username) {
-        let url = Endpoints.FOLLOW.replace(':username', username);
+        let url = Endpoints.FOLLOW(username)
         let response = await Requester.post(url);
 
         NotificationHelper.showNotificationByResponse(response);
     },
 
     async unfollow(username) {
-        let url = Endpoints.UNFOLLOW.replace(':username', username);
+        let url = Endpoints.UNFOLLOW(username)
         let response = await Requester.post(url);
 
         NotificationHelper.showNotificationByResponse(response);
     },
 
     async isFollowing(username, follow) {
-        let url = Endpoints.IS_FOLLOWING.replace(':username', username) + '?username=' + follow;
+        let url = Endpoints.IS_FOLLOWING(username) + '?username=' + follow;
         let response = await Requester.get(url);
 
         return response.data.result;

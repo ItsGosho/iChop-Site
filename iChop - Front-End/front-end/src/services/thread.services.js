@@ -22,14 +22,14 @@ const ThreadServices = {
     },
 
     async deleteById(id) {
-        let url = Endpoints.DELETE_BY_ID.replace(':id',id);
-        let response = await Requester.post(url,{});
+        let url = Endpoints.DELETE_BY_ID(id);
+        let response = await Requester.post(url, {});
 
         NotificationHelper.showNotificationByResponse(response);
         return response;
     },
 
-    async findById(id){
+    async findById(id) {
         let query = `?id=${id}`;
         let response = await Requester.get(Endpoints.FIND_BY + query);
 
