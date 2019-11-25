@@ -27,18 +27,19 @@ class Image extends Component {
         event.target.src = this.state.defaultUrl;
     }
 
-    componentDidMount() {
-        let {url, defaultUrl} = this.props;
+    componentWillReceiveProps(nextProps, nextContext) {
+        let {url, defaultUrl} = nextProps;
 
         this.setState({url, defaultUrl, imageUrl: defaultUrl});
-        this.setState({imageUrl: this.state.url})
-
+        this.setState({imageUrl: url})
     }
 
     render() {
         let {imageUrl} = this.state;
         let {className, style, title} = this.props;
 
+        imageUrl = imageUrl ? imageUrl : this.props.defaultUrl;
+        console.log(imageUrl);
         return (
             <img src={imageUrl}
                  onError={this.onImageError}

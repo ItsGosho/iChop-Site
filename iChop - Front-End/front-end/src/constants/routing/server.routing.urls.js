@@ -1,5 +1,5 @@
 const CORE_SERVER_DOMAIN = 'http://localhost:8000';
-const DATA_SERVER_DOMAIN = 'http://localhost:8001';
+const DATA_SERVER_DOMAIN = 'http://localhost:8007';
 const OTHER_CRAFATAR_SERVER_DOMAIN = 'https://crafatar.com';
 const OTHER_MINOTAR_SERVER_DOMAIN = 'https://minotar.net';
 
@@ -48,6 +48,9 @@ const ServerRoutingURLs = {
             CREATE: `${CORE_SERVER_DOMAIN}/report/create`,
             DELETE_BY_ID: `${CORE_SERVER_DOMAIN}/report/delete/by/id`,
             IS_USER_REPORTED: `${CORE_SERVER_DOMAIN}/report/is/user/reported`,
+        },
+        DATA_STORAGE: {
+            SET_USER_AVATAR: (username) => `${CORE_SERVER_DOMAIN}/data/set/user/${username}/avatar`,
         }
     },
     DATA: {

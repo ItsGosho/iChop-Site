@@ -37,4 +37,8 @@ public final class UserRoutingConstants {
     public static final String ROLE_HAS_NEXT = "/admin/user/{username}/role/has/next"; /*ADMIN++*/
     public static final String ROLE_HAS_PREVIOUS = "/admin/user/{username}/role/has/previous"; /*ADMIN++*/
 
+    //DataStorageController -----------------------------------------------------------------------------
+
+    public static final String SET_USER_AVATAR = "/data/set/user/{username}/avatar"; /*LOGGED IN USER IN HIS PROFILE OR OWNER*/
+
 }

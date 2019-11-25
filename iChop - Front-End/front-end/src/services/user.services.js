@@ -80,9 +80,9 @@ const UserServices = {
         return response.data;
     },
 
-    async updateInformation(username, statusMessage, birthDate, aboutYou, avatarBinary) {
+    async updateInformation(username, statusMessage, birthDate, aboutYou) {
         let url = Endpoints.UPDATE_INFORMATION(username);
-        let response = await Requester.post(url, {statusMessage, birthDate, aboutYou, avatarBinary});
+        let response = await Requester.post(url, {statusMessage, birthDate, aboutYou});
 
         NotificationHelper.showNotificationByResponse(response);
 
@@ -90,21 +90,21 @@ const UserServices = {
     },
 
     async findFollowers(username) {
-        let url = Endpoints.ALL_FOLLOWERS(username)
+        let url = Endpoints.ALL_FOLLOWERS(username);
         let response = await Requester.get(url);
 
         return response.data;
     },
 
     async follow(username) {
-        let url = Endpoints.FOLLOW(username)
+        let url = Endpoints.FOLLOW(username);
         let response = await Requester.post(url);
 
         NotificationHelper.showNotificationByResponse(response);
     },
 
     async unfollow(username) {
-        let url = Endpoints.UNFOLLOW(username)
+        let url = Endpoints.UNFOLLOW(username);
         let response = await Requester.post(url);
 
         NotificationHelper.showNotificationByResponse(response);

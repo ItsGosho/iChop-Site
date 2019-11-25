@@ -12,6 +12,7 @@ import {UserValidationConstants} from "../../../../constants/other/validation.co
 import UserServices from "../../../../services/user.services";
 import authenticatedUserInfoDispatchers from "../../../../redux/dispatchers/authenticated.user.info.dispatchers";
 import withDispatcher from "../../../../hocs/with.dispatcher";
+import DataStorageServices from "../../../../services/data.services";
 
 class UserOptionsInformation extends Component {
 
@@ -67,11 +68,12 @@ class UserOptionsInformation extends Component {
         let {statusMessage, birthDate, aboutYou, uploadedUserAvatar} = this.state;
 
         birthDate = birthDate ? dateFormat(birthDate, 'dd/mm/yyyy') : null;
+        DataStorageServices.setUserAvatar(username,uploadedUserAvatar);
+
         let response = await UserServices.updateInformation(username,
             statusMessage,
             birthDate,
-            aboutYou,
-            uploadedUserAvatar);
+            aboutYou);
 
         if (response.successful) {
             this.props.fetchAuthenticatedUserInfo();

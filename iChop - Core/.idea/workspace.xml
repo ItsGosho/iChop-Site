@@ -2,8 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1984862c-2f8c-4410-af36-a1dcaaa3ddaf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Data Storage/data-storage.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Data Storage/data-storage.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Data Storage/data-storage.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Data Storage/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Data Storage/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Data Storage/src/main/java/ichop/storage/listeners/UserDataListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Data Storage/src/main/java/ichop/storage/listeners/UserDataListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Data Storage/src/main/java/ichop/storage/models/UserSetAvatarRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Data Storage/src/main/java/ichop/storage/models/UserSetAvatarRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Data Storage/src/main/java/ichop/storage/validators/Base64.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Data Storage/src/main/java/ichop/storage/validators/Base64Validator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Data Storage/src/main/resources/application-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Data Storage/src/main/resources/application-dev.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Data Storage/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Data Storage/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/constants/UserRoutingConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ichop/core/areas/user/constants/UserRoutingConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/user/options/information/UserOptionsInformation.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/components/user/options/information/UserOptionsInformation.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/constants/routing/server.routing.urls.js" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/constants/routing/server.routing.urls.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/services/user.services.js" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/services/user.services.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -118,8 +130,8 @@
         <option value="HTML File" />
         <option value="AnnotationType" />
         <option value="FxmlFile" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -162,8 +174,12 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="ichop.web.controllers.thread" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\templates\user\profile\partials" />
+      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\templates\user\profile\panes" />
+      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\templates\user\profile" />
+      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\static\res\css\lib" />
+      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\static\res\js\lib" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.ichop.core.areas.post.services" />
@@ -177,18 +193,15 @@
       <recent name="C:\Users\LocktripDev\Desktop\iChop\iChop - Core\src\main\java\ichop\core\areas\report" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="ichop.core.areas.storage.controllers" />
       <recent name="ichop.core.areas.report.models.jms" />
       <recent name="ichop.core.areas.report.controllers" />
       <recent name="ichop.core.areas.comment.controllers" />
       <recent name="ichop.core.areas.comment.models.jms.find" />
-      <recent name="ichop.core.areas.user.models.jms" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\templates\user\profile\partials" />
-      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\templates\user\profile\panes" />
-      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\templates\user\profile" />
-      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\static\res\css\lib" />
-      <recent name="C:\Users\Gosho\Desktop\GitHub\iChop-Site\iChop - Core\src\main\resources\static\res\js\lib" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="ichop.core.areas.storage.controllers" />
+      <recent name="ichop.web.controllers.thread" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -424,6 +437,7 @@
       <workItem from="1574463556804" duration="618000" />
       <workItem from="1574505194561" duration="2542000" />
       <workItem from="1574591352184" duration="6016000" />
+      <workItem from="1574715449870" duration="3731000" />
     </task>
     <servers />
   </component>

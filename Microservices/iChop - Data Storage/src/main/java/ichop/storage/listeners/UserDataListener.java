@@ -27,7 +27,7 @@ public class UserDataListener extends BaseListener {
     }
 
     @JmsValidate(model = UserSetAvatarRequest.class)
-    @JmsListener(destination = "${artemis.queue.data_storage.set_user_avatar}", containerFactory = QUEUE)
+    @JmsListener(destination = "${artemis.queue.data_storage.set.user.avatar}", containerFactory = QUEUE)
     public void setUserAvatar(Message message) {
         UserSetAvatarRequest requestModel = this.jmsHelper.toModel(message, UserSetAvatarRequest.class);
 
