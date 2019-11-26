@@ -24,6 +24,7 @@ const NotificationHelper = {
     },
 
     showNotificationByResponse(response) {
+        console.log(response);
         if(response.successful){
             NotificationHelper.showSuccessNotification(response.message);
         }else{
