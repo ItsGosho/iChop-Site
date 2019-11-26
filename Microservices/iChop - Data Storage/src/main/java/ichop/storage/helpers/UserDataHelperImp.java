@@ -33,6 +33,7 @@ public class UserDataHelperImp implements UserDataHelper {
     @CacheEvict(allEntries = true)
     public void updateAvatar(String username, String avatarAsBase64) {
 
+        avatarAsBase64 = avatarAsBase64.substring(avatarAsBase64.lastIndexOf("base64,") + "base64,".length());
         byte[] imageBytes = DatatypeConverter.parseBase64Binary(avatarAsBase64);
         BufferedImage bufferedImage = null;
         try {
