@@ -37,6 +37,7 @@
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
+
         <dependency>
             <groupId>com.auth0</groupId>
             <artifactId>java-jwt</artifactId>

@@ -1,6 +1,7 @@
 package ichop.users.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import ichop.users.constants.UserReplyConstants;
 import ichop.users.constants.UserRoutingConstants;
 import ichop.users.domain.models.jms.information.UserInformationRetrieveRequest;
 import ichop.users.domain.models.jms.information.UserInformationUpdateRequest;
@@ -51,7 +52,7 @@ public class UserInformationController {
 
         this.userInformationServices.update(request);
 
-        return this.responseHelpers.respondSuccessful("Information updated successful!");
+        return this.responseHelpers.respondSuccessful(UserReplyConstants.INFORMATION_UPDATED_SUCCESSFUL);
     }
 
     @GetMapping(UserRoutingConstants.RETRIEVE_INFORMATION)
@@ -67,7 +68,7 @@ public class UserInformationController {
         UserInformationServiceModel informationServiceModel = this.userInformationServices.getByUser(username);
         UserInformationViewModel viewModel = this.objectMapper.convertValue(informationServiceModel, UserInformationViewModel.class);
 
-        return this.responseHelpers.respondSuccessful("Fetch successful!", viewModel);
+        return this.responseHelpers.respondSuccessful(UserReplyConstants.FETCHED_SUCCESSFUL, viewModel);
     }
 
 }

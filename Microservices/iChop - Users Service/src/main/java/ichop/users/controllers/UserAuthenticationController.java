@@ -1,6 +1,7 @@
 package ichop.users.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import ichop.users.constants.UserReplyConstants;
 import ichop.users.constants.UserRoutingConstants;
 import ichop.users.domain.models.jms.register.UserRegisterRequest;
 import ichop.users.domain.models.service.UserServiceModel;
@@ -57,7 +58,7 @@ public class UserAuthenticationController {
 
         UserServiceModel user = this.userServices.register(request);
 
-        return this.responseHelpers.respondSuccessful("Successful register!");
+        return this.responseHelpers.respondSuccessful(UserReplyConstants.REGISTER_SUCCESSFUL);
     }
 
     @PreAuthorize("isAuthenticated()")
@@ -71,7 +72,7 @@ public class UserAuthenticationController {
         jwtCookie.setPath("/");
         response.addCookie(jwtCookie);
 
-        return this.responseHelpers.respondSuccessful("Successful logout!");
+        return this.responseHelpers.respondSuccessful(UserReplyConstants.LOGOUT_SUCCESSFUL);
     }
 
     @PreAuthorize("isAuthenticated()")
@@ -82,7 +83,7 @@ public class UserAuthenticationController {
         UserViewModel viewModel = this.objectMapper.convertValue(user, UserViewModel.class);
         viewModel.setAuthority(this.roleServices.findHighestOfUser(user).getAuthority());
 
-        return this.responseHelpers.respondSuccessful("Fetch successful!", viewModel);
+        return this.responseHelpers.respondSuccessful(UserReplyConstants.FETCHED_SUCCESSFUL, viewModel);
     }
 
 }
