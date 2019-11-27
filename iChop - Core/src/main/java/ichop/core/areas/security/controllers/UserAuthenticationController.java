@@ -1,8 +1,10 @@
 package ichop.core.areas.security.controllers;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.core.areas.rest.helpers.ResponseHelpers;
 import ichop.core.areas.user.constants.UserRoutingConstants;
 import ichop.core.areas.user.models.jms.register.UserRegisterRequest;
+import ichop.core.areas.user.models.view.UserViewModel;
 import ichop.core.areas.user.requesters.UserRequester;
 import org.ichop.commons.domain.JmsReplyModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,11 +27,15 @@ public class UserAuthenticationController {
 
     private final UserRequester userRequester;
     private final ResponseHelpers responseHelpers;
+    private final ObjectMapper objectMapper;
 
     @Autowired
-    public UserAuthenticationController(UserRequester userRequester, ResponseHelpers responseHelpers) {
+    public UserAuthenticationController(UserRequester userRequester,
+                                        ResponseHelpers responseHelpers,
+                                        ObjectMapper objectMapper) {
         this.userRequester = userRequester;
         this.responseHelpers = responseHelpers;
+        this.objectMapper = objectMapper;
     }
 
     @PreAuthorize("isAnonymous()")
@@ -57,8 +63,10 @@ public class UserAuthenticationController {
     @PreAuthorize("isAuthenticated()")
     @GetMapping(UserRoutingConstants.GET_CURRENT_AUTHENTICATED)
     public ResponseEntity getCurrentAuthenticated(Principal principal) {
-
         JmsReplyModel replyModel = this.userRequester.findByUsername(principal.getName());
+
+        UserViewModel viewModel = this.objectMapper.convertValue(replyModel.getData(), UserViewModel.class);
+        replyModel.setData(viewModel);
 
         return this.responseHelpers.respondGeneric(replyModel);
     }

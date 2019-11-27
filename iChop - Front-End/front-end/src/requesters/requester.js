@@ -2,15 +2,16 @@ import RequestTypes from "../constants/rest/request.type.constants";
 import ContentType from "../constants/rest/content.type.constants";
 import RequestHeaders from "../constants/rest/request.header.constants";
 import NotificationHelper from "../helpers/notification.helper";
+import NotificationMessagesConstants from "../constants/notification/notification.messages.constants";
 
 
 const Requester = {
 
-    async post(url, data, notification) {
+    async post(url, data, loadingNotification) {
 
         let notificationId = undefined;
-        if (notification) {
-            notificationId =  NotificationHelper.showLoadingNotification('Please wait!')
+        if (loadingNotification) {
+            notificationId = NotificationHelper.showLoadingNotification(NotificationMessagesConstants.LOADING)
         }
 
         let response = await fetch(url, {

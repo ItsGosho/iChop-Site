@@ -5,8 +5,6 @@
 }
 
 .thread-total_comments {
-    display: inline-block;
-    padding-top: 18px;
     float: right;
 }
 
@@ -119,13 +117,6 @@
 
 .thread-comments-button_report {
     display: inline-block;
-}
-
-.thread-comments-modal {
-    width: 100%;
-    overflow-y: scroll;
-    height: 200px;
-    resize: none;
 }
 
 

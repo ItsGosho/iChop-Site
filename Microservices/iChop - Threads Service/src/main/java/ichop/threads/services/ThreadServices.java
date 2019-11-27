@@ -7,5 +7,6 @@ public interface ThreadServices extends BaseService<ThreadServiceModel> {
 
     ThreadServiceModel increaseViews(String id);
     <M> M increaseViews(String id,Class<M> clazz);
+    Long findTotal();
 
 }

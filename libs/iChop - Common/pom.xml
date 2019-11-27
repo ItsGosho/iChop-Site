@@ -27,9 +27,21 @@
         <lombok.version>1.18.10</lombok.version>
         <hibernate-validator.version>6.0.17.Final</hibernate-validator.version>
         <mockito-core.version>3.1.0</mockito-core.version>
+        <java-jwt.version>3.8.3</java-jwt.version>
     </properties>
 
     <dependencies>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+            <version>${java-jwt.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

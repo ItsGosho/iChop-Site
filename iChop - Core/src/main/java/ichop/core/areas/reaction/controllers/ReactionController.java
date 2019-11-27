@@ -4,16 +4,14 @@ import ichop.core.areas.comment.requesters.ThreadCommentRequester;
 import ichop.core.areas.reaction.constants.ReactionRoutingConstants;
 import ichop.core.areas.reaction.models.ReactionOn;
 import ichop.core.areas.reaction.models.jms.create.ReactionCreateRequest;
+import ichop.core.areas.reaction.models.jms.find.ReactionsFindByRequest;
 import ichop.core.areas.reaction.requesters.ReactionRequester;
 import ichop.core.areas.rest.helpers.ResponseHelpers;
 import ichop.core.areas.thread.requesters.ThreadRequester;
 import org.ichop.commons.domain.JmsReplyModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 
@@ -37,7 +35,7 @@ public class ReactionController {
     }
 
     @PostMapping(ReactionRoutingConstants.CREATE)
-    public ResponseEntity create(ReactionCreateRequest request, Principal principal) {
+    public ResponseEntity create(@RequestBody ReactionCreateRequest request, Principal principal) {
         request.setCreatorUsername(principal.getName());
 
         JmsReplyModel replyModel = this.reactionRequester.create(request);
@@ -48,6 +46,13 @@ public class ReactionController {
     @GetMapping(ReactionRoutingConstants.IS_REACTED)
     public ResponseEntity isReacted(@RequestParam String creatorUsername, @RequestParam String entityId, @RequestParam String reactionOn) {
         JmsReplyModel replyModel = this.reactionRequester.isReacted(creatorUsername, entityId, ReactionOn.valueOf(reactionOn));
+
+        return this.responseHelpers.respondGeneric(replyModel);
+    }
+
+    @GetMapping(ReactionRoutingConstants.FIND_BY)
+    public ResponseEntity findBy(ReactionsFindByRequest request) {
+        JmsReplyModel replyModel = this.reactionRequester.findBy(request);
 
         return this.responseHelpers.respondGeneric(replyModel);
     }

@@ -1,5 +1,5 @@
 import {store} from "react-notifications-component";
-import NotificationConstants from "../constants/notification.constants";
+import NotificationConstants from "../constants/notification/notification.constants";
 
 const NotificationHelper = {
 
@@ -24,6 +24,7 @@ const NotificationHelper = {
     },
 
     showNotificationByResponse(response) {
+        console.log(response);
         if(response.successful){
             NotificationHelper.showSuccessNotification(response.message);
         }else{
@@ -33,17 +34,17 @@ const NotificationHelper = {
 
     showLoadingNotification(message = ' ') {
         let {TITLE, DURATION} = NotificationConstants.LOADING;
-        return NotificationHelper.showNotification(TITLE, message, 'info', DURATION);
+        return NotificationHelper.showNotification(TITLE, message, Types.INFO, DURATION);
     },
 
     showSuccessNotification(message = ' ') {
         let {TITLE, DURATION} = NotificationConstants.SUCCESS;
-        return NotificationHelper.showNotification(TITLE, message, 'success', DURATION);
+        return NotificationHelper.showNotification(TITLE, message, Types.SUCCESS, DURATION);
     },
 
     showErrorNotification(message = ' ') {
         let {TITLE, DURATION} = NotificationConstants.ERROR;
-        return NotificationHelper.showNotification(TITLE, message, 'danger', DURATION);
+        return NotificationHelper.showNotification(TITLE, message, Types.DANGER, DURATION);
     },
 
     removeNotification(id) {
@@ -55,3 +56,9 @@ const NotificationHelper = {
 };
 
 export default NotificationHelper;
+
+const Types = {
+    INFO: 'info',
+    SUCCESS: 'success',
+    DANGER: 'danger'
+};

@@ -16,8 +16,6 @@ public class UserInformationUpdateRequest extends RequestCandidate {
     @Length(max = 16)
     private String statusMessage;
 
-    private String avatarBinary;
-
     private String birthDate;
 
     @Length(max = 250)

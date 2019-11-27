@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.core.areas.reaction.models.ReactionOn;
 import ichop.core.areas.reaction.models.jms.check.ReactionIsReactedRequest;
 import ichop.core.areas.reaction.models.jms.create.ReactionCreateRequest;
+import ichop.core.areas.reaction.models.jms.find.ReactionsFindByRequest;
 import org.ichop.commons.domain.JmsReplyModel;
 import org.ichop.commons.helpers.JmsHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,18 +19,21 @@ public class ReactionRequesterImp implements ReactionRequester {
 
     private final String createDestination;
     private final String isReactedDestination;
+    private final String findByDestination;
 
     @Autowired
     public ReactionRequesterImp(JmsHelper jmsHelper,
                                 ObjectMapper objectMapper,
                                 @Value("${artemis.queue.reactions.create}") String createDestination,
-                                @Value("${artemis.queue.reactions.is.reacted}") String isReactedDestination) {
+                                @Value("${artemis.queue.reactions.is.reacted}") String isReactedDestination,
+                                @Value("${artemis.queue.reactions.find.by}") String findByDestination) {
 
         this.jmsHelper = jmsHelper;
         this.objectMapper = objectMapper;
 
         this.createDestination = createDestination;
         this.isReactedDestination = isReactedDestination;
+        this.findByDestination = findByDestination;
     }
 
     @Override
@@ -42,6 +46,11 @@ public class ReactionRequesterImp implements ReactionRequester {
         ReactionIsReactedRequest request = new ReactionIsReactedRequest(creatorUsername, entityId, reactionOn);
 
         return this.jmsHelper.sendAndReceive(this.isReactedDestination, request);
+    }
+
+    @Override
+    public JmsReplyModel findBy(ReactionsFindByRequest request) {
+        return this.jmsHelper.sendAndReceive(this.findByDestination,request);
     }
 
 }

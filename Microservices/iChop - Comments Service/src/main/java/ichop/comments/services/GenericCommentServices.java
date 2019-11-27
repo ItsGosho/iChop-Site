@@ -2,6 +2,8 @@ package ichop.comments.services;
 
 import ichop.comments.annotations.CommentType;
 import ichop.comments.domain.entities.Comment;
+import ichop.comments.domain.entities.ThreadComment;
+import ichop.comments.domain.entities.UserProfileComment;
 import ichop.comments.domain.enums.Type;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -45,6 +47,17 @@ public class GenericCommentServices {
         C comment = (C) this.mongoTemplate.findOne(query, this.getEntity(type));
 
         return comment.getCreatorUsername().equals(creatorUsername);
+    }
+
+    /*TODO: dont hardcore iterate them ,bat jorko! 2019*/
+    public Long findCreatorTotal(String username) {
+        Query query = new Query();
+        query.addCriteria(Criteria.where("creatorUsername").is(username));
+
+        Long totalThreadComments = this.mongoTemplate.count(query, ThreadComment.class);
+        Long totalUserProfileComments = this.mongoTemplate.count(query, UserProfileComment.class);
+
+        return totalThreadComments + totalUserProfileComments;
     }
 
     private Class getEntity(Type type) {

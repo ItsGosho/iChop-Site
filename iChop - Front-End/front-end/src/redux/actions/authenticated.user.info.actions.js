@@ -1,26 +1,36 @@
-import Actions from "../../constants/actions.constants";
+import Actions from "../../constants/redux/actions.constants";
+import UserServices from "../../services/user.services";
 
 
-let set = (user) => {
+let fetchAuthenticatedUserInfo = () => {
     return async (dispatch) => {
-        dispatch({
-            type: Actions.SET_AUTHENTICATED_USER_INFO,
-            payload: {
-                user: user
+        let user = await UserServices.retrieveUserByToken();
+
+        if (user) {
+            let information = await UserServices.findInformation(user.username);
+
+            if (user) {
+                dispatch({
+                    type: Actions.AUTHENTICATED_USER_INFO_SET,
+                    payload: {
+                        user: user,
+                        information: information
+                    }
+                });
             }
-        });
+        }
     }
 };
 
-let remove = () => {
+let removeAuthenticatedUserInfo = () => {
     return async (dispatch) => {
         dispatch({
-            type: Actions.REMOVE_AUTHENTICATED_USER_INFO
+            type: Actions.AUTHENTICATED_USER_INFO_REMOVE
         });
     }
 };
 
 export {
-    set,
-    remove
+    fetchAuthenticatedUserInfo,
+    removeAuthenticatedUserInfo
 }

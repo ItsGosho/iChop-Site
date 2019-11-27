@@ -45,7 +45,6 @@ public class UsersInformationListeners extends BaseListener {
     public UserInformationReply update(Message message) {
         UserInformationUpdateRequest requestModel = this.jmsHelper.toModel(message, UserInformationUpdateRequest.class);
 
-        /*TODO: update avatar!*/
         UserServiceModel user = this.userServices.findByUsername(requestModel.getUsername());
 
         UserInformationServiceModel information = this.userInformationServices.update(requestModel);

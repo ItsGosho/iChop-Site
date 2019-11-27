@@ -10,9 +10,8 @@ public final class UserRoutingConstants {
     public static final String FORGOTTEN_PASSWORD = "/user/forgotten/password"; /*USER++*/
     public static final String CHANGE_PASSWORD_BY_TOKEN = "/user/change/password/by/token"; /*GUEST++*/
 
-    public static final String ALL = "/users/all"; /*ADMIN++*/
-
     public static final String GET_CURRENT_AUTHENTICATED = "/user/current/authenticated"; /*GUEST++*/
+    public static final String FIND_BY = "/user/find/by"; /*GUEST++*/
 
     /*TODO:*/
 
@@ -31,11 +30,15 @@ public final class UserRoutingConstants {
 
     //AdminController -----------------------------------------------------------------------------------
 
-    public static final String FIND_BY = "/admin/user/find/by"; /*ADMIN++*/
+    public static final String ADMIN_FIND_BY = "/admin/user/find/by"; /*ADMIN++*/
 
     public static final String ROLE_PROMOTE = "/admin/user/{username}/role/promote"; /*ADMIN++*/
     public static final String ROLE_DEMOTE = "/admin/user/{username}/role/demote"; /*ADMIN++*/
     public static final String ROLE_HAS_NEXT = "/admin/user/{username}/role/has/next"; /*ADMIN++*/
     public static final String ROLE_HAS_PREVIOUS = "/admin/user/{username}/role/has/previous"; /*ADMIN++*/
+
+    //DataStorageController -----------------------------------------------------------------------------
+
+    public static final String SET_USER_AVATAR = "/data/set/user/{username}/avatar"; /*LOGGED IN USER IN HIS PROFILE OR OWNER*/
 
 }

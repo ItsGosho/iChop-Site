@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 
 public class Base64Validator implements ConstraintValidator<Base64,String> {
 
-    private static final String BASE_64_PATTERN = "^([A-Za-z0-9+\\/]{4})*([A-Za-z0-9+\\/]{3}=|[A-Za-z0-9+\\/]{2}==)?$";
+    private static final String BASE_64_PATTERN = "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$";
 
     @Override
     public void initialize(Base64 constraintAnnotation) {

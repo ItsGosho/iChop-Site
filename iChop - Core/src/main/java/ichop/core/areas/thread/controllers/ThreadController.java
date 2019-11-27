@@ -6,6 +6,8 @@ import ichop.core.areas.thread.models.jms.create.ThreadCreateRequest;
 import ichop.core.areas.thread.requesters.ThreadRequester;
 import org.ichop.commons.domain.JmsReplyModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -26,7 +28,7 @@ public class ThreadController {
 
     @PreAuthorize("hasAuthority('MODERATOR')")
     @PostMapping(ThreadRoutingConstants.CREATE)
-    public ResponseEntity create(ThreadCreateRequest request, Principal principal) {
+    public ResponseEntity create(@RequestBody ThreadCreateRequest request, Principal principal) {
         request.setCreatorUsername(principal.getName());
 
         JmsReplyModel reply = this.threadRequester.create(request);
@@ -56,4 +58,17 @@ public class ThreadController {
         return this.responseHelpers.respondGeneric(reply);
     }
 
+    @GetMapping(ThreadRoutingConstants.FIND_TOTAL)
+    public ResponseEntity findTotal() {
+        JmsReplyModel reply = this.threadRequester.findTotal();
+
+        return this.responseHelpers.respondGeneric(reply);
+    }
+
+    @GetMapping(ThreadRoutingConstants.FIND_ALL)
+    public ResponseEntity findAll(Pageable pageable) {
+        JmsReplyModel reply = this.threadRequester.findAll(pageable);
+
+        return this.responseHelpers.respondGeneric(reply);
+    }
 }

@@ -10,4 +10,7 @@ public final class CommentRoutingConstants {
 
     public static final String THREAD_ALL = "/thread/{threadId}/comment/all";
     public static final String USER_PROFILE_ALL = "/user/{userProfileUsername}/comment/all";
+
+
+    public static final String CREATOR_TOTAL_COMMENTS = "/comments/total/by/creator";
 }

@@ -6,6 +6,7 @@ import ichop.threads.domain.models.jms.create.ThreadCreateRequest;
 import ichop.threads.domain.models.jms.delete.ThreadDeleteByIdRequest;
 import ichop.threads.domain.models.jms.increase.ThreadIncreaseViewsRequest;
 import ichop.threads.domain.models.jms.retrieve.ThreadFindByIdRequest;
+import ichop.threads.domain.models.jms.retrieve.ThreadsFindAllRequest;
 import ichop.threads.domain.models.service.ThreadServiceModel;
 import ichop.threads.services.ThreadServices;
 import org.ichop.commons.aop.JmsAfterReturn;
@@ -14,10 +15,17 @@ import org.ichop.commons.domain.EmptyReply;
 import org.ichop.commons.helpers.BaseListener;
 import org.ichop.commons.helpers.JmsHelper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 
 import javax.jms.Message;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 import static ichop.threads.constants.ThreadReplyConstants.*;
 import static org.ichop.commons.constants.JmsFactories.QUEUE;
@@ -46,12 +54,35 @@ public class ThreadListener extends BaseListener {
     }
 
     @JmsValidate(model = ThreadFindByIdRequest.class)
-    @JmsAfterReturn(message = THREAD_RETRIEVED_SUCCESSFUL)
+    @JmsAfterReturn(message = FETCH_SUCCESSFUL)
     @JmsListener(destination = "${artemis.queue.threads.find.by.id}", containerFactory = QUEUE)
     public ThreadReply getById(Message message) {
         ThreadFindByIdRequest requestModel = this.jmsHelper.toModel(message, ThreadFindByIdRequest.class);
 
         return this.threadServices.findById(requestModel.getId(), ThreadReply.class);
+    }
+
+    /*TODO: refactor the way of proceeding a pageable*/
+    @JmsValidate(model = ThreadsFindAllRequest.class)
+    @JmsAfterReturn(message = FETCH_SUCCESSFUL)
+    @JmsListener(destination = "${artemis.queue.threads.find.all}", containerFactory = QUEUE)
+    public List<ThreadReply> all(Message message) throws IOException {
+        ThreadsFindAllRequest requestModel = this.jmsHelper.toModel(message, ThreadsFindAllRequest.class);
+        Map<String,Object> pageableData = requestModel.getPageable();
+
+        int page = Integer.parseInt(pageableData.get("pageNumber").toString());
+        int size = Integer.parseInt(pageableData.get("pageSize").toString());
+        Pageable pageable = PageRequest.of(page,size, Sort.by(Sort.Order.desc("createdOn")));
+
+        return this.threadServices.findAll(pageable,ThreadReply.class);
+    }
+
+
+
+    @JmsAfterReturn(message = FETCH_SUCCESSFUL)
+    @JmsListener(destination = "${artemis.queue.threads.find.total}", containerFactory = QUEUE)
+    public Long total(Message message) {
+        return this.threadServices.findTotal();
     }
 
     @JmsValidate(model = ThreadIncreaseViewsRequest.class)
