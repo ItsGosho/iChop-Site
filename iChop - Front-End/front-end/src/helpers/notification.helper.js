@@ -28,7 +28,7 @@ const NotificationHelper = {
         if(response.successful){
             NotificationHelper.showSuccessNotification(response.message);
         }else{
-            NotificationHelper.showErrorNotification(response.error);
+            NotificationHelper.showErrorNotification(response.message);
         }
     },
 

@@ -2,13 +2,43 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1984862c-2f8c-4410-af36-a1dcaaa3ddaf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Users Service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Users Service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/java/ichop/users/config/BCryptConfiguration.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Users Service/users.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Users Service/users.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Comments Service/comments.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Comments Service/comments.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Comments Service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Comments Service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Comments Service/src/main/java/ichop/comments/Comments.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Comments Service/src/main/java/ichop/comments/Comments.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Comments Service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Comments Service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Data Storage/data-storage.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Data Storage/data-storage.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Data Storage/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Data Storage/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Data Storage/src/main/java/ichop/storage/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Data Storage/src/main/java/ichop/storage/Storage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Data Storage/src/main/java/ichop/storage/constants/URLConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Data Storage/src/main/java/ichop/storage/constants/URLConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Data Storage/src/main/java/ichop/storage/web/DataRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Data Storage/src/main/java/ichop/storage/web/DataRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Data Storage/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Data Storage/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Email Service/emails.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reactions Service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Reactions Service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reactions Service/reactions.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Reactions Service/reactions.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reactions Service/src/main/java/ichop/reactions/Reactions.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Reactions Service/src/main/java/ichop/reactions/Reactions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reactions Service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Reactions Service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/reports.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/reports.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/Reports.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/java/ichop/reports/Reports.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Reports Service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Threads Service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Threads Service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Threads Service/src/main/java/ichop/threads/Threads.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Threads Service/src/main/java/ichop/threads/Threads.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Threads Service/src/main/java/ichop/threads/constants/ThreadReplyConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Threads Service/src/main/java/ichop/threads/constants/ThreadReplyConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Threads Service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Threads Service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Threads Service/threads.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Threads Service/threads.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/java/ichop/users/Users.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/java/ichop/users/Users.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/java/ichop/users/constants/UserReplyConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/java/ichop/users/constants/UserReplyConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/java/ichop/users/controllers/UserAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/java/ichop/users/controllers/UserAdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/java/ichop/users/controllers/UserAuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/java/ichop/users/controllers/UserAuthenticationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/java/ichop/users/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/java/ichop/users/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/java/ichop/users/controllers/UserFollowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/java/ichop/users/controllers/UserFollowController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/java/ichop/users/controllers/UserInformationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/java/ichop/users/controllers/UserInformationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Microservices/iChop - Users Service/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/constants/routing/server.routing.urls.js" beforeDir="false" afterPath="$PROJECT_DIR$/../iChop - Front-End/front-end/src/constants/routing/server.routing.urls.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../libs/iChop - Common/commons.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../libs/iChop - Common/commons.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../libs/iChop - Common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../libs/iChop - Common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../libs/iChop - Common/src/main/java/org/ichop/commons/requesters/UserRequester.java" beforeDir="false" afterPath="$PROJECT_DIR$/../libs/iChop - Common/src/main/java/org/ichop/commons/requesters/UserRequester.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../libs/iChop - Common/src/main/java/org/ichop/commons/requesters/UserRequesterImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/../libs/iChop - Common/src/main/java/org/ichop/commons/requesters/UserRequesterImp.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -434,6 +464,7 @@
       <workItem from="1574757603788" duration="335000" />
       <workItem from="1574791302047" duration="1100000" />
       <workItem from="1574797863016" duration="3411000" />
+      <workItem from="1574844637400" duration="5046000" />
     </task>
     <servers />
   </component>

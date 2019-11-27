@@ -13,10 +13,10 @@ const UserServices = {
     async login(email, password) {
         let response = await Requester.post(Endpoints.LOGIN, {email, password}, true);
 
-        if (response.error) {
-            NotificationHelper.showErrorNotification(response.error);
-        } else {
+        if (response.successful) {
             NotificationHelper.showSuccessNotification(response.message);
+        } else {
+            NotificationHelper.showErrorNotification(response.message);
         }
 
         return response.data;

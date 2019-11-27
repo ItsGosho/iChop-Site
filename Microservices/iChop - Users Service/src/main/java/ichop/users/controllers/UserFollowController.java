@@ -106,7 +106,7 @@ public class UserFollowController {
                 .map(x -> this.objectMapper.convertValue(x, UserViewModel.class))
                 .collect(Collectors.toList());
 
-        return this.responseHelpers.respondSuccessful("Fetch successful!", followers);
+        return this.responseHelpers.respondSuccessful(UserReplyConstants.FETCHED_SUCCESSFUL, followers);
     }
 
     /*TODO: refactor it*/
@@ -126,7 +126,7 @@ public class UserFollowController {
                 .map(x -> this.objectMapper.convertValue(x, UserViewModel.class))
                 .collect(Collectors.toList());
 
-        return this.responseHelpers.respondSuccessful("Fetch successful!", followers);
+        return this.responseHelpers.respondSuccessful(UserReplyConstants.FETCHED_SUCCESSFUL, followers);
     }
 
     @GetMapping(UserRoutingConstants.IS_FOLLOWING)
@@ -134,7 +134,7 @@ public class UserFollowController {
         boolean result = this.userFollowServices.isFollowed(username, follow);
         BoolReply boolReply = new BoolReply(result);
 
-        return this.responseHelpers.respondSuccessful("Fetch successful!", boolReply);
+        return this.responseHelpers.respondSuccessful(UserReplyConstants.FETCHED_SUCCESSFUL, boolReply);
     }
 
 }
