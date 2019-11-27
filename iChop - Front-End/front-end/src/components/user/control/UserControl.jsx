@@ -3,13 +3,14 @@ import UserControlInformation from "./information/UserControlInformation";
 import UserControlRole from "./role/UserControlRole";
 import UserControlNav from "./other/UserControlNav";
 import UserControlSidebar from "./other/UserControlSidebar";
-import {Route, Switch} from "react-router-dom";
+import {Redirect, Route, Switch, withRouter} from "react-router-dom";
 import RoutingURLs from "../../../constants/routing/routing.constants";
+import PrefixURLs from "../../../constants/routing/prefix.routing.constants";
 
 class UserControl extends Component {
 
     render() {
-        let {username} = this.props.route.params;
+        let {username} = this.props.match.params;
 
         return (
             <div>
@@ -18,16 +19,19 @@ class UserControl extends Component {
                 <div className="container" style={{'marginLeft': '0', 'marginTop': '10px'}}>
                     <div className="row">
 
-                        <UserControlSidebar/>
+                        <UserControlSidebar username={username}/>
 
                         <div className="col-sm">
                             <div className="card">
                                 <div className="card-body">
 
                                     <Switch>
-                                        <Route exact path={RoutingURLs.USER.CONTROL.INFORMATION}
+                                        <Route exact path={PrefixURLs.USER_CONTROL_PREFIX(':username')}
+                                               render={() => (<Redirect to={RoutingURLs.USER.CONTROL.INFORMATION(username)}/>)}/>
+
+                                        <Route exact path={RoutingURLs.USER.CONTROL.INFORMATION(':username')}
                                                component={() => (<UserControlInformation username={username}/>)}/>
-                                        <Route exact path={RoutingURLs.USER.CONTROL.ROLE}
+                                        <Route exact path={RoutingURLs.USER.CONTROL.ROLE(':username')}
                                                component={() => (<UserControlRole username={username}/>)}/>
                                     </Switch>
 
@@ -42,4 +46,4 @@ class UserControl extends Component {
 
 }
 
-export default UserControl;
+export default withRouter(UserControl);

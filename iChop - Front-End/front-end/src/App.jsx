@@ -13,6 +13,7 @@ import UserChangePasswordByToken from "./components/user/other/UserChangePasswor
 import PrefixURLs from "./constants/routing/prefix.routing.constants";
 import ThreadsAll from "./components/thread/all/ThreadsAll";
 import ThreadRead from "./components/thread/read/ThreadRead";
+import UserControl from "./components/user/control/UserControl";
 
 function App() {
 
@@ -32,6 +33,8 @@ function App() {
 
                     <Route exact path={RoutingURLs.USER.PROFILE.VIEW(':username')}
                            render={(props) => (<UserProfile key={props.match.params.username} {...props}/>)}/>
+
+                    <Route path={PrefixURLs.USER_CONTROL_PREFIX(':username')} render={() => (<UserControl/>)}/>
 
                     <Route path={PrefixURLs.OPTIONS_PREFIX} render={() => (<UserOptions/>)}/>
 

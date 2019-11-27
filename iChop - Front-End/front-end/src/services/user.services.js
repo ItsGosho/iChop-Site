@@ -66,6 +66,13 @@ const UserServices = {
         return response.data;
     },
 
+    async adminFindByUsername(username) {
+        let query = `?username=${username}`;
+        let response = await Requester.get(Endpoints.ADMIN_FIND_BY + query);
+
+        return response.data;
+    },
+
     async findFollowings(username) {
         let url = Endpoints.ALL_FOLLOWINGS(username);
         let response = await Requester.get(url);

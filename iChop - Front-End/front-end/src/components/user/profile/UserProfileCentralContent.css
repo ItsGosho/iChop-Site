@@ -24,6 +24,13 @@
     font-size: 13px;
     float: right;
 }
+
+.options-control {
+    font-size: 13px;
+    float: right;
+    cursor: pointer;
+}
+
 .is-followed-you {
     font-size: 11px;
     float: right;

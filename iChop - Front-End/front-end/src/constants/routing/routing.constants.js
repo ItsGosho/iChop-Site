@@ -37,8 +37,8 @@ const RoutingURLs = {
         },
 
         CONTROL: {
-            INFORMATION: (username) => `/user/${username}/control/information`,
-            ROLE: (username) => `/user/${username}/control/role`,
+            INFORMATION: (username) => `${PrefixURLs.USER_CONTROL_PREFIX(username)}/information`,
+            ROLE: (username) => `${PrefixURLs.USER_CONTROL_PREFIX(username)}/role`,
         },
 
         OPTIONS: {

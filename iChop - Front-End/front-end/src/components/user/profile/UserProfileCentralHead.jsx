@@ -1,9 +1,10 @@
 import React, {Component, Fragment} from 'react';
 import UserServices from "../../../services/user.services";
-import {withRouter} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 import PropTypes from 'prop-types';
 import userProfileInfoDispatchers from "../../../redux/dispatchers/user.profile.info.dispatchers";
 import withDispatcher from "../../../hocs/with.dispatcher";
+import PrefixURLs from "../../../constants/routing/prefix.routing.constants";
 
 class UserProfileCentralHead extends Component {
 
@@ -59,6 +60,12 @@ class UserProfileCentralHead extends Component {
 
                     {isAuthenticated && authenticatedUsername !== username ? (
                         <Fragment>
+                            <div className="row">
+                                <div className="col-md-12 head">
+                                    <Link to={PrefixURLs.USER_CONTROL_PREFIX(username)} className="options-control">⚙</Link>
+                                </div>
+                            </div>
+
                             <div className="row">
                                 <div className="col-md-12 head">
 

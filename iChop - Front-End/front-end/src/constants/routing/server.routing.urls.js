@@ -20,6 +20,8 @@ const ServerRoutingURLs = {
             CHANGE_PASSWORD: `${USERS_SERVICE_DOMAIN}/user/change/password`,
             FIND_BY: `${USERS_SERVICE_DOMAIN}/user/find/by`,
 
+            ADMIN_FIND_BY: `${USERS_SERVICE_DOMAIN}/admin/user/find/by`,
+
             RETRIEVE_INFORMATION: (username) => `${USERS_SERVICE_DOMAIN}/user/${username}/information/retrieve`,
             UPDATE_INFORMATION: (username) => `${USERS_SERVICE_DOMAIN}/user/${username}/information/update`,
 
