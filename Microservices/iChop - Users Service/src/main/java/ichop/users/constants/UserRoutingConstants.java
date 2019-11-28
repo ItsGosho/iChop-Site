@@ -2,7 +2,6 @@ package ichop.users.constants;
 
 public final class UserRoutingConstants {
 
-    public static final String LOGIN = "/auth/login"; /*GUEST*/
     public static final String REGISTER = "/auth/register"; /*GUEST*/
     public static final String LOGOUT = "/auth/logout"; /*AUTHENTICATED*/
 
@@ -36,6 +35,8 @@ public final class UserRoutingConstants {
     public static final String ROLE_DEMOTE = "/admin/user/{username}/role/demote"; /*ADMIN++*/
     public static final String ROLE_HAS_NEXT = "/admin/user/{username}/role/has/next"; /*ADMIN++*/
     public static final String ROLE_HAS_PREVIOUS = "/admin/user/{username}/role/has/previous"; /*ADMIN++*/
+    public static final String ROLE_NEXT = "/admin/user/{username}/role/next"; /*ADMIN++*/
+    public static final String ROLE_PREVIOUS = "/admin/user/{username}/role/previous"; /*ADMIN++*/
 
     //DataStorageController -----------------------------------------------------------------------------
 
