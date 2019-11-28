@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import UserControlRoleLogs from "./UserControlRoleLogs";
 import './UserControlRole.css'
 import PropTypes from 'prop-types'
 import UserServices from "../../../../services/user.services";
@@ -85,7 +84,7 @@ class UserControlRole extends Component {
                 </div>
 
                 <div className="row">
-                    <UserControlRoleLogs/>
+                  <small>Soon logs!</small>
                 </div>
             </div>
         );
