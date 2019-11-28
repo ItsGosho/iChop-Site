@@ -21,6 +21,10 @@ const ServerRoutingURLs = {
             FIND_BY: `${USERS_SERVICE_DOMAIN}/user/find/by`,
 
             ADMIN_FIND_BY: `${USERS_SERVICE_DOMAIN}/admin/user/find/by`,
+            ROLE_PROMOTE: (username) => `${USERS_SERVICE_DOMAIN}/admin/user/${username}/role/promote`,
+            ROLE_DEMOTE: (username) => `${USERS_SERVICE_DOMAIN}/admin/user/${username}/role/demote`,
+            ROLE_HAS_NEXT: (username) => `${USERS_SERVICE_DOMAIN}/admin/user/${username}/role/has/next`,
+            ROLE_HAS_PREVIOUS: (username) => `${USERS_SERVICE_DOMAIN}/admin/user/${username}/role/has/previous`,
 
             RETRIEVE_INFORMATION: (username) => `${USERS_SERVICE_DOMAIN}/user/${username}/information/retrieve`,
             UPDATE_INFORMATION: (username) => `${USERS_SERVICE_DOMAIN}/user/${username}/information/update`,

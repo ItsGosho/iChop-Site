@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import userProfileInfoDispatchers from "../../../redux/dispatchers/user.profile.info.dispatchers";
 import withDispatcher from "../../../hocs/with.dispatcher";
 import PrefixURLs from "../../../constants/routing/prefix.routing.constants";
+import Roles from "../../../constants/enums/roles.constants";
 
 class UserProfileCentralHead extends Component {
 
@@ -34,7 +35,7 @@ class UserProfileCentralHead extends Component {
 
     render() {
         let {username, authority, statusMessage, isViewerFollowingHim, isViewerFollowedByHim} = this.props.userProfileInfo;
-        let {username: authenticatedUsername,isAuthenticated} = this.props.authenticatedUserInfo;
+        let {username: authenticatedUsername,isAuthenticated,authorities} = this.props.authenticatedUserInfo;
 
         return (
             <Fragment>
@@ -60,11 +61,14 @@ class UserProfileCentralHead extends Component {
 
                     {isAuthenticated && authenticatedUsername !== username ? (
                         <Fragment>
-                            <div className="row">
-                                <div className="col-md-12 head">
-                                    <Link to={PrefixURLs.USER_CONTROL_PREFIX(username)} className="options-control">⚙</Link>
+
+                            {UserServices.hasRole(authorities,Roles.ADMIN) ? (
+                                <div className="row">
+                                    <div className="col-md-12 head">
+                                        <Link to={PrefixURLs.USER_CONTROL_PREFIX(username)} className="options-control">⚙</Link>
+                                    </div>
                                 </div>
-                            </div>
+                            ) : null}
 
                             <div className="row">
                                 <div className="col-md-12 head">
