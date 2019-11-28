@@ -42,7 +42,7 @@ const ReportServices = {
     async findBy(type) {
         type = type ? type : null;
 
-        let query = `?type=${type}`;
+        let query = `?${type ? `type=${type}` : ''}`;
         let response = await Requester.get(Endpoints.FIND_BY + query);
 
         return await response.data;

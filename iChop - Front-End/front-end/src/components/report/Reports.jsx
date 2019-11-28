@@ -27,13 +27,12 @@ class Reports extends Component {
     }
 
     async componentDidMount() {
-        this.queryHelper.addQueryParameter('name', 'itsgosho');
-        this.queryHelper.addQueryParameter('age', 17);
         await this.fetchReports();
     }
 
     async fetchReports() {
-        let reports = await ReportServices.findBy();
+        let type = this.queryHelper.getQueryParam('type');
+        let reports = await ReportServices.findBy(type);
         this.setState({reports});
     }
 
@@ -67,7 +66,7 @@ class Reports extends Component {
     render() {
         return (
             <Fragment>
-                <ReportNav/>
+                <ReportNav fetchData={this.fetchReports}/>
 
                 <ReportTable>
                     {this.iterateReports()}
