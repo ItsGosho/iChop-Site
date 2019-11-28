@@ -23,7 +23,7 @@ const ThreadCreatorInformation = (props) => {
                 </div>
                 <div align="center">
 
-                    <Image url={ServerRoutingURLs.DATA.USER.AVATAR.GET(creatorUsername)}
+                    <Image url={ServerRoutingURLs.CORE.DATA_STORAGE.GET_USER_AVATAR(creatorUsername)}
                            defaultUrl={FrontEndResourcesRoutingURLs.USER.AVATAR}
                            style={{'width': '50px', 'height': '50px'}}/>
 

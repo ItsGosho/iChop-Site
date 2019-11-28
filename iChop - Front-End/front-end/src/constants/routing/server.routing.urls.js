@@ -64,13 +64,7 @@ const ServerRoutingURLs = {
         },
         DATA_STORAGE: {
             SET_USER_AVATAR: (username) => `${STORAGE_SERVICE_DOMAIN}/data/set/user/${username}/avatar`,
-        }
-    },
-    DATA: {
-        USER: {
-            AVATAR: {
-                GET: (username) => `${STORAGE_SERVICE_DOMAIN}/data/user/${username}/avatar`
-            }
+            GET_USER_AVATAR: (username) => `${STORAGE_SERVICE_DOMAIN}/data/user/${username}/avatar`
         }
     },
     OUTSIDE: {

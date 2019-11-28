@@ -90,7 +90,7 @@ class UserOptionsInformation extends Component {
 
     onComponentChanged(props) {
         let {username, statusMessage, birthDate, aboutYou} = props.authenticatedUserInfo;
-        let avatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET(username);
+        let avatarUrl = ServerRoutingURLs.CORE.DATA_STORAGE.GET_USER_AVATAR(username);
 
         statusMessage = statusMessage ? statusMessage : '';
         aboutYou = aboutYou ? aboutYou : '';

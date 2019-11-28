@@ -48,7 +48,7 @@ class PanePostCreate extends Component {
 
     render() {
         let {username: viewerUsername} = this.props.authenticatedUserInfo;
-        let viewerAvatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET(viewerUsername);
+        let viewerAvatarUrl = ServerRoutingURLs.CORE.DATA_STORAGE.GET_USER_AVATAR(viewerUsername);
 
         return (
             <form>

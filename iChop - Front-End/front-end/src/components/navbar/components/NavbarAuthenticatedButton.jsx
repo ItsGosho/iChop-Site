@@ -15,7 +15,7 @@ const NavbarAuthenticatedButton = (props) => {
                 aria-haspopup="true"
                 aria-expanded="false">
 
-            <Image url={ServerRoutingURLs.DATA.USER.AVATAR.GET(username)}
+            <Image url={ServerRoutingURLs.CORE.DATA_STORAGE.GET_USER_AVATAR(username)}
                    defaultUrl={FrontEndResourcesRoutingURLs.USER.AVATAR}
                    className="img-user_avatar-top_nav_bar"/>
         </button>

@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 const UserControlNav = ({username}) => (
     <nav className="navbar navbar-expand-lg navbar-light bg-dark justify-content-md-center">
 
-        <Image url={ServerRoutingURLs.DATA.USER.AVATAR.GET(username)}
+        <Image url={ServerRoutingURLs.CORE.DATA_STORAGE.GET_USER_AVATAR(username)}
                className="user-nav-picture"
                defaultUrl={FrontEndResourcesRoutingURLs.USER.AVATAR}/>
 
