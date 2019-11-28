@@ -1,34 +1,28 @@
 import React from "react";
-import CreateReactClass from 'create-react-class';
 import Table from "react-bootstrap/Table";
 
-let ReportTable = CreateReactClass({
-    render() {
-        let thFirstName = this.props.thFirstName;
+const ReportTable = (props) => (
+    <div className="table-responsive" align="center">
+        <Table responsive style={{'width': '85%', 'textAlign': 'center'}}>
 
-        return (
-            <div className="table-responsive" align="center">
-                <Table responsive style={{'width': '85%', 'textAlign': 'center'}}>
+            <thead>
+            <tr>
+                <th scope="col">{props.thFirstName}</th>
+                <th scope="col">Reason</th>
+                <th scope="col">Creator</th>
+                <th scope="col">Entity Type</th>
+                <th scope="col">Date</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
 
-                    <thead>
-                    <tr>
-                        <th scope="col">{thFirstName}</th>
-                        <th scope="col">Reason</th>
-                        <th scope="col">Reporter</th>
-                        <th scope="col">Report Date</th>
-                        <th scope="col">Actions</th>
-                    </tr>
-                    </thead>
+            <tbody>
+            {props.children}
+            </tbody>
 
-                    <tbody>
-                    {this.props.children}
-                    </tbody>
-
-                </Table>
-            </div>
-        );
-    }
-});
+        </Table>
+    </div>
+);
 
 
 export default ReportTable;

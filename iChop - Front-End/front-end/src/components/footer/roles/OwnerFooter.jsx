@@ -13,7 +13,7 @@ const OwnerFooter = () => (
         <FooterLinksWrapper text={'---'}>
 
             <LinkIconLi url={RoutingURLs.USER.ALL} icon={'👥'} text={'Users'}/>
-            <LinkIconLi url={RoutingURLs.COMMENT.REPORT.ALL} icon={'⚠'} text={'Reports'}/>
+            <LinkIconLi url={RoutingURLs.REPORT.ALL} icon={'⚠'} text={'Reports'}/>
             <LinkIconLi url={RoutingURLs.THREAD.CREATE} icon={'🚩'} text={'Create Thread'}/>
 
         </FooterLinksWrapper>

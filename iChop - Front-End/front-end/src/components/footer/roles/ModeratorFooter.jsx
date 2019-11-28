@@ -22,7 +22,7 @@ const ModeratorFooter = (props) => {
 
             <FooterLinksWrapper text={'---'}>
 
-                <LinkIconLi url={RoutingURLs.COMMENT.REPORT.ALL} icon={'⚠'} text={'Reports'}/>
+                <LinkIconLi url={RoutingURLs.REPORT.ALL} icon={'⚠'} text={'Reports'}/>
                 <LinkIconLi url={RoutingURLs.AUTHENTICATION.LOGOUT} icon={'🚪'} text={'Logout'}/>
 
             </FooterLinksWrapper>

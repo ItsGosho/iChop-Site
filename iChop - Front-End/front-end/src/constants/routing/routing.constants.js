@@ -48,25 +48,14 @@ const RoutingURLs = {
         },
     },
 
-    POST: {
-        REPORT: {
-            ALL: '/post/reports/all' /*Moderator+*/
-        }
-    },
-
-    COMMENT: {
-        REPORT: {
-            ALL: '/comment/reports/all' /*Moderator+*/
-        }
-    },
-
     THREAD: {
         CREATE: '/thread/create', /*Moderator+*/
         READ: (id) => `/thread/${id}/read`, /*Everyone*/
-        REPORT: {
-            ALL: '/thread/reports/all' /*Moderator+*/
-        }
     },
+
+    REPORT: {
+        ALL: '/reports/all', /*Moderator++*/
+    }
 };
 
 export default RoutingURLs;

@@ -1,25 +1,24 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Dropdown} from "react-bootstrap";
 import styles from './ReportActionButtons.module.css'
+import PropTypes from 'prop-types';
 
-class ReportActionButtons extends Component {
+const ReportActionButtons = (props) => {
+    let {onDeleteReport} = props;
 
-    render() {
-        let entityName = this.props.entityName;
+    return (
+        <Dropdown className={styles.report_buttons}>
+            <Dropdown.Toggle variant={'warning'} size={'sm'}>⚙Take Action!</Dropdown.Toggle>
 
-        let {onDeleteEntity, onDeleteReport} = this.props;
-
-        return (
-            <Dropdown className={styles.report_buttons}>
-                <Dropdown.Toggle variant={'warning'} size={'sm'}>⚙Take Action!</Dropdown.Toggle>
-
-                <Dropdown.Menu>
-                    <Dropdown.Item onClick={onDeleteEntity}>❌Delete {entityName}</Dropdown.Item>
-                    <Dropdown.Item onClick={onDeleteReport}>😖Delete Report</Dropdown.Item>
-                </Dropdown.Menu>
-            </Dropdown>
-        );
-    }
-}
+            <Dropdown.Menu>
+                <Dropdown.Item onClick={onDeleteReport}>😖Delete Report</Dropdown.Item>
+            </Dropdown.Menu>
+        </Dropdown>
+    );
+};
 
 export default ReportActionButtons;
+
+ReportActionButtons.propTypes = {
+    onDeleteReport: PropTypes.func,
+};

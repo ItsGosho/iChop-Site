@@ -14,6 +14,7 @@ import PrefixURLs from "./constants/routing/prefix.routing.constants";
 import ThreadsAll from "./components/thread/all/ThreadsAll";
 import ThreadRead from "./components/thread/read/ThreadRead";
 import UserControl from "./components/user/control/UserControl";
+import Reports from "./components/report/Reports";
 
 function App() {
 
@@ -37,6 +38,8 @@ function App() {
                     <Route path={PrefixURLs.USER_CONTROL_PREFIX(':username')} render={() => (<UserControl/>)}/>
 
                     <Route path={PrefixURLs.OPTIONS_PREFIX} render={() => (<UserOptions/>)}/>
+
+                  <Route path={RoutingURLs.REPORT.ALL} render={() => (<Reports/>)}/>
 
 
                     <Route exact path={RoutingURLs.THREAD.READ(':id')}
