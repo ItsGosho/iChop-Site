@@ -39,8 +39,11 @@ const ReportServices = {
         return await ReportServices.hasUserReported(username, EntityTypes.USER_PROFILE_COMMENT, userProfileCommentId);
     },
 
-    async findBy() {
-        let response = await Requester.get(Endpoints.FIND_BY);
+    async findBy(type) {
+        type = type ? type : null;
+
+        let query = `?type=${type}`;
+        let response = await Requester.get(Endpoints.FIND_BY + query);
 
         return await response.data;
     },

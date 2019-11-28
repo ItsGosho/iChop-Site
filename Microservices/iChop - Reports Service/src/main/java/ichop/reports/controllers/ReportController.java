@@ -4,10 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.reports.constants.ReportReplyConstants;
 import ichop.reports.constants.ReportRoutingConstants;
 import ichop.reports.domain.entities.Report;
-import ichop.reports.domain.models.jms.IsUserReportedRequest;
-import ichop.reports.domain.models.jms.ReportCreateRequest;
-import ichop.reports.domain.models.jms.ReportDeleteByIdRequest;
-import ichop.reports.domain.models.jms.ReportReply;
+import ichop.reports.domain.models.jms.*;
 import ichop.reports.domain.models.service.ReportServiceModel;
 import ichop.reports.services.ReportServices;
 import org.ichop.commons.domain.BoolReply;
@@ -24,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 public class ReportController {
@@ -76,8 +74,13 @@ public class ReportController {
 
     @PreAuthorize("hasAuthority('MODERATOR')")
     @GetMapping(ReportRoutingConstants.FIND_BY)
-    public ResponseEntity findBy() {
+    public ResponseEntity findBy(ReportsFindByRequest request) {
+
         List<ReportServiceModel> reports = this.reportServices.findAll(ReportServiceModel.class);
+
+        reports.stream()
+                .filter(x -> request.getType() == null || x.getType().name().equals(request.getType().toUpperCase()))
+                .collect(Collectors.toList());
 
         return this.responseHelpers.respondSuccessful(ReportReplyConstants.FETCH_SUCCESSFUL, reports);
     }

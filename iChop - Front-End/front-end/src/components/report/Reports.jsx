@@ -4,6 +4,8 @@ import ReportTableColumns from "./other/ReportTableColumns";
 import ReportTable from "./other/ReportTable";
 import './Reports.css';
 import ReportServices from "../../services/report.services";
+import {withRouter} from "react-router-dom";
+import QueryHelper from "../../helpers/query.helper";
 
 class Reports extends Component {
 
@@ -17,9 +19,16 @@ class Reports extends Component {
         this.onDeleteReport = this.onDeleteReport.bind(this);
         this.iterateReports = this.iterateReports.bind(this);
         this.fetchReports = this.fetchReports.bind(this);
+        this.queryHelper = new QueryHelper(this.props);
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        this.queryHelper = new QueryHelper(this.props);
     }
 
     async componentDidMount() {
+        this.queryHelper.addQueryParameter('name', 'itsgosho');
+        this.queryHelper.addQueryParameter('age', 17);
         await this.fetchReports();
     }
 
@@ -73,4 +82,4 @@ class Reports extends Component {
 
 }
 
-export default Reports;
+export default withRouter(Reports);
