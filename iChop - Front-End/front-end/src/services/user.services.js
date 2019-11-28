@@ -129,25 +129,35 @@ const UserServices = {
     },
 
     async rolePromote(username) {
-        let response = await Requester.post(Endpoints.ROLE_PROMOTE(username),{});
+        let response = await Requester.post(Endpoints.ROLE_PROMOTE(username), {});
         NotificationHelper.showNotificationByResponse(response);
     },
 
     async roleDemote(username) {
-        let response = await Requester.post(Endpoints.ROLE_DEMOTE(username),{});
+        let response = await Requester.post(Endpoints.ROLE_DEMOTE(username), {});
         NotificationHelper.showNotificationByResponse(response);
     },
 
     async hasNextRole(username) {
         let response = await Requester.get(Endpoints.ROLE_HAS_NEXT(username));
-        return response.data;
+        return response.data ? response.data.result : false;
     },
 
     async hasPreviousRole(username) {
         let response = await Requester.get(Endpoints.ROLE_HAS_PREVIOUS(username));
-        return response.data;
+
+        return response.data ? response.data.result : false;
     },
 
+    async nextRole(username) {
+        let response = await Requester.get(Endpoints.ROLE_NEXT(username));
+        return response.data ? response.data.authority : null;
+    },
+
+    async previousRole(username) {
+        let response = await Requester.get(Endpoints.ROLE_PREVIOUS(username));
+        return response.data ? response.data.authority : null;
+    },
 };
 
 export default UserServices;

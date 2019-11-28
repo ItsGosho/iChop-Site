@@ -1,10 +1,12 @@
 package ichop.users.controllers;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.users.constants.UserReplyConstants;
 import ichop.users.constants.UserRoutingConstants;
 import ichop.users.domain.models.jms.role.*;
 import ichop.users.domain.models.service.RoleServiceModel;
 import ichop.users.domain.models.service.UserServiceModel;
+import ichop.users.domain.models.view.UserViewModel;
 import ichop.users.services.RoleServices;
 import ichop.users.services.UserServices;
 import org.ichop.commons.domain.BoolReply;
@@ -15,8 +17,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import javax.management.relation.Role;
-
 @RestController
 @PreAuthorize("hasAuthority('ADMIN')")
 public class UserAdminController {
@@ -25,13 +25,15 @@ public class UserAdminController {
     private final RoleServices roleServices;
     private final ResponseHelpers responseHelpers;
     private final ValidationHelper validationHelper;
+    private final ObjectMapper objectMapper;
 
     @Autowired
-    public UserAdminController(UserServices userServices, RoleServices roleServices, ResponseHelpers responseHelpers, ValidationHelper validationHelper) {
+    public UserAdminController(UserServices userServices, RoleServices roleServices, ResponseHelpers responseHelpers, ValidationHelper validationHelper, ObjectMapper objectMapper) {
         this.userServices = userServices;
         this.roleServices = roleServices;
         this.responseHelpers = responseHelpers;
         this.validationHelper = validationHelper;
+        this.objectMapper = objectMapper;
     }
 
     @GetMapping(UserRoutingConstants.ADMIN_FIND_BY)
@@ -39,10 +41,16 @@ public class UserAdminController {
 
         if (this.userServices.existsByUsername(username)) {
             UserServiceModel user = this.userServices.findByUsername(username);
-            return this.responseHelpers.respondSuccessful(UserReplyConstants.FETCHED_SUCCESSFUL, user);
+            UserViewModel viewModel = this.objectMapper.convertValue(user, UserViewModel.class);
+            viewModel.setAuthority(this.roleServices.findHighestOfUser(user).getAuthority());
+
+            return this.responseHelpers.respondSuccessful(UserReplyConstants.FETCHED_SUCCESSFUL, viewModel);
         } else if (this.userServices.existsByEmail(email)) {
             UserServiceModel user = this.userServices.findByEmail(email);
-            return this.responseHelpers.respondSuccessful(UserReplyConstants.FETCHED_SUCCESSFUL, user);
+            UserViewModel viewModel = this.objectMapper.convertValue(user, UserViewModel.class);
+            viewModel.setAuthority(this.roleServices.findHighestOfUser(user).getAuthority());
+
+            return this.responseHelpers.respondSuccessful(UserReplyConstants.FETCHED_SUCCESSFUL, viewModel);
         }
 
         return this.responseHelpers.respondError(UserReplyConstants.NOT_FOUND);

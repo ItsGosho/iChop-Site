@@ -25,6 +25,8 @@ const ServerRoutingURLs = {
             ROLE_DEMOTE: (username) => `${USERS_SERVICE_DOMAIN}/admin/user/${username}/role/demote`,
             ROLE_HAS_NEXT: (username) => `${USERS_SERVICE_DOMAIN}/admin/user/${username}/role/has/next`,
             ROLE_HAS_PREVIOUS: (username) => `${USERS_SERVICE_DOMAIN}/admin/user/${username}/role/has/previous`,
+            ROLE_NEXT: (username) => `${USERS_SERVICE_DOMAIN}/admin/user/${username}/role/next`,
+            ROLE_PREVIOUS: (username) => `${USERS_SERVICE_DOMAIN}/admin/user/${username}/role/previous`,
 
             RETRIEVE_INFORMATION: (username) => `${USERS_SERVICE_DOMAIN}/user/${username}/information/retrieve`,
             UPDATE_INFORMATION: (username) => `${USERS_SERVICE_DOMAIN}/user/${username}/information/update`,
