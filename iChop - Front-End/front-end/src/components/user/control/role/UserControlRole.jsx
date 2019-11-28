@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Roles from "../../../../constants/enums/roles.constants";
 import UserControlRoleLogs from "./UserControlRoleLogs";
 import './UserControlRole.css'
+import PropTypes from 'prop-types'
 
 class UserControlRole extends Component {
 
@@ -76,6 +77,8 @@ class UserControlRole extends Component {
 
 }
 
+export default UserControlRole;
+
 const ChangeRoleButton = (props) => {
     let {icon, role, onClick} = props;
 
@@ -87,4 +90,8 @@ const ChangeRoleButton = (props) => {
     )
 };
 
-export default UserControlRole;
+ChangeRoleButton.propTypes = {
+    icon: PropTypes.string,
+    role: PropTypes.string,
+    onClick: PropTypes.func,
+};
