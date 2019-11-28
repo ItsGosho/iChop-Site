@@ -78,7 +78,7 @@ public class ReportController {
 
         List<ReportServiceModel> reports = this.reportServices.findAll(ReportServiceModel.class);
 
-        reports.stream()
+        reports = reports.stream()
                 .filter(x -> request.getType() == null || x.getType().name().equals(request.getType().toUpperCase()))
                 .collect(Collectors.toList());
 
