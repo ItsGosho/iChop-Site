@@ -3,6 +3,7 @@ import ReportNav from "./other/ReportNav";
 import ReportTableColumns from "./other/ReportTableColumns";
 import ReportTable from "./other/ReportTable";
 import './Reports.css';
+import ReportServices from "../../services/report.services";
 
 class Reports extends Component {
 
@@ -13,59 +14,48 @@ class Reports extends Component {
             reports: []
         };
 
-        this.onDeleteEntity = this.onDeleteEntity.bind(this);
         this.onDeleteReport = this.onDeleteReport.bind(this);
         this.iterateReports = this.iterateReports.bind(this);
+        this.fetchReports = this.fetchReports.bind(this);
     }
 
-    componentDidMount() {
-        let reports = [
-            {
-                postId: 'id1',
-                reason: 'Really bad post!',
-                content: 'Hi there1!',
-                creatorUsername: 'itsgosho',
-                reportDate: new Date(1993, 1)
-            }
-        ];
+    async componentDidMount() {
+        await this.fetchReports();
+    }
 
+    async fetchReports() {
+        let reports = await ReportServices.findBy();
         this.setState({reports});
     }
 
     iterateReports() {
         return this.state.reports.map((report, index) => {
-            let {content, reason, creatorUsername, reportDate} = report;
+            let {id, reason, creatorUsername, reportedOn, type} = report;
 
             return (
                 <ReportTableColumns
-                    onDeleteEntity={this.onDeleteEntity}
-                    onDeleteReport={this.onDeleteReport}
-                    entityName={'Post'}
+                    id={id}
                     index={index}
-                    reason={reason}
                     creatorUsername={creatorUsername}
-                    reportDate={reportDate}>
-
-                    <td className="td-content">
-                        <div className="div-content">{content}</div>
-                    </td>
-
+                    reason={reason}
+                    type={type}
+                    reportedOn={reportedOn}
+                    onDeleteReport={this.onDeleteReport}>
                 </ReportTableColumns>
             );
         })
     }
 
-    onDeleteEntity() {
-        console.log('Delete Entity');
-    }
+    async onDeleteReport(id, type) {
+        let isSuccessful = await ReportServices.deleteById(id, type);
 
-    onDeleteReport() {
-        console.log('Delete Report');
+        console.log(isSuccessful);
+        if (isSuccessful) {
+            this.fetchReports();
+        }
     }
 
     render() {
-        let {reports} = this.state;
-
         return (
             <Fragment>
                 <ReportNav/>

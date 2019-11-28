@@ -7,7 +7,6 @@ const ReportTable = (props) => (
 
             <thead>
             <tr>
-                <th scope="col">{props.thFirstName}</th>
                 <th scope="col">Reason</th>
                 <th scope="col">Creator</th>
                 <th scope="col">Entity Type</th>

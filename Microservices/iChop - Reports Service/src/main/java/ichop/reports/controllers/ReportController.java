@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.security.Principal;
+import java.util.List;
 
 @RestController
 public class ReportController {
@@ -71,6 +72,14 @@ public class ReportController {
         this.reportServices.deleteById(request.getType(), request.getId());
 
         return this.responseHelpers.respondSuccessful(ReportReplyConstants.REPORT_DELETED_SUCCESSFUL);
+    }
+
+    @PreAuthorize("hasAuthority('MODERATOR')")
+    @GetMapping(ReportRoutingConstants.FIND_BY)
+    public ResponseEntity findBy() {
+        List<ReportServiceModel> reports = this.reportServices.findAll(ReportServiceModel.class);
+
+        return this.responseHelpers.respondSuccessful(ReportReplyConstants.FETCH_SUCCESSFUL, reports);
     }
 
     @GetMapping(ReportRoutingConstants.IS_USER_REPORTED)

@@ -58,6 +58,7 @@ const ServerRoutingURLs = {
             FIND_BY: `${THREADS_SERVICE_DOMAIN}/thread/find/by`
         },
         REPORT: {
+            FIND_BY: `${REPORTS_SERVICE_DOMAIN}/reports/find/by`,
             CREATE: `${REPORTS_SERVICE_DOMAIN}/report/create`,
             DELETE_BY_ID: `${REPORTS_SERVICE_DOMAIN}/report/delete/by/id`,
             IS_USER_REPORTED: `${REPORTS_SERVICE_DOMAIN}/report/is/user/reported`,

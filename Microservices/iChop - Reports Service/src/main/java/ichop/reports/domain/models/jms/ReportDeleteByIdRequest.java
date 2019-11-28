@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-@SpELValidation(value = "@reportServicesImp.existsById(#this.type,#this.entityId) == true", message = "Entity not found")
+@SpELValidation(value = "@reportServicesImp.existsById(#this.type,#this.id) == true", message = "Entity not found")
 public class ReportDeleteByIdRequest extends RequestCandidate {
 
     @NotNull

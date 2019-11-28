@@ -28,18 +28,31 @@ const ReportServices = {
     },
 
     async hasReportedThread(username, threadId) {
-        return await ReportServices.hasUserReported(username, EntityTypes.THREAD,threadId);
+        return await ReportServices.hasUserReported(username, EntityTypes.THREAD, threadId);
     },
 
     async hasReportedThreadComment(username, commentId) {
-        return await ReportServices.hasUserReported(username, EntityTypes.THREAD_COMMENT,commentId);
+        return await ReportServices.hasUserReported(username, EntityTypes.THREAD_COMMENT, commentId);
     },
 
     async hasReportedUserProfileComment(username, userProfileCommentId) {
-        return await ReportServices.hasUserReported(username,EntityTypes.USER_PROFILE_COMMENT,userProfileCommentId);
+        return await ReportServices.hasUserReported(username, EntityTypes.USER_PROFILE_COMMENT, userProfileCommentId);
     },
 
-    async hasUserReported(creatorUsername,type,entityId) {
+    async findBy() {
+        let response = await Requester.get(Endpoints.FIND_BY);
+
+        return await response.data;
+    },
+
+    async deleteById(id, type) {
+        let response = await Requester.post(Endpoints.DELETE_BY_ID, {id, type});
+        NotificationHelper.showNotificationByResponse(response);
+
+        return response.successful;
+    },
+
+    async hasUserReported(creatorUsername, type, entityId) {
         let query = `?creatorUsername=${creatorUsername}&type=${type}&entityId=${entityId}`;
         let response = await Requester.get(Endpoints.IS_USER_REPORTED + query);
 
