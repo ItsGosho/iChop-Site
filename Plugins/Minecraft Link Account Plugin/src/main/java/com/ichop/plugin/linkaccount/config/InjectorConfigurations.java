@@ -29,12 +29,16 @@ public class InjectorConfigurations extends AbstractModule {
     @Override
     protected void configure() {
 
-        EntityManager entityManager = new EntityManagerCreator().createEntityManager("jdbc:mysql://localhost:3306/linkaccount?useSSL=false&amp;createDatabaseIfNotExist=true&amp;serverTimezone=UTC",
-                "root","1234", Key.class);
-        this.bind(EntityManager.class).toInstance(entityManager);
+        this.bind(EntityManager.class).toInstance(this.entityManager());
         this.bind(KeyRepository.class).to(KeyRepositoryImp.class);
         this.bind(KeyServices.class).to(KeyServicesImp.class);
         this.bind(ObjectMapper.class).toInstance(new ObjectMapper());
         this.bind(LinkAccount.class).toInstance(this.linkAccount);
+    }
+
+    private EntityManager entityManager() {
+        return new EntityManagerCreator()
+                .createEntityManager("jdbc:mysql://localhost:3306/linkaccount?useSSL=false&amp;createDatabaseIfNotExist=true&amp;serverTimezone=UTC",
+                "root", "1234", Key.class);
     }
 }

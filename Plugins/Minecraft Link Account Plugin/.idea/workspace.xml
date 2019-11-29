@@ -2,30 +2,53 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b19ca9b3-db72-4cc0-8576-35604dda9092" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_classmate_1_3_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_inject_guice_4_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_googlecode_json_simple_json_simple_1_1_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_10.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_8_0_15.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_9_10.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_8_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hibernate_core_5_4_2_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_jandex_2_0_5_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_modelmapper_modelmapper_2_3_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_1_18_6.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_spigotmc_spigot_api_1_13_2_R0_1_SNAPSHOT.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/linkaccount.iml" beforeDir="false" afterPath="$PROJECT_DIR$/linkaccount.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/config/InjectorConfigurations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/config/InjectorConfigurations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/services/KeyServicesImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/services/KeyServicesImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/LinkAccount.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/LinkAccount.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/MainTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/MainTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/commands/LinkAccountCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/commands/LinkAccountCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/config/InjectorConfigurations.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/config/InjectorConfigurations.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/database/EntityManagerCreator$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/database/EntityManagerCreator$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/database/EntityManagerCreator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/database/EntityManagerCreator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/domain/entities/Key.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/domain/entities/Key.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/domain/entities/KeyConstants.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/domain/entities/KeyConstants.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/domain/models/binding/KeyCreateBindingModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/domain/models/binding/KeyCreateBindingModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/domain/models/service/BaseServiceModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/domain/models/service/BaseServiceModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/domain/models/service/KeyServiceModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/domain/models/service/KeyServiceModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/loaders/CommandLoader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/loaders/CommandLoader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/repository/KeyRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/repository/KeyRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/repository/KeyRepositoryImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/repository/KeyRepositoryImp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/services/KeyServices.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/services/KeyServices.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/services/KeyServicesImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/services/KeyServicesImp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/linkaccount-1.0-SNAPSHOT-shaded.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/linkaccount-1.0-SNAPSHOT-shaded.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/linkaccount-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/linkaccount-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -63,7 +86,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
@@ -173,7 +196,8 @@
       <workItem from="1553367769258" duration="880000" />
       <workItem from="1553458827444" duration="244000" />
       <workItem from="1553510160858" duration="823000" />
-      <workItem from="1575052423670" duration="685000" />
+      <workItem from="1575052423670" duration="793000" />
+      <workItem from="1575060370082" duration="2467000" />
     </task>
     <servers />
   </component>
@@ -185,7 +209,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -201,107 +227,5 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <last-edited>linkaccount:jar</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-                <option value="0.5" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <last-edited>JPA (linkaccount)|JPA</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <last-edited>bootstrap</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>linkaccount</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-                <option value="0.6" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <last-edited>11</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <last-edited>Maven: antlr:antlr:2.7.7</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ScopeChooserConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.20189703" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
   </component>
 </project>

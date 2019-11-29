@@ -15,16 +15,17 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Properties;
+import java.util.stream.Collectors;
 
 public class EntityManagerCreator {
 
-    public EntityManager createEntityManager(String dbUrl, String dbUser, String dbPassword,Class<?> entityClasses) {
+    public EntityManager createEntityManager(String dbUrl, String dbUser, String dbPassword, Class... entityClasses) {
 
         Properties props = new Properties();
         props.put("hibernate.connection.url", dbUrl);
         props.put("hibernate.connection.username", dbUser);
         props.put("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
-        props.put("hibernate.connection.dialect","org.hibernate.dialect.MySQL57Dialect");
+        props.put("hibernate.connection.dialect", "org.hibernate.dialect.MySQL57Dialect");
         props.put("hibernate.hbm2ddl.auto", "update");
         props.put("hibernate.show_sql", "true");
 
@@ -41,7 +42,7 @@ public class EntityManagerCreator {
 
             @Override
             public List<String> getManagedClassNames() {
-                return Arrays.asList(entityClasses.getName());
+                return Arrays.stream(entityClasses).map(Class::getName).collect(Collectors.toList());
             }
 
             @Override
