@@ -5,9 +5,9 @@ public final class DatabaseConfigurationConstants {
     public static final String USER = "root";
     public static final String PASSWORD = "1234";
 
-    public static final String DOMAIN = "ichop_link_account_plugin";
-    public static final String PORT = "ichop_link_account_plugin";
-    public static final String NAME = "ichop_link_account_plugin";
+    public static final String DOMAIN = "localhost";
+    public static final String PORT = "3306";
+    public static final String NAME = "iChop_link_account_plugin";
 
     public static final String CONNECTION_URL = URL(DOMAIN, PORT, NAME);
 
