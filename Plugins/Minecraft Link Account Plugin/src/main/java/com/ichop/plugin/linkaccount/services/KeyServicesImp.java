@@ -1,6 +1,7 @@
 package com.ichop.plugin.linkaccount.services;
 
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ichop.plugin.linkaccount.domain.entities.Key;
 import com.ichop.plugin.linkaccount.domain.entities.KeyConstants;
 import com.ichop.plugin.linkaccount.domain.models.binding.KeyCreateBindingModel;
@@ -11,7 +12,6 @@ import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.modelmapper.ModelMapper;
 
 import javax.inject.Inject;
 import java.time.LocalDateTime;
@@ -22,26 +22,26 @@ public class KeyServicesImp implements KeyServices {
     public static final Integer SHORT_KEY_LENGTH = 5;
 
     private final KeyRepository keyRepository;
-    private final ModelMapper modelMapper;
+    private final ObjectMapper objectMapper;
 
     @Inject
-    public KeyServicesImp(KeyRepository keyRepository, ModelMapper modelMapper) {
+    public KeyServicesImp(KeyRepository keyRepository, ObjectMapper objectMapper) {
         this.keyRepository = keyRepository;
-        this.modelMapper = modelMapper;
+        this.objectMapper = objectMapper;
     }
 
 
     @Override
     public KeyServiceModel create(KeyCreateBindingModel keyCreateBindingModel) {
 
-        Key key = this.modelMapper.map(keyCreateBindingModel,Key.class);
+        Key key = this.objectMapper.convertValue(keyCreateBindingModel,Key.class);
         this.deleteLastByUUID(key.getPlayerUUID());
         String randomKey = RandomStringUtils.randomAlphabetic(SHORT_KEY_LENGTH);
 
         key.setKey(randomKey);
         key.setExpirityDate(LocalDateTime.now().plusSeconds(KeyConstants.KEY_EXPIRATION_IN_SECONDS));
 
-        return this.modelMapper.map(this.keyRepository.save(key),KeyServiceModel.class);
+        return this.objectMapper.convertValue(this.keyRepository.save(key),KeyServiceModel.class);
     }
 
     @Override
