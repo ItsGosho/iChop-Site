@@ -7,7 +7,7 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 
 import javax.persistence.Persistence;
 
-public class MainTest {
+public class CLR {
 
     public static final String IS_ACCOUNT_LINKED_URL = "http://http://localhost:8000/player/is-account-linked?uuid={uuid}";
 

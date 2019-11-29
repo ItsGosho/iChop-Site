@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b19ca9b3-db72-4cc0-8576-35604dda9092" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/constants/DatabaseConfigurationConstants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/config/InjectorConfigurations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/config/InjectorConfigurations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/constants/DatabaseConstants.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/MainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/CLR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/repository/KeyRepositoryImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/repository/KeyRepositoryImp.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -84,8 +83,8 @@
     </option>
   </component>
   <component name="RunManager" selected="Maven.linkaccount [clean,package]">
-    <configuration name="MainTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.ichop.plugin.linkaccount.MainTest" />
+    <configuration name="CLR" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.ichop.plugin.linkaccount.CLR" />
       <module name="linkaccount" />
       <extension name="coverage">
         <pattern>
@@ -138,13 +137,13 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Application.MainTest" />
+      <item itemvalue="Application.CLR" />
       <item itemvalue="Maven.linkaccount [clean,package]" />
       <item itemvalue="Remote.Debug LinkAccount" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MainTest" />
+        <item itemvalue="Application.CLR" />
       </list>
     </recent_temporary>
   </component>
@@ -166,7 +165,7 @@
       <workItem from="1553458827444" duration="244000" />
       <workItem from="1553510160858" duration="823000" />
       <workItem from="1575052423670" duration="793000" />
-      <workItem from="1575060370082" duration="3079000" />
+      <workItem from="1575060370082" duration="3811000" />
     </task>
     <servers />
   </component>
