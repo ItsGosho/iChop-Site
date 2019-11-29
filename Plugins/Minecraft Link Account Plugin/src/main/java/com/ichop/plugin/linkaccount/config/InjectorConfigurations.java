@@ -5,6 +5,7 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.ichop.plugin.linkaccount.LinkAccount;
+import com.ichop.plugin.linkaccount.constants.DatabaseConfigurationConstants;
 import com.ichop.plugin.linkaccount.database.EntityManagerCreator;
 import com.ichop.plugin.linkaccount.domain.entities.Key;
 import com.ichop.plugin.linkaccount.repository.KeyRepository;
@@ -38,7 +39,10 @@ public class InjectorConfigurations extends AbstractModule {
 
     private EntityManager entityManager() {
         return new EntityManagerCreator()
-                .createEntityManager("jdbc:mysql://localhost:3306/linkaccount?useSSL=false&amp;createDatabaseIfNotExist=true&amp;serverTimezone=UTC",
-                "root", "1234", Key.class);
+                .createEntityManager(
+                        DatabaseConfigurationConstants.CONNECTION_URL,
+                        DatabaseConfigurationConstants.USER,
+                        DatabaseConfigurationConstants.PASSWORD,
+                        Key.class);
     }
 }

@@ -2,33 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b19ca9b3-db72-4cc0-8576-35604dda9092" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/constants/DatabaseConfigurationConstants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linkaccount.iml" beforeDir="false" afterPath="$PROJECT_DIR$/linkaccount.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/LinkAccount.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/LinkAccount.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/MainTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/MainTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/commands/LinkAccountCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/commands/LinkAccountCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/config/InjectorConfigurations.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/config/InjectorConfigurations.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/database/EntityManagerCreator$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/database/EntityManagerCreator$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/database/EntityManagerCreator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/database/EntityManagerCreator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/domain/entities/Key.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/domain/entities/Key.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/domain/entities/KeyConstants.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/domain/entities/KeyConstants.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/domain/models/binding/KeyCreateBindingModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/domain/models/binding/KeyCreateBindingModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/domain/models/service/BaseServiceModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/domain/models/service/BaseServiceModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/domain/models/service/KeyServiceModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/domain/models/service/KeyServiceModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/loaders/CommandLoader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/loaders/CommandLoader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/repository/KeyRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/repository/KeyRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/repository/KeyRepositoryImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/repository/KeyRepositoryImp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/services/KeyServices.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/services/KeyServices.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/services/KeyServicesImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/services/KeyServicesImp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/linkaccount-1.0-SNAPSHOT-shaded.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/linkaccount-1.0-SNAPSHOT-shaded.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/linkaccount-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/linkaccount-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/config/InjectorConfigurations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/config/InjectorConfigurations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/constants/DatabaseConstants.java" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -57,16 +34,6 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>plugin</find>
-      <find>resources</find>
-      <find>properti</find>
-      <find>persistence.</find>
-      <find>persistence</find>
-      <find>properties</find>
-    </findStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
@@ -78,7 +45,9 @@
     </option>
   </component>
   <component name="ProjectId" id="1UImKTEoGZdcNSPHULcNitdPpMI" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -197,7 +166,7 @@
       <workItem from="1553458827444" duration="244000" />
       <workItem from="1553510160858" duration="823000" />
       <workItem from="1575052423670" duration="793000" />
-      <workItem from="1575060370082" duration="2467000" />
+      <workItem from="1575060370082" duration="3079000" />
     </task>
     <servers />
   </component>
