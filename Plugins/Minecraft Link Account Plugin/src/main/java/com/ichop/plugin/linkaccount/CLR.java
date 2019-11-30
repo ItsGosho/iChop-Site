@@ -10,7 +10,7 @@ import javax.jms.*;
 
 public class CLR {
 
-    public static final String IS_ACCOUNT_LINKED_URL = "http://http://localhost:8000/player/is-account-linked?uuid={uuid}";
+    public static final String IS_ACCOUNT_LINKED_URL = "http://localhost:8000/player/is-account-linked?uuid={uuid}";
 
     @Inject
     private CommandLoader commandLoader;

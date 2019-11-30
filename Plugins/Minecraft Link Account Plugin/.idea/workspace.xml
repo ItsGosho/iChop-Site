@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b19ca9b3-db72-4cc0-8576-35604dda9092" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/CLR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/CLR.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/config/BeansConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/config/BeansConfiguration.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,6 +40,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -80,6 +83,7 @@
       <recent name="C:\Users\Gosho\Desktop\Minecraft Link Account Plugin\src\main\resources" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.ichop.plugin.linkaccount.repository" />
       <recent name="com.ichop.plugin.linkaccount.domain.models.binding" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -190,7 +194,7 @@
       <workItem from="1553510160858" duration="823000" />
       <workItem from="1575052423670" duration="793000" />
       <workItem from="1575060370082" duration="3894000" />
-      <workItem from="1575112676448" duration="14033000" />
+      <workItem from="1575112676448" duration="14464000" />
     </task>
     <servers />
   </component>

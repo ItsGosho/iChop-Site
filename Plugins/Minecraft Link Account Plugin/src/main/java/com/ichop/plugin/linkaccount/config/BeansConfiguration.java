@@ -9,8 +9,12 @@ import com.ichop.plugin.linkaccount.helpers.JmsHelper;
 import com.ichop.plugin.linkaccount.helpers.JmsHelperImpl;
 import com.ichop.plugin.linkaccount.repository.KeyRepository;
 import com.ichop.plugin.linkaccount.repository.KeyRepositoryImpl;
+import com.ichop.plugin.linkaccount.repository.LinkRepository;
+import com.ichop.plugin.linkaccount.repository.LinkRepositoryImpl;
 import com.ichop.plugin.linkaccount.services.KeyServices;
 import com.ichop.plugin.linkaccount.services.KeyServicesImpl;
+import com.ichop.plugin.linkaccount.services.LinkServices;
+import com.ichop.plugin.linkaccount.services.LinkServicesImpl;
 
 import javax.persistence.EntityManager;
 
@@ -29,8 +33,15 @@ public class BeansConfiguration extends AbstractModule {
     @Override
     protected void configure() {
         super.bind(EntityManager.class).toInstance(EntityManagerConfiguration.entityManager());
+
+        /*Repositories:*/
         super.bind(KeyRepository.class).to(KeyRepositoryImpl.class);
+        super.bind(LinkRepository.class).to(LinkRepositoryImpl.class);
+
+        /*Services:*/
         super.bind(KeyServices.class).to(KeyServicesImpl.class);
+        super.bind(LinkServices.class).to(LinkServicesImpl.class);
+
         super.bind(JmsHelper.class).to(JmsHelperImpl.class);
         super.bind(ObjectMapper.class).toInstance(new ObjectMapper());
         super.bind(LinkAccountPlugin.class).toInstance(this.linkAccountPlugin);
