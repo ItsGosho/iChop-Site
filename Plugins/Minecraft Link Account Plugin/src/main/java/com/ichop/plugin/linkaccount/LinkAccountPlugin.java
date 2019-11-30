@@ -11,7 +11,7 @@ import javax.jms.Destination;
 import javax.jms.MessageConsumer;
 import javax.jms.Session;
 
-public final class LinkAccount extends JavaPlugin {
+public final class LinkAccountPlugin extends JavaPlugin {
 
     @Inject
     private CommandLoader commandLoader;

@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-import com.ichop.plugin.linkaccount.LinkAccount;
+import com.ichop.plugin.linkaccount.LinkAccountPlugin;
 import com.ichop.plugin.linkaccount.helpers.JmsHelper;
 import com.ichop.plugin.linkaccount.helpers.JmsHelperImpl;
 import com.ichop.plugin.linkaccount.repository.KeyRepository;
@@ -16,10 +16,10 @@ import javax.persistence.EntityManager;
 
 public class BeansConfiguration extends AbstractModule {
 
-    private final LinkAccount linkAccount;
+    private final LinkAccountPlugin linkAccountPlugin;
 
-    public BeansConfiguration(LinkAccount linkAccount) {
-        this.linkAccount = linkAccount;
+    public BeansConfiguration(LinkAccountPlugin linkAccountPlugin) {
+        this.linkAccountPlugin = linkAccountPlugin;
     }
 
     public Injector createInjector() {
@@ -33,6 +33,6 @@ public class BeansConfiguration extends AbstractModule {
         super.bind(KeyServices.class).to(KeyServicesImpl.class);
         super.bind(JmsHelper.class).to(JmsHelperImpl.class);
         super.bind(ObjectMapper.class).toInstance(new ObjectMapper());
-        super.bind(LinkAccount.class).toInstance(this.linkAccount);
+        super.bind(LinkAccountPlugin.class).toInstance(this.linkAccountPlugin);
     }
 }
