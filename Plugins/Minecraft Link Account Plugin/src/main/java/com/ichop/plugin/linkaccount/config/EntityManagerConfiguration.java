@@ -14,13 +14,19 @@ public final class EntityManagerConfiguration {
     private static final String PORT = "3306";
     private static final String NAME = "ichop_link_account_plugin";
 
+    private static EntityManager entityManager;
+
     public static EntityManager entityManager() {
-        return new EntityManagerCreator()
-                .createEntityManager(
-                        getConnectionUrl(DOMAIN,PORT,NAME),
-                        USER,
-                        PASSWORD,
-                        Key.class);
+
+        if (entityManager == null) {
+            entityManager = new EntityManagerCreator().createEntityManager(
+                            getConnectionUrl(DOMAIN, PORT, NAME),
+                            USER,
+                            PASSWORD,
+                            Key.class);
+        }
+
+        return entityManager;
     }
 
     private static String getConnectionUrl(String domain, String port, String name) {
