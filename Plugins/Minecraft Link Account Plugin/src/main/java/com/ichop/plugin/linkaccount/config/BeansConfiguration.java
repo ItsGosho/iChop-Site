@@ -15,11 +15,11 @@ import com.ichop.plugin.linkaccount.services.KeyServicesImp;
 
 import javax.persistence.EntityManager;
 
-public class InjectorConfigurations extends AbstractModule {
+public class BeansConfiguration extends AbstractModule {
 
     private final LinkAccount linkAccount;
 
-    public InjectorConfigurations(LinkAccount linkAccount) {
+    public BeansConfiguration(LinkAccount linkAccount) {
         this.linkAccount = linkAccount;
     }
 
@@ -29,20 +29,10 @@ public class InjectorConfigurations extends AbstractModule {
 
     @Override
     protected void configure() {
-
-        this.bind(EntityManager.class).toInstance(this.entityManager());
+        this.bind(EntityManager.class).toInstance(EntityManagerConfiguration.entityManager());
         this.bind(KeyRepository.class).to(KeyRepositoryImp.class);
         this.bind(KeyServices.class).to(KeyServicesImp.class);
         this.bind(ObjectMapper.class).toInstance(new ObjectMapper());
         this.bind(LinkAccount.class).toInstance(this.linkAccount);
-    }
-
-    private EntityManager entityManager() {
-        return new EntityManagerCreator()
-                .createEntityManager(
-                        DatabaseConfigurationConstants.CONNECTION_URL,
-                        DatabaseConfigurationConstants.USER,
-                        DatabaseConfigurationConstants.PASSWORD,
-                        Key.class);
     }
 }

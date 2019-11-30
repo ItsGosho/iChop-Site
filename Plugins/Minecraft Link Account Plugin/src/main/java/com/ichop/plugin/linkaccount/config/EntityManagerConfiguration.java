@@ -1,0 +1,30 @@
+package com.ichop.plugin.linkaccount.config;
+
+import com.ichop.plugin.linkaccount.database.EntityManagerCreator;
+import com.ichop.plugin.linkaccount.domain.entities.Key;
+
+import javax.persistence.EntityManager;
+
+public final class EntityManagerConfiguration {
+
+    private static final String USER = "root";
+    private static final String PASSWORD = "1234";
+
+    private static final String DOMAIN = "localhost";
+    private static final String PORT = "3306";
+    private static final String NAME = "ichop_link_account_plugin";
+
+    public static EntityManager entityManager() {
+        return new EntityManagerCreator()
+                .createEntityManager(
+                        getConnectionUrl(DOMAIN,PORT,NAME),
+                        USER,
+                        PASSWORD,
+                        Key.class);
+    }
+
+    private static String getConnectionUrl(String domain, String port, String name) {
+        return "jdbc:mysql://" + domain + ":" + port + "/" + name + "?useSSL=false&amp;createDatabaseIfNotExist=true&amp;serverTimezone=UTC";
+    }
+
+}
