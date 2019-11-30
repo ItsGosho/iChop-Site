@@ -1,8 +1,5 @@
 package com.ichop.plugin.linkaccount.repository;
 
-import com.ichop.plugin.linkaccount.domain.entities.Key;
-
-import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
 public abstract class AbstractRepository {

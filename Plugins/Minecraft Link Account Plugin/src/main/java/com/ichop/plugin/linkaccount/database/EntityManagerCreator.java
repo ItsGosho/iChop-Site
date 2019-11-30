@@ -25,7 +25,7 @@ public class EntityManagerCreator {
         props.put("hibernate.connection.url", dbUrl);
         props.put("hibernate.connection.username", dbUser);
         props.put("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
-        props.put("hibernate.connection.dialect", "org.hibernate.dialect.MySQL57Dialect");
+        props.put("hibernate.connection.dialect", "org.hibernate.dialect.MySQL8Dialect");
         props.put("hibernate.hbm2ddl.auto", "update");
         props.put("hibernate.show_sql", "true");
 

@@ -1,7 +1,6 @@
 package com.ichop.plugin.linkaccount.repository;
 
 import com.ichop.plugin.linkaccount.domain.entities.Key;
-import com.ichop.plugin.linkaccount.domain.models.service.KeyServiceModel;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
