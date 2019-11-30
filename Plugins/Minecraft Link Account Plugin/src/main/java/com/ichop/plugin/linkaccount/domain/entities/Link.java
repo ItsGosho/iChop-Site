@@ -12,10 +12,10 @@ import javax.persistence.*;
 @Table(name = "links")
 public class Link extends BaseEntity {
 
-    @Column(name = "[player_uuid]", unique = true, nullable = false, updatable = false)
+    @Column(unique = true, nullable = false, updatable = false)
     private String playerUUID;
 
-    @Column(name = "[candidate_uid]", nullable = false)
+    @Column( nullable = false)
     private String candidateUID;
 
 }

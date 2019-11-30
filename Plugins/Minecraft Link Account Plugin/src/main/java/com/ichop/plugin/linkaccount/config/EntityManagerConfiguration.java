@@ -2,6 +2,7 @@ package com.ichop.plugin.linkaccount.config;
 
 import com.ichop.plugin.linkaccount.database.EntityManagerCreator;
 import com.ichop.plugin.linkaccount.domain.entities.Key;
+import com.ichop.plugin.linkaccount.domain.entities.Link;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -29,7 +30,7 @@ public final class EntityManagerConfiguration {
                     getConnectionUrl(DOMAIN, PORT, NAME),
                     USER,
                     PASSWORD,
-                    Key.class);
+                    Key.class, Link.class);
             //<editor-fold desc="LOG">
             LOG.info(String.format(DATABASE_ENTITY_MANAGER_INITIALIZED, NAME, USER));
             //</editor-fold>

@@ -10,19 +10,19 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Entity
-@Table(name = "keys")
+@Table(name = "link_keys")
 public class Key extends BaseEntity {
 
-    @Column(name = "[key]",unique = true, nullable = false, updatable = false)
-    private String key;
+    @Column(unique = true, nullable = false, updatable = false)
+    private String linkKey;
 
-    @Column(name = "[player_uuid]",unique = true, nullable = false, updatable = false)
+    @Column(unique = true, nullable = false, updatable = false)
     private String playerUUID;
 
-    @Column(name = "[player_name]",nullable = false)
+    @Column(nullable = false)
     private String playerName;
 
-    @Column(name = "[expiration_date]",nullable = false, updatable = false)
+    @Column(nullable = false, updatable = false)
     private LocalDateTime expirationDate;
 
 }

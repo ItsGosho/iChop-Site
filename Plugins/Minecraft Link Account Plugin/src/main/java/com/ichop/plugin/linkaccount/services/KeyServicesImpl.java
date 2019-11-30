@@ -34,11 +34,11 @@ public class KeyServicesImpl implements KeyServices {
     @Override
     public KeyServiceModel create(KeyCreateBindingModel keyCreateBindingModel) {
 
-        Key key = this.objectMapper.convertValue(keyCreateBindingModel,Key.class);
+        Key key = this.objectMapper.convertValue(keyCreateBindingModel, Key.class);
         this.deleteLastByUUID(key.getPlayerUUID());
         String randomKey = RandomStringUtils.randomAlphabetic(SHORT_KEY_LENGTH);
 
-        key.setKey(randomKey);
+        key.setLinkKey(randomKey);
         key.setExpirationDate(LocalDateTime.now().plusSeconds(KeyConstants.KEY_EXPIRATION_IN_SECONDS));
 
         return this.objectMapper.convertValue(this.keyRepository.save(key),KeyServiceModel.class);
