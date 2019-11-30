@@ -22,6 +22,7 @@ import java.util.concurrent.ExecutorService;
 )
 public class ArtemisConfiguration {
 
+
     @Bean
     @Primary
     public ActiveMQConnectionFactory connectionFactory(@Value("${artemis.broker-url}") String brokerUrl,

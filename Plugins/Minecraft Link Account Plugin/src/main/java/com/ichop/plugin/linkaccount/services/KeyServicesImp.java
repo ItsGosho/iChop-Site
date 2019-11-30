@@ -3,7 +3,7 @@ package com.ichop.plugin.linkaccount.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ichop.plugin.linkaccount.domain.entities.Key;
-import com.ichop.plugin.linkaccount.domain.entities.KeyConstants;
+import com.ichop.plugin.linkaccount.constants.KeyConstants;
 import com.ichop.plugin.linkaccount.domain.models.binding.KeyCreateBindingModel;
 import com.ichop.plugin.linkaccount.domain.models.service.KeyServiceModel;
 import com.ichop.plugin.linkaccount.repository.KeyRepository;

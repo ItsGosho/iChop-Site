@@ -46,12 +46,12 @@ public class LinkAccountCommand implements CommandExecutor {
     }
 
     private void sendCommandSuccessfulMessage(CommandSender sender,String url){
-        sender.sendMessage(ChatColor.DARK_RED + "-------------------------------------------------------------");
+        sender.sendMessage(ChatColor.DARK_RED + "------------------------------------------------------------->");
         sender.sendMessage(ChatColor.DARK_GREEN + "Open this link to link your account:");
         sender.sendMessage(ChatColor.GRAY + "LINK: " + ChatColor.RED + url);
         sender.sendMessage(ChatColor.DARK_GREEN + "Its valid " + ChatColor.RED + "3"+ ChatColor.DARK_GREEN+" minutes ,then you need to use /linkaccount again for a new link");
         sender.sendMessage(ChatColor.DARK_GRAY + "NOTE:" + ChatColor.GREEN + " You must be logged in the site into the account that you want to link!");
-        sender.sendMessage(ChatColor.DARK_RED + "-------------------------------------------------------------");
+        sender.sendMessage(ChatColor.DARK_RED + "------------------------------------------------------------->");
     }
 
 }
