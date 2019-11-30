@@ -46,7 +46,7 @@ public class ListenersConfiguration {
         }
     }
 
-    public <M extends MessageListener> void initListener(String destination, M listener) throws JMSException {
+    private <M extends MessageListener> void initListener(String destination, M listener) throws JMSException {
         Queue queue = this.session.createQueue(destination);
         MessageConsumer consumer = this.session.createConsumer(queue);
         consumer.setMessageListener(listener);

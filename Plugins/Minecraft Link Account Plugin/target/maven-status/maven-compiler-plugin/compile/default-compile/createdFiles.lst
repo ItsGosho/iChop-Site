@@ -1,4 +1,5 @@
 com\ichop\plugin\linkaccount\helpers\JmsHelperImpl.class
+com\ichop\plugin\linkaccount\config\ConfigurationRunner.class
 com\ichop\plugin\linkaccount\services\KeyServices.class
 com\ichop\plugin\linkaccount\config\ListenersConfiguration.class
 com\ichop\plugin\linkaccount\domain\entities\Key.class

@@ -3,14 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="b19ca9b3-db72-4cc0-8576-35604dda9092" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/config/EntityManagerConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/config/EntityManagerConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/domain/entities/Key.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/domain/entities/Key.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/domain/entities/Link.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/domain/entities/Link.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/services/KeyServicesImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/services/KeyServicesImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/domain/entities/Key.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/domain/entities/Key.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/LinkAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/LinkAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/config/BeansConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/config/BeansConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/config/ListenersConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/config/ListenersConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/LinkAccount.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/LinkAccount.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/linkaccount-1.0-SNAPSHOT-shaded.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/linkaccount-1.0-SNAPSHOT-shaded.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/linkaccount-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/linkaccount-1.0-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -204,7 +205,7 @@
       <workItem from="1553510160858" duration="823000" />
       <workItem from="1575052423670" duration="793000" />
       <workItem from="1575060370082" duration="3894000" />
-      <workItem from="1575112676448" duration="18840000" />
+      <workItem from="1575112676448" duration="19562000" />
     </task>
     <servers />
   </component>

@@ -7,6 +7,9 @@ import com.google.inject.Injector;
 import com.ichop.plugin.linkaccount.LinkAccount;
 import com.ichop.plugin.linkaccount.helpers.JmsHelper;
 import com.ichop.plugin.linkaccount.helpers.JmsHelperImpl;
+import com.ichop.plugin.linkaccount.listeners.IsKeyValidListener;
+import com.ichop.plugin.linkaccount.listeners.LinkCreateListener;
+import com.ichop.plugin.linkaccount.listeners.LinkRetrieveListener;
 import com.ichop.plugin.linkaccount.repository.KeyRepository;
 import com.ichop.plugin.linkaccount.repository.KeyRepositoryImpl;
 import com.ichop.plugin.linkaccount.repository.LinkRepository;
@@ -41,9 +44,13 @@ public class BeansConfiguration extends AbstractModule {
         super.bind(ActiveMQConnectionFactory.class).toInstance(ArtemisConfiguration.getConnectionFactory());
         super.bind(Connection.class).toInstance(ArtemisConfiguration.getConnection());
         super.bind(Session.class).toInstance(ArtemisConfiguration.getSession());
+        super.bind(ListenersConfiguration.class).asEagerSingleton();
+        super.bind(ConfigurationRunner.class).asEagerSingleton();
 
         /*Listeners*/
-        /*super.bind(IsKeyValidListener.class).toInstance();*/
+        super.bind(IsKeyValidListener.class).asEagerSingleton();
+        super.bind(LinkCreateListener.class).asEagerSingleton();
+        super.bind(LinkRetrieveListener.class).asEagerSingleton();
 
         /*Repositories:*/
         super.bind(KeyRepository.class).to(KeyRepositoryImpl.class);

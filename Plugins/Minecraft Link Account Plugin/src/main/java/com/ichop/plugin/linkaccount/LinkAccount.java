@@ -3,6 +3,7 @@ package com.ichop.plugin.linkaccount;
 import com.google.inject.Injector;
 import com.ichop.plugin.linkaccount.config.ArtemisConfiguration;
 import com.ichop.plugin.linkaccount.config.BeansConfiguration;
+import com.ichop.plugin.linkaccount.config.ConfigurationRunner;
 import com.ichop.plugin.linkaccount.loaders.CommandLoader;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -16,6 +17,9 @@ public final class LinkAccount extends JavaPlugin {
     @Inject
     private CommandLoader commandLoader;
 
+    @Inject
+    private ConfigurationRunner configurationRunner;
+
     @Override
     public void onEnable() {
 
@@ -24,6 +28,7 @@ public final class LinkAccount extends JavaPlugin {
         injector.injectMembers(this);
 
         this.commandLoader.loadAll();
+        this.configurationRunner.run();
     }
 
     @Override
