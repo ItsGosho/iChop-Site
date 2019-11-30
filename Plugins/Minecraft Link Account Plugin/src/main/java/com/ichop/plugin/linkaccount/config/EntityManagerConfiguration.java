@@ -2,10 +2,16 @@ package com.ichop.plugin.linkaccount.config;
 
 import com.ichop.plugin.linkaccount.database.EntityManagerCreator;
 import com.ichop.plugin.linkaccount.domain.entities.Key;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.persistence.EntityManager;
 
+import static com.ichop.plugin.linkaccount.constants.LogConstants.DATABASE_ENTITY_MANAGER_INITIALIZED;
+
 public final class EntityManagerConfiguration {
+
+    private static final Logger LOG = LogManager.getLogger(EntityManagerConfiguration.class);
 
     private static final String USER = "root";
     private static final String PASSWORD = "1234";
@@ -16,14 +22,17 @@ public final class EntityManagerConfiguration {
 
     private static EntityManager entityManager;
 
-    public static EntityManager entityManager() {
+    public static EntityManager getEntityManager() {
 
         if (entityManager == null) {
             entityManager = new EntityManagerCreator().createEntityManager(
-                            getConnectionUrl(DOMAIN, PORT, NAME),
-                            USER,
-                            PASSWORD,
-                            Key.class);
+                    getConnectionUrl(DOMAIN, PORT, NAME),
+                    USER,
+                    PASSWORD,
+                    Key.class);
+            //<editor-fold desc="LOG">
+            LOG.info(String.format(DATABASE_ENTITY_MANAGER_INITIALIZED, NAME, USER));
+            //</editor-fold>
         }
 
         return entityManager;

@@ -3,9 +3,24 @@
   <component name="ChangeListManager">
     <list default="true" id="b19ca9b3-db72-4cc0-8576-35604dda9092" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/Server.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/linkaccount.iml" beforeDir="false" afterPath="$PROJECT_DIR$/linkaccount.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/CLR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/CLR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/LinkAccountPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/LinkAccount.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/config/ArtemisConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/config/ArtemisConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/listeners/KeyIsValidListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/listeners/IsKeyValidListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/config/BeansConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/config/BeansConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/config/EntityManagerConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/config/EntityManagerConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/config/ListenersConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/config/ListenersConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/domain/entities/BaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/domain/entities/BaseEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/repository/KeyRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/repository/KeyRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/repository/KeyRepositoryImp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/services/KeyServicesImp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/linkaccount-1.0-SNAPSHOT-shaded.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/linkaccount-1.0-SNAPSHOT-shaded.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/linkaccount-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/linkaccount-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -73,9 +88,12 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="editing.templates" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.ichop.plugin.linkaccount" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Gosho\Desktop\GitHub\iChop\Plugins\Minecraft Link Account Plugin\src\main\java\com\ichop\plugin\linkaccount\helpers" />
       <recent name="C:\Users\Gosho\Desktop\Minecraft Link Account Plugin\src\main\java\com\ichop\plugin\linkaccount\config" />
@@ -103,7 +121,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.CLR">
+  <component name="RunManager" selected="JAR Application.Server">
     <configuration name="CLR" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.ichop.plugin.linkaccount.CLR" />
       <module name="linkaccount" />
@@ -117,11 +135,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Server" type="JarApplication">
+    <configuration name="Server" type="JarApplication" singleton="false">
       <option name="JAR_PATH" value="$PROJECT_DIR$/../../../../iChop - Minecraft Server/spigot-1.14.4.jar" />
       <option name="VM_PARAMETERS" value="-Xms1024m -DIReallyKnowWhatIAmDoingISwear" />
       <option name="WORKING_DIRECTORY" value="C:\Users\Gosho\Desktop\iChop - Minecraft Server" />
       <option name="ALTERNATIVE_JRE_PATH" />
+      <module name="linkaccount" />
       <method v="2" />
     </configuration>
     <configuration name="linkaccount [clean,package]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
@@ -195,7 +214,7 @@
       <workItem from="1553510160858" duration="823000" />
       <workItem from="1575052423670" duration="793000" />
       <workItem from="1575060370082" duration="3894000" />
-      <workItem from="1575112676448" duration="15264000" />
+      <workItem from="1575112676448" duration="17742000" />
     </task>
     <servers />
   </component>

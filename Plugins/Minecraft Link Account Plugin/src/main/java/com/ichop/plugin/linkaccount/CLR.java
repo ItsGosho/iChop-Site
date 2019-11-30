@@ -4,6 +4,7 @@ import com.google.inject.Injector;
 import com.ichop.plugin.linkaccount.config.ArtemisConfiguration;
 import com.ichop.plugin.linkaccount.config.BeansConfiguration;
 import com.ichop.plugin.linkaccount.loaders.CommandLoader;
+import org.bukkit.Art;
 
 import javax.inject.Inject;
 import javax.jms.*;
@@ -34,14 +35,14 @@ public class CLR {
        /* LinkAccount linkAccount = new LinkAccount();
         linkAccount.onEnable();*/
 
-    /*    ArtemisConfiguration artemisConfiguration = new ArtemisConfiguration();
-        Session session = artemisConfiguration.session();
+        Session session = ArtemisConfiguration.getSession();
 
         Destination destination = session.createQueue("proba");
         MessageConsumer consumer = session.createConsumer(destination);
         consumer.setMessageListener(new TestListener());
 
-        session.setMessageListener(new TestListener());*/
-
+        while (true){
+            Thread.sleep(50);
+        }
     }
 }

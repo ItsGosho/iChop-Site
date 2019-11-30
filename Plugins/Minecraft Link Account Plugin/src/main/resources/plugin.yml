@@ -1,6 +1,6 @@
 name: LinkAccount
 version: ${project.version}
-main: com.ichop.plugin.linkaccount.LinkAccountPlugin
+main: com.ichop.plugin.linkaccount.LinkAccount
 
 commands:
   link-account:
