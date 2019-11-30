@@ -1,8 +1,12 @@
 package com.ichop.plugin.linkaccount.repository;
 
+import com.ichop.plugin.linkaccount.domain.entities.BaseEntity;
+import com.ichop.plugin.linkaccount.domain.entities.Link;
+
 import javax.persistence.EntityManager;
 
-public abstract class AbstractRepository {
+@SuppressWarnings("all")
+public abstract class AbstractRepository<E extends BaseEntity> implements Repository<E> {
 
     private final EntityManager entityManager;
 
@@ -22,5 +26,21 @@ public abstract class AbstractRepository {
             this.entityManager.getTransaction().rollback();
             return null;
         }
+    }
+
+    @Override
+    public E save(E e) {
+        return (E) this.execute((entityManager -> {
+            entityManager.persist(e);
+            return e;
+        }));
+    }
+
+    @Override
+    public void delete(E e) {
+        this.execute((entityManager -> {
+            entityManager.remove(e);
+            return null;
+        }));
     }
 }

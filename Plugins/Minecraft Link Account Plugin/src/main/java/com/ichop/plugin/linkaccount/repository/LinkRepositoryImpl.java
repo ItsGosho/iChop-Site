@@ -5,7 +5,7 @@ import com.ichop.plugin.linkaccount.domain.entities.Link;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
-public class LinkRepositoryImpl extends AbstractRepository implements LinkRepository {
+public class LinkRepositoryImpl extends AbstractRepository<Link> implements LinkRepository {
 
     @Inject
     public LinkRepositoryImpl(EntityManager entityManager) {
@@ -26,21 +26,5 @@ public class LinkRepositoryImpl extends AbstractRepository implements LinkReposi
                 .createQuery("SELECT l FROM Link l WHERE l.candidateUID = :candidateUID", Link.class)
                 .setParameter("candidateUID", candidateUID)
                 .getSingleResult());
-    }
-
-    @Override
-    public Link save(Link link) {
-        return (Link) super.execute((entityManager -> {
-            entityManager.persist(link);
-            return link;
-        }));
-    }
-
-    @Override
-    public void delete(Link link) {
-        super.execute((entityManager -> {
-            entityManager.remove(link);
-            return null;
-        }));
     }
 }
