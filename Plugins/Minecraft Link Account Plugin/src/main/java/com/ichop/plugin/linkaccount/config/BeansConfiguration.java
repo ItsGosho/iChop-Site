@@ -28,11 +28,11 @@ public class BeansConfiguration extends AbstractModule {
 
     @Override
     protected void configure() {
-        this.bind(EntityManager.class).toInstance(EntityManagerConfiguration.entityManager());
-        this.bind(KeyRepository.class).to(KeyRepositoryImpl.class);
-        this.bind(KeyServices.class).to(KeyServicesImpl.class);
-        this.bind(JmsHelper.class).to(JmsHelperImpl.class);
-        this.bind(ObjectMapper.class).toInstance(new ObjectMapper());
-        this.bind(LinkAccount.class).toInstance(this.linkAccount);
+        super.bind(EntityManager.class).toInstance(EntityManagerConfiguration.entityManager());
+        super.bind(KeyRepository.class).to(KeyRepositoryImpl.class);
+        super.bind(KeyServices.class).to(KeyServicesImpl.class);
+        super.bind(JmsHelper.class).to(JmsHelperImpl.class);
+        super.bind(ObjectMapper.class).toInstance(new ObjectMapper());
+        super.bind(LinkAccount.class).toInstance(this.linkAccount);
     }
 }
