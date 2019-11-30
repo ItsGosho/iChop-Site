@@ -3,7 +3,7 @@ version: 1.0-SNAPSHOT
 main: com.ichop.plugin.linkaccount.LinkAccount
 
 commands:
-  linkaccount:
+  link-account:
     description: Link your account to our website
     permission: ichop.minecraft.plugin
 usage: /plugin
