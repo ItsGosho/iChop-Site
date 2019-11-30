@@ -3,7 +3,7 @@ package com.ichop.plugin.linkaccount.listeners;
 import javax.jms.Message;
 import javax.jms.MessageListener;
 
-public class KeyIsValidListener implements MessageListener {
+public class IsKeyValidListener implements MessageListener {
 
 
     @Override

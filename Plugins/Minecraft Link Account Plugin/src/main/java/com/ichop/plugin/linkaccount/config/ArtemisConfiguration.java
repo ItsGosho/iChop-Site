@@ -2,34 +2,48 @@ package com.ichop.plugin.linkaccount.config;
 
 import org.apache.activemq.artemis.jms.client.ActiveMQConnectionFactory;
 
-import javax.jms.Connection;
-import javax.jms.JMSException;
-import javax.jms.Session;
+import javax.jms.*;
 
 public class ArtemisConfiguration {
 
     private static final String BROKER_URL = "tcp://localhost:61616";
+    private static final String CLIENT_ID = "iChop - Link Account Plugin";
     private static final String USERNAME = "123";
     private static final String PASSWORD = "123";
 
-    private ActiveMQConnectionFactory connectionFactory() {
-        ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory(BROKER_URL, USERNAME, PASSWORD);
-        connectionFactory.setClientID("iChop - Link Account Plugin");
+    private static ActiveMQConnectionFactory connectionFactory;
+    private static Connection connection;
+    private static Session session;
+
+    private static ActiveMQConnectionFactory connectionFactory() {
+
+        if (connectionFactory == null) {
+            ActiveMQConnectionFactory f = new ActiveMQConnectionFactory(BROKER_URL, USERNAME, PASSWORD);
+            f.setClientID(CLIENT_ID);
+            connectionFactory = f;
+        }
+
         return connectionFactory;
     }
 
-    private Connection connection() throws JMSException {
-        Connection connection = this.connectionFactory().createConnection();
-        connection.start();
+    private static Connection connection() throws JMSException {
+
+        if (connection == null) {
+            Connection c = connectionFactory().createConnection();
+            c.start();
+            connection = c;
+        }
+
         return connection;
     }
 
-    public Session session() throws JMSException {
-        return this.connection().createSession(false, Session.AUTO_ACKNOWLEDGE);
-    }
+    public static Session session() throws JMSException {
 
-    public void initListeners() {
+        if (session == null) {
+            session = connection().createSession(false, Session.AUTO_ACKNOWLEDGE);
+        }
 
+        return session;
     }
 
 }
