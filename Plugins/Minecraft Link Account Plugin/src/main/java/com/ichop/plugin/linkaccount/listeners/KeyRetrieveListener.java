@@ -1,12 +1,9 @@
 package com.ichop.plugin.linkaccount.listeners;
 
 import com.ichop.plugin.linkaccount.commons.helpers.JmsHelper;
-import com.ichop.plugin.linkaccount.domain.models.jms.KeyRetrieveRequest;
-import com.ichop.plugin.linkaccount.domain.models.jms.LinkRetrieveRequest;
+import com.ichop.plugin.linkaccount.domain.models.jms.KeyRetrieveJmsRequest;
 import com.ichop.plugin.linkaccount.domain.models.service.KeyServiceModel;
-import com.ichop.plugin.linkaccount.domain.models.service.LinkServiceModel;
 import com.ichop.plugin.linkaccount.services.KeyServices;
-import com.ichop.plugin.linkaccount.services.LinkServices;
 
 import javax.inject.Inject;
 import javax.jms.Message;
@@ -25,7 +22,7 @@ public class KeyRetrieveListener implements MessageListener {
 
     @Override
     public void onMessage(Message message) {
-        KeyRetrieveRequest request = this.jmsHelper.toModel(message, KeyRetrieveRequest.class);
+        KeyRetrieveJmsRequest request = this.jmsHelper.toModel(message, KeyRetrieveJmsRequest.class);
 
         KeyServiceModel key = this.keyServices.findByLinkKey(request.getLinkKey());
 

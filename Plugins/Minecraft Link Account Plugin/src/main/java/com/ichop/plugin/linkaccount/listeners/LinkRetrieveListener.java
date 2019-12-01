@@ -1,7 +1,7 @@
 package com.ichop.plugin.linkaccount.listeners;
 
 import com.ichop.plugin.linkaccount.commons.helpers.JmsHelper;
-import com.ichop.plugin.linkaccount.domain.models.jms.LinkRetrieveRequest;
+import com.ichop.plugin.linkaccount.domain.models.jms.LinkRetrieveJmsRequest;
 import com.ichop.plugin.linkaccount.domain.models.service.LinkServiceModel;
 import com.ichop.plugin.linkaccount.services.LinkServices;
 
@@ -22,7 +22,7 @@ public class LinkRetrieveListener implements MessageListener {
 
     @Override
     public void onMessage(Message message) {
-        LinkRetrieveRequest request = this.jmsHelper.toModel(message, LinkRetrieveRequest.class);
+        LinkRetrieveJmsRequest request = this.jmsHelper.toModel(message, LinkRetrieveJmsRequest.class);
 
         LinkServiceModel link = this.linkServices.findByCandidateUID(request.getCandidateUID());
 
