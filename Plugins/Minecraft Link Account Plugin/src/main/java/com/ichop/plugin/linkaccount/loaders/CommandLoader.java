@@ -7,7 +7,7 @@ import javax.inject.Inject;
 
 public class CommandLoader {
 
-    private static final String LINK_ACCOUNT_COMMAND_NAME = "linkaccount";
+    private static final String LINK_ACCOUNT_COMMAND_NAME = "link-account";
 
     private final LinkAccountCommand linkAccountCommand;
 
@@ -16,7 +16,7 @@ public class CommandLoader {
         this.linkAccountCommand = linkAccountCommand;
     }
 
-    public void loadAll(){
+    public void loadAll() {
         Bukkit.getServer().getPluginCommand(LINK_ACCOUNT_COMMAND_NAME).setExecutor(this.linkAccountCommand);
 
     }

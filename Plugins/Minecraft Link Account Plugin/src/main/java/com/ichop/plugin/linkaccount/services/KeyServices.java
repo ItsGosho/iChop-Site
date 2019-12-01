@@ -6,8 +6,7 @@ import com.ichop.plugin.linkaccount.domain.models.service.KeyServiceModel;
 public interface KeyServices {
 
     KeyServiceModel create(KeyCreateBindingModel keyCreateBindingModel);
-
-    boolean isKeyExpired(String key);
-
-    boolean isAccountLinked(String uuid);
+    KeyServiceModel findByLinkKey(String linkKey);
+    boolean isKeyExpired(String linkKey);
+    boolean isValid(String linkKey);
 }
