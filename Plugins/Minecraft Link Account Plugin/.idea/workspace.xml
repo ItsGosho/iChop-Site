@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b19ca9b3-db72-4cc0-8576-35604dda9092" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Microservices/iChop - Link Account Service/src/main/java/ichop/link/controllers/LinkController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Microservices/iChop - Link Account Service/src/main/java/ichop/link/controllers/LinkController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/commons/helpers/JmsHelperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/commons/helpers/JmsHelperImpl.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -205,7 +203,7 @@
       <workItem from="1575200434002" duration="4135000" />
       <workItem from="1575204726525" duration="972000" />
       <workItem from="1575206248257" duration="147000" />
-      <workItem from="1575221305551" duration="5185000" />
+      <workItem from="1575221305551" duration="5588000" />
     </task>
     <servers />
   </component>
@@ -239,19 +237,9 @@
           <option name="timeStamp" value="28" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/listeners/KeyRetrieveListener.java</url>
-          <line>24</line>
-          <option name="timeStamp" value="31" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/listeners/LinkCreateListener.java</url>
           <line>35</line>
           <option name="timeStamp" value="32" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/listeners/LinkRetrieveListener.java</url>
-          <line>24</line>
-          <option name="timeStamp" value="34" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
