@@ -3,6 +3,7 @@ package com.ichop.plugin.linkaccount.commands;
 import com.ichop.plugin.linkaccount.domain.models.binding.KeyCreateBindingModel;
 import com.ichop.plugin.linkaccount.domain.models.service.KeyServiceModel;
 import com.ichop.plugin.linkaccount.services.KeyServices;
+import com.ichop.plugin.linkaccount.services.LinkServices;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -14,12 +15,15 @@ import javax.inject.Inject;
 
 public class LinkAccountCommand implements CommandExecutor {
 
-    private final KeyServices keyServices;
     public static final String PLAYER_LINK_ACCOUNT_GET = "localhost:8000/player/link-account?key={key}";
 
+    private final KeyServices keyServices;
+    private final LinkServices linkServices;
+
     @Inject
-    public LinkAccountCommand(KeyServices keyServices) {
+    public LinkAccountCommand(KeyServices keyServices, LinkServices linkServices) {
         this.keyServices = keyServices;
+        this.linkServices = linkServices;
     }
 
 
@@ -27,8 +31,9 @@ public class LinkAccountCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
         Player player = Bukkit.getPlayer(((Player) sender).getUniqueId());
+        String playUUID = player.getUniqueId().toString();
 
-        if(this.keyServices.isAccountLinked(player.getUniqueId().toString())){
+        if(this.linkServices.isAccountLinkedByPlayerUUID(playUUID)){
             sender.sendMessage(ChatColor.DARK_RED + "You have already linked your account!");
             return false;
         }

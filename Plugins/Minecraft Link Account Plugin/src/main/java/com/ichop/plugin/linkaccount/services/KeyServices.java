@@ -8,6 +8,4 @@ public interface KeyServices {
     KeyServiceModel create(KeyCreateBindingModel keyCreateBindingModel);
 
     boolean isKeyExpired(String key);
-
-    boolean isAccountLinked(String uuid);
 }
