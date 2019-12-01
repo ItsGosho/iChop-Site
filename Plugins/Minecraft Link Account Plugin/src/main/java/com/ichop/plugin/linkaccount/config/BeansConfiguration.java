@@ -1,11 +1,11 @@
 package com.ichop.plugin.linkaccount.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.ichop.plugin.linkaccount.LinkAccount;
-import com.ichop.plugin.linkaccount.helpers.JmsHelper;
-import com.ichop.plugin.linkaccount.helpers.JmsHelperImpl;
+import com.ichop.plugin.linkaccount.commons.helpers.JmsHelperImpl;
 import com.ichop.plugin.linkaccount.listeners.IsKeyValidListener;
 import com.ichop.plugin.linkaccount.listeners.LinkCreateListener;
 import com.ichop.plugin.linkaccount.listeners.LinkRetrieveListener;
@@ -19,6 +19,7 @@ import com.ichop.plugin.linkaccount.services.LinkServices;
 import com.ichop.plugin.linkaccount.services.LinkServicesImpl;
 import org.apache.activemq.artemis.jms.client.ActiveMQConnectionFactory;
 import org.modelmapper.ModelMapper;
+import com.ichop.plugin.linkaccount.commons.helpers.JmsHelper;
 
 import javax.jms.Connection;
 import javax.jms.Session;
@@ -62,6 +63,7 @@ public class BeansConfiguration extends AbstractModule {
 
         super.bind(JmsHelper.class).to(JmsHelperImpl.class);
         super.bind(ModelMapper.class).toInstance(new ModelMapper());
+        super.bind(ObjectMapper.class).toInstance(new ObjectMapper());
         super.bind(LinkAccount.class).toInstance(this.linkAccount);
     }
 }

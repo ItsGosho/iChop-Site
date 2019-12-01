@@ -39,6 +39,13 @@ public class KeyServicesImpl implements KeyServices {
     }
 
     @Override
+    public KeyServiceModel findByLinkKey(String linkKey) {
+        Key key = this.keyRepository.findByKey(linkKey);
+
+        return key != null ? this.modelMapper.map(key,KeyServiceModel.class) : null;
+    }
+
+    @Override
     public boolean isKeyExpired(String key) {
 
         Key linkKey = this.keyRepository.findByKey(key);
@@ -55,6 +62,13 @@ public class KeyServicesImpl implements KeyServices {
         }
 
         return true;
+    }
+
+    @Override
+    public boolean isValid(String linkKey) {
+        Key key = this.keyRepository.findByKey(linkKey);
+
+        return key != null && !this.isKeyExpired(linkKey);
     }
 
     private void deleteLastByUUID(String uuid) {

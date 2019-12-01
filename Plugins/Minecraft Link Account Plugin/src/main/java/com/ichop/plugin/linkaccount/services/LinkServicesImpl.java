@@ -1,11 +1,13 @@
 package com.ichop.plugin.linkaccount.services;
 
 import com.ichop.plugin.linkaccount.domain.entities.Link;
+import com.ichop.plugin.linkaccount.domain.models.binding.LinkCreateBindingModel;
 import com.ichop.plugin.linkaccount.domain.models.service.LinkServiceModel;
 import com.ichop.plugin.linkaccount.repository.LinkRepository;
 import org.modelmapper.ModelMapper;
 
 import javax.inject.Inject;
+import java.time.LocalDateTime;
 
 public class LinkServicesImpl implements LinkServices {
 
@@ -39,5 +41,15 @@ public class LinkServicesImpl implements LinkServices {
     public LinkServiceModel findByCandidateUID(String candidateUID) {
         Link link = this.linkRepository.findByCandidateUID(candidateUID);
         return link != null ? this.modelMapper.map(link, LinkServiceModel.class) : null;
+    }
+
+    @Override
+    public LinkServiceModel create(LinkCreateBindingModel bindingModel) {
+        Link link = this.modelMapper.map(bindingModel, Link.class);
+        link.setLinkedOn(LocalDateTime.now());
+
+        link = this.linkRepository.save(link);
+
+        return this.modelMapper.map(link, LinkServiceModel.class);
     }
 }

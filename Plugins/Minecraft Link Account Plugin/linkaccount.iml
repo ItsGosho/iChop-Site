@@ -46,6 +46,9 @@
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpmime:4.5.2" level="project" />
     <orderEntry type="library" name="Maven: org.json:json:20160212" level="project" />
     <orderEntry type="library" name="Maven: org.modelmapper:modelmapper:2.3.5" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.10.1" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.10.1" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.10.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.activemq:artemis-jms-client-all:2.10.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.activemq:artemis-boot:2.10.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.activemq:artemis-server:2.10.1" level="project" />

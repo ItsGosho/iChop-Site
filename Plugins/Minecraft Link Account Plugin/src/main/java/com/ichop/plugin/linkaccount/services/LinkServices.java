@@ -1,5 +1,6 @@
 package com.ichop.plugin.linkaccount.services;
 
+import com.ichop.plugin.linkaccount.domain.models.binding.LinkCreateBindingModel;
 import com.ichop.plugin.linkaccount.domain.models.service.LinkServiceModel;
 
 public interface LinkServices {
@@ -10,4 +11,6 @@ public interface LinkServices {
     LinkServiceModel findByPlayerUUID(String playerUUID);
 
     LinkServiceModel findByCandidateUID(String candidateUID);
+
+    LinkServiceModel create(LinkCreateBindingModel bindingModel);
 }

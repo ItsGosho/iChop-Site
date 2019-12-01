@@ -1,5 +1,6 @@
 package com.ichop.plugin.linkaccount.repository;
 
+import com.ichop.plugin.linkaccount.commons.repository.AbstractRepository;
 import com.ichop.plugin.linkaccount.domain.entities.Link;
 
 import javax.inject.Inject;

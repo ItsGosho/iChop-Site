@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 
 @Getter
@@ -18,4 +19,6 @@ public class Link extends BaseEntity {
     @Column( nullable = false)
     private String candidateUID;
 
+    @Column( nullable = false)
+    private LocalDateTime linkedOn;
 }
