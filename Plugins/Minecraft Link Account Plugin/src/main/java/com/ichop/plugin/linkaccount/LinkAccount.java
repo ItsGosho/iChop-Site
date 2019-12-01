@@ -1,6 +1,7 @@
 package com.ichop.plugin.linkaccount;
 
 import com.google.inject.Injector;
+import com.ichop.plugin.linkaccount.commons.Plugin;
 import com.ichop.plugin.linkaccount.config.ArtemisConfiguration;
 import com.ichop.plugin.linkaccount.config.BeansConfiguration;
 import com.ichop.plugin.linkaccount.config.ConfigurationRunner;
@@ -12,7 +13,7 @@ import javax.jms.Destination;
 import javax.jms.MessageConsumer;
 import javax.jms.Session;
 
-public final class LinkAccount extends JavaPlugin {
+public final class LinkAccount extends JavaPlugin implements Plugin {
 
     @Inject
     private CommandLoader commandLoader;

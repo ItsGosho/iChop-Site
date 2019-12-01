@@ -5,6 +5,7 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.ichop.plugin.linkaccount.LinkAccount;
+import com.ichop.plugin.linkaccount.commons.Plugin;
 import com.ichop.plugin.linkaccount.commons.helpers.JmsHelperImpl;
 import com.ichop.plugin.linkaccount.listeners.IsKeyValidListener;
 import com.ichop.plugin.linkaccount.listeners.LinkCreateListener;
@@ -27,10 +28,10 @@ import javax.persistence.EntityManager;
 
 public class BeansConfiguration extends AbstractModule {
 
-    private final LinkAccount linkAccount;
+    private final Plugin plugin;
 
-    public BeansConfiguration(LinkAccount linkAccount) {
-        this.linkAccount = linkAccount;
+    public BeansConfiguration(Plugin plugin) {
+        this.plugin = plugin;
     }
 
     public Injector createInjector() {
@@ -39,7 +40,7 @@ public class BeansConfiguration extends AbstractModule {
 
     @Override
     protected void configure() {
-        super.bind(EntityManager.class).toInstance(EntityManagerConfiguration.getEntityManager());
+        super.bind(EntityManager.class).toInstance(EntityManagerConfiguration.entityManager());
 
         /*ActiveMQ*/
         super.bind(ActiveMQConnectionFactory.class).toInstance(ArtemisConfiguration.getConnectionFactory());
@@ -64,6 +65,6 @@ public class BeansConfiguration extends AbstractModule {
         super.bind(JmsHelper.class).to(JmsHelperImpl.class);
         super.bind(ModelMapper.class).toInstance(new ModelMapper());
         super.bind(ObjectMapper.class).toInstance(new ObjectMapper());
-        super.bind(LinkAccount.class).toInstance(this.linkAccount);
+        super.bind(Plugin.class).toInstance(this.plugin);
     }
 }

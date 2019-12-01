@@ -1,48 +1,43 @@
 package com.ichop.plugin.linkaccount;
 
-import com.ichop.plugin.linkaccount.domain.entities.Key;
-import com.ichop.plugin.linkaccount.domain.models.service.KeyServiceModel;
+import com.google.inject.Injector;
+import com.ichop.plugin.linkaccount.commons.Plugin;
+import com.ichop.plugin.linkaccount.config.BeansConfiguration;
+import com.ichop.plugin.linkaccount.config.ConfigurationRunner;
 import com.ichop.plugin.linkaccount.loaders.CommandLoader;
-import org.modelmapper.ModelMapper;
 
 import javax.inject.Inject;
 import javax.jms.JMSException;
-import java.time.LocalDateTime;
 
 public class CLR {
 
     public static final String IS_ACCOUNT_LINKED_URL = "http://localhost:8000/player/is-account-linked?uuid={uuid}";
 
     @Inject
-    private CommandLoader commandLoader;
+    private LinkAccount linkAccount;
 
 
     public static void main(String[] args) throws JMSException, InterruptedException {
-//        String url = IS_ACCOUNT_LINKED_URL.replace("{playerUUID}","8ed20904-3262-401a-901a-1946504d2eea");
-//        try {
-//            HttpResponse<JsonNode> jsonResponse = Unirest.get(url)
-//                    .header("accept","application/json")
-//                    .asJson();
-//
-//            boolean isAccountLinked = (boolean) jsonResponse.getBody().getObject().get("isAccountLinked");
-//
-//            System.out.println(isAccountLinked);
-//
-//        } catch (UnirestException e) {
-//            e.printStackTrace();
-//        }
 
-       /* LinkAccount linkAccount = new LinkAccount();
-        linkAccount.onEnable();*/
+        ManualTest manualTest = new ManualTest();
+        manualTest.run();
 
-       /* Session session = ArtemisConfiguration.getSession();
-
-        Destination destination = session.createQueue("proba");
-        MessageConsumer consumer = session.createConsumer(destination);
-        consumer.setMessageListener(new TestListener());
-
-        while (true){
+        while (true) {
             Thread.sleep(50);
-        }*/
+        }
+    }
+
+    public static class ManualTest implements Plugin {
+
+        @Inject
+        private ConfigurationRunner configurationRunner;
+
+        public void run() {
+            BeansConfiguration beansConfiguration = new BeansConfiguration(this);
+            Injector injector = beansConfiguration.createInjector();
+            injector.injectMembers(this);
+
+            this.configurationRunner.run();
+        }
     }
 }

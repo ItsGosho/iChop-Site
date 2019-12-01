@@ -1,6 +1,7 @@
 package com.ichop.plugin.linkaccount.commons.repository;
 
 import com.ichop.plugin.linkaccount.domain.entities.BaseEntity;
+import com.ichop.plugin.linkaccount.domain.entities.Link;
 import com.ichop.plugin.linkaccount.repository.TransactionFunctional;
 
 import javax.persistence.EntityManager;
