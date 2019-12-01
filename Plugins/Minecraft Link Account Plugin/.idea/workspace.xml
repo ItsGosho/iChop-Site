@@ -4,18 +4,6 @@
     <list default="true" id="b19ca9b3-db72-4cc0-8576-35604dda9092" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/CLR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/CLR.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/LinkAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/LinkAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/commons/repository/AbstractRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/commons/repository/AbstractRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/config/BeansConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/config/BeansConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/config/EntityManagerConfiguration.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/database/EntityManagerCreator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/LinkAccount.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/LinkAccount.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/database/EntityManagerCreator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ichop/plugin/linkaccount/database/EntityManagerCreator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/linkaccount-1.0-SNAPSHOT-shaded.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/linkaccount-1.0-SNAPSHOT-shaded.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/linkaccount-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/linkaccount-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -51,8 +39,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -213,7 +201,7 @@
       <workItem from="1575112676448" duration="23890000" />
       <workItem from="1575192866338" duration="1933000" />
       <workItem from="1575200434002" duration="4135000" />
-      <workItem from="1575204726525" duration="769000" />
+      <workItem from="1575204726525" duration="972000" />
     </task>
     <servers />
   </component>
@@ -245,11 +233,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/listeners/TestListener.java</url>
           <line>8</line>
           <option name="timeStamp" value="28" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/CLR.java</url>
-          <line>39</line>
-          <option name="timeStamp" value="39" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
