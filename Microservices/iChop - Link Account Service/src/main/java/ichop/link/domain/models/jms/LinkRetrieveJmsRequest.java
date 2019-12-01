@@ -1,4 +1,4 @@
-package ichop.link.domain.models;
+package ichop.link.domain.models.jms;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,8 +10,8 @@ import org.ichop.commons.domain.RequestCandidate;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class IsKeyValidJmsRequest extends RequestCandidate {
+public class LinkRetrieveJmsRequest extends RequestCandidate {
 
-    private String linkKey;
+    private String candidateUID;
 
 }

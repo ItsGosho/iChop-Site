@@ -1,12 +1,9 @@
 package ichop.link.requesters;
 
-import ichop.link.domain.models.IsKeyValidJmsRequest;
-import ichop.link.domain.models.KeyRetrieveJmsRequest;
+import ichop.link.domain.models.jms.IsKeyValidJmsRequest;
+import ichop.link.domain.models.jms.KeyRetrieveJmsRequest;
 import org.ichop.commons.domain.JmsReplyModel;
-import org.ichop.commons.domain.UserFindByEmailRequest;
-import org.ichop.commons.domain.UserFindByUsernameRequest;
 import org.ichop.commons.helpers.JmsHelper;
-import org.ichop.commons.requesters.UserRequester;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;

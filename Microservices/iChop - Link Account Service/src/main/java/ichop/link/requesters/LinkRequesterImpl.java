@@ -1,7 +1,7 @@
 package ichop.link.requesters;
 
-import ichop.link.domain.models.LinkCreateJmsRequest;
-import ichop.link.domain.models.LinkRetrieveJmsRequest;
+import ichop.link.domain.models.jms.LinkCreateJmsRequest;
+import ichop.link.domain.models.jms.LinkRetrieveJmsRequest;
 import org.ichop.commons.domain.JmsReplyModel;
 import org.ichop.commons.helpers.JmsHelper;
 import org.springframework.beans.factory.annotation.Autowired;
