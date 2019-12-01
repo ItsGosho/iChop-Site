@@ -35,7 +35,7 @@ public class LinkController {
 
 
     @GetMapping(LinkRoutingConstants.IS_KEY_VALID)
-    private ResponseEntity isKeyValid(@PathVariable String key) {
+    private ResponseEntity isKeyValid(@RequestParam String key) {
         return null;
     }
 
@@ -45,7 +45,7 @@ public class LinkController {
     }
 
     @GetMapping(LinkRoutingConstants.LINK_RETRIEVE)
-    private ResponseEntity linkRetrieve(@PathVariable String username) {
+    private ResponseEntity linkRetrieve(@RequestParam String username) {
         return null;
     }
 
