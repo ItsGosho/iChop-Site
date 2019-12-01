@@ -18,7 +18,7 @@ const UserProfileLeftSideInformation = (props) => {
             <div className="col-md-sm user-info">
 
                 <div align="center">
-                    <Image url={ServerRoutingURLs.DATA.USER.AVATAR.GET(username)}
+                    <Image url={ServerRoutingURLs.CORE.DATA_STORAGE.GET_USER_AVATAR(username)}
                            defaultUrl={FrontEndResourcesRoutingURLs.USER.AVATAR}
                            className="img-user-avatar"/>
                 </div>

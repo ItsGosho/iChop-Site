@@ -2,39 +2,44 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import formatDate from "dateformat";
 import ReportActionButtons from "./ReportActionButtons";
-import CreateReactClass from "create-react-class";
 import RoutingURLs from "../../../constants/routing/routing.constants";
 import './ReportTableColumns.css'
+import PropTypes, {instanceOf} from 'prop-types'
 
-let ReportTableColumns = CreateReactClass({
+const REPORTED_ON_DATE = 'dd mmm,yyyy';
 
-    render() {
-        let {entityName,index,reason, creatorUsername, reportDate,onDeleteEntity,onDeleteReport} = this.props;
-        let creatorProfile = RoutingURLs.USER.PROFILE.VIEW.replace(':username', creatorUsername);
+const ReportTableColumns = (props) => {
+    let {id,index, creatorUsername, reason, reportedOn, type, onDeleteReport} = props;
+    let creatorProfile = RoutingURLs.USER.PROFILE.VIEW(creatorUsername);
 
-        return (
-            <tr key={index}>
+    return (
+        <tr key={index}>
 
-                {this.props.children}
+            <td className="reason-td">
+                <div className="reason-div">{reason}</div>
+            </td>
 
-                <td className="reason-td">
-                    <div className="reason-div">{reason}</div>
-                </td>
+            <td>
+                <Link to={creatorProfile}>{creatorUsername}</Link>
+            </td>
 
-                <td>
-                    <Link to={creatorProfile}>{creatorUsername}</Link>
-                </td>
+            <td>{type}</td>
 
-                <td>{formatDate(reportDate, 'dd mmm,yyyy')}</td>
+            <td>{formatDate(reportedOn, REPORTED_ON_DATE)}</td>
 
-                <ReportActionButtons entityName={entityName}
-                                     onDeleteEntity={onDeleteEntity}
-                                     onDeleteReport={onDeleteReport}/>
-            </tr>
-        );
-    }
-
-});
+            <ReportActionButtons id={id} type={type} onDeleteReport={onDeleteReport}/>
+        </tr>
+    );
+};
 
 
 export default ReportTableColumns;
+
+ReportTableColumns.propTypes = {
+    id: PropTypes.string,
+    creatorUsername: PropTypes.string,
+    reason: PropTypes.string,
+    type: PropTypes.string,
+    reportedOn: instanceOf(Date),
+    onDeleteReport: PropTypes.func,
+};

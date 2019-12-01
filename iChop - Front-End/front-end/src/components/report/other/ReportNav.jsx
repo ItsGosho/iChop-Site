@@ -1,42 +1,51 @@
-import React, {Component} from 'react';
-import {Link} from "react-router-dom";
-import RoutingURLs from "../../../constants/routing/routing.constants";
-import {Form, FormControl, Nav, Navbar} from "react-bootstrap";
+import React from 'react';
+import {DropdownButton, Form, FormControl, Nav, Navbar, Dropdown} from "react-bootstrap";
 import styles from './ReportNav.module.css'
+import QueryHelper from "../../../helpers/query.helper";
+import {withRouter} from "react-router-dom";
+import PropTypes from 'prop-types'
+import EntityTypes from "../../../constants/enums/entity.types.constants";
 
-class ReportNav extends Component {
+const ReportNav = (props) => {
+    let queryHelper = new QueryHelper(props);
+
+    return (
+        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className={styles.report_nav}>
+
+            <Navbar.Brand>⚠ Reports</Navbar.Brand>
+
+            <Navbar.Toggle/>
+            <Navbar.Collapse>
+                <Nav className="mr-auto">
 
 
-    render() {
-        return (
-            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className={styles.report_nav}>
+                    <DropdownButton title="Entity Type" variant="warning">
+                        <Dropdown.Item onClick={() => {
+                            queryHelper.addQueryParameter('type', EntityTypes.USER_PROFILE_COMMENT);
+                            props.fetchData();
+                        }}>Post</Dropdown.Item>
+                        <Dropdown.Item onClick={() => {
+                            queryHelper.addQueryParameter('type', EntityTypes.THREAD);
+                            props.fetchData();
+                        }}>Thread</Dropdown.Item>
+                        <Dropdown.Item onClick={() => {
+                            queryHelper.addQueryParameter('type', EntityTypes.THREAD_COMMENT);
+                            props.fetchData();
+                        }}>Comment</Dropdown.Item>
+                    </DropdownButton>
 
-                <Navbar.Brand>⚠ Reports</Navbar.Brand>
+                </Nav>
 
-                <Navbar.Toggle/>
-                <Navbar.Collapse>
-                    <Nav className="mr-auto">
+                <Form inline>
+                    <FormControl type="text" placeholder="Search by username" className="mr-sm-2"/>
+                </Form>
+            </Navbar.Collapse>
+        </Navbar>
+    )
+};
 
+export default withRouter(ReportNav);
 
-                        <Link className="nav-link" to={RoutingURLs.THREAD.REPORT.ALL}>Threads<span
-                            className="sr-only">(current)</span></Link>
-
-                        <Link className="nav-link" to={RoutingURLs.COMMENT.REPORT.ALL}>Comments<span
-                            className="sr-only">(current)</span></Link>
-
-                        <Link className="nav-link" to={RoutingURLs.POST.REPORT.ALL}>Posts<span
-                            className="sr-only">(current)</span></Link>
-
-                    </Nav>
-
-                    <Form inline>
-                        <FormControl type="text" placeholder="Search by username" className="mr-sm-2" />
-                    </Form>
-                </Navbar.Collapse>
-            </Navbar>
-        );
-    }
-
-}
-
-export default ReportNav;
+ReportNav.propTypes = {
+    fetchData: PropTypes.func
+};

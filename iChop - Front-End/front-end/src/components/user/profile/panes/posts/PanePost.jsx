@@ -19,7 +19,7 @@ const PanePost = ({id, creatorUsername, content, createdOn, userProfileUsername,
             <div className="row top--15px">
 
                 <div className="col-md-1">
-                    <Image url={ServerRoutingURLs.DATA.USER.AVATAR.GET(creatorUsername)}
+                    <Image url={ServerRoutingURLs.CORE.DATA_STORAGE.GET_USER_AVATAR(creatorUsername)}
                            defaultUrl={FrontEndResourcesRoutingURLs.USER.AVATAR}
                            className="post-user-avatar"/>
                 </div>

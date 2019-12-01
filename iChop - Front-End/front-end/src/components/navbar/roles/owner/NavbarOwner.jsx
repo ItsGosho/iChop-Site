@@ -14,7 +14,7 @@ const NavbarOwner = () => (
 
             <DropdownIconLink to={RoutingURLs.THREAD.CREATE} icon={'🚩'} text={'Create Thread'}/>
             <DropdownIconLink to={RoutingURLs.USER.ALL} icon={'👥'} text={'Users'}/>
-            <DropdownIconLink to={RoutingURLs.COMMENT.REPORT.ALL} icon={'⚠'} text={'Reports'}/>
+            <DropdownIconLink to={RoutingURLs.REPORT.ALL} icon={'⚠'} text={'Reports'}/>
 
         </NavbarAuthenticatedList>
     </Fragment>

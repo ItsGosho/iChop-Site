@@ -6,8 +6,8 @@ const Endpoints = ServerRoutingURLs.CORE.USER;
 
 const UserServices = {
 
-    hasRole(roles,role) {
-       return roles.filter(x => x.authority.toLowerCase() === role.toLowerCase()).length > 0;
+    hasRole(roles, role) {
+        return roles.filter(x => x.authority.toLowerCase() === role.toLowerCase()).length > 0;
     },
 
     async login(email, password) {
@@ -119,8 +119,45 @@ const UserServices = {
 
     async logout() {
         await Requester.post(Endpoints.LOGOUT, {});
-    }
+    },
 
+    async adminFindByUsername(username) {
+        let query = `?username=${username}`;
+        let response = await Requester.get(Endpoints.ADMIN_FIND_BY + query);
+
+        return response.data;
+    },
+
+    async rolePromote(username) {
+        let response = await Requester.post(Endpoints.ROLE_PROMOTE(username), {});
+        NotificationHelper.showNotificationByResponse(response);
+    },
+
+    async roleDemote(username) {
+        let response = await Requester.post(Endpoints.ROLE_DEMOTE(username), {});
+        NotificationHelper.showNotificationByResponse(response);
+    },
+
+    async hasNextRole(username) {
+        let response = await Requester.get(Endpoints.ROLE_HAS_NEXT(username));
+        return response.data ? response.data.result : false;
+    },
+
+    async hasPreviousRole(username) {
+        let response = await Requester.get(Endpoints.ROLE_HAS_PREVIOUS(username));
+
+        return response.data ? response.data.result : false;
+    },
+
+    async nextRole(username) {
+        let response = await Requester.get(Endpoints.ROLE_NEXT(username));
+        return response.data ? response.data.authority : null;
+    },
+
+    async previousRole(username) {
+        let response = await Requester.get(Endpoints.ROLE_PREVIOUS(username));
+        return response.data ? response.data.authority : null;
+    },
 };
 
 export default UserServices;

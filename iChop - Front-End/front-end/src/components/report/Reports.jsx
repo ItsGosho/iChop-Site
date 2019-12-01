@@ -1,29 +1,84 @@
 import React, {Component, Fragment} from 'react';
-import {Route, Switch} from "react-router-dom";
-import RoutingURLs from "../../constants/routing/routing.constants";
-import ReportsThread from "./ReportsThread";
-import ReportsPost from "./ReportsPost";
-import ReportsComment from "./ReportsComment";
 import ReportNav from "./other/ReportNav";
+import ReportTableColumns from "./other/ReportTableColumns";
+import ReportTable from "./other/ReportTable";
+import './Reports.css';
+import ReportServices from "../../services/report.services";
+import {withRouter} from "react-router-dom";
+import QueryHelper from "../../helpers/query.helper";
 
 class Reports extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            reports: []
+        };
+
+        this.onDeleteReport = this.onDeleteReport.bind(this);
+        this.iterateReports = this.iterateReports.bind(this);
+        this.fetchReports = this.fetchReports.bind(this);
+        this.queryHelper = new QueryHelper(this.props);
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        this.queryHelper = new QueryHelper(this.props);
+    }
+
+    async componentDidMount() {
+        await this.fetchReports();
+    }
+
+    async fetchReports() {
+        let type = this.queryHelper.getQueryParam('type');
+        let reports = await ReportServices.findBy(type);
+        this.setState({reports});
+    }
+
+    iterateReports() {
+        return this.state.reports.map((report, index) => {
+            let {id, reason, creatorUsername, reportedOn, type} = report;
+
+            return (
+                <ReportTableColumns
+                    id={id}
+                    index={index}
+                    creatorUsername={creatorUsername}
+                    reason={reason}
+                    type={type}
+                    reportedOn={reportedOn}
+                    onDeleteReport={this.onDeleteReport}>
+                </ReportTableColumns>
+            );
+        })
+    }
+
+    async onDeleteReport(id, type) {
+        let isSuccessful = await ReportServices.deleteById(id, type);
+
+        console.log(isSuccessful);
+        if (isSuccessful) {
+            this.fetchReports();
+        }
+    }
 
     render() {
-
         return (
             <Fragment>
-                <ReportNav/>
+                <ReportNav fetchData={this.fetchReports}/>
 
-                <Switch>
-                    <Route exact path={RoutingURLs.THREAD.REPORT.ALL} component={() => (<ReportsThread/>)}/>
-                    <Route exact path={RoutingURLs.COMMENT.REPORT.ALL} component={() => (<ReportsComment/>)}/>
-                    <Route exact path={RoutingURLs.POST.REPORT.ALL} component={() => (<ReportsPost/>)}/>
-                </Switch>
+                <ReportTable>
+                    {this.iterateReports()}
+                </ReportTable>
+
+                {/* <PaginationNav totalResults={reports.length}
+                               resultsPerPage={1}
+                               redirectPage={RoutingURLs.POST.REPORT.ALL}/>*/}
             </Fragment>
         );
     }
 
 }
 
-export default Reports;
+export default withRouter(Reports);

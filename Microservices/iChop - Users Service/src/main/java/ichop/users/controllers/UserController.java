@@ -3,7 +3,6 @@ package ichop.users.controllers;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.users.constants.UserReplyConstants;
 import ichop.users.constants.UserRoutingConstants;
-import ichop.users.domain.models.jms.UserReply;
 import ichop.users.domain.models.jms.email.EmailResetPasswordRequest;
 import ichop.users.domain.models.jms.password.change.UserChangePasswordByTokenRequest;
 import ichop.users.domain.models.jms.password.change.UserChangePasswordRequest;
@@ -42,7 +41,8 @@ public class UserController {
     public UserController(UserServices userServices,
                           ResponseHelpers responseHelpers,
                           ObjectMapper objectMapper,
-                          ValidationHelper validationHelper, RoleServices roleServices,
+                          ValidationHelper validationHelper,
+                          RoleServices roleServices,
                           EmailRequester emailRequester,
                           PasswordTokenRequester passwordTokenRequester) {
         this.userServices = userServices;

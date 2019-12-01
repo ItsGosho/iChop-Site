@@ -8,7 +8,7 @@ import ServerRoutingURLs from "../../../../constants/routing/server.routing.urls
 const UserFollowModalBaseRow = ({username,key,children}) => (
     <div className="w-100 div-follow-holder" key={key}>
 
-        <Image url={ServerRoutingURLs.DATA.USER.AVATAR.GET(username)}
+        <Image url={ServerRoutingURLs.CORE.DATA_STORAGE.GET_USER_AVATAR(username)}
                defaultUrl={FrontEndResourcesRoutingURLs.USER.AVATAR}
                className="div-follow-image"/>
 

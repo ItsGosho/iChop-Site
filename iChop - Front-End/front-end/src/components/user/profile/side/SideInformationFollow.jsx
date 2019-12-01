@@ -70,7 +70,7 @@ const FollowInformation = ({users}) => {
         <div className="row d-flex justify-content-center align-items-center">
             {usersSliced.map(({id,username}, index) => {
                 let profileUrl = RoutingURLs.USER.PROFILE.VIEW(username);
-                let avatarUrl = ServerRoutingURLs.DATA.USER.AVATAR.GET(username);
+                let avatarUrl = ServerRoutingURLs.CORE.DATA_STORAGE.GET_USER_AVATAR(username);
 
                 return (
                     <div key={id}>

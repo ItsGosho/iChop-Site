@@ -12,6 +12,6 @@ public interface ReportRepository extends MongoRepository<Report,String> {
 
     boolean existsByTypeAndId(Type type, String id);
     boolean existsByTypeAndCreatorUsernameAndEntityId(Type type, String creatorUsername,String entityId);
-    boolean deleteByTypeAndId(Type type, String id);
+    Long deleteByTypeAndId(Type type, String id);
 
 }
