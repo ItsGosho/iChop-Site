@@ -1,8 +1,8 @@
-package com.ichop.plugin.linkaccount.domain.models.jms;
+package ichop.link.requesters;
 
-import com.ichop.plugin.linkaccount.commons.domain.RequestCandidate;
 import lombok.Getter;
 import lombok.Setter;
+import org.ichop.commons.domain.RequestCandidate;
 
 
 @Getter
