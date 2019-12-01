@@ -23,7 +23,7 @@ public class KeyRepositoryImpl extends AbstractRepository<Key> implements KeyRep
     @Override
     public Key findByKey(String key) {
         return (Key) super.execute((entityManager) -> entityManager
-                .createQuery("SELECT k FROM Key k WHERE k.key = :key", Key.class)
+                .createQuery("SELECT k FROM Key k WHERE k.linkKey = :key", Key.class)
                 .setParameter("key", key)
                 .getSingleResult());
     }

@@ -43,7 +43,7 @@ public class LinkAccountCommand implements CommandExecutor {
         keyCreateBindingModel.setPlayerName(player.getName());
 
         KeyServiceModel key = this.keyServices.create(keyCreateBindingModel);
-        String url = PLAYER_LINK_ACCOUNT_GET.replace("{key}", key.getKey());
+        String url = PLAYER_LINK_ACCOUNT_GET.replace("{key}", key.getLinkKey());
 
         this.sendCommandSuccessfulMessage(sender,url);
 

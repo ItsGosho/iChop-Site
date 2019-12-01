@@ -1,13 +1,13 @@
 package com.ichop.plugin.linkaccount;
 
-import com.google.inject.Injector;
-import com.ichop.plugin.linkaccount.config.ArtemisConfiguration;
-import com.ichop.plugin.linkaccount.config.BeansConfiguration;
+import com.ichop.plugin.linkaccount.domain.entities.Key;
+import com.ichop.plugin.linkaccount.domain.models.service.KeyServiceModel;
 import com.ichop.plugin.linkaccount.loaders.CommandLoader;
-import org.bukkit.Art;
+import org.modelmapper.ModelMapper;
 
 import javax.inject.Inject;
-import javax.jms.*;
+import javax.jms.JMSException;
+import java.time.LocalDateTime;
 
 public class CLR {
 
@@ -35,7 +35,7 @@ public class CLR {
        /* LinkAccount linkAccount = new LinkAccount();
         linkAccount.onEnable();*/
 
-        Session session = ArtemisConfiguration.getSession();
+       /* Session session = ArtemisConfiguration.getSession();
 
         Destination destination = session.createQueue("proba");
         MessageConsumer consumer = session.createConsumer(destination);
@@ -43,6 +43,6 @@ public class CLR {
 
         while (true){
             Thread.sleep(50);
-        }
+        }*/
     }
 }

@@ -9,8 +9,10 @@ import java.time.LocalDateTime;
 @Setter
 public class KeyServiceModel extends BaseServiceModel {
 
-    private String key;
+    private String linkKey;
     private String playerUUID;
     private String playerName;
+
+
     private LocalDateTime expirationDate;
 }
