@@ -2,6 +2,8 @@ package com.ichop.plugin.linkaccount.commons.helpers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ichop.plugin.linkaccount.commons.domain.JmsReplyModel;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.inject.Inject;
 import javax.jms.*;
@@ -9,6 +11,8 @@ import java.io.IOException;
 import java.util.UUID;
 
 public class JmsHelperImpl implements JmsHelper {
+
+    private Logger LOG = LogManager.getLogger(JmsHelperImpl.class);
 
     private final Session session;
     private final ObjectMapper objectMapper;
@@ -25,8 +29,8 @@ public class JmsHelperImpl implements JmsHelper {
             JmsReplyModel jmsReplyModel = new JmsReplyModel(true, msg, reply);
 
             this.replyTo(message.getJMSReplyTo(), message.getJMSCorrelationID(), jmsReplyModel);
-        } catch (JMSException e) {
-            e.printStackTrace();
+        } catch (JMSException ex) {
+            ex.printStackTrace();
         }
     }
 
@@ -37,8 +41,8 @@ public class JmsHelperImpl implements JmsHelper {
             JmsReplyModel jmsReplyModel = new JmsReplyModel(false, error);
 
             this.replyTo(message.getJMSReplyTo(), message.getJMSCorrelationID(), jmsReplyModel);
-        } catch (JMSException e) {
-            e.printStackTrace();
+        } catch (JMSException ex) {
+            ex.printStackTrace();
         }
     }
 
@@ -49,8 +53,8 @@ public class JmsHelperImpl implements JmsHelper {
             String body = message.getBody(String.class);
 
             return this.objectMapper.readValue(body, JmsReplyModel.class);
-        } catch (JMSException | IOException e) {
-            e.printStackTrace();
+        } catch (JMSException | IOException ex) {
+            ex.printStackTrace();
         }
 
         return null;
@@ -63,8 +67,8 @@ public class JmsHelperImpl implements JmsHelper {
             String body = message.getBody(String.class);
 
             return this.objectMapper.readValue(body, clazz);
-        } catch (JMSException | IOException e) {
-            e.printStackTrace();
+        } catch (JMSException | IOException ex) {
+            ex.printStackTrace();
         }
 
         return null;
@@ -84,8 +88,8 @@ public class JmsHelperImpl implements JmsHelper {
             JmsReplyModel jmsReplyModel = new JmsReplyModel(true, msg, reply);
 
             this.replyTo(message.getJMSReplyTo(), message.getJMSCorrelationID(), jmsReplyModel);
-        } catch (JMSException e) {
-            e.printStackTrace();
+        } catch (JMSException ex) {
+            ex.printStackTrace();
         }
     }
 
@@ -93,14 +97,10 @@ public class JmsHelperImpl implements JmsHelper {
         try {
             MessageProducer messageProducer = this.session.createProducer(destination);
             Message message = this.createMessage(data, correlationId);
-            messageProducer.send(destination, message);
+            messageProducer.send(message);
         } catch (Exception ex) {
-
+            ex.printStackTrace();
         }
-    }
-
-    private Message createMessage(Object model) {
-        return this.createMessage(model, this.randomId());
     }
 
     private Message createMessage(Object model, String correlationId) {
@@ -108,15 +108,11 @@ public class JmsHelperImpl implements JmsHelper {
             Message message = this.session.createTextMessage(this.objectMapper.writeValueAsString(model));
             message.setJMSCorrelationID(correlationId);
             return message;
-        } catch (JMSException | com.fasterxml.jackson.core.JsonProcessingException e) {
-            e.printStackTrace();
+        } catch (JMSException | com.fasterxml.jackson.core.JsonProcessingException ex) {
+            ex.printStackTrace();
         }
 
         return null;
-    }
-
-    private String randomId() {
-        return UUID.randomUUID().toString();
     }
 
 }
