@@ -27,8 +27,8 @@ public class LinkServicesImpl implements LinkServices {
     }
 
     @Override
-    public boolean isAccountLinkedByCandidateUID(String uuid) {
-        return this.findByPlayerUUID(uuid) != null;
+    public boolean isAccountLinkedByCandidateUID(String candidateUID) {
+        return this.findByCandidateUID(candidateUID) != null;
     }
 
     @Override

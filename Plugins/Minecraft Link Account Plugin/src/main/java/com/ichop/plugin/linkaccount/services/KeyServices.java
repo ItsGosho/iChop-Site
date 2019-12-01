@@ -9,4 +9,8 @@ public interface KeyServices {
     KeyServiceModel findByLinkKey(String linkKey);
     boolean isKeyExpired(String linkKey);
     boolean isValid(String linkKey);
+
+    void deleteLastByUUID(String uuid);
+
+    void deleteLastByKey(String linkKey);
 }

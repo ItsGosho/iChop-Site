@@ -40,12 +40,18 @@ public class LinkCreateListener implements MessageListener {
             return;
         }
 
+        if(this.linkServices.isAccountLinkedByCandidateUID(request.getCandidateUID())){
+            this.jmsHelper.replyValidationError(message, "Account is already linked!");
+            return;
+        }
+
         KeyServiceModel key = this.keyServices.findByLinkKey(request.getLinkKey());
 
         LinkCreateBindingModel bindingModel = this.modelMapper.map(request, LinkCreateBindingModel.class);
         bindingModel.setPlayerUUID(key.getPlayerUUID());
 
         this.linkServices.create(bindingModel);
+        this.keyServices.deleteLastByKey(request.getLinkKey());
 
         this.jmsHelper.replySuccessful(message,new EmptyReply(),"Successful link!");
     }
