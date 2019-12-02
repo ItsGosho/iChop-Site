@@ -24,10 +24,8 @@ public class LinkController {
 
     @Autowired
     public LinkController(ResponseHelpers responseHelpers,
-                          ValidationHelper validationHelper,
                           KeyRequester keyRequester,
-                          LinkRequester linkRequester,
-                          ObjectMapper objectMapper) {
+                          LinkRequester linkRequester) {
         this.responseHelpers = responseHelpers;
         this.keyRequester = keyRequester;
         this.linkRequester = linkRequester;
@@ -35,21 +33,21 @@ public class LinkController {
 
 
     @GetMapping(LinkRoutingConstants.IS_KEY_VALID)
-    private ResponseEntity isKeyValid(@RequestParam String key) {
+    public ResponseEntity isKeyValid(@RequestParam String key) {
         JmsReplyModel reply = this.keyRequester.isKeyValid(key);
 
         return this.responseHelpers.respondGeneric(reply);
     }
 
     @GetMapping(LinkRoutingConstants.KEY_RETRIEVE)
-    private ResponseEntity retrieveKey(@RequestParam String key) {
+    public ResponseEntity retrieveKey(@RequestParam String key) {
         JmsReplyModel reply = this.keyRequester.findKeyByKey(key);
 
         return this.responseHelpers.respondGeneric(reply);
     }
 
     @GetMapping(LinkRoutingConstants.LINK_RETRIEVE)
-    private ResponseEntity linkRetrieve(@RequestParam String username) {
+    public ResponseEntity linkRetrieve(@RequestParam String username) {
         JmsReplyModel reply = this.linkRequester.linkRetrieve(username);
 
         return this.responseHelpers.respondGeneric(reply);
@@ -57,7 +55,7 @@ public class LinkController {
 
     @PreAuthorize("isAuthenticated()")
     @PostMapping(LinkRoutingConstants.LINK_CREATE)
-    private ResponseEntity createLink(@RequestBody LinkCreateBindingModel bindingModel, Principal principal) {
+    public ResponseEntity createLink(@RequestBody LinkCreateBindingModel bindingModel, Principal principal) {
         JmsReplyModel reply = this.linkRequester.linkCreate(bindingModel.getLinkKey(), principal.getName());
 
         return this.responseHelpers.respondGeneric(reply);
