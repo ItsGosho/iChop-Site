@@ -15,6 +15,7 @@ import ThreadsAll from "./components/thread/all/ThreadsAll";
 import ThreadRead from "./components/thread/read/ThreadRead";
 import UserControl from "./components/user/control/UserControl";
 import Reports from "./components/report/Reports";
+import PlayerLinkAccount from "./components/player/PlayerLinkAccount";
 
 function App() {
 
@@ -46,6 +47,8 @@ function App() {
                            render={(props) => (<ThreadRead key={props.match.params.id} {...props}/>)}/>
 
                     <Route exact path={RoutingURLs.THREAD.CREATE} render={() => (<ThreadCreate/>)}/>
+
+                    <Route exact path={RoutingURLs.PLAYER.ACCOUNT.LINK} render={() => (<PlayerLinkAccount/>)}/>
 
                     <Route exact path={RoutingURLs.AUTHENTICATION.LOGOUT} render={() => (<Logout/>)}/>
                 </Switch>
