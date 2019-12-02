@@ -8,6 +8,5 @@ import lombok.Setter;
 public class LinkCreateBindingModel {
 
     private String linkKey;
-    private String username;
 
 }

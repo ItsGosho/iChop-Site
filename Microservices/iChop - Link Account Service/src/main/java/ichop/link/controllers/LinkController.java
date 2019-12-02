@@ -10,7 +10,10 @@ import org.ichop.commons.rest.helpers.ResponseHelpers;
 import org.ichop.commons.validation.ValidationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
 
 @RestController
 public class LinkController {
@@ -52,9 +55,10 @@ public class LinkController {
         return this.responseHelpers.respondGeneric(reply);
     }
 
+    @PreAuthorize("isAuthenticated()")
     @PostMapping(LinkRoutingConstants.LINK_CREATE)
-    private ResponseEntity createLink(@RequestBody LinkCreateBindingModel bindingModel) {
-        JmsReplyModel reply = this.linkRequester.linkCreate(bindingModel.getLinkKey(), bindingModel.getUsername());
+    private ResponseEntity createLink(@RequestBody LinkCreateBindingModel bindingModel, Principal principal) {
+        JmsReplyModel reply = this.linkRequester.linkCreate(bindingModel.getLinkKey(), principal.getName());
 
         return this.responseHelpers.respondGeneric(reply);
     }
