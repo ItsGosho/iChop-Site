@@ -21,6 +21,7 @@ public abstract class AbstractRepository<E extends BaseEntity> implements Reposi
 
             Object result = command.execute(this.entityManager);
 
+            this.entityManager.refresh(result);
             this.entityManager.getTransaction().commit();
             return result;
         } catch (Exception e) {
