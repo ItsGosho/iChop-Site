@@ -4,6 +4,7 @@ const REPORTS_SERVICE_DOMAIN = 'http://localhost:8004';
 const REACTIONS_SERVICE_DOMAIN = 'http://localhost:8005';
 const STORAGE_SERVICE_DOMAIN = 'http://localhost:8007';
 const COMMENTS_SERVICE_DOMAIN = 'http://localhost:8008';
+const LINK_ACCOUNT_SERVICE_DOMAIN = 'http://localhost:8009';
 
 const OTHER_CRAFATAR_SERVER_DOMAIN = 'https://crafatar.com';
 const OTHER_MINOTAR_SERVER_DOMAIN = 'https://minotar.net';
@@ -66,6 +67,12 @@ const ServerRoutingURLs = {
         DATA_STORAGE: {
             SET_USER_AVATAR: (username) => `${STORAGE_SERVICE_DOMAIN}/data/set/user/${username}/avatar`,
             GET_USER_AVATAR: (username) => `${STORAGE_SERVICE_DOMAIN}/data/user/${username}/avatar`
+        },
+        LINK_ACCOUNT: {
+            IS_KEY_VALID: (key) => `${LINK_ACCOUNT_SERVICE_DOMAIN}/key/is/valid?key=${key}`,
+            KEY_RETRIEVE: (key) => `${LINK_ACCOUNT_SERVICE_DOMAIN}/key/retrieve?key=${key}`,
+            LINK_RETRIEVE: (username) => `${LINK_ACCOUNT_SERVICE_DOMAIN}/link/retrieve?username=${username}`,
+            LINK_CREATE: `${LINK_ACCOUNT_SERVICE_DOMAIN}/link/create`,
         }
     },
     OUTSIDE: {
