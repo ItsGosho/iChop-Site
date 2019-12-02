@@ -40,10 +40,10 @@ class PlayerLinkAccount extends Component {
         this.setState({playerName})
     }
 
-    linkAccount() {
+    async linkAccount() {
         let key = this.queryHelper.getQueryParam(QueryParams.KEY);
 
-        let response = LinkAccountServices.link(key);
+        let response = await LinkAccountServices.link(key);
 
         if(response.successful){
             this.setState({redirectToHome: true})

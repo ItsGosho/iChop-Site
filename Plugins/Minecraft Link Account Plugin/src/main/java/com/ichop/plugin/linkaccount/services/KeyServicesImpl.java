@@ -71,7 +71,7 @@ public class KeyServicesImpl implements KeyServices {
     public void deleteLastByUUID(String uuid) {
         Key key = this.keyRepository.findByPlayerUUID(uuid);
         if (key != null) {
-            this.keyRepository.delete(key);
+            this.keyRepository.deleteById(key.getId());
         }
     }
 
@@ -79,7 +79,7 @@ public class KeyServicesImpl implements KeyServices {
     public void deleteLastByKey(String linkKey) {
         Key key = this.keyRepository.findByKey(linkKey);
         if (key != null) {
-            this.keyRepository.delete(key);
+            this.keyRepository.deleteById(key.getId());
         }
     }
 
