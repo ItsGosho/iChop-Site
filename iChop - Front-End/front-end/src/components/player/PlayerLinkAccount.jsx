@@ -6,6 +6,8 @@ import ServerRoutingURLs from "../../constants/routing/server.routing.urls";
 import LinkAccountServices from "../../services/link_account.services";
 import NotificationHelper from "../../helpers/notification.helper";
 import QueryHelper from "../../helpers/query.helper";
+import withDispatchers from "../../hocs/with.dispatchers";
+import {fetchAuthenticatedUserInfo} from "../../redux/actions/authenticated.user.info.actions";
 
 class PlayerLinkAccount extends Component {
 
@@ -46,7 +48,8 @@ class PlayerLinkAccount extends Component {
         let response = await LinkAccountServices.link(key);
 
         if(response.successful){
-            this.setState({redirectToHome: true})
+            this.setState({redirectToHome: true});
+            this.props.fetchAuthenticatedUserInfo();
         }
     }
 
@@ -93,7 +96,7 @@ class PlayerLinkAccount extends Component {
 
 }
 
-export default PlayerLinkAccount;
+export default withDispatchers(PlayerLinkAccount);
 
 const QueryParams = {
     KEY: 'key'
