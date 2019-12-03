@@ -25,6 +25,4 @@ public class CommandLoader {
         Bukkit.getServer().getPluginCommand(UNLINK_ACCOUNT_COMMAND_NAME).setExecutor(this.unlinkAccountCommand);
 
     }
-
-    /*TODO: Link Remove*/
 }

@@ -3,6 +3,7 @@ package ichop.link.controllers;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ichop.link.constants.LinkRoutingConstants;
 import ichop.link.domain.models.binding.LinkCreateBindingModel;
+import ichop.link.domain.models.binding.LinkRemoveBindingModel;
 import ichop.link.requesters.KeyRequester;
 import ichop.link.requesters.LinkRequester;
 import org.ichop.commons.domain.JmsReplyModel;
@@ -57,6 +58,14 @@ public class LinkController {
     @PostMapping(LinkRoutingConstants.LINK_CREATE)
     public ResponseEntity createLink(@RequestBody LinkCreateBindingModel bindingModel, Principal principal) {
         JmsReplyModel reply = this.linkRequester.linkCreate(bindingModel.getLinkKey(), principal.getName());
+
+        return this.responseHelpers.respondGeneric(reply);
+    }
+
+    @PreAuthorize("hasAuthority('OWNER') or #bindingModel.username.equals(#principal.name)")
+    @PostMapping(LinkRoutingConstants.LINK_REMOVE)
+    public ResponseEntity removeLink(@RequestBody LinkRemoveBindingModel bindingModel, Principal principal) {
+        JmsReplyModel reply = this.linkRequester.linkRemove(bindingModel.getUsername());
 
         return this.responseHelpers.respondGeneric(reply);
     }

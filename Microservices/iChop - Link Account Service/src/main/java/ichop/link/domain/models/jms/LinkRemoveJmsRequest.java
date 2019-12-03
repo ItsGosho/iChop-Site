@@ -6,12 +6,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.ichop.commons.domain.RequestCandidate;
 
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class LinkRetrieveJmsRequest extends RequestCandidate {
+public class LinkRemoveJmsRequest extends RequestCandidate {
 
     private String candidateUID;
-
 }

@@ -15,4 +15,6 @@ public interface LinkServices {
     LinkServiceModel create(LinkCreateBindingModel bindingModel);
 
     void unlinkByPlayerUUID(String playerUUID);
+
+    void unlinkByCandidateUID(String candidateUID);
 }

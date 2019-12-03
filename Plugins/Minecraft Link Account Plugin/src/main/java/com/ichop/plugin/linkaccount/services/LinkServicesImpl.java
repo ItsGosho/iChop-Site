@@ -58,4 +58,10 @@ public class LinkServicesImpl implements LinkServices {
         LinkServiceModel link = this.findByPlayerUUID(playerUUID);
         this.linkRepository.deleteById(link.getId());
     }
+
+    @Override
+    public void unlinkByCandidateUID(String candidateUID) {
+        LinkServiceModel link = this.findByCandidateUID(candidateUID);
+        this.linkRepository.deleteById(link.getId());
+    }
 }

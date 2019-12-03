@@ -73,6 +73,7 @@ const ServerRoutingURLs = {
             KEY_RETRIEVE: (key) => `${LINK_ACCOUNT_SERVICE_DOMAIN}/key/retrieve?key=${key}`,
             LINK_RETRIEVE: (username) => `${LINK_ACCOUNT_SERVICE_DOMAIN}/link/retrieve?username=${username}`,
             LINK_CREATE: `${LINK_ACCOUNT_SERVICE_DOMAIN}/link/create`,
+            LINK_REMOVE: `${LINK_ACCOUNT_SERVICE_DOMAIN}/link/remove`,
         }
     },
     OUTSIDE: {

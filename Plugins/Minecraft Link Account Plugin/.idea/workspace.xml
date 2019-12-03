@@ -2,17 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b19ca9b3-db72-4cc0-8576-35604dda9092" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../Microservices/iChop - Link Account Service/src/main/java/ichop/link/constants/LinkRoutingConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Microservices/iChop - Link Account Service/src/main/java/ichop/link/constants/LinkRoutingConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microservices/iChop - Link Account Service/src/main/java/ichop/link/controllers/LinkController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Microservices/iChop - Link Account Service/src/main/java/ichop/link/controllers/LinkController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Microservices/iChop - Link Account Service/src/main/java/ichop/link/domain/models/jms/LinkRetrieveJmsRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Microservices/iChop - Link Account Service/src/main/java/ichop/link/domain/models/jms/LinkRetrieveJmsRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microservices/iChop - Link Account Service/src/main/java/ichop/link/requesters/LinkRequester.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Microservices/iChop - Link Account Service/src/main/java/ichop/link/requesters/LinkRequester.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microservices/iChop - Link Account Service/src/main/java/ichop/link/requesters/LinkRequesterImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Microservices/iChop - Link Account Service/src/main/java/ichop/link/requesters/LinkRequesterImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microservices/iChop - Link Account Service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../Microservices/iChop - Link Account Service/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/config/BeansConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/config/BeansConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/config/ListenersConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/config/ListenersConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/loaders/CommandLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/loaders/CommandLoader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/services/LinkServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/services/LinkServices.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/services/LinkServicesImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/services/LinkServicesImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plugin.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../iChop - Front-End/front-end/src/components/other/Image.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../iChop - Front-End/front-end/src/components/other/Image.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../iChop - Front-End/front-end/src/redux/actions/user.profile.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../iChop - Front-End/front-end/src/redux/actions/user.profile.actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../iChop - Front-End/front-end/src/redux/reducers/user.profile.info.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../iChop - Front-End/front-end/src/redux/reducers/user.profile.info.reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../iChop - Front-End/front-end/src/services/link_account.services.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../iChop - Front-End/front-end/src/services/link_account.services.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Front-End/front-end/src/components/user/options/minecraft/UserOptionsMinecraft.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../iChop - Front-End/front-end/src/components/user/options/minecraft/UserOptionsMinecraft.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Front-End/front-end/src/redux/actions/authenticated.user.info.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../iChop - Front-End/front-end/src/redux/actions/authenticated.user.info.actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iChop - Front-End/front-end/src/redux/reducers/authenticated.user.info.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../iChop - Front-End/front-end/src/redux/reducers/authenticated.user.info.reducer.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -83,8 +87,8 @@
     <property name="settings.editor.selected.configurable" value="editing.templates" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.ichop.plugin.linkaccount" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Gosho\Desktop\Minecraft Link Account Plugin\src\main\resources" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Gosho\Desktop\GitHub\iChop\Plugins\Minecraft Link Account Plugin\src\main\java\com\ichop\plugin\linkaccount\commons\services" />
@@ -94,14 +98,14 @@
       <recent name="C:\Users\Gosho\Desktop\Minecraft Link Account Plugin\src\main\java\com\ichop\plugin\linkaccount\commands" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.ichop.plugin.linkaccount.commands" />
       <recent name="com.ichop.plugin.linkaccount.listeners" />
       <recent name="com.ichop.plugin.linkaccount.domain.models.jms" />
+      <recent name="com.ichop.plugin.linkaccount.commands" />
       <recent name="com.ichop.plugin.linkaccount.repository" />
       <recent name="com.ichop.plugin.linkaccount.domain.models.binding" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Gosho\Desktop\Minecraft Link Account Plugin\src\main\resources" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.ichop.plugin.linkaccount" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -219,6 +223,7 @@
       <workItem from="1575308903450" duration="1067000" />
       <workItem from="1575315628831" duration="6243000" />
       <workItem from="1575391703369" duration="3075000" />
+      <workItem from="1575404179747" duration="2017000" />
     </task>
     <servers />
   </component>
@@ -250,6 +255,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/listeners/TestListener.java</url>
           <line>8</line>
           <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/listeners/LinkRemoveListener.java</url>
+          <line>31</line>
+          <option name="timeStamp" value="30" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

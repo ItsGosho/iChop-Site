@@ -29,6 +29,12 @@ const LinkAccountServices = {
         return response;
     },
 
+    async unlink(username) {
+        let response = await Requester.post(Endpoints.LINK_REMOVE, {username});
+        NotificationHelper.showNotificationByResponse(response);
+        return response;
+    },
+
 };
 
 export default LinkAccountServices;
