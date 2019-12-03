@@ -49,6 +49,7 @@ public class LinkCreateListener implements MessageListener {
 
         LinkCreateBindingModel bindingModel = this.modelMapper.map(request, LinkCreateBindingModel.class);
         bindingModel.setPlayerUUID(key.getPlayerUUID());
+        bindingModel.setPlayerName(key.getPlayerName());
 
         this.linkServices.create(bindingModel);
         this.keyServices.deleteLastByKey(request.getLinkKey());

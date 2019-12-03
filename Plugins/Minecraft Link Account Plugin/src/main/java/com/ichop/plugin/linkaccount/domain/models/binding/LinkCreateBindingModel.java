@@ -8,6 +8,7 @@ import lombok.Setter;
 public class LinkCreateBindingModel {
 
     private String playerUUID;
+    private String playerName;
     private String candidateUID;
 
 }
