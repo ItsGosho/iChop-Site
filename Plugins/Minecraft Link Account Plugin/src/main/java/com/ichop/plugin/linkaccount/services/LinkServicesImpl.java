@@ -52,4 +52,10 @@ public class LinkServicesImpl implements LinkServices {
 
         return this.modelMapper.map(link, LinkServiceModel.class);
     }
+
+    @Override
+    public void unlinkByPlayerUUID(String playerUUID) {
+        LinkServiceModel link = this.findByPlayerUUID(playerUUID);
+        this.linkRepository.deleteById(link.getId());
+    }
 }

@@ -6,4 +6,7 @@ commands:
   link-account:
     description: Link your account to our website
     permission: ichop.minecraft.plugin
+  unlink-account:
+    description: Unlink your account from our website
+    permission: ichop.minecraft.plugin
 usage: /plugin
