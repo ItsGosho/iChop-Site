@@ -7,15 +7,14 @@ import Image from "../../../../other/Image";
 import PropTypes from 'prop-types';
 
 
-const CommentCreatorInformation = ({uuid, username, totalComments, minecraftAccountName}) => (
+const CommentCreatorInformation = ({uuid, username, totalComments}) => (
     <Fragment>
 
         <div>
             <Image style={{'width': '50px', 'height': '50px', 'maxWidth': '100%'}}
                    url={ServerRoutingURLs.CORE.DATA_STORAGE.GET_USER_AVATAR(username)}
                    defaultUrl={FrontEndResourcesRoutingURLs.USER.AVATAR}
-                   className="card-img-top thread-comment-creator_avatar"
-                   title={minecraftAccountName}/>
+                   className="card-img-top thread-comment-creator_avatar"/>
         </div>
 
         <div>
@@ -30,23 +29,6 @@ const CommentCreatorInformation = ({uuid, username, totalComments, minecraftAcco
                 <span>{totalComments} total comments</span>
             </small>
         </div>
-
-        <div>
-
-            {minecraftAccountName !== undefined ? (
-                <small>
-                    <Link to={RoutingURLs.PLAYER.PROFILE.VIEW(uuid)}>
-                        <img
-                            src={ServerRoutingURLs.OUTSIDE.MINOTAR.MINECRAFT.HEAD(minecraftAccountName)}
-                            className="card-img-top"
-                            style={{'width': '15px', 'height': '15px', 'maxWidth': '100%'}}
-                            alt=' '/>
-                        {minecraftAccountName}
-                    </Link>
-                </small>
-            ) : null}
-
-        </div>
     </Fragment>
 );
 
@@ -57,5 +39,4 @@ CommentCreatorInformation.propTypes = {
     uuid: PropTypes.string,
     username: PropTypes.string,
     totalComments: PropTypes.number,
-    minecraftAccountName: PropTypes.string,
 };

@@ -17,8 +17,14 @@ const LinkAccountServices = {
         return response.data;
     },
 
+    async retrieveLink(username) {
+        let response = await Requester.get(Endpoints.LINK_RETRIEVE(username));
+
+        return response.data ? response.data : {};
+    },
+
     async link(key) {
-        let response = await Requester.post(Endpoints.LINK_CREATE,{linkKey: key});
+        let response = await Requester.post(Endpoints.LINK_CREATE, {linkKey: key});
         NotificationHelper.showNotificationByResponse(response);
         return response;
     },

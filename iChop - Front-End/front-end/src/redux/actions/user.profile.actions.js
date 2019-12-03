@@ -3,6 +3,7 @@ import UserServices from "../../services/user.services";
 import CommentServices from "../../services/comment.services";
 import ReactionServices from "../../services/reaction.services";
 import ReactionType from "../../constants/enums/reaction.types.constants";
+import LinkAccountServices from "../../services/link_account.services";
 
 
 let setUserProfileUser = (username) => {
@@ -59,15 +60,11 @@ let setUserProfileInformation = (username) => {
 
 let setUserProfileMinecraft = (username) => {
     return async (dispatch) => {
-        let uuid = undefined;
-        let accountName = undefined;
+        let {playerUUID, playerName} = await LinkAccountServices.retrieveLink(username);
 
         dispatch({
             type: Actions.USER_PROFILE_SET_MINECRAFT,
-            payload: {
-                minecraftUUID: uuid,
-                minecraftAccountName: accountName
-            }
+            payload: {playerUUID, playerName}
         });
     }
 };

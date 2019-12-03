@@ -8,10 +8,7 @@ import withState from "../../../../../hocs/with.state";
 
 
 const ThreadCreatorInformation = (props) => {
-    let uuid = '8ed20904-3262-401a-901a-1946504d2eea';
-    let minecraftAccountName = 'ItsGosho';
-
-    let {creatorUsername, creatorTotalComments} = props.threadRead;
+    let {creatorUsername, creatorTotalComments,creatorMinecraftUsername,creatorMinecraftUUID} = props.threadRead;
 
     return (
         <div className="row">
@@ -39,17 +36,17 @@ const ThreadCreatorInformation = (props) => {
                 <div align="center">
                     <div className="row">
 
-                        {minecraftAccountName !== undefined ? (
+                        {creatorMinecraftUsername ? (
                             <small>
-                                <Link to={RoutingURLs.PLAYER.PROFILE.VIEW(uuid)}>
+                                <Link to={RoutingURLs.PLAYER.PROFILE.VIEW(creatorMinecraftUUID)}>
                                     <img
-                                        src={ServerRoutingURLs.OUTSIDE.MINOTAR.MINECRAFT.HEAD(minecraftAccountName)}
+                                        src={ServerRoutingURLs.OUTSIDE.MINOTAR.MINECRAFT.HEAD(creatorMinecraftUsername)}
                                         style={{'width': '22px', 'height': '22px'}}
                                         alt=''/>
                                     <span style={{
                                         'fontSize': '15px',
                                         'fontFamily': 'Consolas'
-                                    }}>{minecraftAccountName}</span>
+                                    }}>{creatorMinecraftUsername}</span>
                                 </Link>
                             </small>
                         ) : null}

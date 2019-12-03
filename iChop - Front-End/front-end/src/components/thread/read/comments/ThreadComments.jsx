@@ -23,7 +23,6 @@ const ThreadComments = (props) => {
                                          content,
                                          creatorUsername,
                                          creatorTotalComments,
-                                         creatorMinecraftAccountName,
                                          creatorMinecraftAccountUUID
                                      }, index) => {
 
@@ -40,8 +39,7 @@ const ThreadComments = (props) => {
                                 <div className="col-md-3 thread-comment-creator_info_section">
                                     <CommentCreatorInformation uuid={creatorMinecraftAccountUUID}
                                                                username={creatorUsername}
-                                                               totalComments={creatorTotalComments}
-                                                               minecraftAccountName={creatorMinecraftAccountName}/>
+                                                               totalComments={creatorTotalComments}/>
                                 </div>
 
                                 <div className="content thread-comment-content">

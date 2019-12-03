@@ -2,6 +2,7 @@ import Actions from "../../constants/redux/actions.constants";
 import UserServices from "../../services/user.services";
 
 
+/*SET MINECRAFT INFO*/
 let fetchAuthenticatedUserInfo = () => {
     return async (dispatch) => {
         let user = await UserServices.retrieveUserByToken();
