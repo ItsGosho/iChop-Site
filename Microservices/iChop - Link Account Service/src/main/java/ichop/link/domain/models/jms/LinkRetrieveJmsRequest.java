@@ -14,4 +14,5 @@ public class LinkRetrieveJmsRequest extends RequestCandidate {
 
     private String candidateUID;
 
+    /*TODO: Link Remove*/
 }
