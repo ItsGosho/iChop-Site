@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b19ca9b3-db72-4cc0-8576-35604dda9092" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Microservices/iChop - Link Account Service/Start - Threads Services.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/commands/LinkAccountCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/commands/LinkAccountCommand.java" afterDir="false" />
-    </list>
+    <list default="true" id="b19ca9b3-db72-4cc0-8576-35604dda9092" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -213,7 +209,7 @@
       <workItem from="1575391703369" duration="3075000" />
       <workItem from="1575404179747" duration="2017000" />
       <workItem from="1575449506001" duration="17000" />
-      <workItem from="1575494449892" duration="227000" />
+      <workItem from="1575494449892" duration="332000" />
     </task>
     <servers />
   </component>
