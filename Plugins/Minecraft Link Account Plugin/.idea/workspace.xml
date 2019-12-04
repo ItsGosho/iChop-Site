@@ -2,21 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b19ca9b3-db72-4cc0-8576-35604dda9092" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Microservices/iChop - Link Account Service/src/main/java/ichop/link/constants/LinkRoutingConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Microservices/iChop - Link Account Service/src/main/java/ichop/link/constants/LinkRoutingConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microservices/iChop - Link Account Service/src/main/java/ichop/link/controllers/LinkController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Microservices/iChop - Link Account Service/src/main/java/ichop/link/controllers/LinkController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microservices/iChop - Link Account Service/src/main/java/ichop/link/domain/models/jms/LinkRetrieveJmsRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Microservices/iChop - Link Account Service/src/main/java/ichop/link/domain/models/jms/LinkRetrieveJmsRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microservices/iChop - Link Account Service/src/main/java/ichop/link/requesters/LinkRequester.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Microservices/iChop - Link Account Service/src/main/java/ichop/link/requesters/LinkRequester.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microservices/iChop - Link Account Service/src/main/java/ichop/link/requesters/LinkRequesterImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Microservices/iChop - Link Account Service/src/main/java/ichop/link/requesters/LinkRequesterImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Microservices/iChop - Link Account Service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../Microservices/iChop - Link Account Service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microservices/iChop - Link Account Service/Start - Threads Services.bat" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/config/BeansConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/config/BeansConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/config/ListenersConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/config/ListenersConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/loaders/CommandLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/loaders/CommandLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/services/LinkServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/services/LinkServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/services/LinkServicesImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/services/LinkServicesImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../iChop - Front-End/front-end/src/components/user/options/minecraft/UserOptionsMinecraft.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../iChop - Front-End/front-end/src/components/user/options/minecraft/UserOptionsMinecraft.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../iChop - Front-End/front-end/src/redux/actions/authenticated.user.info.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../iChop - Front-End/front-end/src/redux/actions/authenticated.user.info.actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../iChop - Front-End/front-end/src/redux/reducers/authenticated.user.info.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../iChop - Front-End/front-end/src/redux/reducers/authenticated.user.info.reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/commands/LinkAccountCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/commands/LinkAccountCommand.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -120,7 +108,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JAR Application.Server">
+  <component name="RunManager" selected="Maven.linkaccount [clean,package]">
     <configuration name="CLR" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.ichop.plugin.linkaccount.CLR" />
       <module name="linkaccount" />
@@ -224,6 +212,8 @@
       <workItem from="1575315628831" duration="6243000" />
       <workItem from="1575391703369" duration="3075000" />
       <workItem from="1575404179747" duration="2017000" />
+      <workItem from="1575449506001" duration="17000" />
+      <workItem from="1575494449892" duration="227000" />
     </task>
     <servers />
   </component>
@@ -255,11 +245,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/listeners/TestListener.java</url>
           <line>8</line>
           <option name="timeStamp" value="28" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/ichop/plugin/linkaccount/listeners/LinkRemoveListener.java</url>
-          <line>31</line>
-          <option name="timeStamp" value="30" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -15,7 +15,7 @@ import javax.inject.Inject;
 
 public class LinkAccountCommand implements CommandExecutor {
 
-    public static final String PLAYER_LINK_ACCOUNT_GET = "localhost:3000/player/link-account?key={key}";
+    public static final String PLAYER_LINK_ACCOUNT_GET = "https://localhost:3000/player/link-account?key={key}";
 
     private final KeyServices keyServices;
     private final LinkServices linkServices;
