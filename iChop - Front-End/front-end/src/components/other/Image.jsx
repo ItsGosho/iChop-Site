@@ -39,7 +39,6 @@ class Image extends Component {
         let {className, style, title} = this.props;
 
         imageUrl = imageUrl ? imageUrl : this.props.defaultUrl;
-        console.log(imageUrl);
         return (
             <img src={imageUrl}
                  onError={this.onImageError}

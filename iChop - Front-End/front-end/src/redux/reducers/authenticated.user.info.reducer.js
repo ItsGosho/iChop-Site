@@ -15,7 +15,10 @@ let initialState = {
     birthDate: undefined,
     aboutYou: undefined,
 
-    isAuthenticated: false
+    isAuthenticated: false,
+
+    playerName: '',
+    playerUUID: ''
 };
 
 
@@ -24,11 +27,11 @@ let authenticatedUserInfoReducer = (state = initialState, action) => {
     switch (action.type) {
 
         case Actions.AUTHENTICATED_USER_INFO_SET:
-            let {user,information} = action.payload;
+            let {user, information, minecraft} = action.payload;
 
-            return Object.assign({}, state, {...user,...information,isAuthenticated: true});
+            return Object.assign({}, state, {...user, ...information, ...minecraft, isAuthenticated: true});
 
-        case Actions.AUTHENTICATED_USER_INFO_REMOVE:
+        case Actions.AUTHENTICATED_USER_REMOVE:
             return {...initialState};
 
         default:

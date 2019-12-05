@@ -3,7 +3,7 @@ package com.ichop.plugin.linkaccount.listeners;
 import com.ichop.plugin.linkaccount.commons.domain.EmptyReply;
 import com.ichop.plugin.linkaccount.commons.helpers.JmsHelper;
 import com.ichop.plugin.linkaccount.domain.models.binding.LinkCreateBindingModel;
-import com.ichop.plugin.linkaccount.domain.models.jms.LinkCreateRequest;
+import com.ichop.plugin.linkaccount.domain.models.jms.LinkCreateJmsRequest;
 import com.ichop.plugin.linkaccount.domain.models.service.KeyServiceModel;
 import com.ichop.plugin.linkaccount.services.KeyServices;
 import com.ichop.plugin.linkaccount.services.LinkServices;
@@ -33,10 +33,15 @@ public class LinkCreateListener implements MessageListener {
 
     @Override
     public void onMessage(Message message) {
-        LinkCreateRequest request = this.jmsHelper.toModel(message, LinkCreateRequest.class);
+        LinkCreateJmsRequest request = this.jmsHelper.toModel(message, LinkCreateJmsRequest.class);
 
         if (!this.keyServices.isValid(request.getLinkKey())) {
             this.jmsHelper.replyValidationError(message, "The provided key is not valid!");
+            return;
+        }
+
+        if(this.linkServices.isAccountLinkedByCandidateUID(request.getCandidateUID())){
+            this.jmsHelper.replyValidationError(message, "Account is already linked!");
             return;
         }
 
@@ -44,8 +49,10 @@ public class LinkCreateListener implements MessageListener {
 
         LinkCreateBindingModel bindingModel = this.modelMapper.map(request, LinkCreateBindingModel.class);
         bindingModel.setPlayerUUID(key.getPlayerUUID());
+        bindingModel.setPlayerName(key.getPlayerName());
 
         this.linkServices.create(bindingModel);
+        this.keyServices.deleteLastByKey(request.getLinkKey());
 
         this.jmsHelper.replySuccessful(message,new EmptyReply(),"Successful link!");
     }

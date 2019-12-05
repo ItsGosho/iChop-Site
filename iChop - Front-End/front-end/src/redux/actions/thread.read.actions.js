@@ -2,6 +2,7 @@ import Actions from "../../constants/redux/actions.constants";
 import ThreadServices from "../../services/thread.services";
 import CommentServices from "../../services/comment.services";
 import ReactionServices from "../../services/reaction.services";
+import LinkAccountServices from "../../services/link_account.services";
 
 
 let fetchById = (id) => {
@@ -22,10 +23,15 @@ let fetchById = (id) => {
 let fetchThreadCreatorInformation = (username) => {
     return async (dispatch) => {
         let totalComments = await CommentServices.findCreatorTotalComments(username);
+        let {playerName, playerUUID} = await LinkAccountServices.retrieveLink(username);
 
         dispatch({
             type: Actions.THREAD_READ_SET_CREATOR_INFO,
-            payload: {creatorTotalComments: totalComments}
+            payload: {
+                creatorTotalComments: totalComments,
+                creatorMinecraftUsername: playerName,
+                creatorMinecraftUUID: playerUUID
+            }
         });
     }
 };

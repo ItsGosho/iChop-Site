@@ -3,6 +3,7 @@ import Actions from "../../constants/redux/actions.constants";
 let initialState = {
     id: '',
     creatorUsername: '',
+    creatorMinecraftUsername: '',
     creatorTotalComments: 0,
     title: '',
     content: '',
@@ -29,9 +30,9 @@ let threadReadReducer = (state = initialState, action) => {
     }
 
     if (action.type === Actions.THREAD_READ_SET_CREATOR_INFO) {
-        let {creatorTotalComments} = action.payload;
+        let {creatorTotalComments,creatorMinecraftUsername,creatorMinecraftUUID} = action.payload;
 
-        return Object.assign({}, state, {creatorTotalComments});
+        return Object.assign({}, state, {creatorTotalComments,creatorMinecraftUsername,creatorMinecraftUUID});
     }
 
     if (action.type === Actions.THREAD_READ_SET_STATISTICS) {

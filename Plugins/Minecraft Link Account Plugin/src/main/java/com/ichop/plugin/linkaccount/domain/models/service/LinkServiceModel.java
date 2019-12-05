@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 public class LinkServiceModel extends BaseServiceModel {
 
     private String playerUUID;
+    private String playerName;
     private String candidateUID;
     private LocalDateTime linkedOn;
 

@@ -6,4 +6,5 @@ start cmd.exe /k "cd /d "iChop - Reports Service" && "Start - Reports Services.b
 start cmd.exe /k "cd /d "iChop - Threads Service" && "Start - Threads Services.bat""
 start cmd.exe /k "cd /d "iChop - Tokens Service" && "Start - Tokens Services.bat""
 start cmd.exe /k "cd /d "iChop - Users Service" && "Start - Users Services.bat""
+start cmd.exe /k "cd /d "iChop - Link Account Service" && "Start - Link Account Services.bat""
 

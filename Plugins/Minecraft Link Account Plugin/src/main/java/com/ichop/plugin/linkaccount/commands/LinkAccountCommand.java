@@ -15,7 +15,7 @@ import javax.inject.Inject;
 
 public class LinkAccountCommand implements CommandExecutor {
 
-    public static final String PLAYER_LINK_ACCOUNT_GET = "localhost:8000/player/link-account?key={key}";
+    public static final String PLAYER_LINK_ACCOUNT_GET = "ichop.bg:3000/player/link-account?key={key}";
 
     private final KeyServices keyServices;
     private final LinkServices linkServices;
@@ -31,16 +31,17 @@ public class LinkAccountCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
         Player player = Bukkit.getPlayer(((Player) sender).getUniqueId());
-        String playUUID = player.getUniqueId().toString();
+        String playerUUID = player.getUniqueId().toString();
+        String playerName = player.getDisplayName();
 
-        if(this.linkServices.isAccountLinkedByPlayerUUID(playUUID)){
+        if(this.linkServices.isAccountLinkedByPlayerUUID(playerUUID)){
             sender.sendMessage(ChatColor.DARK_RED + "You have already linked your account!");
             return false;
         }
 
         KeyCreateBindingModel keyCreateBindingModel = new KeyCreateBindingModel();
-        keyCreateBindingModel.setPlayerUUID(player.getUniqueId().toString());
-        keyCreateBindingModel.setPlayerName(player.getName());
+        keyCreateBindingModel.setPlayerUUID(playerUUID);
+        keyCreateBindingModel.setPlayerName(playerName);
 
         KeyServiceModel key = this.keyServices.create(keyCreateBindingModel);
         String url = PLAYER_LINK_ACCOUNT_GET.replace("{key}", key.getLinkKey());

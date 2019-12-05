@@ -27,8 +27,8 @@ public class LinkServicesImpl implements LinkServices {
     }
 
     @Override
-    public boolean isAccountLinkedByCandidateUID(String uuid) {
-        return this.findByPlayerUUID(uuid) != null;
+    public boolean isAccountLinkedByCandidateUID(String candidateUID) {
+        return this.findByCandidateUID(candidateUID) != null;
     }
 
     @Override
@@ -51,5 +51,17 @@ public class LinkServicesImpl implements LinkServices {
         link = this.linkRepository.save(link);
 
         return this.modelMapper.map(link, LinkServiceModel.class);
+    }
+
+    @Override
+    public void unlinkByPlayerUUID(String playerUUID) {
+        LinkServiceModel link = this.findByPlayerUUID(playerUUID);
+        this.linkRepository.deleteById(link.getId());
+    }
+
+    @Override
+    public void unlinkByCandidateUID(String candidateUID) {
+        LinkServiceModel link = this.findByCandidateUID(candidateUID);
+        this.linkRepository.deleteById(link.getId());
     }
 }

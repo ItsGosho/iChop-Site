@@ -2,7 +2,7 @@ package com.ichop.plugin.linkaccount.listeners;
 
 import com.ichop.plugin.linkaccount.commons.domain.BoolReply;
 import com.ichop.plugin.linkaccount.commons.helpers.JmsHelper;
-import com.ichop.plugin.linkaccount.domain.models.jms.IsKeyValidRequest;
+import com.ichop.plugin.linkaccount.domain.models.jms.IsKeyValidJmsRequest;
 import com.ichop.plugin.linkaccount.services.KeyServices;
 
 import javax.inject.Inject;
@@ -23,7 +23,7 @@ public class IsKeyValidListener implements MessageListener {
 
     @Override
     public void onMessage(Message message) {
-        IsKeyValidRequest request = this.jmsHelper.toModel(message, IsKeyValidRequest.class);
+        IsKeyValidJmsRequest request = this.jmsHelper.toModel(message, IsKeyValidJmsRequest.class);
 
         boolean isValid = this.keyServices.isValid(request.getLinkKey());
 

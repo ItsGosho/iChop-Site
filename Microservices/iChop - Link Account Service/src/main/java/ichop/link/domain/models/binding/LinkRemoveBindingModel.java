@@ -1,0 +1,12 @@
+package ichop.link.domain.models.binding;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class LinkRemoveBindingModel {
+
+    private String username;
+
+}

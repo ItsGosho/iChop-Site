@@ -57,11 +57,7 @@ public class KeyServicesImpl implements KeyServices {
 
         boolean isExpired = linkKey.getExpirationDate().compareTo(LocalDateTime.now()) < 0;
 
-        if (isExpired) {
-            return false;
-        }
-
-        return true;
+        return isExpired;
     }
 
     @Override
@@ -71,12 +67,20 @@ public class KeyServicesImpl implements KeyServices {
         return key != null && !this.isKeyExpired(linkKey);
     }
 
-    private void deleteLastByUUID(String uuid) {
+    @Override
+    public void deleteLastByUUID(String uuid) {
         Key key = this.keyRepository.findByPlayerUUID(uuid);
         if (key != null) {
-            this.keyRepository.delete(key);
+            this.keyRepository.deleteById(key.getId());
         }
+    }
 
+    @Override
+    public void deleteLastByKey(String linkKey) {
+        Key key = this.keyRepository.findByKey(linkKey);
+        if (key != null) {
+            this.keyRepository.deleteById(key.getId());
+        }
     }
 
 }

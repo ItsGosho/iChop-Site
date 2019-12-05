@@ -13,4 +13,8 @@ public interface LinkServices {
     LinkServiceModel findByCandidateUID(String candidateUID);
 
     LinkServiceModel create(LinkCreateBindingModel bindingModel);
+
+    void unlinkByPlayerUUID(String playerUUID);
+
+    void unlinkByCandidateUID(String candidateUID);
 }

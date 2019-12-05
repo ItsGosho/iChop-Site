@@ -3,6 +3,10 @@ import RoutingURLs from "../../../../constants/routing/routing.constants";
 import {Link} from "react-router-dom";
 import ServerRoutingURLs from "../../../../constants/routing/server.routing.urls";
 import './UserOptionsMinecraft.css'
+import withState from "../../../../hocs/with.state";
+import LinkAccountServices from "../../../../services/link_account.services";
+import withDispatchers from "../../../../hocs/with.dispatchers";
+import {fetchAuthenticatedUser} from "../../../../redux/actions/authenticated.user.info.actions";
 
 class UserOptionsMinecraft extends Component {
 
@@ -12,22 +16,22 @@ class UserOptionsMinecraft extends Component {
         this.onUnlink = this.onUnlink.bind(this);
     }
 
-    onUnlink() {
-        console.log("Unlink Cliked!");
+    async onUnlink() {
+        let {username} = this.props.authenticatedUserInfo;
+        let response = await LinkAccountServices.unlink(username);
+
+        if (response.successful) {
+            this.props.fetchAuthenticatedUserInfo();
+        }
     }
 
 
     render() {
-        let isAccountLinked = true;
-
-        let uuid = '8ed20904-3262-401a-901a-1946504d2eea';
-        let player = 'ItsGosho';
-        let profileUrl = RoutingURLs.PLAYER.PROFILE.VIEW(uuid);
-        let skinUrl = ServerRoutingURLs.OUTSIDE.CRAFATAR.MINECRAFT.SKIN(uuid);
+        let {playerName, playerUUID} = this.props.authenticatedUserInfo;
 
         return (
             <Fragment>
-                {!isAccountLinked ? (<Fragment>
+                {!playerName ? (<Fragment>
                         <div className="dropdown-divider"/>
 
                         <div className="row" align="center">
@@ -41,7 +45,7 @@ class UserOptionsMinecraft extends Component {
                         <div className="row">
                             <div className="col-lg">
                                 <br></br>
-                                <span>I.Type in the server <b>/linkaccount</b>.</span>
+                                <span>I.Type in the server <b>/link-account</b>.</span>
                                 <br></br>
                                 <span>II.Open the generated <b>link</b>.</span>
                                 <br></br>
@@ -54,14 +58,14 @@ class UserOptionsMinecraft extends Component {
                     (<Fragment>
                         <div className="row" align="center">
                             <div className="col-lg">
-                                <b><Link to={profileUrl}>{player}</Link></b>
+                                <b><Link to={RoutingURLs.PLAYER.PROFILE.VIEW(playerUUID)}>{playerName}</Link></b>
                             </div>
                         </div>
 
                         <div className="dropdown-divider"/>
 
                         <div align="center">
-                            <img src={skinUrl}
+                            <img src={ServerRoutingURLs.OUTSIDE.CRAFATAR.MINECRAFT.SKIN(playerUUID)}
                                  className="skin"
                                  alt=''/>
                         </div>
@@ -85,4 +89,4 @@ class UserOptionsMinecraft extends Component {
 
 }
 
-export default UserOptionsMinecraft;
+export default withDispatchers(UserOptionsMinecraft);

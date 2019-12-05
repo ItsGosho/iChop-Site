@@ -4,14 +4,13 @@ import com.google.inject.Injector;
 import com.ichop.plugin.linkaccount.commons.Plugin;
 import com.ichop.plugin.linkaccount.config.BeansConfiguration;
 import com.ichop.plugin.linkaccount.config.ConfigurationRunner;
-import com.ichop.plugin.linkaccount.loaders.CommandLoader;
+import com.ichop.plugin.linkaccount.domain.models.service.KeyServiceModel;
+import com.ichop.plugin.linkaccount.services.KeyServices;
 
 import javax.inject.Inject;
 import javax.jms.JMSException;
 
 public class CLR {
-
-    public static final String IS_ACCOUNT_LINKED_URL = "http://localhost:8000/player/is-account-linked?uuid={uuid}";
 
     @Inject
     private LinkAccount linkAccount;
@@ -31,6 +30,7 @@ public class CLR {
 
         @Inject
         private ConfigurationRunner configurationRunner;
+
 
         public void run() {
             BeansConfiguration beansConfiguration = new BeansConfiguration(this);
