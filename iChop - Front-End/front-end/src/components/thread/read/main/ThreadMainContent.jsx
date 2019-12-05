@@ -6,9 +6,10 @@ import ThreadButtonsLeft from "./components/ThreadButtonsLeft";
 import ThreadButtonsRight from "./components/ThreadButtonsRight";
 import withState from "../../../../hocs/with.state";
 
+const REMOVE_KEYWORD = 'SHOW_TO_NOW';
+
 const ThreadMainContent = (props) => {
     let {content} = props.threadRead;
-
     return (
         <div className="card thread">
 
@@ -24,7 +25,7 @@ const ThreadMainContent = (props) => {
 
                 <div className="content">
                     <p className="card-text thread-content">
-                        <Interweave content={content}/>
+                        <Interweave content={removeTheHiddenKeyword(content)}/>
                     </p>
                 </div>
 
@@ -47,3 +48,9 @@ const ThreadMainContent = (props) => {
 };
 
 export default withState(ThreadMainContent);
+
+let removeTheHiddenKeyword = (content) => {
+    return content.indexOf(REMOVE_KEYWORD) !== -1
+        ?  content.replace(REMOVE_KEYWORD,'')
+        : content;
+};
