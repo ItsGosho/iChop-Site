@@ -31,7 +31,7 @@ let authenticatedUserInfoReducer = (state = initialState, action) => {
 
             return Object.assign({}, state, {...user, ...information, ...minecraft, isAuthenticated: true});
 
-        case Actions.AUTHENTICATED_USER_INFO_REMOVE:
+        case Actions.AUTHENTICATED_USER_REMOVE:
             return {...initialState};
 
         default:

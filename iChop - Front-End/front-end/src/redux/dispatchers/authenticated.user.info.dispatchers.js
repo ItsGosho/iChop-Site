@@ -1,14 +1,14 @@
 import React from 'react';
-import {fetchAuthenticatedUserInfo,removeAuthenticatedUserInfo} from "../actions/authenticated.user.info.actions";
+import {fetchAuthenticatedUser,removeAuthenticatedInfo} from "../actions/authenticated.user.info.actions";
 
 
 let authenticatedUserInfoDispatchers = (dispatch) => {
     return {
         fetchAuthenticatedUserInfo: () => {
-            dispatch(fetchAuthenticatedUserInfo())
+            dispatch(fetchAuthenticatedUser())
         },
         removeAuthenticatedUserInfo: () => {
-            dispatch(removeAuthenticatedUserInfo())
+            dispatch(removeAuthenticatedInfo())
         },
     }
 };

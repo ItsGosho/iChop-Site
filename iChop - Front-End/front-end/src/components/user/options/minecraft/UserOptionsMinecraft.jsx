@@ -6,7 +6,7 @@ import './UserOptionsMinecraft.css'
 import withState from "../../../../hocs/with.state";
 import LinkAccountServices from "../../../../services/link_account.services";
 import withDispatchers from "../../../../hocs/with.dispatchers";
-import {fetchAuthenticatedUserInfo} from "../../../../redux/actions/authenticated.user.info.actions";
+import {fetchAuthenticatedUser} from "../../../../redux/actions/authenticated.user.info.actions";
 
 class UserOptionsMinecraft extends Component {
 
