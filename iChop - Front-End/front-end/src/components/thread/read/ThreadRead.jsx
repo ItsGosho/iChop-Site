@@ -5,6 +5,7 @@ import './ThreadRead.css'
 import threadReadDispatchers from "../../../redux/dispatchers/thread.read.dispatchers";
 import ThreadAddComment from "./comments/ThreadAddComment";
 import withDispatcher from "../../../hocs/with.dispatcher";
+import hasRole from "../../../hocs/has.role";
 
 
 class ThreadRead extends Component {
@@ -33,4 +34,4 @@ class ThreadRead extends Component {
 
 }
 
-export default withDispatcher(threadReadDispatchers)(ThreadRead);
+export default withDispatcher(threadReadDispatchers)(ThreadRead)
