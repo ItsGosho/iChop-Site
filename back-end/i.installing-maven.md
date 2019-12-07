@@ -1,18 +1,18 @@
 ---
 description: >-
-  In order to not open every microservice via a editor ,you will just run a
-  batch file
+  In order to not to open every microservice via a editor ,you will run it
+  directly with maven
 ---
 
 # I.Installing Maven
 
-Navigate to the Maven [download](https://maven.apache.org/download.cgi) page ,navigate to the **Files** category and download the following:
+Navigate to the Maven [download](https://maven.apache.org/download.cgi) page ,go to the **Files** category and download the following:
 
 ![](../.gitbook/assets/pic1_del.png)
 
 Unzip it at preferred place ,mine will be:`C:\Program Files (x86)\apache-maven-3.6.3`
 
-Setup the Windows **environmental variables.**You will need to add a new **System variable** and a **Path** variable:
+Setup the Windows **environmental variables.**You will need to add a new **System variable** and a additional **Path** variable:
 
 **1.**Navigate to the Windows 10 **environment variables**
 
@@ -35,7 +35,7 @@ When you are done will all steps ,open a **Command Prompt** and type:
 mvn -v
 ```
 
-If everything is properlyset ,a response in this form will be received:
+If everything is properly set ,a response in this form will be received:
 
 ```bash
 Apache Maven 3.6.3 (40f52333136460af0dc0d7232c0dc0bcf0d9e117; 2019-08-27T18:06:16+03:00)
