@@ -1,4 +1,4 @@
-# Table of contents
+#iChop
 
-* [Home](README.md)
+https://itsgosho2.gitbook.io/ichop/
 
