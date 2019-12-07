@@ -8,9 +8,10 @@
 
 ## back-end
 
-* [I.Installing Maven](back-end/i.installing-maven.md)
-* [II.Installing Artemis](back-end/ii.installing-artemis.md)
-* [III.Installing MongoDB & MySQL](back-end/iii.installing-mongodb-and-mysql.md)
-* [IV.Configuring the Windows hosts](back-end/iv.configuring-the-windows-hosts.md)
-* [V.Running](back-end/v.running.md)
+* [Installation](installation/README.md)
+  * [I.Installing Maven](installation/i.installing-maven.md)
+  * [II.Installing Artemis](installation/ii.installing-artemis.md)
+  * [III.Installing MongoDB & MySQL](installation/iii.installing-mongodb-and-mysql.md)
+  * [IV.Configuring the Windows hosts](installation/iv.configuring-the-windows-hosts.md)
+  * [V.Running](installation/v.running.md)
 
