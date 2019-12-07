@@ -1,6 +1,4 @@
----
-description: Soon!
----
+#iChop
 
-# Home
+https://itsgosho2.gitbook.io/ichop/
 
