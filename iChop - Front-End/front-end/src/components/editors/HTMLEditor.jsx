@@ -29,9 +29,7 @@ class HTMLEditor extends Component {
     onChange(event) {
         let {onChangeHTML} = this.props;
 
-        let html = event.target.innerHTML;
-
-        onChangeHTML(html);
+        onChangeHTML(event.target.innerHTML);
     }
 
     render() {

@@ -18,3 +18,7 @@
 .width-75-percent {
     width: 75%;
 }
+
+.card-text * {
+    width: 100%;
+}
