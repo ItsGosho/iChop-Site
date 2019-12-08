@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Trumbowyg from "react-trumbowyg";
 import PropTypes from "prop-types";
+import './HTMLEditor.css'
 
 class HTMLEditor extends Component {
 
@@ -28,7 +29,9 @@ class HTMLEditor extends Component {
     onChange(event) {
         let {onChangeHTML} = this.props;
 
-        onChangeHTML(event.target.innerHTML);
+        let html = event.target.innerHTML;
+
+        onChangeHTML(html);
     }
 
     render() {

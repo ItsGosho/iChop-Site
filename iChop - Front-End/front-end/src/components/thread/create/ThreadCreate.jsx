@@ -50,7 +50,7 @@ class ThreadCreate extends Component {
                     <span>Create a new thread:</span>
                 </div>
 
-                <div className="card-body">
+                <div className="card-body" style={{'width':'100%'}}>
                     <form>
 
                         <div className="input-group mb-3">
@@ -64,8 +64,6 @@ class ThreadCreate extends Component {
                         <div className="dropdown-divider"/>
 
                         <HTMLEditor onChangeHTML={this.onContentUpdate}/>
-
-                        <div id="textarea-content" contentEditable="true"/>
 
                         <ModalOpen relationTo={'help'} title={'Help'}>❓</ModalOpen>
 
