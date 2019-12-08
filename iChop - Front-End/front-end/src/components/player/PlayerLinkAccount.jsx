@@ -7,7 +7,7 @@ import LinkAccountServices from "../../services/link_account.services";
 import NotificationHelper from "../../helpers/notification.helper";
 import QueryHelper from "../../helpers/query.helper";
 import withDispatchers from "../../hocs/with.dispatchers";
-import {fetchAuthenticatedUser} from "../../redux/actions/authenticated.user.info.actions";
+
 
 class PlayerLinkAccount extends Component {
 

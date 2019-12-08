@@ -33,4 +33,4 @@ class ThreadRead extends Component {
 
 }
 
-export default withDispatcher(threadReadDispatchers)(ThreadRead);
+export default withDispatcher(threadReadDispatchers)(ThreadRead)

@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+#iChop
+
+https://itsgosho2.gitbook.io/ichop/
+=======
 ---
 description: >-
   iChop is web based application ,which purpose is to provide a additional
@@ -11,4 +16,5 @@ description: >-
 This project is **ispired** by [Hypixel](https://hypixel.net/).
 
 ## \*\*\*\*
+>>>>>>> 57f5263331fe81e79d798b2a1dbc8c8f51b7b61f
 

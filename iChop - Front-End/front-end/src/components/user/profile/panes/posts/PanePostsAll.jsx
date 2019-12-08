@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import PanePost from "./PanePost";
 import withState from "../../../../../hocs/with.state";
-import PanePostActions from "./PanePostActions";
+
 
 class PanePostsAll extends Component {
 

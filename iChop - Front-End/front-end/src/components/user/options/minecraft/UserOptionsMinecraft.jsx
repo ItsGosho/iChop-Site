@@ -3,10 +3,8 @@ import RoutingURLs from "../../../../constants/routing/routing.constants";
 import {Link} from "react-router-dom";
 import ServerRoutingURLs from "../../../../constants/routing/server.routing.urls";
 import './UserOptionsMinecraft.css'
-import withState from "../../../../hocs/with.state";
 import LinkAccountServices from "../../../../services/link_account.services";
 import withDispatchers from "../../../../hocs/with.dispatchers";
-import {fetchAuthenticatedUser} from "../../../../redux/actions/authenticated.user.info.actions";
 
 class UserOptionsMinecraft extends Component {
 
