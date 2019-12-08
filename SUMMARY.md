@@ -5,6 +5,7 @@
 ## Front-End <a id="front-end-1"></a>
 
 * [Running](front-end-1/front-end.md)
+* [Dependencies](front-end-1/dependencies.md)
 
 ## back-end
 
