@@ -6,7 +6,7 @@ description: >-
 
 # II.Installing Artemis
 
-Navigate to the ActiveMQ [download ](https://activemq.apache.org/components/artemis/download/)page and download the following:
+Navigate to the ActiveMQ Artemis [download ](https://activemq.apache.org/components/artemis/download/)page and download the following:
 
 ![](../.gitbook/assets/pic_1.png)
 
