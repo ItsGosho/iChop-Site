@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Trumbowyg from "react-trumbowyg";
 import PropTypes from "prop-types";
+import './HTMLEditor.css'
 
 class HTMLEditor extends Component {
 

@@ -18,7 +18,7 @@ const ThreadServices = {
 
     async getTotal() {
         let response = await Requester.get(Endpoints.TOTAL);
-        return response.data;
+        return response.data ? response.data.result : 0;
     },
 
     async deleteById(id) {

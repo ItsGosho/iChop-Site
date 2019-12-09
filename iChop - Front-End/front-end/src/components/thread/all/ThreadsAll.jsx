@@ -67,9 +67,11 @@ class ThreadsAll extends Component {
 
                 <div className="dropdown-divider"/>
 
-                <PaginationNav total={total}
-                               resultsPerPage={resultsPerPage}
-                               onPageChange={this.onPageChange}/>
+                {total > 0 ? (
+                    <PaginationNav total={total}
+                                   resultsPerPage={resultsPerPage}
+                                   onPageChange={this.onPageChange}/>
+                ) : null}
 
             </Threads>
         );
