@@ -56,29 +56,31 @@ let fetchThreadComments = (id) => {
             payload: {comments}
         });
 
-        for (const comment of comments) {
-            CommentServices.findCreatorTotalComments(comment.creatorUsername)
-                .then((result) => {
-                    dispatch({
-                        type: Actions.THREAD_READ_SET_COMMENT_CREATOR_INFO,
-                        payload: {
-                            id: comment.id,
-                            totalComments: result
-                        }
+        if(comments){
+            for (const comment of comments) {
+                CommentServices.findCreatorTotalComments(comment.creatorUsername)
+                    .then((result) => {
+                        dispatch({
+                            type: Actions.THREAD_READ_SET_COMMENT_CREATOR_INFO,
+                            payload: {
+                                id: comment.id,
+                                totalComments: result
+                            }
+                        });
                     });
+
+                let likes = await ReactionServices.findAllByIdAndReactionType(comment.id, 'THREAD_COMMENT', 'LIKE');
+                let dislikes = await ReactionServices.findAllByIdAndReactionType(comment.id, 'THREAD_COMMENT', 'DISLIKE');
+
+                dispatch({
+                    type: Actions.THREAD_READ_SET_COMMENT_STATISTICS,
+                    payload: {
+                        id: comment.id,
+                        likes,
+                        dislikes
+                    }
                 });
-
-            let likes = await ReactionServices.findAllByIdAndReactionType(comment.id, 'THREAD_COMMENT', 'LIKE');
-            let dislikes = await ReactionServices.findAllByIdAndReactionType(comment.id, 'THREAD_COMMENT', 'DISLIKE');
-
-            dispatch({
-                type: Actions.THREAD_READ_SET_COMMENT_STATISTICS,
-                payload: {
-                    id: comment.id,
-                    likes,
-                    dislikes
-                }
-            });
+            }
         }
     }
 };

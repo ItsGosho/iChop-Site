@@ -36,7 +36,7 @@ const ThreadInformation = (props) => {
                 <div className="col-md-4">
                     <small className="thread-total_comments">
                         <Link to={threadCommentsFragmentUrl}>
-                            <span>{comments.length}</span>
+                            <span>{comments ? comments.length : 0}</span>
                         </Link>
                         <small>💬</small>
                     </small>
