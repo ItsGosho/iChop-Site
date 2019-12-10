@@ -14,8 +14,7 @@ const ThreadComments = (props) => {
     return (
         <section id="section-thread_read_comments">
 
-            {
-                (() => comments.map(({
+            {comments ? (() => comments.map(({
                                          id,
                                          createdOn,
                                          likes,
@@ -71,7 +70,7 @@ const ThreadComments = (props) => {
                         </div>
                     )
                 }))()
-            }
+            : null}
         </section>
     )
 };

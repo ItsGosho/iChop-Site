@@ -50,7 +50,7 @@ class ThreadCreate extends Component {
                     <span>Create a new thread:</span>
                 </div>
 
-                <div className="card-body" style={{'width':'100%'}}>
+                <div className="card-body">
                     <form>
 
                         <div className="input-group mb-3">
