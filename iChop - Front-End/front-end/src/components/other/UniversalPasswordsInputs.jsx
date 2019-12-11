@@ -9,7 +9,8 @@ class UniversalPasswordsInputs extends Component {
         super(props);
 
         this.state = {
-            isPasswordsShown: false
+            isPasswordsShown: false,
+            counter: 0
         };
 
         this.onShowPasswords = this.onShowPasswords.bind(this);
@@ -18,7 +19,6 @@ class UniversalPasswordsInputs extends Component {
         this.passwordRef = React.createRef();
         this.confirmPasswordRef = React.createRef();
     }
-
 
     onShowPasswords() {
         let passwordElement = this.passwordRef.current;

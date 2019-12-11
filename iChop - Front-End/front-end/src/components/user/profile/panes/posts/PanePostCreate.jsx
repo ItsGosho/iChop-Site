@@ -4,7 +4,7 @@ import FrontEndResourcesRoutingURLs from "../../../../../constants/front-end.res
 import './PanePostCreate.css';
 import Image from "../../../../other/Image";
 import TextAreaWithCounter from "../../../../other/TextAreaWithCounter";
-import {PostValidationConstants} from "../../../../../constants/other/validation.constants";
+import {PostValidationConstants, UserValidationConstants} from "../../../../../constants/other/validation.constants";
 import {withRouter} from "react-router-dom";
 import CommentServices from "../../../../../services/comment.services";
 import withDispatchers from "../../../../../hocs/with.dispatchers";
@@ -17,18 +17,12 @@ class PanePostCreate extends Component {
 
         this.state = {
             content: '',
-
-            leftCharacters: PostValidationConstants.MAX_CHARACTERS
         };
 
         this.onCreate = this.onCreate.bind(this);
-        this.onContentCountedCharacters = this.onContentCountedCharacters.bind(this);
         this.onContentValueChange = this.onContentValueChange.bind(this);
     }
 
-    onContentCountedCharacters(leftCharacters) {
-        this.setState({leftCharacters: leftCharacters})
-    }
 
     onContentValueChange(value) {
         this.setState({content: value})
@@ -49,6 +43,7 @@ class PanePostCreate extends Component {
     render() {
         let {username: viewerUsername} = this.props.authenticatedUserInfo;
         let viewerAvatarUrl = ServerRoutingURLs.CORE.DATA_STORAGE.GET_USER_AVATAR(viewerUsername);
+        let leftPostCharacters = PostValidationConstants.MAX_CHARACTERS - this.state.content.length;
 
         return (
             <form>
@@ -66,11 +61,9 @@ class PanePostCreate extends Component {
                         <TextAreaWithCounter name="content"
                                              value={this.state.content}
                                              className="pane-post-create-post"
-                                             onCounted={this.onContentCountedCharacters}
                                              onValueChange={this.onContentValueChange}
                                              maxCharacters={PostValidationConstants.MAX_CHARACTERS}/>
                     </div>
-
                 </div>
 
                 <div className="row">
@@ -82,7 +75,7 @@ class PanePostCreate extends Component {
                             Post
                         </button>
 
-                        <small className="pane-post-left-chars">{this.state.leftCharacters}</small>
+                        <small className="pane-post-left-chars">{leftPostCharacters}</small>
                     </div>
                 </div>
             </form>
