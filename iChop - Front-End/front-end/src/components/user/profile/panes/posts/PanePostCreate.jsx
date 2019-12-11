@@ -45,7 +45,6 @@ class PanePostCreate extends Component {
         let viewerAvatarUrl = ServerRoutingURLs.CORE.DATA_STORAGE.GET_USER_AVATAR(viewerUsername);
         let leftPostCharacters = PostValidationConstants.MAX_CHARACTERS - this.state.content.length;
 
-        console.log(leftPostCharacters);
         return (
             <form>
                 <div className="row">
