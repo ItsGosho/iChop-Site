@@ -26,12 +26,11 @@ class ThreadsAll extends Component {
             return (<span>There are no news!</span>);
         }
 
-        return threads.map(({id, title, createdOn, creatorUsername, postTime, totalViews, totalReactions, totalComments, content}, index) => (
+        return threads.map(({id, title, createdOn, creatorUsername, totalViews, totalReactions, totalComments, content}, index) => (
             <ThreadsAllThread id={id}
                               title={title}
                               createdOn={createdOn}
                               creatorUsername={creatorUsername}
-                              postTime={postTime}
                               totalViews={totalViews}
                               totalReactions={totalReactions}
                               totalComments={totalComments}

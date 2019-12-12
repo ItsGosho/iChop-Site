@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 const CREATION_DATE_PATTERN = "dd mmm,yyyy";
 const POST_TIME_PATTERN = "HH:mm";
 
-const ThreadsAllThreadInformation = ({id, title, createdOn, postTime, username, totalViews, totalReactions, totalComments}) => (
+const ThreadsAllThreadInformation = ({id, title, createdOn, username, totalViews, totalReactions, totalComments}) => (
     <Fragment>
         <div className="row">
             <div className="col-md-8">
@@ -25,7 +25,7 @@ const ThreadsAllThreadInformation = ({id, title, createdOn, postTime, username, 
                 <small>
                     <span>by </span>
                     <Link to={RoutingURLs.USER.PROFILE.VIEW(username)}>👤 {username}</Link>
-                    <span> at {formatDate(postTime, POST_TIME_PATTERN)} ({totalViews}👀/{totalReactions} 👍)</span>
+                    <span> at {formatDate(createdOn, POST_TIME_PATTERN)} ({totalViews}👀/{totalReactions} 👍)</span>
                 </small>
             </div>
             <div className="col-md-4">
@@ -46,7 +46,6 @@ ThreadsAllThreadInformation.propTypes = {
     title: PropTypes.string,
     createdOn: PropTypes.instanceOf(Date),
     username: PropTypes.string,
-    postTime: PropTypes.instanceOf(Date),
     totalViews: PropTypes.number,
     totalReactions: PropTypes.number,
     totalComments: PropTypes.number,

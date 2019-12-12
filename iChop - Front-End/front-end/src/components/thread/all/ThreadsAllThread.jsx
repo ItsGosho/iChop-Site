@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 
 const REMOVE_KEYWORD = 'SHOW_TO_NOW';
 
-const ThreadsAllThread = ({id, title, createdOn, creatorUsername, postTime, totalViews, totalReactions, totalComments, content}) => {
+const ThreadsAllThread = ({id, title, createdOn, creatorUsername, totalViews, totalReactions, totalComments, content}) => {
 
     return (
         <div className="card-body">
@@ -16,7 +16,6 @@ const ThreadsAllThread = ({id, title, createdOn, creatorUsername, postTime, tota
                                          title={title}
                                          createdOn={createdOn}
                                          username={creatorUsername}
-                                         postTime={postTime}
                                          totalViews={totalViews}
                                          totalReactions={totalReactions}
                                          totalComments={totalComments}/>
@@ -60,7 +59,6 @@ ThreadsAllThread.propTypes = {
     title: PropTypes.string,
     createdOn: PropTypes.instanceOf(Date),
     creatorUsername: PropTypes.string,
-    postTime: PropTypes.instanceOf(Date),
     totalViews: PropTypes.number,
     totalReactions: PropTypes.number,
     totalComments: PropTypes.number,
