@@ -1,7 +1,8 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import UniversalPasswordsInputs from "../../other/UniversalPasswordsInputs";
 import UserServices from "../../../services/user.services";
-import {withRouter} from "react-router-dom";
+import {Redirect, withRouter} from "react-router-dom";
+import RoutingURLs from "../../../constants/routing/routing.constants";
 
 const queryString = require("query-string");
 
@@ -11,7 +12,8 @@ class UserChangePasswordByToken extends Component {
         super(props);
 
         this.state = {
-            token: ''
+            token: '',
+            isSuccessful: false,
         };
 
         this.onChangeClick = this.onChangeClick.bind(this);
@@ -23,10 +25,14 @@ class UserChangePasswordByToken extends Component {
         this.setState({token: token})
     }
 
-    onChangeClick() {
+    async onChangeClick() {
         let {token, password, confirmPassword} = this.state;
 
-        UserServices.changePasswordByToken(token, password, confirmPassword);
+        let response = await UserServices.changePasswordByToken(token, password, confirmPassword);
+
+        if (response.successful) {
+            this.setState({isSuccessful: true});
+        }
     }
 
     getQueryParam(name) {
@@ -35,32 +41,36 @@ class UserChangePasswordByToken extends Component {
     }
 
     render() {
+        let {isSuccessful} = this.state;
         let onChange = (event) => (this.setState({[event.target.name]: event.target.value}));
 
         return (
-            <div className="col-sm d-flex justify-content-center">
-                <div className="card">
-                    <div className="card-body">
-                        <form className="px-4 py-3">
+            <Fragment>
+                <div className="col-sm d-flex justify-content-center">
+                    <div className="card">
+                        <div className="card-body">
+                            <form className="px-4 py-3">
 
-                            <UniversalPasswordsInputs onChange={onChange}/>
+                                <UniversalPasswordsInputs onChange={onChange}/>
 
-                            <div align="center">
+                                <div align="center">
 
-                                <button type="button"
-                                        data-style="zoom-in"
-                                        className="btn btn-primary btn-ladda"
-                                        onClick={this.onChangeClick}>
-                                    Reset
-                                </button>
+                                    <button type="button"
+                                            data-style="zoom-in"
+                                            className="btn btn-primary btn-ladda"
+                                            onClick={this.onChangeClick}>
+                                        Reset
+                                    </button>
 
-                                <div className="dropdown-divider"/>
-                            </div>
+                                    <div className="dropdown-divider"/>
+                                </div>
 
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
+                {isSuccessful ? <Redirect to={RoutingURLs.HOME} push/> : null}
+            </Fragment>
         );
     }
 

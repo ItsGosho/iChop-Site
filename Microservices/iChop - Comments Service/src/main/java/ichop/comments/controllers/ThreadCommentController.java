@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 public class ThreadCommentController {
@@ -102,7 +103,10 @@ public class ThreadCommentController {
         JmsReplyModel threadReply = this.threadRequester.findById(threadId);
 
         if (threadReply.isSuccessful()) {
-            List<ThreadCommentServiceModel> result = this.threadCommentServices.findAllByThreadId(threadId);
+            List<ThreadCommentServiceModel> result = this.threadCommentServices.findAllByThreadId(threadId)
+                    .stream()
+                    .sorted((x1, x2) -> x2.getCreatedOn().compareTo(x1.getCreatedOn()))
+                    .collect(Collectors.toList());
             return this.responseHelpers.respondSuccessful(CommentReplyConstants.FETCH_SUCCESSFUL, result);
         }
 

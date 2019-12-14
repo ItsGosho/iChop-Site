@@ -14,7 +14,7 @@ class PanePostsAll extends Component {
     iteratePosts(posts) {
         let authenticatedUser = this.props.authenticatedUserInfo;
 
-        return posts !== undefined ?
+        return posts && posts.length > 0 ?
             posts.map((post, index) => {
                 let {id, creatorUsername, content, createdOn, userProfileUsername} = post;
 
@@ -25,7 +25,7 @@ class PanePostsAll extends Component {
                                   createdOn={createdOn}
                                   userProfileUsername={userProfileUsername}
                                   content={content}/>);
-            }) : null;
+            }) : <center>There are not any posts!</center>;
     }
 
     render() {

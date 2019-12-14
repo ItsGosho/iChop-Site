@@ -18,7 +18,7 @@ const PaneInformation = (props) => {
 
                 {aboutYou != null ? (<PanelInformationAboutYou aboutYou={aboutYou}/>) : null}
 
-                {aboutYou == null && birthDate == null ? (<span>User has not set any information!</span>) : null}
+                {aboutYou == null && birthDate == null ? (<center><span>User has not set any information!</span></center>) : null}
             </div>
         </div>
     )

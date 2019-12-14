@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 public class UserProfileCommentController {
@@ -68,7 +69,7 @@ public class UserProfileCommentController {
         return this.responseHelpers.respondGeneric(userReply);
     }
 
-    @PreAuthorize("hasAuthority('MODERATOR') or @baseCommentRequesterImp.isCreator(#commentId,#principal.name,'USER_PROFILE') == true or #userProfileUsername.equals(#principal.name)")
+    @PreAuthorize("hasAuthority('MODERATOR') or @genericCommentServices.isCreator(#commentId,#principal.name,'USER_PROFILE') == true or #userProfileUsername.equals(#principal.name)")
     @PostMapping(CommentRoutingConstants.USER_PROFILE_DELETE)
     public ResponseEntity delete(@PathVariable String userProfileUsername, @PathVariable String commentId, Principal principal) {
 
@@ -97,7 +98,10 @@ public class UserProfileCommentController {
         JmsReplyModel userReply = this.userRequester.findByUsername(userProfileUsername);
 
         if (userReply.isSuccessful()) {
-            List<UserProfileCommentServiceModel> result = this.userProfileCommentServices.findAllByUserProfileUsername(userProfileUsername);
+            List<UserProfileCommentServiceModel> result = this.userProfileCommentServices.findAllByUserProfileUsername(userProfileUsername)
+                    .stream()
+                    .sorted((x1, x2) -> x2.getCreatedOn().compareTo(x1.getCreatedOn()))
+                    .collect(Collectors.toList());
             return this.responseHelpers.respondSuccessful(CommentReplyConstants.FETCH_SUCCESSFUL, result);
         }
 

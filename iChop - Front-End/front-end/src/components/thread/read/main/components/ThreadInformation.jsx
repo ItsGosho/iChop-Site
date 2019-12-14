@@ -8,7 +8,7 @@ const CREATED_ON_DATE_PATTERN = 'dd mmm,yyyy';
 const POSTED_AT_DATE_PATTERN = 'HH:mm';
 
 const ThreadInformation = (props) => {
-    let {id, title, createdOn, postedAt, views, totalReactions, comments} = props.threadRead;
+    let {id, title, createdOn, views, totalReactions, comments} = props.threadRead;
     let threadCommentsFragmentUrl = RoutingURLs.THREAD.READ(id) + '#section-thread_read_comments';
 
     return (
@@ -28,7 +28,7 @@ const ThreadInformation = (props) => {
             <div className="row">
                 <div className="col-md-8">
                     <small>
-                        <span>Posted at {formDate(postedAt, POSTED_AT_DATE_PATTERN)} ( {views}👀 / {totalReactions}👍 )</span>
+                        <span>Posted at {formDate(createdOn, POSTED_AT_DATE_PATTERN)} ( {views}👀 / {totalReactions}👍 )</span>
                     </small>
                 </div>
 

@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 public class ThreadController {
@@ -108,7 +109,10 @@ public class ThreadController {
 
     @GetMapping(ThreadRoutingConstants.FIND_ALL)
     public ResponseEntity findAll(Pageable pageable) {
-        List<ThreadServiceModel> threads = this.threadServices.findAll(pageable);
+        List<ThreadServiceModel> threads = this.threadServices.findAll(pageable)
+                .stream()
+                //.sorted((x1, x2) -> x2.getCreatedOn().compareTo(x1.getCreatedOn()))
+                .collect(Collectors.toList());;
 
         return this.responseHelpers.respondSuccessful(ThreadReplyConstants.FETCH_SUCCESSFUL, threads);
     }
