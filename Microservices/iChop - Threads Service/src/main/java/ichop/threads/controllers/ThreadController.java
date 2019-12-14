@@ -111,7 +111,7 @@ public class ThreadController {
     public ResponseEntity findAll(Pageable pageable) {
         List<ThreadServiceModel> threads = this.threadServices.findAll(pageable)
                 .stream()
-                .sorted((x1, x2) -> x2.getCreatedOn().compareTo(x1.getCreatedOn()))
+                //.sorted((x1, x2) -> x2.getCreatedOn().compareTo(x1.getCreatedOn()))
                 .collect(Collectors.toList());;
 
         return this.responseHelpers.respondSuccessful(ThreadReplyConstants.FETCH_SUCCESSFUL, threads);

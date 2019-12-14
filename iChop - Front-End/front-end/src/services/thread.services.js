@@ -11,7 +11,7 @@ const ThreadServices = {
     },
 
     async getAllPageable(page, size) {
-        let query = `?page=${page}&size=${size}`;
+        let query = `?page=${page}&size=${size}&sort=createdOn,desc`;
         let response = await Requester.get(Endpoints.ALL + query);
         return response.data;
     },
