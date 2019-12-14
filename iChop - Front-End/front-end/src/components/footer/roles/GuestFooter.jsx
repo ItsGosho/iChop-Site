@@ -12,19 +12,22 @@ class GuestFooter extends Component {
     };
 
     onLoginRequired = (event) => {
-        this.onDropdownEvent(event);
-        this.props.selectGuestLogin();
+        this.onRequire(event, this.props.selectGuestLogin)
     };
 
     onRegisterRequired = (event) => {
-        this.onDropdownEvent(event);
-        this.props.selectGuestRegister();
+        this.onRequire(event, this.props.selectGuestRegister)
     };
 
     onForgottenPasswordRequired = (event) => {
-        this.onDropdownEvent(event);
-        this.props.selectGuestForgottenPassword();
+        this.onRequire(event, this.props.selectGuestForgottenPassword)
     };
+
+    onRequire(event, action) {
+        this.onDropdownEvent(event);
+        action();
+        window.scrollTo(0, 0);
+    }
 
     render() {
         return (
