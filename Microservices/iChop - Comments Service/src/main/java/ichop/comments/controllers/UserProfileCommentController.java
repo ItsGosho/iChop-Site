@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 public class UserProfileCommentController {
@@ -97,7 +98,10 @@ public class UserProfileCommentController {
         JmsReplyModel userReply = this.userRequester.findByUsername(userProfileUsername);
 
         if (userReply.isSuccessful()) {
-            List<UserProfileCommentServiceModel> result = this.userProfileCommentServices.findAllByUserProfileUsername(userProfileUsername);
+            List<UserProfileCommentServiceModel> result = this.userProfileCommentServices.findAllByUserProfileUsername(userProfileUsername)
+                    .stream()
+                    .sorted((x1, x2) -> x2.getCreatedOn().compareTo(x1.getCreatedOn()))
+                    .collect(Collectors.toList());
             return this.responseHelpers.respondSuccessful(CommentReplyConstants.FETCH_SUCCESSFUL, result);
         }
 
