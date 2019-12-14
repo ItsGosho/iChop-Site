@@ -25,7 +25,7 @@ class PanePostsAll extends Component {
                                   createdOn={createdOn}
                                   userProfileUsername={userProfileUsername}
                                   content={content}/>);
-            }) : null;
+            }) : <center>There are not any posts!</center>;
     }
 
     render() {

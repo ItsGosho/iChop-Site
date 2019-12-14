@@ -18,7 +18,7 @@ class UserProfile extends Component {
 
         this.state = {
             isLoading: true,
-            isFound: false,
+            isFound: true,
         }
     }
 
@@ -40,12 +40,16 @@ class UserProfile extends Component {
         }
 
         this.setState({isLoading: false});
-        this.setState({isFound: user !== undefined});
+
+        if (!user) {
+            this.setState({isFound: false})
+        }
     }
 
     render() {
         let {isFound, isLoading} = this.state;
 
+        console.log(isFound);
         return (
             <Fragment>
                 {!isLoading ? (
