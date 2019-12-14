@@ -41,6 +41,7 @@ const UserServices = {
             confirmPassword
         }, true);
         NotificationHelper.showNotificationByResponse(response);
+        return response;
     },
 
     async changePassword(password, confirmPassword) {
