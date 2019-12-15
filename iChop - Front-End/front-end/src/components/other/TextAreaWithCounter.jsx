@@ -39,14 +39,20 @@ class TextAreaWithCounter extends Component {
     }
 
     componentWillReceiveProps(nextProps, nextContext) {
-        let {maxCharacters, initialValue} = nextProps;
+        let {maxCharacters, initialValue, executeDelete} = nextProps;
 
-        initialValue = initialValue ? initialValue : '';
+        initialValue = initialValue && !executeDelete ? initialValue : '';
 
         this.setState({maxCharacters: maxCharacters});
         this.setState({leftCharacters: maxCharacters});
 
-        if(this.state.initialValue !== initialValue){
+        if (this.state.initialValue !== initialValue) {
+            this.setState({initialValue});
+            this.setState({[this.props.name]: initialValue});
+            this.setState((prev) => {
+                return {leftCharacters: prev.leftCharacters - initialValue.length}
+            });
+        } else if (executeDelete) {
             this.setState({initialValue});
             this.setState({[this.props.name]: initialValue});
             this.setState((prev) => {
@@ -83,6 +89,7 @@ TextAreaWithCounter.propTypes = {
     name: PropTypes.string,
     initialValue: PropTypes.string,
     className: PropTypes.string,
+    executeDelete: PropTypes.bool,
     onValueChange: PropTypes.func,
     maxCharacters: PropTypes.number,
 };
