@@ -17,6 +17,7 @@ class PanePostCreate extends Component {
 
         this.state = {
             content: '',
+            isSuccessful: false
         };
 
         this.onCreate = this.onCreate.bind(this);
@@ -37,6 +38,7 @@ class PanePostCreate extends Component {
         if (response.successful) {
             this.props.fetchPosts(username);
             this.setState({content: ''})
+            this.setState({isSuccessful: true})
         }
     }
 
@@ -61,6 +63,7 @@ class PanePostCreate extends Component {
                         <TextAreaWithCounter name="content"
                                              value={this.state.content}
                                              className="pane-post-create-post"
+                                             executeDelete={this.state.isSuccessful}
                                              onValueChange={this.onContentValueChange}
                                              maxCharacters={PostValidationConstants.MAX_CHARACTERS}/>
                     </div>
