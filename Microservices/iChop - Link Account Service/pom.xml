@@ -23,7 +23,7 @@
         <java.version>8</java.version>
         <mongo-db-driver.version>3.10.2</mongo-db-driver.version>
         <lombok.version>1.18.10</lombok.version>
-        <hibernate-validator.version>6.0.17.Final</hibernate-validator.version>
+        <hibernate-validator.version>6.1.0.Final</hibernate-validator.version>
         <mockito-core.version>3.1.0</mockito-core.version>
     </properties>
 
